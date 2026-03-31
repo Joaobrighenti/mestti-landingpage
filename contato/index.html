@@ -11,9 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css?v=14">
+    <link rel="stylesheet" href="../styles-entry.css?v=25">
 </head>
-<body>
+<body class="page-contato">
     <div class="nav-overlay" id="navOverlay"></div>
 
     <header class="header header--tractian">
@@ -23,13 +23,26 @@
                     <img src="../images/MESTTI.svg" alt="MESTTI" class="logo-img" width="120" height="25">
                 </a>
                 <nav class="header-nav" id="headerNav" aria-label="Menu principal">
+                    <div class="mobile-nav-header">
+                        <a href="/" class="header-logo-link">
+                            <img src="../images/MESTTI.svg" alt="MESTTI" class="logo-img" width="120" height="25">
+                        </a>
+                        <button type="button" class="mobile-nav-close" aria-label="Fechar menu">×</button>
+                    </div>
                     <a href="/" data-home-section="#controle-total" class="nav-link">Soluções</a>
                     <a href="/" data-home-section="#cases" class="nav-link">Indústrias</a>
                     <a href="/" data-home-section="#controle-total" class="nav-link">Recursos</a>
                     <a href="/empresa/" class="nav-link">Sobre</a>
+
+                    <div class="mobile-nav-contact">
+                        <div class="mobile-nav-section-title">Contato</div>
+                        <a class="mobile-nav-contact-link" href="tel:+5514974007797">(14) 97400-7797</a>
+                        <a class="mobile-nav-contact-link" href="https://wa.me/5514974007797" target="_blank" rel="noopener">WhatsApp</a>
+                        <a class="mobile-nav-contact-link" href="/contato/">Central de contato</a>
+                    </div>
                     <div class="header-nav-mobile-extras">
                         <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login">Login</a>
-                        <a href="#formulario" class="btn-demo btn-demo--ghost">Demonstração</a>
+                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal">Demonstração</button>
                     </div>
                 </nav>
                 <div class="header-tractian-actions">
@@ -38,7 +51,7 @@
                         Contato
                     </a>
                     <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login">Login</a>
-                    <a href="#formulario" class="btn-demo btn-demo--ghost">Demonstração</a>
+                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal">Demonstração</button>
                 </div>
                 <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
                     <span></span>
@@ -115,44 +128,13 @@
         </section>
 
         <section class="page-content" id="formulario">
-            <div class="container container--wide" style="max-width: 480px;">
-                <div class="cta-form-section modal-form-section" style="margin: 0 auto;" data-aos="fade-up">
+            <div class="container container--wide" style="max-width: 720px;">
+                <div class="cta-form-section modal-form-section" style="margin: 0 auto; text-align: center;" data-aos="fade-up">
                     <div class="cta-header" style="text-align: center;">
                         <h2 class="cta-title">Solicitar demonstração</h2>
-                        <p class="cta-subtitle">Preencha os dados e nossa equipe retorna em breve.</p>
+                        <p class="cta-subtitle">Clique no botão para abrir o formulário.</p>
                     </div>
-                    <form class="contact-form" id="contactFormPage">
-                        <input type="text" name="name" placeholder="Nome completo" required>
-                        <input type="email" name="email" placeholder="E-mail profissional" required>
-                        <div class="phone-input">
-                            <input type="text" value="+55" readonly aria-label="DDI">
-                            <input type="tel" name="phone" placeholder="Telefone" required>
-                        </div>
-                        <select name="cargo" required>
-                            <option value="">Cargo</option>
-                            <option value="gerente">Gerente</option>
-                            <option value="supervisor">Supervisor</option>
-                            <option value="engenheiro">Engenheiro</option>
-                            <option value="diretor">Diretor</option>
-                            <option value="outro">Outro</option>
-                        </select>
-                        <select name="setor" required>
-                            <option value="">Setor da indústria</option>
-                            <option value="alimentos">Alimentos e bebidas</option>
-                            <option value="quimica">Química</option>
-                            <option value="automotiva">Automotiva</option>
-                            <option value="farmaceutica">Farmacêutica</option>
-                            <option value="outro">Outro</option>
-                        </select>
-                        <select name="solucao" required>
-                            <option value="">Solução de maior interesse</option>
-                            <option value="apontamento">Apontamento automático</option>
-                            <option value="oee">OEE e indicadores</option>
-                            <option value="monitoramento">Monitoramento</option>
-                            <option value="rastreabilidade">Rastreabilidade</option>
-                        </select>
-                        <button type="submit" class="btn btn-submit">Enviar</button>
-                    </form>
+                    <button type="button" class="btn btn-submit btn-open-modal" style="width: 100%; max-width: 420px;">Abrir formulário</button>
                 </div>
             </div>
         </section>
@@ -216,13 +198,62 @@
         </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="../script.js?v=2"></script>
-    <script>
-        document.getElementById('contactFormPage')?.addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Obrigado! Em produção, este formulário seria enviado ao servidor.');
-        });
-    </script>
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="../script.js?v=2"></script>
+
+    <!-- Modal de Demonstração -->
+    <div id="contactModal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" id="btnCloseModal" aria-label="Fechar">&times;</button>
+            <div class="demo-modal-card">
+                <div class="demo-modal-head">
+                    <h2 class="demo-modal-title">Solicite sua demonstração</h2>
+                    <p class="demo-modal-lead">Preencha os campos para falar com um especialista e entender os benefícios do MESTTI para sua operação.</p>
+                </div>
+                <form class="demo-form" id="contactFormPage">
+                    <input type="text" name="name" placeholder="Nome completo" autocomplete="name" required>
+                    <input type="email" name="email" placeholder="E-mail profissional" autocomplete="email" required>
+
+                    <div class="field-row-3">
+                        <select name="ddi" aria-label="DDI" required>
+                            <option value="+55" selected>+55</option>
+                            <option value="+1">+1</option>
+                            <option value="+351">+351</option>
+                            <option value="+34">+34</option>
+                        </select>
+                        <input type="tel" name="phone" placeholder="Telefone / WhatsApp" autocomplete="tel" required>
+                        <select name="cargo" required>
+                            <option value="" selected disabled>Cargo</option>
+                            <option value="gerente">Gerente</option>
+                            <option value="supervisor">Supervisor</option>
+                            <option value="engenheiro">Engenheiro</option>
+                            <option value="diretor">Diretor</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <select name="setor" required>
+                        <option value="" selected disabled>Setor da Indústria</option>
+                        <option value="alimentos">Alimentos e Bebidas</option>
+                        <option value="quimica">Química</option>
+                        <option value="automotiva">Automotiva</option>
+                        <option value="farmaceutica">Farmacêutica</option>
+                        <option value="outro">Outro</option>
+                    </select>
+
+                    <select name="solucao" required>
+                        <option value="" selected disabled>Selecione a solução de maior interesse</option>
+                        <option value="apontamento">Apontamento Automático</option>
+                        <option value="oee">OEE e Indicadores</option>
+                        <option value="monitoramento">Monitoramento</option>
+                        <option value="rastreabilidade">Rastreabilidade</option>
+                    </select>
+
+                    <textarea name="observacao" placeholder="Observação (opcional)" rows="3" style="min-height: 90px;"></textarea>
+                    <button type="submit" class="demo-submit">Solicitar demonstração</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

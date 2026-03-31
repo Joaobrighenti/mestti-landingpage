@@ -1,0 +1,400 @@
+/* ============================================
+   HEADER — uma linha, fundo cinza claro neutro
+   ============================================ */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: none;
+    transition: var(--transition);
+}
+
+.header--tractian {
+    background-color: var(--header-bg);
+}
+
+.header-top {
+    background-color: transparent;
+    border-bottom: none;
+}
+
+.header-top-wrapper,
+.header-tractian-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 0;
+    gap: var(--spacing-md);
+    flex-wrap: nowrap;
+    min-width: 0;
+}
+
+@media (max-width: 1100px) and (min-width: 769px) {
+    .header-nav {
+        gap: 0.65rem;
+    }
+
+    .header-tractian-inner .nav-link {
+        font-size: 0.82rem;
+    }
+
+    .header-tractian-actions {
+        gap: 0.4rem;
+    }
+}
+
+.header-logo-link {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo-img {
+    height: 25px; /* Altura fixa */
+    width: 120px; /* Largura fixa */
+    display: block;
+    object-fit: cover; /* Corta a imagem mantendo proporção */
+    object-position: center center;
+    filter: brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(1800%) hue-rotate(175deg) brightness(0.45);
+}
+
+.header-nav {
+    display: flex;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+/* Elementos exclusivos do menu mobile */
+.mobile-nav-header,
+.mobile-nav-contact {
+    display: none;
+}
+
+.nav-link {
+    color: var(--header-nav-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    white-space: nowrap;
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    background: linear-gradient(90deg, var(--primary-blue), var(--primary-light));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover {
+    color: var(--primary-blue);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link .nav-chevron {
+    display: inline-block;
+    width: 0.45em;
+    height: 0.45em;
+    margin-left: 0.2em;
+    vertical-align: middle;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg) translateY(-2px);
+    opacity: 0.85;
+}
+
+/* Dropdown (desktop: hover / foco) */
+.nav-dropdown-wrap {
+    position: relative;
+}
+
+.nav-dropdown-panel {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0.25rem);
+    min-width: 220px;
+    padding: 0.5rem 0;
+    background: var(--white);
+    border: 1px solid var(--header-border);
+    border-radius: 10px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 200;
+}
+
+.nav-dropdown-wrap:hover .nav-dropdown-panel,
+.nav-dropdown-wrap:focus-within .nav-dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Telas maiores: submenu não ocupa espaço na barra até abrir (evita texto “em coluna” no header) */
+@media (min-width: 769px) {
+    .nav-dropdown-panel {
+        display: none;
+    }
+
+    .nav-dropdown-wrap:hover .nav-dropdown-panel,
+    .nav-dropdown-wrap:focus-within .nav-dropdown-panel {
+        display: block;
+    }
+}
+
+.nav-dropdown-link {
+    display: block;
+    padding: 0.55rem 1.1rem;
+    color: var(--gray-700);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-dropdown-link:hover {
+    background: var(--header-bg);
+    color: var(--primary-blue);
+}
+
+.header-tractian-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-shrink: 0;
+}
+
+.header-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--header-nav-muted);
+    border-radius: 8px;
+    cursor: default;
+    transition: var(--transition);
+}
+
+.header-icon-btn:hover {
+    background: rgba(74, 107, 138, 0.1);
+    color: var(--primary-blue);
+}
+
+.header-icon-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.header-link-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--header-nav-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.35rem 0.5rem;
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.header-link-contact:hover {
+    color: var(--primary-blue);
+    background: rgba(74, 107, 138, 0.08);
+}
+
+.header-link-contact[aria-current="page"] {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.header-link-contact svg {
+    width: 16px;
+    height: 16px;
+    max-width: 18px;
+    max-height: 18px;
+    flex-shrink: 0;
+    display: block;
+}
+
+/* Evita SVG do header herdar largura 100% ou estourar o layout em qualquer navegador */
+.header.header--tractian svg {
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.header.header--tractian .header-icon-btn svg,
+.header.header--tractian .header-link-contact svg {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    min-height: 18px;
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.header-nav-mobile-extras {
+    display: none;
+}
+
+@media (min-width: 769px) {
+    .header-nav-mobile-extras {
+        display: none !important;
+    }
+}
+
+.header-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.btn-login {
+    color: var(--header-nav-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 6px;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.btn-login:hover {
+    color: var(--primary-blue);
+    background-color: rgba(2, 69, 120, 0.08);
+}
+
+.btn-demo {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-light));
+    color: var(--white);
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: var(--transition);
+    white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(2, 69, 120, 0.25);
+    border: 1px solid transparent;
+}
+
+.btn-demo:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(2, 69, 120, 0.35);
+}
+
+/* Botão fantasma (estilo referência) */
+.btn-demo--ghost {
+    background: transparent;
+    color: var(--primary-blue);
+    border: 1px solid rgba(2, 69, 120, 0.45);
+    box-shadow: none;
+}
+
+.btn-demo--ghost:hover {
+    background: rgba(2, 69, 120, 0.06);
+    color: var(--primary-dark);
+    border-color: var(--primary-blue);
+}
+
+/* Sobrescreve gradiente sólido do .btn-demo no cabeçalho */
+.header--tractian a.btn-demo.btn-demo--ghost {
+    background: transparent;
+    color: var(--primary-blue);
+    border: 1px solid rgba(2, 69, 120, 0.45);
+    box-shadow: none;
+}
+
+.header--tractian a.btn-demo.btn-demo--ghost:hover {
+    background: rgba(2, 69, 120, 0.08);
+    color: var(--primary-dark);
+    border-color: var(--primary-blue);
+    transform: none;
+}
+
+.header-bottom {
+    background-color: var(--primary-dark);
+    padding: var(--spacing-xs) 0; /* Mais fina */
+}
+
+.header-bottom-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    color: var(--white);
+    font-size: 0.85rem;
+}
+
+.nav-icon {
+    font-size: 1rem;
+}
+
+.nav-text {
+    font-weight: 500;
+}
+
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(24, 24, 27, 0.35);
+    backdrop-filter: blur(4px);
+    z-index: 90;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 4px;
+    padding: var(--spacing-xs);
+}
+
+.menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background-color: var(--gray-800);
+    transition: var(--transition);
+}
+

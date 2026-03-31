@@ -12,24 +12,45 @@ const headerNav = document.querySelector('.header-nav');
 const navOverlay = document.getElementById('navOverlay');
 
 if (menuToggle && headerNav && navOverlay) {
-    function toggleMenu() {
-        const isActive = headerNav.classList.toggle('active');
-        navOverlay.classList.toggle('active');
+    function setMenuVisual(isActive) {
         const spans = menuToggle.querySelectorAll('span');
-        
         if (isActive) {
             spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
             spans[1].style.opacity = '0';
             spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            // Evita "dois X" (hamburger + botão fechar do painel)
+            menuToggle.style.opacity = '0';
+            menuToggle.style.pointerEvents = 'none';
         } else {
             spans[0].style.transform = 'none';
             spans[1].style.opacity = '1';
             spans[2].style.transform = 'none';
+            menuToggle.style.opacity = '';
+            menuToggle.style.pointerEvents = '';
         }
+    }
+
+    function toggleMenu() {
+        const isActive = headerNav.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+        setMenuVisual(isActive);
+    }
+
+    function closeMenu() {
+        headerNav.classList.remove('active');
+        navOverlay.classList.remove('active');
+        setMenuVisual(false);
     }
 
     menuToggle.addEventListener('click', toggleMenu);
     navOverlay.addEventListener('click', toggleMenu);
+
+    headerNav.querySelectorAll('.mobile-nav-close').forEach((btn) => {
+        btn.addEventListener('click', closeMenu);
+    });
+
+    // Garante que o menu comece fechado (evita estados “presos” em reloads)
+    closeMenu();
     
     // Close menu when clicking a link (inclui itens do dropdown)
     headerNav.querySelectorAll('a').forEach(link => {
@@ -38,6 +59,11 @@ if (menuToggle && headerNav && navOverlay) {
                 toggleMenu();
             }
         });
+    });
+
+    // Se alternar breakpoint/orientação, garante estado fechado
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 900) closeMenu();
     });
 }
 
@@ -75,6 +101,31 @@ if (carouselContainer && carouselPrev && carouselNext) {
     // Atualizar posição ao scroll manual
     carouselContainer.addEventListener('scroll', () => {
         scrollPosition = carouselContainer.scrollLeft;
+    });
+}
+
+// ============================================
+// Carrossel — Nossas soluções (cards)
+// ============================================
+
+const servicesOfferViewport = document.getElementById('servicesOfferViewport');
+const servicesOfferPrev = document.getElementById('servicesOfferPrev');
+const servicesOfferNext = document.getElementById('servicesOfferNext');
+
+if (servicesOfferViewport && servicesOfferPrev && servicesOfferNext) {
+    const getStep = () => {
+        const firstCard = servicesOfferViewport.querySelector('.service-offer-card');
+        if (!firstCard) return 320;
+        const rect = firstCard.getBoundingClientRect();
+        return Math.max(240, Math.round(rect.width + 16));
+    };
+
+    servicesOfferPrev.addEventListener('click', () => {
+        servicesOfferViewport.scrollBy({ left: -getStep(), behavior: 'smooth' });
+    });
+
+    servicesOfferNext.addEventListener('click', () => {
+        servicesOfferViewport.scrollBy({ left: getStep(), behavior: 'smooth' });
     });
 }
 
@@ -273,26 +324,35 @@ if (personasSection && floatingWidgets.length) {
 const contactForm = document.getElementById('contactForm');
 const contactFormAtuacao = document.getElementById('contactFormAtuacao');
 
+let openModal;
+let closeModal;
+
 // Lógica do Modal
 const modalOverlay = document.getElementById('contactModal');
 const btnOpenModalList = document.querySelectorAll('.btn-open-modal');
 const btnCloseModal = document.getElementById('btnCloseModal');
 
 if (modalOverlay) {
-    function openModal() {
+    openModal = function openModalFn() {
         modalOverlay.classList.add('active');
         document.body.style.overflow = 'hidden'; // Evita scroll atrás do modal
-    }
+    };
 
-    function closeModal() {
+    closeModal = function closeModalFn() {
         modalOverlay.classList.remove('active');
         document.body.style.overflow = '';
-    }
+    };
 
-    btnOpenModalList.forEach(btn => btn.addEventListener('click', openModal));
-    
+    btnOpenModalList.forEach((btn) =>
+        btn.addEventListener('click', (e) => {
+            // evita jump quando for <a href="#">
+            if (btn.tagName === 'A') e.preventDefault();
+            openModal();
+        })
+    );
+
     if (btnCloseModal) {
-        btnCloseModal.addEventListener('click', closeModal);
+        btnCloseModal.addEventListener('click', () => closeModal());
     }
 
     // Fechar ao clicar fora do modal content
@@ -313,15 +373,91 @@ if (modalOverlay) {
 // WhatsApp para receber demonstrações: 14 97400-7797
 const WHATSAPP_NUMERO = '5514974007797';
 
+// ============================================
+// Popup (substitui alert)
+// ============================================
+
+function ensureMesttiPopup() {
+    let overlay = document.getElementById('mesttiPopup');
+    if (overlay) return overlay;
+
+    overlay = document.createElement('div');
+    overlay.id = 'mesttiPopup';
+    overlay.className = 'mestti-popup';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.innerHTML = `
+        <div class="mestti-popup__backdrop" data-popup-close="true"></div>
+        <div class="mestti-popup__card" role="document" aria-labelledby="mesttiPopupTitle" aria-describedby="mesttiPopupMessage" tabindex="-1">
+            <div class="mestti-popup__badge" aria-hidden="true"></div>
+            <div class="mestti-popup__content">
+                <h3 class="mestti-popup__title" id="mesttiPopupTitle">Pronto!</h3>
+                <p class="mestti-popup__message" id="mesttiPopupMessage"></p>
+                <div class="mestti-popup__actions">
+                    <button type="button" class="btn btn-primary mestti-popup__btn" data-popup-close="true">OK</button>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener('click', (e) => {
+        const closeEl = e.target.closest('[data-popup-close="true"]');
+        if (closeEl) closeMesttiPopup();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeMesttiPopup();
+    });
+
+    return overlay;
+}
+
+function openMesttiPopup({ title = 'Pronto!', message = '' } = {}) {
+    const overlay = ensureMesttiPopup();
+    const titleEl = overlay.querySelector('#mesttiPopupTitle');
+    const msgEl = overlay.querySelector('#mesttiPopupMessage');
+    const cardEl = overlay.querySelector('.mestti-popup__card');
+    const btnEl = overlay.querySelector('.mestti-popup__btn');
+
+    if (titleEl) titleEl.textContent = title;
+    if (msgEl) msgEl.textContent = message;
+
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+
+    requestAnimationFrame(() => {
+        if (cardEl) cardEl.focus();
+        if (btnEl) btnEl.focus();
+    });
+}
+
+function closeMesttiPopup() {
+    const overlay = document.getElementById('mesttiPopup');
+    if (!overlay) return;
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+}
+
 function montarMensagemWhatsApp(form, formId) {
-    const name = form.querySelector('#name')?.value?.trim() || '';
-    const email = form.querySelector('#email')?.value?.trim() || '';
-    const phone = form.querySelector('#phone')?.value?.trim() || '';
-    const cargo = form.querySelector('#cargo');
-    const setor = form.querySelector('#setor');
-    const solucao = form.querySelector('#solucao');
-    const empresa = form.querySelector('#empresa');
-    const mensagem = form.querySelector('#mensagem');
+    const getVal = (selectors) => {
+        for (const sel of selectors) {
+            const el = form.querySelector(sel);
+            if (el && typeof el.value === 'string') return el.value.trim();
+        }
+        return '';
+    };
+
+    const name = getVal(['#name', '[name="name"]']);
+    const email = getVal(['#email', '[name="email"]']);
+    const phone = getVal(['#phone', '[name="phone"]']);
+
+    const cargo = form.querySelector('#cargo') || form.querySelector('[name="cargo"]');
+    const setor = form.querySelector('#setor') || form.querySelector('[name="setor"]');
+    const solucao = form.querySelector('#solucao') || form.querySelector('[name="solucao"]');
+    const empresa = form.querySelector('#empresa') || form.querySelector('[name="empresa"]');
+    const mensagem = form.querySelector('#mensagem') || form.querySelector('[name="mensagem"]');
 
     let texto = '*Nova solicitação de demonstração MESTTI*\n\n';
     texto += `*Nome:* ${name}\n`;
@@ -341,17 +477,72 @@ function handleFormSubmit(form, formId) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const mensagem = montarMensagemWhatsApp(form, formId);
-            const urlWhatsApp = `https://wa.me/${WHATSAPP_NUMERO}?text=${mensagem}`;
-
-            window.open(urlWhatsApp, '_blank');
-
             const submitButton = form.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
 
-            submitButton.textContent = 'Enviado ✓';
-            submitButton.style.backgroundColor = '#059669';
             submitButton.disabled = true;
+
+            const getVal = (selectors) => {
+                for (const sel of selectors) {
+                    const el = form.querySelector(sel);
+                    if (el && typeof el.value === 'string') return el.value.trim();
+                }
+                return '';
+            };
+
+            const name = getVal(['#name', '[name="name"]']);
+            const email = getVal(['#email', '[name="email"]']);
+            const phone = getVal(['#phone', '[name="phone"]']);
+            const ddi = getVal(['#ddi', '[name="ddi"]']);
+
+            const cargo = form.querySelector('#cargo') || form.querySelector('[name="cargo"]');
+            const setor = form.querySelector('#setor') || form.querySelector('[name="setor"]');
+            const solucao = form.querySelector('#solucao') || form.querySelector('[name="solucao"]');
+            const empresa = form.querySelector('#empresa') || form.querySelector('[name="empresa"]');
+            const mensagem = form.querySelector('#mensagem') || form.querySelector('[name="mensagem"]');
+            const observacao = form.querySelector('#observacao') || form.querySelector('[name="observacao"]');
+
+            submitButton.textContent = 'Enviando...';
+
+            fetch('/api/lead', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    formId,
+                    name,
+                    email,
+                    phone,
+                    ddi,
+                    cargo: cargo?.value ? (cargo.options?.[cargo.selectedIndex]?.text || cargo.value) : '',
+                    setor: setor?.value ? (setor.options?.[setor.selectedIndex]?.text || setor.value) : '',
+                    solucao: solucao?.value ? (solucao.options?.[solucao.selectedIndex]?.text || solucao.value) : '',
+                    empresa: empresa?.value || '',
+                    mensagem: mensagem?.value || '',
+                    observacao: observacao?.value || '',
+                    pagePath: window.location.pathname
+                })
+            })
+                .then(async (r) => {
+                    if (!r.ok) throw new Error('api_error');
+                    return r.json();
+                })
+                .then(() => {
+                    submitButton.textContent = 'Enviado ✓';
+                    submitButton.style.backgroundColor = '#059669';
+
+                    openMesttiPopup({
+                        title: 'Obrigado!',
+                        message: 'Recebemos sua solicitação. Em breve nossa equipe entrará em contato.'
+                    });
+                })
+                .catch(() => {
+                    submitButton.textContent = originalText;
+                    submitButton.style.backgroundColor = '';
+                    openMesttiPopup({
+                        title: 'Ops',
+                        message: 'Não conseguimos enviar agora. Tente novamente em instantes.'
+                    });
+                });
 
             setTimeout(() => {
                 submitButton.textContent = originalText;
@@ -366,6 +557,7 @@ function handleFormSubmit(form, formId) {
 
 handleFormSubmit(contactForm, 'principal');
 handleFormSubmit(contactFormAtuacao, 'atuacao');
+handleFormSubmit(document.getElementById('contactFormPage'), 'contato');
 
 // ============================================
 // Header Scroll Effect

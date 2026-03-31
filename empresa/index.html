@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css?v=14">
+    <link rel="stylesheet" href="../styles-entry.css?v=25">
 </head>
 <body>
     <div class="nav-overlay" id="navOverlay"></div>
@@ -23,13 +23,26 @@
                     <img src="../images/MESTTI.svg" alt="MESTTI" class="logo-img" width="120" height="25">
                 </a>
                 <nav class="header-nav" id="headerNav" aria-label="Menu principal">
+                    <div class="mobile-nav-header">
+                        <a href="/" class="header-logo-link">
+                            <img src="../images/MESTTI.svg" alt="MESTTI" class="logo-img" width="120" height="25">
+                        </a>
+                        <button type="button" class="mobile-nav-close" aria-label="Fechar menu">×</button>
+                    </div>
                     <a href="/" data-home-section="#controle-total" class="nav-link">Soluções</a>
                     <a href="/" data-home-section="#cases" class="nav-link">Indústrias</a>
                     <a href="/" data-home-section="#controle-total" class="nav-link">Recursos</a>
                     <a href="./" class="nav-link active" aria-current="page">Sobre</a>
+
+                    <div class="mobile-nav-contact">
+                        <div class="mobile-nav-section-title">Contato</div>
+                        <a class="mobile-nav-contact-link" href="tel:+5514974007797">(14) 97400-7797</a>
+                        <a class="mobile-nav-contact-link" href="https://wa.me/5514974007797" target="_blank" rel="noopener">WhatsApp</a>
+                        <a class="mobile-nav-contact-link" href="/contato/">Central de contato</a>
+                    </div>
                     <div class="header-nav-mobile-extras">
                         <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login">Login</a>
-                        <a href="/contato/" data-page-section="#formulario" class="btn-demo btn-demo--ghost">Demonstração</a>
+                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal">Demonstração</button>
                     </div>
                 </nav>
                 <div class="header-tractian-actions">
@@ -38,7 +51,7 @@
                         Contato
                     </a>
                     <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login">Login</a>
-                    <a href="/contato/" data-page-section="#formulario" class="btn-demo btn-demo--ghost">Demonstração</a>
+                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal">Demonstração</button>
                 </div>
                 <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
                     <span></span>
@@ -62,20 +75,29 @@
                 <div class="empresa-split">
                     <aside class="empresa-visual">
                         <p class="empresa-visual-kicker">Institucional</p>
-                        <h2 id="empresa-visual-heading" class="empresa-visual-title">Fundador e sede</h2>
+                        <h2 id="empresa-visual-heading" class="empresa-visual-title">Fundadores e sede</h2>
                         <div class="empresa-fotos-stack">
                             <figure class="empresa-foto-card" data-aos="fade-up">
                                 <div class="empresa-foto-frame">
-                                    <img src="../images/empresa-fundador.jpg" alt="Fundador da MESTTI" width="560" height="420" loading="lazy" decoding="async">
+                                    <div class="empresa-foto-placeholder" aria-label="Foto do fundador João Brighenti">JB</div>
                                 </div>
                                 <figcaption class="empresa-foto-caption">
-                                    <strong>Fundador</strong>
-                                    <span>A visão que deu origem à MESTTI.</span>
+                                    <strong>João Brighenti</strong>
+                                    <span>Fundador</span>
                                 </figcaption>
                             </figure>
                             <figure class="empresa-foto-card" data-aos="fade-up" data-aos-delay="60">
                                 <div class="empresa-foto-frame">
-                                    <img src="../images/empresa-sede.jpg" alt="Sede da MESTTI" width="560" height="420" loading="lazy" decoding="async">
+                                    <div class="empresa-foto-placeholder empresa-foto-placeholder--alt" aria-label="Foto do fundador Eduardo Bruniere">EB</div>
+                                </div>
+                                <figcaption class="empresa-foto-caption">
+                                    <strong>Eduardo Bruniere</strong>
+                                    <span>Fundador</span>
+                                </figcaption>
+                            </figure>
+                            <figure class="empresa-foto-card" data-aos="fade-up" data-aos-delay="120">
+                                <div class="empresa-foto-frame">
+                                    <div class="empresa-foto-placeholder empresa-foto-placeholder--sede" aria-label="Foto da sede da MESTTI">Sede</div>
                                 </div>
                                 <figcaption class="empresa-foto-caption">
                                     <strong>Sede</strong>
@@ -172,7 +194,62 @@
         </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="../script.js?v=2"></script>
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="../script.js?v=2"></script>
+
+    <!-- Modal de Demonstração -->
+    <div id="contactModal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" id="btnCloseModal" aria-label="Fechar">&times;</button>
+            <div class="demo-modal-card">
+                <div class="demo-modal-head">
+                    <h2 class="demo-modal-title">Solicite sua demonstração</h2>
+                    <p class="demo-modal-lead">Preencha os campos para falar com um especialista e entender os benefícios do MESTTI para sua operação.</p>
+                </div>
+                <form class="demo-form" id="contactFormPage">
+                    <input type="text" name="name" placeholder="Nome completo" autocomplete="name" required>
+                    <input type="email" name="email" placeholder="E-mail profissional" autocomplete="email" required>
+
+                    <div class="field-row-3">
+                        <select name="ddi" aria-label="DDI" required>
+                            <option value="+55" selected>+55</option>
+                            <option value="+1">+1</option>
+                            <option value="+351">+351</option>
+                            <option value="+34">+34</option>
+                        </select>
+                        <input type="tel" name="phone" placeholder="Telefone / WhatsApp" autocomplete="tel" required>
+                        <select name="cargo" required>
+                            <option value="" selected disabled>Cargo</option>
+                            <option value="gerente">Gerente</option>
+                            <option value="supervisor">Supervisor</option>
+                            <option value="engenheiro">Engenheiro</option>
+                            <option value="diretor">Diretor</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <select name="setor" required>
+                        <option value="" selected disabled>Setor da Indústria</option>
+                        <option value="alimentos">Alimentos e Bebidas</option>
+                        <option value="quimica">Química</option>
+                        <option value="automotiva">Automotiva</option>
+                        <option value="farmaceutica">Farmacêutica</option>
+                        <option value="outro">Outro</option>
+                    </select>
+
+                    <select name="solucao" required>
+                        <option value="" selected disabled>Selecione a solução de maior interesse</option>
+                        <option value="apontamento">Apontamento Automático</option>
+                        <option value="oee">OEE e Indicadores</option>
+                        <option value="monitoramento">Monitoramento</option>
+                        <option value="rastreabilidade">Rastreabilidade</option>
+                    </select>
+
+                    <textarea name="observacao" placeholder="Observação (opcional)" rows="3" style="min-height: 90px;"></textarea>
+                    <button type="submit" class="demo-submit">Solicitar demonstração</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

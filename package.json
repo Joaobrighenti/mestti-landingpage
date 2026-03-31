@@ -1,10 +1,13 @@
 {
   "name": "mestti-landingpage",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "live-server --port=5500 --host=127.0.0.1 --open=/index.html"
+    "dev": "node server.js"
   },
-  "devDependencies": {
-    "live-server": "^1.2.2"
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "resend": "^4.7.1"
   }
 }

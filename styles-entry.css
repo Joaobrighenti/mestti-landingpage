@@ -1,0 +1,12 @@
+/* Entry point: importa módulos (manter ordem) */
+
+@import url("./css/base.css");
+@import url("./css/header.css");
+@import url("./css/components-popup.css");
+@import url("./css/hero.css");
+@import url("./css/site-sections.css");
+@import url("./css/cta-modal-footer-pages.css");
+@import url("./css/sensor-footer.css");
+@import url("./css/atuacao-sensores.css");
+@import url("./css/responsive.css");
+

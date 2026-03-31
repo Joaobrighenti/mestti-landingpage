@@ -1,0 +1,244 @@
+/* ============================================
+   RODAPÉ FIXO — STATUS SENSOR + CAIXAS + CONTAGEM
+   ============================================ */
+
+.sensor-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: #c7c7c7;
+    border-top: 1px solid rgba(19, 211, 67, 0.45);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.25);
+    padding: 0.6rem 1rem;
+}
+
+.sensor-footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.sensor-footer-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #00860b;
+    flex-shrink: 0;
+}
+
+.sensor-footer-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #06d306;
+    box-shadow: 0 0 10px #228b68;
+    animation: sensor-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes sensor-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.1); }
+}
+
+.sensor-footer-conveyor {
+    flex: 1;
+    min-width: 0;
+    overflow: visible;
+    padding: 0.5rem 0.6rem;
+    background: linear-gradient(180deg, #2e3238 0%, #1f2329 55%, #161a20 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -6px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    perspective: 700px;
+}
+
+.sensor-footer-conveyor-clip {
+    overflow: hidden;
+    position: relative;
+    min-height: 34px;
+    transform: rotateX(8deg);
+    transform-origin: center;
+}
+
+/* Faixa/trilho onde as caixas passam (como na imagem) */
+.sensor-footer-conveyor::before {
+    content: '';
+    position: absolute;
+    left: 0.45rem;
+    right: 0.45rem;
+    bottom: 0.45rem;
+    height: 8px;
+    background: linear-gradient(180deg, rgba(201, 212, 225, 0.7), rgba(129, 143, 162, 0.45));
+    border-radius: 6px;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.35), 0 -1px 2px rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+}
+
+.sensor-footer-conveyor::after {
+    content: '';
+    position: absolute;
+    left: 0.55rem;
+    right: 0.55rem;
+    top: 0.45rem;
+    height: 6px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.03));
+    border-radius: 999px;
+    pointer-events: none;
+}
+
+.sensor-footer-boxes {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    width: max-content;
+    padding-bottom: 6px;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.sensor-footer-boxes-set {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    width: max-content;
+}
+
+/* Caixas mais marrons (papelão), riscos de dobra */
+.sensor-box {
+    flex-shrink: 0;
+    width: 26px;
+    height: 18px;
+    background: linear-gradient(145deg, #9a7f5f 0%, #7a604c 55%, #6a5141 100%);
+    border: 1px solid rgba(101, 84, 65, 0.6);
+    border-radius: 4px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 4px 8px rgba(0,0,0,0.35);
+    position: relative;
+    transform: translateY(-1px);
+}
+
+.sensor-box::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 2px;
+    bottom: 2px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(101, 84, 65, 0.5), transparent);
+    transform: translateX(-50%);
+}
+
+.sensor-box::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    right: 3px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(101, 84, 65, 0.45), transparent);
+    transform: translateY(-50%);
+}
+
+.sensor-box.s-m1 { margin-left: 0.35rem; }
+.sensor-box.s-m2 { margin-left: 0.6rem; }
+.sensor-box.s-m3 { margin-left: 0.2rem; }
+.sensor-footer-boxes-set .sensor-box:nth-child(even) {
+    background: linear-gradient(145deg, #8a7359 0%, #6d5846 55%, #5e4a3c 100%);
+}
+
+/* Feixe vermelho (ponto de leitura) — pode sobressair para cima */
+.sensor-beam {
+    position: absolute;
+    left: 42%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, rgba(239, 68, 68, 0.15), #ef4444 20%, #ef4444 80%, rgba(239, 68, 68, 0.2));
+    box-shadow: 0 0 12px #ef4444, 0 0 24px rgba(239, 68, 68, 0.5);
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 5;
+    transform: translateX(-50%);
+}
+
+.sensor-beam::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -8px;
+    bottom: -8px;
+    width: 2px;
+    background: rgba(239, 68, 68, 0.6);
+    transform: translateX(-50%);
+    border-radius: 1px;
+}
+
+/* Sensor amarelo — pode sobressair para cima da faixa */
+.sensor-device {
+    position: absolute;
+    left: 42%;
+    bottom: 100%;
+    transform: translate(-50%, 0);
+    margin-bottom: 4px;
+    width: 32px;
+    height: 18px;
+    background: linear-gradient(180deg, #fde047 0%, #eab308 50%, #ca8a04 100%);
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(202, 138, 4, 0.5);
+    pointer-events: none;
+    z-index: 6;
+}
+
+.sensor-device::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: #422006;
+    border-radius: 50%;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.sensor-footer-count {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    flex-shrink: 0;
+}
+
+.sensor-footer-count-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #16990a;
+    font-variant-numeric: tabular-nums;
+    min-width: 3ch;
+}
+
+.sensor-footer-count-label {
+    font-size: 0.75rem;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+@media (max-width: 900px) {
+    .sensor-footer-inner {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .sensor-footer-status { order: 1; width: 100%; justify-content: center; }
+    .sensor-footer-conveyor { order: 2; width: 100%; }
+    .sensor-footer-count { order: 3; width: 100%; justify-content: center; }
+}
+

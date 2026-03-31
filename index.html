@@ -11,7 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=14">
+    <link rel="stylesheet" href="styles-entry.css?v=25">
+    <!-- Hero: começa o download do vídeo cedo, em paralelo ao CSS (arquivo leve = carregamento mais rápido) -->
+    <link rel="preload" href="video/video_metro_rodando.mp4" as="video" type="video/mp4">
 </head>
 <body>
     <div class="nav-overlay" id="navOverlay"></div>
@@ -23,13 +25,26 @@
                     <img src="images/MESTTI.svg" alt="MESTTI" class="logo-img" width="120" height="25">
                 </a>
                 <nav class="header-nav" id="headerNav" aria-label="Menu principal">
+                    <div class="mobile-nav-header">
+                        <a href="/" class="header-logo-link">
+                            <img src="images/MESTTI.svg" alt="MESTTI" class="logo-img" width="120" height="25">
+                        </a>
+                        <button type="button" class="mobile-nav-close" aria-label="Fechar menu">×</button>
+                    </div>
                     <a href="/" data-home-section="#controle-total" class="nav-link">Soluções</a>
                     <a href="/" data-home-section="#cases" class="nav-link">Indústrias</a>
                     <a href="/" data-home-section="#controle-total" class="nav-link">Recursos</a>
                     <a href="empresa/" class="nav-link">Sobre</a>
+
+                    <div class="mobile-nav-contact">
+                        <div class="mobile-nav-section-title">Contato</div>
+                        <a class="mobile-nav-contact-link" href="tel:+5514974007797">(14) 97400-7797</a>
+                        <a class="mobile-nav-contact-link" href="https://wa.me/5514974007797" target="_blank" rel="noopener">WhatsApp</a>
+                        <a class="mobile-nav-contact-link" href="/contato/">Central de contato</a>
+                    </div>
                     <div class="header-nav-mobile-extras">
                         <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login">Login</a>
-                        <a href="/contato/" class="btn-demo btn-demo--ghost">Demonstração</a>
+                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal">Demonstração</button>
                     </div>
                 </nav>
                 <div class="header-tractian-actions">
@@ -38,7 +53,7 @@
                         Contato
                     </a>
                     <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login">Login</a>
-                    <a href="/contato/" class="btn-demo btn-demo--ghost">Demonstração</a>
+                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal">Demonstração</button>
                 </div>
                 <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
                     <span></span>
@@ -51,6 +66,12 @@
 
     <!-- Hero Section - Primeira Dobra (com esteira + componentes OEE) -->
     <section class="hero hero-first-fold">
+        <div class="hero-video-bg" aria-hidden="true">
+            <video class="hero-video-bg-media" autoplay muted loop playsinline preload="metadata" poster="images/fabrica.webp">
+                <source src="video/video_metro_rodando.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-bg-veil"></div>
+        </div>
         <div class="container hero-container-main">
             <div class="hero-content" data-aos="fade-right">
                 <h1 class="hero-title">
@@ -105,107 +126,83 @@
         </div>
     </section>
 
-    <!-- Funcionalidades com Depoimentos - Segunda Dobra -->
+    <!-- Serviços — Segunda Dobra -->
     <section class="features-testimonials" id="controle-total">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Controle total da sua produção</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Veja como o Mestti é usado nas empresas</p>
-            <div class="testimonials-carousel" data-aos="fade-up" data-aos-delay="200">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <div class="testimonial-card">
-                            <div class="testimonial-image">
-                                <img src="images/monitoramento.webp" alt="Monitoramento" loading="lazy">
-                            </div>
-                            <div class="testimonial-card-content">
-                                <h3 class="testimonial-title">Monitoramento</h3>
-                                <p class="testimonial-text">
-                                    "Dashboards intuitivos que permitem acompanhar múltiplas linhas simultaneamente. A tomada de decisão ficou muito mais ágil."
-                                </p>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-image">
-                                <img src="images/apontamento.webp" alt="Apontamento" loading="lazy">
-                            </div>
-                            <div class="testimonial-card-content">
-                                <h3 class="testimonial-title">Apontamento</h3>
-                                <p class="testimonial-text">
-                                    "Com o apontamento automático, eliminamos 100% dos erros de digitação e ganhamos visibilidade real sobre nossas perdas de produção."
-                                </p>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-image">
-                                <img src="images/auditoria.webp" alt="Auditoria" loading="lazy">
-                            </div>
-                            <div class="testimonial-card-content">
-                                <h3 class="testimonial-title">Auditoria</h3>
-                                <p class="testimonial-text">
-                                    "A rastreabilidade completa e os relatórios automáticos nos ajudaram a manter conformidade com todas as auditorias."
-                                </p>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-image">
-                                <img src="images/fabrica.webp" alt="Controle" loading="lazy">
-                            </div>
-                            <div class="testimonial-card-content">
-                                <h3 class="testimonial-title">Controle</h3>
-                                <p class="testimonial-text">
-                                    "O sistema integrou perfeitamente com nossos CLPs. Agora temos OEE em tempo real e conseguimos identificar gargalos imediatamente."
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Duplicados para loop infinito -->
-                        <div class="testimonial-card">
-                            <div class="testimonial-image">
-                                <img src="images/monitoramento.webp" alt="Monitoramento" loading="lazy">
-                            </div>
-                            <div class="testimonial-card-content">
-                                <h3 class="testimonial-title">Monitoramento</h3>
-                                <p class="testimonial-text">
-                                    "Dashboards intuitivos que permitem acompanhar múltiplas linhas simultaneamente. A tomada de decisão ficou muito mais ágil."
-                                </p>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-image">
-                                <img src="images/apontamento.webp" alt="Apontamento" loading="lazy">
-                            </div>
-                            <div class="testimonial-card-content">
-                                <h3 class="testimonial-title">Apontamento</h3>
-                                <p class="testimonial-text">
-                                    "Com o apontamento automático, eliminamos 100% dos erros de digitação e ganhamos visibilidade real sobre nossas perdas de produção."
-                                </p>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-image">
-                                <img src="images/auditoria.webp" alt="Auditoria" loading="lazy">
-                            </div>
-                            <div class="testimonial-card-content">
-                                <h3 class="testimonial-title">Auditoria</h3>
-                                <p class="testimonial-text">
-                                    "A rastreabilidade completa e os relatórios automáticos nos ajudaram a manter conformidade com todas as auditorias."
-                                </p>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-image">
-                                <img src="images/fabrica.webp" alt="Controle" loading="lazy">
-                            </div>
-                            <div class="testimonial-card-content">
-                                <h3 class="testimonial-title">Controle</h3>
-                                <p class="testimonial-text">
-                                    "O sistema integrou perfeitamente com nossos CLPs. Agora temos OEE em tempo real e conseguimos identificar gargalos imediatamente."
-                                </p>
-                            </div>
-                        </div>
+            <h2 class="section-title" data-aos="fade-up">Nossas soluções</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Nossos serviços para sensoriar, programar e monitorar o chão de fábrica — com tudo que você precisa dentro do sistema MESTTI.</p>
+            <div class="services-offer-carousel" data-aos="fade-up" data-aos-delay="200" aria-label="Carrossel de soluções">
+                <button type="button" class="services-offer-nav services-offer-nav--prev" id="servicesOfferPrev" aria-label="Voltar"></button>
+                <div class="services-offer-viewport" id="servicesOfferViewport">
+                    <div class="services-offer-grid">
+                        <article class="service-offer-card">
+                    <div class="service-offer-photo" aria-label="Imagem do serviço">
+                        <img src="images/sensor-contagem-linear.webp" alt="Sensoriamento de chão de fábrica" loading="lazy" decoding="async">
+                    </div>
+                    <div class="service-offer-body">
+                        <h3 class="service-offer-title">Sensoriamento de chão de fábrica</h3>
+                        <p class="service-offer-lead">Sensores industriais conectados ao MESTTI para capturar o que acontece na linha, sem planilhas e sem atraso na informação.</p>
+                        <p class="service-offer-price">A partir de <strong>R$&nbsp;178,90</strong> <span class="service-offer-price-cycle">/mês</span> <span class="service-offer-price-unit">por sensor</span></p>
+                        <hr class="service-offer-divider">
+                        <p class="service-offer-list-heading">O que entra no sistema:</p>
+                        <ul class="service-offer-list">
+                            <li>
+                                Instalação orientada de sensores (contagem, máquina ligada/desligada, metro linear e demais modelos do catálogo).
+                                <span class="service-offer-inline-tip">
+                                    <button type="button" class="service-offer-inline-tip-btn" aria-describedby="tooltip-preco-sensor" aria-label="Observação sobre o valor por sensor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 16v-4M12 8h.01"/></svg>
+                                    </button>
+                                    <span id="tooltip-preco-sensor" class="service-offer-inline-tip-bubble" role="tooltip">Esse valor é referente ao <strong>sensor de disponibilidade</strong>. Os demais sensores são <strong>mediante consulta</strong>.</span>
+                                </span>
+                            </li>
+                            <li>Leitura em tempo real no painel MESTTI, com vínculo a ordens, máquinas e turnos.</li>
+                            <li>Apontamento automático de produção e base para cálculo de OEE e perdas.</li>
+                            <li>Alertas configuráveis e histórico para auditoria e melhoria contínua.</li>
+                        </ul>
+                        <a href="/contato/" class="btn service-offer-cta">Agendar demonstração</a>
+                    </div>
+                </article>
+                        <article class="service-offer-card">
+                    <div class="service-offer-photo" aria-label="Imagem do serviço">
+                        <img src="sistema/2.svg" alt="Sequenciamento e programação do chão de fábrica" loading="lazy" decoding="async">
+                    </div>
+                    <div class="service-offer-body">
+                        <h3 class="service-offer-title">Sequenciamento e programação do chão de fábrica</h3>
+                        <p class="service-offer-lead">Organize filas, prioridades e ritmo da produção com regras alinhadas ao que acontece fisicamente na planta.</p>
+                        <p class="service-offer-price service-offer-price--consult">Valor <strong>sob consulta</strong> <span class="service-offer-price-unit">conforme escopo e integrações</span></p>
+                        <hr class="service-offer-divider">
+                        <p class="service-offer-list-heading">O que entra no sistema:</p>
+                        <ul class="service-offer-list">
+                            <li>Definição e ajuste de sequências de ordens, rotas e gargalos visíveis no MESTTI.</li>
+                            <li>Sincronização entre planejado e executado, com rastreio do que foi produzido em cada etapa.</li>
+                            <li>Integração com seu fluxo atual (ERP/MES/outros) conforme o desenho do projeto.</li>
+                            <li>Cenários de “o que acontece se…” para suportar decisões de programação no dia a dia.</li>
+                        </ul>
+                        <a href="/contato/" class="btn service-offer-cta">Falar com vendas</a>
+                    </div>
+                </article>
+                        <article class="service-offer-card">
+                    <div class="service-offer-photo" aria-label="Imagem do serviço">
+                        <img src="images/sensor-temperatura-umidade.webp" alt="Monitoramento de temperatura e umidade" loading="lazy" decoding="async">
+                    </div>
+                    <div class="service-offer-body">
+                        <h3 class="service-offer-title">Monitoramento de temperatura e umidade</h3>
+                        <p class="service-offer-lead">Ambiente sob controle para processos sensíveis: leitura contínua, alertas e histórico no mesmo ecossistema MESTTI.</p>
+                        <p class="service-offer-price"><strong>R$&nbsp;80,00</strong> <span class="service-offer-price-cycle">/mês</span> <span class="service-offer-price-unit">por sensor</span></p>
+                        <hr class="service-offer-divider">
+                        <p class="service-offer-list-heading">O que entra no sistema:</p>
+                        <ul class="service-offer-list">
+                            <li>Sensores de temperatura e umidade com telemetria para o painel e para relatórios.</li>
+                            <li>Faixas e alarmes quando o ambiente sai do especificado.</li>
+                            <li>Histórico para análise de desvios, qualidade e conformidade.</li>
+                            <li>Visão integrada com as demais métricas da sua operação no MESTTI.</li>
+                        </ul>
+                        <a href="/contato/" class="btn service-offer-cta">Agendar demonstração</a>
+                    </div>
+                </article>
                     </div>
                 </div>
-                <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Anterior">‹</button>
-                <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Próximo">›</button>
+                <button type="button" class="services-offer-nav services-offer-nav--next" id="servicesOfferNext" aria-label="Avançar"></button>
             </div>
         </div>
     </section>
@@ -349,7 +346,7 @@
         </div>
         <div class="container">
             <div class="cta-wrapper cta-wrapper-centered">
-                <div class="cta-header" data-aos="fade-up" style="text-align: center; margin-bottom: var(--spacing-2xl);">
+                <div class="cta-header" data-aos="fade-up" style="text-align: center; margin-bottom: var(--spacing-lg);">
                     <h2 class="cta-title">Tenha os dados certos em mãos</h2>
                     <p class="cta-subtitle">Descubra como o MESTTI pode transformar sua produção</p>
                 </div>
@@ -378,8 +375,8 @@
                     </div>
                 </div>
 
-                <div class="cta-action-center" data-aos="fade-up" data-aos-delay="200" style="margin-top: var(--spacing-2xl); text-align: center; width: 100%;">
-                    <button class="btn btn-submit btn-open-modal" style="padding: 1.2rem 3rem; font-size: 1.2rem; max-width: 400px; width: 100%;">Quero Ver na Prática</button>
+                <div class="cta-action-center" data-aos="fade-up" data-aos-delay="200" style="margin-top: var(--spacing-lg); text-align: center; width: 100%;">
+                    <button type="button" class="btn btn-submit btn-open-modal" style="padding: 1.2rem 3rem; font-size: 1.2rem; max-width: 400px; width: 100%;">Quero Ver na Prática</button>
                 </div>
             </div>
         </div>
@@ -436,51 +433,63 @@
     </footer>
 
     <!-- Modal de Contato -->
-    <div id="contactModal" class="modal-overlay">
+    <div id="contactModal" class="modal-overlay" aria-hidden="true">
         <div class="modal-content">
-            <button class="modal-close" id="btnCloseModal">&times;</button>
-            <div class="cta-form-section modal-form-section">
-                <div class="cta-header">
-                    <h2 class="cta-title">Tenha os dados certos em mãos</h2>
-                    <p class="cta-subtitle">Preencha o formulário e descubra como o MESTTI pode transformar sua produção</p>
+            <button class="modal-close" id="btnCloseModal" aria-label="Fechar">&times;</button>
+            <div class="demo-modal-card">
+                <div class="demo-modal-head">
+                    <h2 class="demo-modal-title">Solicite sua demonstração</h2>
+                    <p class="demo-modal-lead">Preencha os campos para falar com um especialista e entender os benefícios do MESTTI para sua operação.</p>
                 </div>
-                <form class="contact-form" id="contactForm">
-                    <input type="text" id="name" name="name" placeholder="Nome completo" required>
-                    <input type="email" id="email" name="email" placeholder="E-mail profissional" required>
-                    <div class="phone-input">
-                        <input type="text" id="country-code" value="+55" readonly>
-                        <input type="tel" id="phone" name="phone" placeholder="Telefone" required>
+                <form class="demo-form" id="contactForm">
+                    <input type="text" id="name" name="name" placeholder="Nome completo" autocomplete="name" required>
+                    <input type="email" id="email" name="email" placeholder="E-mail profissional" autocomplete="email" required>
+
+                    <div class="field-row">
+                        <div class="field-row-3" style="grid-column: 1 / -1;">
+                            <select id="ddi" name="ddi" aria-label="DDI" required>
+                                <option value="+55" selected>+55</option>
+                                <option value="+1">+1</option>
+                                <option value="+351">+351</option>
+                                <option value="+34">+34</option>
+                            </select>
+                            <input type="tel" id="phone" name="phone" placeholder="Telefone / WhatsApp" autocomplete="tel" required>
+                            <select id="cargo" name="cargo" required>
+                                <option value="" selected disabled>Cargo</option>
+                                <option value="gerente">Gerente</option>
+                                <option value="supervisor">Supervisor</option>
+                                <option value="engenheiro">Engenheiro</option>
+                                <option value="diretor">Diretor</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
                     </div>
-                    <select id="cargo" name="cargo" required>
-                        <option value="">Cargo</option>
-                        <option value="gerente">Gerente</option>
-                        <option value="supervisor">Supervisor</option>
-                        <option value="engenheiro">Engenheiro</option>
-                        <option value="diretor">Diretor</option>
-                        <option value="outro">Outro</option>
-                    </select>
+
                     <select id="setor" name="setor" required>
-                        <option value="">Setor da Indústria</option>
+                        <option value="" selected disabled>Setor da Indústria</option>
                         <option value="alimentos">Alimentos e Bebidas</option>
                         <option value="quimica">Química</option>
                         <option value="automotiva">Automotiva</option>
                         <option value="farmaceutica">Farmacêutica</option>
                         <option value="outro">Outro</option>
                     </select>
+
                     <select id="solucao" name="solucao" required>
-                        <option value="">Selecione a solução de maior interesse</option>
+                        <option value="" selected disabled>Selecione a solução de maior interesse</option>
                         <option value="apontamento">Apontamento Automático</option>
                         <option value="oee">OEE e Indicadores</option>
                         <option value="monitoramento">Monitoramento</option>
                         <option value="rastreabilidade">Rastreabilidade</option>
                     </select>
-                    <button type="submit" class="btn btn-submit">Solicitar Demonstração</button>
+
+                    <textarea id="observacao" name="observacao" placeholder="Observação (opcional)" rows="3" style="min-height: 90px;"></textarea>
+                    <button type="submit" class="demo-submit">Solicitar demonstração</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js?v=2"></script>
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="script.js?v=2"></script>
 </body>
 </html>

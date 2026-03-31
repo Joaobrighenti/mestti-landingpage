@@ -1,0 +1,419 @@
+/* ============================================
+   PÁGINA ATUAÇÃO - SENSORES (e dobra sensores na home)
+   ============================================ */
+
+/* Hero Section Atuação - Texto */
+.sensores-hero-text {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    padding: var(--spacing-3xl) 0;
+    width: 100%;
+}
+
+.sensores-hero-text .container {
+    max-width: 1400px;
+    width: 100%;
+    padding: 0 var(--spacing-xl);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sensores-hero-content {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
+}
+
+/* Seção de Cards de Sensores */
+.sensores-cards-section {
+    background: var(--gray-50);
+    padding: clamp(2.75rem, 7vw, 5rem) 0 var(--spacing-3xl) 0;
+}
+
+.sensores-cards-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.sensores-hero-content .hero-title {
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+.sensores-hero-content .hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray-700);
+    line-height: 1.8;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Grid de Cards de Sensores */
+.sensores-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+    margin-top: 0;
+    width: 100%;
+}
+
+.sensor-card {
+    padding: 0;
+    background: var(--white);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 6px;
+    border: 1px solid var(--gray-200);
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+}
+
+.sensor-card:hover {
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-8px) scale(1.02);
+}
+
+.sensor-card.active {
+    border-color: var(--primary-blue);
+    background: var(--white);
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-8px) scale(1.02);
+}
+
+.sensor-card.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-light) 100%);
+    z-index: 1;
+}
+
+.sensor-image-wrapper {
+    width: 100%;
+    height: 180px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gray-100);
+    border-radius: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.sensor-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.sensor-card:hover .sensor-image {
+    transform: scale(1.05);
+}
+
+.sensor-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin: var(--spacing-md) var(--spacing-lg) var(--spacing-sm);
+    line-height: 1.4;
+    padding: 0;
+}
+
+.sensor-card.active .sensor-card-title {
+    color: var(--primary-blue);
+}
+
+.sensor-card-description {
+    font-size: 0.9rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+    flex: 1;
+    margin: 0 var(--spacing-lg) var(--spacing-lg);
+    padding: 0;
+}
+
+/* Seção de Detalhes do Sensor */
+.sensor-details {
+    padding: var(--spacing-3xl) 0;
+    background: transparent;
+    min-height: 400px;
+}
+
+.sensor-details-content {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.sensor-details-placeholder {
+    text-align: center;
+    padding: var(--spacing-3xl) 0;
+    color: var(--gray-400);
+}
+
+.placeholder-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.sensor-details-header {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.sensor-details-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: var(--spacing-md);
+}
+
+.sensor-details-body {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--spacing-3xl);
+    align-items: start;
+}
+
+.benefits-section {
+    background: var(--gray-50);
+    padding: var(--spacing-xl);
+    border-radius: 12px;
+}
+
+.section-subtitle {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: var(--spacing-lg);
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.benefit-item {
+    padding: var(--spacing-md) 0;
+    padding-left: var(--spacing-lg);
+    position: relative;
+    color: var(--gray-700);
+    font-size: 1rem;
+    line-height: 1.6;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.benefit-item:last-child {
+    border-bottom: none;
+}
+
+.benefit-item::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-blue);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.metrics-section {
+    width: 100%;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.metric-card {
+    padding: var(--spacing-xl);
+    background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-50) 100%);
+    border-radius: 16px;
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--primary-light));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.metric-card:hover {
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+    box-shadow: 0 8px 24px rgba(2, 69, 120, 0.2);
+    transform: translateY(-4px);
+    border-color: var(--primary-blue);
+}
+
+.metric-card:hover::before {
+    transform: scaleX(1);
+}
+
+.metric-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(26, 54, 93, 0.1), rgba(51, 133, 214, 0.1));
+    border-radius: 12px;
+    color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover .metric-icon {
+    background: linear-gradient(135deg, rgba(26, 54, 93, 0.15), rgba(51, 133, 214, 0.15));
+    transform: scale(1.05);
+}
+
+.metric-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.metric-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.1;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    color: var(--gray-700);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.4;
+}
+
+.metric-unit {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+    font-weight: 500;
+}
+
+.form-disclaimer {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    text-align: center;
+    margin-top: var(--spacing-md);
+    line-height: 1.5;
+}
+
+/* Responsive - Página Atuação */
+@media (max-width: 1024px) {
+    .sensores-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sensor-details-body {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+    }
+
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .sensores-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sensor-image-wrapper {
+        height: 150px;
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sensor-details-title {
+        font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .sensores-hero-content {
+        margin-bottom: var(--spacing-2xl);
+    }
+}
+
+/* Garantia do carrossel mobile na dobra de sensores do index */
+@media (max-width: 768px) {
+    .sensores-cards-section .sensores-grid {
+        display: flex;
+        gap: var(--spacing-md);
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.5rem;
+    }
+
+    .sensores-cards-section .sensores-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sensores-cards-section .sensor-card {
+        flex: 0 0 min(76vw, 320px);
+        max-width: 320px;
+        scroll-snap-align: start;
+        transform: none;
+    }
+}
+

@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css?v=14">
+    <link rel="stylesheet" href="../styles-entry.css?v=25">
 </head>
 <body>
     <!-- Overlay Mobile -->
@@ -24,13 +24,26 @@
                     <img src="../images/MESTTI.svg" alt="MESTTI" class="logo-img" width="120" height="25">
                 </a>
                 <nav class="header-nav" id="headerNav" aria-label="Menu principal">
+                    <div class="mobile-nav-header">
+                        <a href="/" class="header-logo-link">
+                            <img src="../images/MESTTI.svg" alt="MESTTI" class="logo-img" width="120" height="25">
+                        </a>
+                        <button type="button" class="mobile-nav-close" aria-label="Fechar menu">×</button>
+                    </div>
                     <a href="/" data-home-section="#controle-total" class="nav-link active">Soluções</a>
                     <a href="/" data-home-section="#cases" class="nav-link">Indústrias</a>
                     <a href="/" data-home-section="#controle-total" class="nav-link">Recursos</a>
                     <a href="/empresa/" class="nav-link">Sobre</a>
+
+                    <div class="mobile-nav-contact">
+                        <div class="mobile-nav-section-title">Contato</div>
+                        <a class="mobile-nav-contact-link" href="tel:+5514974007797">(14) 97400-7797</a>
+                        <a class="mobile-nav-contact-link" href="https://wa.me/5514974007797" target="_blank" rel="noopener">WhatsApp</a>
+                        <a class="mobile-nav-contact-link" href="/contato/">Central de contato</a>
+                    </div>
                     <div class="header-nav-mobile-extras">
                         <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login">Login</a>
-                        <a href="/contato/" data-page-section="#formulario" class="btn-demo btn-demo--ghost">Demonstração</a>
+                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal">Demonstração</button>
                     </div>
                 </nav>
                 <div class="header-tractian-actions">
@@ -39,7 +52,7 @@
                         Contato
                     </a>
                     <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login">Login</a>
-                    <a href="/contato/" data-page-section="#formulario" class="btn-demo btn-demo--ghost">Demonstração</a>
+                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal">Demonstração</button>
                 </div>
                 <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
                     <span></span>
@@ -151,7 +164,7 @@
                 </div>
 
                 <div class="cta-action-center" data-aos="fade-up" data-aos-delay="200" style="margin-top: var(--spacing-2xl); text-align: center; width: 100%;">
-                    <button class="btn btn-submit btn-open-modal" style="padding: 1.2rem 3rem; font-size: 1.2rem; max-width: 400px; width: 100%;">Quero Aplicar Esse Sensor</button>
+                    <button type="button" class="btn btn-submit btn-open-modal" style="padding: 1.2rem 3rem; font-size: 1.2rem; max-width: 400px; width: 100%;">Quero Aplicar Esse Sensor</button>
                 </div>
             </div>
         </div>
@@ -208,37 +221,66 @@
     </footer>
 
     <!-- Modal de Contato -->
-    <div id="contactModal" class="modal-overlay">
+    <div id="contactModal" class="modal-overlay" aria-hidden="true">
         <div class="modal-content">
-            <button class="modal-close" id="btnCloseModal">&times;</button>
-            <div class="cta-form-section modal-form-section">
-                <div class="cta-header">
-                    <h2 class="cta-title">Fale com um especialista</h2>
-                    <p class="cta-subtitle">
-                        Descubra como nossos sensores podem transformar sua operação e melhorar sua tomada de decisão.
-                    </p>
+            <button class="modal-close" id="btnCloseModal" aria-label="Fechar">&times;</button>
+            <div class="demo-modal-card">
+                <div class="demo-modal-head">
+                    <h2 class="demo-modal-title">Solicite sua demonstração</h2>
+                    <p class="demo-modal-lead">Preencha os campos para falar com um especialista e entender os benefícios do MESTTI para sua operação.</p>
                 </div>
-                <form class="contact-form" id="contactFormAtuacao">
-                    <input type="text" id="name" name="name" placeholder="Nome completo" required>
-                    <input type="text" id="empresa" name="empresa" placeholder="Empresa" required>
-                    <input type="email" id="email" name="email" placeholder="E-mail profissional" required>
-                    <div class="phone-input">
-                        <input type="text" id="country-code" value="+55" readonly>
-                        <input type="tel" id="phone" name="phone" placeholder="Telefone / WhatsApp" required>
+                <form class="demo-form" id="contactFormAtuacao">
+                    <div class="field-row">
+                        <input type="text" id="name" name="name" placeholder="Nome completo" autocomplete="name" required>
+                        <input type="text" id="empresa" name="empresa" placeholder="Empresa" autocomplete="organization" required>
                     </div>
-                    <textarea id="mensagem" name="mensagem" placeholder="Mensagem" rows="4" required></textarea>
-                    <button type="submit" class="btn btn-submit">Quero aplicar esse sensor na minha indústria</button>
-                    <p class="form-disclaimer" style="margin-top: 15px; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-align: center;">
-                        A MESTTI utiliza essas informações para entrar em contato em relação a produtos e serviços. 
-                        Você pode bloquear o recebimento de comunicações a qualquer momento.
-                    </p>
+                    <input type="email" id="email" name="email" placeholder="E-mail profissional" autocomplete="email" required>
+
+                    <div class="field-row-3">
+                        <select id="ddi" name="ddi" aria-label="DDI" required>
+                            <option value="+55" selected>+55</option>
+                            <option value="+1">+1</option>
+                            <option value="+351">+351</option>
+                            <option value="+34">+34</option>
+                        </select>
+                        <input type="tel" id="phone" name="phone" placeholder="Telefone / WhatsApp" autocomplete="tel" required>
+                        <select id="cargo" name="cargo" required>
+                            <option value="" selected disabled>Cargo</option>
+                            <option value="gerente">Gerente</option>
+                            <option value="supervisor">Supervisor</option>
+                            <option value="engenheiro">Engenheiro</option>
+                            <option value="diretor">Diretor</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <select id="setor" name="setor" required>
+                        <option value="" selected disabled>Setor da Indústria</option>
+                        <option value="alimentos">Alimentos e Bebidas</option>
+                        <option value="quimica">Química</option>
+                        <option value="automotiva">Automotiva</option>
+                        <option value="farmaceutica">Farmacêutica</option>
+                        <option value="outro">Outro</option>
+                    </select>
+
+                    <select id="solucao" name="solucao" required>
+                        <option value="" selected disabled>Selecione a solução de maior interesse</option>
+                        <option value="sensores">Sensores / Catálogo</option>
+                        <option value="apontamento">Apontamento Automático</option>
+                        <option value="oee">OEE e Indicadores</option>
+                        <option value="monitoramento">Monitoramento</option>
+                    </select>
+
+                    <textarea id="observacao" name="observacao" placeholder="Observação (opcional)" rows="3" style="min-height: 90px;"></textarea>
+                    <textarea id="mensagem" name="mensagem" placeholder="Mensagem" rows="3" style="min-height: 90px;"></textarea>
+                    <button type="submit" class="demo-submit">Solicitar demonstração</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="../script.js?v=2"></script>
-    <script src="../atuacao-script.js"></script>
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="../script.js?v=2"></script>
+    <script defer src="../atuacao-script.js"></script>
 </body>
 </html>
