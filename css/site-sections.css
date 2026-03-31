@@ -452,48 +452,7 @@
     transform: translateY(-1px);
 }
 
-/* Botões de navegação do carrossel */
-.services-offer-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 42px;
-    height: 42px;
-    border-radius: 999px;
-    border: 1px solid var(--gray-200);
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: var(--shadow-md);
-    cursor: pointer;
-    z-index: 2;
-    display: grid;
-    place-items: center;
-    transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
-}
-
-.services-offer-nav:hover {
-    transform: translateY(-50%) scale(1.04);
-    background: rgba(255, 255, 255, 1);
-}
-
-.services-offer-nav--prev { left: 0; }
-.services-offer-nav--next { right: 0; }
-
-.services-offer-nav::before {
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-right: 2px solid var(--gray-700);
-    border-bottom: 2px solid var(--gray-700);
-    transform: rotate(135deg);
-}
-
-.services-offer-nav--next::before {
-    transform: rotate(-45deg);
-}
-
-@media (max-width: 900px) {
-    .services-offer-nav { display: none; }
-}
+/* Carrossel sem setas: swipe/scroll apenas */
 
 /* ============================================
    PERSONAS

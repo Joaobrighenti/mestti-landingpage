@@ -105,31 +105,6 @@ if (carouselContainer && carouselPrev && carouselNext) {
 }
 
 // ============================================
-// Carrossel — Nossas soluções (cards)
-// ============================================
-
-const servicesOfferViewport = document.getElementById('servicesOfferViewport');
-const servicesOfferPrev = document.getElementById('servicesOfferPrev');
-const servicesOfferNext = document.getElementById('servicesOfferNext');
-
-if (servicesOfferViewport && servicesOfferPrev && servicesOfferNext) {
-    const getStep = () => {
-        const firstCard = servicesOfferViewport.querySelector('.service-offer-card');
-        if (!firstCard) return 320;
-        const rect = firstCard.getBoundingClientRect();
-        return Math.max(240, Math.round(rect.width + 16));
-    };
-
-    servicesOfferPrev.addEventListener('click', () => {
-        servicesOfferViewport.scrollBy({ left: -getStep(), behavior: 'smooth' });
-    });
-
-    servicesOfferNext.addEventListener('click', () => {
-        servicesOfferViewport.scrollBy({ left: getStep(), behavior: 'smooth' });
-    });
-}
-
-// ============================================
 // Smooth Scroll para Links Âncora
 // ============================================
 
