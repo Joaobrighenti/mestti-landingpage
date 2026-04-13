@@ -226,71 +226,7 @@ function initMesttiDeferredScroll() {
 
 document.addEventListener('DOMContentLoaded', initMesttiDeferredScroll);
 
-// ============================================
-// Cards flutuantes que fogem do mouse (movimento fluido)
-// ============================================
 
-const personasSection = document.querySelector('.personas-with-float');
-const floatingWidgets = document.querySelectorAll('.personas-with-float [data-float]');
-
-if (personasSection && floatingWidgets.length) {
-    const PUSH_DISTANCE = 85;
-    const INFLUENCE_MARGIN = 28;
-    const LERP = 0.12; // suavidade: quanto maior, mais rápido segue o alvo
-
-    const state = new Map();
-    floatingWidgets.forEach((el) => state.set(el, { x: 0, y: 0, targetX: 0, targetY: 0 }));
-
-    function updateFloats() {
-        floatingWidgets.forEach((el) => {
-            const s = state.get(el);
-            s.x += (s.targetX - s.x) * LERP;
-            s.y += (s.targetY - s.y) * LERP;
-            el.style.transform = `translate(${s.x}px, ${s.y}px)`;
-        });
-        requestAnimationFrame(updateFloats);
-    }
-    requestAnimationFrame(updateFloats);
-
-    personasSection.addEventListener('mousemove', (e) => {
-        const mx = e.clientX;
-        const my = e.clientY;
-
-        floatingWidgets.forEach((el) => {
-            const rect = el.getBoundingClientRect();
-            const expanded = {
-                left: rect.left - INFLUENCE_MARGIN,
-                right: rect.right + INFLUENCE_MARGIN,
-                top: rect.top - INFLUENCE_MARGIN,
-                bottom: rect.bottom + INFLUENCE_MARGIN
-            };
-
-            const isNear = mx >= expanded.left && mx <= expanded.right && my >= expanded.top && my <= expanded.bottom;
-            const cx = rect.left + rect.width / 2;
-            const cy = rect.top + rect.height / 2;
-            const s = state.get(el);
-
-            if (isNear) {
-                const dx = cx - mx;
-                const dy = cy - my;
-                const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-                s.targetX = (dx / dist) * PUSH_DISTANCE;
-                s.targetY = (dy / dist) * PUSH_DISTANCE;
-            } else {
-                s.targetX = 0;
-                s.targetY = 0;
-            }
-        });
-    });
-
-    personasSection.addEventListener('mouseleave', () => {
-        floatingWidgets.forEach((el) => {
-            const s = state.get(el);
-            s.targetX = 0;
-            s.targetY = 0;
-        });
-    });
-}
 
 // ============================================
 // Formulário de Contato e Modal

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Gestão de Manutenção (CMMS) MESTTI — Controle Ordens de Serviço, Ativos e Histórico para Pequenas e Médias Indústrias.">
+    <title>Gestão de Manutenção (CMMS) | MESTTI</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles-entry.css?v=25">
+</head>
+
+<body class="cmms-page">
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <header class="header header--tractian">
+        <div class="container container--wide">
+            <div class="header-tractian-inner">
+                <a href="/" class="header-logo-link">
+                    <img src="../images/MESTTI.svg" alt="MESTTI" class="logo-img" width="120" height="25">
+                </a>
+                <nav class="header-nav" id="headerNav" aria-label="Menu principal">
+                    <div class="mobile-nav-header">
+                        <a href="/" class="header-logo-link">
+                            <img src="../images/MESTTI.svg" alt="MESTTI" class="logo-img" width="120" height="25">
+                        </a>
+                        <button type="button" class="mobile-nav-close" aria-label="Fechar menu">×</button>
+                    </div>
+                    <a href="/" data-home-section="#controle-total" class="nav-link">Soluções</a>
+                    <a href="/" data-home-section="#controle-total" class="nav-link">Recursos</a>
+                    <a href="/empresa/" class="nav-link">Sobre</a>
+
+                    <div class="mobile-nav-contact">
+                        <div class="mobile-nav-section-title">Contato</div>
+                        <a class="mobile-nav-contact-link" href="tel:+5514974007797">(14) 97400-7797</a>
+                        <a class="mobile-nav-contact-link" href="https://wa.me/5514974007797" target="_blank"
+                            rel="noopener">WhatsApp</a>
+                        <a class="mobile-nav-contact-link" href="/contato/">Central de contato</a>
+                    </div>
+                </nav>
+                <div class="header-tractian-actions">
+                    <a href="/contato/" class="header-link-contact">Contato</a>
+                    <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login">Login</a>
+                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal">Demonstração</button>
+                </div>
+                <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section -->
+        <section class="cmms-hero">
+            <div class="cmms-hero-circles"></div>
+            <div class="container">
+                <div class="cmms-hero-content" data-aos="fade-right">
+                    <h1 class="cmms-hero-title">Controle a manutenção da sua fábrica em um só lugar.</h1>
+                    <p class="cmms-hero-subtitle">Centralize ativos, ordens de serviço, peças, histórico e execução da
+                        manutenção em uma plataforma simples para pequenas e médias indústrias.</p>
+                    <div class="hero-buttons">
+                        <button type="button" class="btn btn-primary btn-open-modal"
+                            style="box-shadow: 0 0 15px rgba(2, 69, 120, 0.4);">Agendar demonstração</button>
+                    </div>
+                    <div class="hero-certificates" style="margin-top: 3rem; display: flex; gap: 1rem;">
+                        <span
+                            style="font-size: 0.8rem; color: var(--gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Focado
+                            em PMEs Industriais</span>
+                    </div>
+                </div>
+                <div class="cmms-hero-visual" data-aos="fade-left" data-aos-delay="200">
+                    <img src="../images/manu.png" alt="Dashboard MESTTI CMMS" class="cmms-hero-mockup">
+                    <div class="cmms-floating-card cmms-floating-card--1" style="border-left: 4px solid #10b981;">
+                        <div
+                            style="font-size: 0.75rem; color: rgba(255,255,255,0.7); font-weight: 500; margin-bottom: 2px;">
+                            Próxima Preventiva</div>
+                        <div style="font-weight: 800; color: #10b981; font-size: 1.1rem;">Em 2 dias</div>
+                    </div>
+                    <div class="cmms-floating-card cmms-floating-card--2" style="border-left: 4px solid #38bdf8;">
+                        <div
+                            style="font-size: 0.75rem; color: rgba(255,255,255,0.7); font-weight: 500; margin-bottom: 2px;">
+                            MTBF Atual</div>
+                        <div style="font-weight: 800; color: #38bdf8; font-size: 1.1rem;">480h</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Bloco de Erro / Problema -->
+        <section class="cmms-problem">
+            <div class="container">
+                <div style="text-align: center; max-width: 800px; margin: 0 auto var(--spacing-3xl);">
+                    <h2 class="section-title" data-aos="fade-up">Se a manutenção ainda roda no papel, no grito ou no
+                        WhatsApp, você já está perdendo tempo e histórico.</h2>
+                </div>
+                <div class="cmms-problem-grid">
+                    <div class="cmms-pain-card" data-aos="fade-up">
+                        <div class="cmms-pain-image">
+                            <img src="../images/clip-os.png" alt="Controle de OS">
+                        </div>
+                        <div class="cmms-pain-body">
+                            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 700;">Controle de OS</h3>
+                            <p style="font-size: 0.95rem; color: var(--gray-600);">Centralize todas as ordens em um só lugar, com acompanhamento em tempo real do status e técnico responsável.</p>
+                        </div>
+                    </div>
+                    <div class="cmms-pain-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="cmms-pain-image">
+                            <img src="../images/clip-request.png" alt="Canais de Solicitação">
+                        </div>
+                        <div class="cmms-pain-body">
+                            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 700;">Canais de Solicitação</h3>
+                            <p style="font-size: 0.95rem; color: var(--gray-600);">Receba pedidos via QR Code ou aplicativo, padronizando a entrada de dados da produção.</p>
+                        </div>
+                    </div>
+                    <div class="cmms-pain-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="cmms-pain-image">
+                            <img src="../images/clip-history.png" alt="Histórico por Ativo">
+                        </div>
+                        <div class="cmms-pain-body">
+                            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 700;">Histórico por Ativo</h3>
+                            <p style="font-size: 0.95rem; color: var(--gray-600);">Acesse instantaneamente a linha do tempo de manutenções de cada máquina para decisões rápidas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Apresentação da Solução -->
+        <section class="cmms-solution" style="padding: var(--spacing-4xl) 0; background: var(--white);">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: var(--spacing-3xl);">
+                    <h2 class="section-title" data-aos="fade-up">O CMMS da Mestti organiza toda a rotina da manutenção
+                        em um fluxo simples e rastreável.</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Da abertura da solicitação até a
+                        execução no celular, com histórico por ativo, peças utilizadas e indicadores de controle.</p>
+                </div>
+                <div class="services-offer-grid"
+                    style="width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+                    <article class="service-offer-card" data-aos="zoom-in">
+                        <div class="service-offer-photo" style="height: 180px; border-bottom: none;"><img
+                                src="../images/producao.png" alt="Ativos" style="object-fit: contain; padding: 1rem;">
+                        </div>
+                        <div class="service-offer-body">
+                            <h3 class="service-offer-title" style="font-size: 1.3rem; margin-bottom: 0.8rem;">Gerenciamento de Ativos</h3>
+                            <p class="service-offer-lead" style="margin-bottom: 1rem;">Controle total da sua planta com árvore de ativos completa, locais de instalação e subconjuntos.</p>
+                            <ul style="list-style: none; padding: 0; font-size: 0.9rem; color: var(--gray-600);">
+                                <li style="margin-bottom: 5px;">• Identificação via QR Code por máquina</li>
+                                <li style="margin-bottom: 5px;">• Anexo de manuais e fotos técnicas</li>
+                                <li style="margin-bottom: 5px;">• Histórico completo de intervenções</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="service-offer-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="service-offer-photo" style="height: 180px; border-bottom: none;"><img
+                                src="../images/timeline.png" alt="Planejamento"
+                                style="object-fit: contain; padding: 1rem;"></div>
+                        <div class="service-offer-body">
+                            <h3 class="service-offer-title" style="font-size: 1.3rem; margin-bottom: 0.8rem;">Planejamento (PCM)</h3>
+                            <p class="service-offer-lead" style="margin-bottom: 1rem;">Automatize seu plano de manutenção e nunca mais perca uma preventiva por falta de controle.</p>
+                            <ul style="list-style: none; padding: 0; font-size: 0.9rem; color: var(--gray-600);">
+                                <li style="margin-bottom: 5px;">• Cronograma automático de preventivas</li>
+                                <li style="margin-bottom: 5px;">• Gestão de materiais e peças necessárias</li>
+                                <li style="margin-bottom: 5px;">• Calendário interativo de equipe</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="service-offer-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="service-offer-photo" style="height: 180px; border-bottom: none;"><img
+                                src="../images/cmms-technician.png" alt="Mobile" style="object-fit: cover;"></div>
+                        <div class="service-offer-body">
+                            <h3 class="service-offer-title" style="font-size: 1.3rem; margin-bottom: 0.8rem;">Execução Mobile</h3>
+                            <p class="service-offer-lead" style="margin-bottom: 1rem;">Dê adeus ao papel. O técnico recebe, executa e finaliza a ordem de serviço direto no celular.</p>
+                            <ul style="list-style: none; padding: 0; font-size: 0.9rem; color: var(--gray-600);">
+                                <li style="margin-bottom: 5px;">• Checklists guiados e obrigatórios</li>
+                                <li style="margin-bottom: 5px;">• Coleta de fotos e assinaturas digitais</li>
+                                <li style="margin-bottom: 5px;">• Mestti Voice para relatos rápidos</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Seção "Como Funciona" -->
+        <section class="cmms-how-works" style="padding: var(--spacing-4xl) 0; background-color: var(--gray-50);">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up" style="margin-bottom: var(--spacing-3xl);">Como funciona na
+                    prática</h2>
+                <div class="workflow-steps">
+                    <div class="workflow-step" data-aos="fade-up">
+                        <div class="workflow-number">1</div>
+                        <h3>Cadastre ativos</h3>
+                        <p style="font-size: 0.85rem; color: var(--gray-600);">Organize suas máquinas e componentes
+                            principais.</p>
+                    </div>
+                    <div class="workflow-step" data-aos="fade-up" data-aos-delay="100">
+                        <div class="workflow-number">2</div>
+                        <h3>Receba solicitações</h3>
+                        <p style="font-size: 0.85rem; color: var(--gray-600);">Pedidos via QR Code ou criados pela
+                            produção.</p>
+                    </div>
+                    <div class="workflow-step" data-aos="fade-up" data-aos-delay="200">
+                        <div class="workflow-number">3</div>
+                        <h3>Execute no Celular</h3>
+                        <p style="font-size: 0.85rem; color: var(--gray-600);">Fluxo guiado, fotos, voz e peças
+                            consumidas.</p>
+                    </div>
+                    <div class="workflow-step" data-aos="fade-up" data-aos-delay="300">
+                        <div class="workflow-number">4</div>
+                        <h3>Acompanhe</h3>
+                        <p style="font-size: 0.85rem; color: var(--gray-600);">Status em tempo real e dashboards de
+                            controle.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Seção Foco no Operador / Mobile -->
+        <section class="cmms-mobile-focus">
+            <div class="container">
+                <div class="cmms-mobile-split">
+                    <div class="cmms-mobile-content" data-aos="fade-right">
+                        <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">O técnico executa a
+                            manutenção direto no celular</h2>
+                        <p class="lead" style="margin-bottom: 2rem;">Sem depender de papel ou descrição solta. O sistema
+                            conduz o fluxo da execução e coleta dados melhores da operação.</p>
+                        <ul class="service-offer-list" style="columns: 1; font-size: 1.1rem;">
+                            <li style="margin-bottom: 1rem;"><strong>Lista de tarefas do dia</strong> e prioridades.
+                            </li>
+                            <li style="margin-bottom: 1rem;"><strong>Cronômetro</strong> para medir tempo real de
+                                execução.</li>
+                            <li style="margin-bottom: 1rem;"><strong>Mestti Voice</strong>: Preencha relatos apenas
+                                falando.</li>
+                            <li style="margin-bottom: 1rem;"><strong>Baixa de Peças</strong> vinculada à OS.</li>
+                            <li style="margin-bottom: 1rem;"><strong>Modo Offline</strong>: Funciona dentro da fábrica
+                                sem Wi-Fi.</li>
+                        </ul>
+                    </div>
+                    <div class="cmms-mobile-visual" data-aos="fade-left">
+                        <div class="cmms-phone-mockup">
+                            <div class="phone-case">
+                                <img src="../images/cmms-technician.png" alt="App MESTTI no Celular"
+                                    class="phone-screen-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. Seção Comparativa -->
+        <section class="cmms-comparison">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Antes e depois da manutenção organizada</h2>
+                <div class="comp-table-wrap" data-aos="fade-up">
+                    <table class="comp-table">
+                        <thead>
+                            <tr>
+                                <th>Desafio</th>
+                                <th class="comp-header--before">Como era (Caos)</th>
+                                <th class="comp-header--after">Com MESTTI CMMS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ordens de Serviço</td>
+                                <td>Papel, WhatsApp ou "no grito"</td>
+                                <td>Centralizadas e rastreáveis na nuvem</td>
+                            </tr>
+                            <tr>
+                                <td>Histórico de Ativos</td>
+                                <td>Perdido em arquivos ou planilhas</td>
+                                <td>Completo e acessível via QR Code</td>
+                            </tr>
+                            <tr>
+                                <td>Execução do Técnico</td>
+                                <td>Manual e sem padronização</td>
+                                <td>Guiada pelo Celular com Checklists</td>
+                            </tr>
+                            <tr>
+                                <td>Rastreio de Peças</td>
+                                <td>Amador, peças somem sem registro</td>
+                                <td>Baixa obrigatória vinculada à OS</td>
+                            </tr>
+                            <tr>
+                                <td>Visibilidade Gerencial</td>
+                                <td>Dúvida sobre o que está atrasado</td>
+                                <td>Dashboard real-time de pendências</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. Seção de CTA Forte -->
+        <section class="cta-final"
+            style="background: linear-gradient(135deg, var(--cmms-dark) 0%, #024578 100%); padding: var(--spacing-4xl) 0;">
+            <div class="container" style="text-align: center;">
+                <h2 class="section-title" style="color: var(--white);" data-aos="fade-up">Leve mais controle para a
+                    manutenção da sua empresa</h2>
+                <p class="cta-subtitle" style="color: var(--gray-400); margin-bottom: 2.5rem;" data-aos="fade-up"
+                    data-aos-delay="100">Veja na prática como o CMMS da Mestti pode organizar ativos, ordens, execução e
+                    histórico da sua manutenção.</p>
+                <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
+                    <button type="button" class="btn btn-primary btn-open-modal"
+                        style="padding: 1.2rem 3rem; font-size: 1.1rem; box-shadow: 0 0 20px rgba(0,0,0,0.3);">Agendar
+                        demonstração agora</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer footer--tractian">
+        <div class="container container--wide">
+            <div class="footer-tractian-bottom">
+                <p class="footer-legal">© 2026 MESTTI. Todos os direitos reservados.</p>
+                <div class="footer-social">
+                    <a href="/" class="header-logo-link">
+                        <img src="../images/MESTTI.svg" alt="MESTTI" class="logo-img" width="100" height="20"
+                            style="filter: grayscale(1) opacity(0.5);">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Contato -->
+    <div id="contactModal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" id="btnCloseModal" aria-label="Fechar">&times;</button>
+            <div class="demo-modal-card">
+                <div class="demo-modal-head">
+                    <h2 class="demo-modal-title">Fale com um especialista CMMS</h2>
+                    <p class="demo-modal-lead">Receba uma consultoria gratuita sobre como automatizar sua gestão de
+                        manutenção.</p>
+                </div>
+                <form class="demo-form" id="contactForm">
+                    <input type="text" name="name" placeholder="Nome completo" required>
+                    <input type="email" name="email" placeholder="E-mail profissional" required>
+                    <input type="tel" name="phone" placeholder="WhatsApp" required>
+                    <button type="submit" class="demo-submit">Quero ver na prática</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="../script.js?v=2"></script>
+</body>
+
+</html>

@@ -135,7 +135,7 @@
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--gray-900);
-    margin: var(--spacing-md) var(--spacing-lg) var(--spacing-sm);
+    margin: var(--spacing-md) 1.25rem var(--spacing-sm);
     line-height: 1.4;
     padding: 0;
 }
@@ -149,7 +149,7 @@
     color: var(--gray-600);
     line-height: 1.5;
     flex: 1;
-    margin: 0 var(--spacing-lg) var(--spacing-lg);
+    margin: 0 1.25rem var(--spacing-lg);
     padding: 0;
 }
 
@@ -395,20 +395,6 @@
 
 /* Garantia do carrossel mobile na dobra de sensores do index */
 @media (max-width: 768px) {
-    .sensores-cards-section .sensores-grid {
-        display: flex;
-        gap: var(--spacing-md);
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 0.5rem;
-    }
-
-    .sensores-cards-section .sensores-grid::-webkit-scrollbar {
-        display: none;
-    }
-
     .sensores-cards-section .sensor-card {
         flex: 0 0 min(76vw, 320px);
         max-width: 320px;
@@ -416,4 +402,324 @@
         transform: none;
     }
 }
+
+/* ============================================
+   ESTILOS ADICIONAIS PARA CARDS COMPLETOS (index.html)
+   ============================================ */
+
+.sensor-card-price {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    margin: 0 1.25rem var(--spacing-sm);
+    text-align: left;
+}
+
+.sensor-card-price-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.sensor-card-price-cycle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gray-600);
+}
+
+.sensor-card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 1.25rem var(--spacing-lg);
+    text-align: left;
+    flex: 1;
+}
+
+.sensor-card-list li {
+    font-size: 0.82rem;
+    color: var(--gray-700);
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    position: relative;
+}
+
+.sensor-card-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary-light);
+    font-weight: 700;
+}
+
+.sensor-card-cta {
+    display: block;
+    margin: 0 1.25rem var(--spacing-lg);
+    padding: 0.75rem 1rem;
+    background: var(--gray-100);
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    transition: var(--transition);
+    border: 1px solid var(--gray-200);
+}
+
+.sensor-card:hover .sensor-card-cta {
+    background: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+}
+
+/* ============================================
+   ESTILOS PARA PÁGINA TÉCNICA (sensors.html)
+   ============================================ */
+
+.tech-page-hero {
+    background: linear-gradient(135deg, #011627 0%, #024578 100%);
+    color: var(--white);
+    padding: 3.5rem 0;
+    text-align: center;
+}
+
+.tech-section {
+    padding: 6rem 0;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.tech-section:nth-child(even) {
+    background-color: var(--gray-50);
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.tech-content h2 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: 0.5rem;
+}
+
+.tech-subtitle {
+    font-size: 1.25rem;
+    color: var(--primary-blue);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.tech-desc {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--gray-700);
+    margin-bottom: 2rem;
+}
+
+.tech-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.tech-info-column h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tech-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tech-info-list li {
+    font-size: 0.95rem;
+    color: var(--gray-700);
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.4;
+}
+
+.tech-info-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-light);
+    font-weight: bold;
+}
+
+.tech-differential-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 3rem;
+}
+
+.tech-differential-card h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.tech-differential-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--gray-700);
+    margin: 0;
+}
+
+.tech-specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.tech-specs-table th, 
+.tech-specs-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+/* Estilo para achatar APENAS a primeira imagem de cada seção (o sensor em si) */
+#contagem .tech-image > img,
+#contagem .tech-image-stack-item:first-child img,
+#linear .tech-image > img,
+#temperatura .tech-image > img {
+    width: 100%;
+    aspect-ratio: 16 / 7;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+
+.tech-grid {
+    display: flex;
+    gap: 5rem;
+    align-items: stretch;
+}
+
+.tech-content {
+    flex: 1.2;
+}
+
+.tech-image {
+    flex: 0.8;
+    min-height: 0;
+}
+
+.tech-image-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+.tech-image-stack-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.tech-image-stack-item img {
+    flex: 1;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    min-height: 0;
+    margin-bottom: 0.5rem;
+}
+
+.tech-image-stack-item span {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--gray-700);
+    flex-shrink: 0;
+}
+
+/* Responsive Utilities */
+@media (min-width: 901px) {
+    .mobile-only { display: none !important; }
+}
+
+@media (max-width: 900px) {
+    .desktop-only { display: none !important; }
+    
+    .tech-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+}
+
+/* Mobile Slider */
+.tech-mobile-slider {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 1.5rem -1.5rem 2.5rem; /* Negative margin to bleed to edges */
+    padding: 0 1.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.tech-mobile-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.tech-mobile-slider-item {
+    flex: 0 0 82%;
+    scroll-snap-align: center;
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.tech-mobile-slider-item img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+}
+
+.tech-mobile-slider-item span {
+    display: block;
+    padding: 0.75rem;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--gray-800);
+    background: var(--gray-50);
+}
+
 

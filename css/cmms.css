@@ -1,0 +1,277 @@
+/* ============================================
+   CMMS LANDING PAGE STYLES
+   ============================================ */
+
+:root {
+    --cmms-primary: #024578;
+    --cmms-secondary: #f97316; /* Laranja para destaque */
+    --cmms-dark: #0f172a;
+    --cmms-glass: rgba(255, 255, 255, 0.05);
+    --cmms-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Hero Section */
+.cmms-hero {
+    position: relative;
+    padding: var(--spacing-4xl) 0;
+    background: radial-gradient(circle at top right, #1e293b, var(--cmms-dark));
+    color: var(--white);
+    overflow: hidden;
+}
+
+.cmms-hero-circles {
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(2, 69, 120, 0.15) 0%, transparent 70%);
+    filter: blur(60px);
+    z-index: 0;
+}
+
+.cmms-hero .container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: center;
+}
+
+.cmms-hero-title {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--spacing-md);
+}
+
+.cmms-hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--gray-400);
+    max-width: 90%;
+    margin-bottom: var(--spacing-xl);
+}
+
+.cmms-hero-visual {
+    position: relative;
+}
+
+.cmms-hero-mockup {
+    width: 100%;
+    height: 520px; /* Tornando a imagem mais alta */
+    object-fit: cover; /* Permite o corte sem distorção */
+    object-position: center; /* Foca no conteúdo central do dashboard */
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--cmms-border);
+}
+
+.cmms-floating-card {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 1.25rem;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    animation: float 6s ease-in-out infinite;
+    z-index: 2;
+}
+
+.cmms-floating-card--1 { top: -20px; right: 10px; animation-delay: 0s; }
+.cmms-floating-card--2 { bottom: 30px; left: -20px; animation-delay: 2s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Problem Section */
+.cmms-problem {
+    padding: var(--spacing-4xl) 0;
+    background-color: var(--gray-50);
+}
+
+.cmms-problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: calc(var(--spacing-4xl) / 1.5);
+}
+
+.cmms-pain-card {
+    background: var(--white);
+    padding: 0;
+    border-radius: 16px;
+    border: 1px solid var(--gray-200);
+    transition: var(--transition);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.cmms-pain-card:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-5px);
+}
+
+.cmms-pain-image {
+    width: 100%;
+    height: 180px;
+    background-color: var(--gray-50);
+    border-bottom: 1px solid var(--gray-200);
+    overflow: hidden;
+}
+
+.cmms-pain-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.cmms-pain-body {
+    padding: var(--spacing-lg);
+}
+
+/* Solutions / Workflow Steps */
+.cmms-workflow {
+    padding: var(--spacing-4xl) 0;
+}
+
+.workflow-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    margin-top: calc(var(--spacing-4xl) / 1.5);
+    position: relative;
+}
+
+.workflow-step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.workflow-number {
+    width: 60px;
+    height: 60px;
+    background: var(--cmms-primary);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0 auto var(--spacing-md);
+    border: 4px solid var(--white);
+    box-shadow: 0 0 0 2px var(--cmms-primary);
+}
+
+/* Differentials */
+.cmms-differentials {
+    padding: var(--spacing-4xl) 0;
+    background-color: var(--cmms-dark);
+    color: var(--white);
+}
+
+.cmms-diff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: calc(var(--spacing-4xl) / 1.5);
+}
+
+.cmms-diff-card {
+    background: var(--cmms-glass);
+    border: 1px solid var(--cmms-border);
+    padding: var(--spacing-xl);
+    border-radius: 16px;
+    transition: var(--transition);
+}
+
+.cmms-diff-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+/* Mobile Focus Area */
+.cmms-mobile-focus {
+    padding: var(--spacing-4xl) 0;
+    background: linear-gradient(to bottom, var(--white), var(--gray-50));
+    overflow: hidden;
+}
+
+.cmms-mobile-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    align-items: center;
+}
+
+.cmms-phone-mockup {
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.phone-case {
+    width: 100%;
+    border-radius: 40px;
+    border: 8px solid #1e293b;
+    background: #000;
+    overflow: hidden;
+    aspect-ratio: 9/19;
+    position: relative;
+    box-shadow: 0 50px 100px -20px rgba(0,0,0,0.3);
+}
+
+.phone-screen-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Comparison Table */
+.cmms-comparison {
+    padding: var(--spacing-4xl) 0;
+}
+
+.comp-table-wrap {
+    overflow-x: auto;
+    margin-top: calc(var(--spacing-4xl) / 1.5);
+}
+
+.comp-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comp-table th, .comp-table td {
+    padding: 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.comp-header--before { color: #ef4444; }
+.comp-header--after { color: #10b981; }
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .cmms-hero .container,
+    .cmms-mobile-split {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .cmms-hero-subtitle { margin-left: auto; margin-right: auto; }
+    .workflow-steps { grid-template-columns: repeat(2, 1fr); }
+    .cmms-hero-mockup { height: 320px; }
+}
+
+@media (max-width: 768px) {
+    .workflow-steps { grid-template-columns: 1fr; }
+}

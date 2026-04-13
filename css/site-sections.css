@@ -392,12 +392,12 @@
 }
 
 .service-offer-list-heading {
-    font-size: 0.68rem;
-    font-weight: 600;
+    font-size: 0.775rem; /* Aumentado */
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--gray-500);
-    margin: 0 0 0.4rem;
+    margin: 0 0 0.5rem;
 }
 
 .service-offer-list {
@@ -410,8 +410,8 @@
 .service-offer-list li {
     position: relative;
     padding-left: 1.28rem;
-    margin-bottom: 0.48rem;
-    font-size: 0.775rem;
+    margin-bottom: 0.55rem;
+    font-size: 0.875rem; /* Aumentado */
     color: var(--gray-700);
     line-height: 1.48;
 }
@@ -453,195 +453,30 @@
 }
 
 /* Carrossel sem setas: swipe/scroll apenas */
+@media (min-width: 1025px) {
+    .features-testimonials .container {
+        max-width: 1240px; /* Aumentado para caber 4 cards */
+    }
 
-/* ============================================
-   PERSONAS
-   ============================================ */
+    .services-offer-viewport {
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+    }
 
-.personas {
-    padding: var(--spacing-3xl) 0;
-    background-color: var(--gray-100);
-}
+    .services-offer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: 100%;
+        gap: 1.25rem;
+        margin: 0;
+    }
 
-.personas-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
-    margin-top: var(--spacing-3xl);
-}
-
-.persona-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--white);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--gray-200);
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: none;
-    transition: var(--transition);
-}
-
-.persona-card:hover {
-    transform: translateY(-6px);
-    box-shadow: none;
-    border-color: var(--primary-blue);
-}
-
-.persona-card:hover .persona-image img {
-    transform: scale(1.05);
-}
-
-.persona-image {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.persona-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-}
-
-.persona-card-inner {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
-    text-align: left;
-}
-
-.persona-quote {
-    margin: 0;
-    padding: 0;
-    border: none;
-    position: relative;
-}
-
-.persona-quote::before {
-    content: '\201C';
-    position: absolute;
-    left: -0.05em;
-    top: -0.15em;
-    font-size: 2.75rem;
-    line-height: 1;
-    font-weight: 800;
-    color: rgba(2, 69, 120, 0.12);
-    font-family: Georgia, 'Times New Roman', serif;
-    pointer-events: none;
-}
-
-.persona-quote p {
-    margin: 0;
-    padding-top: 0.35rem;
-    font-size: 0.92rem;
-    line-height: 1.75;
-    color: var(--gray-800);
-    font-style: italic;
-}
-
-.persona-role {
-    margin: var(--spacing-md) 0 0;
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--gray-200);
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: var(--primary-blue);
-    letter-spacing: 0.02em;
-}
-
-.persona-role cite {
-    font-style: normal;
-    font-weight: 700;
-}
-
-/* Personas: área com overflow para cards sobrepassarem as laterais */
-.personas-with-float {
-    overflow: visible;
-}
-
-.personas-with-float .container-relative {
-    position: relative;
-    min-height: 520px;
-    overflow: visible;
-}
-
-/* Um conteúdo por card — estilo “fora do padrão”, sobrepassando laterais */
-.float-card {
-    position: absolute;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    padding: 0.65rem 1rem;
-    border-radius: 5px;
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    box-shadow: none;
-    font-size: 0.8rem;
-    color: var(--gray-800);
-    white-space: nowrap;
-    pointer-events: none;
-    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    max-width: 280px;
-}
-
-/* Lateral: esquerda e direita */
-.float-card-1 { top: 6%;   left: -15%; }
-.float-card-3 { top: 22%;  left: -13%; }
-.float-card-5 { top: 38%;  left: -16%; }
-.float-card-4 { top: 54%;  left: -12%; }
-.float-card-7 { top: 70%;  left: -14%; }
-.float-card-6 { top: 86%;  left: -11%; }
-
-/* Direita */
-.float-card-2 { top: 10%; right: -14%; left: auto; }
-.float-card-9 { top: 26%; right: -16%; left: auto; }
-.float-card-10 { top: 42%; right: -12%; left: auto; }
-.float-card-11 { top: 58%; right: -15%; left: auto; }
-.float-card-8 { top: 74%; right: -13%; left: auto; }
-.float-card-12 { top: 90%; right: -11%; left: auto; }
-
-/* Cores azul e verde nos cards */
-.float-card--blue { border-left: 3px solid var(--primary-blue); }
-.float-card--blue .floating-icon {
-    background: linear-gradient(160deg, #1d9bf0 0%, var(--primary-blue) 65%, #013354 100%);
-}
-.float-card--green {
-    border-left: 3px solid #22c55e;
-    background: var(--white);
-    box-shadow: none;
-}
-.float-card--green .floating-icon {
-    background: linear-gradient(160deg, #34d399 0%, #10b981 60%, #059669 100%);
-}
-
-/* Ícones dos cards (base) */
-.floating-icon {
-    flex-shrink: 0;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    position: relative;
-    display: inline-block;
-    border: none;
-    box-shadow: none;
-}
-.floating-icon--check::after { content: none; }
-.floating-icon--chart::after { content: none; }
-.floating-icon--shield::after { content: none; }
-.floating-icon--link::after { content: none; }
-.floating-icon--bell::after { content: none; }
-.floating-icon--doc::after { content: none; }
-.floating-icon--target::after { content: none; }
-.floating-icon--clock::after { content: none; }
-
-@media (max-width: 900px) {
-    .float-card { display: none; }
+    .service-offer-card {
+        width: 100%;
+        flex: none;
+        scroll-snap-align: none;
+    }
 }
 
 /* ============================================

@@ -63,9 +63,7 @@
         z-index: 4;
     }
 
-    .personas-grid {
-        grid-template-columns: 1fr;
-    }
+
 
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -294,19 +292,13 @@
         display: none;
     }
 
-    .persona-card,
-    .sensor-card {
-        flex: 0 0 82vw;
-        max-width: 82vw;
-        scroll-snap-align: start;
-    }
+
 
     .sensor-card {
         transform: none;
     }
 
-    .sensor-card:hover,
-    .persona-card:hover {
+    .sensor-card:hover {
         transform: none;
     }
 }

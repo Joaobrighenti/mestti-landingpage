@@ -31,6 +31,8 @@
     z-index: 0;
     pointer-events: none;
     overflow: hidden;
+    /* Sem poster: mesma cor do hero até o vídeo pintar o primeiro frame */
+    background-color: var(--gray-50);
 }
 
 .hero-video-bg-media {
@@ -39,6 +41,7 @@
     object-fit: cover;
     object-position: center;
     display: block;
+    background-color: var(--gray-50);
 }
 
 .hero-video-bg-veil {
