@@ -39,6 +39,277 @@
     padding: 0 var(--spacing-lg);
 }
 
+/* Home (#sensores): ilustrações + cards de produto + cards de especificação */
+.sensores-intel-home.sensores-cards-section .container {
+    max-width: 1180px;
+}
+
+.sensores-intel-subheading {
+    font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+    font-weight: 800;
+    color: var(--gray-900);
+    margin: clamp(2.25rem, 5vw, 3rem) 0 var(--spacing-md);
+    letter-spacing: -0.02em;
+}
+
+.sensores-intel-subheading--specs {
+    margin-top: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.sensores-intel-hero-block {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(200px, 300px);
+    gap: clamp(1rem, 2.5vw, 1.75rem);
+    align-items: stretch;
+    margin-top: var(--spacing-sm);
+    min-height: 0;
+}
+
+.sensores-intel-duals {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-self: stretch;
+    justify-content: center;
+    gap: clamp(0.75rem, 2vw, 1.75rem);
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    background: transparent;
+    border: none;
+}
+
+.sensores-intel-hero-block .sensores-intel-dual-img {
+    flex: 1 1 42%;
+    max-width: calc(50% - 0.5rem);
+    min-width: 120px;
+}
+
+.sensores-intel-dual-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    object-fit: contain;
+}
+
+.sensores-intel-spec-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+    min-height: 0;
+    align-self: stretch;
+    height: 100%;
+}
+
+.sensores-intel-home .sensores-intel-spec-card--compact {
+    flex: 1 1 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.sensores-intel-spec-card-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    width: 100%;
+    min-width: 0;
+}
+
+.sensores-intel-spec-note {
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: var(--gray-600);
+}
+
+.sensores-intel-home .sensores-intel-spec-card--compact:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+.sensores-intel-spec-line {
+    margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.32;
+    color: var(--gray-800);
+}
+
+.sensores-intel-spec-k {
+    font-weight: 800;
+    color: var(--primary-blue);
+}
+
+.sensores-intel-sensor-cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.sensores-intel-sensor-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.sensores-intel-sensor-card:hover {
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.sensores-intel-sensor-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin: 0 0 var(--spacing-sm);
+    line-height: 1.35;
+}
+
+.sensores-intel-sensor-desc {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--gray-600);
+    margin: 0 0 var(--spacing-md);
+    flex: 1;
+}
+
+.sensores-intel-sensor-price {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    margin: 0 0 var(--spacing-md);
+}
+
+.sensores-intel-sensor-price-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray-500);
+    margin-bottom: 0.2rem;
+}
+
+.sensores-intel-sensor-cycle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gray-600);
+}
+
+.sensores-intel-sensor-cta {
+    display: inline-block;
+    margin-top: auto;
+    padding: 0.55rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--gray-800);
+    background: var(--gray-100);
+    border-radius: 6px;
+    border: 1px solid var(--gray-200);
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.sensores-intel-sensor-cta:hover {
+    background: var(--white);
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.sensores-intel-spec-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sensores-intel-spec-card:hover {
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-md);
+}
+
+.sensores-intel-spec-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    margin: 0 0 var(--spacing-xs);
+    line-height: 1.35;
+}
+
+.sensores-intel-spec-body {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--gray-700);
+    margin: 0;
+}
+
+.sensores-intel-cta-wrap {
+    text-align: center;
+    margin-top: clamp(2rem, 4vw, 2.75rem);
+}
+
+.sensores-intel-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1024px) {
+    .sensores-intel-sensor-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sensores-intel-hero-block {
+        grid-template-columns: 1fr;
+    }
+
+    .sensores-intel-spec-column {
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: auto;
+    }
+
+    .sensores-intel-home .sensores-intel-spec-card--compact {
+        flex: none;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .sensores-intel-duals {
+        flex-direction: column;
+    }
+
+    .sensores-intel-hero-block .sensores-intel-dual-img,
+    .sensores-intel-dual-img {
+        flex: 1 1 auto;
+        max-width: 100%;
+    }
+
+}
+
 .sensores-hero-content .hero-title {
     margin-bottom: var(--spacing-xl);
     line-height: 1.3;
@@ -603,11 +874,45 @@
     border-bottom: 1px solid var(--gray-100);
 }
 
+/* Metro linear: imagem de monitoramento um pouco menor que a coluna */
+#linear .tech-image .linear-monitoring-single {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#linear .tech-image .linear-monitoring-single img {
+    width: 100%;
+    max-width: 86%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+
+/* Status da máquina: primeira imagem com a mesma proporção da timeline (timeline_nova.png 393×257) */
+#maquina .tech-image > img {
+    width: 100%;
+    aspect-ratio: 393 / 257;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    display: block;
+}
+
+/* Temperatura: só o print de monitoramento (sem foto do hardware) */
+#temperatura .tech-image .temperatura-monitoring-single img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+}
+
 /* Estilo para achatar APENAS a primeira imagem de cada seção (o sensor em si) */
 #contagem .tech-image > img,
-#contagem .tech-image-stack-item:first-child img,
-#linear .tech-image > img,
-#temperatura .tech-image > img {
+#contagem .tech-image-stack-item:first-child img {
     width: 100%;
     aspect-ratio: 16 / 7;
     object-fit: cover;

@@ -292,13 +292,41 @@
         display: none;
     }
 
-
-
     .sensor-card {
         transform: none;
     }
 
     .sensor-card:hover {
+        transform: none;
+    }
+}
+
+/* Home — Linha de sensores: carrossel horizontal (telefone) */
+@media (max-width: 640px) {
+    .sensores-intel-sensor-cards {
+        display: flex;
+        gap: var(--spacing-md);
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.5rem;
+        margin-top: var(--spacing-md);
+        scrollbar-width: none;
+    }
+
+    .sensores-intel-sensor-cards::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sensores-intel-sensor-card {
+        flex: 0 0 min(82vw, 300px);
+        max-width: 320px;
+        scroll-snap-align: start;
+        transform: none;
+    }
+
+    .sensores-intel-sensor-card:hover {
         transform: none;
     }
 }

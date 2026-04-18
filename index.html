@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles-entry.css?v=25">
+    <link rel="stylesheet" href="styles-entry.css?v=32">
     <!-- Hero: começa o download do vídeo cedo, em paralelo ao CSS (arquivo leve = carregamento mais rápido) -->
     <link rel="preload" href="video/video_metro_rodando.mp4" as="video" type="video/mp4">
 </head>
@@ -283,85 +283,98 @@
 
 
 
-    <!-- Dobra de Sensores (cards da página de sensores) -->
-    <section class="sensores-cards-section" id="sensores">
+    <!-- Dobra de sensores (home): ilustrações + cards por produto + cards de especificação -->
+    <section class="sensores-cards-section sensores-intel-home" id="sensores">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Sensores industriais inteligentes</h2>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-                Monitoramento em tempo real para mais eficiência, rastreabilidade e qualidade no chão de fábrica.
+                Hardware para o chão de fábrica, leitura confiável e continuidade dos dados mesmo com oscilação de
+                rede — integrado à nuvem MESTTI.
             </p>
-            <div class="sensores-grid">
-                <article class="sensor-card" data-aos="fade-up" data-aos-delay="0">
-                    <div class="sensor-image-wrapper">
-                        <img src="images/sensor-contagem-pecas.webp" alt="Sensor de Contagem de Peças"
-                            class="sensor-image" loading="lazy">
-                    </div>
-                    <h3 class="sensor-card-title">Sensor de Contagem de Peças</h3>
-                    <div class="sensor-card-price">
-                        <span class="sensor-card-price-label">Mensalidade</span>
-                        R$ 228,90 <span class="sensor-card-price-cycle">/mês</span>
-                    </div>
-                    <ul class="sensor-card-list">
-                        <li>Contagem automática 24/7</li>
-                        <li>Sem erro humano</li>
-                        <li>Histórico de produção</li>
-                    </ul>
-                    <a href="/sensores/#contagem" class="sensor-card-cta">Ver Ficha Técnica</a>
-                </article>
 
-                <article class="sensor-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="sensor-image-wrapper">
-                        <img src="images/sensor-maquina-ligada.webp" alt="Sensor de Máquina Ligada/Desligada"
-                            class="sensor-image" loading="lazy">
-                    </div>
-                    <h3 class="sensor-card-title">Sensor de Máquina Ligada / Desligada</h3>
-                    <div class="sensor-card-price">
-                        <span class="sensor-card-price-label">Mensalidade</span>
-                        R$ 178,90 <span class="sensor-card-price-cycle">/mês</span>
-                    </div>
-                    <ul class="sensor-card-list">
-                        <li>Contagem automática 24/7</li>
-                        <li>Alertas de parada</li>
-                        <li>Disponibilidade e OEE</li>
-                    </ul>
-                    <a href="/sensores/#maquina" class="sensor-card-cta">Ver Ficha Técnica</a>
-                </article>
+            <h3 class="sensores-intel-subheading sensores-intel-subheading--specs" data-aos="fade-up">Especificações
+                técnicas</h3>
+            <div class="sensores-intel-hero-block" data-aos="fade-up" data-aos-delay="100">
+                <div class="sensores-intel-duals">
+                    <img src="images/1.svg" class="sensores-intel-dual-img" alt="Hardware MESTTI em contexto industrial"
+                        loading="lazy" decoding="async">
+                    <img src="images/2.svg" class="sensores-intel-dual-img" alt="Conectividade dos dispositivos MESTTI"
+                        loading="lazy" decoding="async">
+                </div>
+                <div class="sensores-intel-spec-column">
+                    <article class="sensores-intel-spec-card sensores-intel-spec-card--compact">
+                        <div class="sensores-intel-spec-card-inner">
+                            <p class="sensores-intel-spec-line"><span class="sensores-intel-spec-k">Frequência de
+                                    operação:</span> até 240&nbsp;MHz</p>
+                            <p class="sensores-intel-spec-note">Base para leituras e envio de dados em tempo real, com
+                                resposta estável no ambiente industrial.</p>
+                        </div>
+                    </article>
+                    <article class="sensores-intel-spec-card sensores-intel-spec-card--compact">
+                        <div class="sensores-intel-spec-card-inner">
+                            <p class="sensores-intel-spec-line"><span class="sensores-intel-spec-k">Wi‑Fi:</span> 802.11
+                                b/g/n (2,4&nbsp;GHz)</p>
+                            <p class="sensores-intel-spec-note">Compatível com redes Wi‑Fi usuais na fábrica, sem
+                                exigir infraestrutura proprietária.</p>
+                        </div>
+                    </article>
+                    <article class="sensores-intel-spec-card sensores-intel-spec-card--compact">
+                        <div class="sensores-intel-spec-card-inner">
+                            <p class="sensores-intel-spec-line"><span class="sensores-intel-spec-k">Alimentação via
+                                    USB:</span> 5&nbsp;V bivolt</p>
+                            <p class="sensores-intel-spec-note">Energização simples com fonte ou porta USB comum,
+                                facilitando instalação e manutenção.</p>
+                        </div>
+                    </article>
+                    <article class="sensores-intel-spec-card sensores-intel-spec-card--compact">
+                        <div class="sensores-intel-spec-card-inner">
+                            <p class="sensores-intel-spec-line"><span class="sensores-intel-spec-k">Memória contra queda
+                                    de internet</span></p>
+                            <p class="sensores-intel-spec-note">Buffer local: os eventos continuam sendo gravados e são
+                                sincronizados com a nuvem ao restabelecer a conexão.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
 
-                <article class="sensor-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="sensor-image-wrapper">
-                        <img src="images/sensor-contagem-linear.webp" alt="Sensor de Contagem com Metro Linear"
-                            class="sensor-image" loading="lazy">
-                    </div>
-                    <h3 class="sensor-card-title">Sensor de Contagem com Metro Linear</h3>
-                    <div class="sensor-card-price">
-                        <span class="sensor-card-price-label">Mensalidade</span>
-                        R$ 249,99 <span class="sensor-card-price-cycle">/mês</span>
-                    </div>
-                    <ul class="sensor-card-list">
-                        <li>Contagem automática 24/7</li>
-                        <li>Medição de cm (+-1,5cm)</li>
-                        <li>Ideal para moveleiro e extrusão</li>
-                    </ul>
-                    <a href="/sensores/#linear" class="sensor-card-cta">Ver Ficha Técnica</a>
+            <h3 class="sensores-intel-subheading" data-aos="fade-up">Linha de sensores</h3>
+            <div class="sensores-intel-sensor-cards" data-aos="fade-up" data-aos-delay="80">
+                <article class="sensores-intel-sensor-card">
+                    <h4 class="sensores-intel-sensor-title">Sensor de Contagem de Peças</h4>
+                    <p class="sensores-intel-sensor-desc">Contagem automática 24/7, sem erro humano e histórico de
+                        produção na nuvem.</p>
+                    <p class="sensores-intel-sensor-price"><span class="sensores-intel-sensor-price-label">Mensalidade</span>
+                        R$&nbsp;228,90 <span class="sensores-intel-sensor-cycle">/mês</span></p>
+                    <a href="/sensores/#contagem" class="sensores-intel-sensor-cta">Ver ficha técnica</a>
                 </article>
+                <article class="sensores-intel-sensor-card">
+                    <h4 class="sensores-intel-sensor-title">Sensor de Máquina Ligada / Desligada</h4>
+                    <p class="sensores-intel-sensor-desc">Apontamento de paradas, disponibilidade e base para OEE com
+                        leitura de corrente.</p>
+                    <p class="sensores-intel-sensor-price"><span class="sensores-intel-sensor-price-label">Mensalidade</span>
+                        R$&nbsp;178,90 <span class="sensores-intel-sensor-cycle">/mês</span></p>
+                    <a href="/sensores/#maquina" class="sensores-intel-sensor-cta">Ver ficha técnica</a>
+                </article>
+                <article class="sensores-intel-sensor-card">
+                    <h4 class="sensores-intel-sensor-title">Sensor de Contagem com Metro Linear</h4>
+                    <p class="sensores-intel-sensor-desc">Metragem em centímetros com alta resolução; ideal para
+                        moveleiro e extrusão.</p>
+                    <p class="sensores-intel-sensor-price"><span class="sensores-intel-sensor-price-label">Mensalidade</span>
+                        R$&nbsp;249,99 <span class="sensores-intel-sensor-cycle">/mês</span></p>
+                    <a href="/sensores/#linear" class="sensores-intel-sensor-cta">Ver ficha técnica</a>
+                </article>
+                <article class="sensores-intel-sensor-card">
+                    <h4 class="sensores-intel-sensor-title">Sensor de Temperatura e Umidade</h4>
+                    <p class="sensores-intel-sensor-desc">Registro contínuo, alertas de desvio e conformidade com
+                        exigências ANVISA/MAPA.</p>
+                    <p class="sensores-intel-sensor-price"><span class="sensores-intel-sensor-price-label">Mensalidade</span>
+                        R$&nbsp;80,00 <span class="sensores-intel-sensor-cycle">/mês</span></p>
+                    <a href="/sensores/#temperatura" class="sensores-intel-sensor-cta">Ver ficha técnica</a>
+                </article>
+            </div>
 
-                <article class="sensor-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="sensor-image-wrapper">
-                        <img src="images/sensor-temperatura-umidade.webp" alt="Sensor de Temperatura e Umidade"
-                            class="sensor-image" loading="lazy">
-                    </div>
-                    <h3 class="sensor-card-title">Sensor de Temperatura e Umidade</h3>
-                    <div class="sensor-card-price">
-                        <span class="sensor-card-price-label">Mensalidade</span>
-                        R$ 80,00 <span class="sensor-card-price-cycle">/mês</span>
-                    </div>
-                    <ul class="sensor-card-list">
-                        <li>Registro automático 24/7</li>
-                        <li>Alertas de desvios</li>
-                        <li>Atende ANVISA/MAPA</li>
-                    </ul>
-                    <a href="/sensores/#temperatura" class="sensor-card-cta">Ver Ficha Técnica</a>
-                </article>
+            <div class="sensores-intel-cta-wrap" data-aos="fade-up">
+                <a href="/sensores/" class="btn btn-primary sensores-intel-cta">Ver todas as especificações</a>
             </div>
         </div>
     </section>
