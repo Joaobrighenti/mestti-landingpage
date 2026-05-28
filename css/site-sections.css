@@ -222,7 +222,7 @@
 
 .service-offer-photo {
     flex-shrink: 0;
-    height: 160px;
+    height: 200px;
     background: linear-gradient(145deg, var(--gray-100) 0%, var(--gray-200) 100%);
     border-bottom: 1px dashed var(--gray-300);
     position: relative;
@@ -452,12 +452,8 @@
     transform: translateY(-1px);
 }
 
-/* Carrossel sem setas: swipe/scroll apenas */
-@media (min-width: 1025px) {
-    .features-testimonials .container {
-        max-width: 1240px; /* Aumentado para caber 4 cards */
-    }
-
+/* Desktop: grade fixa de 2 soluções, mesma altura e CTAs alinhados */
+@media (min-width: 768px) {
     .services-offer-viewport {
         overflow: visible;
         margin: 0;
@@ -466,16 +462,24 @@
 
     .services-offer-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         width: 100%;
-        gap: 1.25rem;
+        gap: clamp(0.9rem, 2vw, 1.25rem);
         margin: 0;
+        align-items: stretch;
     }
 
     .service-offer-card {
         width: 100%;
         flex: none;
         scroll-snap-align: none;
+        min-height: 100%;
+    }
+}
+
+@media (min-width: 1025px) {
+    .features-testimonials .container {
+        max-width: 1040px;
     }
 }
 
