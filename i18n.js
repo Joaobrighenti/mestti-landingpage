@@ -1,0 +1,575 @@
+/**
+ * MESTTI — tradução PT / EN / ES (data-i18n)
+ */
+(function () {
+    const STORAGE_KEY = 'mesttiLang';
+    const SUPPORTED = ['pt', 'en', 'es'];
+
+    const T = {
+        pt: {
+            'meta.home.title': 'MESTTI | Apontamento Inteligente em Tempo Real',
+            'meta.home.description': 'MESTTI - Apontamento automático sem digitação | OEE e indicadores em tempo real',
+            'meta.empresa.title': 'Sobre a empresa | MESTTI',
+            'meta.empresa.description': 'Conheça a MESTTI — automação, OEE e sensores para o chão de fábrica.',
+            'meta.contato.title': 'Contato | MESTTI',
+            'meta.contato.description': 'Entre em contato com a MESTTI — comercial, suporte e canais oficiais.',
+            'nav.solutions': 'Soluções',
+            'nav.resources': 'Recursos',
+            'nav.installation': 'Instalação',
+            'nav.about': 'Sobre',
+            'header.contact': 'Contato',
+            'header.login': 'Login',
+            'header.demo': 'Demonstração',
+            'a11y.openMenu': 'Abrir menu',
+            'a11y.closeMenu': 'Fechar menu',
+            'a11y.lang': 'Idioma',
+            'a11y.langPt': 'Português (Brasil)',
+            'a11y.langEn': 'English (United States)',
+            'a11y.langEs': 'Español',
+            'mobile.contact': 'Contato',
+            'mobile.whatsapp': 'WhatsApp',
+            'mobile.contactCenter': 'Central de contato',
+            'home.hero.title': 'Apontamento Inteligente em Tempo Real: <span class="highlight">Maximize seu OEE</span> e produtividade.',
+            'home.hero.subtitle': 'Sistema de apontamento automático que monitora suas máquinas em tempo real, identifica perdas e gera indicadores precisos de OEE, disponibilidade e performance.',
+            'home.hero.cta': 'Ver como funciona',
+            'home.solutions.title': 'Nossas soluções',
+            'home.solutions.subtitle': 'Nossos serviços para sensoriar, programar e monitorar o chão de fábrica — com tudo que você precisa dentro do sistema MESTTI.',
+            'home.solutions.carousel': 'Carrossel de soluções',
+            'home.s1.title': 'Sensoriamento de chão de fábrica',
+            'home.s1.lead': 'Sensores industriais conectados ao MESTTI para capturar o que acontece na linha, sem planilhas e sem atraso na informação.',
+            'home.s1.heading': 'O que entra no sistema:',
+            'home.s1.li1': 'Instalação orientada de sensores (contagem, máquina ligada/desligada, metro linear e demais modelos do catálogo).',
+            'home.s1.li2': 'Leitura em tempo real no painel MESTTI, com vínculo a ordens, máquinas e turnos.',
+            'home.s1.li3': 'Apontamento automático de produção e base para cálculo de OEE e perdas.',
+            'home.s1.li4': 'Alertas configuráveis e histórico para auditoria e melhoria contínua.',
+            'home.s1.cta': 'Saiba mais',
+            'home.s2.title': 'Sequenciamento e programação do chão de fábrica',
+            'home.s2.lead': 'Organize filas, prioridades e ritmo da produção com regras alinhadas ao que acontece fisicamente na planta.',
+            'home.s2.heading': 'O que entra no sistema:',
+            'home.s2.li1': 'Definição e ajuste de sequências de ordens, rotas e gargalos visíveis no MESTTI.',
+            'home.s2.li2': 'Sincronização entre planejado e executado, com rastreio do que foi produzido em cada etapa.',
+            'home.s2.li3': 'Integração com seu fluxo atual (ERP/MES/outros) conforme o desenho do projeto.',
+            'home.s2.li4': 'Cenários de “o que acontece se…” para suportar decisões de programação no dia a dia.',
+            'home.s2.cta': 'Saiba mais',
+            'home.grid.label': 'Funcionalidades do sistema MESTTI',
+            'home.grid.c1': 'Sequenciamento de produção',
+            'home.grid.c2': 'Gantt da produção',
+            'home.grid.c3': 'Monitoramento de indicadores em tempo real',
+            'home.grid.c4': 'Controle individual por máquina',
+            'home.grid.c5': 'Mapa 3D em tempo real da fábrica',
+            'home.grid.c6': 'Gráfico de causa raiz de paradas',
+            'home.sensors.title': 'Sensores industriais inteligentes',
+            'home.sensors.subtitle': 'Hardware para o chão de fábrica, leitura confiável e continuidade dos dados mesmo com oscilação de rede — integrado à nuvem MESTTI.',
+            'home.sensors.specs': 'Especificações técnicas',
+            'home.sensors.line': 'Linha de sensores',
+            'home.sensors.cta': 'Ver todas as especificações',
+            'home.sensors.ctaCard': 'Ver ficha técnica',
+            'home.roadmap.title': 'Roadmap de implementação',
+            'home.roadmap.subtitle': 'Da proposta ao uso diário dos dados: um caminho claro, com prazos realistas e acompanhamento da equipe MESTTI em cada etapa.',
+            'home.roadmap.cta': 'Quero iniciar minha implementação',
+            'home.roadmap.tabs': 'Etapas da implementação',
+            'home.roadmap.step1': 'Diagnóstico e definição',
+            'home.roadmap.step1.badge': 'Após a proposta',
+            'home.roadmap.step2': 'Instalação e go-live',
+            'home.roadmap.step2.badge': 'Até 1 semana',
+            'home.roadmap.step3': 'Treinamento e consultoria',
+            'home.roadmap.step3.badge': '1 mês',
+            'home.roadmap.p1.phase': 'Fase 1',
+            'home.roadmap.p1.title': 'Proposta, reunião e sensores a instalar',
+            'home.roadmap.p1.durStrong': 'Alinhamento',
+            'home.roadmap.p1.durSpan': 'Conforme agenda da planta',
+            'home.roadmap.p1.lead': 'Depois da proposta comercial, entramos no chão de fábrica (presencial ou remoto) para fechar exatamente quais sensores vão em cada máquina, posto ou linha — sem surpresas na instalação.',
+            'home.roadmap.p1.li1': 'Revisão da proposta e escopo do projeto com sua equipe',
+            'home.roadmap.p1.li2': 'Reunião técnica para mapear processos, máquinas e pontos de coleta',
+            'home.roadmap.p1.li3': 'Definição do kit de sensores por equipamento (contagem, status, metro linear, etc.)',
+            'home.roadmap.p1.li4': 'Plano de instalação e cronograma acordado com a operação',
+            'home.roadmap.p2.phase': 'Fase 2',
+            'home.roadmap.p2.title': 'Instalação, testes e parametrização',
+            'home.roadmap.p2.durStrong': 'Até 1 semana',
+            'home.roadmap.p2.durSpan': 'Instalação: 1 a 3 dias*',
+            'home.roadmap.p2.lead': 'Instalação física dos sensores, validação das leituras e configuração do MESTTI acontecem em paralelo — para você enxergar dados confiáveis o quanto antes.',
+            'home.roadmap.p2.parallel': 'Atividades em paralelo',
+            'home.roadmap.p2.chip1': 'Instalação dos sensores',
+            'home.roadmap.p2.chip2': 'Testes de leitura',
+            'home.roadmap.p2.chip3': 'Parametrização no sistema',
+            'home.roadmap.p2.li1': 'Instalação física: <strong>1 a 3 dias</strong>, conforme porte e quantidade de pontos na planta',
+            'home.roadmap.p2.li2': 'Testes de conectividade, leitura e consistência dos eventos no painel',
+            'home.roadmap.p2.li3': 'Parametrização de máquinas, turnos, ordens e regras de apontamento',
+            'home.roadmap.p2.li4': 'Go-live com dados fluindo em produção real — prazo total da fase: <strong>até 1 semana</strong>',
+            'home.roadmap.p2.hint': '* O prazo de instalação varia conforme tamanho da empresa e número de sensores.',
+            'home.roadmap.p3.phase': 'Fase 3',
+            'home.roadmap.p3.title': 'Treinamento e consultoria com os novos dados',
+            'home.roadmap.p3.durStrong': '1 mês',
+            'home.roadmap.p3.durSpan': 'Acompanhamento contínuo',
+            'home.roadmap.p3.lead': 'Com o sistema em operação, capacitamos sua equipe e apoiamos a interpretação dos indicadores para transformar leitura em decisão no dia a dia.',
+            'home.roadmap.p3.li1': 'Treinamento de operadores, supervisores e gestão no uso do MESTTI',
+            'home.roadmap.p3.li2': 'Consultoria para leitura de OEE, paradas, produção e perdas com dados reais',
+            'home.roadmap.p3.li3': 'Ajustes finos de parametrização conforme a operação evolui na prática',
+            'home.roadmap.p3.li4': '<strong>1 mês</strong> de suporte próximo até a rotina de dados estar consolidada',
+            'home.roadmap.tl.aria': 'Visão geral dos prazos',
+            'home.roadmap.tl1.label': 'Fase 1',
+            'home.roadmap.tl1.text': 'Proposta e definição dos sensores',
+            'home.roadmap.tl2.label': 'Fase 2',
+            'home.roadmap.tl2.text': '1–3 dias instalação · até 1 semana total',
+            'home.roadmap.tl3.label': 'Fase 3',
+            'home.roadmap.tl3.text': '1 mês de treinamento e consultoria',
+            'home.roadmap.navHint': 'Clique nas etapas acima ou use ← → no teclado para explorar o roadmap.',
+            'home.spec.freq.line': '<span class="sensores-intel-spec-k">Frequência de operação:</span> até 240&nbsp;MHz',
+            'home.spec.freq.note': 'Base para leituras e envio de dados em tempo real, com resposta estável no ambiente industrial.',
+            'home.spec.wifi.line': '<span class="sensores-intel-spec-k">Wi‑Fi:</span> 802.11 b/g/n (2,4&nbsp;GHz)',
+            'home.spec.wifi.note': 'Compatível com redes Wi‑Fi usuais na fábrica, sem exigir infraestrutura proprietária.',
+            'home.spec.usb.line': '<span class="sensores-intel-spec-k">Alimentação via USB:</span> 5&nbsp;V bivolt',
+            'home.spec.usb.note': 'Energização simples com fonte ou porta USB comum, facilitando instalação e manutenção.',
+            'home.spec.mem.line': '<span class="sensores-intel-spec-k">Memória contra queda de internet</span>',
+            'home.spec.mem.note': 'Buffer local: os eventos continuam sendo gravados e são sincronizados com a nuvem ao restabelecer a conexão.',
+            'home.sensor.c1.title': 'Sensor de Contagem de Peças',
+            'home.sensor.c1.desc': 'Contagem automática 24/7, sem erro humano e histórico de produção na nuvem.',
+            'home.sensor.c2.title': 'Sensor de Máquina Ligada / Desligada',
+            'home.sensor.c2.desc': 'Apontamento de paradas, disponibilidade e base para OEE com leitura de corrente.',
+            'home.sensor.c3.title': 'Sensor de Contagem com Metro Linear',
+            'home.sensor.c3.desc': 'Metragem em centímetros com alta resolução; ideal para moveleiro e extrusão.',
+            'footer.product': 'Produto',
+            'footer.solutions': 'Soluções',
+            'footer.company': 'Companhia',
+            'footer.resources': 'Recursos',
+            'footer.contact': 'Contato',
+            'footer.legal': '© 2026 MESTTI. Todos os direitos reservados.',
+            'footer.oee': 'Apontamento e OEE',
+            'footer.sensors': 'Sensores',
+            'footer.sensorSpecs': 'Ficha técnica de sensores',
+            'footer.monitoring': 'Monitoramento',
+            'footer.about': 'Sobre nós',
+            'footer.contactUs': 'Entre em contato',
+            'footer.features': 'Funcionalidades',
+            'footer.app': 'Acesso ao sistema',
+            'modal.title': 'Solicite sua demonstração',
+            'modal.lead': 'Preencha os campos para falar com um especialista e entender os benefícios do MESTTI para sua operação.',
+            'modal.name': 'Nome completo',
+            'modal.email': 'E-mail profissional',
+            'modal.phone': 'Telefone / WhatsApp',
+            'modal.role': 'Cargo',
+            'modal.sector': 'Setor da Indústria',
+            'modal.solution': 'Selecione a solução de maior interesse',
+            'modal.note': 'Observação (opcional)',
+            'modal.submit': 'Solicitar demonstração',
+            'form.success': 'Recebemos sua solicitação. Em breve nossa equipe entrará em contato.',
+            'form.error': 'Não conseguimos enviar agora. Tente novamente em instantes.',
+            'page.empresa.h1': 'Sobre a MESTTI',
+            'page.empresa.lead': 'Automação e informatização do chão de fábrica, com foco em apontamento, OEE e decisões em tempo real.',
+            'page.contato.h1': 'Estamos aqui para te ajudar.',
+            'page.contato.lead': 'Fale com a equipe MESTTI sobre apontamento automático, OEE, sensores industriais e demonstração da solução.'
+        },
+        en: {
+            'meta.home.title': 'MESTTI | Smart Real-Time Production Tracking',
+            'meta.home.description': 'MESTTI - Automatic production tracking | OEE and real-time shop floor indicators',
+            'meta.empresa.title': 'About us | MESTTI',
+            'meta.empresa.description': 'Meet MESTTI — automation, OEE and sensors for the shop floor.',
+            'meta.contato.title': 'Contact | MESTTI',
+            'meta.contato.description': 'Contact MESTTI — sales, support and official channels.',
+            'nav.solutions': 'Solutions',
+            'nav.resources': 'Resources',
+            'nav.installation': 'Installation',
+            'nav.about': 'About',
+            'header.contact': 'Contact',
+            'header.login': 'Login',
+            'header.demo': 'Request demo',
+            'a11y.openMenu': 'Open menu',
+            'a11y.closeMenu': 'Close menu',
+            'a11y.lang': 'Language',
+            'a11y.langPt': 'Portuguese (Brazil)',
+            'a11y.langEn': 'English (United States)',
+            'a11y.langEs': 'Spanish',
+            'mobile.contact': 'Contact',
+            'mobile.whatsapp': 'WhatsApp',
+            'mobile.contactCenter': 'Contact center',
+            'home.hero.title': 'Smart Real-Time Production Tracking: <span class="highlight">Maximize your OEE</span> and productivity.',
+            'home.hero.subtitle': 'Automatic tracking that monitors your machines in real time, identifies losses and delivers accurate OEE, availability and performance indicators.',
+            'home.hero.cta': 'See how it works',
+            'home.solutions.title': 'Our solutions',
+            'home.solutions.subtitle': 'Services to instrument, schedule and monitor your shop floor — with everything you need inside the MESTTI system.',
+            'home.solutions.carousel': 'Solutions carousel',
+            'home.s1.title': 'Shop floor instrumentation',
+            'home.s1.lead': 'Industrial sensors connected to MESTTI to capture what happens on the line, without spreadsheets or delayed data.',
+            'home.s1.heading': 'What is included:',
+            'home.s1.li1': 'Guided installation of sensors (counting, machine on/off, linear meter and other catalog models).',
+            'home.s1.li2': 'Real-time reading on the MESTTI dashboard, linked to orders, machines and shifts.',
+            'home.s1.li3': 'Automatic production tracking and a solid base for OEE and loss calculation.',
+            'home.s1.li4': 'Configurable alerts and history for audits and continuous improvement.',
+            'home.s1.cta': 'Learn more',
+            'home.s2.title': 'Shop floor sequencing and scheduling',
+            'home.s2.lead': 'Organize queues, priorities and production pace with rules aligned to what happens on the plant floor.',
+            'home.s2.heading': 'What is included:',
+            'home.s2.li1': 'Definition and adjustment of order sequences, routes and bottlenecks visible in MESTTI.',
+            'home.s2.li2': 'Sync between planned and executed, tracking what was produced at each step.',
+            'home.s2.li3': 'Integration with your current flow (ERP/MES/others) as designed for the project.',
+            'home.s2.li4': 'What-if scenarios to support day-to-day scheduling decisions.',
+            'home.s2.cta': 'Learn more',
+            'home.grid.label': 'MESTTI system features',
+            'home.grid.c1': 'Production sequencing',
+            'home.grid.c2': 'Production Gantt',
+            'home.grid.c3': 'Real-time indicator monitoring',
+            'home.grid.c4': 'Individual control per machine',
+            'home.grid.c5': 'Real-time 3D factory map',
+            'home.grid.c6': 'Root cause chart for downtime',
+            'home.sensors.title': 'Smart industrial sensors',
+            'home.sensors.subtitle': 'Hardware for the shop floor, reliable reading and data continuity even with network fluctuations — integrated with the MESTTI cloud.',
+            'home.sensors.specs': 'Technical specifications',
+            'home.sensors.line': 'Sensor line',
+            'home.sensors.cta': 'View all specifications',
+            'home.sensors.ctaCard': 'View datasheet',
+            'home.roadmap.title': 'Implementation roadmap',
+            'home.roadmap.subtitle': 'From proposal to daily use of data: a clear path with realistic timelines and MESTTI team support at every step.',
+            'home.roadmap.cta': 'Start my implementation',
+            'home.roadmap.tabs': 'Implementation steps',
+            'home.roadmap.step1': 'Diagnosis and definition',
+            'home.roadmap.step1.badge': 'After proposal',
+            'home.roadmap.step2': 'Installation and go-live',
+            'home.roadmap.step2.badge': 'Up to 1 week',
+            'home.roadmap.step3': 'Training and consulting',
+            'home.roadmap.step3.badge': '1 month',
+            'home.roadmap.p1.phase': 'Phase 1',
+            'home.roadmap.p1.title': 'Proposal, meeting and sensors to install',
+            'home.roadmap.p1.durStrong': 'Alignment',
+            'home.roadmap.p1.durSpan': 'Per plant schedule',
+            'home.roadmap.p1.lead': 'After the commercial proposal, we go to the shop floor (on-site or remote) to define exactly which sensors go on each machine, station or line — no surprises at installation.',
+            'home.roadmap.p1.li1': 'Proposal review and project scope with your team',
+            'home.roadmap.p1.li2': 'Technical meeting to map processes, machines and data collection points',
+            'home.roadmap.p1.li3': 'Sensor kit definition per asset (counting, status, linear meter, etc.)',
+            'home.roadmap.p1.li4': 'Installation plan and timeline agreed with operations',
+            'home.roadmap.p2.phase': 'Phase 2',
+            'home.roadmap.p2.title': 'Installation, testing and configuration',
+            'home.roadmap.p2.durStrong': 'Up to 1 week',
+            'home.roadmap.p2.durSpan': 'Installation: 1 to 3 days*',
+            'home.roadmap.p2.lead': 'Physical sensor installation, reading validation and MESTTI setup run in parallel — so you see reliable data as soon as possible.',
+            'home.roadmap.p2.parallel': 'Parallel activities',
+            'home.roadmap.p2.chip1': 'Sensor installation',
+            'home.roadmap.p2.chip2': 'Reading tests',
+            'home.roadmap.p2.chip3': 'System configuration',
+            'home.roadmap.p2.li1': 'Physical installation: <strong>1 to 3 days</strong>, depending on plant size and number of points',
+            'home.roadmap.p2.li2': 'Connectivity, reading and event consistency tests on the dashboard',
+            'home.roadmap.p2.li3': 'Configuration of machines, shifts, orders and tracking rules',
+            'home.roadmap.p2.li4': 'Go-live with data flowing in real production — total phase timeline: <strong>up to 1 week</strong>',
+            'home.roadmap.p2.hint': '* Installation time varies by company size and number of sensors.',
+            'home.roadmap.p3.phase': 'Phase 3',
+            'home.roadmap.p3.title': 'Training and consulting with your new data',
+            'home.roadmap.p3.durStrong': '1 month',
+            'home.roadmap.p3.durSpan': 'Ongoing support',
+            'home.roadmap.p3.lead': 'With the system running, we train your team and help interpret indicators to turn data into day-to-day decisions.',
+            'home.roadmap.p3.li1': 'Training for operators, supervisors and management on MESTTI',
+            'home.roadmap.p3.li2': 'Consulting on OEE, downtime, production and losses with real data',
+            'home.roadmap.p3.li3': 'Fine-tuning of settings as operations evolve in practice',
+            'home.roadmap.p3.li4': '<strong>1 month</strong> of close support until your data routine is established',
+            'home.roadmap.tl.aria': 'Timeline overview',
+            'home.roadmap.tl1.label': 'Phase 1',
+            'home.roadmap.tl1.text': 'Proposal and sensor definition',
+            'home.roadmap.tl2.label': 'Phase 2',
+            'home.roadmap.tl2.text': '1–3 days install · up to 1 week total',
+            'home.roadmap.tl3.label': 'Phase 3',
+            'home.roadmap.tl3.text': '1 month of training and consulting',
+            'home.roadmap.navHint': 'Click the steps above or use ← → on the keyboard to explore the roadmap.',
+            'home.spec.freq.line': '<span class="sensores-intel-spec-k">Operating frequency:</span> up to 240&nbsp;MHz',
+            'home.spec.freq.note': 'Foundation for real-time readings and data transmission with stable response in industrial environments.',
+            'home.spec.wifi.line': '<span class="sensores-intel-spec-k">Wi‑Fi:</span> 802.11 b/g/n (2.4&nbsp;GHz)',
+            'home.spec.wifi.note': 'Compatible with standard factory Wi‑Fi networks, no proprietary infrastructure required.',
+            'home.spec.usb.line': '<span class="sensores-intel-spec-k">USB power:</span> 5&nbsp;V universal',
+            'home.spec.usb.note': 'Simple power via adapter or common USB port, easing installation and maintenance.',
+            'home.spec.mem.line': '<span class="sensores-intel-spec-k">Offline memory buffer</span>',
+            'home.spec.mem.note': 'Local buffer: events keep recording and sync to the cloud when connection is restored.',
+            'home.sensor.c1.title': 'Piece Counting Sensor',
+            'home.sensor.c1.desc': 'Automatic 24/7 counting, no human error and production history in the cloud.',
+            'home.sensor.c2.title': 'Machine On / Off Sensor',
+            'home.sensor.c2.desc': 'Downtime tracking, availability and OEE foundation with current reading.',
+            'home.sensor.c3.title': 'Counting with Linear Meter Sensor',
+            'home.sensor.c3.desc': 'Centimeter measurement with high resolution; ideal for furniture and extrusion.',
+            'footer.product': 'Product',
+            'footer.solutions': 'Solutions',
+            'footer.company': 'Company',
+            'footer.resources': 'Resources',
+            'footer.contact': 'Contact',
+            'footer.legal': '© 2026 MESTTI. All rights reserved.',
+            'footer.oee': 'Tracking and OEE',
+            'footer.sensors': 'Sensors',
+            'footer.sensorSpecs': 'Sensor datasheet',
+            'footer.monitoring': 'Monitoring',
+            'footer.about': 'About us',
+            'footer.contactUs': 'Contact us',
+            'footer.features': 'Features',
+            'footer.app': 'System access',
+            'modal.title': 'Request your demo',
+            'modal.lead': 'Fill in the fields to speak with a specialist and understand how MESTTI benefits your operation.',
+            'modal.name': 'Full name',
+            'modal.email': 'Work email',
+            'modal.phone': 'Phone / WhatsApp',
+            'modal.role': 'Job title',
+            'modal.sector': 'Industry sector',
+            'modal.solution': 'Select your main area of interest',
+            'modal.note': 'Notes (optional)',
+            'modal.submit': 'Request demo',
+            'form.success': 'We received your request. Our team will contact you shortly.',
+            'form.error': 'We could not send your request now. Please try again in a moment.',
+            'page.empresa.h1': 'About MESTTI',
+            'page.empresa.lead': 'Shop floor automation and digitalization focused on tracking, OEE and real-time decisions.',
+            'page.contato.h1': 'We are here to help.',
+            'page.contato.lead': 'Talk to the MESTTI team about automatic tracking, OEE, industrial sensors and a solution demo.'
+        },
+        es: {
+            'meta.home.title': 'MESTTI | Apunte Inteligente en Tiempo Real',
+            'meta.home.description': 'MESTTI - Apunte automático sin digitación | OEE e indicadores en tiempo real',
+            'meta.empresa.title': 'Sobre la empresa | MESTTI',
+            'meta.empresa.description': 'Conozca MESTTI — automatización, OEE y sensores para planta.',
+            'meta.contato.title': 'Contacto | MESTTI',
+            'meta.contato.description': 'Contacte a MESTTI — comercial, soporte y canales oficiales.',
+            'nav.solutions': 'Soluciones',
+            'nav.resources': 'Recursos',
+            'nav.installation': 'Instalación',
+            'nav.about': 'Sobre',
+            'header.contact': 'Contacto',
+            'header.login': 'Iniciar sesión',
+            'header.demo': 'Demostración',
+            'a11y.openMenu': 'Abrir menú',
+            'a11y.closeMenu': 'Cerrar menú',
+            'a11y.lang': 'Idioma',
+            'a11y.langPt': 'Portugués (Brasil)',
+            'a11y.langEn': 'Inglés (Estados Unidos)',
+            'a11y.langEs': 'Español',
+            'mobile.contact': 'Contacto',
+            'mobile.whatsapp': 'WhatsApp',
+            'mobile.contactCenter': 'Central de contacto',
+            'home.hero.title': 'Apunte Inteligente en Tiempo Real: <span class="highlight">Maximice su OEE</span> y productividad.',
+            'home.hero.subtitle': 'Sistema de apunte automático que monitorea sus máquinas en tiempo real, identifica pérdidas y genera indicadores precisos de OEE, disponibilidad y rendimiento.',
+            'home.hero.cta': 'Ver cómo funciona',
+            'home.solutions.title': 'Nuestras soluciones',
+            'home.solutions.subtitle': 'Servicios para sensorizar, programar y monitorear planta — con todo lo que necesita dentro del sistema MESTTI.',
+            'home.solutions.carousel': 'Carrusel de soluciones',
+            'home.s1.title': 'Sensorización de planta',
+            'home.s1.lead': 'Sensores industriales conectados a MESTTI para capturar lo que ocurre en línea, sin hojas de cálculo ni retraso en la información.',
+            'home.s1.heading': 'Qué incluye el sistema:',
+            'home.s1.li1': 'Instalación guiada de sensores (conteo, máquina encendida/apagada, metro lineal y demás modelos del catálogo).',
+            'home.s1.li2': 'Lectura en tiempo real en el panel MESTTI, vinculada a órdenes, máquinas y turnos.',
+            'home.s1.li3': 'Apunte automático de producción y base para cálculo de OEE y pérdidas.',
+            'home.s1.li4': 'Alertas configurables e historial para auditoría y mejora continua.',
+            'home.s1.cta': 'Saber más',
+            'home.s2.title': 'Secuenciación y programación de planta',
+            'home.s2.lead': 'Organice filas, prioridades y ritmo de producción con reglas alineadas a lo que ocurre físicamente en planta.',
+            'home.s2.heading': 'Qué incluye el sistema:',
+            'home.s2.li1': 'Definición y ajuste de secuencias de órdenes, rutas y cuellos de botella visibles en MESTTI.',
+            'home.s2.li2': 'Sincronización entre planificado y ejecutado, con rastreo de lo producido en cada etapa.',
+            'home.s2.li3': 'Integración con su flujo actual (ERP/MES/otros) según el diseño del proyecto.',
+            'home.s2.li4': 'Escenarios “qué pasa si…” para apoyar decisiones de programación diarias.',
+            'home.s2.cta': 'Saber más',
+            'home.grid.label': 'Funcionalidades del sistema MESTTI',
+            'home.grid.c1': 'Secuenciación de producción',
+            'home.grid.c2': 'Gantt de producción',
+            'home.grid.c3': 'Monitoreo de indicadores en tiempo real',
+            'home.grid.c4': 'Control individual por máquina',
+            'home.grid.c5': 'Mapa 3D en tiempo real de la fábrica',
+            'home.grid.c6': 'Gráfico de causa raíz de paradas',
+            'home.sensors.title': 'Sensores industriales inteligentes',
+            'home.sensors.subtitle': 'Hardware para planta, lectura confiable y continuidad de datos incluso con oscilación de red — integrado a la nube MESTTI.',
+            'home.sensors.specs': 'Especificaciones técnicas',
+            'home.sensors.line': 'Línea de sensores',
+            'home.sensors.cta': 'Ver todas las especificaciones',
+            'home.sensors.ctaCard': 'Ver ficha técnica',
+            'home.roadmap.title': 'Hoja de ruta de implementación',
+            'home.roadmap.subtitle': 'De la propuesta al uso diario de los datos: un camino claro, con plazos realistas y acompañamiento del equipo MESTTI en cada etapa.',
+            'home.roadmap.cta': 'Quiero iniciar mi implementación',
+            'home.roadmap.tabs': 'Etapas de implementación',
+            'home.roadmap.step1': 'Diagnóstico y definición',
+            'home.roadmap.step1.badge': 'Tras la propuesta',
+            'home.roadmap.step2': 'Instalación y puesta en marcha',
+            'home.roadmap.step2.badge': 'Hasta 1 semana',
+            'home.roadmap.step3': 'Capacitación y consultoría',
+            'home.roadmap.step3.badge': '1 mes',
+            'home.roadmap.p1.phase': 'Fase 1',
+            'home.roadmap.p1.title': 'Propuesta, reunión y sensores a instalar',
+            'home.roadmap.p1.durStrong': 'Alineación',
+            'home.roadmap.p1.durSpan': 'Según agenda de planta',
+            'home.roadmap.p1.lead': 'Tras la propuesta comercial, entramos en planta (presencial o remoto) para definir exactamente qué sensores van en cada máquina, puesto o línea — sin sorpresas en la instalación.',
+            'home.roadmap.p1.li1': 'Revisión de la propuesta y alcance del proyecto con su equipo',
+            'home.roadmap.p1.li2': 'Reunión técnica para mapear procesos, máquinas y puntos de recolección',
+            'home.roadmap.p1.li3': 'Definición del kit de sensores por equipo (conteo, estado, metro lineal, etc.)',
+            'home.roadmap.p1.li4': 'Plan de instalación y cronograma acordado con operaciones',
+            'home.roadmap.p2.phase': 'Fase 2',
+            'home.roadmap.p2.title': 'Instalación, pruebas y parametrización',
+            'home.roadmap.p2.durStrong': 'Hasta 1 semana',
+            'home.roadmap.p2.durSpan': 'Instalación: 1 a 3 días*',
+            'home.roadmap.p2.lead': 'La instalación física de sensores, validación de lecturas y configuración de MESTTI ocurren en paralelo — para ver datos confiables cuanto antes.',
+            'home.roadmap.p2.parallel': 'Actividades en paralelo',
+            'home.roadmap.p2.chip1': 'Instalación de sensores',
+            'home.roadmap.p2.chip2': 'Pruebas de lectura',
+            'home.roadmap.p2.chip3': 'Parametrización en el sistema',
+            'home.roadmap.p2.li1': 'Instalación física: <strong>1 a 3 días</strong>, según tamaño de planta y cantidad de puntos',
+            'home.roadmap.p2.li2': 'Pruebas de conectividad, lectura y consistencia de eventos en el panel',
+            'home.roadmap.p2.li3': 'Parametrización de máquinas, turnos, órdenes y reglas de apunte',
+            'home.roadmap.p2.li4': 'Puesta en marcha con datos en producción real — plazo total de la fase: <strong>hasta 1 semana</strong>',
+            'home.roadmap.p2.hint': '* El plazo de instalación varía según tamaño de la empresa y número de sensores.',
+            'home.roadmap.p3.phase': 'Fase 3',
+            'home.roadmap.p3.title': 'Capacitación y consultoría con los nuevos datos',
+            'home.roadmap.p3.durStrong': '1 mes',
+            'home.roadmap.p3.durSpan': 'Acompañamiento continuo',
+            'home.roadmap.p3.lead': 'Con el sistema en operación, capacitamos a su equipo y apoyamos la interpretación de indicadores para convertir lectura en decisión diaria.',
+            'home.roadmap.p3.li1': 'Capacitación de operadores, supervisores y gestión en el uso de MESTTI',
+            'home.roadmap.p3.li2': 'Consultoría para lectura de OEE, paradas, producción y pérdidas con datos reales',
+            'home.roadmap.p3.li3': 'Ajustes finos de parametrización según evolucione la operación',
+            'home.roadmap.p3.li4': '<strong>1 mes</strong> de soporte cercano hasta consolidar la rutina de datos',
+            'home.roadmap.tl.aria': 'Resumen de plazos',
+            'home.roadmap.tl1.label': 'Fase 1',
+            'home.roadmap.tl1.text': 'Propuesta y definición de sensores',
+            'home.roadmap.tl2.label': 'Fase 2',
+            'home.roadmap.tl2.text': '1–3 días instalación · hasta 1 semana total',
+            'home.roadmap.tl3.label': 'Fase 3',
+            'home.roadmap.tl3.text': '1 mes de capacitación y consultoría',
+            'home.roadmap.navHint': 'Haga clic en las etapas arriba o use ← → en el teclado para explorar la hoja de ruta.',
+            'home.spec.freq.line': '<span class="sensores-intel-spec-k">Frecuencia de operación:</span> hasta 240&nbsp;MHz',
+            'home.spec.freq.note': 'Base para lecturas y envío de datos en tiempo real, con respuesta estable en ambiente industrial.',
+            'home.spec.wifi.line': '<span class="sensores-intel-spec-k">Wi‑Fi:</span> 802.11 b/g/n (2,4&nbsp;GHz)',
+            'home.spec.wifi.note': 'Compatible con redes Wi‑Fi habituales en planta, sin infraestructura propietaria.',
+            'home.spec.usb.line': '<span class="sensores-intel-spec-k">Alimentación USB:</span> 5&nbsp;V bivolt',
+            'home.spec.usb.note': 'Energización simple con fuente o puerto USB común, facilitando instalación y mantenimiento.',
+            'home.spec.mem.line': '<span class="sensores-intel-spec-k">Memoria ante caída de internet</span>',
+            'home.spec.mem.note': 'Buffer local: los eventos siguen registrándose y se sincronizan con la nube al restablecer la conexión.',
+            'home.sensor.c1.title': 'Sensor de Conteo de Piezas',
+            'home.sensor.c1.desc': 'Conteo automático 24/7, sin error humano e historial de producción en la nube.',
+            'home.sensor.c2.title': 'Sensor de Máquina Encendida / Apagada',
+            'home.sensor.c2.desc': 'Apunte de paradas, disponibilidad y base para OEE con lectura de corriente.',
+            'home.sensor.c3.title': 'Sensor de Conteo con Metro Lineal',
+            'home.sensor.c3.desc': 'Metraje en centímetros con alta resolución; ideal para mueblería y extrusión.',
+            'footer.product': 'Producto',
+            'footer.solutions': 'Soluciones',
+            'footer.company': 'Compañía',
+            'footer.resources': 'Recursos',
+            'footer.contact': 'Contacto',
+            'footer.legal': '© 2026 MESTTI. Todos los derechos reservados.',
+            'footer.oee': 'Apunte y OEE',
+            'footer.sensors': 'Sensores',
+            'footer.sensorSpecs': 'Ficha técnica de sensores',
+            'footer.monitoring': 'Monitoreo',
+            'footer.about': 'Sobre nosotros',
+            'footer.contactUs': 'Contáctenos',
+            'footer.features': 'Funcionalidades',
+            'footer.app': 'Acceso al sistema',
+            'modal.title': 'Solicite su demostración',
+            'modal.lead': 'Complete los campos para hablar con un especialista y entender los beneficios de MESTTI para su operación.',
+            'modal.name': 'Nombre completo',
+            'modal.email': 'Correo profesional',
+            'modal.phone': 'Teléfono / WhatsApp',
+            'modal.role': 'Cargo',
+            'modal.sector': 'Sector industrial',
+            'modal.solution': 'Seleccione la solución de mayor interés',
+            'modal.note': 'Observación (opcional)',
+            'modal.submit': 'Solicitar demostración',
+            'form.success': 'Recibimos su solicitud. Pronto nuestro equipo se pondrá en contacto.',
+            'form.error': 'No pudimos enviar ahora. Intente de nuevo en unos instantes.',
+            'page.empresa.h1': 'Sobre MESTTI',
+            'page.empresa.lead': 'Automatización e informatización de planta, con foco en apunte, OEE y decisiones en tiempo real.',
+            'page.contato.h1': 'Estamos aquí para ayudarle.',
+            'page.contato.lead': 'Hable con el equipo MESTTI sobre apunte automático, OEE, sensores industriales y demostración de la solución.'
+        }
+    };
+
+    if (typeof window.MESTTI_PAGE_I18N === 'object') {
+        SUPPORTED.forEach((lang) => {
+            Object.assign(T[lang], window.MESTTI_PAGE_I18N[lang] || {});
+        });
+    }
+
+    function getStoredLang() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        return SUPPORTED.includes(saved) ? saved : 'pt';
+    }
+
+    function t(lang, key) {
+        return T[lang]?.[key] ?? T.pt[key] ?? key;
+    }
+
+    function getPageId() {
+        return document.body.getAttribute('data-page') || 'home';
+    }
+
+    function applyMeta(lang) {
+        const page = getPageId();
+        const titleKey = `meta.${page}.title`;
+        const descKey = `meta.${page}.description`;
+        const title = t(lang, titleKey);
+        const desc = t(lang, descKey);
+        if (title && !title.startsWith('meta.')) document.title = title;
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc && desc && !desc.startsWith('meta.')) metaDesc.setAttribute('content', desc);
+    }
+
+    function applyLanguage(lang) {
+        if (!SUPPORTED.includes(lang)) lang = 'pt';
+        localStorage.setItem(STORAGE_KEY, lang);
+        document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+
+        document.querySelectorAll('[data-i18n]').forEach((el) => {
+            const key = el.getAttribute('data-i18n');
+            if (!key) return;
+            const value = t(lang, key);
+            if (el.hasAttribute('data-i18n-html')) el.innerHTML = value;
+            else el.textContent = value;
+        });
+
+        document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+            el.placeholder = t(lang, el.getAttribute('data-i18n-placeholder'));
+        });
+
+        document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+            el.setAttribute('aria-label', t(lang, el.getAttribute('data-i18n-aria')));
+        });
+
+        document.querySelectorAll('.lang-switcher-btn').forEach((btn) => {
+            btn.classList.toggle('is-active', btn.getAttribute('data-lang') === lang);
+        });
+
+        applyMeta(lang);
+        window.MESTTI_LANG = lang;
+    }
+
+    function langSwitcherMarkup(idSuffix) {
+        const id = idSuffix ? `langSwitcher${idSuffix}` : 'langSwitcher';
+        return `
+<div class="lang-switcher${idSuffix ? ' lang-switcher--mobile' : ''}" id="${id}" role="group" data-i18n-aria="a11y.lang">
+  <button type="button" class="lang-switcher-btn is-active" data-lang="pt" data-i18n-aria="a11y.langPt" title="Português">
+    <span class="lang-switcher-flag" aria-hidden="true">🇧🇷</span>
+  </button>
+  <button type="button" class="lang-switcher-btn" data-lang="en" data-i18n-aria="a11y.langEn" title="English">
+    <span class="lang-switcher-flag" aria-hidden="true">🇺🇸</span>
+  </button>
+  <button type="button" class="lang-switcher-btn" data-lang="es" data-i18n-aria="a11y.langEs" title="Español">
+    <span class="lang-switcher-flag" aria-hidden="true">🇪🇸</span>
+  </button>
+</div>`;
+    }
+
+    function injectLangSwitcher() {
+        const actions = document.querySelector('.header-tractian-actions');
+        if (actions && !document.getElementById('langSwitcher')) {
+            actions.insertAdjacentHTML('afterbegin', langSwitcherMarkup(''));
+        }
+        const mobileExtras = document.querySelector('.header-nav-mobile-extras');
+        if (mobileExtras && !document.getElementById('langSwitcherMobile')) {
+            mobileExtras.insertAdjacentHTML('afterbegin', langSwitcherMarkup('Mobile'));
+        }
+    }
+
+    function bindLangSwitcher() {
+        document.querySelectorAll('.lang-switcher-btn').forEach((btn) => {
+            btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
+        });
+    }
+
+    function init() {
+        injectLangSwitcher();
+        bindLangSwitcher();
+        applyLanguage(getStoredLang());
+    }
+
+    window.MesttiI18n = { t, applyLanguage, getLang: getStoredLang };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();

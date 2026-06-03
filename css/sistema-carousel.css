@@ -1,0 +1,106 @@
+/* ============================================
+   Grade — telas do sistema (3 por linha, proporção da imagem)
+   ============================================ */
+
+.sistema-grid-section {
+    padding: 0 0 var(--spacing-2xl);
+    background: var(--gray-50);
+    width: 100%;
+}
+
+.sistema-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(0.85rem, 1.8vw, 1.35rem);
+    width: 100%;
+    margin-top: var(--spacing-sm);
+}
+
+.sistema-grid-card {
+    margin: 0;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    background: var(--gray-900);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.sistema-grid-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.sistema-grid-media {
+    position: relative;
+    overflow: hidden;
+}
+
+.sistema-grid-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    vertical-align: top;
+    transition: transform 0.45s ease;
+}
+
+.sistema-grid-card:hover .sistema-grid-media img {
+    transform: scale(1.03);
+}
+
+.sistema-grid-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: 2.75rem 1rem 1rem;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.88) 0%,
+        rgba(0, 0, 0, 0.62) 45%,
+        rgba(0, 0, 0, 0.2) 75%,
+        transparent 100%
+    );
+    pointer-events: none;
+}
+
+.sistema-grid-caption span {
+    display: block;
+    font-size: clamp(0.68rem, 1.1vw, 0.82rem);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.35;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .sistema-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+    .sistema-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sistema-grid-card,
+    .sistema-grid-media img {
+        transition: none;
+    }
+
+    .sistema-grid-card:hover {
+        transform: none;
+    }
+
+    .sistema-grid-card:hover .sistema-grid-media img {
+        transform: none;
+    }
+}

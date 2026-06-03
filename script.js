@@ -443,7 +443,7 @@ function handleFormSubmit(form, formId) {
 
                     openMesttiPopup({
                         title: 'Obrigado!',
-                        message: 'Recebemos sua solicitação. Em breve nossa equipe entrará em contato.'
+                        message: (window.MesttiI18n && window.MesttiI18n.t(window.MESTTI_LANG || 'pt', 'form.success')) || 'Recebemos sua solicitação. Em breve nossa equipe entrará em contato.'
                     });
                 })
                 .catch(() => {
@@ -451,7 +451,7 @@ function handleFormSubmit(form, formId) {
                     submitButton.style.backgroundColor = '';
                     openMesttiPopup({
                         title: 'Ops',
-                        message: 'Não conseguimos enviar agora. Tente novamente em instantes.'
+                        message: (window.MesttiI18n && window.MesttiI18n.t(window.MESTTI_LANG || 'pt', 'form.error')) || 'Não conseguimos enviar agora. Tente novamente em instantes.'
                     });
                 });
 
@@ -500,10 +500,111 @@ if ('loading' in HTMLImageElement.prototype) {
 }
 
 // ============================================
+// Roadmap de implementação (home)
+// ============================================
+
+function initImplementationRoadmap() {
+    const shell = document.querySelector('.impl-roadmap-shell');
+    if (!shell) return;
+
+    const steps = Array.from(shell.querySelectorAll('.impl-roadmap-step'));
+    const panels = Array.from(shell.querySelectorAll('.impl-roadmap-panel'));
+    const progressFill = document.getElementById('implRoadmapProgressFill');
+    const timelineBlocks = Array.from(shell.querySelectorAll('.impl-roadmap-timeline-block'));
+    const totalSteps = steps.length;
+    let activeIndex = 0;
+    let autoTimer = null;
+
+    function progressPercent(index) {
+        if (totalSteps <= 1) return 100;
+        return (index / (totalSteps - 1)) * 100;
+    }
+
+    function setActiveStep(index, { focusTab = false } = {}) {
+        activeIndex = Math.max(0, Math.min(index, totalSteps - 1));
+
+        steps.forEach((step, i) => {
+            const isActive = i === activeIndex;
+            const isComplete = i < activeIndex;
+            step.classList.toggle('is-active', isActive);
+            step.classList.toggle('is-complete', isComplete);
+            step.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            step.tabIndex = isActive ? 0 : -1;
+            if (focusTab && isActive) step.focus();
+        });
+
+        panels.forEach((panel, i) => {
+            const isVisible = i === activeIndex;
+            panel.classList.toggle('is-visible', isVisible);
+            panel.hidden = !isVisible;
+        });
+
+        if (progressFill) {
+            progressFill.style.width = `${progressPercent(activeIndex)}%`;
+        }
+
+        timelineBlocks.forEach((block, i) => {
+            block.classList.toggle('is-highlight', i === activeIndex);
+        });
+    }
+
+    function stopAutoAdvance() {
+        if (autoTimer) {
+            clearInterval(autoTimer);
+            autoTimer = null;
+        }
+    }
+
+    function startAutoAdvance() {
+        stopAutoAdvance();
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        autoTimer = setInterval(() => {
+            setActiveStep((activeIndex + 1) % totalSteps);
+        }, 9000);
+    }
+
+    steps.forEach((step, index) => {
+        step.addEventListener('click', () => {
+            stopAutoAdvance();
+            setActiveStep(index);
+        });
+        step.addEventListener('keydown', (e) => {
+            let next = activeIndex;
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                next = (activeIndex + 1) % totalSteps;
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                next = (activeIndex - 1 + totalSteps) % totalSteps;
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                next = 0;
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                next = totalSteps - 1;
+            } else {
+                return;
+            }
+            stopAutoAdvance();
+            setActiveStep(next, { focusTab: true });
+        });
+    });
+
+    shell.addEventListener('mouseenter', stopAutoAdvance);
+    shell.addEventListener('focusin', stopAutoAdvance);
+    shell.addEventListener('mouseleave', startAutoAdvance);
+
+    setActiveStep(0);
+    startAutoAdvance();
+}
+
+// ============================================
 // AOS Initialization
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    initImplementationRoadmap();
+
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 800,

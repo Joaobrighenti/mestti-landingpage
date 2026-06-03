@@ -1,0 +1,60 @@
+/* Seletor de idioma — bandeiras no header */
+
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem;
+    border-radius: 999px;
+    border: 1px solid var(--gray-200);
+    background: var(--white);
+}
+
+.lang-switcher--mobile {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+}
+
+.lang-switcher-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.15rem;
+    line-height: 1;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lang-switcher-btn:hover {
+    transform: scale(1.06);
+    border-color: var(--gray-300);
+}
+
+.lang-switcher-btn.is-active {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(2, 69, 120, 0.15);
+}
+
+.lang-switcher-btn:focus-visible {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+.lang-switcher-flag {
+    display: block;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+@media (max-width: 900px) {
+    .header-tractian-actions .lang-switcher {
+        display: none;
+    }
+}

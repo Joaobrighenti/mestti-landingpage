@@ -21,11 +21,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styles-entry.css?v=32">
-    <!-- Hero: começa o download do vídeo cedo, em paralelo ao CSS (arquivo leve = carregamento mais rápido) -->
     <link rel="preload" href="video/video_metro_rodando.mp4" as="video" type="video/mp4">
 </head>
 
-<body>
+<body data-page="home">
     <div class="nav-overlay" id="navOverlay"></div>
 
     <header class="header header--tractian">
@@ -39,23 +38,24 @@
                         <a href="/" class="header-logo-link">
                             <img src="images/MESTTI.svg" alt="MESTTI" class="logo-img" width="120" height="25">
                         </a>
-                        <button type="button" class="mobile-nav-close" aria-label="Fechar menu">×</button>
+                        <button type="button" class="mobile-nav-close" aria-label="Fechar menu" data-i18n-aria="a11y.closeMenu">×</button>
                     </div>
-                    <a href="/" data-home-section="#controle-total" class="nav-link">Soluções</a>
+                    <a href="/" data-home-section="#controle-total" class="nav-link" data-i18n="nav.solutions">Soluções</a>
 
-                    <a href="/" data-home-section="#controle-total" class="nav-link">Recursos</a>
-                    <a href="/empresa/" class="nav-link">Sobre</a>
+                    <a href="/" data-home-section="#controle-total" class="nav-link" data-i18n="nav.resources">Recursos</a>
+                    <a href="/" data-home-section="#implementacao" class="nav-link" data-i18n="nav.installation">Instalação</a>
+                    <a href="/empresa/" class="nav-link" data-i18n="nav.about">Sobre</a>
 
                     <div class="mobile-nav-contact">
-                        <div class="mobile-nav-section-title">Contato</div>
+                        <div class="mobile-nav-section-title" data-i18n="mobile.contact">Contato</div>
                         <a class="mobile-nav-contact-link" href="tel:+5514974007797">(14) 97400-7797</a>
                         <a class="mobile-nav-contact-link" href="https://wa.me/5514974007797" target="_blank"
-                            rel="noopener">WhatsApp</a>
-                        <a class="mobile-nav-contact-link" href="/contato/">Central de contato</a>
+                            rel="noopener" data-i18n="mobile.whatsapp">WhatsApp</a>
+                        <a class="mobile-nav-contact-link" href="/contato/" data-i18n="mobile.contactCenter">Central de contato</a>
                     </div>
                     <div class="header-nav-mobile-extras">
-                        <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login">Login</a>
-                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal">Demonstração</button>
+                        <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
+                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Demonstração</button>
                     </div>
                 </nav>
                 <div class="header-tractian-actions">
@@ -65,12 +65,12 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
-                        Contato
+                        <span data-i18n="header.contact">Contato</span>
                     </a>
-                    <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login">Login</a>
-                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal">Demonstração</button>
+                    <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
+                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Demonstração</button>
                 </div>
-                <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu" data-i18n-aria="a11y.openMenu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -89,16 +89,16 @@
         </div>
         <div class="container hero-container-main">
             <div class="hero-content" data-aos="fade-right">
-                <h1 class="hero-title">
+                <h1 class="hero-title" data-i18n="home.hero.title" data-i18n-html>
                     Apontamento Inteligente em Tempo Real: <span class="highlight">Maximize seu OEE</span> e
                     produtividade.
                 </h1>
-                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="home.hero.subtitle">
                     Sistema de apontamento automático que monitora suas máquinas em tempo real, identifica perdas e gera
                     indicadores precisos de OEE, disponibilidade e performance.
                 </p>
                 <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
-                    <a href="/" data-home-section="#controle-total" class="btn btn-primary">Ver como funciona</a>
+                    <a href="/" data-home-section="#controle-total" class="btn btn-primary" data-i18n="home.hero.cta">Ver como funciona</a>
                 </div>
                 <div class="hero-certificates" data-aos="fade-up" data-aos-delay="300">
                     <div class="certificate-item">
@@ -110,13 +110,11 @@
                 </div>
             </div>
             <div class="hero-visual" data-aos="fade-left" data-aos-delay="200">
-                <div class="hero-system-collage">
-                    <img class="hero-shot hero-shot-main" src="images/oeemaquina.png" alt="Tela OEE da máquina"
-                        loading="eager">
-                    <img class="hero-shot hero-shot-top" src="images/producao.png" alt="Tela de produção"
-                        loading="lazy">
-                    <img class="hero-shot hero-shot-bottom" src="images/timeline.png" alt="Tela de timeline"
-                        loading="lazy">
+                <div class="hero-system-grid hero-system-grid--duo">
+                    <img class="hero-grid-shot" src="img-sistema/8.svg"
+                        alt="Monitoramento de indicadores em tempo real no MESTTI" loading="eager" decoding="async">
+                    <img class="hero-grid-shot" src="img-sistema/5.svg"
+                        alt="Mapa 3D em tempo real da fábrica no MESTTI" loading="eager" decoding="async">
                 </div>
             </div>
         </div>
@@ -159,11 +157,11 @@
     <!-- Serviços — Segunda Dobra -->
     <section class="features-testimonials" id="controle-total">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Nossas soluções</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Nossos serviços para sensoriar,
+            <h2 class="section-title" data-aos="fade-up" data-i18n="home.solutions.title">Nossas soluções</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="home.solutions.subtitle">Nossos serviços para sensoriar,
                 programar e monitorar o chão de fábrica — com tudo que você precisa dentro do sistema MESTTI.</p>
             <div class="services-offer-carousel" data-aos="fade-up" data-aos-delay="200"
-                aria-label="Carrossel de soluções">
+                data-i18n-aria="home.solutions.carousel" aria-label="Carrossel de soluções">
                 <div class="services-offer-viewport" id="servicesOfferViewport">
                     <div class="services-offer-grid">
                         <article class="service-offer-card">
@@ -172,41 +170,20 @@
                                     decoding="async">
                             </div>
                             <div class="service-offer-body">
-                                <h3 class="service-offer-title">Sensoriamento de chão de fábrica</h3>
-                                <p class="service-offer-lead">Sensores industriais conectados ao MESTTI para capturar o
+                                <h3 class="service-offer-title" data-i18n="home.s1.title">Sensoriamento de chão de fábrica</h3>
+                                <p class="service-offer-lead" data-i18n="home.s1.lead">Sensores industriais conectados ao MESTTI para capturar o
                                     que acontece na linha, sem planilhas e sem atraso na informação.</p>
-                                <p class="service-offer-price">A partir de <strong>R$&nbsp;178,90</strong> <span
-                                        class="service-offer-price-cycle">/mês</span> <span
-                                        class="service-offer-price-unit">por sensor</span></p>
                                 <hr class="service-offer-divider">
-                                <p class="service-offer-list-heading">O que entra no sistema:</p>
+                                <p class="service-offer-list-heading" data-i18n="home.s1.heading">O que entra no sistema:</p>
                                 <ul class="service-offer-list">
-                                    <li>
-                                        Instalação orientada de sensores (contagem, máquina ligada/desligada, metro
-                                        linear e demais modelos do catálogo).
-                                        <span class="service-offer-inline-tip">
-                                            <button type="button" class="service-offer-inline-tip-btn"
-                                                aria-describedby="tooltip-preco-sensor"
-                                                aria-label="Observação sobre o valor por sensor">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                                    stroke-width="2" aria-hidden="true">
-                                                    <circle cx="12" cy="12" r="10" />
-                                                    <path stroke-linecap="round" d="M12 16v-4M12 8h.01" />
-                                                </svg>
-                                            </button>
-                                            <span id="tooltip-preco-sensor" class="service-offer-inline-tip-bubble"
-                                                role="tooltip">Esse valor é referente ao <strong>sensor de
-                                                    disponibilidade</strong>. Os demais sensores são <strong>mediante
-                                                    consulta</strong>.</span>
-                                        </span>
+                                    <li data-i18n="home.s1.li1">Instalação orientada de sensores (contagem, máquina ligada/desligada, metro
+                                        linear e demais modelos do catálogo).</li>
+                                    <li data-i18n="home.s1.li2">Leitura em tempo real no painel MESTTI, com vínculo a ordens, máquinas e turnos.
                                     </li>
-                                    <li>Leitura em tempo real no painel MESTTI, com vínculo a ordens, máquinas e turnos.
-                                    </li>
-                                    <li>Apontamento automático de produção e base para cálculo de OEE e perdas.</li>
-                                    <li>Alertas configuráveis e histórico para auditoria e melhoria contínua.</li>
+                                    <li data-i18n="home.s1.li3">Apontamento automático de produção e base para cálculo de OEE e perdas.</li>
+                                    <li data-i18n="home.s1.li4">Alertas configuráveis e histórico para auditoria e melhoria contínua.</li>
                                 </ul>
-                                <a href="/sensores/#maquina" class="btn service-offer-cta">Saiba mais</a>
+                                <a href="/sensores/#maquina" class="btn service-offer-cta" data-i18n="home.s1.cta">Saiba mais</a>
                             </div>
                         </article>
                         <article class="service-offer-card">
@@ -215,24 +192,22 @@
                                     loading="lazy" decoding="async">
                             </div>
                             <div class="service-offer-body">
-                                <h3 class="service-offer-title">Sequenciamento e programação do chão de fábrica</h3>
-                                <p class="service-offer-lead">Organize filas, prioridades e ritmo da produção com regras
+                                <h3 class="service-offer-title" data-i18n="home.s2.title">Sequenciamento e programação do chão de fábrica</h3>
+                                <p class="service-offer-lead" data-i18n="home.s2.lead">Organize filas, prioridades e ritmo da produção com regras
                                     alinhadas ao que acontece fisicamente na planta.</p>
-                                <p class="service-offer-price"><strong>R$&nbsp;499,99</strong> <span
-                                        class="service-offer-price-cycle">/mês</span></p>
                                 <hr class="service-offer-divider">
-                                <p class="service-offer-list-heading">O que entra no sistema:</p>
+                                <p class="service-offer-list-heading" data-i18n="home.s2.heading">O que entra no sistema:</p>
                                 <ul class="service-offer-list">
-                                    <li>Definição e ajuste de sequências de ordens, rotas e gargalos visíveis no MESTTI.
+                                    <li data-i18n="home.s2.li1">Definição e ajuste de sequências de ordens, rotas e gargalos visíveis no MESTTI.
                                     </li>
-                                    <li>Sincronização entre planejado e executado, com rastreio do que foi produzido em
+                                    <li data-i18n="home.s2.li2">Sincronização entre planejado e executado, com rastreio do que foi produzido em
                                         cada etapa.</li>
-                                    <li>Integração com seu fluxo atual (ERP/MES/outros) conforme o desenho do projeto.
+                                    <li data-i18n="home.s2.li3">Integração com seu fluxo atual (ERP/MES/outros) conforme o desenho do projeto.
                                     </li>
-                                    <li>Cenários de “o que acontece se…” para suportar decisões de programação no dia a
+                                    <li data-i18n="home.s2.li4">Cenários de “o que acontece se…” para suportar decisões de programação no dia a
                                         dia.</li>
                                 </ul>
-                                <a href="/sequenciamento/" class="btn service-offer-cta">Saiba mais</a>
+                                <a href="/sequenciamento/" class="btn service-offer-cta" data-i18n="home.s2.cta">Saiba mais</a>
                             </div>
                         </article>
                     </div>
@@ -241,18 +216,66 @@
         </div>
     </section>
 
-
+    <!-- Grade — telas do sistema (3 por linha) -->
+    <section class="sistema-grid-section" data-i18n-aria="home.grid.label" aria-label="Funcionalidades do sistema MESTTI">
+        <div class="container container--wide">
+            <div class="sistema-grid" data-aos="fade-up">
+                <figure class="sistema-grid-card">
+                    <div class="sistema-grid-media">
+                        <img src="img-sistema/1.svg" alt="Sequenciamento de produção no MESTTI" loading="lazy"
+                            decoding="async">
+                        <div class="sistema-grid-caption"><span data-i18n="home.grid.c1">Sequenciamento de produção</span></div>
+                    </div>
+                </figure>
+                <figure class="sistema-grid-card">
+                    <div class="sistema-grid-media">
+                        <img src="img-sistema/2.svg" alt="Gantt da produção no MESTTI" loading="lazy"
+                            decoding="async">
+                        <div class="sistema-grid-caption"><span data-i18n="home.grid.c2">Gantt da produção</span></div>
+                    </div>
+                </figure>
+                <figure class="sistema-grid-card">
+                    <div class="sistema-grid-media">
+                        <img src="img-sistema/8.svg" alt="Monitoramento de indicadores em tempo real no MESTTI"
+                            loading="lazy" decoding="async">
+                        <div class="sistema-grid-caption"><span data-i18n="home.grid.c3">Monitoramento de indicadores em tempo real</span></div>
+                    </div>
+                </figure>
+                <figure class="sistema-grid-card">
+                    <div class="sistema-grid-media">
+                        <img src="img-sistema/4.svg" alt="Controle individual por máquina no MESTTI" loading="lazy"
+                            decoding="async">
+                        <div class="sistema-grid-caption"><span data-i18n="home.grid.c4">Controle individual por máquina</span></div>
+                    </div>
+                </figure>
+                <figure class="sistema-grid-card">
+                    <div class="sistema-grid-media">
+                        <img src="img-sistema/5.svg" alt="Mapa 3D em tempo real da fábrica no MESTTI" loading="lazy"
+                            decoding="async">
+                        <div class="sistema-grid-caption"><span data-i18n="home.grid.c5">Mapa 3D em tempo real da fábrica</span></div>
+                    </div>
+                </figure>
+                <figure class="sistema-grid-card">
+                    <div class="sistema-grid-media">
+                        <img src="img-sistema/6.svg" alt="Gráfico de causa raiz de paradas no MESTTI" loading="lazy"
+                            decoding="async">
+                        <div class="sistema-grid-caption"><span data-i18n="home.grid.c6">Gráfico de causa raiz de paradas</span></div>
+                    </div>
+                </figure>
+            </div>
+        </div>
+    </section>
 
     <!-- Dobra de sensores (home): ilustrações + cards por produto + cards de especificação -->
     <section class="sensores-cards-section sensores-intel-home" id="sensores">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Sensores industriais inteligentes</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="section-title" data-aos="fade-up" data-i18n="home.sensors.title">Sensores industriais inteligentes</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="home.sensors.subtitle">
                 Hardware para o chão de fábrica, leitura confiável e continuidade dos dados mesmo com oscilação de
                 rede — integrado à nuvem MESTTI.
             </p>
 
-            <h3 class="sensores-intel-subheading sensores-intel-subheading--specs" data-aos="fade-up">Especificações
+            <h3 class="sensores-intel-subheading sensores-intel-subheading--specs" data-aos="fade-up" data-i18n="home.sensors.specs">Especificações
                 técnicas</h3>
             <div class="sensores-intel-hero-block" data-aos="fade-up" data-aos-delay="100">
                 <div class="sensores-intel-duals">
@@ -264,69 +287,358 @@
                 <div class="sensores-intel-spec-column">
                     <article class="sensores-intel-spec-card sensores-intel-spec-card--compact">
                         <div class="sensores-intel-spec-card-inner">
-                            <p class="sensores-intel-spec-line"><span class="sensores-intel-spec-k">Frequência de
+                            <p class="sensores-intel-spec-line" data-i18n="home.spec.freq.line" data-i18n-html><span class="sensores-intel-spec-k">Frequência de
                                     operação:</span> até 240&nbsp;MHz</p>
-                            <p class="sensores-intel-spec-note">Base para leituras e envio de dados em tempo real, com
+                            <p class="sensores-intel-spec-note" data-i18n="home.spec.freq.note">Base para leituras e envio de dados em tempo real, com
                                 resposta estável no ambiente industrial.</p>
                         </div>
                     </article>
                     <article class="sensores-intel-spec-card sensores-intel-spec-card--compact">
                         <div class="sensores-intel-spec-card-inner">
-                            <p class="sensores-intel-spec-line"><span class="sensores-intel-spec-k">Wi‑Fi:</span> 802.11
+                            <p class="sensores-intel-spec-line" data-i18n="home.spec.wifi.line" data-i18n-html><span class="sensores-intel-spec-k">Wi‑Fi:</span> 802.11
                                 b/g/n (2,4&nbsp;GHz)</p>
-                            <p class="sensores-intel-spec-note">Compatível com redes Wi‑Fi usuais na fábrica, sem
+                            <p class="sensores-intel-spec-note" data-i18n="home.spec.wifi.note">Compatível com redes Wi‑Fi usuais na fábrica, sem
                                 exigir infraestrutura proprietária.</p>
                         </div>
                     </article>
                     <article class="sensores-intel-spec-card sensores-intel-spec-card--compact">
                         <div class="sensores-intel-spec-card-inner">
-                            <p class="sensores-intel-spec-line"><span class="sensores-intel-spec-k">Alimentação via
+                            <p class="sensores-intel-spec-line" data-i18n="home.spec.usb.line" data-i18n-html><span class="sensores-intel-spec-k">Alimentação via
                                     USB:</span> 5&nbsp;V bivolt</p>
-                            <p class="sensores-intel-spec-note">Energização simples com fonte ou porta USB comum,
+                            <p class="sensores-intel-spec-note" data-i18n="home.spec.usb.note">Energização simples com fonte ou porta USB comum,
                                 facilitando instalação e manutenção.</p>
                         </div>
                     </article>
                     <article class="sensores-intel-spec-card sensores-intel-spec-card--compact">
                         <div class="sensores-intel-spec-card-inner">
-                            <p class="sensores-intel-spec-line"><span class="sensores-intel-spec-k">Memória contra queda
+                            <p class="sensores-intel-spec-line" data-i18n="home.spec.mem.line" data-i18n-html><span class="sensores-intel-spec-k">Memória contra queda
                                     de internet</span></p>
-                            <p class="sensores-intel-spec-note">Buffer local: os eventos continuam sendo gravados e são
+                            <p class="sensores-intel-spec-note" data-i18n="home.spec.mem.note">Buffer local: os eventos continuam sendo gravados e são
                                 sincronizados com a nuvem ao restabelecer a conexão.</p>
                         </div>
                     </article>
                 </div>
             </div>
 
-            <h3 class="sensores-intel-subheading" data-aos="fade-up">Linha de sensores</h3>
+            <h3 class="sensores-intel-subheading" data-aos="fade-up" data-i18n="home.sensors.line">Linha de sensores</h3>
             <div class="sensores-intel-sensor-cards" data-aos="fade-up" data-aos-delay="80">
                 <article class="sensores-intel-sensor-card">
-                    <h4 class="sensores-intel-sensor-title">Sensor de Contagem de Peças</h4>
-                    <p class="sensores-intel-sensor-desc">Contagem automática 24/7, sem erro humano e histórico de
+                    <h4 class="sensores-intel-sensor-title" data-i18n="home.sensor.c1.title">Sensor de Contagem de Peças</h4>
+                    <p class="sensores-intel-sensor-desc" data-i18n="home.sensor.c1.desc">Contagem automática 24/7, sem erro humano e histórico de
                         produção na nuvem.</p>
-                    <p class="sensores-intel-sensor-price"><span class="sensores-intel-sensor-price-label">Mensalidade</span>
-                        R$&nbsp;228,90 <span class="sensores-intel-sensor-cycle">/mês</span></p>
-                    <a href="/sensores/#contagem" class="sensores-intel-sensor-cta">Ver ficha técnica</a>
+                    <a href="/sensores/#contagem" class="sensores-intel-sensor-cta" data-i18n="home.sensors.ctaCard">Ver ficha técnica</a>
                 </article>
                 <article class="sensores-intel-sensor-card">
-                    <h4 class="sensores-intel-sensor-title">Sensor de Máquina Ligada / Desligada</h4>
-                    <p class="sensores-intel-sensor-desc">Apontamento de paradas, disponibilidade e base para OEE com
+                    <h4 class="sensores-intel-sensor-title" data-i18n="home.sensor.c2.title">Sensor de Máquina Ligada / Desligada</h4>
+                    <p class="sensores-intel-sensor-desc" data-i18n="home.sensor.c2.desc">Apontamento de paradas, disponibilidade e base para OEE com
                         leitura de corrente.</p>
-                    <p class="sensores-intel-sensor-price"><span class="sensores-intel-sensor-price-label">Mensalidade</span>
-                        R$&nbsp;178,90 <span class="sensores-intel-sensor-cycle">/mês</span></p>
-                    <a href="/sensores/#maquina" class="sensores-intel-sensor-cta">Ver ficha técnica</a>
+                    <a href="/sensores/#maquina" class="sensores-intel-sensor-cta" data-i18n="home.sensors.ctaCard">Ver ficha técnica</a>
                 </article>
                 <article class="sensores-intel-sensor-card">
-                    <h4 class="sensores-intel-sensor-title">Sensor de Contagem com Metro Linear</h4>
-                    <p class="sensores-intel-sensor-desc">Metragem em centímetros com alta resolução; ideal para
+                    <h4 class="sensores-intel-sensor-title" data-i18n="home.sensor.c3.title">Sensor de Contagem com Metro Linear</h4>
+                    <p class="sensores-intel-sensor-desc" data-i18n="home.sensor.c3.desc">Metragem em centímetros com alta resolução; ideal para
                         moveleiro e extrusão.</p>
-                    <p class="sensores-intel-sensor-price"><span class="sensores-intel-sensor-price-label">Mensalidade</span>
-                        R$&nbsp;249,99 <span class="sensores-intel-sensor-cycle">/mês</span></p>
-                    <a href="/sensores/#linear" class="sensores-intel-sensor-cta">Ver ficha técnica</a>
+                    <a href="/sensores/#linear" class="sensores-intel-sensor-cta" data-i18n="home.sensors.ctaCard">Ver ficha técnica</a>
                 </article>
             </div>
 
             <div class="sensores-intel-cta-wrap" data-aos="fade-up">
-                <a href="/sensores/" class="btn btn-primary sensores-intel-cta">Ver todas as especificações</a>
+                <a href="/sensores/" class="btn btn-primary sensores-intel-cta" data-i18n="home.sensors.cta">Ver todas as especificações</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap de implementação -->
+    <section class="impl-roadmap" id="implementacao" aria-labelledby="impl-roadmap-title">
+        <div class="container">
+            <h2 class="section-title" id="impl-roadmap-title" data-aos="fade-up" data-i18n="home.roadmap.title">Roadmap de implementação</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="80" data-i18n="home.roadmap.subtitle">
+                Da proposta ao uso diário dos dados: um caminho claro, com prazos realistas e acompanhamento da equipe
+                MESTTI em cada etapa.
+            </p>
+
+            <div class="impl-roadmap-shell" data-aos="fade-up" data-aos-delay="120">
+                <div class="impl-roadmap-progress" aria-hidden="true">
+                    <div class="impl-roadmap-progress-fill" id="implRoadmapProgressFill"></div>
+                </div>
+
+                <div class="impl-roadmap-steps" role="tablist" data-i18n-aria="home.roadmap.tabs" aria-label="Etapas da implementação">
+                    <button type="button" class="impl-roadmap-step is-active" role="tab" id="impl-tab-1"
+                        aria-selected="true" aria-controls="impl-panel-1" data-step="1">
+                        <span class="impl-roadmap-step-marker">
+                            <span class="impl-roadmap-step-num">01</span>
+                            <span class="impl-roadmap-step-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </span>
+                        </span>
+                        <span class="impl-roadmap-step-title" data-i18n="home.roadmap.step1">Diagnóstico e definição</span>
+                        <span class="impl-roadmap-step-badge" data-i18n="home.roadmap.step1.badge">Após a proposta</span>
+                    </button>
+                    <button type="button" class="impl-roadmap-step" role="tab" id="impl-tab-2" aria-selected="false"
+                        aria-controls="impl-panel-2" data-step="2" tabindex="-1">
+                        <span class="impl-roadmap-step-marker">
+                            <span class="impl-roadmap-step-num">02</span>
+                            <span class="impl-roadmap-step-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </span>
+                        </span>
+                        <span class="impl-roadmap-step-title" data-i18n="home.roadmap.step2">Instalação e go-live</span>
+                        <span class="impl-roadmap-step-badge" data-i18n="home.roadmap.step2.badge">Até 1 semana</span>
+                    </button>
+                    <button type="button" class="impl-roadmap-step" role="tab" id="impl-tab-3" aria-selected="false"
+                        aria-controls="impl-panel-3" data-step="3" tabindex="-1">
+                        <span class="impl-roadmap-step-marker">
+                            <span class="impl-roadmap-step-num">03</span>
+                            <span class="impl-roadmap-step-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
+                            </span>
+                        </span>
+                        <span class="impl-roadmap-step-title" data-i18n="home.roadmap.step3">Treinamento e consultoria</span>
+                        <span class="impl-roadmap-step-badge" data-i18n="home.roadmap.step3.badge">1 mês</span>
+                    </button>
+                </div>
+
+                <div class="impl-roadmap-panel-wrap">
+                    <article class="impl-roadmap-panel is-visible" id="impl-panel-1" role="tabpanel"
+                        aria-labelledby="impl-tab-1" data-panel="1">
+                        <div class="impl-roadmap-panel-card">
+                            <div class="impl-roadmap-panel-head">
+                                <div>
+                                    <p class="impl-roadmap-panel-phase" data-i18n="home.roadmap.p1.phase">Fase 1</p>
+                                    <h3 class="impl-roadmap-panel-title" data-i18n="home.roadmap.p1.title">Proposta, reunião e sensores a instalar</h3>
+                                </div>
+                                <div class="impl-roadmap-panel-duration">
+                                    <strong data-i18n="home.roadmap.p1.durStrong">Alinhamento</strong>
+                                    <span data-i18n="home.roadmap.p1.durSpan">Conforme agenda da planta</span>
+                                </div>
+                            </div>
+                            <p class="impl-roadmap-panel-lead" data-i18n="home.roadmap.p1.lead">
+                                Depois da proposta comercial, entramos no chão de fábrica (presencial ou remoto) para
+                                fechar exatamente quais sensores vão em cada máquina, posto ou linha — sem surpresas na
+                                instalação.
+                            </p>
+                            <ul class="impl-roadmap-checklist">
+                                <li>
+                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p1.li1">Revisão da proposta e escopo do projeto com sua equipe</span>
+                                </li>
+                                <li>
+                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p1.li2">Reunião técnica para mapear processos, máquinas e pontos de coleta</span>
+                                </li>
+                                <li>
+                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p1.li3">Definição do kit de sensores por equipamento (contagem, status, metro linear, etc.)</span>
+                                </li>
+                                <li>
+                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p1.li4">Plano de instalação e cronograma acordado com a operação</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="impl-roadmap-panel" id="impl-panel-2" role="tabpanel" aria-labelledby="impl-tab-2"
+                        data-panel="2" hidden>
+                        <div class="impl-roadmap-panel-card">
+                            <div class="impl-roadmap-panel-head">
+                                <div>
+                                    <p class="impl-roadmap-panel-phase" data-i18n="home.roadmap.p2.phase">Fase 2</p>
+                                    <h3 class="impl-roadmap-panel-title" data-i18n="home.roadmap.p2.title">Instalação, testes e parametrização</h3>
+                                </div>
+                                <div class="impl-roadmap-panel-duration">
+                                    <strong data-i18n="home.roadmap.p2.durStrong">Até 1 semana</strong>
+                                    <span data-i18n="home.roadmap.p2.durSpan">Instalação: 1 a 3 dias*</span>
+                                </div>
+                            </div>
+                            <p class="impl-roadmap-panel-lead" data-i18n="home.roadmap.p2.lead">
+                                Instalação física dos sensores, validação das leituras e configuração do MESTTI
+                                acontecem em paralelo — para você enxergar dados confiáveis o quanto antes.
+                            </p>
+                            <div class="impl-roadmap-parallel" data-i18n-aria="home.roadmap.p2.parallel" aria-label="Atividades em paralelo">
+                                <span class="impl-roadmap-parallel-chip">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p2.chip1">Instalação dos sensores</span>
+                                </span>
+                                <span class="impl-roadmap-parallel-chip">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p2.chip2">Testes de leitura</span>
+                                </span>
+                                <span class="impl-roadmap-parallel-chip">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p2.chip3">Parametrização no sistema</span>
+                                </span>
+                            </div>
+                            <ul class="impl-roadmap-checklist">
+                                <li>
+                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p2.li1" data-i18n-html>Instalação física: <strong>1 a 3 dias</strong>, conforme porte e quantidade de
+                                    pontos na planta</span>
+                                </li>
+                                <li>
+                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p2.li2">Testes de conectividade, leitura e consistência dos eventos no painel</span>
+                                </li>
+                                <li>
+                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p2.li3">Parametrização de máquinas, turnos, ordens e regras de apontamento</span>
+                                </li>
+                                <li>
+                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p2.li4" data-i18n-html>Go-live com dados fluindo em produção real — prazo total da fase: <strong>até 1
+                                        semana</strong></span>
+                                </li>
+                            </ul>
+                            <p class="impl-roadmap-nav-hint" data-i18n="home.roadmap.p2.hint">* O prazo de instalação varia conforme tamanho da empresa
+                                e número de sensores.</p>
+                        </div>
+                    </article>
+
+                    <article class="impl-roadmap-panel" id="impl-panel-3" role="tabpanel" aria-labelledby="impl-tab-3"
+                        data-panel="3" hidden>
+                        <div class="impl-roadmap-panel-card">
+                            <div class="impl-roadmap-panel-head">
+                                <div>
+                                    <p class="impl-roadmap-panel-phase" data-i18n="home.roadmap.p3.phase">Fase 3</p>
+                                    <h3 class="impl-roadmap-panel-title" data-i18n="home.roadmap.p3.title">Treinamento e consultoria com os novos dados</h3>
+                                </div>
+                                <div class="impl-roadmap-panel-duration">
+                                    <strong data-i18n="home.roadmap.p3.durStrong">1 mês</strong>
+                                    <span data-i18n="home.roadmap.p3.durSpan">Acompanhamento contínuo</span>
+                                </div>
+                            </div>
+                            <p class="impl-roadmap-panel-lead" data-i18n="home.roadmap.p3.lead">
+                                Com o sistema em operação, capacitamos sua equipe e apoiamos a interpretação dos
+                                indicadores para transformar leitura em decisão no dia a dia.
+                            </p>
+                            <ul class="impl-roadmap-checklist">
+                                <li>
+                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p3.li1">Treinamento de operadores, supervisores e gestão no uso do MESTTI</span>
+                                </li>
+                                <li>
+                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p3.li2">Consultoria para leitura de OEE, paradas, produção e perdas com dados reais</span>
+                                </li>
+                                <li>
+                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p3.li3">Ajustes finos de parametrização conforme a operação evolui na prática</span>
+                                </li>
+                                <li>
+                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="home.roadmap.p3.li4" data-i18n-html><strong>1 mês</strong> de suporte próximo até a rotina de dados estar consolidada</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="impl-roadmap-timeline-summary" data-i18n-aria="home.roadmap.tl.aria" aria-label="Visão geral dos prazos">
+                    <div class="impl-roadmap-timeline-block is-highlight" data-timeline-phase="1">
+                        <strong data-i18n="home.roadmap.tl1.label">Fase 1</strong>
+                        <span data-i18n="home.roadmap.tl1.text">Proposta e definição dos sensores</span>
+                    </div>
+                    <div class="impl-roadmap-timeline-block" data-timeline-phase="2">
+                        <strong data-i18n="home.roadmap.tl2.label">Fase 2</strong>
+                        <span data-i18n="home.roadmap.tl2.text">1–3 dias instalação · até 1 semana total</span>
+                    </div>
+                    <div class="impl-roadmap-timeline-block" data-timeline-phase="3">
+                        <strong data-i18n="home.roadmap.tl3.label">Fase 3</strong>
+                        <span data-i18n="home.roadmap.tl3.text">1 mês de treinamento e consultoria</span>
+                    </div>
+                </div>
+
+                <div class="impl-roadmap-cta-wrap">
+                    <button type="button" class="btn btn-primary btn-open-modal" data-i18n="home.roadmap.cta">Quero iniciar minha implementação</button>
+                    <p class="impl-roadmap-nav-hint" data-i18n="home.roadmap.navHint">Clique nas etapas acima ou use ← → no teclado para explorar o
+                        roadmap.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -358,101 +670,50 @@
         </div>
     </section>
 
-    <!-- CTA Final com Formulário e Vídeo - Quinta Dobra -->
-    <section class="cta-final" id="contato">
-        <div class="cta-video-background">
-            <video autoplay muted loop playsinline>
-                <source src="images/video-background.mp4" type="video/mp4">
-                <!-- Fallback para navegadores que não suportam vídeo -->
-            </video>
-            <div class="video-overlay"></div>
-        </div>
-        <div class="container">
-            <div class="cta-wrapper cta-wrapper-centered">
-                <div class="cta-header" data-aos="fade-up"
-                    style="text-align: center; margin-bottom: var(--spacing-lg);">
-                    <h2 class="cta-title">Tenha os dados certos em mãos</h2>
-                    <p class="cta-subtitle">Descubra como o MESTTI pode transformar sua produção</p>
-                </div>
-
-                <div class="mac-window-container large-mac" data-aos="fade-up" data-aos-delay="100">
-                    <div class="mac-window">
-                        <div class="mac-header">
-                            <div class="mac-buttons">
-                                <span class="mac-btn close"></span>
-                                <span class="mac-btn minimize"></span>
-                                <span class="mac-btn maximize"></span>
-                            </div>
-                            <div class="mac-title">MESTTI_OS - /dashboard</div>
-                        </div>
-                        <div class="mac-body">
-                            <div class="mac-slider">
-                                <img class="mac-page" src="sistema/1.svg" alt="Tela do sistema 1" loading="eager">
-                                <img class="mac-page" src="sistema/2.svg" alt="Tela do sistema 2" loading="lazy">
-                                <img class="mac-page" src="sistema/3.svg" alt="Tela do sistema 3" loading="lazy">
-                                <img class="mac-page" src="sistema/4.svg" alt="Tela do sistema 4" loading="lazy">
-                                <img class="mac-page" src="sistema/5.svg" alt="Tela do sistema 5" loading="lazy">
-                                <img class="mac-page" src="sistema/6.svg" alt="Tela do sistema 6" loading="lazy">
-                                <img class="mac-page" src="sistema/7.svg" alt="Tela do sistema 7" loading="lazy">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cta-action-center" data-aos="fade-up" data-aos-delay="200"
-                    style="margin-top: var(--spacing-lg); text-align: center; width: 100%;">
-                    <button type="button" class="btn btn-submit btn-open-modal"
-                        style="padding: 1.2rem 3rem; font-size: 1.2rem; max-width: 400px; width: 100%;">Quero Ver na
-                        Prática</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer class="footer footer--tractian">
         <div class="container container--wide">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <div class="footer-col-title">Produto</div>
+                    <div class="footer-col-title" data-i18n="footer.product">Produto</div>
                     <ul class="footer-col-list">
-                        <li><a href="/" data-home-section="#controle-total">Apontamento e OEE</a></li>
-                        <li><a href="/" data-home-section="#sensores">Sensores</a></li>
-                        <li><a href="/sensores/">Ficha técnica de sensores</a></li>
+                        <li><a href="/" data-home-section="#controle-total" data-i18n="footer.oee">Apontamento e OEE</a></li>
+                        <li><a href="/" data-home-section="#sensores" data-i18n="footer.sensors">Sensores</a></li>
+                        <li><a href="/sensores/" data-i18n="footer.sensorSpecs">Ficha técnica de sensores</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <div class="footer-col-title">Soluções</div>
+                    <div class="footer-col-title" data-i18n="footer.solutions">Soluções</div>
                     <ul class="footer-col-list">
 
-                        <li><a href="/" data-home-section="#controle-total">Monitoramento</a></li>
+                        <li><a href="/" data-home-section="#controle-total" data-i18n="footer.monitoring">Monitoramento</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <div class="footer-col-title">Companhia</div>
+                    <div class="footer-col-title" data-i18n="footer.company">Companhia</div>
                     <ul class="footer-col-list">
-                        <li><a href="/empresa/">Sobre nós</a></li>
-                        <li><a href="/contato/">Entre em contato</a></li>
+                        <li><a href="/empresa/" data-i18n="footer.about">Sobre nós</a></li>
+                        <li><a href="/contato/" data-i18n="footer.contactUs">Entre em contato</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <div class="footer-col-title">Recursos</div>
+                    <div class="footer-col-title" data-i18n="footer.resources">Recursos</div>
                     <ul class="footer-col-list">
-                        <li><a href="/" data-home-section="#controle-total">Funcionalidades</a></li>
-                        <li><a href="https://app.mestti.com.br" target="_blank" rel="noopener">Acesso ao sistema</a>
+                        <li><a href="/" data-home-section="#controle-total" data-i18n="footer.features">Funcionalidades</a></li>
+                        <li><a href="https://app.mestti.com.br" target="_blank" rel="noopener" data-i18n="footer.app">Acesso ao sistema</a>
                         </li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <div class="footer-col-title">Contato</div>
+                    <div class="footer-col-title" data-i18n="footer.contact">Contato</div>
                     <ul class="footer-col-list">
                         <li><a href="tel:+5514974007797">(14) 97400-7797</a></li>
-                        <li><a href="https://wa.me/5514974007797" target="_blank" rel="noopener">WhatsApp</a></li>
-                        <li><a href="/contato/">Central de contato</a></li>
+                        <li><a href="https://wa.me/5514974007797" target="_blank" rel="noopener" data-i18n="mobile.whatsapp">WhatsApp</a></li>
+                        <li><a href="/contato/" data-i18n="mobile.contactCenter">Central de contato</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-tractian-bottom">
-                <p class="footer-legal">© 2026 MESTTI. Todos os direitos reservados.</p>
+                <p class="footer-legal" data-i18n="footer.legal">© 2026 MESTTI. Todos os direitos reservados.</p>
                 <div class="footer-social" aria-label="Redes sociais">
                     <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
                         aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -468,16 +729,16 @@
     <!-- Modal de Contato -->
     <div id="contactModal" class="modal-overlay" aria-hidden="true">
         <div class="modal-content">
-            <button class="modal-close" id="btnCloseModal" aria-label="Fechar">&times;</button>
+            <button class="modal-close" id="btnCloseModal" aria-label="Fechar" data-i18n-aria="a11y.closeMenu">&times;</button>
             <div class="demo-modal-card">
                 <div class="demo-modal-head">
-                    <h2 class="demo-modal-title">Solicite sua demonstração</h2>
-                    <p class="demo-modal-lead">Preencha os campos para falar com um especialista e entender os
+                    <h2 class="demo-modal-title" data-i18n="modal.title">Solicite sua demonstração</h2>
+                    <p class="demo-modal-lead" data-i18n="modal.lead">Preencha os campos para falar com um especialista e entender os
                         benefícios do MESTTI para sua operação.</p>
                 </div>
                 <form class="demo-form" id="contactForm">
-                    <input type="text" id="name" name="name" placeholder="Nome completo" autocomplete="name" required>
-                    <input type="email" id="email" name="email" placeholder="E-mail profissional" autocomplete="email"
+                    <input type="text" id="name" name="name" data-i18n-placeholder="modal.name" placeholder="Nome completo" autocomplete="name" required>
+                    <input type="email" id="email" name="email" data-i18n-placeholder="modal.email" placeholder="E-mail profissional" autocomplete="email"
                         required>
 
                     <div class="field-row">
@@ -488,10 +749,10 @@
                                 <option value="+351">+351</option>
                                 <option value="+34">+34</option>
                             </select>
-                            <input type="tel" id="phone" name="phone" placeholder="Telefone / WhatsApp"
+                            <input type="tel" id="phone" name="phone" data-i18n-placeholder="modal.phone" placeholder="Telefone / WhatsApp"
                                 autocomplete="tel" required>
                             <select id="cargo" name="cargo" required>
-                                <option value="" selected disabled>Cargo</option>
+                                <option value="" selected disabled data-i18n="modal.role">Cargo</option>
                                 <option value="gerente">Gerente</option>
                                 <option value="supervisor">Supervisor</option>
                                 <option value="engenheiro">Engenheiro</option>
@@ -502,7 +763,7 @@
                     </div>
 
                     <select id="setor" name="setor" required>
-                        <option value="" selected disabled>Setor da Indústria</option>
+                        <option value="" selected disabled data-i18n="modal.sector">Setor da Indústria</option>
                         <option value="alimentos">Alimentos e Bebidas</option>
                         <option value="quimica">Química</option>
                         <option value="automotiva">Automotiva</option>
@@ -511,23 +772,25 @@
                     </select>
 
                     <select id="solucao" name="solucao" required>
-                        <option value="" selected disabled>Selecione a solução de maior interesse</option>
+                        <option value="" selected disabled data-i18n="modal.solution">Selecione a solução de maior interesse</option>
                         <option value="apontamento">Apontamento Automático</option>
                         <option value="oee">OEE e Indicadores</option>
                         <option value="monitoramento">Monitoramento</option>
                         <option value="rastreabilidade">Rastreabilidade</option>
                     </select>
 
-                    <textarea id="observacao" name="observacao" placeholder="Observação (opcional)" rows="3"
+                    <textarea id="observacao" name="observacao" data-i18n-placeholder="modal.note" placeholder="Observação (opcional)" rows="3"
                         style="min-height: 90px;"></textarea>
-                    <button type="submit" class="demo-submit">Solicitar demonstração</button>
+                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Solicitar demonstração</button>
                 </form>
             </div>
         </div>
     </div>
 
     <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script defer src="script.js?v=2"></script>
+    <script defer src="i18n-page-strings.js"></script>
+    <script defer src="i18n.js?v=3"></script>
+    <script defer src="script.js?v=6"></script>
 </body>
 
 </html>
