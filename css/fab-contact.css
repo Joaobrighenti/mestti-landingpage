@@ -1,0 +1,65 @@
+/* Botão flutuante — abre formulário de demonstração (estilo WhatsApp) */
+
+.fab-contact {
+    position: fixed;
+    right: max(1rem, env(safe-area-inset-right, 0px));
+    bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
+    z-index: 1040;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(145deg, #25d366 0%, #128c7e 100%);
+    box-shadow: 0 4px 16px rgba(18, 140, 126, 0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.fab-contact svg {
+    width: 1.65rem;
+    height: 1.65rem;
+    display: block;
+}
+
+.fab-contact:hover {
+    transform: scale(1.06);
+    box-shadow: 0 6px 22px rgba(18, 140, 126, 0.55);
+}
+
+.fab-contact:focus-visible {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 3px;
+}
+
+.fab-contact:active {
+    transform: scale(0.98);
+}
+
+body.is-modal-open .fab-contact {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.85);
+}
+
+@media (max-width: 900px) {
+    .fab-contact {
+        width: 3.25rem;
+        height: 3.25rem;
+        right: max(0.85rem, env(safe-area-inset-right, 0px));
+        bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+    }
+
+    .fab-contact svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
+
+[data-theme="dark"] .fab-contact {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+}

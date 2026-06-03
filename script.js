@@ -246,21 +246,51 @@ const btnCloseModal = document.getElementById('btnCloseModal');
 if (modalOverlay) {
     openModal = function openModalFn() {
         modalOverlay.classList.add('active');
+        document.body.classList.add('is-modal-open');
         document.body.style.overflow = 'hidden'; // Evita scroll atrás do modal
     };
 
     closeModal = function closeModalFn() {
         modalOverlay.classList.remove('active');
+        document.body.classList.remove('is-modal-open');
         document.body.style.overflow = '';
     };
 
-    btnOpenModalList.forEach((btn) =>
-        btn.addEventListener('click', (e) => {
-            // evita jump quando for <a href="#">
-            if (btn.tagName === 'A') e.preventDefault();
-            openModal();
-        })
-    );
+    function bindOpenModalButtons(buttons) {
+        buttons.forEach((btn) => {
+            if (btn.dataset.mesttiModalBound === '1') return;
+            btn.dataset.mesttiModalBound = '1';
+            btn.addEventListener('click', (e) => {
+                if (btn.tagName === 'A') e.preventDefault();
+                openModal();
+            });
+        });
+    }
+
+    bindOpenModalButtons(btnOpenModalList);
+
+    function initFabContact() {
+        if (document.getElementById('fabContact')) return;
+
+        const fab = document.createElement('button');
+        fab.type = 'button';
+        fab.id = 'fabContact';
+        fab.className = 'fab-contact btn-open-modal';
+        fab.setAttribute('data-i18n-aria', 'a11y.fabDemo');
+        fab.setAttribute('title', 'Demonstração');
+        fab.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+            </svg>`;
+        document.body.appendChild(fab);
+        bindOpenModalButtons([fab]);
+
+        if (window.MesttiI18n && typeof window.MesttiI18n.applyLanguage === 'function') {
+            window.MesttiI18n.applyLanguage(window.MESTTI_LANG || window.MesttiI18n.getLang());
+        }
+    }
+
+    initFabContact();
 
     if (btnCloseModal) {
         btnCloseModal.addEventListener('click', () => closeModal());

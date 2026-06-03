@@ -30,6 +30,9 @@
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
     --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.5);
     --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.55);
+
+    /* Texto sobre botões e faixas azuis (não usar --white, que vira cor de card) */
+    --on-primary: #ffffff;
 }
 
 [data-theme="dark"] body {
@@ -161,6 +164,32 @@
 
 [data-theme="dark"] .impl-roadmap-parallel-chip svg {
     color: var(--primary-light);
+}
+
+[data-theme="dark"] .impl-roadmap-step-badge {
+    color: var(--primary-light);
+    background: rgba(56, 189, 248, 0.12);
+}
+
+[data-theme="dark"] .impl-roadmap-step.is-active .impl-roadmap-step-badge {
+    background: var(--primary-blue);
+    color: var(--on-primary);
+}
+
+[data-theme="dark"] .impl-roadmap-step.is-active .impl-roadmap-step-marker {
+    color: var(--on-primary);
+}
+
+[data-theme="dark"] .impl-roadmap-step.is-active .impl-roadmap-step-num {
+    color: var(--on-primary);
+}
+
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .btn-demo:not(.btn-demo--ghost),
+[data-theme="dark"] .demo-submit,
+[data-theme="dark"] .header-bottom,
+[data-theme="dark"] .header-bottom a {
+    color: var(--on-primary);
 }
 
 [data-theme="dark"] .impl-roadmap-timeline-block.is-highlight {
