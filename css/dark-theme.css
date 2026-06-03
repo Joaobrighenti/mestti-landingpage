@@ -66,9 +66,47 @@
     opacity: 1;
 }
 
-/* Ilustrações de sensores (SVG / linha escura) */
+/* Grade do sistema — só o texto sobre a imagem (legenda), imagem sem filtro */
+[data-theme="dark"] .sistema-grid-media img,
+[data-theme="dark"] .hero-grid-shot {
+    filter: none;
+}
+
+[data-theme="dark"] .sistema-grid-card {
+    background: #141414;
+    border-color: var(--gray-200);
+}
+
+[data-theme="dark"] .sistema-grid-section {
+    background: var(--gray-50);
+}
+
+[data-theme="dark"] .sistema-grid-caption {
+    z-index: 2;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.8) 40%,
+        rgba(0, 0, 0, 0.35) 70%,
+        transparent 100%
+    );
+}
+
+[data-theme="dark"] .sistema-grid-caption span {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+/* Ilustrações de sensores (1.svg / 2.svg) — desenho e texto “MESTTI” em branco */
 [data-theme="dark"] .sensores-intel-dual-img {
     filter: brightness(0) invert(1);
+    opacity: 0.92;
+}
+
+[data-theme="dark"] .service-offer-cta,
+[data-theme="dark"] .service-offer-cta:hover {
+    color: var(--on-primary);
 }
 
 /* Sensor animado na faixa do hero — corpo do dispositivo em branco */
