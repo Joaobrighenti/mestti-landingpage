@@ -48,6 +48,8 @@
     --header-bg: var(--gray-100);
     --header-nav-muted: var(--gray-700);
     --header-border: var(--gray-200);
+
+    --page-bg: #ffffff;
 }
 
 * {
@@ -67,7 +69,7 @@ body {
     font-family: var(--font-family);
     line-height: 1.6;
     color: var(--gray-800);
-    background-color: #ffffff;
+    background-color: var(--page-bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: clip;

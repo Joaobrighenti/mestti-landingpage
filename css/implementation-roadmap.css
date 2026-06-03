@@ -69,14 +69,14 @@
     cursor: pointer;
     font-family: inherit;
     color: inherit;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease;
-    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    box-shadow: none;
 }
 
 .impl-roadmap-step:hover {
     border-color: var(--primary-light);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    transform: none;
+    box-shadow: none;
 }
 
 .impl-roadmap-step:focus-visible {
@@ -87,8 +87,8 @@
 .impl-roadmap-step.is-active {
     border-color: var(--primary-blue);
     background: linear-gradient(180deg, #f0f7fc 0%, var(--white) 100%);
-    box-shadow: 0 6px 20px rgba(2, 69, 120, 0.11);
-    transform: translateY(-3px);
+    box-shadow: none;
+    transform: none;
 }
 
 .impl-roadmap-step.is-complete:not(.is-active) {
@@ -203,7 +203,7 @@
     border: 1px solid var(--gray-200);
     border-radius: 14px;
     padding: 1.35rem 1.5rem;
-    box-shadow: var(--shadow-md);
+    box-shadow: none;
 }
 
 .impl-roadmap-panel-head {
@@ -334,10 +334,11 @@
     font-size: 0.78rem;
     font-weight: 700;
     color: var(--gray-800);
-    background: linear-gradient(135deg, #eef6fc 0%, var(--gray-50) 100%);
-    border: 1px solid rgba(2, 69, 120, 0.15);
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
     padding: 0.35rem 0.65rem;
     border-radius: 999px;
+    box-shadow: none;
 }
 
 .impl-roadmap-parallel-chip svg {
