@@ -3,6 +3,27 @@
  * Funcionalidades: Menu mobile, carrossel, formulário
  */
 
+function gtag_report_conversion(url) {
+    const callback = function () {
+        if (typeof url !== 'undefined') {
+            window.location = url;
+        }
+    };
+
+    if (typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', {
+            send_to: 'AW-11486484316/IgS3CL2-7I4ZENyul-Uq',
+            event_callback: callback
+        });
+    } else {
+        callback();
+    }
+
+    return false;
+}
+
+window.gtag_report_conversion = gtag_report_conversion;
+
 // ============================================
 // Menu Mobile Toggle
 // ============================================
@@ -262,6 +283,7 @@ if (modalOverlay) {
             btn.dataset.mesttiModalBound = '1';
             btn.addEventListener('click', (e) => {
                 if (btn.tagName === 'A') e.preventDefault();
+                gtag_report_conversion();
                 openModal();
             });
         });
@@ -417,6 +439,7 @@ function handleFormSubmit(form, formId) {
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
+            gtag_report_conversion();
 
             const submitButton = form.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
