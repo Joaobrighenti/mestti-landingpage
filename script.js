@@ -249,6 +249,350 @@ document.addEventListener('DOMContentLoaded', initMesttiDeferredScroll);
 
 
 
+// WhatsApp para receber demonstrações: 14 97400-7797
+const WHATSAPP_NUMERO = '5514974007797';
+
+function mesttiT(key, fallback) {
+    return (window.MesttiI18n && window.MesttiI18n.t(window.MESTTI_LANG || 'pt', key)) || fallback;
+}
+
+// ============================================
+// Popup (substitui alert)
+// ============================================
+
+function ensureMesttiPopup() {
+    let overlay = document.getElementById('mesttiPopup');
+    if (overlay) return overlay;
+
+    overlay = document.createElement('div');
+    overlay.id = 'mesttiPopup';
+    overlay.className = 'mestti-popup';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.innerHTML = `
+        <div class="mestti-popup__backdrop" data-popup-close="true"></div>
+        <div class="mestti-popup__card" role="document" aria-labelledby="mesttiPopupTitle" aria-describedby="mesttiPopupMessage" tabindex="-1">
+            <div class="mestti-popup__badge" aria-hidden="true"></div>
+            <div class="mestti-popup__content">
+                <h3 class="mestti-popup__title" id="mesttiPopupTitle">Pronto!</h3>
+                <p class="mestti-popup__message" id="mesttiPopupMessage"></p>
+                <div class="mestti-popup__actions">
+                    <button type="button" class="btn btn-primary mestti-popup__btn" data-popup-close="true">OK</button>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener('click', (e) => {
+        const closeEl = e.target.closest('[data-popup-close="true"]');
+        if (closeEl) closeMesttiPopup();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open') && !overlay.querySelector('.mestti-popup__btn--confirm')) {
+            closeMesttiPopup();
+        }
+    });
+
+    return overlay;
+}
+
+function openMesttiPopup({ title = 'Pronto!', message = '' } = {}) {
+    const overlay = ensureMesttiPopup();
+    const titleEl = overlay.querySelector('#mesttiPopupTitle');
+    const msgEl = overlay.querySelector('#mesttiPopupMessage');
+    const cardEl = overlay.querySelector('.mestti-popup__card');
+    const btnEl = overlay.querySelector('.mestti-popup__btn');
+
+    if (titleEl) titleEl.textContent = title;
+    if (msgEl) msgEl.textContent = message;
+
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+
+    requestAnimationFrame(() => {
+        if (cardEl) cardEl.focus();
+        if (btnEl) btnEl.focus();
+    });
+}
+
+function closeMesttiPopup() {
+    const overlay = document.getElementById('mesttiPopup');
+    if (!overlay) return;
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+}
+
+function restoreMesttiPopupActions() {
+    const overlay = document.getElementById('mesttiPopup');
+    if (!overlay) return;
+    const actions = overlay.querySelector('.mestti-popup__actions');
+    if (!actions) return;
+    actions.innerHTML = '<button type="button" class="btn btn-primary mestti-popup__btn" data-popup-close="true">OK</button>';
+}
+
+function openMesttiConfirmPopup({
+    title = 'Enviar antes de sair?',
+    message = '',
+    confirmLabel = 'Sim, enviar',
+    cancelLabel = 'Não'
+} = {}) {
+    return new Promise((resolve) => {
+        const overlay = ensureMesttiPopup();
+        const titleEl = overlay.querySelector('#mesttiPopupTitle');
+        const msgEl = overlay.querySelector('#mesttiPopupMessage');
+        const actions = overlay.querySelector('.mestti-popup__actions');
+        const cardEl = overlay.querySelector('.mestti-popup__card');
+
+        if (titleEl) titleEl.textContent = title;
+        if (msgEl) msgEl.textContent = message;
+        if (actions) {
+            actions.innerHTML = `
+                <button type="button" class="mestti-popup__btn mestti-popup__btn--cancel btn">${cancelLabel}</button>
+                <button type="button" class="mestti-popup__btn mestti-popup__btn--confirm btn btn-primary">${confirmLabel}</button>
+            `;
+        }
+
+        const confirmBtn = actions?.querySelector('.mestti-popup__btn--confirm');
+        const cancelBtn = actions?.querySelector('.mestti-popup__btn--cancel');
+        const backdrop = overlay.querySelector('.mestti-popup__backdrop');
+
+        function finish(result) {
+            document.removeEventListener('keydown', onKeydown, true);
+            confirmBtn?.removeEventListener('click', onConfirm);
+            cancelBtn?.removeEventListener('click', onCancel);
+            backdrop?.removeEventListener('click', onCancel);
+            closeMesttiPopup();
+            restoreMesttiPopupActions();
+            resolve(result);
+        }
+
+        function onConfirm() { finish(true); }
+        function onCancel() { finish(false); }
+        function onKeydown(e) {
+            if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+                e.preventDefault();
+                onCancel();
+            }
+        }
+
+        confirmBtn?.addEventListener('click', onConfirm);
+        cancelBtn?.addEventListener('click', onCancel);
+        backdrop?.addEventListener('click', onCancel);
+        document.addEventListener('keydown', onKeydown, true);
+
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(() => {
+            confirmBtn?.focus();
+            cardEl?.focus();
+        });
+    });
+}
+
+function getFormFieldValue(form, selectors) {
+    for (const sel of selectors) {
+        const el = form.querySelector(sel);
+        if (el && typeof el.value === 'string') return el.value.trim();
+    }
+    return '';
+}
+
+const LEAD_SOURCE_LABELS = {
+    submit: 'Botão enviar',
+    modal_close: 'Confirmação ao fechar modal'
+};
+
+function collectLeadPayload(form, formId, leadSource = 'submit') {
+    const name = getFormFieldValue(form, ['#name', '[name="name"]']);
+    const email = getFormFieldValue(form, ['#email', '[name="email"]']);
+    const phone = getFormFieldValue(form, ['#phone', '[name="phone"]']);
+    const ddi = getFormFieldValue(form, ['#ddi', '[name="ddi"]']);
+
+    const cargo = form.querySelector('#cargo') || form.querySelector('[name="cargo"]');
+    const setor = form.querySelector('#setor') || form.querySelector('[name="setor"]');
+    const solucao = form.querySelector('#solucao') || form.querySelector('[name="solucao"]');
+    const empresa = form.querySelector('#empresa') || form.querySelector('[name="empresa"]');
+    const mensagem = form.querySelector('#mensagem') || form.querySelector('[name="mensagem"]');
+    const observacao = form.querySelector('#observacao') || form.querySelector('[name="observacao"]');
+
+    return {
+        formId,
+        name,
+        email,
+        phone,
+        ddi,
+        cargo: cargo?.value ? (cargo.options?.[cargo.selectedIndex]?.text || cargo.value) : '',
+        setor: setor?.value ? (setor.options?.[setor.selectedIndex]?.text || setor.value) : '',
+        solucao: solucao?.value ? (solucao.options?.[solucao.selectedIndex]?.text || solucao.value) : '',
+        empresa: empresa?.value?.trim() || '',
+        mensagem: mensagem?.value?.trim() || '',
+        observacao: observacao?.value?.trim() || '',
+        pagePath: window.location.pathname,
+        leadSource: LEAD_SOURCE_LABELS[leadSource] || leadSource
+    };
+}
+
+function formHasPartialData(form) {
+    if (!form || form.dataset.mesttiSubmitted === '1' || form.dataset.mesttiSubmitting === '1') {
+        return false;
+    }
+
+    const name = getFormFieldValue(form, ['#name', '[name="name"]']);
+    const email = getFormFieldValue(form, ['#email', '[name="email"]']);
+    const phone = getFormFieldValue(form, ['#phone', '[name="phone"]']).replace(/\D/g, '');
+    const empresa = getFormFieldValue(form, ['#empresa', '[name="empresa"]']);
+    const mensagem = getFormFieldValue(form, ['#mensagem', '[name="mensagem"]']);
+    const observacao = getFormFieldValue(form, ['#observacao', '[name="observacao"]']);
+    const cargo = form.querySelector('#cargo') || form.querySelector('[name="cargo"]');
+    const setor = form.querySelector('#setor') || form.querySelector('[name="setor"]');
+    const solucao = form.querySelector('#solucao') || form.querySelector('[name="solucao"]');
+
+    return Boolean(
+        name.length >= 2
+        || email.includes('@')
+        || phone.length >= 8
+        || empresa.length >= 2
+        || mensagem.length >= 2
+        || observacao.length >= 2
+        || cargo?.value
+        || setor?.value
+        || solucao?.value
+    );
+}
+
+async function submitLeadForm(form, formId, {
+    leadSource = 'submit',
+    trackConversion = true,
+    showSuccessPopup = true,
+    closeOnSuccess = true
+} = {}) {
+    if (!form || form.dataset.mesttiSubmitting === '1') return false;
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalText = submitButton?.textContent || '';
+    const payload = collectLeadPayload(form, formId, leadSource);
+
+    if (!payload.name || !payload.email) {
+        return false;
+    }
+
+    form.dataset.mesttiSubmitting = '1';
+
+    if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
+    }
+
+    if (trackConversion) {
+        gtag_report_conversion();
+    }
+
+    try {
+        const response = await fetch('/api/lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) throw new Error('api_error');
+        await response.json();
+
+        form.dataset.mesttiSubmitted = '1';
+
+        if (submitButton) {
+            submitButton.textContent = 'Enviado ✓';
+            submitButton.style.backgroundColor = '#059669';
+        }
+
+        if (showSuccessPopup) {
+            openMesttiPopup({
+                title: 'Obrigado!',
+                message: mesttiT('form.success', 'Recebemos sua solicitação. Em breve nossa equipe entrará em contato.')
+            });
+        }
+
+        setTimeout(() => {
+            form.reset();
+            if (closeOnSuccess && typeof closeModal === 'function') closeModal();
+            if (submitButton) {
+                submitButton.textContent = originalText;
+                submitButton.style.backgroundColor = '';
+                submitButton.disabled = false;
+            }
+            form.dataset.mesttiSubmitting = '';
+            delete form.dataset.mesttiSubmitted;
+        }, 2500);
+
+        return true;
+    } catch {
+        if (submitButton) {
+            submitButton.textContent = originalText;
+            submitButton.style.backgroundColor = '';
+            submitButton.disabled = false;
+        }
+        form.dataset.mesttiSubmitting = '';
+        openMesttiPopup({
+            title: 'Ops',
+            message: mesttiT('form.error', 'Não conseguimos enviar agora. Tente novamente em instantes.')
+        });
+        return false;
+    }
+}
+
+function montarMensagemWhatsApp(form, formId) {
+    const getVal = (selectors) => {
+        for (const sel of selectors) {
+            const el = form.querySelector(sel);
+            if (el && typeof el.value === 'string') return el.value.trim();
+        }
+        return '';
+    };
+
+    const name = getVal(['#name', '[name="name"]']);
+    const email = getVal(['#email', '[name="email"]']);
+    const phone = getVal(['#phone', '[name="phone"]']);
+
+    const cargo = form.querySelector('#cargo') || form.querySelector('[name="cargo"]');
+    const setor = form.querySelector('#setor') || form.querySelector('[name="setor"]');
+    const solucao = form.querySelector('#solucao') || form.querySelector('[name="solucao"]');
+    const empresa = form.querySelector('#empresa') || form.querySelector('[name="empresa"]');
+    const mensagem = form.querySelector('#mensagem') || form.querySelector('[name="mensagem"]');
+
+    let texto = '*Nova solicitação de demonstração MESTTI*\n\n';
+    texto += `*Nome:* ${name}\n`;
+    texto += `*E-mail:* ${email}\n`;
+    texto += `*Telefone:* ${phone}\n`;
+    if (cargo?.value) texto += `*Cargo:* ${cargo.options[cargo.selectedIndex]?.text || cargo.value}\n`;
+    if (setor?.value) texto += `*Setor:* ${setor.options[setor.selectedIndex]?.text || setor.value}\n`;
+    if (solucao?.value) texto += `*Solução de interesse:* ${solucao.options[solucao.selectedIndex]?.text || solucao.value}\n`;
+    if (empresa?.value) texto += `*Empresa:* ${empresa.value}\n`;
+    if (mensagem?.value) texto += `*Mensagem:* ${mensagem.value}\n`;
+
+    return encodeURIComponent(texto);
+}
+
+function handleFormSubmit(form, formId) {
+    if (!form || form.dataset.mesttiSubmitBound === '1') return;
+    form.dataset.mesttiSubmitBound = '1';
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        await submitLeadForm(form, formId, { leadSource: 'submit' });
+    });
+}
+
+if (window.MesttiFormOptions && typeof window.MesttiFormOptions.populateFormSelects === 'function') {
+    window.MesttiFormOptions.populateFormSelects();
+}
+
+document.querySelectorAll('.demo-form').forEach((form) => {
+    const formId = form.id || 'principal';
+    handleFormSubmit(form, formId);
+});
+
 // ============================================
 // Formulário de Contato e Modal
 // ============================================
@@ -256,19 +600,73 @@ document.addEventListener('DOMContentLoaded', initMesttiDeferredScroll);
 let openModal;
 let closeModal;
 
-// Lógica do Modal
 const modalOverlay = document.getElementById('contactModal');
 const btnOpenModalList = document.querySelectorAll('.btn-open-modal');
 const btnCloseModal = document.getElementById('btnCloseModal');
+
+function getModalForm() {
+    return modalOverlay?.querySelector('.demo-form') || null;
+}
+
+let closeModalRequestPending = false;
+
+async function requestCloseModal() {
+    if (closeModalRequestPending) return;
+    closeModalRequestPending = true;
+
+    try {
+        const confirmPopup = document.getElementById('mesttiPopup');
+        if (confirmPopup?.classList.contains('is-open') && confirmPopup.querySelector('.mestti-popup__btn--confirm')) {
+            closeMesttiPopup();
+            restoreMesttiPopupActions();
+            closeModal();
+            return;
+        }
+
+        const form = getModalForm();
+
+        if (form && formHasPartialData(form)) {
+            const shouldSend = await openMesttiConfirmPopup({
+                title: mesttiT('form.abandon.title', 'Enviar antes de sair?'),
+                message: mesttiT('form.abandon.message', 'Você preencheu alguns dados. Quer que nossa equipe entre em contato?'),
+                confirmLabel: mesttiT('form.abandon.yes', 'Sim, enviar'),
+                cancelLabel: mesttiT('form.abandon.no', 'Não')
+            });
+
+            if (shouldSend) {
+                const payload = collectLeadPayload(form, form.id || 'principal', 'modal_close');
+                if (!payload.name || !payload.email) {
+                    openMesttiPopup({
+                        title: mesttiT('form.abandon.title', 'Enviar antes de sair?'),
+                        message: mesttiT('form.abandon.incomplete', 'Para enviar, preencha pelo menos nome e e-mail.')
+                    });
+                    return;
+                }
+
+                await submitLeadForm(form, form.id || 'principal', {
+                    leadSource: 'modal_close',
+                    closeOnSuccess: true
+                });
+                return;
+            }
+        }
+
+        closeModal();
+    } finally {
+        closeModalRequestPending = false;
+    }
+}
 
 if (modalOverlay) {
     openModal = function openModalFn() {
         modalOverlay.classList.add('active');
         document.body.classList.add('is-modal-open');
-        document.body.style.overflow = 'hidden'; // Evita scroll atrás do modal
+        document.body.style.overflow = 'hidden';
     };
 
     closeModal = function closeModalFn() {
+        closeMesttiPopup();
+        restoreMesttiPopupActions();
         modalOverlay.classList.remove('active');
         document.body.classList.remove('is-modal-open');
         document.body.style.overflow = '';
@@ -312,231 +710,21 @@ if (modalOverlay) {
     initFabContact();
 
     if (btnCloseModal) {
-        btnCloseModal.addEventListener('click', () => closeModal());
+        btnCloseModal.addEventListener('click', () => requestCloseModal());
     }
 
-    // Fechar ao clicar fora do modal content
     modalOverlay.addEventListener('click', (e) => {
         if (e.target === modalOverlay) {
-            closeModal();
+            requestCloseModal();
         }
-    });
-
-    // Fechar com tecla ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-            closeModal();
-        }
-    });
-}
-
-// WhatsApp para receber demonstrações: 14 97400-7797
-const WHATSAPP_NUMERO = '5514974007797';
-
-// ============================================
-// Popup (substitui alert)
-// ============================================
-
-function ensureMesttiPopup() {
-    let overlay = document.getElementById('mesttiPopup');
-    if (overlay) return overlay;
-
-    overlay = document.createElement('div');
-    overlay.id = 'mesttiPopup';
-    overlay.className = 'mestti-popup';
-    overlay.setAttribute('role', 'dialog');
-    overlay.setAttribute('aria-modal', 'true');
-    overlay.setAttribute('aria-hidden', 'true');
-    overlay.innerHTML = `
-        <div class="mestti-popup__backdrop" data-popup-close="true"></div>
-        <div class="mestti-popup__card" role="document" aria-labelledby="mesttiPopupTitle" aria-describedby="mesttiPopupMessage" tabindex="-1">
-            <div class="mestti-popup__badge" aria-hidden="true"></div>
-            <div class="mestti-popup__content">
-                <h3 class="mestti-popup__title" id="mesttiPopupTitle">Pronto!</h3>
-                <p class="mestti-popup__message" id="mesttiPopupMessage"></p>
-                <div class="mestti-popup__actions">
-                    <button type="button" class="btn btn-primary mestti-popup__btn" data-popup-close="true">OK</button>
-                </div>
-            </div>
-        </div>
-    `;
-    document.body.appendChild(overlay);
-
-    overlay.addEventListener('click', (e) => {
-        const closeEl = e.target.closest('[data-popup-close="true"]');
-        if (closeEl) closeMesttiPopup();
     });
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeMesttiPopup();
-    });
-
-    return overlay;
-}
-
-function openMesttiPopup({ title = 'Pronto!', message = '' } = {}) {
-    const overlay = ensureMesttiPopup();
-    const titleEl = overlay.querySelector('#mesttiPopupTitle');
-    const msgEl = overlay.querySelector('#mesttiPopupMessage');
-    const cardEl = overlay.querySelector('.mestti-popup__card');
-    const btnEl = overlay.querySelector('.mestti-popup__btn');
-
-    if (titleEl) titleEl.textContent = title;
-    if (msgEl) msgEl.textContent = message;
-
-    overlay.classList.add('is-open');
-    overlay.setAttribute('aria-hidden', 'false');
-
-    requestAnimationFrame(() => {
-        if (cardEl) cardEl.focus();
-        if (btnEl) btnEl.focus();
-    });
-}
-
-function closeMesttiPopup() {
-    const overlay = document.getElementById('mesttiPopup');
-    if (!overlay) return;
-    overlay.classList.remove('is-open');
-    overlay.setAttribute('aria-hidden', 'true');
-}
-
-function montarMensagemWhatsApp(form, formId) {
-    const getVal = (selectors) => {
-        for (const sel of selectors) {
-            const el = form.querySelector(sel);
-            if (el && typeof el.value === 'string') return el.value.trim();
-        }
-        return '';
-    };
-
-    const name = getVal(['#name', '[name="name"]']);
-    const email = getVal(['#email', '[name="email"]']);
-    const phone = getVal(['#phone', '[name="phone"]']);
-
-    const cargo = form.querySelector('#cargo') || form.querySelector('[name="cargo"]');
-    const setor = form.querySelector('#setor') || form.querySelector('[name="setor"]');
-    const solucao = form.querySelector('#solucao') || form.querySelector('[name="solucao"]');
-    const empresa = form.querySelector('#empresa') || form.querySelector('[name="empresa"]');
-    const mensagem = form.querySelector('#mensagem') || form.querySelector('[name="mensagem"]');
-
-    let texto = '*Nova solicitação de demonstração MESTTI*\n\n';
-    texto += `*Nome:* ${name}\n`;
-    texto += `*E-mail:* ${email}\n`;
-    texto += `*Telefone:* ${phone}\n`;
-    if (cargo?.value) texto += `*Cargo:* ${cargo.options[cargo.selectedIndex]?.text || cargo.value}\n`;
-    if (setor?.value) texto += `*Setor:* ${setor.options[setor.selectedIndex]?.text || setor.value}\n`;
-    if (solucao?.value) texto += `*Solução de interesse:* ${solucao.options[solucao.selectedIndex]?.text || solucao.value}\n`;
-    if (empresa?.value) texto += `*Empresa:* ${empresa.value}\n`;
-    if (mensagem?.value) texto += `*Mensagem:* ${mensagem.value}\n`;
-
-    return encodeURIComponent(texto);
-}
-
-function handleFormSubmit(form, formId) {
-    if (!form || form.dataset.mesttiSubmitBound === '1') return;
-    form.dataset.mesttiSubmitBound = '1';
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (form.dataset.mesttiSubmitting === '1') return;
-        form.dataset.mesttiSubmitting = '1';
-
-        const submitButton = form.querySelector('button[type="submit"]');
-        const originalText = submitButton?.textContent || '';
-
-        if (submitButton) {
-            submitButton.disabled = true;
-            submitButton.textContent = 'Enviando...';
-        }
-
-        gtag_report_conversion();
-
-        const getVal = (selectors) => {
-            for (const sel of selectors) {
-                const el = form.querySelector(sel);
-                if (el && typeof el.value === 'string') return el.value.trim();
-            }
-            return '';
-        };
-
-        const name = getVal(['#name', '[name="name"]']);
-        const email = getVal(['#email', '[name="email"]']);
-        const phone = getVal(['#phone', '[name="phone"]']);
-        const ddi = getVal(['#ddi', '[name="ddi"]']);
-
-        const cargo = form.querySelector('#cargo') || form.querySelector('[name="cargo"]');
-        const setor = form.querySelector('#setor') || form.querySelector('[name="setor"]');
-        const solucao = form.querySelector('#solucao') || form.querySelector('[name="solucao"]');
-        const empresa = form.querySelector('#empresa') || form.querySelector('[name="empresa"]');
-        const mensagem = form.querySelector('#mensagem') || form.querySelector('[name="mensagem"]');
-        const observacao = form.querySelector('#observacao') || form.querySelector('[name="observacao"]');
-
-        try {
-            const response = await fetch('/api/lead', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    formId,
-                    name,
-                    email,
-                    phone,
-                    ddi,
-                    cargo: cargo?.value ? (cargo.options?.[cargo.selectedIndex]?.text || cargo.value) : '',
-                    setor: setor?.value ? (setor.options?.[setor.selectedIndex]?.text || setor.value) : '',
-                    solucao: solucao?.value ? (solucao.options?.[solucao.selectedIndex]?.text || solucao.value) : '',
-                    empresa: empresa?.value || '',
-                    mensagem: mensagem?.value || '',
-                    observacao: observacao?.value || '',
-                    pagePath: window.location.pathname
-                })
-            });
-
-            if (!response.ok) throw new Error('api_error');
-            await response.json();
-
-            if (submitButton) {
-                submitButton.textContent = 'Enviado ✓';
-                submitButton.style.backgroundColor = '#059669';
-            }
-
-            openMesttiPopup({
-                title: 'Obrigado!',
-                message: (window.MesttiI18n && window.MesttiI18n.t(window.MESTTI_LANG || 'pt', 'form.success')) || 'Recebemos sua solicitação. Em breve nossa equipe entrará em contato.'
-            });
-
-            setTimeout(() => {
-                form.reset();
-                if (typeof closeModal === 'function') closeModal();
-                if (submitButton) {
-                    submitButton.textContent = originalText;
-                    submitButton.style.backgroundColor = '';
-                    submitButton.disabled = false;
-                }
-                form.dataset.mesttiSubmitting = '';
-            }, 2500);
-        } catch {
-            if (submitButton) {
-                submitButton.textContent = originalText;
-                submitButton.style.backgroundColor = '';
-                submitButton.disabled = false;
-            }
-            form.dataset.mesttiSubmitting = '';
-            openMesttiPopup({
-                title: 'Ops',
-                message: (window.MesttiI18n && window.MesttiI18n.t(window.MESTTI_LANG || 'pt', 'form.error')) || 'Não conseguimos enviar agora. Tente novamente em instantes.'
-            });
+        if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+            requestCloseModal();
         }
     });
 }
-
-if (window.MesttiFormOptions && typeof window.MesttiFormOptions.populateFormSelects === 'function') {
-    window.MesttiFormOptions.populateFormSelects();
-}
-
-document.querySelectorAll('.demo-form').forEach((form) => {
-    const formId = form.id || 'principal';
-    handleFormSubmit(form, formId);
-});
 
 // ============================================
 // Header Scroll Effect

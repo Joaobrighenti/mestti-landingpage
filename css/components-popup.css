@@ -3,7 +3,7 @@
 .mestti-popup {
     position: fixed;
     inset: 0;
-    z-index: 2000;
+    z-index: 10050;
     display: none;
 }
 
@@ -74,5 +74,15 @@
     padding: 0.7rem 1.1rem;
     border-radius: 6px;
     font-size: 0.9rem;
+}
+
+.mestti-popup__btn--cancel {
+    color: var(--gray-700);
+    background: transparent;
+    border: 1px solid var(--gray-300);
+}
+
+.mestti-popup__btn--cancel:hover {
+    background: var(--gray-100);
 }
 

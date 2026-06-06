@@ -46,6 +46,7 @@ app.post("/api/lead", async (req, res) => {
       mensagem = "",
       observacao = "",
       pagePath = "",
+      leadSource = "",
     } = payload;
 
     if (!name || !email) {
@@ -77,6 +78,7 @@ app.post("/api/lead", async (req, res) => {
       ["Mensagem", safe(mensagem)],
       ["Observação", safe(observacao)],
       ["Página", safe(pagePath)],
+      ["Origem", safe(leadSource)],
     ].filter(([, v]) => v);
 
     const text = lines.map(([k, v]) => `${k}: ${v}`).join("\n");
