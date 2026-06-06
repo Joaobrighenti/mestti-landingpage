@@ -278,8 +278,38 @@
     box-shadow: -4px 0 24px rgba(0, 0, 0, 0.45);
 }
 
-[data-theme="dark"] .components-popup {
-    background: rgba(20, 20, 20, 0.97);
+[data-theme="dark"] .mestti-popup__backdrop {
+    background: rgba(0, 0, 0, 0.78);
+}
+
+[data-theme="dark"] .mestti-popup__card {
+    background: #1a1a1a;
+    border-color: var(--gray-300);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.65);
+}
+
+[data-theme="dark"] .mestti-popup__title {
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .mestti-popup__message {
+    color: var(--gray-500);
+}
+
+[data-theme="dark"] .mestti-popup__btn--cancel {
+    color: var(--gray-700);
+    background: transparent;
+    border-color: var(--gray-300);
+}
+
+[data-theme="dark"] .mestti-popup__btn--cancel:hover {
+    background: var(--gray-200);
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .mestti-popup__btn.btn-primary,
+[data-theme="dark"] .mestti-popup__btn--confirm {
+    color: var(--on-primary);
 }
 
 [data-theme="dark"] .lang-switcher,
