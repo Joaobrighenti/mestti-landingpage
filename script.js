@@ -253,9 +253,6 @@ document.addEventListener('DOMContentLoaded', initMesttiDeferredScroll);
 // Formulário de Contato e Modal
 // ============================================
 
-const contactForm = document.getElementById('contactForm');
-const contactFormAtuacao = document.getElementById('contactFormAtuacao');
-
 let openModal;
 let closeModal;
 
@@ -436,39 +433,46 @@ function montarMensagemWhatsApp(form, formId) {
 }
 
 function handleFormSubmit(form, formId) {
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            gtag_report_conversion();
+    if (!form || form.dataset.mesttiSubmitBound === '1') return;
+    form.dataset.mesttiSubmitBound = '1';
 
-            const submitButton = form.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (form.dataset.mesttiSubmitting === '1') return;
+        form.dataset.mesttiSubmitting = '1';
 
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton?.textContent || '';
+
+        if (submitButton) {
             submitButton.disabled = true;
-
-            const getVal = (selectors) => {
-                for (const sel of selectors) {
-                    const el = form.querySelector(sel);
-                    if (el && typeof el.value === 'string') return el.value.trim();
-                }
-                return '';
-            };
-
-            const name = getVal(['#name', '[name="name"]']);
-            const email = getVal(['#email', '[name="email"]']);
-            const phone = getVal(['#phone', '[name="phone"]']);
-            const ddi = getVal(['#ddi', '[name="ddi"]']);
-
-            const cargo = form.querySelector('#cargo') || form.querySelector('[name="cargo"]');
-            const setor = form.querySelector('#setor') || form.querySelector('[name="setor"]');
-            const solucao = form.querySelector('#solucao') || form.querySelector('[name="solucao"]');
-            const empresa = form.querySelector('#empresa') || form.querySelector('[name="empresa"]');
-            const mensagem = form.querySelector('#mensagem') || form.querySelector('[name="mensagem"]');
-            const observacao = form.querySelector('#observacao') || form.querySelector('[name="observacao"]');
-
             submitButton.textContent = 'Enviando...';
+        }
 
-            fetch('/api/lead', {
+        gtag_report_conversion();
+
+        const getVal = (selectors) => {
+            for (const sel of selectors) {
+                const el = form.querySelector(sel);
+                if (el && typeof el.value === 'string') return el.value.trim();
+            }
+            return '';
+        };
+
+        const name = getVal(['#name', '[name="name"]']);
+        const email = getVal(['#email', '[name="email"]']);
+        const phone = getVal(['#phone', '[name="phone"]']);
+        const ddi = getVal(['#ddi', '[name="ddi"]']);
+
+        const cargo = form.querySelector('#cargo') || form.querySelector('[name="cargo"]');
+        const setor = form.querySelector('#setor') || form.querySelector('[name="setor"]');
+        const solucao = form.querySelector('#solucao') || form.querySelector('[name="solucao"]');
+        const empresa = form.querySelector('#empresa') || form.querySelector('[name="empresa"]');
+        const mensagem = form.querySelector('#mensagem') || form.querySelector('[name="mensagem"]');
+        const observacao = form.querySelector('#observacao') || form.querySelector('[name="observacao"]');
+
+        try {
+            const response = await fetch('/api/lead', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -485,43 +489,54 @@ function handleFormSubmit(form, formId) {
                     observacao: observacao?.value || '',
                     pagePath: window.location.pathname
                 })
-            })
-                .then(async (r) => {
-                    if (!r.ok) throw new Error('api_error');
-                    return r.json();
-                })
-                .then(() => {
-                    submitButton.textContent = 'Enviado ✓';
-                    submitButton.style.backgroundColor = '#059669';
+            });
 
-                    openMesttiPopup({
-                        title: 'Obrigado!',
-                        message: (window.MesttiI18n && window.MesttiI18n.t(window.MESTTI_LANG || 'pt', 'form.success')) || 'Recebemos sua solicitação. Em breve nossa equipe entrará em contato.'
-                    });
-                })
-                .catch(() => {
-                    submitButton.textContent = originalText;
-                    submitButton.style.backgroundColor = '';
-                    openMesttiPopup({
-                        title: 'Ops',
-                        message: (window.MesttiI18n && window.MesttiI18n.t(window.MESTTI_LANG || 'pt', 'form.error')) || 'Não conseguimos enviar agora. Tente novamente em instantes.'
-                    });
-                });
+            if (!response.ok) throw new Error('api_error');
+            await response.json();
+
+            if (submitButton) {
+                submitButton.textContent = 'Enviado ✓';
+                submitButton.style.backgroundColor = '#059669';
+            }
+
+            openMesttiPopup({
+                title: 'Obrigado!',
+                message: (window.MesttiI18n && window.MesttiI18n.t(window.MESTTI_LANG || 'pt', 'form.success')) || 'Recebemos sua solicitação. Em breve nossa equipe entrará em contato.'
+            });
 
             setTimeout(() => {
+                form.reset();
+                if (typeof closeModal === 'function') closeModal();
+                if (submitButton) {
+                    submitButton.textContent = originalText;
+                    submitButton.style.backgroundColor = '';
+                    submitButton.disabled = false;
+                }
+                form.dataset.mesttiSubmitting = '';
+            }, 2500);
+        } catch {
+            if (submitButton) {
                 submitButton.textContent = originalText;
                 submitButton.style.backgroundColor = '';
                 submitButton.disabled = false;
-                form.reset();
-                if (typeof closeModal === 'function') closeModal();
-            }, 3000);
-        });
-    }
+            }
+            form.dataset.mesttiSubmitting = '';
+            openMesttiPopup({
+                title: 'Ops',
+                message: (window.MesttiI18n && window.MesttiI18n.t(window.MESTTI_LANG || 'pt', 'form.error')) || 'Não conseguimos enviar agora. Tente novamente em instantes.'
+            });
+        }
+    });
 }
 
-handleFormSubmit(contactForm, 'principal');
-handleFormSubmit(contactFormAtuacao, 'atuacao');
-handleFormSubmit(document.getElementById('contactFormPage'), 'contato');
+if (window.MesttiFormOptions && typeof window.MesttiFormOptions.populateFormSelects === 'function') {
+    window.MesttiFormOptions.populateFormSelects();
+}
+
+document.querySelectorAll('.demo-form').forEach((form) => {
+    const formId = form.id || 'principal';
+    handleFormSubmit(form, formId);
+});
 
 // ============================================
 // Header Scroll Effect

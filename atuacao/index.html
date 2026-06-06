@@ -255,31 +255,17 @@
                             <option value="+34">+34</option>
                         </select>
                         <input type="tel" id="phone" name="phone" placeholder="Telefone / WhatsApp" autocomplete="tel" required>
-                        <select id="cargo" name="cargo" required>
+                        <select id="cargo" name="cargo" required data-mestti-options="cargo">
                             <option value="" selected disabled>Cargo</option>
-                            <option value="gerente">Gerente</option>
-                            <option value="supervisor">Supervisor</option>
-                            <option value="engenheiro">Engenheiro</option>
-                            <option value="diretor">Diretor</option>
-                            <option value="outro">Outro</option>
                         </select>
                     </div>
 
-                    <select id="setor" name="setor" required>
+                    <select id="setor" name="setor" required data-mestti-options="setor">
                         <option value="" selected disabled>Setor da Indústria</option>
-                        <option value="alimentos">Alimentos e Bebidas</option>
-                        <option value="quimica">Química</option>
-                        <option value="automotiva">Automotiva</option>
-                        <option value="farmaceutica">Farmacêutica</option>
-                        <option value="outro">Outro</option>
                     </select>
 
-                    <select id="solucao" name="solucao" required>
+                    <select id="solucao" name="solucao" required data-mestti-options="solucao">
                         <option value="" selected disabled>Selecione a solução de maior interesse</option>
-                        <option value="sensores">Sensores / Catálogo</option>
-                        <option value="apontamento">Apontamento Automático</option>
-                        <option value="oee">OEE e Indicadores</option>
-                        <option value="monitoramento">Monitoramento</option>
                     </select>
 
                     <textarea id="observacao" name="observacao" placeholder="Observação (opcional)" rows="3" style="min-height: 90px;"></textarea>
@@ -293,7 +279,8 @@
     <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script defer src="../i18n.js?v=2"></script>
     <script defer src="../theme.js?v=1"></script>
-    <script defer src="../script.js?v=7"></script>
+    <script defer src="../form-options.js?v=2"></script>
+    <script defer src="../script.js?v=8"></script>
     <script defer src="../atuacao-script.js"></script>
 </body>
 </html>
