@@ -12,6 +12,7 @@
     border-bottom: 1px solid var(--header-border);
     box-shadow: none;
     transition: var(--transition);
+    padding-top: env(safe-area-inset-top, 0px);
 }
 
 .header--tractian {

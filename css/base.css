@@ -63,6 +63,8 @@ html {
     font-size: 14px; /* Reduzido de 16px para 14px (87.5% = ~80% visual) */
     color-scheme: light;
     overflow-x: clip;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 body {
@@ -73,12 +75,23 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: clip;
+    overflow-x: hidden;
+    max-width: 100%;
+    min-height: 100%;
 }
 
 .container {
     max-width: 1100px; /* Reduzido para centralizar mais */
     margin: 0 auto;
-    padding: 0 var(--spacing-lg);
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+main {
+    max-width: 100%;
+    overflow-x: clip;
 }
 
 .container--wide {

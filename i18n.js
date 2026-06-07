@@ -541,6 +541,10 @@
             el.placeholder = t(lang, el.getAttribute('data-i18n-placeholder'));
         });
 
+        document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+            el.alt = t(lang, el.getAttribute('data-i18n-alt'));
+        });
+
         document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
             el.setAttribute('aria-label', t(lang, el.getAttribute('data-i18n-aria')));
         });

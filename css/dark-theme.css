@@ -249,17 +249,29 @@
 }
 
 [data-theme="dark"] .demo-modal-content,
+[data-theme="dark"] .demo-modal-card,
 [data-theme="dark"] .popup-card {
     background: var(--white);
     border-color: var(--gray-200);
+    box-shadow: none;
 }
 
 [data-theme="dark"] .demo-modal-content input,
 [data-theme="dark"] .demo-modal-content select,
-[data-theme="dark"] .demo-modal-content textarea {
+[data-theme="dark"] .demo-modal-content textarea,
+[data-theme="dark"] .demo-form input,
+[data-theme="dark"] .demo-form select,
+[data-theme="dark"] .demo-form textarea {
     background: var(--gray-50);
     border-color: var(--gray-200);
     color: var(--gray-800);
+}
+
+[data-theme="dark"] .demo-form input:focus,
+[data-theme="dark"] .demo-form select:focus,
+[data-theme="dark"] .demo-form textarea:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
 }
 
 [data-theme="dark"] .contact-section-alt {
@@ -361,4 +373,157 @@
 [data-theme="dark"] .sensor-card {
     background: var(--white);
     border-color: var(--gray-200);
+}
+
+/* ============================================
+   Sequenciamento — landing page
+   ============================================ */
+
+[data-theme="dark"] .seq-page {
+    --seq-blue-soft: rgba(56, 189, 248, 0.12);
+    --seq-border: var(--gray-200);
+    background: var(--page-bg);
+}
+
+[data-theme="dark"] .seq-hero {
+    background:
+        radial-gradient(circle at 78% 18%, rgba(56, 189, 248, 0.08), transparent 22rem),
+        linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .seq-hero h1 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .seq-hero .seq-kicker {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+[data-theme="dark"] .seq-hero-lead {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .seq-hero-support {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+[data-theme="dark"] .seq-hero-visual figcaption {
+    color: rgba(255, 255, 255, 0.68);
+}
+
+[data-theme="dark"] .seq-hero .seq-btn-secondary {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+[data-theme="dark"] .seq-impact,
+[data-theme="dark"] .seq-fit,
+[data-theme="dark"] .seq-objections {
+    background: var(--gray-50);
+}
+
+[data-theme="dark"] .seq-product-view {
+    background: linear-gradient(180deg, var(--gray-50) 0%, var(--page-bg) 100%);
+}
+
+[data-theme="dark"] .seq-pain,
+[data-theme="dark"] .seq-solution,
+[data-theme="dark"] .seq-how {
+    background: var(--page-bg);
+}
+
+[data-theme="dark"] .seq-section-label {
+    color: var(--primary-light);
+}
+
+[data-theme="dark"] .seq-short-lines span {
+    background: var(--seq-blue-soft);
+    color: var(--gray-800);
+    border-left-color: var(--primary-light);
+}
+
+[data-theme="dark"] .seq-emphasis {
+    color: var(--gray-900) !important;
+}
+
+[data-theme="dark"] .seq-impact-card h3 {
+    color: var(--primary-light);
+}
+
+[data-theme="dark"] .seq-impact-card .seq-card-icon {
+    background: var(--seq-blue-soft);
+    color: var(--primary-light);
+}
+
+[data-theme="dark"] .seq-impact-card p {
+    color: var(--gray-800);
+    border-top-color: var(--gray-200);
+}
+
+[data-theme="dark"] .seq-card,
+[data-theme="dark"] .seq-step,
+[data-theme="dark"] .seq-faq details,
+[data-theme="dark"] .seq-form-card,
+[data-theme="dark"] .seq-benefit-list li,
+[data-theme="dark"] .seq-check-grid span {
+    box-shadow: none;
+}
+
+[data-theme="dark"] .seq-impact .seq-quote {
+    background: linear-gradient(135deg, #1e3a5f 0%, #152a45 100%);
+    color: var(--on-primary) !important;
+}
+
+[data-theme="dark"] .seq-final {
+    background:
+        linear-gradient(135deg, rgba(20, 20, 20, 0.98), rgba(10, 10, 10, 0.99)),
+        var(--page-bg);
+}
+
+[data-theme="dark"] .seq-final .seq-section-label,
+[data-theme="dark"] .seq-final h2,
+[data-theme="dark"] .seq-final p,
+[data-theme="dark"] .seq-final-copy p {
+    color: var(--gray-900);
+}
+
+[data-theme="dark"] .seq-final .seq-section-label {
+    color: var(--gray-600);
+}
+
+[data-theme="dark"] .seq-btn-primary,
+[data-theme="dark"] .seq-form .demo-submit {
+    color: var(--on-primary);
+}
+
+[data-theme="dark"] .seq-step span {
+    color: var(--on-primary);
+}
+
+[data-theme="dark"] .seq-hero .seq-screen-card img,
+[data-theme="dark"] .seq-product-view .seq-system-frame img {
+    filter: none;
+    opacity: 1;
+    border-color: var(--gray-200);
+    background: var(--gray-100);
+}
+
+[data-theme="dark"] .seq-product-view .seq-system-frame img {
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .seq-form input,
+[data-theme="dark"] .seq-form select,
+[data-theme="dark"] .seq-form textarea {
+    background: var(--gray-50);
+    border-color: var(--gray-200);
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .seq-form input:focus,
+[data-theme="dark"] .seq-form select:focus,
+[data-theme="dark"] .seq-form textarea:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
 }

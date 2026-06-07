@@ -13,14 +13,13 @@
     <meta charset="UTF-8">
     <script src="../theme-init.js"></script>
     <meta name="color-scheme" content="light dark">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Conheça a MESTTI — automação, OEE e sensores para o chão de fábrica.">
     <title>Sobre a empresa | MESTTI</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles-entry.css?v=33">
 </head>
 <body data-page="empresa">
@@ -74,7 +73,7 @@
     </header>
 
     <main>
-        <section class="page-hero" data-aos="fade-up">
+        <section class="page-hero">
             <div class="container container--wide">
                 <h1 data-i18n="page.empresa.h1">Sobre a MESTTI</h1>
                 <p class="lead" data-i18n="page.empresa.lead">Automação e informatização do chão de fábrica, com foco em apontamento, OEE e decisões em tempo real.</p>
@@ -87,10 +86,10 @@
                     <aside class="empresa-visual">
                         <p class="empresa-visual-kicker" data-i18n="page.empresa.kicker">Institucional</p>
                         <h2 id="empresa-visual-heading" class="empresa-visual-title" data-i18n="page.empresa.founderTitle">Fundador</h2>
-                        <figure class="empresa-foto-card" data-aos="fade-up">
+                        <figure class="empresa-foto-card">
                             <div class="empresa-foto-frame empresa-foto-frame--portrait">
                                 <img src="../images/joao.png" alt="João Brighenti, fundador da MESTTI" width="480"
-                                    height="640" loading="lazy" decoding="async">
+                                    height="640" loading="eager" decoding="async" fetchpriority="high">
                             </div>
                             <figcaption class="empresa-foto-caption">
                                 <strong>João Brighenti</strong>
@@ -98,7 +97,7 @@
                             </figcaption>
                         </figure>
                     </aside>
-                    <div class="prose empresa-prose" data-aos="fade-up" data-aos-delay="40">
+                    <div class="prose empresa-prose">
                         <p data-i18n="page.empresa.p1">
                             A MESTTI é uma empresa especializada em soluções de automação e informatização do chão de fábrica,
                             oferecendo sistemas que transformam a gestão da produção industrial por meio de tecnologia aplicada ao dia a dia da operação.
@@ -127,7 +126,7 @@
             </div>
         </section>
 
-        <section class="cta-strip" data-aos="fade-up">
+        <section class="cta-strip">
             <div class="container container--wide">
                 <h2 data-i18n="page.cta.title">Pronto para conversar?</h2>
                 <p data-i18n="page.cta.subtitle">Veja como o MESTTI se aplica à sua operação.</p>
@@ -186,12 +185,11 @@
         </div>
     </footer>
 
-    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script defer src="../i18n-page-strings.js"></script>
     <script defer src="../i18n.js?v=3"></script>
     <script defer src="../theme.js?v=1"></script>
     <script defer src="../form-options.js?v=2"></script>
-    <script defer src="../script.js?v=10"></script>
+    <script defer src="../script.js?v=12"></script>
 
     <!-- Modal de Demonstração -->
     <div id="contactModal" class="modal-overlay" aria-hidden="true">
