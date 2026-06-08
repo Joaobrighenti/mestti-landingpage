@@ -245,7 +245,8 @@
                 }
             });
             this.inputEl.addEventListener('focus', () => {
-                window.setTimeout(() => this.scrollToBottom(), 280);
+                window.setTimeout(() => this.scrollToBottom(), 100);
+                window.setTimeout(() => this.scrollToBottom(), 350);
             });
 
             this.modalOverlay = this.form.closest('#contactModal');
@@ -513,6 +514,34 @@
             await this.answerStep(displayValue, rawValue);
         }
 
+        syncProgress(event, completedStep = null) {
+            const sync = window.MesttiLead?.syncLeadProgress;
+            if (typeof sync !== 'function') return;
+
+            const totalSteps = this.steps.length;
+            let chatStepKey = '';
+            let stepIndex = 0;
+
+            if (event === 'step_completed' && completedStep) {
+                chatStepKey = completedStep.key;
+                stepIndex = this.steps.findIndex((s) => s.key === completedStep.key) + 1;
+            } else if (event === 'abandoned') {
+                const done = Math.min(this.stepIndex, this.steps.length);
+                stepIndex = done;
+                if (done > 0) {
+                    chatStepKey = this.steps[done - 1]?.key || '';
+                }
+            }
+
+            sync(this.form, this.form.id || 'principal', {
+                event,
+                chatStepKey,
+                stepIndex,
+                totalSteps,
+                leadSource: event === 'abandoned' ? 'chat_abandoned' : 'chat_progress'
+            });
+        }
+
         async answerStep(displayValue, rawValue, skipped = false) {
             const step = this.currentStep();
             if (!step || this.busy) return;
@@ -537,6 +566,8 @@
             } else {
                 step.el.value = '';
             }
+
+            this.syncProgress('step_completed', step);
 
             this.stepIndex += 1;
             this.busy = false;
@@ -665,7 +696,16 @@
             if (isActive && !wasActive) {
                 instances.forEach((instance) => instance.start());
             } else if (!isActive && wasActive) {
-                instances.forEach((instance) => instance.saveDraft());
+                instances.forEach((instance) => {
+                    instance.saveDraft();
+                    if (
+                        instance.messageLog.length > 0
+                        && !instance.finished
+                        && instance.form.dataset.mesttiSubmitted !== '1'
+                    ) {
+                        instance.syncProgress('abandoned');
+                    }
+                });
             }
             wasActive = isActive;
         });
@@ -682,36 +722,51 @@
         if (!content) return;
 
         const MOBILE_MAX = 480;
+        let rafId = 0;
 
         function resetViewportStyles() {
+            modal.classList.remove('wa-vv-sync');
+            modal.style.top = '';
+            modal.style.left = '';
+            modal.style.width = '';
+            modal.style.height = '';
             content.style.height = '';
             content.style.maxHeight = '';
             content.style.transform = '';
-            modal.style.height = '';
         }
 
         function syncViewport() {
-            const isOpen = modal.classList.contains('active');
-            const isMobile = window.innerWidth <= MOBILE_MAX;
+            cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+                const isOpen = modal.classList.contains('active');
+                const isMobile = window.innerWidth <= MOBILE_MAX;
 
-            if (!isOpen || !isMobile) {
-                resetViewportStyles();
-                return;
-            }
+                if (!isOpen || !isMobile) {
+                    resetViewportStyles();
+                    return;
+                }
 
-            const vv = window.visualViewport;
-            if (!vv) {
-                content.style.height = '100dvh';
-                content.style.maxHeight = '100dvh';
-                return;
-            }
+                const vv = window.visualViewport;
+                if (!vv) {
+                    content.style.height = '100dvh';
+                    content.style.maxHeight = '100dvh';
+                    return;
+                }
 
-            const height = Math.max(320, Math.round(vv.height));
-            const offsetTop = Math.max(0, Math.round(vv.offsetTop));
+                const height = Math.max(280, Math.round(vv.height));
+                const offsetTop = Math.max(0, Math.round(vv.offsetTop));
+                const offsetLeft = Math.max(0, Math.round(vv.offsetLeft));
+                const width = Math.round(vv.width);
 
-            content.style.height = `${height}px`;
-            content.style.maxHeight = `${height}px`;
-            content.style.transform = `translateY(${offsetTop}px)`;
+                modal.classList.add('wa-vv-sync');
+                modal.style.top = `${offsetTop}px`;
+                modal.style.left = `${offsetLeft}px`;
+                modal.style.width = `${width}px`;
+                modal.style.height = `${height}px`;
+                content.style.height = '100%';
+                content.style.maxHeight = '100%';
+                content.style.transform = 'none';
+            });
         }
 
         if (window.visualViewport) {
@@ -720,6 +775,21 @@
         }
 
         window.addEventListener('resize', syncViewport);
+        window.addEventListener('orientationchange', () => {
+            window.setTimeout(syncViewport, 120);
+        });
+
+        modal.addEventListener('focusin', (event) => {
+            if (!event.target.closest('.wa-input, .wa-composer input, textarea')) return;
+            window.setTimeout(syncViewport, 50);
+            window.setTimeout(syncViewport, 320);
+        });
+
+        modal.addEventListener('focusout', (event) => {
+            if (!event.target.closest('.wa-input, .wa-composer input, textarea')) return;
+            window.setTimeout(syncViewport, 80);
+            window.setTimeout(syncViewport, 320);
+        });
 
         const observer = new MutationObserver(syncViewport);
         observer.observe(modal, { attributes: true, attributeFilter: ['class'] });

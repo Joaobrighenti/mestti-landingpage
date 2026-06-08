@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <script src="../theme-init.js"></script>
     <meta name="color-scheme" content="light dark">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
     <meta name="description" content="Conheça a MESTTI — automação, OEE e sensores para o chão de fábrica.">
     <title>Sobre a empresa | MESTTI</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
@@ -198,7 +198,7 @@
     <script defer src="../theme.js?v=1"></script>
     <script defer src="../form-options.js?v=2"></script>
     <script defer src="../script.js?v=16"></script>
-    <script defer src="../conversational-form.js?v=6"></script>
+    <script defer src="../conversational-form.js?v=7"></script>
 
     <!-- Modal de Demonstração -->
     <div id="contactModal" class="modal-overlay" aria-hidden="true">
@@ -211,6 +211,7 @@
                 </div>
                 <form class="demo-form" id="contactFormPage">
                     <input type="text" name="name" data-i18n-placeholder="modal.name" placeholder="Nome completo" autocomplete="name" required>
+                    <input type="text" name="empresa" data-i18n-placeholder="modal.company" placeholder="Empresa" autocomplete="organization" required>
                     <input type="email" name="email" data-i18n-placeholder="modal.email" placeholder="E-mail profissional" autocomplete="email" required>
 
                     <div class="field-row-3">

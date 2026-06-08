@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { Resend } from "resend";
+import { normalizeLeadProgressPayload, forwardLeadToGoogleSheets } from "./lib/sheets-sync.js";
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ const PORT = Number(process.env.PORT || 5500);
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const LEADS_TO_EMAIL = process.env.LEADS_TO_EMAIL || "";
 const FROM_EMAIL = process.env.FROM_EMAIL || "onboarding@resend.dev";
+const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL || "";
 
 const app = express();
 app.use(express.json({ limit: "200kb" }));
@@ -120,6 +122,21 @@ app.post("/api/lead", async (req, res) => {
     return res.json({ ok: true });
   } catch (err) {
     return res.status(500).json({ ok: false, error: "server_error" });
+  }
+});
+
+app.post("/api/lead-progress", async (req, res) => {
+  try {
+    const payload = normalizeLeadProgressPayload(req.body || {});
+
+    if (!payload.sessionId) {
+      return res.status(400).json({ ok: false, error: "session_id_required" });
+    }
+
+    const result = await forwardLeadToGoogleSheets(payload, GOOGLE_SHEETS_WEBHOOK_URL);
+    return res.json({ ok: true, sheets: result.skipped ? "skipped" : "synced" });
+  } catch {
+    return res.status(502).json({ ok: false, error: "sheets_sync_failed" });
   }
 });
 

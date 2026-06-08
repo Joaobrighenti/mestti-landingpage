@@ -405,8 +405,65 @@ function getFormFieldValue(form, selectors) {
 
 const LEAD_SOURCE_LABELS = {
     submit: 'Botão enviar',
-    modal_close: 'Confirmação ao fechar modal'
+    modal_close: 'Confirmação ao fechar modal',
+    chat_progress: 'Chat — progresso',
+    chat_abandoned: 'Chat — abandonou'
 };
+
+const CHAT_STEP_LABELS = {
+    name: 'Nome',
+    empresa: 'Empresa',
+    email: 'E-mail',
+    phone: 'Telefone',
+    cargo: 'Cargo',
+    setor: 'Setor',
+    solucao: 'Solução',
+    observacao: 'Observação',
+    mensagem: 'Mensagem'
+};
+
+function getOrCreateLeadSessionId(form) {
+    const formId = form.id || 'principal';
+    const storageKey = `mesttiLeadSession_${window.location.pathname}_${formId}`;
+    let sessionId = form.dataset.mesttiLeadSession || '';
+
+    try {
+        if (!sessionId) {
+            sessionId = sessionStorage.getItem(storageKey) || '';
+        }
+    } catch {
+        /* ignore */
+    }
+
+    if (!sessionId) {
+        sessionId = (typeof crypto !== 'undefined' && crypto.randomUUID)
+            ? crypto.randomUUID()
+            : `lead_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+    }
+
+    form.dataset.mesttiLeadSession = sessionId;
+
+    try {
+        sessionStorage.setItem(storageKey, sessionId);
+    } catch {
+        /* ignore */
+    }
+
+    return sessionId;
+}
+
+function clearLeadSessionId(form) {
+    const formId = form.id || 'principal';
+    const storageKey = `mesttiLeadSession_${window.location.pathname}_${formId}`;
+
+    delete form.dataset.mesttiLeadSession;
+
+    try {
+        sessionStorage.removeItem(storageKey);
+    } catch {
+        /* ignore */
+    }
+}
 
 function collectLeadPayload(form, formId, leadSource = 'submit') {
     const name = getFormFieldValue(form, ['#name', '[name="name"]']);
@@ -481,6 +538,49 @@ function formHasPartialData(form) {
     );
 }
 
+async function syncLeadProgress(form, formId, {
+    event = 'step_completed',
+    chatStepKey = '',
+    stepIndex = 0,
+    totalSteps = 0,
+    leadSource = 'chat_progress'
+} = {}) {
+    if (!form) return;
+
+    const hasPartial = formHasPartialData(form);
+    if (!hasPartial && event !== 'submitted') return;
+
+    const sessionId = getOrCreateLeadSessionId(form);
+    const base = collectLeadPayload(form, formId, leadSource);
+    const stepLabel = CHAT_STEP_LABELS[chatStepKey] || chatStepKey;
+    const chatStep = stepIndex && totalSteps
+        ? `${stepIndex}/${totalSteps} — ${stepLabel}`
+        : '';
+
+    const payload = {
+        ...base,
+        sessionId,
+        timestamp: new Date().toISOString(),
+        event,
+        chatStep,
+        chatStepKey,
+        stepIndex,
+        totalSteps,
+        leadSource: LEAD_SOURCE_LABELS[leadSource] || leadSource
+    };
+
+    try {
+        await fetch('/api/lead-progress', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            keepalive: true
+        });
+    } catch {
+        /* sync opcional — não bloqueia o fluxo */
+    }
+}
+
 async function submitLeadForm(form, formId, {
     leadSource = 'submit',
     trackConversion = true,
@@ -517,6 +617,12 @@ async function submitLeadForm(form, formId, {
 
         if (!response.ok) throw new Error('api_error');
         await response.json();
+
+        await syncLeadProgress(form, formId, {
+            event: 'submitted',
+            leadSource
+        });
+        clearLeadSessionId(form);
 
         form.dataset.mesttiSubmitted = '1';
         window.MesttiConversationalForm?.clearAllDrafts?.();
@@ -613,7 +719,7 @@ document.querySelectorAll('.demo-form').forEach((form) => {
     handleFormSubmit(form, formId);
 });
 
-window.MesttiLead = { submitLeadForm };
+window.MesttiLead = { submitLeadForm, syncLeadProgress, getOrCreateLeadSessionId };
 
 // ============================================
 // Formulário de Contato e Modal
