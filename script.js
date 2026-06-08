@@ -877,7 +877,16 @@ if (header) {
 
     function syncHeaderOffset() {
         document.body.classList.add('has-site-header');
-        document.documentElement.style.setProperty('--site-header-height', `${header.offsetHeight}px`);
+        const bar = header.querySelector('.header-tractian-inner')
+            || header.querySelector('.header-top-wrapper');
+        const safeTop = parseFloat(getComputedStyle(header).paddingTop) || 0;
+        const barHeight = bar
+            ? bar.getBoundingClientRect().height
+            : header.getBoundingClientRect().height - safeTop;
+        const height = Math.ceil(Math.max(barHeight + safeTop, header.getBoundingClientRect().height));
+        if (height > 0) {
+            document.documentElement.style.setProperty('--site-header-height', `${height}px`);
+        }
     }
 
     function updateHeaderOnScroll() {
@@ -1068,24 +1077,36 @@ function initHeroBackgroundVideo() {
         return;
     }
 
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
     video.preload = 'auto';
-    video.load();
 
-    const tryPlay = () => {
-        const playPromise = video.play();
-        if (playPromise && typeof playPromise.catch === 'function') {
-            playPromise.catch(() => {
-                wrap.classList.add('hero-video-bg--static');
-            });
+    const startPlayback = () => {
+        if (video.paused) {
+            const playPromise = video.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch(() => {
+                    wrap.classList.add('hero-video-bg--static');
+                });
+            }
         }
     };
 
-    if (video.readyState >= 2) {
-        tryPlay();
-    } else {
-        video.addEventListener('loadeddata', tryPlay, { once: true });
-        tryPlay();
+    if (wrap.dataset.videoInit !== '1') {
+        wrap.dataset.videoInit = '1';
+        video.addEventListener('canplay', startPlayback, { once: true });
+        video.addEventListener('loadeddata', startPlayback, { once: true });
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) startPlayback();
+        });
+        window.addEventListener('pageshow', startPlayback);
     }
+
+    startPlayback();
 }
 
 function initAosAnimations() {
@@ -1115,6 +1136,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroClientsStrip();
     initHeroBackgroundVideo();
     initAosAnimations();
+
+    window.addEventListener('load', () => {
+        initHeroBackgroundVideo();
+    }, { once: true });
 
     // Rodapé fixo: número só ao carregar a página
     const countEl = document.getElementById('sensorCountDisplay');
