@@ -877,14 +877,22 @@ if (header) {
 
     function syncHeaderOffset() {
         document.body.classList.add('has-site-header');
+
+        /* Mobile: altura fixa via CSS (header.css) — JS inflava no Safari */
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            document.documentElement.style.removeProperty('--site-header-height');
+            return;
+        }
+
         const bar = header.querySelector('.header-tractian-inner')
             || header.querySelector('.header-top-wrapper');
         const safeTop = parseFloat(getComputedStyle(header).paddingTop) || 0;
         const barHeight = bar
             ? bar.getBoundingClientRect().height
-            : header.getBoundingClientRect().height - safeTop;
-        const height = Math.ceil(Math.max(barHeight + safeTop, header.getBoundingClientRect().height));
-        if (height > 0) {
+            : 0;
+        const height = Math.ceil(barHeight + safeTop);
+
+        if (height > 0 && height < 120) {
             document.documentElement.style.setProperty('--site-header-height', `${height}px`);
         }
     }

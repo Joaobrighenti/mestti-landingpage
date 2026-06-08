@@ -1,7 +1,7 @@
 /* Entry point: importa módulos (manter ordem) */
 
 @import url("./css/base.css");
-@import url("./css/header.css?v=2");
+@import url("./css/header.css?v=3");
 @import url("./css/lang-switcher.css?v=1");
 @import url("./css/theme-switcher.css?v=1");
 @import url("./css/components-popup.css");
@@ -14,8 +14,8 @@
 @import url("./css/atuacao-sensores.css?v=7");
 @import url("./css/implementation-roadmap.css?v=7");
 @import url("./css/cmms.css");
-@import url("./css/responsive.css");
+@import url("./css/responsive.css?v=2");
 @import url("./css/dark-theme.css?v=11");
 @import url("./css/fab-contact.css?v=2");
-@import url("./css/mobile-ios.css?v=3");
+@import url("./css/mobile-ios.css?v=4");
 

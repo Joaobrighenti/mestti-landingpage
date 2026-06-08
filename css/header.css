@@ -29,6 +29,32 @@ body.has-site-header {
     padding-top: var(--site-header-height, 4.25rem);
 }
 
+@media (max-width: 768px) {
+    :root {
+        --site-header-bar: 3.5rem;
+    }
+
+    /* Barra fixa — evita iOS inflar altura por causa do nav drawer dentro do header */
+    .header {
+        height: calc(var(--site-header-bar) + env(safe-area-inset-top, 0px));
+    }
+
+    body.has-site-header {
+        padding-top: calc(var(--site-header-bar) + env(safe-area-inset-top, 0px)) !important;
+    }
+
+    .header-tractian-inner > .header-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100dvh;
+        max-height: 100dvh;
+        margin: 0;
+    }
+}
+
 .header--tractian {
     background-color: var(--header-bg);
 }

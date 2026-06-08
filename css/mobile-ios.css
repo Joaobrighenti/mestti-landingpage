@@ -37,37 +37,27 @@ html.no-aos [data-aos] {
 
 /* Menu mobile: altura real da viewport no iOS */
 @media (max-width: 768px) {
-    body.has-site-header {
-        padding-top: var(--site-header-height, calc(3.15rem + env(safe-area-inset-top, 0px)));
-    }
-
-    .hero {
-        padding-top: var(--spacing-sm);
-    }
-
+    /* padding-top vem só do body (header.css) — sem padding extra nas seções */
+    .hero,
     .hero.hero-first-fold {
-        padding-top: var(--spacing-sm);
+        padding-top: 0;
     }
 
     .page-hero {
-        padding-top: var(--spacing-md);
+        padding-top: 0;
         padding-bottom: var(--spacing-xl);
     }
 
     .tech-page-hero {
-        padding-top: var(--spacing-lg);
+        padding-top: var(--spacing-md);
         padding-bottom: var(--spacing-xl);
     }
 
     .seq-hero {
-        padding-top: var(--spacing-lg);
+        padding-top: var(--spacing-md);
     }
 
     .header-nav {
-        height: 100vh;
-        height: -webkit-fill-available;
-        height: 100dvh;
-        max-height: 100dvh;
         padding-bottom: max(var(--spacing-xl), env(safe-area-inset-bottom, 0px));
     }
 }

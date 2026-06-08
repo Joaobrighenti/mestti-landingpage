@@ -177,11 +177,11 @@
     }
 
     .hero {
-        padding: var(--spacing-2xl) 0 0;
+        padding: 0 0 0;
     }
 
     .hero.hero-first-fold {
-        padding-top: calc(var(--spacing-xl) + 0.5rem);
+        padding-top: 0;
     }
 
     .hero-title {
