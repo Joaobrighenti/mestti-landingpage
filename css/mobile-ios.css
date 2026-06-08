@@ -70,3 +70,9 @@ html.no-aos [data-aos] {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
+
+@media (max-width: 768px) {
+    .hero-first-fold .hero-video-bg {
+        min-height: 100%;
+    }
+}

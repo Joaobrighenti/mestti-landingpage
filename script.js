@@ -1066,122 +1066,6 @@ function shouldSkipHeavyMedia() {
     return false;
 }
 
-function shouldSkipHeroVideo() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return true;
-    const conn = navigator.connection;
-    if (conn && (conn.saveData || /(^2g|slow-2g)/.test(conn.effectiveType || ''))) return true;
-    return false;
-}
-
-function isIOSDevice() {
-    return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-}
-
-function configureHeroVideoElement(video) {
-    video.muted = true;
-    video.defaultMuted = true;
-    video.playsInline = true;
-    video.setAttribute('muted', '');
-    video.setAttribute('playsinline', '');
-    video.setAttribute('webkit-playsinline', '');
-    video.setAttribute('autoplay', '');
-    video.preload = 'auto';
-}
-
-function initHeroBackgroundVideo() {
-    const wrap = document.querySelector('.hero-video-bg');
-    const video = document.querySelector('.hero-video-bg-media');
-    if (!wrap || !video) return;
-
-    if (shouldSkipHeroVideo()) {
-        wrap.classList.add('hero-video-bg--static');
-        video.removeAttribute('autoplay');
-        video.pause();
-        return;
-    }
-
-    configureHeroVideoElement(video);
-
-    let gestureUnlockBound = false;
-    let playbackStarted = false;
-
-    const markStatic = () => {
-        if (!playbackStarted) {
-            wrap.classList.add('hero-video-bg--static');
-        }
-    };
-
-    const tryPlay = () => {
-        if (!video.paused) {
-            playbackStarted = true;
-            wrap.classList.remove('hero-video-bg--static');
-            return Promise.resolve();
-        }
-
-        configureHeroVideoElement(video);
-        const playPromise = video.play();
-        if (!playPromise || typeof playPromise.then !== 'function') {
-            return Promise.resolve();
-        }
-
-        return playPromise.then(() => {
-            playbackStarted = true;
-            wrap.classList.remove('hero-video-bg--static');
-        }).catch(() => {
-            if (!gestureUnlockBound) {
-                bindGestureUnlock();
-            }
-            return Promise.reject();
-        });
-    };
-
-    const bindGestureUnlock = () => {
-        if (gestureUnlockBound) return;
-        gestureUnlockBound = true;
-
-        const unlock = () => {
-            tryPlay().catch(markStatic);
-        };
-
-        document.addEventListener('touchstart', unlock, { once: true, passive: true, capture: true });
-        document.addEventListener('click', unlock, { once: true, capture: true });
-    };
-
-    const startWhenReady = () => {
-        if (video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) return;
-        tryPlay().catch(() => {
-            if (!isIOSDevice()) markStatic();
-        });
-    };
-
-    if (wrap.dataset.videoInit !== '1') {
-        wrap.dataset.videoInit = '1';
-
-        video.addEventListener('loadedmetadata', startWhenReady);
-        video.addEventListener('canplay', startWhenReady);
-        video.addEventListener('loadeddata', startWhenReady);
-
-        document.addEventListener('visibilitychange', () => {
-            if (!document.hidden) tryPlay().catch(() => {});
-        });
-
-        window.addEventListener('pageshow', () => {
-            tryPlay().catch(() => {});
-        });
-
-        if (video.readyState === 0) {
-            video.load();
-        }
-
-        if (isIOSDevice()) {
-            bindGestureUnlock();
-        }
-    }
-
-    startWhenReady();
-}
-
 function initAosAnimations() {
     if (shouldSkipHeavyMedia() || typeof AOS === 'undefined') {
         document.documentElement.classList.add('no-aos');
@@ -1207,12 +1091,7 @@ function initAosAnimations() {
 document.addEventListener('DOMContentLoaded', () => {
     initImplementationRoadmap();
     initHeroClientsStrip();
-    initHeroBackgroundVideo();
     initAosAnimations();
-
-    window.addEventListener('load', () => {
-        initHeroBackgroundVideo();
-    }, { once: true });
 
     // Rodapé fixo: número só ao carregar a página
     const countEl = document.getElementById('sensorCountDisplay');
