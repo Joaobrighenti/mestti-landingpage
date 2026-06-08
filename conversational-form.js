@@ -39,6 +39,17 @@
         });
     }
 
+    const MOBILE_CHAT_MAX = 480;
+
+    function isMobileChat() {
+        return window.innerWidth <= MOBILE_CHAT_MAX;
+    }
+
+    function isIOSDevice() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent)
+            || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    }
+
     class ConversationalForm {
         constructor(form) {
             this.form = form;
@@ -238,6 +249,10 @@
             this.sendBtn = this.chatEl.querySelector('.wa-send');
 
             this.sendBtn.addEventListener('click', () => this.handleSend());
+            this.sendBtn.addEventListener('pointerdown', (event) => {
+                if (!this.shouldKeepKeyboard()) return;
+                event.preventDefault();
+            });
             this.inputEl.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter' && !event.shiftKey) {
                     event.preventDefault();
@@ -259,6 +274,25 @@
             requestAnimationFrame(() => {
                 target.scrollTop = target.scrollHeight;
             });
+        }
+
+        shouldKeepKeyboard() {
+            return isMobileChat() && !this.finished;
+        }
+
+        refocusInput() {
+            if (!this.shouldKeepKeyboard()) return;
+            const step = this.currentStep();
+            if (!step || step.type === 'select') return;
+            requestAnimationFrame(() => {
+                if (!this.inputEl.disabled) {
+                    this.inputEl.focus({ preventScroll: true });
+                }
+            });
+        }
+
+        dismissKeyboard() {
+            this.inputEl.blur();
         }
 
         reset(clearSaved = true) {
@@ -397,6 +431,7 @@
             if (!step) return;
 
             if (step.type === 'select') {
+                this.dismissKeyboard();
                 this.showSelectOptions(step);
                 this.composerEl.classList.add('is-hidden');
                 return;
@@ -417,7 +452,7 @@
             this.inputEl.inputMode = step.type === 'email' ? 'email' : step.type === 'phone' ? 'tel' : 'text';
             this.inputEl.placeholder = this.inputPlaceholder(step);
             this.scrollToBottom();
-            this.inputEl.focus({ preventScroll: true });
+            this.refocusInput();
         }
 
         inputPlaceholder(step) {
@@ -504,6 +539,7 @@
 
             if (step.validate && !step.validate(rawValue)) {
                 await this.botSay(t(step.errorKey, 'Não entendi. Pode tentar de novo?'));
+                this.refocusInput();
                 return;
             }
 
@@ -572,6 +608,7 @@
             this.stepIndex += 1;
             this.busy = false;
             this.saveDraft();
+            this.refocusInput();
 
             const ack = !skipped ? this.getAcknowledgment(step, rawValue) : '';
             if (ack) {
@@ -583,6 +620,7 @@
 
         async finishConversation() {
             this.finished = true;
+            this.dismissKeyboard();
             this.composerEl.classList.add('is-hidden');
             this.quickRepliesEl.innerHTML = '';
 
@@ -717,8 +755,11 @@
         const content = modal.querySelector('.wa-modal-content');
         if (!content) return;
 
-        const MOBILE_MAX = 480;
         let rafId = 0;
+        let lastHeight = 0;
+        let lastTop = 0;
+        let lastLeft = 0;
+        let lastWidth = 0;
 
         function resetViewportStyles() {
             modal.classList.remove('wa-vv-sync');
@@ -729,65 +770,107 @@
             content.style.height = '';
             content.style.maxHeight = '';
             content.style.transform = '';
+            lastHeight = 0;
+            lastTop = 0;
+            lastLeft = 0;
+            lastWidth = 0;
         }
 
-        function syncViewport() {
+        function applyViewportSync() {
+            const isOpen = modal.classList.contains('active');
+            const isMobile = isMobileChat();
+
+            if (!isOpen || !isMobile) {
+                resetViewportStyles();
+                return;
+            }
+
+            const vv = window.visualViewport;
+            if (!vv) {
+                content.style.height = '100dvh';
+                content.style.maxHeight = '100dvh';
+                return;
+            }
+
+            const height = Math.max(280, Math.round(vv.height));
+            const offsetTop = Math.max(0, Math.round(vv.offsetTop));
+            const offsetLeft = Math.max(0, Math.round(vv.offsetLeft));
+            const width = Math.round(vv.width);
+
+            if (
+                height === lastHeight
+                && offsetTop === lastTop
+                && offsetLeft === lastLeft
+                && width === lastWidth
+                && modal.classList.contains('wa-vv-sync')
+            ) {
+                return;
+            }
+
+            lastHeight = height;
+            lastTop = offsetTop;
+            lastLeft = offsetLeft;
+            lastWidth = width;
+
+            modal.classList.add('wa-vv-sync');
+            modal.style.top = `${offsetTop}px`;
+            modal.style.left = `${offsetLeft}px`;
+            modal.style.width = `${width}px`;
+            modal.style.height = `${height}px`;
+            content.style.height = '100%';
+            content.style.maxHeight = '100%';
+            content.style.transform = 'none';
+        }
+
+        function syncViewport({ immediate = false } = {}) {
+            if (immediate) {
+                cancelAnimationFrame(rafId);
+                applyViewportSync();
+                return;
+            }
+
             cancelAnimationFrame(rafId);
-            rafId = requestAnimationFrame(() => {
-                const isOpen = modal.classList.contains('active');
-                const isMobile = window.innerWidth <= MOBILE_MAX;
-
-                if (!isOpen || !isMobile) {
-                    resetViewportStyles();
-                    return;
-                }
-
-                const vv = window.visualViewport;
-                if (!vv) {
-                    content.style.height = '100dvh';
-                    content.style.maxHeight = '100dvh';
-                    return;
-                }
-
-                const height = Math.max(280, Math.round(vv.height));
-                const offsetTop = Math.max(0, Math.round(vv.offsetTop));
-                const offsetLeft = Math.max(0, Math.round(vv.offsetLeft));
-                const width = Math.round(vv.width);
-
-                modal.classList.add('wa-vv-sync');
-                modal.style.top = `${offsetTop}px`;
-                modal.style.left = `${offsetLeft}px`;
-                modal.style.width = `${width}px`;
-                modal.style.height = `${height}px`;
-                content.style.height = '100%';
-                content.style.maxHeight = '100%';
-                content.style.transform = 'none';
-            });
+            rafId = requestAnimationFrame(applyViewportSync);
         }
 
         if (window.visualViewport) {
-            window.visualViewport.addEventListener('resize', syncViewport);
-            window.visualViewport.addEventListener('scroll', syncViewport);
+            window.visualViewport.addEventListener('resize', () => syncViewport());
+            window.visualViewport.addEventListener('scroll', () => syncViewport());
         }
 
-        window.addEventListener('resize', syncViewport);
+        window.addEventListener('resize', () => syncViewport());
         window.addEventListener('orientationchange', () => {
-            window.setTimeout(syncViewport, 120);
+            window.setTimeout(() => syncViewport({ immediate: true }), 120);
         });
 
         modal.addEventListener('focusin', (event) => {
             if (!event.target.closest('.wa-input, .wa-composer input, textarea')) return;
-            window.setTimeout(syncViewport, 50);
-            window.setTimeout(syncViewport, 320);
+            syncViewport({ immediate: true });
+            window.setTimeout(() => syncViewport(), 280);
         });
 
         modal.addEventListener('focusout', (event) => {
             if (!event.target.closest('.wa-input, .wa-composer input, textarea')) return;
-            window.setTimeout(syncViewport, 80);
-            window.setTimeout(syncViewport, 320);
+            if (event.relatedTarget?.closest?.('.wa-send, .wa-chip')) return;
+            window.setTimeout(() => syncViewport(), 80);
         });
 
-        const observer = new MutationObserver(syncViewport);
+        let wasModalActive = modal.classList.contains('active');
+
+        const observer = new MutationObserver(() => {
+            const isOpen = modal.classList.contains('active');
+            if (isOpen === wasModalActive) return;
+            wasModalActive = isOpen;
+
+            if (isOpen && isMobileChat()) {
+                syncViewport({ immediate: true });
+                if (isIOSDevice()) {
+                    requestAnimationFrame(() => syncViewport({ immediate: true }));
+                }
+                return;
+            }
+            resetViewportStyles();
+        });
         observer.observe(modal, { attributes: true, attributeFilter: ['class'] });
     }
 

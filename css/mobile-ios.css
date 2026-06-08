@@ -76,3 +76,29 @@ html.no-aos [data-aos] {
         min-height: 100%;
     }
 }
+
+/* Chat conversacional — fluidez no iOS */
+@media (max-width: 480px) {
+    .modal-overlay.modal-overlay--wa-chat {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .modal-overlay.modal-overlay--wa-chat .wa-chat,
+    .modal-overlay.modal-overlay--wa-chat .wa-modal-content {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+    .modal-overlay.modal-overlay--wa-chat .wa-chat-scroll {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: contain;
+    }
+
+    .modal-overlay.modal-overlay--wa-chat .wa-send {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+}

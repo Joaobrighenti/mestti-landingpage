@@ -374,11 +374,19 @@
     color: #111;
 }
 
+[data-theme="dark"] .modal-overlay.modal-overlay--wa-chat {
+    background-color: #0b141a;
+}
+
 @media (max-width: 480px) {
     .modal-overlay.modal-overlay--wa-chat {
         align-items: flex-start;
         justify-content: flex-start;
         padding: 0;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background-color: #e5ddd5;
+        transition: none;
     }
 
     .modal-overlay.modal-overlay--wa-chat.wa-vv-sync {
@@ -389,9 +397,16 @@
         transition: none;
     }
 
+    .modal-overlay.modal-overlay--wa-chat.active {
+        opacity: 1;
+        visibility: visible;
+        transition: none;
+    }
+
     .modal-overlay.modal-overlay--wa-chat.active .modal-content.wa-modal-content {
         transform: none;
         opacity: 1;
+        transition: none;
     }
 
     .modal-overlay.modal-overlay--wa-chat.wa-vv-sync .modal-content.wa-modal-content {
@@ -409,6 +424,7 @@
         height: 100dvh;
         max-height: 100dvh;
         margin: 0;
+        transition: none;
     }
 
     .demo-modal-card.wa-mode {
