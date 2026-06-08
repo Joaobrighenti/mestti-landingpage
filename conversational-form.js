@@ -585,29 +585,25 @@
             this.finished = true;
             this.composerEl.classList.add('is-hidden');
             this.quickRepliesEl.innerHTML = '';
-            await this.botSay(this.formatNamedMessage('chat.sending', 'Perfeito! Estou enviando sua solicitação...'));
 
             const submitLeadForm = window.MesttiLead?.submitLeadForm;
-            if (typeof submitLeadForm !== 'function') {
-                await this.botSay(t('form.error', 'Não conseguimos enviar agora. Tente novamente em instantes.'));
-                this.finished = false;
-                this.stepIndex = this.steps.length;
-                return;
+            if (typeof submitLeadForm === 'function') {
+                await submitLeadForm(this.form, this.form.id || 'principal', {
+                    leadSource: 'submit',
+                    showSuccessPopup: false,
+                    closeOnSuccess: true
+                });
+            } else {
+                await window.MesttiLead?.syncLeadProgress?.(this.form, this.form.id || 'principal', {
+                    event: 'submitted',
+                    leadSource: 'submit'
+                });
             }
 
-            const ok = await submitLeadForm(this.form, this.form.id || 'principal', {
-                leadSource: 'submit',
-                showSuccessPopup: true,
-                closeOnSuccess: true
-            });
-
-            if (!ok) {
-                this.finished = false;
-                await this.botSay(t('chat.retry', 'Não conseguimos enviar agora. Toque em "Tentar novamente" ou feche e tente mais tarde.'));
-                this.showRetrySubmit();
-                return;
-            }
-
+            await this.botSay(this.formatNamedMessage(
+                'chat.done',
+                'Perfeito! Em breve nossa equipe entra em contato com você.'
+            ));
             this.clearDraft();
         }
 

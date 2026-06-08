@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <script src="../theme-init.js"></script>
     <meta name="color-scheme" content="light dark">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Organize sua fila de produção, visualize a capacidade das máquinas e programe com mais segurança usando dados reais da fábrica com a MESTTI.">
     <title>Sequenciamento e Programação da Produção | MESTTI</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
@@ -21,7 +21,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="../styles-entry.css?v=27">
+    <style>
+        body:not(.aos-initialized) [data-aos],
+        html.no-aos [data-aos] {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    </style>
+    <link rel="stylesheet" href="../styles-entry.css?v=33">
     <link rel="stylesheet" href="../css/sequenciamento.css?v=18">
     <link rel="stylesheet" href="../css/atuacao-sensores.css?v=2">
 </head>
@@ -385,7 +392,7 @@
     <script defer src="../i18n.js?v=4"></script>
     <script defer src="../theme.js?v=1"></script>
     <script defer src="../form-options.js?v=2"></script>
-    <script defer src="../script.js?v=16"></script>
+    <script defer src="../script.js?v=21"></script>
     <script defer src="../conversational-form.js?v=7"></script>
 </body>
 </html>

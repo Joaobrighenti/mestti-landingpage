@@ -581,6 +581,17 @@ async function syncLeadProgress(form, formId, {
     }
 }
 
+function sendLeadEmailInBackground(payload) {
+    fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        keepalive: true
+    }).catch(() => {
+        /* Resend em segundo plano — falha não afeta a UX */
+    });
+}
+
 async function submitLeadForm(form, formId, {
     leadSource = 'submit',
     trackConversion = true,
@@ -601,70 +612,53 @@ async function submitLeadForm(form, formId, {
 
     if (submitButton) {
         submitButton.disabled = true;
-        submitButton.textContent = 'Enviando...';
     }
 
     if (trackConversion) {
         gtag_report_conversion();
     }
 
-    try {
-        const response = await fetch('/api/lead', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
+    const successMessage = mesttiT(
+        'form.success',
+        'Em breve nossa equipe entrará em contato com você.'
+    );
+
+    await syncLeadProgress(form, formId, {
+        event: 'submitted',
+        leadSource
+    });
+
+    sendLeadEmailInBackground(payload);
+
+    clearLeadSessionId(form);
+    form.dataset.mesttiSubmitted = '1';
+    window.MesttiConversationalForm?.clearAllDrafts?.();
+
+    if (submitButton) {
+        submitButton.textContent = 'Enviado ✓';
+        submitButton.style.backgroundColor = '#059669';
+    }
+
+    if (showSuccessPopup) {
+        openMesttiPopup({
+            title: mesttiT('form.successTitle', 'Obrigado!'),
+            message: successMessage
         });
+    }
 
-        if (!response.ok) throw new Error('api_error');
-        await response.json();
-
-        await syncLeadProgress(form, formId, {
-            event: 'submitted',
-            leadSource
-        });
-        clearLeadSessionId(form);
-
-        form.dataset.mesttiSubmitted = '1';
-        window.MesttiConversationalForm?.clearAllDrafts?.();
-
-        if (submitButton) {
-            submitButton.textContent = 'Enviado ✓';
-            submitButton.style.backgroundColor = '#059669';
-        }
-
-        if (showSuccessPopup) {
-            openMesttiPopup({
-                title: 'Obrigado!',
-                message: mesttiT('form.success', 'Recebemos sua solicitação. Em breve nossa equipe entrará em contato.')
-            });
-        }
-
-        setTimeout(() => {
-            form.reset();
-            if (closeOnSuccess && typeof closeModal === 'function') closeModal();
-            if (submitButton) {
-                submitButton.textContent = originalText;
-                submitButton.style.backgroundColor = '';
-                submitButton.disabled = false;
-            }
-            form.dataset.mesttiSubmitting = '';
-            delete form.dataset.mesttiSubmitted;
-        }, 2500);
-
-        return true;
-    } catch {
+    setTimeout(() => {
+        form.reset();
+        if (closeOnSuccess && typeof closeModal === 'function') closeModal();
         if (submitButton) {
             submitButton.textContent = originalText;
             submitButton.style.backgroundColor = '';
             submitButton.disabled = false;
         }
         form.dataset.mesttiSubmitting = '';
-        openMesttiPopup({
-            title: 'Ops',
-            message: mesttiT('form.error', 'Não conseguimos enviar agora. Tente novamente em instantes.')
-        });
-        return false;
-    }
+        delete form.dataset.mesttiSubmitted;
+    }, 2500);
+
+    return true;
 }
 
 function montarMensagemWhatsApp(form, formId) {
@@ -1047,6 +1041,71 @@ function initHeroClientsStrip() {
     });
 }
 
+function shouldSkipHeavyMedia() {
+    if (window.matchMedia('(max-width: 768px)').matches) return true;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return true;
+    const conn = navigator.connection;
+    if (conn && (conn.saveData || /(^2g|slow-2g)/.test(conn.effectiveType || ''))) return true;
+    return false;
+}
+
+function shouldSkipHeroVideo() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return true;
+    const conn = navigator.connection;
+    if (conn && (conn.saveData || /(^2g|slow-2g)/.test(conn.effectiveType || ''))) return true;
+    return false;
+}
+
+function initHeroBackgroundVideo() {
+    const wrap = document.querySelector('.hero-video-bg');
+    const video = document.querySelector('.hero-video-bg-media');
+    if (!wrap || !video) return;
+
+    if (shouldSkipHeroVideo()) {
+        wrap.classList.add('hero-video-bg--static');
+        video.removeAttribute('autoplay');
+        video.pause();
+        return;
+    }
+
+    video.preload = 'auto';
+    video.load();
+
+    const tryPlay = () => {
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(() => {
+                wrap.classList.add('hero-video-bg--static');
+            });
+        }
+    };
+
+    if (video.readyState >= 2) {
+        tryPlay();
+    } else {
+        video.addEventListener('loadeddata', tryPlay, { once: true });
+        tryPlay();
+    }
+}
+
+function initAosAnimations() {
+    if (shouldSkipHeavyMedia() || typeof AOS === 'undefined') {
+        document.documentElement.classList.add('no-aos');
+        return;
+    }
+
+    AOS.init({
+        duration: 600,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 40
+    });
+
+    window.addEventListener('load', () => {
+        if (typeof AOS !== 'undefined') AOS.refreshHard();
+    }, { once: true });
+}
+
 // ============================================
 // AOS Initialization
 // ============================================
@@ -1054,15 +1113,8 @@ function initHeroClientsStrip() {
 document.addEventListener('DOMContentLoaded', () => {
     initImplementationRoadmap();
     initHeroClientsStrip();
-
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 800,
-            easing: 'ease-out-cubic',
-            once: true,
-            offset: 50
-        });
-    }
+    initHeroBackgroundVideo();
+    initAosAnimations();
 
     // Rodapé fixo: número só ao carregar a página
     const countEl = document.getElementById('sensorCountDisplay');
@@ -1103,10 +1155,3 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(() => requestAnimationFrame(stepConveyor));
     }
 });
-
-// AOS — sem init o CSS do plugin deixa [data-aos] invisível
-if (typeof AOS !== 'undefined') {
-    AOS.init({ duration: 600, once: true });
-} else {
-    document.documentElement.classList.add('no-aos');
-}

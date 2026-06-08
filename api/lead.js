@@ -32,11 +32,8 @@ export default async function handler(req, res) {
       return res.status(400).json({ ok: false, error: "name_email_required" });
     }
 
-    if (!RESEND_API_KEY) {
-      return res.status(500).json({ ok: false, error: "missing_resend_api_key" });
-    }
-    if (!LEADS_TO_EMAIL) {
-      return res.status(500).json({ ok: false, error: "missing_leads_to_email" });
+    if (!RESEND_API_KEY || !LEADS_TO_EMAIL) {
+      return res.status(200).json({ ok: true, email: "skipped" });
     }
 
     const resend = new Resend(RESEND_API_KEY);
@@ -92,11 +89,13 @@ export default async function handler(req, res) {
     });
 
     if (error) {
-      return res.status(502).json({ ok: false, error: "resend_error", details: error });
+      console.error("Resend error:", error);
+      return res.status(200).json({ ok: true, email: "failed" });
     }
 
-    return res.status(200).json({ ok: true });
-  } catch {
-    return res.status(500).json({ ok: false, error: "server_error" });
+    return res.status(200).json({ ok: true, email: "sent" });
+  } catch (err) {
+    console.error("Lead email error:", err);
+    return res.status(200).json({ ok: true, email: "failed" });
   }
 }

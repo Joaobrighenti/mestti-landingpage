@@ -21,7 +21,9 @@
 
 /* Evita scroll lateral no mobile por elementos sobrepostos */
 @media (max-width: 1024px) {
-    .hero-first-fold { overflow-x: clip; }
+    .hero-first-fold {
+        overflow-x: hidden;
+    }
 }
 
 /* Vídeo de fundo do hero + véu para legibilidade do texto */
@@ -134,11 +136,13 @@
 .hero-conveyor-wrap {
     position: relative;
     z-index: 2;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
     margin-top: var(--spacing-2xl);
     margin-bottom: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 /* Faixa de clientes no lugar da esteira */

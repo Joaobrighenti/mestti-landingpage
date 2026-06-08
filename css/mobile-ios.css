@@ -1,0 +1,47 @@
+/* Correções Safari / iPhone — carregamento, overflow e animações */
+
+/* Conteúdo visível antes do AOS inicializar (evita tela “em branco”) */
+body:not(.aos-initialized) [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+html.no-aos [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* overflow-x: clip sem fallback quebra layout em Safari antigo */
+.hero-first-fold {
+    overflow-x: hidden;
+}
+
+/* 100vw causa scroll horizontal no iOS */
+.hero-conveyor-wrap {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-video-bg-media {
+        display: none;
+    }
+
+    .hero-clients-track {
+        animation: none !important;
+    }
+}
+
+/* Menu mobile: altura real da viewport no iOS */
+@media (max-width: 768px) {
+    .header-nav {
+        height: 100vh;
+        height: -webkit-fill-available;
+        height: 100dvh;
+        max-height: 100dvh;
+        padding-bottom: max(var(--spacing-xl), env(safe-area-inset-bottom, 0px));
+    }
+}

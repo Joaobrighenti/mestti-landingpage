@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <script src="theme-init.js"></script>
     <meta name="color-scheme" content="light dark">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="MESTTI - Apontamento automático sem digitação | OEE e indicadores em tempo real">
     <title>MESTTI | Apontamento Inteligente em Tempo Real</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
@@ -22,8 +22,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles-entry.css?v=32">
-    <link rel="preload" href="video/video_metro_rodando.mp4" as="video" type="video/mp4">
+    <style>
+        body:not(.aos-initialized) [data-aos],
+        html.no-aos [data-aos] {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    </style>
+    <link rel="stylesheet" href="styles-entry.css?v=34">
 </head>
 
 <body data-page="home">
@@ -85,7 +91,7 @@
     <!-- Hero Section - Primeira Dobra (com esteira + componentes OEE) -->
     <section class="hero hero-first-fold">
         <div class="hero-video-bg" aria-hidden="true">
-            <video class="hero-video-bg-media" autoplay muted loop playsinline preload="metadata">
+            <video class="hero-video-bg-media" autoplay muted loop playsinline preload="metadata" webkit-playsinline>
                 <source src="video/video_metro_rodando.mp4" type="video/mp4">
             </video>
             <div class="hero-video-bg-veil"></div>
@@ -560,11 +566,11 @@
 
     <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script defer src="i18n-page-strings.js"></script>
-    <script defer src="i18n.js?v=3"></script>
+    <script defer src="i18n.js?v=4"></script>
     <script defer src="theme.js?v=1"></script>
     <script defer src="form-options.js?v=2"></script>
-    <script defer src="script.js?v=20"></script>
-    <script defer src="conversational-form.js?v=7"></script>
+    <script defer src="script.js?v=23"></script>
+    <script defer src="conversational-form.js?v=8"></script>
 </body>
 
 </html>
