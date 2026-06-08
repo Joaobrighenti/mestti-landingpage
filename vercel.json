@@ -14,6 +14,20 @@
     { "source": "/empresa", "destination": "/empresa/index.html" },
     { "source": "/empresa/", "destination": "/empresa/index.html" },
     { "source": "/atuacao", "destination": "/atuacao/index.html" },
-    { "source": "/atuacao/", "destination": "/atuacao/index.html" }
+    { "source": "/atuacao/", "destination": "/atuacao/index.html" },
+    { "source": "/blog", "destination": "/blog/index.html" },
+    { "source": "/blog/", "destination": "/blog/index.html" },
+    { "source": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo", "destination": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/index.html" },
+    { "source": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/", "destination": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/index.html" },
+    { "source": "/cmms", "destination": "/cmms/index.html" },
+    { "source": "/cmms/", "destination": "/cmms/index.html" },
+    { "source": "/producao", "destination": "/producao/index.html" },
+    { "source": "/producao/", "destination": "/producao/index.html" },
+    { "source": "/sensores", "destination": "/sensores/index.html" },
+    { "source": "/sensores/", "destination": "/sensores/index.html" },
+    { "source": "/sensoriamento", "destination": "/sensoriamento/index.html" },
+    { "source": "/sensoriamento/", "destination": "/sensoriamento/index.html" },
+    { "source": "/sequenciamento", "destination": "/sequenciamento/index.html" },
+    { "source": "/sequenciamento/", "destination": "/sequenciamento/index.html" }
   ]
 }

@@ -13,8 +13,10 @@
             'meta.empresa.description': 'Conheça a MESTTI — automação, OEE e sensores para o chão de fábrica.',
             'meta.contato.title': 'Contato | MESTTI',
             'meta.contato.description': 'Entre em contato com a MESTTI — comercial, suporte e canais oficiais.',
+            'meta.blog.title': 'Blog | MESTTI',
+            'meta.blog.description': 'Artigos sobre produção industrial, gestão de custos, OEE e chão de fábrica.',
             'nav.solutions': 'Soluções',
-            'nav.resources': 'Recursos',
+            'nav.blog': 'Blog',
             'nav.installation': 'Instalação',
             'nav.sensors': 'Sensores',
             'nav.about': 'Sobre',
@@ -218,8 +220,10 @@
             'meta.empresa.description': 'Meet MESTTI — automation, OEE and sensors for the shop floor.',
             'meta.contato.title': 'Contact | MESTTI',
             'meta.contato.description': 'Contact MESTTI — sales, support and official channels.',
+            'meta.blog.title': 'Blog | MESTTI',
+            'meta.blog.description': 'Articles on industrial production, cost management, OEE and shop floor operations.',
             'nav.solutions': 'Solutions',
-            'nav.resources': 'Resources',
+            'nav.blog': 'Blog',
             'nav.installation': 'Installation',
             'nav.sensors': 'Sensors',
             'nav.about': 'About',
@@ -423,8 +427,10 @@
             'meta.empresa.description': 'Conozca MESTTI — automatización, OEE y sensores para planta.',
             'meta.contato.title': 'Contacto | MESTTI',
             'meta.contato.description': 'Contacte a MESTTI — comercial, soporte y canales oficiales.',
+            'meta.blog.title': 'Blog | MESTTI',
+            'meta.blog.description': 'Artículos sobre producción industrial, gestión de costos, OEE y planta.',
             'nav.solutions': 'Soluciones',
-            'nav.resources': 'Recursos',
+            'nav.blog': 'Blog',
             'nav.installation': 'Instalación',
             'nav.sensors': 'Sensores',
             'nav.about': 'Sobre',
@@ -629,6 +635,13 @@
         });
     }
 
+    function mergePageI18n() {
+        if (typeof window.MESTTI_PAGE_I18N !== 'object') return;
+        SUPPORTED.forEach((lang) => {
+            Object.assign(T[lang], window.MESTTI_PAGE_I18N[lang] || {});
+        });
+    }
+
     function getStoredLang() {
         const saved = localStorage.getItem(STORAGE_KEY);
         return SUPPORTED.includes(saved) ? saved : 'pt';
@@ -726,6 +739,7 @@
     }
 
     function init() {
+        mergePageI18n();
         injectLangSwitcher();
         bindLangSwitcher();
         applyLanguage(getStoredLang());

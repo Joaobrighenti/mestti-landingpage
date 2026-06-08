@@ -40,6 +40,11 @@ app.get("/sensoriamento/", (_req, res) => sendPage(res, path.join("sensoriamento
 app.get("/producao/", (_req, res) => sendPage(res, path.join("producao", "index.html")));
 app.get("/sensores/", (_req, res) => sendPage(res, path.join("sensores", "index.html")));
 app.get("/sequenciamento/", (_req, res) => sendPage(res, path.join("sequenciamento", "index.html")));
+app.get("/blog/", (_req, res) => sendPage(res, path.join("blog", "index.html")));
+app.get("/blog/como-calcular-preco-venda-industria-rkw-custo-processo/", (_req, res) =>
+  sendPage(res, path.join("blog", "como-calcular-preco-venda-industria-rkw-custo-processo", "index.html"))
+);
+app.get("/cmms/", (_req, res) => sendPage(res, path.join("cmms", "index.html")));
 
 app.post("/api/lead", async (req, res) => {
   try {
