@@ -330,12 +330,37 @@
     top: 10px;
     right: 10px;
     background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #111;
     z-index: 30;
 }
 
+.wa-modal .modal-close:hover {
+    background: #fff;
+    color: #075e54;
+}
+
+[data-theme="dark"] .wa-modal .modal-close {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #111;
+}
+
+[data-theme="dark"] .wa-modal .modal-close:hover {
+    background: #fff;
+    color: #075e54;
+}
+
 [data-theme="dark"] .wa-chat {
+    background-color: #0b141a;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23182229' fill-opacity='0.55'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] .demo-modal-card.wa-mode,
+[data-theme="dark"] .modal-content.wa-modal-content {
     background: #0b141a;
-    background-image: none;
+    border-color: transparent;
+    box-shadow: none;
 }
 
 [data-theme="dark"] .wa-msg--bot .wa-bubble {
@@ -374,8 +399,13 @@
     color: #111;
 }
 
-[data-theme="dark"] .modal-overlay.modal-overlay--wa-chat {
-    background-color: #0b141a;
+/* Desktop: overlay semitransparente — site continua visível atrás (igual ao modo claro) */
+@media (min-width: 481px) {
+    [data-theme="dark"] .modal-overlay.modal-overlay--wa-chat {
+        background-color: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
 }
 
 @media (max-width: 480px) {
@@ -387,6 +417,14 @@
         -webkit-backdrop-filter: none;
         background-color: #e5ddd5;
         transition: none;
+    }
+
+    [data-theme="dark"] .modal-overlay.modal-overlay--wa-chat {
+        background-color: #0b141a;
+    }
+
+    [data-theme="dark"] .modal-overlay.modal-overlay--wa-chat.wa-vv-sync .modal-content.wa-modal-content {
+        background: #0b141a;
     }
 
     .modal-overlay.modal-overlay--wa-chat.wa-vv-sync {

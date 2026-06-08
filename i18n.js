@@ -174,6 +174,30 @@
             'chat.err.email': 'Hmm, esse e-mail não parece certo. Tenta de novo?',
             'chat.err.phone': 'Esse número não rolou — confere o DDD e tenta de novo?',
             'chat.err.required': 'Escolhe uma das opções ali em cima 🙂',
+            'options.cargo.diretor': 'Diretor / C-Level',
+            'options.cargo.gerente-producao': 'Gerente de Produção / Industrial',
+            'options.cargo.supervisor': 'Supervisor de Produção',
+            'options.cargo.engenheiro': 'Engenheiro de Processos / Produção',
+            'options.cargo.analista': 'Analista de Melhoria Contínua',
+            'options.cargo.manutencao': 'Coordenador de Manutenção',
+            'options.cargo.ti': 'TI / Automação Industrial',
+            'options.cargo.compras': 'Compras / Suprimentos',
+            'options.cargo.outro': 'Outro',
+            'options.setor.alimentos': 'Alimentos e Bebidas',
+            'options.setor.quimica': 'Química e Petroquímica',
+            'options.setor.automotiva': 'Automotiva',
+            'options.setor.farmaceutica': 'Farmacêutica e Cosmética',
+            'options.setor.metalurgia': 'Metalurgia e Siderurgia',
+            'options.setor.plasticos': 'Plásticos e Embalagens',
+            'options.setor.textil': 'Têxtil',
+            'options.setor.papel': 'Papel e Celulose',
+            'options.setor.eletro': 'Eletroeletrônica',
+            'options.setor.energia': 'Energia e Utilities',
+            'options.setor.outro': 'Outro',
+            'options.solucao.sensoriamento': 'Sensoriamento de chão de fábrica',
+            'options.solucao.sequenciamento': 'Sequenciamento e programação',
+            'options.solucao.monitoramento': 'Monitoramento de indicadores em tempo real',
+            'options.solucao.plataforma': 'Plataforma completa MESTTI',
             'form.successTitle': 'Obrigado!',
             'form.success': 'Em breve nossa equipe entrará em contato com você.',
             'form.error': 'Não conseguimos enviar agora. Tente novamente em instantes.',
@@ -355,6 +379,30 @@
             'chat.err.email': 'Hmm, that email doesn\'t look right. Try again?',
             'chat.err.phone': 'That number didn\'t work — check the area code and try again?',
             'chat.err.required': 'Pick one of the options above 🙂',
+            'options.cargo.diretor': 'Director / C-Level',
+            'options.cargo.gerente-producao': 'Production / Industrial Manager',
+            'options.cargo.supervisor': 'Production Supervisor',
+            'options.cargo.engenheiro': 'Process / Production Engineer',
+            'options.cargo.analista': 'Continuous Improvement Analyst',
+            'options.cargo.manutencao': 'Maintenance Coordinator',
+            'options.cargo.ti': 'IT / Industrial Automation',
+            'options.cargo.compras': 'Purchasing / Supply',
+            'options.cargo.outro': 'Other',
+            'options.setor.alimentos': 'Food & Beverage',
+            'options.setor.quimica': 'Chemical & Petrochemical',
+            'options.setor.automotiva': 'Automotive',
+            'options.setor.farmaceutica': 'Pharmaceutical & Cosmetics',
+            'options.setor.metalurgia': 'Metallurgy & Steel',
+            'options.setor.plasticos': 'Plastics & Packaging',
+            'options.setor.textil': 'Textile',
+            'options.setor.papel': 'Pulp & Paper',
+            'options.setor.eletro': 'Electronics',
+            'options.setor.energia': 'Energy & Utilities',
+            'options.setor.outro': 'Other',
+            'options.solucao.sensoriamento': 'Shop floor sensing',
+            'options.solucao.sequenciamento': 'Scheduling and sequencing',
+            'options.solucao.monitoramento': 'Real-time KPI monitoring',
+            'options.solucao.plataforma': 'Full MESTTI platform',
             'form.successTitle': 'Thank you!',
             'form.success': 'Our team will contact you shortly.',
             'form.error': 'We could not send your request now. Please try again in a moment.',
@@ -536,6 +584,30 @@
             'chat.err.email': 'Hmm, ese correo no parece correcto. ¿Intentas de nuevo?',
             'chat.err.phone': 'Ese número no funcionó — revisa el código de área e intenta de nuevo.',
             'chat.err.required': 'Elige una de las opciones de arriba 🙂',
+            'options.cargo.diretor': 'Director / C-Level',
+            'options.cargo.gerente-producao': 'Gerente de Producción / Industrial',
+            'options.cargo.supervisor': 'Supervisor de Producción',
+            'options.cargo.engenheiro': 'Ingeniero de Procesos / Producción',
+            'options.cargo.analista': 'Analista de Mejora Continua',
+            'options.cargo.manutencao': 'Coordinador de Mantenimiento',
+            'options.cargo.ti': 'TI / Automatización Industrial',
+            'options.cargo.compras': 'Compras / Suministros',
+            'options.cargo.outro': 'Otro',
+            'options.setor.alimentos': 'Alimentos y Bebidas',
+            'options.setor.quimica': 'Química y Petroquímica',
+            'options.setor.automotiva': 'Automotriz',
+            'options.setor.farmaceutica': 'Farmacéutica y Cosmética',
+            'options.setor.metalurgia': 'Metalurgia y Siderurgia',
+            'options.setor.plasticos': 'Plásticos y Embalajes',
+            'options.setor.textil': 'Textil',
+            'options.setor.papel': 'Papel y Celulose',
+            'options.setor.eletro': 'Electroelectrónica',
+            'options.setor.energia': 'Energía y Utilities',
+            'options.setor.outro': 'Otro',
+            'options.solucao.sensoriamento': 'Sensorización de planta',
+            'options.solucao.sequenciamento': 'Secuenciación y programación',
+            'options.solucao.monitoramento': 'Monitoreo de indicadores en tiempo real',
+            'options.solucao.plataforma': 'Plataforma completa MESTTI',
             'form.successTitle': '¡Gracias!',
             'form.success': 'Pronto nuestro equipo se pondrá en contacto contigo.',
             'form.error': 'No pudimos enviar ahora. Intente de nuevo en unos instantes.',
@@ -585,6 +657,11 @@
         if (!SUPPORTED.includes(lang)) lang = 'pt';
         localStorage.setItem(STORAGE_KEY, lang);
         document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+        window.MESTTI_LANG = lang;
+
+        if (window.MesttiFormOptions?.populateFormSelects) {
+            window.MesttiFormOptions.populateFormSelects();
+        }
 
         document.querySelectorAll('[data-i18n]').forEach((el) => {
             const key = el.getAttribute('data-i18n');
@@ -611,7 +688,7 @@
         });
 
         applyMeta(lang);
-        window.MESTTI_LANG = lang;
+        window.MesttiConversationalForm?.applyLanguage?.(lang);
     }
 
     function langSwitcherMarkup(idSuffix) {

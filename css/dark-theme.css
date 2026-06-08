@@ -224,6 +224,17 @@
     background: rgba(0, 0, 0, 0.75);
 }
 
+[data-theme="dark"] .modal-close {
+    background: var(--gray-200);
+    border-color: var(--gray-300);
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .modal-close:hover {
+    background: var(--gray-300);
+    color: var(--gray-900);
+}
+
 [data-theme="dark"] .demo-modal-content,
 [data-theme="dark"] .demo-modal-card,
 [data-theme="dark"] .popup-card {

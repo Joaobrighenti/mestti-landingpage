@@ -8,15 +8,16 @@
     const TYPING_DELAY_MS = 480;
 
     function t(key, fallback) {
-        let value = fallback;
-        if (typeof window.mesttiT === 'function') {
-            value = window.mesttiT(key, fallback);
-        } else if (window.MesttiI18n && typeof window.MesttiI18n.t === 'function') {
-            const lang = window.MESTTI_LANG || 'pt';
-            value = window.MesttiI18n.t(lang, key) || fallback;
+        const lang = window.MESTTI_LANG || window.MesttiI18n?.getLang?.() || 'pt';
+        if (window.MesttiI18n?.t) {
+            const translated = window.MesttiI18n.t(lang, key);
+            if (translated && translated !== key) return translated;
         }
-        if (!value || value === key) return fallback;
-        return value;
+        if (typeof window.mesttiT === 'function') {
+            const value = window.mesttiT(key, fallback);
+            if (value && value !== key) return value;
+        }
+        return fallback;
     }
 
     function findField(form, names) {
@@ -320,7 +321,10 @@
             }
 
             this.reset(false);
-            await this.botSay(t('chat.greeting', 'Oi! 👋 Tudo bem? Sou da MESTTI. Só preciso de algumas informações rapidinhas pra agendar sua demonstração.'));
+            await this.botSay(
+                t('chat.greeting', 'Oi! 👋 Tudo bem? Sou da MESTTI. Só preciso de algumas informações rapidinhas pra agendar sua demonstração.'),
+                { i18nKey: 'chat.greeting' }
+            );
             await this.askCurrentStep();
         }
 
@@ -336,8 +340,9 @@
             this.restoreFieldValues(draft.fieldValues);
 
             this.messageLog = draft.messageLog.slice();
-            draft.messageLog.forEach((entry) => {
-                this.renderMessage(entry.role, entry.text);
+            this.enrichMessageLogI18nKeys();
+            this.messageLog.forEach((entry) => {
+                this.renderMessage(entry.role, this.resolveMessageText(entry));
             });
 
             scrollMessages(this.scrollEl || this.messagesEl);
@@ -407,12 +412,19 @@
         getAcknowledgment(step, rawValue) {
             if (step.key === 'name') {
                 const firstName = this.formatFirstName(rawValue);
-                return t('chat.ack.name', `Prazer, ${firstName}! 😊`).replace(/\{name\}/g, firstName);
+                return {
+                    text: t('chat.ack.name', `Prazer, ${firstName}! 😊`).replace(/\{name\}/g, firstName),
+                    i18nKey: 'chat.ack.name',
+                    i18nParams: { name: firstName }
+                };
             }
             if (['email', 'phone', 'empresa'].includes(step.key)) {
-                return t('chat.ack.generic', 'Show! 👍');
+                return {
+                    text: t('chat.ack.generic', 'Show! 👍'),
+                    i18nKey: 'chat.ack.generic'
+                };
             }
-            return '';
+            return null;
         }
 
         async askCurrentStep() {
@@ -422,7 +434,7 @@
                 return;
             }
 
-            await this.botSay(this.formatQuestion(step));
+            await this.botSay(this.formatQuestion(step), { i18nKey: step.questionKey });
             await this.setupCurrentStepUi();
         }
 
@@ -538,7 +550,7 @@
             }
 
             if (step.validate && !step.validate(rawValue)) {
-                await this.botSay(t(step.errorKey, 'Não entendi. Pode tentar de novo?'));
+                await this.botSay(t(step.errorKey, 'Não entendi. Pode tentar de novo?'), { i18nKey: step.errorKey });
                 this.refocusInput();
                 return;
             }
@@ -585,7 +597,9 @@
             this.busy = true;
             this.quickRepliesEl.innerHTML = '';
             this.composerEl.classList.remove('is-hidden');
-            this.addMessage('user', displayValue);
+            this.addMessage('user', displayValue, {
+                i18nKey: skipped ? 'chat.skipped' : null
+            });
             this.inputEl.value = '';
 
             if (!skipped) {
@@ -610,9 +624,9 @@
             this.saveDraft();
             this.refocusInput();
 
-            const ack = !skipped ? this.getAcknowledgment(step, rawValue) : '';
+            const ack = !skipped ? this.getAcknowledgment(step, rawValue) : null;
             if (ack) {
-                await this.botSay(ack);
+                await this.botSay(ack.text, { i18nKey: ack.i18nKey, i18nParams: ack.i18nParams });
             }
 
             await this.askCurrentStep();
@@ -638,10 +652,10 @@
                 });
             }
 
-            await this.botSay(this.formatNamedMessage(
-                'chat.done',
-                'Perfeito! Em breve nossa equipe entra em contato com você.'
-            ));
+            await this.botSay(
+                this.formatNamedMessage('chat.done', 'Perfeito! Em breve nossa equipe entra em contato com você.'),
+                { i18nKey: 'chat.done' }
+            );
             this.clearDraft();
         }
 
@@ -678,12 +692,195 @@
             return msg;
         }
 
-        addMessage(role, text, record = true) {
+        addMessage(role, text, meta = {}) {
+            const options = typeof meta === 'boolean' ? { record: meta } : meta;
+            const { record = true, i18nKey = null, i18nParams = null } = options;
+
             if (record) {
-                this.messageLog.push({ role, text });
+                const entry = { role, text };
+                if (i18nKey) entry.i18nKey = i18nKey;
+                if (i18nParams) entry.i18nParams = i18nParams;
+                this.messageLog.push(entry);
                 this.saveDraft();
+                const displayText = entry.role === 'bot' && entry.i18nKey
+                    ? this.resolveMessageText(entry)
+                    : text;
+                return this.renderMessage(role, displayText);
             }
             return this.renderMessage(role, text);
+        }
+
+        resolveMessageText(entry) {
+            if (entry.role === 'user') {
+                if (entry.i18nKey === 'chat.skipped') {
+                    return t('chat.skipped', entry.text);
+                }
+                return entry.text;
+            }
+
+            if (!entry.i18nKey) {
+                return entry.text;
+            }
+
+            if (entry.i18nKey === 'chat.ack.name') {
+                const name = entry.i18nParams?.name
+                    || this.formatFirstName(entry.text.replace(/^.*?\{name\}.*$/,'').trim())
+                    || this.formatFirstName(this.getFirstName());
+                return t('chat.ack.name', entry.text).replace(/\{name\}/g, name);
+            }
+
+            if (entry.i18nKey === 'chat.ack.generic') {
+                return t('chat.ack.generic', entry.text);
+            }
+
+            if (entry.i18nKey === 'chat.greeting') {
+                return t('chat.greeting', entry.text);
+            }
+
+            if (entry.i18nKey === 'chat.done') {
+                return this.formatNamedMessage('chat.done', entry.text);
+            }
+
+            if (entry.i18nKey.startsWith('chat.err.')) {
+                return t(entry.i18nKey, entry.text);
+            }
+
+            const step = this.steps.find((item) => item.questionKey === entry.i18nKey);
+            if (step) return this.formatQuestion(step);
+
+            return t(entry.i18nKey, entry.text);
+        }
+
+        enrichMessageLogI18nKeys() {
+            let sawGreeting = false;
+            let nextQuestionIdx = 0;
+            let expectingAck = false;
+            let lastUserAnswer = '';
+
+            const skippedLabels = new Set([
+                'Pulado',
+                t('chat.skipped', 'Sem problemas'),
+                'Sem problemas',
+                'No worries',
+                'Sin problema'
+            ]);
+
+            for (const entry of this.messageLog) {
+                if (entry.i18nKey) {
+                    if (entry.role === 'bot') {
+                        if (entry.i18nKey === 'chat.greeting') {
+                            sawGreeting = true;
+                            nextQuestionIdx = 0;
+                            expectingAck = false;
+                        } else if (entry.i18nKey === 'chat.ack.name' || entry.i18nKey === 'chat.ack.generic') {
+                            expectingAck = false;
+                        } else if (entry.i18nKey.startsWith('chat.q.')) {
+                            const idx = this.steps.findIndex((step) => step.questionKey === entry.i18nKey);
+                            if (idx >= 0) nextQuestionIdx = idx + 1;
+                            expectingAck = false;
+                        } else if (entry.i18nKey.startsWith('chat.err.')) {
+                            expectingAck = false;
+                        } else if (entry.i18nKey === 'chat.done') {
+                            expectingAck = false;
+                        }
+                    } else if (entry.role === 'user') {
+                        lastUserAnswer = entry.text;
+                        expectingAck = true;
+                        if (nextQuestionIdx < this.steps.length) {
+                            nextQuestionIdx += 1;
+                        }
+                    }
+                    continue;
+                }
+
+                if (entry.role === 'user') {
+                    if (skippedLabels.has(entry.text)) {
+                        entry.i18nKey = 'chat.skipped';
+                    }
+                    lastUserAnswer = entry.text;
+                    expectingAck = true;
+                    if (nextQuestionIdx < this.steps.length) {
+                        nextQuestionIdx += 1;
+                    }
+                    continue;
+                }
+
+                if (entry.role !== 'bot') continue;
+
+                if (!sawGreeting) {
+                    entry.i18nKey = 'chat.greeting';
+                    sawGreeting = true;
+                    nextQuestionIdx = 0;
+                    expectingAck = false;
+                    continue;
+                }
+
+                if (expectingAck) {
+                    const answeredStep = this.steps[nextQuestionIdx - 1];
+                    if (answeredStep?.key === 'name') {
+                        const firstName = this.formatFirstName(
+                            (lastUserAnswer || '').split(/\s+/).filter(Boolean)[0] || lastUserAnswer
+                        );
+                        entry.i18nKey = 'chat.ack.name';
+                        entry.i18nParams = { name: firstName };
+                    } else if (answeredStep && ['email', 'phone', 'empresa'].includes(answeredStep.key)) {
+                        entry.i18nKey = 'chat.ack.generic';
+                    } else {
+                        const errorKey = this.steps.find((step) => step.errorKey)?.errorKey;
+                        const matchedError = this.steps.find((step) => {
+                            if (!step.errorKey) return false;
+                            return entry.text === t(step.errorKey, this.questionFallback(step));
+                        });
+                        if (matchedError) {
+                            entry.i18nKey = matchedError.errorKey;
+                        }
+                    }
+                    expectingAck = false;
+                    if (entry.i18nKey) continue;
+                }
+
+                if (nextQuestionIdx < this.steps.length) {
+                    entry.i18nKey = this.steps[nextQuestionIdx].questionKey;
+                    expectingAck = false;
+                    continue;
+                }
+
+                entry.i18nKey = 'chat.done';
+            }
+        }
+
+        updateChatChrome() {
+            if (!this.chatEl) return;
+
+            const nameEl = this.chatEl.querySelector('.wa-chat-name');
+            const statusEl = this.chatEl.querySelector('.wa-chat-status');
+            if (nameEl) nameEl.textContent = t('chat.header.name', 'Giovana');
+            if (statusEl) statusEl.textContent = t('chat.header.status', 'online');
+            if (this.sendBtn) {
+                this.sendBtn.setAttribute('aria-label', t('chat.send', 'Enviar'));
+            }
+        }
+
+        rerenderMessages() {
+            if (!this.messagesEl) return;
+
+            this.messagesEl.innerHTML = '';
+            this.messageLog.forEach((entry) => {
+                this.renderMessage(entry.role, this.resolveMessageText(entry));
+            });
+            scrollMessages(this.scrollEl || this.messagesEl);
+        }
+
+        applyLanguage() {
+            if (!this.chatEl) return;
+
+            this.enrichMessageLogI18nKeys();
+            this.updateChatChrome();
+            this.rerenderMessages();
+
+            if (!this.finished && !this.busy) {
+                this.setupCurrentStepUi();
+            }
         }
 
         showTyping() {
@@ -700,11 +897,12 @@
             return msg;
         }
 
-        async botSay(text) {
+        async botSay(text, meta = {}) {
+            const { i18nKey = null, i18nParams = null } = meta;
             const typing = this.showTyping();
             await new Promise((resolve) => setTimeout(resolve, TYPING_DELAY_MS));
             typing.remove();
-            this.addMessage('bot', text);
+            this.addMessage('bot', text, { i18nKey, i18nParams });
         }
     }
 
@@ -901,6 +1099,9 @@
         },
         clearAllDrafts() {
             instances.forEach((instance) => instance.clearDraft());
+        },
+        applyLanguage() {
+            instances.forEach((instance) => instance.applyLanguage());
         },
         saveAllDrafts
     };
