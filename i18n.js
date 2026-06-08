@@ -689,6 +689,7 @@
 
         applyMeta(lang);
         window.MesttiConversationalForm?.applyLanguage?.(lang);
+        window.MesttiLpCarousels?.refresh?.();
     }
 
     function langSwitcherMarkup(idSuffix) {

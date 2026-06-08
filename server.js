@@ -36,6 +36,10 @@ app.get("/", (_req, res) => sendPage(res, "index.html"));
 app.get("/contato/", (_req, res) => sendPage(res, path.join("contato", "index.html")));
 app.get("/empresa/", (_req, res) => sendPage(res, path.join("empresa", "index.html")));
 app.get("/atuacao/", (_req, res) => sendPage(res, path.join("atuacao", "index.html")));
+app.get("/sensoriamento/", (_req, res) => sendPage(res, path.join("sensoriamento", "index.html")));
+app.get("/producao/", (_req, res) => sendPage(res, path.join("producao", "index.html")));
+app.get("/sensores/", (_req, res) => sendPage(res, path.join("sensores", "index.html")));
+app.get("/sequenciamento/", (_req, res) => sendPage(res, path.join("sequenciamento", "index.html")));
 
 app.post("/api/lead", async (req, res) => {
   try {
@@ -56,8 +60,9 @@ app.post("/api/lead", async (req, res) => {
       leadSource = "",
     } = payload;
 
-    if (!name || !email) {
-      return res.status(400).json({ ok: false, error: "name_email_required" });
+    const phoneFull = [String(ddi || "").trim(), String(phone || "").trim()].filter(Boolean).join(" ");
+    if (!name || (!email && !phoneFull)) {
+      return res.status(400).json({ ok: false, error: "name_contact_required" });
     }
 
     if (!RESEND_API_KEY || !LEADS_TO_EMAIL) {
@@ -69,11 +74,9 @@ app.post("/api/lead", async (req, res) => {
     const subject = `Novo lead (MESTTI)${formId ? ` — ${formId}` : ""}`;
 
     const safe = (v) => (typeof v === "string" ? v.trim() : "");
-    const phoneFull = [safe(ddi), safe(phone)].filter(Boolean).join(" ");
-
     const lines = [
       ["Nome", safe(name)],
-      ["E-mail", safe(email)],
+      ["E-mail", safe(email) || "(informado via WhatsApp)"],
       ["Telefone", phoneFull],
       ["Cargo", safe(cargo)],
       ["Setor", safe(setor)],

@@ -480,11 +480,17 @@ function collectLeadPayload(form, formId, leadSource = 'submit') {
     const maquinas = form.querySelector('[name="maquinas"]');
     const programacaoAtual = form.querySelector('[name="programacao_atual"]');
     const dificuldadeProgramacao = form.querySelector('[name="dificuldade_programacao"]');
+    const apontamentoAtual = form.querySelector('[name="apontamento_atual"]');
+    const motivosParada = form.querySelector('[name="motivos_parada"]');
+    const dificuldadeProducao = form.querySelector('[name="dificuldade_producao"]');
     const observacaoExtra = [
         observacao?.value?.trim() || '',
         maquinas?.value ? `Máquinas: ${maquinas.value}` : '',
         programacaoAtual?.value ? `Programação atual: ${programacaoAtual.value}` : '',
-        dificuldadeProgramacao?.value?.trim() ? `Maior dificuldade na programação: ${dificuldadeProgramacao.value.trim()}` : ''
+        apontamentoAtual?.value ? `Apontamento atual: ${apontamentoAtual.value}` : '',
+        motivosParada?.value ? `Motivos de parada: ${motivosParada.value}` : '',
+        dificuldadeProgramacao?.value?.trim() ? `Maior dificuldade na programação: ${dificuldadeProgramacao.value.trim()}` : '',
+        dificuldadeProducao?.value?.trim() ? `Maior dificuldade para medir produção: ${dificuldadeProducao.value.trim()}` : ''
     ].filter(Boolean).join('\n');
 
     return {
@@ -516,11 +522,14 @@ function formHasPartialData(form) {
     const mensagem = getFormFieldValue(form, ['#mensagem', '[name="mensagem"]']);
     const observacao = getFormFieldValue(form, ['#observacao', '[name="observacao"]']);
     const dificuldadeProgramacao = getFormFieldValue(form, ['[name="dificuldade_programacao"]']);
+    const dificuldadeProducao = getFormFieldValue(form, ['[name="dificuldade_producao"]']);
     const cargo = form.querySelector('#cargo') || form.querySelector('[name="cargo"]');
     const setor = form.querySelector('#setor') || form.querySelector('[name="setor"]');
     const solucao = form.querySelector('#solucao') || form.querySelector('[name="solucao"]');
     const maquinas = form.querySelector('[name="maquinas"]');
     const programacaoAtual = form.querySelector('[name="programacao_atual"]');
+    const apontamentoAtual = form.querySelector('[name="apontamento_atual"]');
+    const motivosParada = form.querySelector('[name="motivos_parada"]');
 
     return Boolean(
         name.length >= 2
@@ -530,11 +539,14 @@ function formHasPartialData(form) {
         || mensagem.length >= 2
         || observacao.length >= 2
         || dificuldadeProgramacao.length >= 2
+        || dificuldadeProducao.length >= 2
         || cargo?.value
         || setor?.value
         || solucao?.value
         || maquinas?.value
         || programacaoAtual?.value
+        || apontamentoAtual?.value
+        || motivosParada?.value
     );
 }
 
@@ -604,8 +616,13 @@ async function submitLeadForm(form, formId, {
     const originalText = submitButton?.textContent || '';
     const payload = collectLeadPayload(form, formId, leadSource);
 
-    if (!payload.name || !payload.email) {
+    const phoneDigits = (payload.phone || '').replace(/\D/g, '');
+    if (!payload.name || (!payload.email && phoneDigits.length < 8)) {
         return false;
+    }
+
+    if (!payload.email && phoneDigits.length >= 8) {
+        payload.email = `whatsapp+${phoneDigits}@lead.mestti.local`;
     }
 
     form.dataset.mesttiSubmitting = '1';
@@ -1044,6 +1061,105 @@ function initImplementationRoadmap() {
     startAutoAdvance();
 }
 
+function lpCarouselDotLabel(index, total) {
+    const lang = window.MESTTI_LANG || window.MesttiI18n?.getLang?.() || 'pt';
+    if (lang === 'en') return `Screen ${index + 1} of ${total}`;
+    if (lang === 'es') return `Pantalla ${index + 1} de ${total}`;
+    return `Tela ${index + 1} de ${total}`;
+}
+
+function lpCarouselSlideCaption(slide) {
+    const key = slide.getAttribute('data-i18n-caption');
+    if (key && window.MesttiI18n) {
+        return window.MesttiI18n.t(window.MESTTI_LANG || window.MesttiI18n.getLang(), key);
+    }
+    return slide.dataset.caption || '';
+}
+
+const lpSystemCarouselRefresh = [];
+
+function initLpSystemCarousel() {
+    const INTERVAL_MS = 5500;
+
+    document.querySelectorAll('[data-lp-system-carousel]').forEach((root) => {
+        const slides = Array.from(root.querySelectorAll('.lp-system-carousel-slide'));
+        if (slides.length < 2) return;
+
+        const captionEl = root.parentElement?.querySelector('.lp-system-carousel-caption')
+            || root.querySelector('.lp-system-carousel-caption');
+        const dotsWrap = root.querySelector('.lp-system-carousel-dots');
+        let dotButtons = [];
+
+        if (dotsWrap && !dotsWrap.children.length) {
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = `lp-system-carousel-dot${i === 0 ? ' is-active' : ''}`;
+                dot.setAttribute('aria-label', lpCarouselDotLabel(i, slides.length));
+                dotsWrap.appendChild(dot);
+            });
+        }
+
+        dotButtons = dotsWrap ? Array.from(dotsWrap.querySelectorAll('.lp-system-carousel-dot')) : [];
+
+        let index = 0;
+        let timer = null;
+
+        function goTo(nextIndex) {
+            index = ((nextIndex % slides.length) + slides.length) % slides.length;
+            slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+            dotButtons.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+            if (captionEl) {
+                captionEl.textContent = lpCarouselSlideCaption(slides[index]);
+            }
+        }
+
+        function refreshI18n() {
+            dotButtons.forEach((dot, i) => {
+                dot.setAttribute('aria-label', lpCarouselDotLabel(i, slides.length));
+            });
+            goTo(index);
+        }
+
+        lpSystemCarouselRefresh.push(refreshI18n);
+
+        function stopAuto() {
+            if (timer) {
+                clearInterval(timer);
+                timer = null;
+            }
+        }
+
+        function startAuto() {
+            stopAuto();
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            timer = setInterval(() => goTo(index + 1), INTERVAL_MS);
+        }
+
+        dotButtons.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                stopAuto();
+                goTo(i);
+                startAuto();
+            });
+        });
+
+        root.addEventListener('mouseenter', stopAuto);
+        root.addEventListener('mouseleave', startAuto);
+        root.addEventListener('focusin', stopAuto);
+        root.addEventListener('focusout', startAuto);
+
+        goTo(0);
+        startAuto();
+    });
+}
+
+window.MesttiLpCarousels = {
+    refresh() {
+        lpSystemCarouselRefresh.forEach((fn) => fn());
+    }
+};
+
 // ============================================
 // Faixa de logos de clientes (hero)
 // ============================================
@@ -1108,6 +1224,7 @@ function initAosAnimations() {
 document.addEventListener('DOMContentLoaded', () => {
     initImplementationRoadmap();
     initHeroClientsStrip();
+    initLpSystemCarousel();
     initAosAnimations();
 
     // Rodapé fixo: número só ao carregar a página
