@@ -79,17 +79,22 @@ html.no-aos [data-aos] {
 
 /* Chat conversacional — fluidez no iOS */
 @media (max-width: 480px) {
-    .modal-overlay.modal-overlay--wa-chat {
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
+    body.is-modal-open {
+        position: fixed;
+        width: 100%;
+        overflow: hidden;
+        overscroll-behavior: none;
     }
 
-    .modal-overlay.modal-overlay--wa-chat .wa-chat,
-    .modal-overlay.modal-overlay--wa-chat .wa-modal-content {
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
+    .modal-overlay.modal-overlay--wa-chat {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        contain: layout style paint;
+    }
+
+    .modal-overlay.modal-overlay--wa-chat.wa-vv-sync .wa-modal-content {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
     }
 
     .modal-overlay.modal-overlay--wa-chat .wa-chat-scroll {

@@ -779,8 +779,24 @@ async function requestCloseModal() {
     }
 }
 
+let modalScrollLockY = 0;
+
+function lockModalBodyScroll() {
+    if (window.innerWidth > 480) return;
+    modalScrollLockY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.top = `-${modalScrollLockY}px`;
+}
+
+function unlockModalBodyScroll() {
+    if (window.innerWidth > 480) return;
+    const scrollY = modalScrollLockY;
+    document.body.style.top = '';
+    window.scrollTo(0, scrollY);
+}
+
 if (modalOverlay) {
     openModal = function openModalFn() {
+        lockModalBodyScroll();
         modalOverlay.classList.add('active');
         document.body.classList.add('is-modal-open');
         document.body.style.overflow = 'hidden';
@@ -794,6 +810,7 @@ if (modalOverlay) {
         modalOverlay.classList.remove('active');
         document.body.classList.remove('is-modal-open');
         document.body.style.overflow = '';
+        unlockModalBodyScroll();
     };
 
     function bindOpenModalButtons(buttons) {

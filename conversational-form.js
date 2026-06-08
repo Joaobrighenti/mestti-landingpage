@@ -765,8 +765,14 @@
             modal.classList.remove('wa-vv-sync');
             modal.style.top = '';
             modal.style.left = '';
+            modal.style.right = '';
+            modal.style.bottom = '';
             modal.style.width = '';
             modal.style.height = '';
+            content.style.position = '';
+            content.style.top = '';
+            content.style.left = '';
+            content.style.width = '';
             content.style.height = '';
             content.style.maxHeight = '';
             content.style.transform = '';
@@ -796,7 +802,6 @@
             const offsetTop = Math.max(0, Math.round(vv.offsetTop));
             const offsetLeft = Math.max(0, Math.round(vv.offsetLeft));
             const width = Math.round(vv.width);
-
             if (
                 height === lastHeight
                 && offsetTop === lastTop
@@ -813,13 +818,22 @@
             lastWidth = width;
 
             modal.classList.add('wa-vv-sync');
-            modal.style.top = `${offsetTop}px`;
-            modal.style.left = `${offsetLeft}px`;
-            modal.style.width = `${width}px`;
-            modal.style.height = `${height}px`;
-            content.style.height = '100%';
-            content.style.maxHeight = '100%';
-            content.style.transform = 'none';
+
+            // Cortina opaca em tela cheia — evita o site aparecer atrás do teclado
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.right = '0';
+            modal.style.bottom = '0';
+            modal.style.width = '';
+            modal.style.height = '';
+
+            content.style.position = 'fixed';
+            content.style.top = '0';
+            content.style.left = '0';
+            content.style.width = `${width}px`;
+            content.style.height = `${height}px`;
+            content.style.maxHeight = `${height}px`;
+            content.style.transform = `translate3d(${offsetLeft}px, ${offsetTop}px, 0)`;
         }
 
         function syncViewport({ immediate = false } = {}) {
@@ -833,9 +847,14 @@
             rafId = requestAnimationFrame(applyViewportSync);
         }
 
+        function onVisualViewportChange() {
+            if (!modal.classList.contains('active') || !isMobileChat()) return;
+            applyViewportSync();
+        }
+
         if (window.visualViewport) {
-            window.visualViewport.addEventListener('resize', () => syncViewport());
-            window.visualViewport.addEventListener('scroll', () => syncViewport());
+            window.visualViewport.addEventListener('resize', onVisualViewportChange);
+            window.visualViewport.addEventListener('scroll', onVisualViewportChange);
         }
 
         window.addEventListener('resize', () => syncViewport());
@@ -845,14 +864,16 @@
 
         modal.addEventListener('focusin', (event) => {
             if (!event.target.closest('.wa-input, .wa-composer input, textarea')) return;
-            syncViewport({ immediate: true });
-            window.setTimeout(() => syncViewport(), 280);
+            applyViewportSync();
+            window.setTimeout(applyViewportSync, 120);
+            window.setTimeout(applyViewportSync, 280);
         });
 
         modal.addEventListener('focusout', (event) => {
             if (!event.target.closest('.wa-input, .wa-composer input, textarea')) return;
             if (event.relatedTarget?.closest?.('.wa-send, .wa-chip')) return;
-            window.setTimeout(() => syncViewport(), 80);
+            window.setTimeout(applyViewportSync, 80);
+            window.setTimeout(applyViewportSync, 280);
         });
 
         let wasModalActive = modal.classList.contains('active');
