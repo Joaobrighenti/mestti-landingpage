@@ -46,6 +46,7 @@
 
                     <a href="/" data-home-section="#controle-total" class="nav-link" data-i18n="nav.resources">Recursos</a>
                     <a href="/" data-home-section="#implementacao" class="nav-link" data-i18n="nav.installation">Instalação</a>
+                    <a href="/sensores/" class="nav-link" data-i18n="nav.sensors">Sensores</a>
                     <a href="/empresa/" class="nav-link" data-i18n="nav.about">Sobre</a>
 
                     <div class="mobile-nav-contact">
@@ -125,32 +126,8 @@
         <div class="hero-conveyor-wrap">
             <div class="hero-clients-strip" aria-label="Clientes em destaque">
                 <div class="hero-clients-track">
-                    <div class="hero-clients-set">
-                        <div class="hero-client-logo"><img src="images/phoenix.svg" alt="Cliente Phoenix"
-                                loading="lazy"></div>
-                        <div class="hero-client-logo hero-client-logo--nicopel"><img src="images/nicopel.svg"
-                                alt="Cliente Nicopel" loading="lazy"></div>
-                        <div class="hero-client-logo hero-client-logo--brighentti"><img src="images/brighentti.svg"
-                                alt="Cliente Brighentti" loading="lazy"></div>
-                        <div class="hero-client-logo"><img src="images/phoenix.svg" alt="Cliente Phoenix"
-                                loading="lazy"></div>
-                        <div class="hero-client-logo hero-client-logo--nicopel"><img src="images/nicopel.svg"
-                                alt="Cliente Nicopel" loading="lazy"></div>
-                        <div class="hero-client-logo hero-client-logo--brighentti"><img src="images/brighentti.svg"
-                                alt="Cliente Brighentti" loading="lazy"></div>
-                    </div>
-                    <div class="hero-clients-set" aria-hidden="true">
-                        <div class="hero-client-logo"><img src="images/phoenix.svg" alt="" loading="lazy"></div>
-                        <div class="hero-client-logo hero-client-logo--nicopel"><img src="images/nicopel.svg" alt=""
-                                loading="lazy"></div>
-                        <div class="hero-client-logo hero-client-logo--brighentti"><img src="images/brighentti.svg"
-                                alt="" loading="lazy"></div>
-                        <div class="hero-client-logo"><img src="images/phoenix.svg" alt="" loading="lazy"></div>
-                        <div class="hero-client-logo hero-client-logo--nicopel"><img src="images/nicopel.svg" alt=""
-                                loading="lazy"></div>
-                        <div class="hero-client-logo hero-client-logo--brighentti"><img src="images/brighentti.svg"
-                                alt="" loading="lazy"></div>
-                    </div>
+                    <div class="hero-clients-set"></div>
+                    <div class="hero-clients-set" aria-hidden="true"></div>
                 </div>
             </div>
         </div>
@@ -265,6 +242,9 @@
                     </div>
                 </figure>
             </div>
+            <div class="sistema-grid-cta-wrap" data-aos="fade-up" data-aos-delay="120">
+                <button type="button" class="btn btn-primary btn-open-modal" data-i18n="home.grid.cta">Agendar demonstração</button>
+            </div>
         </div>
     </section>
 
@@ -350,296 +330,92 @@
         </div>
     </section>
 
-    <!-- Roadmap de implementação -->
+    <!-- Etapas da implementação -->
     <section class="impl-roadmap" id="implementacao" aria-labelledby="impl-roadmap-title">
         <div class="container">
-            <h2 class="section-title" id="impl-roadmap-title" data-aos="fade-up" data-i18n="home.roadmap.title">Roadmap de implementação</h2>
+            <h2 class="section-title" id="impl-roadmap-title" data-aos="fade-up" data-i18n="home.roadmap.title">Como implementamos na sua fábrica</h2>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="80" data-i18n="home.roadmap.subtitle">
-                Da proposta ao uso diário dos dados: um caminho claro, com prazos realistas e acompanhamento da equipe
-                MESTTI em cada etapa.
+                Da proposta ao uso diário dos dados, com prazos claros e acompanhamento da equipe MESTTI em cada etapa.
             </p>
 
             <div class="impl-roadmap-shell" data-aos="fade-up" data-aos-delay="120">
-                <div class="impl-roadmap-progress" aria-hidden="true">
-                    <div class="impl-roadmap-progress-fill" id="implRoadmapProgressFill"></div>
-                </div>
-
                 <div class="impl-roadmap-steps" role="tablist" data-i18n-aria="home.roadmap.tabs" aria-label="Etapas da implementação">
                     <button type="button" class="impl-roadmap-step is-active" role="tab" id="impl-tab-1"
                         aria-selected="true" aria-controls="impl-panel-1" data-step="1">
-                        <span class="impl-roadmap-step-marker">
-                            <span class="impl-roadmap-step-num">01</span>
-                            <span class="impl-roadmap-step-icon" aria-hidden="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                </svg>
-                            </span>
+                        <span class="impl-roadmap-step-num" aria-hidden="true">1</span>
+                        <span class="impl-roadmap-step-copy">
+                            <span class="impl-roadmap-step-title" data-i18n="home.roadmap.step1">Diagnóstico e definição</span>
+                            <span class="impl-roadmap-step-badge" data-i18n="home.roadmap.step1.badge">Após a proposta</span>
                         </span>
-                        <span class="impl-roadmap-step-title" data-i18n="home.roadmap.step1">Diagnóstico e definição</span>
-                        <span class="impl-roadmap-step-badge" data-i18n="home.roadmap.step1.badge">Após a proposta</span>
                     </button>
                     <button type="button" class="impl-roadmap-step" role="tab" id="impl-tab-2" aria-selected="false"
                         aria-controls="impl-panel-2" data-step="2" tabindex="-1">
-                        <span class="impl-roadmap-step-marker">
-                            <span class="impl-roadmap-step-num">02</span>
-                            <span class="impl-roadmap-step-icon" aria-hidden="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                            </span>
+                        <span class="impl-roadmap-step-num" aria-hidden="true">2</span>
+                        <span class="impl-roadmap-step-copy">
+                            <span class="impl-roadmap-step-title" data-i18n="home.roadmap.step2">Instalação e go-live</span>
+                            <span class="impl-roadmap-step-badge" data-i18n="home.roadmap.step2.badge">Até 1 semana</span>
                         </span>
-                        <span class="impl-roadmap-step-title" data-i18n="home.roadmap.step2">Instalação e go-live</span>
-                        <span class="impl-roadmap-step-badge" data-i18n="home.roadmap.step2.badge">Até 1 semana</span>
                     </button>
                     <button type="button" class="impl-roadmap-step" role="tab" id="impl-tab-3" aria-selected="false"
                         aria-controls="impl-panel-3" data-step="3" tabindex="-1">
-                        <span class="impl-roadmap-step-marker">
-                            <span class="impl-roadmap-step-num">03</span>
-                            <span class="impl-roadmap-step-icon" aria-hidden="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                </svg>
-                            </span>
+                        <span class="impl-roadmap-step-num" aria-hidden="true">3</span>
+                        <span class="impl-roadmap-step-copy">
+                            <span class="impl-roadmap-step-title" data-i18n="home.roadmap.step3">Treinamento e consultoria</span>
+                            <span class="impl-roadmap-step-badge" data-i18n="home.roadmap.step3.badge">1 mês</span>
                         </span>
-                        <span class="impl-roadmap-step-title" data-i18n="home.roadmap.step3">Treinamento e consultoria</span>
-                        <span class="impl-roadmap-step-badge" data-i18n="home.roadmap.step3.badge">1 mês</span>
                     </button>
                 </div>
 
                 <div class="impl-roadmap-panel-wrap">
                     <article class="impl-roadmap-panel is-visible" id="impl-panel-1" role="tabpanel"
                         aria-labelledby="impl-tab-1" data-panel="1">
-                        <div class="impl-roadmap-panel-card">
-                            <div class="impl-roadmap-panel-head">
-                                <div>
-                                    <p class="impl-roadmap-panel-phase" data-i18n="home.roadmap.p1.phase">Fase 1</p>
-                                    <h3 class="impl-roadmap-panel-title" data-i18n="home.roadmap.p1.title">Proposta, reunião e sensores a instalar</h3>
-                                </div>
-                                <div class="impl-roadmap-panel-duration">
-                                    <strong data-i18n="home.roadmap.p1.durStrong">Alinhamento</strong>
-                                    <span data-i18n="home.roadmap.p1.durSpan">Conforme agenda da planta</span>
-                                </div>
-                            </div>
-                            <p class="impl-roadmap-panel-lead" data-i18n="home.roadmap.p1.lead">
-                                Depois da proposta comercial, entramos no chão de fábrica (presencial ou remoto) para
-                                fechar exatamente quais sensores vão em cada máquina, posto ou linha — sem surpresas na
-                                instalação.
-                            </p>
-                            <ul class="impl-roadmap-checklist">
-                                <li>
-                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
-                                        aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p1.li1">Revisão da proposta e escopo do projeto com sua equipe</span>
-                                </li>
-                                <li>
-                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
-                                        aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p1.li2">Reunião técnica para mapear processos, máquinas e pontos de coleta</span>
-                                </li>
-                                <li>
-                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
-                                        aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p1.li3">Definição do kit de sensores por equipamento (contagem, status, metro linear, etc.)</span>
-                                </li>
-                                <li>
-                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
-                                        aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p1.li4">Plano de instalação e cronograma acordado com a operação</span>
-                                </li>
-                            </ul>
-                        </div>
+                        <h3 class="impl-roadmap-panel-title" data-i18n="home.roadmap.p1.title">Proposta, reunião e sensores a instalar</h3>
+                        <p class="impl-roadmap-panel-lead" data-i18n="home.roadmap.p1.lead">
+                            Depois da proposta comercial, entramos no chão de fábrica (presencial ou remoto) para fechar
+                            exatamente quais sensores vão em cada máquina, posto ou linha.
+                        </p>
+                        <ul class="impl-roadmap-checklist">
+                            <li data-i18n="home.roadmap.p1.li1">Revisão da proposta e escopo do projeto com sua equipe</li>
+                            <li data-i18n="home.roadmap.p1.li2">Reunião técnica para mapear processos, máquinas e pontos de coleta</li>
+                            <li data-i18n="home.roadmap.p1.li3">Definição do kit de sensores por equipamento</li>
+                            <li data-i18n="home.roadmap.p1.li4">Plano de instalação e cronograma acordado com a operação</li>
+                        </ul>
                     </article>
 
                     <article class="impl-roadmap-panel" id="impl-panel-2" role="tabpanel" aria-labelledby="impl-tab-2"
                         data-panel="2" hidden>
-                        <div class="impl-roadmap-panel-card">
-                            <div class="impl-roadmap-panel-head">
-                                <div>
-                                    <p class="impl-roadmap-panel-phase" data-i18n="home.roadmap.p2.phase">Fase 2</p>
-                                    <h3 class="impl-roadmap-panel-title" data-i18n="home.roadmap.p2.title">Instalação, testes e parametrização</h3>
-                                </div>
-                                <div class="impl-roadmap-panel-duration">
-                                    <strong data-i18n="home.roadmap.p2.durStrong">Até 1 semana</strong>
-                                    <span data-i18n="home.roadmap.p2.durSpan">Instalação: 1 a 3 dias*</span>
-                                </div>
-                            </div>
-                            <p class="impl-roadmap-panel-lead" data-i18n="home.roadmap.p2.lead">
-                                Instalação física dos sensores, validação das leituras e configuração do MESTTI
-                                acontecem em paralelo — para você enxergar dados confiáveis o quanto antes.
-                            </p>
-                            <div class="impl-roadmap-parallel" data-i18n-aria="home.roadmap.p2.parallel" aria-label="Atividades em paralelo">
-                                <span class="impl-roadmap-parallel-chip">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p2.chip1">Instalação dos sensores</span>
-                                </span>
-                                <span class="impl-roadmap-parallel-chip">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p2.chip2">Testes de leitura</span>
-                                </span>
-                                <span class="impl-roadmap-parallel-chip">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p2.chip3">Parametrização no sistema</span>
-                                </span>
-                            </div>
-                            <ul class="impl-roadmap-checklist">
-                                <li>
-                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
-                                        aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p2.li1" data-i18n-html>Instalação física: <strong>1 a 3 dias</strong>, conforme porte e quantidade de
-                                    pontos na planta</span>
-                                </li>
-                                <li>
-                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
-                                        aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p2.li2">Testes de conectividade, leitura e consistência dos eventos no painel</span>
-                                </li>
-                                <li>
-                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
-                                        aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p2.li3">Parametrização de máquinas, turnos, ordens e regras de apontamento</span>
-                                </li>
-                                <li>
-                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
-                                        aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p2.li4" data-i18n-html>Go-live com dados fluindo em produção real — prazo total da fase: <strong>até 1
-                                        semana</strong></span>
-                                </li>
-                            </ul>
-                            <p class="impl-roadmap-nav-hint" data-i18n="home.roadmap.p2.hint">* O prazo de instalação varia conforme tamanho da empresa
-                                e número de sensores.</p>
-                        </div>
+                        <h3 class="impl-roadmap-panel-title" data-i18n="home.roadmap.p2.title">Instalação, testes e parametrização</h3>
+                        <p class="impl-roadmap-panel-lead" data-i18n="home.roadmap.p2.lead">
+                            Instalação física dos sensores, validação das leituras e configuração do MESTTI acontecem em
+                            paralelo — para você enxergar dados confiáveis o quanto antes.
+                        </p>
+                        <ul class="impl-roadmap-checklist">
+                            <li data-i18n="home.roadmap.p2.li1" data-i18n-html>Instalação física: <strong>1 a 3 dias</strong>, conforme porte da planta</li>
+                            <li data-i18n="home.roadmap.p2.li2">Testes de conectividade, leitura e consistência no painel</li>
+                            <li data-i18n="home.roadmap.p2.li3">Parametrização de máquinas, turnos, ordens e regras de apontamento</li>
+                            <li data-i18n="home.roadmap.p2.li4" data-i18n-html>Go-live com dados em produção — prazo total: <strong>até 1 semana</strong></li>
+                        </ul>
+                        <p class="impl-roadmap-footnote" data-i18n="home.roadmap.p2.hint">* O prazo de instalação varia conforme tamanho da empresa e número de sensores.</p>
                     </article>
 
                     <article class="impl-roadmap-panel" id="impl-panel-3" role="tabpanel" aria-labelledby="impl-tab-3"
                         data-panel="3" hidden>
-                        <div class="impl-roadmap-panel-card">
-                            <div class="impl-roadmap-panel-head">
-                                <div>
-                                    <p class="impl-roadmap-panel-phase" data-i18n="home.roadmap.p3.phase">Fase 3</p>
-                                    <h3 class="impl-roadmap-panel-title" data-i18n="home.roadmap.p3.title">Treinamento e consultoria com os novos dados</h3>
-                                </div>
-                                <div class="impl-roadmap-panel-duration">
-                                    <strong data-i18n="home.roadmap.p3.durStrong">1 mês</strong>
-                                    <span data-i18n="home.roadmap.p3.durSpan">Acompanhamento contínuo</span>
-                                </div>
-                            </div>
-                            <p class="impl-roadmap-panel-lead" data-i18n="home.roadmap.p3.lead">
-                                Com o sistema em operação, capacitamos sua equipe e apoiamos a interpretação dos
-                                indicadores para transformar leitura em decisão no dia a dia.
-                            </p>
-                            <ul class="impl-roadmap-checklist">
-                                <li>
-                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
-                                        aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p3.li1">Treinamento de operadores, supervisores e gestão no uso do MESTTI</span>
-                                </li>
-                                <li>
-                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
-                                        aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p3.li2">Consultoria para leitura de OEE, paradas, produção e perdas com dados reais</span>
-                                </li>
-                                <li>
-                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
-                                        aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p3.li3">Ajustes finos de parametrização conforme a operação evolui na prática</span>
-                                </li>
-                                <li>
-                                    <svg class="impl-roadmap-check-icon" viewBox="0 0 20 20" fill="currentColor"
-                                        aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span data-i18n="home.roadmap.p3.li4" data-i18n-html><strong>1 mês</strong> de suporte próximo até a rotina de dados estar consolidada</span>
-                                </li>
-                            </ul>
-                        </div>
+                        <h3 class="impl-roadmap-panel-title" data-i18n="home.roadmap.p3.title">Treinamento e consultoria com os novos dados</h3>
+                        <p class="impl-roadmap-panel-lead" data-i18n="home.roadmap.p3.lead">
+                            Com o sistema em operação, capacitamos sua equipe e apoiamos a interpretação dos indicadores
+                            para transformar leitura em decisão no dia a dia.
+                        </p>
+                        <ul class="impl-roadmap-checklist">
+                            <li data-i18n="home.roadmap.p3.li1">Treinamento de operadores, supervisores e gestão no uso do MESTTI</li>
+                            <li data-i18n="home.roadmap.p3.li2">Consultoria para leitura de OEE, paradas, produção e perdas</li>
+                            <li data-i18n="home.roadmap.p3.li3">Ajustes finos de parametrização conforme a operação evolui</li>
+                            <li data-i18n="home.roadmap.p3.li4" data-i18n-html><strong>1 mês</strong> de suporte próximo até a rotina de dados estar consolidada</li>
+                        </ul>
                     </article>
-                </div>
-
-                <div class="impl-roadmap-timeline-summary" data-i18n-aria="home.roadmap.tl.aria" aria-label="Visão geral dos prazos">
-                    <div class="impl-roadmap-timeline-block is-highlight" data-timeline-phase="1">
-                        <strong data-i18n="home.roadmap.tl1.label">Fase 1</strong>
-                        <span data-i18n="home.roadmap.tl1.text">Proposta e definição dos sensores</span>
-                    </div>
-                    <div class="impl-roadmap-timeline-block" data-timeline-phase="2">
-                        <strong data-i18n="home.roadmap.tl2.label">Fase 2</strong>
-                        <span data-i18n="home.roadmap.tl2.text">1–3 dias instalação · até 1 semana total</span>
-                    </div>
-                    <div class="impl-roadmap-timeline-block" data-timeline-phase="3">
-                        <strong data-i18n="home.roadmap.tl3.label">Fase 3</strong>
-                        <span data-i18n="home.roadmap.tl3.text">1 mês de treinamento e consultoria</span>
-                    </div>
                 </div>
 
                 <div class="impl-roadmap-cta-wrap">
                     <button type="button" class="btn btn-primary btn-open-modal" data-i18n="home.roadmap.cta">Quero iniciar minha implementação</button>
-                    <p class="impl-roadmap-nav-hint" data-i18n="home.roadmap.navHint">Clique nas etapas acima ou use ← → no teclado para explorar o
-                        roadmap.</p>
                 </div>
             </div>
         </div>
@@ -717,11 +493,17 @@
             <div class="footer-tractian-bottom">
                 <p class="footer-legal" data-i18n="footer.legal">© 2026 MESTTI. Todos os direitos reservados.</p>
                 <div class="footer-social" aria-label="Redes sociais">
-                    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+                    <a href="https://www.linkedin.com/company/mestti/" target="_blank" rel="noopener noreferrer"
                         aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                             fill="currentColor" width="20" height="20">
                             <path
                                 d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg></a>
+                    <a href="https://www.instagram.com/mesttibrasil/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" width="20" height="20">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                         </svg></a>
                 </div>
             </div>
@@ -780,7 +562,8 @@
     <script defer src="i18n.js?v=3"></script>
     <script defer src="theme.js?v=1"></script>
     <script defer src="form-options.js?v=2"></script>
-    <script defer src="script.js?v=12"></script>
+    <script defer src="script.js?v=20"></script>
+    <script defer src="conversational-form.js?v=6"></script>
 </body>
 
 </html>

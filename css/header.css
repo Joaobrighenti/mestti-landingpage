@@ -3,16 +3,30 @@
    ============================================ */
 
 .header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 1000;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     background-color: var(--header-bg);
     border-bottom: 1px solid var(--header-border);
     box-shadow: none;
-    transition: var(--transition);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s ease;
     padding-top: env(safe-area-inset-top, 0px);
+    will-change: transform;
+}
+
+.header.header--hidden {
+    transform: translate3d(0, calc(-100% - env(safe-area-inset-top, 0px)), 0);
+    box-shadow: none;
+    pointer-events: none;
+}
+
+body.has-site-header {
+    padding-top: var(--site-header-height, 4.25rem);
 }
 
 .header--tractian {

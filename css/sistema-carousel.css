@@ -79,6 +79,17 @@
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
 }
 
+.sistema-grid-cta-wrap {
+    text-align: center;
+    margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.sistema-grid-cta-wrap .btn {
+    min-width: min(100%, 20rem);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
 @media (max-width: 768px) {
     .sistema-grid {
         grid-template-columns: repeat(2, 1fr);

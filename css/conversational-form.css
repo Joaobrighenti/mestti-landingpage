@@ -1,0 +1,412 @@
+/* ============================================
+   Formulário conversacional — estilo WhatsApp
+   ============================================ */
+
+.modal-content.wa-modal-content {
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+}
+
+.demo-modal-card.wa-mode {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+    min-height: min(640px, calc(100dvh - 2rem));
+    max-height: min(720px, calc(100dvh - 2rem));
+}
+
+.demo-modal-card.wa-mode .demo-modal-head {
+    display: none;
+}
+
+.demo-form.wa-form-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.wa-chat {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+    background: #e5ddd5;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4cdc4' fill-opacity='0.45'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.wa-chat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    background: #075e54;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.wa-chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #128c7e;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.wa-chat-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.wa-chat-meta {
+    min-width: 0;
+}
+
+.wa-chat-name {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.wa-chat-status {
+    margin: 0.1rem 0 0;
+    font-size: 0.75rem;
+    opacity: 0.88;
+}
+
+.wa-chat-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.wa-chat-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+}
+
+.wa-messages {
+    flex: 0 0 auto;
+    overflow: visible;
+    padding: 0.85rem 0.65rem 0.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.wa-msg {
+    display: flex;
+    max-width: 88%;
+    animation: wa-msg-in 0.25s ease;
+}
+
+@keyframes wa-msg-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.wa-msg--bot {
+    align-self: flex-start;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.wa-msg-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    align-self: flex-end;
+}
+
+.wa-msg--user {
+    align-self: flex-end;
+}
+
+.wa-bubble {
+    padding: 0.6rem 0.75rem 0.4rem;
+    border-radius: 10px;
+    font-size: 0.93rem;
+    line-height: 1.5;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+    word-break: break-word;
+}
+
+.wa-msg--bot .wa-bubble {
+    background: #fff;
+    color: #111;
+    border-top-left-radius: 2px;
+}
+
+.wa-msg--user .wa-bubble {
+    background: #dcf8c6;
+    color: #111;
+    border-top-right-radius: 2px;
+}
+
+.wa-bubble-time {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.68rem;
+    color: rgba(0, 0, 0, 0.45);
+    text-align: right;
+}
+
+.wa-bubble--typing {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0.75rem 0.85rem;
+    min-width: 52px;
+}
+
+.wa-bubble--typing span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #9ea7ad;
+    animation: wa-typing 1.2s infinite ease-in-out;
+}
+
+.wa-bubble--typing span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.wa-bubble--typing span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes wa-typing {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.45;
+    }
+    30% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}
+
+.wa-quick-replies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    padding: 0.35rem 0.65rem 0.75rem;
+    flex-shrink: 0;
+}
+
+.wa-quick-replies:empty {
+    display: none;
+}
+
+.wa-chip {
+    border: 1px solid #075e54;
+    background: #fff;
+    color: #075e54;
+    border-radius: 999px;
+    padding: 0.55rem 0.95rem;
+    min-height: 44px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.wa-chip:hover,
+.wa-chip:focus-visible {
+    background: #075e54;
+    color: #fff;
+    outline: none;
+}
+
+.wa-chip--skip {
+    border-color: #64748b;
+    color: #64748b;
+}
+
+.wa-chip--skip:hover,
+.wa-chip--skip:focus-visible {
+    background: #64748b;
+    color: #fff;
+}
+
+.wa-composer {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.65rem;
+    padding-bottom: max(0.55rem, env(safe-area-inset-bottom));
+    background: #f0f0f0;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.wa-composer.is-hidden {
+    display: none;
+}
+
+.wa-input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    border-radius: 999px;
+    padding: 0.72rem 1rem;
+    min-height: 44px;
+    font-size: 16px;
+    background: #fff;
+    color: #111;
+}
+
+.wa-input:focus {
+    outline: 2px solid rgba(7, 94, 84, 0.35);
+    outline-offset: 0;
+}
+
+.wa-send {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: #075e54;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.wa-send:hover {
+    background: #128c7e;
+    transform: scale(1.04);
+}
+
+.wa-send:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.wa-send svg {
+    width: 20px;
+    height: 20px;
+}
+
+.wa-modal .modal-close {
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.92);
+    z-index: 30;
+}
+
+[data-theme="dark"] .wa-chat {
+    background: #0b141a;
+    background-image: none;
+}
+
+[data-theme="dark"] .wa-msg--bot .wa-bubble {
+    background: #202c33;
+    color: #e9edef;
+}
+
+[data-theme="dark"] .wa-msg--user .wa-bubble {
+    background: #005c4b;
+    color: #e9edef;
+}
+
+[data-theme="dark"] .wa-bubble-time {
+    color: rgba(233, 237, 239, 0.55);
+}
+
+[data-theme="dark"] .wa-composer {
+    background: #202c33;
+    border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .wa-input {
+    background: #2a3942;
+    color: #e9edef;
+}
+
+[data-theme="dark"] .wa-chip {
+    background: #202c33;
+    color: #25d366;
+    border-color: #25d366;
+}
+
+[data-theme="dark"] .wa-chip:hover,
+[data-theme="dark"] .wa-chip:focus-visible {
+    background: #25d366;
+    color: #111;
+}
+
+@media (max-width: 480px) {
+    .modal-overlay.modal-overlay--wa-chat {
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 0;
+    }
+
+    .modal-overlay.modal-overlay--wa-chat.active .modal-content.wa-modal-content {
+        transform: none;
+        opacity: 1;
+    }
+
+    .modal-content.wa-modal-content {
+        width: 100%;
+        max-width: none;
+        height: 100dvh;
+        max-height: 100dvh;
+        margin: 0;
+    }
+
+    .demo-modal-card.wa-mode {
+        min-height: 100%;
+        max-height: none;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .wa-modal .modal-close {
+        top: max(10px, env(safe-area-inset-top));
+        right: max(10px, env(safe-area-inset-right));
+    }
+
+    .wa-chat-header {
+        padding-top: max(0.65rem, env(safe-area-inset-top));
+    }
+}

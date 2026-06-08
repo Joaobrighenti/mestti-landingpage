@@ -155,9 +155,26 @@
 .hero-clients-track {
     display: flex;
     align-items: center;
-    gap: 0;
+    gap: 1rem;
     width: max-content;
     will-change: transform;
+    animation: hero-clients-marquee 42s linear infinite;
+}
+
+@keyframes hero-clients-marquee {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(calc(-50% - 0.5rem), 0, 0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-clients-track {
+        animation: none;
+    }
 }
 
 .hero-clients-set {
@@ -168,8 +185,8 @@
 }
 
 .hero-client-logo {
-    width: clamp(130px, 13vw, 240px);
-    height: 64px;
+    width: clamp(110px, 10vw, 190px);
+    height: 58px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -206,6 +223,15 @@
 
 .hero-client-logo--nicopel img {
     transform: scale(1.18);
+}
+
+.hero-client-logo--lg {
+    width: clamp(130px, 12vw, 220px);
+    height: 64px;
+}
+
+.hero-client-logo--lg img {
+    transform: scale(1.24);
 }
 
 .hero .container {

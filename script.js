@@ -55,6 +55,9 @@ if (menuToggle && headerNav && navOverlay) {
         const isActive = headerNav.classList.toggle('active');
         navOverlay.classList.toggle('active');
         setMenuVisual(isActive);
+        if (isActive) {
+            document.querySelector('.header')?.classList.remove('header--hidden');
+        }
     }
 
     function closeMenu() {
@@ -516,6 +519,7 @@ async function submitLeadForm(form, formId, {
         await response.json();
 
         form.dataset.mesttiSubmitted = '1';
+        window.MesttiConversationalForm?.clearAllDrafts?.();
 
         if (submitButton) {
             submitButton.textContent = 'Enviado ✓';
@@ -604,9 +608,12 @@ if (window.MesttiFormOptions && typeof window.MesttiFormOptions.populateFormSele
 }
 
 document.querySelectorAll('.demo-form').forEach((form) => {
+    if (form.closest('#contactModal')) return;
     const formId = form.id || 'principal';
     handleFormSubmit(form, formId);
 });
+
+window.MesttiLead = { submitLeadForm };
 
 // ============================================
 // Formulário de Contato e Modal
@@ -677,9 +684,11 @@ if (modalOverlay) {
         modalOverlay.classList.add('active');
         document.body.classList.add('is-modal-open');
         document.body.style.overflow = 'hidden';
+        document.querySelector('.header')?.classList.remove('header--hidden');
     };
 
     closeModal = function closeModalFn() {
+        window.MesttiConversationalForm?.saveAllDrafts?.();
         closeMesttiPopup();
         restoreMesttiPopupActions();
         modalOverlay.classList.remove('active');
@@ -748,15 +757,64 @@ if (modalOverlay) {
 const header = document.querySelector('.header');
 
 if (header) {
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 50) {
-            header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
-        } else {
-            header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+    let lastScroll = 0;
+    let ticking = false;
+    const SCROLL_TOP_THRESHOLD = 24;
+    const SCROLL_DELTA = 4;
+
+    function getScrollTop() {
+        return Math.max(
+            window.scrollY || 0,
+            document.documentElement.scrollTop || 0,
+            document.body.scrollTop || 0
+        );
+    }
+
+    function isHeaderLockedOpen() {
+        return headerNav?.classList.contains('active')
+            || document.body.classList.contains('is-modal-open');
+    }
+
+    function syncHeaderOffset() {
+        document.body.classList.add('has-site-header');
+        document.documentElement.style.setProperty('--site-header-height', `${header.offsetHeight}px`);
+    }
+
+    function updateHeaderOnScroll() {
+        const currentScroll = getScrollTop();
+
+        if (isHeaderLockedOpen()) {
+            header.classList.remove('header--hidden');
+        } else if (currentScroll <= SCROLL_TOP_THRESHOLD) {
+            header.classList.remove('header--hidden');
+        } else if (currentScroll > lastScroll + SCROLL_DELTA) {
+            header.classList.add('header--hidden');
+        } else if (currentScroll < lastScroll - SCROLL_DELTA) {
+            header.classList.remove('header--hidden');
         }
-    });
+
+        header.style.boxShadow = currentScroll > 50
+            ? '0 4px 12px rgba(0, 0, 0, 0.15)'
+            : '';
+
+        lastScroll = currentScroll;
+        ticking = false;
+    }
+
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(updateHeaderOnScroll);
+            ticking = true;
+        }
+    }
+
+    syncHeaderOffset();
+    updateHeaderOnScroll();
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', syncHeaderOffset, { passive: true });
+    window.addEventListener('load', syncHeaderOffset);
 }
 
 // ============================================
@@ -780,25 +838,16 @@ function initImplementationRoadmap() {
 
     const steps = Array.from(shell.querySelectorAll('.impl-roadmap-step'));
     const panels = Array.from(shell.querySelectorAll('.impl-roadmap-panel'));
-    const progressFill = document.getElementById('implRoadmapProgressFill');
-    const timelineBlocks = Array.from(shell.querySelectorAll('.impl-roadmap-timeline-block'));
     const totalSteps = steps.length;
     let activeIndex = 0;
     let autoTimer = null;
-
-    function progressPercent(index) {
-        if (totalSteps <= 1) return 100;
-        return (index / (totalSteps - 1)) * 100;
-    }
 
     function setActiveStep(index, { focusTab = false } = {}) {
         activeIndex = Math.max(0, Math.min(index, totalSteps - 1));
 
         steps.forEach((step, i) => {
             const isActive = i === activeIndex;
-            const isComplete = i < activeIndex;
             step.classList.toggle('is-active', isActive);
-            step.classList.toggle('is-complete', isComplete);
             step.setAttribute('aria-selected', isActive ? 'true' : 'false');
             step.tabIndex = isActive ? 0 : -1;
             if (focusTab && isActive) step.focus();
@@ -808,14 +857,6 @@ function initImplementationRoadmap() {
             const isVisible = i === activeIndex;
             panel.classList.toggle('is-visible', isVisible);
             panel.hidden = !isVisible;
-        });
-
-        if (progressFill) {
-            progressFill.style.width = `${progressPercent(activeIndex)}%`;
-        }
-
-        timelineBlocks.forEach((block, i) => {
-            block.classList.toggle('is-highlight', i === activeIndex);
         });
     }
 
@@ -870,11 +911,43 @@ function initImplementationRoadmap() {
 }
 
 // ============================================
+// Faixa de logos de clientes (hero)
+// ============================================
+
+const HERO_CLIENT_LOGOS = [
+    { src: 'images/logos_clientes/phoenix.svg', alt: 'Cliente Phoenix' },
+    { src: 'images/logos_clientes/nicopel.svg', alt: 'Cliente Nicopel', className: 'hero-client-logo--nicopel' },
+    { src: 'images/logos_clientes/brighentti.svg', alt: 'Cliente Brighentti', className: 'hero-client-logo--brighentti' },
+    { src: 'images/logos_clientes/acoforte.svg', alt: 'Cliente Acoforte' },
+    { src: 'images/logos_clientes/continental.svg', alt: 'Cliente Continental', className: 'hero-client-logo--lg' },
+    { src: 'images/logos_clientes/injetplast.svg', alt: 'Cliente Injetplast', className: 'hero-client-logo--lg' },
+    { src: 'images/logos_clientes/metaltech.svg', alt: 'Cliente Metaltech', className: 'hero-client-logo--lg' }
+];
+
+function buildHeroClientLogosMarkup(includeAlt) {
+    return HERO_CLIENT_LOGOS.map(({ src, alt, className }) => {
+        const extraClass = className ? ` ${className}` : '';
+        const altText = includeAlt ? alt : '';
+        return `<div class="hero-client-logo${extraClass}"><img src="${src}" alt="${altText}" loading="lazy"></div>`;
+    }).join('');
+}
+
+function initHeroClientsStrip() {
+    const sets = document.querySelectorAll('.hero-clients-set');
+    if (!sets.length) return;
+
+    sets.forEach((set, index) => {
+        set.innerHTML = buildHeroClientLogosMarkup(index === 0);
+    });
+}
+
+// ============================================
 // AOS Initialization
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
     initImplementationRoadmap();
+    initHeroClientsStrip();
 
     if (typeof AOS !== 'undefined') {
         AOS.init({
@@ -922,37 +995,6 @@ document.addEventListener('DOMContentLoaded', () => {
             requestAnimationFrame(stepConveyor);
         }
         requestAnimationFrame(() => requestAnimationFrame(stepConveyor));
-    }
-
-    // Carrossel de clientes (loop contínuo sem reset visível)
-    const clientsTrack = document.querySelector('.hero-clients-track');
-    const clientsSet = document.querySelector('.hero-clients-set');
-    if (clientsTrack && clientsSet) {
-        let clientsX = 0;
-        const clientsSpeed = 0.55;
-        let setWidthPx = 0;
-
-        function readClientsWidth() {
-            const w = clientsSet.offsetWidth;
-            if (w > 0) setWidthPx = w;
-        }
-
-        const clientsResizeObserver = new ResizeObserver(readClientsWidth);
-        clientsResizeObserver.observe(clientsSet);
-
-        function stepClients() {
-            if (setWidthPx <= 0) {
-                readClientsWidth();
-                clientsTrack.style.transform = 'translate3d(0, 0, 0)';
-                requestAnimationFrame(stepClients);
-                return;
-            }
-            clientsX -= clientsSpeed;
-            if (clientsX <= -setWidthPx) clientsX += setWidthPx;
-            clientsTrack.style.transform = `translate3d(${clientsX}px, 0, 0)`;
-            requestAnimationFrame(stepClients);
-        }
-        requestAnimationFrame(() => requestAnimationFrame(stepClients));
     }
 });
 

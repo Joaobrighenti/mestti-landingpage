@@ -1,5 +1,35 @@
 /* Botão flutuante — abre formulário de demonstração (estilo WhatsApp) */
 
+@keyframes fab-vibrate {
+    0%, 86%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0);
+    }
+
+    88% {
+        transform: translate3d(-2px, 0, 0) rotate(-2deg);
+    }
+
+    90% {
+        transform: translate3d(2px, 0, 0) rotate(2deg);
+    }
+
+    92% {
+        transform: translate3d(-2px, 0, 0) rotate(-2deg);
+    }
+
+    94% {
+        transform: translate3d(2px, 0, 0) rotate(2deg);
+    }
+
+    96% {
+        transform: translate3d(-1px, 0, 0) rotate(-1deg);
+    }
+
+    98% {
+        transform: translate3d(1px, 0, 0) rotate(1deg);
+    }
+}
+
 .fab-contact {
     position: fixed;
     right: max(1rem, env(safe-area-inset-right, 0px));
@@ -8,8 +38,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 4rem;
+    height: 4rem;
     padding: 0;
     border: none;
     border-radius: 50%;
@@ -17,16 +47,18 @@
     color: #fff;
     background: linear-gradient(145deg, #25d366 0%, #128c7e 100%);
     box-shadow: 0 4px 16px rgba(18, 140, 126, 0.45);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    transition: box-shadow 0.2s ease, opacity 0.2s ease;
+    animation: fab-vibrate 2.8s ease-in-out infinite;
 }
 
 .fab-contact svg {
-    width: 1.65rem;
-    height: 1.65rem;
+    width: 1.85rem;
+    height: 1.85rem;
     display: block;
 }
 
 .fab-contact:hover {
+    animation: none;
     transform: scale(1.06);
     box-shadow: 0 6px 22px rgba(18, 140, 126, 0.55);
 }
@@ -37,26 +69,34 @@
 }
 
 .fab-contact:active {
+    animation: none;
     transform: scale(0.98);
 }
 
 body.is-modal-open .fab-contact {
     opacity: 0;
     pointer-events: none;
+    animation: none;
     transform: scale(0.85);
 }
 
 @media (max-width: 900px) {
     .fab-contact {
-        width: 3.25rem;
-        height: 3.25rem;
+        width: 3.75rem;
+        height: 3.75rem;
         right: max(0.85rem, env(safe-area-inset-right, 0px));
         bottom: max(1rem, env(safe-area-inset-bottom, 0px));
     }
 
     .fab-contact svg {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 1.7rem;
+        height: 1.7rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fab-contact {
+        animation: none;
     }
 }
 

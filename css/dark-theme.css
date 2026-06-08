@@ -177,45 +177,21 @@
     color: var(--gray-900);
 }
 
-/* Roadmap — sem sombras, chips e cards planos */
-[data-theme="dark"] .impl-roadmap-step,
-[data-theme="dark"] .impl-roadmap-step:hover,
-[data-theme="dark"] .impl-roadmap-step.is-active {
-    box-shadow: none;
-    transform: none;
+/* Roadmap — minimal */
+[data-theme="dark"] .impl-roadmap {
+    background: var(--gray-50);
 }
 
 [data-theme="dark"] .impl-roadmap-step.is-active {
-    background: var(--gray-100);
-}
-
-[data-theme="dark"] .impl-roadmap-panel-card {
-    box-shadow: none;
-}
-
-[data-theme="dark"] .impl-roadmap-parallel-chip {
-    background: var(--gray-100);
-    border-color: var(--gray-200);
-    color: var(--gray-800);
-    box-shadow: none;
-}
-
-[data-theme="dark"] .impl-roadmap-parallel-chip svg {
-    color: var(--primary-light);
+    background: rgba(56, 189, 248, 0.08);
 }
 
 [data-theme="dark"] .impl-roadmap-step-badge {
-    color: var(--primary-light);
-    background: rgba(56, 189, 248, 0.12);
+    color: var(--gray-500);
 }
 
 [data-theme="dark"] .impl-roadmap-step.is-active .impl-roadmap-step-badge {
-    background: var(--primary-blue);
-    color: var(--on-primary);
-}
-
-[data-theme="dark"] .impl-roadmap-step.is-active .impl-roadmap-step-marker {
-    color: var(--on-primary);
+    color: var(--primary-light);
 }
 
 [data-theme="dark"] .impl-roadmap-step.is-active .impl-roadmap-step-num {
