@@ -3,9 +3,10 @@
    ============================================ */
 
 .sistema-grid-section {
-    padding: 0 0 var(--spacing-2xl);
+    padding: var(--spacing-sm) 0 var(--spacing-2xl);
     background: var(--gray-50);
     width: 100%;
+    margin-top: 0;
 }
 
 .sistema-grid {
@@ -13,28 +14,37 @@
     grid-template-columns: repeat(3, 1fr);
     gap: clamp(0.85rem, 1.8vw, 1.35rem);
     width: 100%;
-    margin-top: var(--spacing-sm);
+    margin-top: 0;
 }
 
 .sistema-grid-card {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
     position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--gray-200);
-    background: var(--gray-900);
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow 0.25s ease, transform 0.25s ease;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    transition: transform 0.25s ease;
 }
 
 .sistema-grid-card:hover {
-    box-shadow: var(--shadow-lg);
     transform: translateY(-4px);
 }
 
 .sistema-grid-media {
     position: relative;
     overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid var(--gray-200);
+    background: transparent;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.25s ease;
+}
+
+.sistema-grid-card:hover .sistema-grid-media {
+    box-shadow: var(--shadow-lg);
 }
 
 .sistema-grid-media img {
@@ -50,33 +60,24 @@
 }
 
 .sistema-grid-caption {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    padding: 2.75rem 1rem 1rem;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.88) 0%,
-        rgba(0, 0, 0, 0.62) 45%,
-        rgba(0, 0, 0, 0.2) 75%,
-        transparent 100%
-    );
+    position: static;
+    margin: 0;
+    padding: 0 0.15rem;
+    background: none;
     pointer-events: none;
 }
 
 .sistema-grid-caption span {
     display: block;
-    font-size: clamp(0.68rem, 1.1vw, 0.82rem);
+    font-size: clamp(0.72rem, 1.1vw, 0.88rem);
     font-weight: 800;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: #ffffff;
-    -webkit-text-fill-color: #ffffff;
+    color: var(--gray-900);
+    -webkit-text-fill-color: var(--gray-900);
     line-height: 1.35;
     text-align: left;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+    text-shadow: none;
 }
 
 .sistema-grid-cta-wrap {

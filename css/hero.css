@@ -16,7 +16,8 @@
 
 .hero-first-fold {
     position: relative;
-    overflow: visible;
+    overflow: hidden;
+    background-color: var(--gray-50);
 }
 
 /* Evita scroll lateral no mobile por elementos sobrepostos */
@@ -60,6 +61,23 @@
 
 .hero .container.hero-container-main {
     margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-container-main--impact {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-first-fold .hero-video-bg {
+    border-radius: 0;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
     position: relative;
     z-index: 2;
 }
@@ -135,25 +153,28 @@
 /* Esteira ocupa toda a largura da página */
 .hero-conveyor-wrap {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
     max-width: 100%;
     margin-left: 0;
-    margin-top: var(--spacing-2xl);
+    margin-top: 0;
     margin-bottom: 0;
     padding: 0;
     overflow: hidden;
+    background-color: var(--gray-50);
+    isolation: isolate;
 }
 
 /* Faixa de clientes no lugar da esteira */
 .hero-clients-strip {
+    position: relative;
+    z-index: 1;
     width: 100%;
     overflow: hidden;
-    background: var(--gray-50);
-    border-top: 1px solid var(--gray-100);
-    border-bottom: 1px solid var(--gray-100);
+    background-color: var(--gray-50);
+    border: none;
     box-shadow: none;
-    padding: 0.35rem 0;
+    padding: 0.5rem 0 0.65rem;
 }
 
 .hero-clients-track {
@@ -163,6 +184,15 @@
     width: max-content;
     will-change: transform;
     animation: hero-clients-marquee 42s linear infinite;
+    line-height: 0;
+}
+
+.hero-clients-set {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+    line-height: 0;
 }
 
 @keyframes hero-clients-marquee {
@@ -179,13 +209,6 @@
     .hero-clients-track {
         animation: none;
     }
-}
-
-.hero-clients-set {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-shrink: 0;
 }
 
 .hero-client-logo {
@@ -243,12 +266,6 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-3xl);
     align-items: center;
-}
-
-.hero-content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-lg);
 }
 
 .hero-title {
@@ -376,6 +393,68 @@
     align-items: center;
 }
 
+.hero-first-fold .hero-container-main--impact {
+    grid-template-columns: 1fr;
+    max-width: none;
+    padding-bottom: var(--spacing-xl);
+}
+
+.hero-first-fold .hero-container-main--impact .hero-content {
+    max-width: 42rem;
+}
+
+@media (min-width: 769px) {
+    .hero-first-fold .hero-container-main--impact {
+        justify-items: center;
+    }
+
+    .hero-first-fold .hero-container-main--impact .hero-content {
+        max-width: 46rem;
+        margin-inline: auto;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-hook-label {
+        justify-content: center;
+    }
+
+    .hero-first-fold .hero-subtitle {
+        max-width: 36rem;
+        margin-inline: auto;
+    }
+
+    .hero-first-fold .hero-buttons {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .hero-certificates {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media (min-width: 1025px) {
+    .hero-first-fold .hero-container-main--impact .hero-content {
+        max-width: 52rem;
+    }
+
+    .hero-title--impact {
+        font-size: clamp(2.25rem, 3.8vw, 3.35rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-first-fold .hero-container-main--impact {
+        padding-top: var(--spacing-lg);
+    }
+
+    .hero-first-fold .hero-container-main--impact .hero-content {
+        max-width: none;
+    }
+}
+
 .hero-first-fold .hero-content {
     gap: var(--spacing-md);
 }
@@ -383,6 +462,25 @@
 .hero-first-fold .hero-title {
     font-size: clamp(2.2rem, 4.8vw, 3.35rem);
     line-height: 1.12;
+}
+
+.hero-title--impact {
+    font-size: clamp(1.85rem, 5vw, 3rem);
+    line-height: 1.18;
+    letter-spacing: -0.03em;
+}
+
+.hero-title-lead,
+.hero-title-rest {
+    display: block;
+}
+
+.hero-title-lead {
+    margin-bottom: 0.2em;
+}
+
+.hero-title-rest {
+    max-width: none;
 }
 
 .hero-first-fold .hero-subtitle {
@@ -394,16 +492,33 @@
     margin-bottom: var(--spacing-md);
 }
 
-.hero-first-fold .hero-visual {
-    height: auto;
-    padding: clamp(0.2rem, 0.6vw, 0.45rem) 0 0;
+.hero-hook-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    color: var(--primary-blue);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
 }
 
-.hero-first-fold .hero-system-grid--duo {
-    max-width: min(100%, 540px);
+.hero-hook-label::before {
+    content: "";
+    width: 1.6rem;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    opacity: 0.7;
 }
 
 .hero-first-fold .hero-conveyor-wrap {
-    margin-top: var(--spacing-lg);
+    margin-top: 0;
+    background-color: var(--gray-50);
+}
+
+.hero-first-fold {
+    padding-bottom: 0;
 }
 

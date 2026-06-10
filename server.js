@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 import { Resend } from "resend";
 import {
   normalizeLeadProgressPayload,
-  normalizeClickTrackPayload,
   forwardLeadToGoogleSheets,
 } from "./lib/sheets-sync.js";
 
@@ -19,7 +18,6 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const LEADS_TO_EMAIL = process.env.LEADS_TO_EMAIL || "";
 const FROM_EMAIL = process.env.FROM_EMAIL || "onboarding@resend.dev";
 const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL || "";
-const GOOGLE_SHEETS_DADOS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_DADOS_WEBHOOK_URL || "";
 
 const app = express();
 app.use(express.json({ limit: "200kb" }));
@@ -148,53 +146,6 @@ app.post("/api/lead-progress", async (req, res) => {
     const result = await forwardLeadToGoogleSheets(payload, GOOGLE_SHEETS_WEBHOOK_URL);
     return res.json({ ok: true, sheets: result.skipped ? "skipped" : "synced" });
   } catch {
-    return res.status(502).json({ ok: false, error: "sheets_sync_failed" });
-  }
-});
-
-app.post("/api/click-track", async (req, res) => {
-  try {
-    const payload = normalizeClickTrackPayload(req.body || {});
-
-    if (!payload.visitorSessionId && !payload.sessionId) {
-      return res.status(400).json({ ok: false, error: "session_id_required" });
-    }
-
-    if (!payload.trackId) {
-      return res.status(400).json({ ok: false, error: "track_id_required" });
-    }
-
-    if (!GOOGLE_SHEETS_DADOS_WEBHOOK_URL) {
-      console.warn(
-        "[click-track] GOOGLE_SHEETS_DADOS_WEBHOOK_URL não configurado — clique ignorado:",
-        payload.trackId
-      );
-      return res.json({
-        ok: true,
-        sheets: "skipped",
-        reason: "dados_webhook_not_configured",
-      });
-    }
-
-    const result = await forwardLeadToGoogleSheets(payload, GOOGLE_SHEETS_DADOS_WEBHOOK_URL);
-
-    if (!result.savedToDados) {
-      console.warn(
-        "[click-track] Webhook respondeu sem sheet=dados — verifique scripts/google-sheets-dados.gs:",
-        payload.trackId,
-        result.sheetsResponse
-      );
-    } else {
-      console.log("[click-track] dados:", payload.trackId, payload.pagePath);
-    }
-
-    return res.json({
-      ok: true,
-      sheets: result.skipped ? "skipped" : "synced",
-      savedToDados: Boolean(result.savedToDados),
-    });
-  } catch (err) {
-    console.error("[click-track] falhou:", err?.message || err);
     return res.status(502).json({ ok: false, error: "sheets_sync_failed" });
   }
 });

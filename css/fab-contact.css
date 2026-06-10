@@ -1,32 +1,26 @@
 /* Botão flutuante — abre formulário de demonstração (estilo WhatsApp) */
 
-@keyframes fab-vibrate {
-    0%, 86%, 100% {
-        transform: translate3d(0, 0, 0) rotate(0);
+@keyframes fab-pulse-ring {
+    0% {
+        transform: scale(1);
+        opacity: 0.55;
     }
 
-    88% {
-        transform: translate3d(-2px, 0, 0) rotate(-2deg);
+    100% {
+        transform: scale(1.55);
+        opacity: 0;
+    }
+}
+
+@keyframes fab-pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 16px rgba(18, 140, 126, 0.45);
     }
 
-    90% {
-        transform: translate3d(2px, 0, 0) rotate(2deg);
-    }
-
-    92% {
-        transform: translate3d(-2px, 0, 0) rotate(-2deg);
-    }
-
-    94% {
-        transform: translate3d(2px, 0, 0) rotate(2deg);
-    }
-
-    96% {
-        transform: translate3d(-1px, 0, 0) rotate(-1deg);
-    }
-
-    98% {
-        transform: translate3d(1px, 0, 0) rotate(1deg);
+    50% {
+        transform: scale(1.06);
+        box-shadow: 0 6px 22px rgba(37, 211, 102, 0.55);
     }
 }
 
@@ -47,20 +41,38 @@
     color: #fff;
     background: linear-gradient(145deg, #25d366 0%, #128c7e 100%);
     box-shadow: 0 4px 16px rgba(18, 140, 126, 0.45);
-    transition: box-shadow 0.2s ease, opacity 0.2s ease;
-    animation: fab-vibrate 2.8s ease-in-out infinite;
+    transition: box-shadow 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+    animation: fab-pulse 2s ease-in-out infinite;
+}
+
+.fab-contact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(37, 211, 102, 0.45);
+    animation: fab-pulse-ring 2s ease-out infinite;
+    pointer-events: none;
+    z-index: -1;
 }
 
 .fab-contact svg {
     width: 1.85rem;
     height: 1.85rem;
     display: block;
+    position: relative;
+    z-index: 1;
 }
 
 .fab-contact:hover {
     animation: none;
-    transform: scale(1.06);
+    transform: scale(1.08);
     box-shadow: 0 6px 22px rgba(18, 140, 126, 0.55);
+}
+
+.fab-contact:hover::before {
+    animation: none;
+    opacity: 0;
 }
 
 .fab-contact:focus-visible {
@@ -80,6 +92,10 @@ body.is-modal-open .fab-contact {
     transform: scale(0.85);
 }
 
+body.is-modal-open .fab-contact::before {
+    animation: none;
+}
+
 @media (max-width: 900px) {
     .fab-contact {
         width: 3.75rem;
@@ -95,7 +111,8 @@ body.is-modal-open .fab-contact {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .fab-contact {
+    .fab-contact,
+    .fab-contact::before {
         animation: none;
     }
 }

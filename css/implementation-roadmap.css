@@ -1,5 +1,5 @@
 /* ============================================
-   Etapas da implementação — minimal + desktop amplo
+   Etapas da implementação — timeline vertical
    ============================================ */
 
 .impl-roadmap {
@@ -27,160 +27,120 @@
     margin: 0 auto;
 }
 
-/* Abas compactas */
-.impl-roadmap-steps {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.25rem;
-    padding: 0;
+.impl-roadmap-flow {
+    position: relative;
     list-style: none;
-}
-
-.impl-roadmap-step {
-    flex: 1 1 0;
-    min-width: 0;
+    margin: 0;
+    padding: 0;
     display: flex;
-    align-items: flex-start;
-    gap: 0.55rem;
-    padding: 0.65rem 0.7rem;
-    background: transparent;
-    border: 1px solid var(--gray-200);
-    border-radius: 10px;
-    cursor: pointer;
-    font-family: inherit;
-    color: inherit;
-    text-align: left;
-    transition: border-color 0.2s ease, background 0.2s ease;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-.impl-roadmap-step:hover {
-    border-color: var(--gray-300);
+/* Linha contínua — passa por todas as etapas, inclusive a 3ª */
+.impl-roadmap-flow::before {
+    content: "";
+    position: absolute;
+    left: 1.075rem;
+    top: 1.075rem;
+    bottom: 0;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, var(--primary-blue) 0%, var(--gray-300) 100%);
+    opacity: 0.38;
+    pointer-events: none;
+    z-index: 0;
 }
 
-.impl-roadmap-step:focus-visible {
-    outline: 2px solid var(--primary-blue);
-    outline-offset: 2px;
+.impl-roadmap-phase {
+    position: relative;
+    z-index: 1;
+    margin: 0;
 }
 
-.impl-roadmap-step.is-active {
-    border-color: var(--primary-blue);
-    background: rgba(2, 69, 120, 0.04);
+.impl-roadmap-phase-head {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
 }
 
-.impl-roadmap-step-num {
+.impl-roadmap-phase-num {
     flex-shrink: 0;
-    width: 1.35rem;
-    height: 1.35rem;
+    width: 2.15rem;
+    height: 2.15rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.72rem;
+    font-size: 0.95rem;
     font-weight: 800;
-    color: var(--gray-500);
-    border-radius: 999px;
-    background: var(--gray-100);
-    margin-top: 0.05rem;
-}
-
-.impl-roadmap-step.is-active .impl-roadmap-step-num {
-    background: var(--primary-blue);
     color: var(--white);
+    border-radius: 999px;
+    background: var(--primary-blue);
+    box-shadow: 0 2px 10px rgba(2, 69, 120, 0.25);
+    position: relative;
+    z-index: 2;
 }
 
-.impl-roadmap-step-copy {
+.impl-roadmap-phase-head-copy {
     display: flex;
     flex-direction: column;
-    gap: 0.1rem;
+    gap: 0.25rem;
     min-width: 0;
 }
 
-.impl-roadmap-step-title {
-    font-size: 0.82rem;
-    font-weight: 700;
+.impl-roadmap-phase-title {
+    margin: 0;
+    font-size: clamp(1rem, 4vw, 1.15rem);
+    font-weight: 800;
+    line-height: 1.2;
     color: var(--gray-900);
-    line-height: 1.25;
+    letter-spacing: -0.02em;
 }
 
-.impl-roadmap-step-badge {
-    font-size: 0.68rem;
-    font-weight: 500;
-    color: var(--gray-500);
-    line-height: 1.3;
-}
-
-.impl-roadmap-step.is-active .impl-roadmap-step-badge {
+.impl-roadmap-phase-badge {
+    display: inline-flex;
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.2;
     color: var(--primary-blue);
 }
 
-/* Painel */
-.impl-roadmap-panel-wrap {
+.impl-roadmap-phase-body {
     position: relative;
-    min-height: 0;
-    padding: 1.15rem 0 0;
-    border-top: 1px solid var(--gray-200);
-}
-
-.impl-roadmap-panel {
-    position: absolute;
-    inset: 1.15rem 0 0;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.25s ease, visibility 0.25s;
-}
-
-.impl-roadmap-panel.is-visible {
-    position: relative;
-    inset: auto;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
-.impl-roadmap-panel-title {
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: var(--gray-900);
-    margin: 0 0 0.45rem;
-    line-height: 1.3;
-}
-
-.impl-roadmap-panel-lead {
-    font-size: 0.92rem;
-    color: var(--gray-600);
-    margin: 0 0 0.85rem;
-    line-height: 1.55;
+    z-index: 1;
+    padding-left: 2.85rem;
 }
 
 .impl-roadmap-checklist {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: grid;
-    gap: 0.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
 .impl-roadmap-checklist li {
     position: relative;
-    padding-left: 1rem;
-    font-size: 0.88rem;
-    color: var(--gray-700);
+    z-index: 1;
+    padding: 0.9rem 1rem;
+    font-size: 0.92rem;
     line-height: 1.45;
-}
-
-.impl-roadmap-checklist li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.55em;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--primary-blue);
+    font-weight: 600;
+    color: var(--gray-800);
+    background: var(--gray-50);
+    border-radius: 12px;
+    border-left: 3px solid var(--primary-blue);
 }
 
 .impl-roadmap-footnote {
-    margin: 0.75rem 0 0;
+    margin: 0.85rem 0 0;
     font-size: 0.75rem;
     color: var(--gray-500);
     line-height: 1.4;
@@ -188,16 +148,19 @@
 
 .impl-roadmap-cta-wrap {
     text-align: center;
-    margin-top: 1.5rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--gray-200);
+    margin-top: 1.75rem;
+    padding-top: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .impl-roadmap-cta-wrap .btn {
     width: 100%;
     max-width: 22rem;
-    padding: 0.7rem 1.25rem;
-    font-size: 0.92rem;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 800;
+    border-radius: 12px;
 }
 
 @media (min-width: 769px) {
@@ -212,65 +175,63 @@
     }
 
     .impl-roadmap-shell {
-        max-width: 900px;
+        max-width: 720px;
     }
 
-    .impl-roadmap-steps {
-        gap: 0.75rem;
-        margin-bottom: 1.75rem;
+    .impl-roadmap-flow {
+        gap: 2.25rem;
     }
 
-    .impl-roadmap-step {
-        padding: 0.9rem 1rem;
-        border-radius: 12px;
+    .impl-roadmap-flow::before {
+        left: 1.2rem;
+        top: 1.2rem;
     }
 
-    .impl-roadmap-step-num {
-        width: 1.65rem;
-        height: 1.65rem;
-        font-size: 0.8rem;
-    }
-
-    .impl-roadmap-step-title {
-        font-size: 0.95rem;
-    }
-
-    .impl-roadmap-step-badge {
-        font-size: 0.74rem;
-    }
-
-    .impl-roadmap-panel-wrap {
-        padding: 1.5rem 0 0;
-    }
-
-    .impl-roadmap-panel {
-        inset: 1.5rem 0 0;
-    }
-
-    .impl-roadmap-panel-title {
-        font-size: clamp(1.2rem, 2vw, 1.45rem);
-        margin-bottom: 0.6rem;
-    }
-
-    .impl-roadmap-panel-lead {
+    .impl-roadmap-phase-num {
+        width: 2.4rem;
+        height: 2.4rem;
         font-size: 1rem;
-        margin-bottom: 1rem;
-        max-width: 52rem;
+    }
+
+    .impl-roadmap-phase-title {
+        font-size: 1.2rem;
+    }
+
+    .impl-roadmap-phase-badge {
+        font-size: 0.78rem;
+    }
+
+    .impl-roadmap-phase-body {
+        padding-left: 3.35rem;
     }
 
     .impl-roadmap-checklist {
         gap: 0.5rem;
-        max-width: 52rem;
     }
 
     .impl-roadmap-checklist li {
+        padding: 0.45rem 0 0.45rem 1.1rem;
         font-size: 0.94rem;
-        padding-left: 1.1rem;
+        font-weight: 500;
+        color: var(--gray-700);
+        background: transparent;
+        border-radius: 0;
+        border-left: none;
+    }
+
+    .impl-roadmap-checklist li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.65em;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--primary-blue);
     }
 
     .impl-roadmap-cta-wrap {
-        margin-top: 2rem;
-        padding-top: 1.5rem;
+        margin-top: 2.25rem;
     }
 
     .impl-roadmap-cta-wrap .btn {
@@ -282,69 +243,63 @@
 
 @media (max-width: 768px) {
     .impl-roadmap {
-        padding: var(--spacing-xl) 0;
+        padding: var(--spacing-2xl) 0 var(--spacing-xl);
+    }
+
+    .impl-roadmap .section-title {
+        font-size: clamp(1.65rem, 7vw, 2rem);
+        line-height: 1.12;
+        margin-bottom: 0.5rem;
+        padding-inline: 0.15rem;
     }
 
     .impl-roadmap .section-subtitle {
-        margin-bottom: var(--spacing-md);
-        font-size: 0.88rem;
-    }
-
-    .impl-roadmap-steps {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        gap: 0.4rem;
-        margin: 0 -0.25rem 1rem;
-        padding: 0 0.25rem 0.15rem;
-        scrollbar-width: none;
-    }
-
-    .impl-roadmap-steps::-webkit-scrollbar {
         display: none;
     }
 
-    .impl-roadmap-step {
-        flex: 0 0 min(72vw, 11.5rem);
-        scroll-snap-align: start;
-        padding: 0.55rem 0.65rem;
+    .impl-roadmap-shell {
+        max-width: 100%;
     }
 
-    .impl-roadmap-panel-wrap {
-        padding-top: 1rem;
+    .impl-roadmap-flow {
+        gap: 2rem;
     }
 
-    .impl-roadmap-panel {
-        inset: 1rem 0 0;
+    .impl-roadmap-phase-head {
+        margin-bottom: 1rem;
     }
 
-    .impl-roadmap-panel.is-visible {
-        inset: auto;
+    .impl-roadmap-phase-body {
+        padding-left: 2.85rem;
     }
 
-    .impl-roadmap-panel-title {
+    .impl-roadmap-checklist {
+        gap: 0.8rem;
+    }
+
+    .impl-roadmap-cta-wrap .btn {
+        max-width: none;
+        width: 100%;
+        padding: 0.95rem 1.25rem;
         font-size: 1rem;
     }
 
-    .impl-roadmap-panel-lead {
-        font-size: 0.88rem;
-        margin-bottom: 0.7rem;
-    }
-
-    .impl-roadmap-checklist li {
-        font-size: 0.84rem;
-    }
-
-    .impl-roadmap-cta-wrap {
-        margin-top: 1.25rem;
-        padding-top: 1rem;
+    [data-theme="dark"] .impl-roadmap-checklist li {
+        background: #171717;
+        color: var(--gray-800);
+        border-left-color: var(--primary-light);
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .impl-roadmap-step,
-    .impl-roadmap-panel {
-        transition: none;
-    }
+[data-theme="dark"] .impl-roadmap-phase-num {
+    color: var(--on-primary);
+}
+
+[data-theme="dark"] .impl-roadmap-phase-badge {
+    color: var(--primary-light);
+}
+
+[data-theme="dark"] .impl-roadmap-flow::before {
+    background: linear-gradient(to bottom, var(--primary-light) 0%, var(--gray-400) 100%);
+    opacity: 0.5;
 }

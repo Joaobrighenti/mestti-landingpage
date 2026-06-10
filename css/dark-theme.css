@@ -73,8 +73,8 @@
 }
 
 [data-theme="dark"] .sistema-grid-card {
-    background: #141414;
-    border-color: var(--gray-200);
+    background: transparent;
+    border: none;
 }
 
 [data-theme="dark"] .sistema-grid-section {
@@ -82,20 +82,13 @@
 }
 
 [data-theme="dark"] .sistema-grid-caption {
-    z-index: 2;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.95) 0%,
-        rgba(0, 0, 0, 0.8) 40%,
-        rgba(0, 0, 0, 0.35) 70%,
-        transparent 100%
-    );
+    background: none;
 }
 
 [data-theme="dark"] .sistema-grid-caption span {
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+    color: var(--gray-900) !important;
+    -webkit-text-fill-color: var(--gray-900);
+    text-shadow: none;
 }
 
 /* Ilustrações de sensores (1.svg / 2.svg) — desenho e texto “MESTTI” em branco */
@@ -159,6 +152,17 @@
 
 [data-theme="dark"] .hero-first-fold .hero-subtitle {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] .hero-hook-label {
+    color: #fff;
+}
+
+[data-theme="dark"] .hero-conveyor-wrap,
+[data-theme="dark"] .hero-clients-strip,
+[data-theme="dark"] .hero-first-fold,
+[data-theme="dark"] .sistema-grid-section {
+    background-color: var(--gray-50);
 }
 
 /* Páginas internas — heróis e faixas claras */

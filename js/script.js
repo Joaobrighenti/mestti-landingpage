@@ -985,7 +985,7 @@ if ('loading' in HTMLImageElement.prototype) {
 
 function initImplementationRoadmap() {
     const shell = document.querySelector('.impl-roadmap-shell');
-    if (!shell) return;
+    if (!shell || !shell.querySelector('.impl-roadmap-step')) return;
 
     const steps = Array.from(shell.querySelectorAll('.impl-roadmap-step'));
     const panels = Array.from(shell.querySelectorAll('.impl-roadmap-panel'));
