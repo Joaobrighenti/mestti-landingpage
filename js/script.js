@@ -807,12 +807,17 @@ let modalScrollLockY = 0;
 
 function lockModalBodyScroll() {
     if (window.innerWidth > 480) return;
+    if (window.MesttiWaChatViewport?.isInAppBrowser?.()) return;
     modalScrollLockY = window.scrollY || window.pageYOffset || 0;
     document.body.style.top = `-${modalScrollLockY}px`;
 }
 
 function unlockModalBodyScroll() {
     if (window.innerWidth > 480) return;
+    if (window.MesttiWaChatViewport?.isInAppBrowser?.()) {
+        document.body.style.top = '';
+        return;
+    }
     const scrollY = modalScrollLockY;
     document.body.style.top = '';
     window.scrollTo(0, scrollY);

@@ -103,6 +103,18 @@ html.no-aos [data-aos] {
         overscroll-behavior: none;
     }
 
+    /* Instagram / Facebook in-app — position:fixed no body impede o teclado de empurrar o input */
+    html.wa-inapp-browser body.is-modal-open {
+        position: static;
+        height: 100%;
+        overflow: hidden;
+        overscroll-behavior: none;
+    }
+
+    html.wa-inapp-browser body.is-modal-open .barra-pass-wa {
+        display: none;
+    }
+
     .modal-overlay.modal-overlay--wa-chat {
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
@@ -122,5 +134,15 @@ html.no-aos [data-aos] {
     .modal-overlay.modal-overlay--wa-chat .wa-send {
         touch-action: manipulation;
         -webkit-tap-highlight-color: transparent;
+    }
+
+    html.wa-inapp-browser .modal-overlay.modal-overlay--wa-chat.wa-vv-sync {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+    }
+
+    html.wa-inapp-browser .modal-overlay.modal-overlay--wa-chat.wa-kb-open .wa-composer {
+        padding-bottom: max(0.55rem, env(safe-area-inset-bottom));
     }
 }

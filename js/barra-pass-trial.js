@@ -393,12 +393,17 @@
 
     function lockScroll() {
         if (window.innerWidth > 480) return;
+        if (window.MesttiWaChatViewport?.isInAppBrowser?.()) return;
         scrollLockY = window.scrollY || 0;
         document.body.style.top = `-${scrollLockY}px`;
     }
 
     function unlockScroll() {
         if (window.innerWidth > 480) return;
+        if (window.MesttiWaChatViewport?.isInAppBrowser?.()) {
+            document.body.style.top = '';
+            return;
+        }
         document.body.style.top = '';
         window.scrollTo(0, scrollLockY);
     }
