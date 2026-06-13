@@ -1,0 +1,230 @@
+/* Barra Pass — link-in-bio MESTTI */
+
+.barra-pass-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(2, 69, 120, 0.12), transparent),
+        var(--gray-50, #fafafa);
+}
+
+.barra-pass-page body,
+body.barra-pass-page {
+    padding-top: 0 !important;
+}
+
+.barra-pass {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.25rem 5.5rem;
+    padding-bottom: max(5.5rem, calc(env(safe-area-inset-bottom, 0px) + 4.5rem));
+}
+
+.barra-pass-profile {
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 22rem;
+}
+
+.barra-pass-logo-wrap {
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 8px 28px rgba(2, 69, 120, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.barra-pass-logo {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    filter: none !important;
+    transform: none;
+    image-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.barra-pass-logo--dark {
+    display: none;
+}
+
+[data-theme="dark"] .barra-pass-logo--light {
+    display: none;
+}
+
+[data-theme="dark"] .barra-pass-logo--dark {
+    display: block;
+}
+
+[data-theme="dark"] .barra-pass-logo-wrap {
+    background: var(--gray-200, #262626);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .barra-pass-logo {
+    filter: none !important;
+    opacity: 1;
+}
+
+.barra-pass-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--gray-900, #171717);
+    letter-spacing: -0.03em;
+    margin: 0 0 0.35rem;
+}
+
+.barra-pass-tagline {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: var(--gray-600, #525252);
+}
+
+.barra-pass-links {
+    width: min(100%, 22rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.barra-pass-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    width: 100%;
+    min-height: 3.25rem;
+    padding: 0.85rem 1.25rem;
+    border-radius: 999px;
+    border: 1px solid var(--gray-200, #e5e5e5);
+    background: #fff;
+    color: var(--gray-900, #171717);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.barra-pass-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(2, 69, 120, 0.12);
+    border-color: rgba(2, 69, 120, 0.25);
+}
+
+.barra-pass-btn:active {
+    transform: translateY(0);
+}
+
+.barra-pass-btn svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex-shrink: 0;
+}
+
+.barra-pass-btn--primary {
+    background: linear-gradient(135deg, var(--primary-blue, #024578), #0066cc);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(2, 69, 120, 0.28);
+}
+
+.barra-pass-btn--primary:hover {
+    box-shadow: 0 8px 22px rgba(2, 69, 120, 0.35);
+    border-color: transparent;
+}
+
+.barra-pass-btn--trial {
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.28);
+}
+
+.barra-pass-btn--trial:hover {
+    box-shadow: 0 8px 22px rgba(16, 185, 129, 0.35);
+    border-color: transparent;
+}
+
+.barra-pass-btn--linkedin {
+    color: #0a66c2;
+}
+
+.barra-pass-btn--youtube {
+    color: #ff0000;
+}
+
+.barra-pass-wa {
+    position: fixed;
+    right: max(1rem, env(safe-area-inset-right, 0px));
+    bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
+    z-index: 1040;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 50%;
+    color: #fff;
+    background: linear-gradient(145deg, #25d366 0%, #128c7e 100%);
+    box-shadow: 0 4px 16px rgba(18, 140, 126, 0.45);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.barra-pass-wa:hover {
+    transform: scale(1.06);
+    box-shadow: 0 6px 22px rgba(18, 140, 126, 0.55);
+}
+
+.barra-pass-wa svg {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+body.is-modal-open .barra-pass-wa {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.barra-pass-page .modal-overlay.active {
+    z-index: 1100;
+}
+
+[data-theme="dark"] .barra-pass-page {
+    background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 102, 204, 0.15), transparent),
+        var(--gray-50, #0f172a);
+}
+
+[data-theme="dark"] .barra-pass-btn:not(.barra-pass-btn--primary):not(.barra-pass-btn--trial):not(.barra-pass-btn--linkedin):not(.barra-pass-btn--youtube) {
+    background: var(--gray-100, #1e293b);
+    border-color: var(--gray-200, #334155);
+    color: var(--gray-900, #f8fafc);
+}
+
+[data-theme="dark"] .barra-pass-btn--linkedin {
+    color: #378fe9;
+}
+
+[data-theme="dark"] .barra-pass-btn--youtube {
+    color: #ff4444;
+}

@@ -1,7 +1,7 @@
 /* Entry point: importa módulos (manter ordem) */
 
 @import url("./base.css");
-@import url("./header.css?v=3");
+@import url("./header.css?v=4");
 @import url("./lang-switcher.css?v=1");
 @import url("./theme-switcher.css?v=1");
 @import url("./components-popup.css");
@@ -9,13 +9,13 @@
 @import url("./site-sections.css");
 @import url("./sistema-carousel.css?v=11");
 @import url("./cta-modal-footer-pages.css");
-@import url("./conversational-form.css?v=10");
+@import url("./conversational-form.css?v=11");
 @import url("./sensor-footer.css");
 @import url("./atuacao-sensores.css?v=7");
 @import url("./implementation-roadmap.css?v=10");
 @import url("./cmms.css");
 @import url("./responsive.css?v=2");
-@import url("./dark-theme.css?v=15");
+@import url("./dark-theme.css?v=16");
 @import url("./fab-contact.css?v=3");
 @import url("./mobile-ios.css?v=8");
 

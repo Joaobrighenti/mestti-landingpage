@@ -28,6 +28,10 @@
     { "source": "/sensoriamento", "destination": "/sensoriamento/index.html" },
     { "source": "/sensoriamento/", "destination": "/sensoriamento/index.html" },
     { "source": "/sequenciamento", "destination": "/sequenciamento/index.html" },
-    { "source": "/sequenciamento/", "destination": "/sequenciamento/index.html" }
+    { "source": "/sequenciamento/", "destination": "/sequenciamento/index.html" },
+    { "source": "/pass", "destination": "/pass/index.html" },
+    { "source": "/pass/", "destination": "/pass/index.html" },
+    { "source": "/barra-pass", "destination": "/pass/" },
+    { "source": "/barra-pass/", "destination": "/pass/" }
   ]
 }

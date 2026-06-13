@@ -195,32 +195,19 @@
     }
 
     .hero-client-logo {
-        width: clamp(100px, 28vw, 150px);
-        height: 52px;
-    }
-
-    .hero-client-logo img {
-        transform: scale(1.08);
+        width: clamp(112px, 30vw, 168px);
+        height: 58px;
     }
 
     .hero-client-logo--brighentti,
     .hero-client-logo--nicopel {
-        width: clamp(120px, 32vw, 180px);
-        height: 58px;
+        width: clamp(144px, 38vw, 216px);
+        height: 70px;
     }
 
     .hero-client-logo--lg {
-        width: clamp(115px, 30vw, 170px);
-        height: 56px;
-    }
-
-    .hero-client-logo--brighentti img,
-    .hero-client-logo--nicopel img {
-        transform: scale(1.2);
-    }
-
-    .hero-client-logo--lg img {
-        transform: scale(1.18);
+        width: clamp(136px, 35vw, 200px);
+        height: 66px;
     }
 
     .hero-clients-set {

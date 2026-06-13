@@ -43,6 +43,8 @@ app.get("/blog/como-calcular-preco-venda-industria-rkw-custo-processo/", (_req, 
   sendPage(res, path.join("blog", "como-calcular-preco-venda-industria-rkw-custo-processo", "index.html"))
 );
 app.get("/cmms/", (_req, res) => sendPage(res, path.join("cmms", "index.html")));
+app.get("/pass/", (_req, res) => sendPage(res, path.join("pass", "index.html")));
+app.get("/barra-pass/", (_req, res) => res.redirect(301, "/pass/"));
 
 app.post("/api/lead", async (req, res) => {
   try {

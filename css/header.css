@@ -96,12 +96,26 @@ body.has-site-header {
 }
 
 .logo-img {
-    height: 25px; /* Altura fixa */
-    width: 120px; /* Largura fixa */
+    height: 25px;
+    width: auto;
+    max-width: 130px;
     display: block;
-    object-fit: cover; /* Corta a imagem mantendo proporção */
-    object-position: center center;
-    filter: brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(1800%) hue-rotate(175deg) brightness(0.45);
+    object-fit: contain;
+    object-position: left center;
+    filter: none !important;
+    opacity: 1;
+}
+
+.logo-img--dark {
+    display: none;
+}
+
+[data-theme="dark"] .logo-img--light {
+    display: none;
+}
+
+[data-theme="dark"] .logo-img--dark {
+    display: block;
 }
 
 .header-nav {

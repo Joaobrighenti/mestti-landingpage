@@ -480,3 +480,15 @@
         padding-top: max(0.65rem, env(safe-area-inset-top));
     }
 }
+
+.modal-overlay.modal-overlay--wa-chat.is-closing {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.32s ease, visibility 0.32s ease;
+}
+
+.modal-overlay.modal-overlay--wa-chat.is-closing .modal-content.wa-modal-content {
+    transform: translateY(14px) scale(0.98);
+    opacity: 0;
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.28s ease;
+}

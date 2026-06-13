@@ -668,11 +668,24 @@
 
 .footer-logo {
     height: 30px;
-    width: 150px; /* Largura fixa */
+    width: auto;
+    max-width: 150px;
     display: block;
-    object-fit: cover; /* Corta a imagem mantendo proporção */
-    object-position: center center;
-    filter: brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(1800%) hue-rotate(175deg) brightness(0.45);
+    object-fit: contain;
+    object-position: left center;
+    filter: none !important;
+}
+
+.footer-logo--dark {
+    display: none;
+}
+
+[data-theme="dark"] .footer-logo--light {
+    display: none;
+}
+
+[data-theme="dark"] .footer-logo--dark {
+    display: block;
 }
 
 .footer-links {

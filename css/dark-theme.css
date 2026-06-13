@@ -40,16 +40,20 @@
     background-color: var(--page-bg);
 }
 
-/* Logos MESTTI, clientes e parceiros — desenho branco no escuro */
+/* Header/footer MESTTI — PNG por tema (sem filter no SVG embutido) */
 [data-theme="dark"] .logo-img,
 [data-theme="dark"] .footer-logo {
-    filter: brightness(0) invert(1) !important;
-    opacity: 0.92;
+    filter: none !important;
+    opacity: 1;
 }
 
 [data-theme="dark"] .hero-client-logo img {
     filter: brightness(0) invert(1) !important;
     opacity: 0.9;
+}
+
+[data-theme="dark"] .hero-client-logo--sharp img {
+    filter: invert(1) !important;
 }
 
 [data-theme="dark"] .hero-client-logo:hover img {

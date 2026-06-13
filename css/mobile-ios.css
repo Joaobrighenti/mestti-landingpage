@@ -35,6 +35,19 @@ html.no-aos [data-aos] {
     }
 }
 
+/* Safari / WebKit (macOS + iOS) — nitidez de logos raster na animação */
+@supports (-webkit-appearance: none) {
+    .hero-clients-track {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .hero-client-logo img {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+}
+
 /* Menu mobile: altura real da viewport no iOS */
 @media (max-width: 768px) {
     /* padding-top vem só do body (header.css) — sem padding extra nas seções */

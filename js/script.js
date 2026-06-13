@@ -407,7 +407,9 @@ const LEAD_SOURCE_LABELS = {
     submit: 'Botão enviar',
     modal_close: 'Confirmação ao fechar modal',
     chat_progress: 'Chat — progresso',
-    chat_abandoned: 'Chat — abandonou'
+    chat_abandoned: 'Chat — abandonou',
+    barra_pass_trial: 'Pass — teste grátis',
+    barra_pass_trial_explore: 'Pass — teste grátis (só explorando)'
 };
 
 const CHAT_STEP_LABELS = {
@@ -419,7 +421,8 @@ const CHAT_STEP_LABELS = {
     setor: 'Setor',
     solucao: 'Solução',
     observacao: 'Observação',
-    mensagem: 'Mensagem'
+    mensagem: 'Mensagem',
+    maquina: 'Máquina / linha'
 };
 
 function getOrCreateLeadSessionId(form) {
@@ -478,6 +481,7 @@ function collectLeadPayload(form, formId, leadSource = 'submit') {
     const mensagem = form.querySelector('#mensagem') || form.querySelector('[name="mensagem"]');
     const observacao = form.querySelector('#observacao') || form.querySelector('[name="observacao"]');
     const maquinas = form.querySelector('[name="maquinas"]');
+    const maquina = form.querySelector('[name="maquina"]');
     const programacaoAtual = form.querySelector('[name="programacao_atual"]');
     const dificuldadeProgramacao = form.querySelector('[name="dificuldade_programacao"]');
     const apontamentoAtual = form.querySelector('[name="apontamento_atual"]');
@@ -486,6 +490,7 @@ function collectLeadPayload(form, formId, leadSource = 'submit') {
     const observacaoExtra = [
         observacao?.value?.trim() || '',
         maquinas?.value ? `Máquinas: ${maquinas.value}` : '',
+        maquina?.value?.trim() ? `Máquina/linha: ${maquina.value.trim()}` : '',
         programacaoAtual?.value ? `Programação atual: ${programacaoAtual.value}` : '',
         apontamentoAtual?.value ? `Apontamento atual: ${apontamentoAtual.value}` : '',
         motivosParada?.value ? `Motivos de parada: ${motivosParada.value}` : '',
@@ -527,6 +532,7 @@ function formHasPartialData(form) {
     const setor = form.querySelector('#setor') || form.querySelector('[name="setor"]');
     const solucao = form.querySelector('#solucao') || form.querySelector('[name="solucao"]');
     const maquinas = form.querySelector('[name="maquinas"]');
+    const maquina = form.querySelector('[name="maquina"]');
     const programacaoAtual = form.querySelector('[name="programacao_atual"]');
     const apontamentoAtual = form.querySelector('[name="apontamento_atual"]');
     const motivosParada = form.querySelector('[name="motivos_parada"]');
@@ -544,6 +550,7 @@ function formHasPartialData(form) {
         || setor?.value
         || solucao?.value
         || maquinas?.value
+        || form.querySelector('[name="maquina"]')?.value?.trim()
         || programacaoAtual?.value
         || apontamentoAtual?.value
         || motivosParada?.value
@@ -1165,21 +1172,32 @@ window.MesttiLpCarousels = {
 // ============================================
 
 const HERO_CLIENT_LOGOS = [
-    { src: 'images/logos_clientes/phoenix.svg', alt: 'Cliente Phoenix' },
-    { src: 'images/logos_clientes/nicopel.svg', alt: 'Cliente Nicopel', className: 'hero-client-logo--nicopel' },
-    { src: 'images/logos_clientes/brighentti.svg', alt: 'Cliente Brighentti', className: 'hero-client-logo--brighentti' },
-    { src: 'images/logos_clientes/acoforte.svg', alt: 'Cliente Acoforte' },
-    { src: 'images/logos_clientes/continental.svg', alt: 'Cliente Continental', className: 'hero-client-logo--lg' },
-    { src: 'images/logos_clientes/injetplast.svg', alt: 'Cliente Injetplast', className: 'hero-client-logo--lg' },
-    { src: 'images/logos_clientes/metaltech.svg', alt: 'Cliente Metaltech', className: 'hero-client-logo--lg' }
+    { src: 'images/logos_clientes/png-dark/phoenix.png', fallback: 'images/logos_clientes/phoenix.svg', alt: 'Cliente Phoenix' },
+    { src: 'images/logos_clientes/png-dark/nicopel.png', fallback: 'images/logos_clientes/nicopel.svg', alt: 'Cliente Nicopel', className: 'hero-client-logo--nicopel' },
+    { src: 'images/logos_clientes/png-dark/brighentti.png', fallback: 'images/logos_clientes/brighentti.svg', alt: 'Cliente Brighentti', className: 'hero-client-logo--brighentti' },
+    { src: 'images/logos_clientes/png-dark/acoforte.png', fallback: 'images/logos_clientes/acoforte.svg', alt: 'Cliente Acoforte' },
+    { src: 'images/logos_clientes/png-dark/continental.png', fallback: 'images/logos_clientes/continental.svg', alt: 'Cliente Continental', className: 'hero-client-logo--lg' },
+    { src: 'images/logos_clientes/png-dark/injetplast.png', fallback: 'images/logos_clientes/injetplast.svg', alt: 'Cliente Injetplast', className: 'hero-client-logo--lg' },
+    { src: 'images/logos_clientes/png-dark/metaltech.png', fallback: 'images/logos_clientes/metaltech.svg', alt: 'Cliente Metaltech', className: 'hero-client-logo--lg' }
 ];
 
 function buildHeroClientLogosMarkup(includeAlt) {
-    return HERO_CLIENT_LOGOS.map(({ src, alt, className }) => {
+    return HERO_CLIENT_LOGOS.map(({ src, fallback, alt, className }) => {
         const extraClass = className ? ` ${className}` : '';
         const altText = includeAlt ? alt : '';
-        return `<div class="hero-client-logo${extraClass}"><img src="${src}" alt="${altText}" loading="lazy"></div>`;
+        return `<div class="hero-client-logo hero-client-logo--sharp${extraClass}"><img src="${src}" data-fallback="${fallback}" alt="${altText}" loading="eager" decoding="async"></div>`;
     }).join('');
+}
+
+function bindHeroClientLogoFallback(img) {
+    img.addEventListener('error', function onLogoError() {
+        const fallback = img.getAttribute('data-fallback');
+        if (!fallback || img.dataset.fallbackUsed === '1') return;
+        img.dataset.fallbackUsed = '1';
+        img.removeEventListener('error', onLogoError);
+        img.src = fallback;
+        img.closest('.hero-client-logo')?.classList.remove('hero-client-logo--sharp');
+    }, { once: true });
 }
 
 function initHeroClientsStrip() {
@@ -1188,6 +1206,7 @@ function initHeroClientsStrip() {
 
     sets.forEach((set, index) => {
         set.innerHTML = buildHeroClientLogosMarkup(index === 0);
+        set.querySelectorAll('.hero-client-logo img[data-fallback]').forEach(bindHeroClientLogoFallback);
     });
 }
 

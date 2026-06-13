@@ -182,7 +182,6 @@
     align-items: center;
     gap: 1rem;
     width: max-content;
-    will-change: transform;
     animation: hero-clients-marquee 42s linear infinite;
     line-height: 0;
 }
@@ -197,11 +196,11 @@
 
 @keyframes hero-clients-marquee {
     from {
-        transform: translate3d(0, 0, 0);
+        transform: translateX(0);
     }
 
     to {
-        transform: translate3d(calc(-50% - 0.5rem), 0, 0);
+        transform: translateX(calc(-50% - 0.5rem));
     }
 }
 
@@ -212,53 +211,47 @@
 }
 
 .hero-client-logo {
-    width: clamp(110px, 10vw, 190px);
-    height: 58px;
+    width: clamp(124px, 11vw, 213px);
+    height: 65px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    opacity: 1;
+    overflow: visible;
+    background: transparent;
 }
 
 .hero-client-logo img {
     max-width: 100%;
     max-height: 100%;
+    width: auto;
+    height: auto;
     object-fit: contain;
     display: block;
     filter: brightness(0);
     opacity: 0.82;
-    transform: scale(1.12);
-    transform-origin: center;
+}
+
+/* PNG pré-processada — sem filtro CSS (nitidez no Safari) */
+.hero-client-logo--sharp img {
+    filter: none;
 }
 
 /* Destaque extra para a Brighentti */
 .hero-client-logo--brighentti {
-    width: clamp(200px, 18vw, 320px);
-    height: 78px;
-}
-
-.hero-client-logo--brighentti img {
-    transform: scale(1.25);
+    width: clamp(250px, 22vw, 400px);
+    height: 98px;
 }
 
 /* Nicopel com altura maior */
 .hero-client-logo--nicopel {
-    width: clamp(180px, 16vw, 280px);
-    height: 82px;
-}
-
-.hero-client-logo--nicopel img {
-    transform: scale(1.18);
+    width: clamp(212px, 19vw, 330px);
+    height: 97px;
 }
 
 .hero-client-logo--lg {
-    width: clamp(130px, 12vw, 220px);
-    height: 64px;
-}
-
-.hero-client-logo--lg img {
-    transform: scale(1.24);
+    width: clamp(161px, 15vw, 273px);
+    height: 79px;
 }
 
 .hero .container {
