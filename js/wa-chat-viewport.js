@@ -5,6 +5,7 @@
 (function () {
     const MOBILE_CHAT_MAX = 480;
     const KEYBOARD_THRESHOLD = 80;
+    const INAPP_KEYBOARD_BUFFER = 36;
 
     function isMobileChat() {
         return window.innerWidth <= MOBILE_CHAT_MAX;
@@ -54,10 +55,14 @@
         const innerH = window.innerHeight || baselineHeight;
 
         if (isIOSDevice()) {
-            return Math.round(Math.min(346, Math.max(260, screenH * 0.38)));
+            return Math.round(Math.min(360, Math.max(270, screenH * 0.41)));
         }
 
-        return Math.round(Math.min(380, Math.max(240, innerH * 0.42)));
+        return Math.round(Math.min(400, Math.max(250, innerH * 0.44)));
+    }
+
+    function withInAppBuffer(lift) {
+        return lift > KEYBOARD_THRESHOLD ? lift + INAPP_KEYBOARD_BUFFER : lift;
     }
 
     function bindWaMobileViewport(modal) {
@@ -141,17 +146,19 @@
                 inputFocused = false;
             }
 
-            if (lift === lastLift && modal.classList.contains('wa-inapp-mode')) {
+            const appliedLift = keyboardOpen ? withInAppBuffer(lift) : 0;
+
+            if (appliedLift === lastLift && modal.classList.contains('wa-inapp-mode')) {
                 modal.classList.toggle('wa-kb-open', keyboardOpen);
                 return;
             }
-            lastLift = lift;
+            lastLift = appliedLift;
 
             modal.classList.add('wa-inapp-mode');
             modal.classList.toggle('wa-kb-open', keyboardOpen);
             document.documentElement.style.setProperty(
                 '--wa-kb-lift',
-                keyboardOpen ? `${lift}px` : '0px'
+                keyboardOpen ? `${appliedLift}px` : '0px'
             );
 
             content.style.position = 'fixed';
@@ -162,8 +169,8 @@
             content.style.paddingBottom = '0';
 
             if (keyboardOpen) {
-                content.style.height = `calc(100dvh - ${lift}px)`;
-                content.style.maxHeight = `calc(100dvh - ${lift}px)`;
+                content.style.height = `calc(100dvh - ${appliedLift}px)`;
+                content.style.maxHeight = `calc(100dvh - ${appliedLift}px)`;
             } else {
                 content.style.height = '100dvh';
                 content.style.maxHeight = '100dvh';
