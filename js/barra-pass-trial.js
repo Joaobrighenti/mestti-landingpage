@@ -125,6 +125,11 @@
                     this.handleSend();
                 }
             });
+            this.inputEl.addEventListener('focus', () => {
+                this.scrollBottom();
+                window.setTimeout(() => this.scrollBottom(), 150);
+                window.setTimeout(() => this.scrollBottom(), 400);
+            });
         }
 
         scrollBottom() {
@@ -429,6 +434,7 @@
         if (!modal || !form) return;
 
         chatInstance = new TrialChat(form, modal);
+        window.MesttiWaChatViewport?.bind(modal);
 
         openBtn?.addEventListener('click', openTrialModal);
         closeBtn?.addEventListener('click', closeTrialModal);

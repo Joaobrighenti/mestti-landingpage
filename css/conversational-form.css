@@ -270,7 +270,8 @@
     background: #f0f0f0;
     border-top: 1px solid rgba(0, 0, 0, 0.06);
     flex-shrink: 0;
-    position: relative;
+    position: sticky;
+    bottom: 0;
     z-index: 2;
 }
 
