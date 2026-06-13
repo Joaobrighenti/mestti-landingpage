@@ -411,10 +411,17 @@
     function openTrialModal() {
         const modal = document.getElementById('trialModal');
         if (!modal) return;
+        const inApp = window.MesttiWaChatViewport?.isInAppBrowser?.();
         lockScroll();
         modal.classList.add('active');
         document.body.classList.add('is-modal-open');
-        document.body.style.overflow = 'hidden';
+        if (inApp) {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = '';
+        }
         if (typeof window.gtag_report_conversion === 'function') {
             window.gtag_report_conversion();
         }
@@ -427,6 +434,7 @@
         modal.classList.remove('active', 'is-closing');
         document.body.classList.remove('is-modal-open');
         document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
         unlockScroll();
     }
 

@@ -103,16 +103,31 @@ html.no-aos [data-aos] {
         overscroll-behavior: none;
     }
 
-    /* Instagram / Facebook in-app — position:fixed no body impede o teclado de empurrar o input */
+    /* Instagram / Facebook in-app — não travar body com position:fixed */
     html.wa-inapp-browser body.is-modal-open {
         position: static;
-        height: 100%;
-        overflow: hidden;
+        width: 100%;
+        height: auto;
+        min-height: 100%;
+        overflow: visible;
         overscroll-behavior: none;
     }
 
     html.wa-inapp-browser body.is-modal-open .barra-pass-wa {
         display: none;
+    }
+
+    html.wa-inapp-browser .modal-overlay.modal-overlay--wa-chat.wa-inapp-mode {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        z-index: 1100;
+    }
+
+    html.wa-inapp-browser .modal-overlay.modal-overlay--wa-chat.wa-inapp-mode .modal-content.wa-modal-content {
+        margin: 0;
+        border-radius: 0;
+        transition: height 0.15s ease, max-height 0.15s ease;
     }
 
     .modal-overlay.modal-overlay--wa-chat {
@@ -136,13 +151,11 @@ html.no-aos [data-aos] {
         -webkit-tap-highlight-color: transparent;
     }
 
-    html.wa-inapp-browser .modal-overlay.modal-overlay--wa-chat.wa-vv-sync {
-        position: fixed;
-        inset: 0;
-        overflow: hidden;
-    }
-
     html.wa-inapp-browser .modal-overlay.modal-overlay--wa-chat.wa-kb-open .wa-composer {
         padding-bottom: max(0.55rem, env(safe-area-inset-bottom));
+    }
+
+    html.wa-inapp-browser .modal-overlay.modal-overlay--wa-chat.wa-kb-open .wa-chat-scroll {
+        scroll-padding-bottom: 1rem;
     }
 }

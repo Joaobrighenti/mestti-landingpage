@@ -1,6 +1,6 @@
 /**
  * Sincroniza modal de chat WhatsApp com visualViewport (teclado iOS/Android).
- * Inclui fallback para navegadores in-app (Instagram, Facebook, etc.).
+ * Navegadores in-app (Instagram etc.) usam estimativa de altura do teclado.
  */
 (function () {
     const MOBILE_CHAT_MAX = 480;
@@ -17,13 +17,47 @@
 
     function isInAppBrowser() {
         const ua = navigator.userAgent || '';
-        return /Instagram|FBAN|FBAV|FB_IAB|Messenger|Line\/|LinkedInApp|Twitter|TikTok|BytedanceWebview|Snapchat/i.test(ua)
-            || (isIOSDevice() && /AppleWebKit/.test(ua) && !/Safari|CriOS|FxiOS|EdgiOS/.test(ua));
+        if (/Instagram|FBAN|FBAV|FB_IAB|FBIOS|FBDV|Messenger|Line\/|LinkedInApp|Twitter|TikTok|BytedanceWebview|Snapchat/i.test(ua)) {
+            return true;
+        }
+        if (isIOSDevice() && /AppleWebKit/.test(ua) && !/Safari|CriOS|FxiOS|EdgiOS|OPiOS/.test(ua)) {
+            return true;
+        }
+        if (/Android/.test(ua) && /;\s*wv\)|Version\/[\d.]+.*Chrome\/[\d.]+(?!.*Safari)/i.test(ua)) {
+            return true;
+        }
+        return false;
     }
 
     function captureBaselineHeight() {
         const vv = window.visualViewport;
-        return Math.max(window.innerHeight, vv?.height || 0);
+        return Math.max(window.innerHeight, vv?.height || 0, document.documentElement.clientHeight || 0);
+    }
+
+    function detectKeyboardLift(baselineHeight) {
+        const innerShrink = baselineHeight - window.innerHeight;
+        if (innerShrink > KEYBOARD_THRESHOLD) return Math.round(innerShrink);
+
+        const vv = window.visualViewport;
+        if (vv && baselineHeight) {
+            const vvShrink = baselineHeight - vv.height - Math.max(0, vv.offsetTop || 0);
+            if (vvShrink > KEYBOARD_THRESHOLD) return Math.round(vvShrink);
+        }
+        return 0;
+    }
+
+    function estimateKeyboardHeight(baselineHeight) {
+        const detected = detectKeyboardLift(baselineHeight);
+        if (detected > KEYBOARD_THRESHOLD) return detected;
+
+        const screenH = window.screen.height || baselineHeight;
+        const innerH = window.innerHeight || baselineHeight;
+
+        if (isIOSDevice()) {
+            return Math.round(Math.min(346, Math.max(260, screenH * 0.38)));
+        }
+
+        return Math.round(Math.min(380, Math.max(240, innerH * 0.42)));
     }
 
     function bindWaMobileViewport(modal) {
@@ -33,9 +67,10 @@
         const content = modal.querySelector('.wa-modal-content');
         if (!content) return;
 
-        if (isInAppBrowser()) {
+        const inApp = isInAppBrowser();
+        if (inApp) {
             document.documentElement.classList.add('wa-inapp-browser');
-            modal.classList.add('wa-inapp-browser');
+            modal.classList.add('wa-inapp-browser', 'wa-inapp-mode');
         }
 
         let rafId = 0;
@@ -45,6 +80,8 @@
         let lastTop = 0;
         let lastLeft = 0;
         let lastWidth = 0;
+        let lastLift = -1;
+        let inputFocused = false;
 
         function resetViewportStyles() {
             modal.classList.remove('wa-vv-sync', 'wa-kb-open');
@@ -66,87 +103,71 @@
             lastTop = 0;
             lastLeft = 0;
             lastWidth = 0;
+            lastLift = -1;
+            inputFocused = false;
+            document.documentElement.style.removeProperty('--wa-kb-lift');
             window.clearInterval(pollId);
             pollId = 0;
         }
 
-        function keyboardInset() {
-            if (!baselineHeight) return 0;
-            const inset = baselineHeight - window.innerHeight;
-            return inset > KEYBOARD_THRESHOLD ? inset : 0;
+        function isInputFocused() {
+            return !!modal.querySelector('.wa-input:focus, .wa-composer input:focus, textarea:focus');
         }
 
-        function getViewportMetrics() {
-            const vv = window.visualViewport;
-            const inset = keyboardInset();
-            const width = Math.round(vv?.width || window.innerWidth);
+        function applyInAppSync({ forceEstimate = false } = {}) {
+            const isOpen = modal.classList.contains('active');
+            const isMobile = isMobileChat();
 
-            if (isInAppBrowser() && inset > 0) {
-                return {
-                    height: Math.max(280, window.innerHeight),
-                    offsetTop: Math.max(0, Math.round(window.scrollY || 0)),
-                    offsetLeft: Math.max(0, Math.round(vv?.offsetLeft || 0)),
-                    width,
-                    keyboardOpen: true
-                };
+            if (!isOpen || !isMobile) {
+                resetViewportStyles();
+                return;
             }
 
-            if (vv) {
-                const vvHeight = Math.round(vv.height);
-                const vvShrunk = baselineHeight && vvHeight < baselineHeight - KEYBOARD_THRESHOLD;
+            const focused = isInputFocused();
+            inputFocused = focused || inputFocused;
 
-                if (isInAppBrowser() && inset > 0 && !vvShrunk) {
-                    return {
-                        height: Math.max(280, window.innerHeight),
-                        offsetTop: Math.max(0, Math.round(window.scrollY || 0)),
-                        offsetLeft: Math.max(0, Math.round(vv.offsetLeft || 0)),
-                        width,
-                        keyboardOpen: true
-                    };
-                }
-
-                return {
-                    height: Math.max(280, vvHeight),
-                    offsetTop: Math.max(0, Math.round(vv.offsetTop || 0)),
-                    offsetLeft: Math.max(0, Math.round(vv.offsetLeft || 0)),
-                    width,
-                    keyboardOpen: vvShrunk || inset > 0
-                };
+            let lift = detectKeyboardLift(baselineHeight);
+            if ((focused || forceEstimate || inputFocused) && lift <= KEYBOARD_THRESHOLD) {
+                lift = estimateKeyboardHeight(baselineHeight);
             }
 
-            return {
-                height: Math.max(280, window.innerHeight),
-                offsetTop: 0,
-                offsetLeft: 0,
-                width,
-                keyboardOpen: inset > 0
-            };
-        }
+            if (!focused && !inputFocused) {
+                lift = detectKeyboardLift(baselineHeight);
+            }
 
-        function ensureInputVisible() {
-            const input = modal.querySelector('.wa-input:focus, .wa-composer input:focus, textarea:focus');
-            const target = input || modal.querySelector('.wa-composer');
-            if (!target) return;
+            const keyboardOpen = lift > KEYBOARD_THRESHOLD && (focused || inputFocused || forceEstimate);
 
-            requestAnimationFrame(() => {
-                try {
-                    target.scrollIntoView({ block: 'end', inline: 'nearest', behavior: 'auto' });
-                } catch {
-                    /* ignore */
-                }
-            });
-        }
+            if (!focused) {
+                inputFocused = false;
+            }
 
-        function startKeyboardPoll() {
-            if (!isInAppBrowser()) return;
-            window.clearInterval(pollId);
-            let ticks = 0;
-            pollId = window.setInterval(() => {
-                applyViewportSync();
-                ensureInputVisible();
-                ticks += 1;
-                if (ticks >= 12) window.clearInterval(pollId);
-            }, 120);
+            if (lift === lastLift && modal.classList.contains('wa-inapp-mode')) {
+                modal.classList.toggle('wa-kb-open', keyboardOpen);
+                return;
+            }
+            lastLift = lift;
+
+            modal.classList.add('wa-inapp-mode');
+            modal.classList.toggle('wa-kb-open', keyboardOpen);
+            document.documentElement.style.setProperty(
+                '--wa-kb-lift',
+                keyboardOpen ? `${lift}px` : '0px'
+            );
+
+            content.style.position = 'fixed';
+            content.style.top = '0';
+            content.style.left = '0';
+            content.style.width = '100%';
+            content.style.transform = '';
+            content.style.paddingBottom = '0';
+
+            if (keyboardOpen) {
+                content.style.height = `calc(100dvh - ${lift}px)`;
+                content.style.maxHeight = `calc(100dvh - ${lift}px)`;
+            } else {
+                content.style.height = '100dvh';
+                content.style.maxHeight = '100dvh';
+            }
         }
 
         function applyViewportSync() {
@@ -158,8 +179,19 @@
                 return;
             }
 
-            const metrics = getViewportMetrics();
-            const { height, offsetTop, offsetLeft, width, keyboardOpen } = metrics;
+            if (inApp) {
+                applyInAppSync();
+                return;
+            }
+
+            const vv = window.visualViewport;
+            if (!vv) return;
+
+            const height = Math.max(280, Math.round(vv.height));
+            const offsetTop = Math.max(0, Math.round(vv.offsetTop));
+            const offsetLeft = Math.max(0, Math.round(vv.offsetLeft));
+            const width = Math.round(vv.width);
+            const keyboardOpen = baselineHeight && height < baselineHeight - KEYBOARD_THRESHOLD;
 
             if (
                 height === lastHeight
@@ -210,6 +242,37 @@
             rafId = requestAnimationFrame(applyViewportSync);
         }
 
+        function ensureInputVisible() {
+            const input = modal.querySelector('.wa-input:focus, .wa-composer input:focus, textarea:focus');
+            const composer = modal.querySelector('.wa-composer');
+            const target = input || composer;
+            if (!target) return;
+
+            requestAnimationFrame(() => {
+                try {
+                    target.scrollIntoView({ block: 'end', inline: 'nearest', behavior: 'auto' });
+                } catch {
+                    /* ignore */
+                }
+            });
+        }
+
+        function startKeyboardPoll() {
+            window.clearInterval(pollId);
+            let ticks = 0;
+            const maxTicks = inApp ? 24 : 12;
+            pollId = window.setInterval(() => {
+                if (inApp) {
+                    applyInAppSync({ forceEstimate: ticks < 8 });
+                } else {
+                    applyViewportSync();
+                }
+                ensureInputVisible();
+                ticks += 1;
+                if (ticks >= maxTicks) window.clearInterval(pollId);
+            }, 120);
+        }
+
         function onVisualViewportChange() {
             if (!modal.classList.contains('active') || !isMobileChat()) return;
             applyViewportSync();
@@ -217,15 +280,21 @@
 
         function onInputFocus(event) {
             if (!event.target.closest('.wa-input, .wa-composer input, textarea')) return;
-            applyViewportSync();
+            inputFocused = true;
+            if (inApp) {
+                applyInAppSync({ forceEstimate: true });
+            } else {
+                applyViewportSync();
+            }
             ensureInputVisible();
             startKeyboardPoll();
-            window.setTimeout(applyViewportSync, 100);
-            window.setTimeout(ensureInputVisible, 100);
-            window.setTimeout(applyViewportSync, 250);
-            window.setTimeout(ensureInputVisible, 250);
-            window.setTimeout(applyViewportSync, 500);
-            window.setTimeout(ensureInputVisible, 500);
+            [100, 250, 500, 800].forEach((ms) => {
+                window.setTimeout(() => {
+                    if (inApp) applyInAppSync({ forceEstimate: ms < 400 });
+                    else applyViewportSync();
+                    ensureInputVisible();
+                }, ms);
+            });
         }
 
         if (window.visualViewport) {
@@ -245,7 +314,8 @@
             if (!event.target.closest('.wa-input, .wa-composer input, textarea')) return;
             if (event.relatedTarget?.closest?.('.wa-send, .wa-chip')) return;
             window.setTimeout(() => {
-                if (!modal.querySelector('.wa-input:focus, .wa-composer input:focus, textarea:focus')) {
+                if (!isInputFocused()) {
+                    inputFocused = false;
                     baselineHeight = captureBaselineHeight();
                 }
                 applyViewportSync();
@@ -262,14 +332,14 @@
 
             if (isOpen && isMobileChat()) {
                 baselineHeight = captureBaselineHeight();
+                lastLift = -1;
                 syncViewport({ immediate: true });
-                if (isIOSDevice() || isInAppBrowser()) {
+                if (isIOSDevice() || inApp) {
                     requestAnimationFrame(() => syncViewport({ immediate: true }));
                 }
                 return;
             }
             resetViewportStyles();
-            if (isOpen) baselineHeight = captureBaselineHeight();
         });
         observer.observe(modal, { attributes: true, attributeFilter: ['class'] });
     }
