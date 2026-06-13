@@ -127,7 +127,7 @@ html.no-aos [data-aos] {
     html.wa-inapp-browser .modal-overlay.modal-overlay--wa-chat.wa-inapp-mode .modal-content.wa-modal-content {
         margin: 0;
         border-radius: 0;
-        transition: height 0.15s ease, max-height 0.15s ease;
+        transition: none;
     }
 
     .modal-overlay.modal-overlay--wa-chat {

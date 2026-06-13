@@ -6,6 +6,7 @@
     const MOBILE_CHAT_MAX = 480;
     const KEYBOARD_THRESHOLD = 80;
     const INAPP_KEYBOARD_BUFFER = 36;
+    const TYPING_END_DELAY_MS = 350;
 
     function isMobileChat() {
         return window.innerWidth <= MOBILE_CHAT_MAX;
@@ -80,13 +81,15 @@
 
         let rafId = 0;
         let pollId = 0;
+        let focusOutTimer = 0;
         let baselineHeight = 0;
         let lastHeight = 0;
         let lastTop = 0;
         let lastLeft = 0;
         let lastWidth = 0;
         let lastLift = -1;
-        let inputFocused = false;
+        let stableLift = 0;
+        let typingActive = false;
 
         function resetViewportStyles() {
             modal.classList.remove('wa-vv-sync', 'wa-kb-open');
@@ -109,45 +112,28 @@
             lastLeft = 0;
             lastWidth = 0;
             lastLift = -1;
-            inputFocused = false;
+            stableLift = 0;
+            typingActive = false;
             document.documentElement.style.removeProperty('--wa-kb-lift');
             window.clearInterval(pollId);
+            window.clearTimeout(focusOutTimer);
             pollId = 0;
+            focusOutTimer = 0;
         }
 
         function isInputFocused() {
             return !!modal.querySelector('.wa-input:focus, .wa-composer input:focus, textarea:focus');
         }
 
-        function applyInAppSync({ forceEstimate = false } = {}) {
-            const isOpen = modal.classList.contains('active');
-            const isMobile = isMobileChat();
-
-            if (!isOpen || !isMobile) {
-                resetViewportStyles();
-                return;
-            }
-
-            const focused = isInputFocused();
-            inputFocused = focused || inputFocused;
-
+        function computeInAppLift() {
             let lift = detectKeyboardLift(baselineHeight);
-            if ((focused || forceEstimate || inputFocused) && lift <= KEYBOARD_THRESHOLD) {
+            if (lift <= KEYBOARD_THRESHOLD) {
                 lift = estimateKeyboardHeight(baselineHeight);
             }
+            return withInAppBuffer(lift);
+        }
 
-            if (!focused && !inputFocused) {
-                lift = detectKeyboardLift(baselineHeight);
-            }
-
-            const keyboardOpen = lift > KEYBOARD_THRESHOLD && (focused || inputFocused || forceEstimate);
-
-            if (!focused) {
-                inputFocused = false;
-            }
-
-            const appliedLift = keyboardOpen ? withInAppBuffer(lift) : 0;
-
+        function applyInAppLift(appliedLift, keyboardOpen) {
             if (appliedLift === lastLift && modal.classList.contains('wa-inapp-mode')) {
                 modal.classList.toggle('wa-kb-open', keyboardOpen);
                 return;
@@ -175,6 +161,50 @@
                 content.style.height = '100dvh';
                 content.style.maxHeight = '100dvh';
             }
+        }
+
+        function beginTyping() {
+            typingActive = true;
+            window.clearTimeout(focusOutTimer);
+            focusOutTimer = 0;
+
+            const lift = computeInAppLift();
+            stableLift = Math.max(stableLift, lift);
+            applyInAppLift(stableLift, true);
+        }
+
+        function applyInAppSync() {
+            const isOpen = modal.classList.contains('active');
+            const isMobile = isMobileChat();
+
+            if (!isOpen || !isMobile) {
+                resetViewportStyles();
+                return;
+            }
+
+            if (typingActive || isInputFocused()) {
+                if (isInputFocused()) typingActive = true;
+
+                const lift = computeInAppLift();
+                stableLift = Math.max(stableLift, lift);
+                applyInAppLift(stableLift, true);
+                return;
+            }
+
+            stableLift = 0;
+            applyInAppLift(0, false);
+        }
+
+        function scheduleTypingEnd() {
+            window.clearTimeout(focusOutTimer);
+            focusOutTimer = window.setTimeout(() => {
+                focusOutTimer = 0;
+                if (isInputFocused()) return;
+                typingActive = false;
+                stableLift = 0;
+                baselineHeight = captureBaselineHeight();
+                applyInAppSync();
+            }, TYPING_END_DELAY_MS);
         }
 
         function applyViewportSync() {
@@ -250,6 +280,8 @@
         }
 
         function ensureInputVisible() {
+            if (inApp) return;
+
             const input = modal.querySelector('.wa-input:focus, .wa-composer input:focus, textarea:focus');
             const composer = modal.querySelector('.wa-composer');
             const target = input || composer;
@@ -266,39 +298,63 @@
 
         function startKeyboardPoll() {
             window.clearInterval(pollId);
+            if (inApp) {
+                let ticks = 0;
+                pollId = window.setInterval(() => {
+                    if (!typingActive && !isInputFocused()) {
+                        window.clearInterval(pollId);
+                        pollId = 0;
+                        return;
+                    }
+                    applyInAppSync();
+                    ticks += 1;
+                    if (ticks >= 6) {
+                        window.clearInterval(pollId);
+                        pollId = 0;
+                    }
+                }, 150);
+                return;
+            }
+
             let ticks = 0;
-            const maxTicks = inApp ? 24 : 12;
             pollId = window.setInterval(() => {
-                if (inApp) {
-                    applyInAppSync({ forceEstimate: ticks < 8 });
-                } else {
-                    applyViewportSync();
-                }
+                applyViewportSync();
                 ensureInputVisible();
                 ticks += 1;
-                if (ticks >= maxTicks) window.clearInterval(pollId);
+                if (ticks >= 12) window.clearInterval(pollId);
             }, 120);
         }
 
         function onVisualViewportChange() {
             if (!modal.classList.contains('active') || !isMobileChat()) return;
+
+            if (inApp && typingActive) {
+                const lift = computeInAppLift();
+                if (lift > stableLift) {
+                    stableLift = lift;
+                    applyInAppLift(stableLift, true);
+                }
+                return;
+            }
+
             applyViewportSync();
         }
 
         function onInputFocus(event) {
             if (!event.target.closest('.wa-input, .wa-composer input, textarea')) return;
-            inputFocused = true;
+
             if (inApp) {
-                applyInAppSync({ forceEstimate: true });
-            } else {
-                applyViewportSync();
+                beginTyping();
+                startKeyboardPoll();
+                return;
             }
+
+            applyViewportSync();
             ensureInputVisible();
             startKeyboardPoll();
-            [100, 250, 500, 800].forEach((ms) => {
+            [100, 250, 500].forEach((ms) => {
                 window.setTimeout(() => {
-                    if (inApp) applyInAppSync({ forceEstimate: ms < 400 });
-                    else applyViewportSync();
+                    applyViewportSync();
                     ensureInputVisible();
                 }, ms);
             });
@@ -309,9 +365,18 @@
             window.visualViewport.addEventListener('scroll', onVisualViewportChange);
         }
 
-        window.addEventListener('resize', () => syncViewport());
+        window.addEventListener('resize', () => {
+            if (inApp && typingActive) {
+                stableLift = Math.max(stableLift, computeInAppLift());
+                applyInAppLift(stableLift, true);
+                return;
+            }
+            syncViewport();
+        });
+
         window.addEventListener('orientationchange', () => {
             baselineHeight = captureBaselineHeight();
+            stableLift = 0;
             window.setTimeout(() => syncViewport({ immediate: true }), 120);
         });
 
@@ -320,9 +385,14 @@
         modal.addEventListener('focusout', (event) => {
             if (!event.target.closest('.wa-input, .wa-composer input, textarea')) return;
             if (event.relatedTarget?.closest?.('.wa-send, .wa-chip')) return;
+
+            if (inApp) {
+                scheduleTypingEnd();
+                return;
+            }
+
             window.setTimeout(() => {
                 if (!isInputFocused()) {
-                    inputFocused = false;
                     baselineHeight = captureBaselineHeight();
                 }
                 applyViewportSync();
@@ -340,6 +410,7 @@
             if (isOpen && isMobileChat()) {
                 baselineHeight = captureBaselineHeight();
                 lastLift = -1;
+                stableLift = 0;
                 syncViewport({ immediate: true });
                 if (isIOSDevice() || inApp) {
                     requestAnimationFrame(() => syncViewport({ immediate: true }));
