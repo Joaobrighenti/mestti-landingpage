@@ -1024,7 +1024,7 @@ function initImplementationRoadmap() {
 
         phase.classList.toggle('is-open', open);
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        body.hidden = !open;
+        body.setAttribute('aria-hidden', open ? 'false' : 'true');
     }
 
     phases.forEach((phase) => {

@@ -74,7 +74,7 @@
     position: relative;
     z-index: 2;
     border-radius: 12px;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, margin-bottom 0.35s ease;
 }
 
 .impl-roadmap-phase-head:hover {
@@ -88,6 +88,7 @@
 
 .impl-roadmap-phase.is-open .impl-roadmap-phase-head {
     margin-bottom: 0.85rem;
+    transition: margin-bottom 0.35s ease;
 }
 
 .impl-roadmap-phase-num {
@@ -143,7 +144,7 @@
     border-right: 2px solid var(--gray-500);
     border-bottom: 2px solid var(--gray-500);
     transform: rotate(45deg);
-    transition: transform 0.22s ease;
+    transition: transform 0.35s ease, margin-top 0.35s ease;
 }
 
 .impl-roadmap-phase.is-open .impl-roadmap-phase-chevron {
@@ -155,10 +156,32 @@
     position: relative;
     z-index: 1;
     padding-left: 2.85rem;
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+        grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.3s ease;
+    pointer-events: none;
 }
 
-.impl-roadmap-phase-body[hidden] {
-    display: none;
+.impl-roadmap-phase.is-open .impl-roadmap-phase-body {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.impl-roadmap-phase-collapse {
+    overflow: hidden;
+    min-height: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .impl-roadmap-phase-body,
+    .impl-roadmap-phase-chevron,
+    .impl-roadmap-phase.is-open .impl-roadmap-phase-head {
+        transition: none;
+    }
 }
 
 .impl-roadmap-checklist {

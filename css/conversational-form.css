@@ -455,8 +455,8 @@
     .modal-content.wa-modal-content {
         width: 100%;
         max-width: 420px;
-        height: min(72dvh, 640px);
-        max-height: min(72dvh, 640px);
+        height: min(84dvh, 720px);
+        max-height: min(84dvh, 720px);
         margin: 0;
         border-radius: 18px;
         overflow: hidden;

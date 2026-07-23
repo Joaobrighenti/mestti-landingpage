@@ -143,7 +143,7 @@
 
             const margin = 12;
             const available = Math.max(280, window.innerHeight - (keyboardOpen ? appliedLift : 0) - margin * 2);
-            const panelHeight = Math.min(640, Math.round(available * 0.85), available);
+            const panelHeight = Math.min(720, Math.round(available * 0.9), available);
             const panelWidth = Math.max(260, window.innerWidth - margin * 2);
             const top = Math.max(margin, window.innerHeight - (keyboardOpen ? appliedLift : 0) - panelHeight - margin);
 
@@ -234,9 +234,9 @@
             const keyboardOpen = baselineHeight && height < baselineHeight - KEYBOARD_THRESHOLD;
             const panelWidth = Math.max(260, width - margin * 2);
             const panelHeight = Math.min(
-                640,
-                Math.round(height * 0.72),
-                Math.max(280, height - margin * 2)
+                720,
+                Math.round(height * 0.84),
+                Math.max(320, height - margin * 2)
             );
             const top = offsetTop + height - panelHeight - margin;
             const left = offsetLeft + margin;
