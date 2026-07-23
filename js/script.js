@@ -945,6 +945,28 @@ if (header) {
 
     function updateHeaderOnScroll() {
         const currentScroll = getScrollTop();
+        const heroFold = document.querySelector('.hero-first-fold');
+        const isHome = document.body.dataset.page === 'home';
+
+        if (isHome && heroFold) {
+            const heroBottom = heroFold.getBoundingClientRect().bottom;
+            const overHero = heroBottom > Math.max(header.offsetHeight, 64);
+
+            header.classList.toggle('header--over-hero', overHero && !isHeaderLockedOpen());
+
+            if (overHero) {
+                header.style.boxShadow = '';
+            } else {
+                header.style.boxShadow = currentScroll > 50
+                    ? '0 4px 12px rgba(0, 0, 0, 0.15)'
+                    : '';
+            }
+        } else {
+            header.classList.remove('header--over-hero');
+            header.style.boxShadow = currentScroll > 50
+                ? '0 4px 12px rgba(0, 0, 0, 0.15)'
+                : '';
+        }
 
         if (isHeaderLockedOpen()) {
             header.classList.remove('header--hidden');
@@ -955,10 +977,6 @@ if (header) {
         } else if (currentScroll < lastScroll - SCROLL_DELTA) {
             header.classList.remove('header--hidden');
         }
-
-        header.style.boxShadow = currentScroll > 50
-            ? '0 4px 12px rgba(0, 0, 0, 0.15)'
-            : '';
 
         lastScroll = currentScroll;
         ticking = false;
@@ -996,81 +1014,30 @@ if ('loading' in HTMLImageElement.prototype) {
 // ============================================
 
 function initImplementationRoadmap() {
-    const shell = document.querySelector('.impl-roadmap-shell');
-    if (!shell || !shell.querySelector('.impl-roadmap-step')) return;
+    const phases = Array.from(document.querySelectorAll('.impl-roadmap-phase'));
+    if (!phases.length) return;
 
-    const steps = Array.from(shell.querySelectorAll('.impl-roadmap-step'));
-    const panels = Array.from(shell.querySelectorAll('.impl-roadmap-panel'));
-    const totalSteps = steps.length;
-    let activeIndex = 0;
-    let autoTimer = null;
+    function setPhaseOpen(phase, open) {
+        const btn = phase.querySelector('.impl-roadmap-phase-head');
+        const body = phase.querySelector('.impl-roadmap-phase-body');
+        if (!btn || !body) return;
 
-    function setActiveStep(index, { focusTab = false } = {}) {
-        activeIndex = Math.max(0, Math.min(index, totalSteps - 1));
-
-        steps.forEach((step, i) => {
-            const isActive = i === activeIndex;
-            step.classList.toggle('is-active', isActive);
-            step.setAttribute('aria-selected', isActive ? 'true' : 'false');
-            step.tabIndex = isActive ? 0 : -1;
-            if (focusTab && isActive) step.focus();
-        });
-
-        panels.forEach((panel, i) => {
-            const isVisible = i === activeIndex;
-            panel.classList.toggle('is-visible', isVisible);
-            panel.hidden = !isVisible;
-        });
+        phase.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        body.hidden = !open;
     }
 
-    function stopAutoAdvance() {
-        if (autoTimer) {
-            clearInterval(autoTimer);
-            autoTimer = null;
-        }
-    }
+    phases.forEach((phase) => {
+        const btn = phase.querySelector('.impl-roadmap-phase-head');
+        if (!btn) return;
 
-    function startAutoAdvance() {
-        stopAutoAdvance();
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        autoTimer = setInterval(() => {
-            setActiveStep((activeIndex + 1) % totalSteps);
-        }, 9000);
-    }
+        setPhaseOpen(phase, false);
 
-    steps.forEach((step, index) => {
-        step.addEventListener('click', () => {
-            stopAutoAdvance();
-            setActiveStep(index);
-        });
-        step.addEventListener('keydown', (e) => {
-            let next = activeIndex;
-            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-                e.preventDefault();
-                next = (activeIndex + 1) % totalSteps;
-            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-                e.preventDefault();
-                next = (activeIndex - 1 + totalSteps) % totalSteps;
-            } else if (e.key === 'Home') {
-                e.preventDefault();
-                next = 0;
-            } else if (e.key === 'End') {
-                e.preventDefault();
-                next = totalSteps - 1;
-            } else {
-                return;
-            }
-            stopAutoAdvance();
-            setActiveStep(next, { focusTab: true });
+        btn.addEventListener('click', () => {
+            const willOpen = !phase.classList.contains('is-open');
+            phases.forEach((other) => setPhaseOpen(other, other === phase && willOpen));
         });
     });
-
-    shell.addEventListener('mouseenter', stopAutoAdvance);
-    shell.addEventListener('focusin', stopAutoAdvance);
-    shell.addEventListener('mouseleave', startAutoAdvance);
-
-    setActiveStep(0);
-    startAutoAdvance();
 }
 
 function lpCarouselDotLabel(index, total) {
@@ -1206,13 +1173,37 @@ function bindHeroClientLogoFallback(img) {
 }
 
 function initHeroClientsStrip() {
-    const sets = document.querySelectorAll('.hero-clients-set');
-    if (!sets.length) return;
+    const track = document.querySelector('.hero-clients-track');
+    const strip = document.querySelector('.hero-clients-strip');
+    if (!track || !strip) return;
 
-    sets.forEach((set, index) => {
-        set.innerHTML = buildHeroClientLogosMarkup(index === 0);
+    const makeSet = (withAlt) => {
+        const set = document.createElement('div');
+        set.className = 'hero-clients-set';
+        if (!withAlt) set.setAttribute('aria-hidden', 'true');
+        set.innerHTML = buildHeroClientLogosMarkup(withAlt);
         set.querySelectorAll('.hero-client-logo img[data-fallback]').forEach(bindHeroClientLogoFallback);
-    });
+        return set;
+    };
+
+    const fillTrack = () => {
+        track.innerHTML = '';
+        track.appendChild(makeSet(true));
+        track.appendChild(makeSet(false));
+        track.appendChild(makeSet(false));
+        track.appendChild(makeSet(false));
+
+        const minWidth = Math.max(strip.clientWidth, window.innerWidth) * 2.25;
+        let guard = 0;
+        while (track.scrollWidth < minWidth && guard < 8) {
+            track.appendChild(makeSet(false));
+            track.appendChild(makeSet(false));
+            guard += 1;
+        }
+    };
+
+    fillTrack();
+    window.addEventListener('load', fillTrack, { once: true });
 }
 
 function shouldSkipHeavyMedia() {

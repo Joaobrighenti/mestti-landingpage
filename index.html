@@ -29,14 +29,14 @@
             transform: none !important;
         }
     </style>
-    <link rel="stylesheet" href="css/entry.css?v=38">
+    <link rel="stylesheet" href="css/entry.css?v=63">
     <link rel="stylesheet" href="css/landing-producao.css?v=9">
 </head>
 
 <body data-page="home">
     <div class="nav-overlay" id="navOverlay"></div>
 
-    <header class="header header--tractian">
+    <header class="header header--tractian header--over-hero">
         <div class="container container--wide">
             <div class="header-tractian-inner">
                 <a href="/" class="header-logo-link">
@@ -89,7 +89,7 @@
         </div>
     </header>
 
-    <!-- Hero Section - Primeira Dobra (com esteira + componentes OEE) -->
+    <!-- Hero Section - Primeira tela = vídeo full viewport -->
     <section class="hero hero-first-fold">
         <div class="hero-video-bg" aria-hidden="true">
             <video
@@ -104,31 +104,28 @@
         </div>
         <script src="js/hero-video.js?v=1"></script>
         <div class="container hero-container-main hero-container-main--impact">
-            <div class="hero-content" data-aos="fade-up">
-                <p class="hero-hook-label" data-i18n="home.hero.hook.label">Sem sensor</p>
+            <div class="hero-content hero-copy-card" data-aos="fade-up">
                 <h1 class="hero-title hero-title--impact" data-i18n="home.hero.hook.text" data-i18n-html>
-                    <span class="hero-title-lead">Quanto sua fábrica produziu hoje?</span>
-                    <span class="hero-title-rest">Se a resposta demora, o problema já começou.</span>
+                    <span class="hero-title-lead">Quanto sua fábrica<br>produziu hoje?</span>
+                    <span class="hero-title-rest">Se a resposta demora, o <span class="hero-title-emphasis">problema</span> já começou.</span>
                 </h1>
-                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="home.hero.subtitle">
-                    Sistema de apontamento automático que monitora suas máquinas em tempo real, identifica perdas e gera
-                    indicadores precisos de OEE, disponibilidade e performance.
-                </p>
-                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
-                    <a href="/" data-home-section="#controle-total" class="btn btn-primary" data-i18n="home.hero.cta">Ver como funciona</a>
-                </div>
-                <div class="hero-certificates" data-aos="fade-up" data-aos-delay="300">
-                    <div class="certificate-item">
-                        <img src="images/certificado-1.jpg" alt="Certificado 1" loading="lazy">
-                    </div>
-                    <div class="certificate-item">
-                        <img src="images/certificado-2.jpg" alt="Certificado 2" loading="lazy">
-                    </div>
+                <div class="hero-buttons">
+                    <a href="/" data-home-section="#controle-total" class="btn hero-cta-btn" data-i18n="home.hero.cta">Ver como funciona</a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Esteira + sensor só na primeira dobra -->
+    <!-- Conteúdo abaixo da primeira tela (scroll) -->
+    <div class="hero-below-fold">
+        <div class="hero-certificates" data-aos="fade-up">
+            <div class="certificate-item">
+                <img src="images/certificado-1.jpg" alt="Certificado 1" loading="lazy">
+            </div>
+            <div class="certificate-item">
+                <img src="images/certificado-2.jpg" alt="Certificado 2" loading="lazy">
+            </div>
+        </div>
         <div class="hero-conveyor-wrap">
             <div class="hero-clients-strip" aria-label="Clientes em destaque">
                 <div class="hero-clients-track">
@@ -137,7 +134,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Grade — telas do sistema (3 por linha) -->
     <section class="sistema-grid-section" data-i18n-aria="home.grid.label" aria-label="Funcionalidades do sistema MESTTI">
@@ -216,22 +213,20 @@
     <!-- Etapas da implementação -->
     <section class="impl-roadmap" id="implementacao" aria-labelledby="impl-roadmap-title">
         <div class="container">
-            <h2 class="section-title" id="impl-roadmap-title" data-aos="fade-up" data-i18n="home.roadmap.title">Como implementamos na sua fábrica</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="80" data-i18n="home.roadmap.subtitle">
-                Da proposta ao uso diário dos dados, com prazos claros e acompanhamento da equipe MESTTI em cada etapa.
-            </p>
+            <h2 class="section-title" id="impl-roadmap-title" data-aos="fade-up" data-i18n="home.roadmap.title">Como Implementamos</h2>
 
             <div class="impl-roadmap-shell" data-aos="fade-up" data-aos-delay="120">
                 <ol class="impl-roadmap-flow">
                     <li class="impl-roadmap-phase">
-                        <div class="impl-roadmap-phase-head">
+                        <button type="button" class="impl-roadmap-phase-head" aria-expanded="false" aria-controls="impl-phase-1" id="impl-phase-btn-1">
                             <span class="impl-roadmap-phase-num" aria-hidden="true">1</span>
-                            <div class="impl-roadmap-phase-head-copy">
-                                <h3 class="impl-roadmap-phase-title" data-i18n="home.roadmap.step1">Diagnóstico e definição</h3>
+                            <span class="impl-roadmap-phase-head-copy">
+                                <span class="impl-roadmap-phase-title" data-i18n="home.roadmap.step1">Diagnóstico e definição</span>
                                 <span class="impl-roadmap-phase-badge" data-i18n="home.roadmap.step1.badge">Após a proposta</span>
-                            </div>
-                        </div>
-                        <div class="impl-roadmap-phase-body">
+                            </span>
+                            <span class="impl-roadmap-phase-chevron" aria-hidden="true"></span>
+                        </button>
+                        <div class="impl-roadmap-phase-body" id="impl-phase-1" role="region" aria-labelledby="impl-phase-btn-1" hidden>
                             <ul class="impl-roadmap-checklist">
                                 <li data-i18n="home.roadmap.p1.li1">Revisão da proposta e escopo do projeto com sua equipe</li>
                                 <li data-i18n="home.roadmap.p1.li2">Reunião técnica para mapear processos, máquinas e pontos de coleta</li>
@@ -241,14 +236,15 @@
                         </div>
                     </li>
                     <li class="impl-roadmap-phase">
-                        <div class="impl-roadmap-phase-head">
+                        <button type="button" class="impl-roadmap-phase-head" aria-expanded="false" aria-controls="impl-phase-2" id="impl-phase-btn-2">
                             <span class="impl-roadmap-phase-num" aria-hidden="true">2</span>
-                            <div class="impl-roadmap-phase-head-copy">
-                                <h3 class="impl-roadmap-phase-title" data-i18n="home.roadmap.step2">Instalação e início da operação</h3>
+                            <span class="impl-roadmap-phase-head-copy">
+                                <span class="impl-roadmap-phase-title" data-i18n="home.roadmap.step2">Instalação e início da operação</span>
                                 <span class="impl-roadmap-phase-badge" data-i18n="home.roadmap.step2.badge">Até 1 semana</span>
-                            </div>
-                        </div>
-                        <div class="impl-roadmap-phase-body">
+                            </span>
+                            <span class="impl-roadmap-phase-chevron" aria-hidden="true"></span>
+                        </button>
+                        <div class="impl-roadmap-phase-body" id="impl-phase-2" role="region" aria-labelledby="impl-phase-btn-2" hidden>
                             <ul class="impl-roadmap-checklist">
                                 <li data-i18n="home.roadmap.p2.li1" data-i18n-html>Instalação física: <strong>1 a 3 dias</strong>, conforme porte da planta</li>
                                 <li data-i18n="home.roadmap.p2.li2">Testes de conectividade, leitura e consistência no painel</li>
@@ -259,14 +255,15 @@
                         </div>
                     </li>
                     <li class="impl-roadmap-phase">
-                        <div class="impl-roadmap-phase-head">
+                        <button type="button" class="impl-roadmap-phase-head" aria-expanded="false" aria-controls="impl-phase-3" id="impl-phase-btn-3">
                             <span class="impl-roadmap-phase-num" aria-hidden="true">3</span>
-                            <div class="impl-roadmap-phase-head-copy">
-                                <h3 class="impl-roadmap-phase-title" data-i18n="home.roadmap.step3">Treinamento e consultoria</h3>
+                            <span class="impl-roadmap-phase-head-copy">
+                                <span class="impl-roadmap-phase-title" data-i18n="home.roadmap.step3">Treinamento e consultoria</span>
                                 <span class="impl-roadmap-phase-badge" data-i18n="home.roadmap.step3.badge">1 mês</span>
-                            </div>
-                        </div>
-                        <div class="impl-roadmap-phase-body">
+                            </span>
+                            <span class="impl-roadmap-phase-chevron" aria-hidden="true"></span>
+                        </button>
+                        <div class="impl-roadmap-phase-body" id="impl-phase-3" role="region" aria-labelledby="impl-phase-btn-3" hidden>
                             <ul class="impl-roadmap-checklist">
                                 <li data-i18n="home.roadmap.p3.li1">Treinamento de operadores, supervisores e gestão no uso do MESTTI</li>
                                 <li data-i18n="home.roadmap.p3.li2">Consultoria para leitura de OEE, paradas, produção e perdas</li>
@@ -491,12 +488,12 @@
 
     <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script defer src="js/i18n-page-strings.js"></script>
-    <script defer src="js/i18n.js?v=5"></script>
+    <script defer src="js/i18n.js?v=8"></script>
     <script defer src="js/theme.js?v=1"></script>
     <script defer src="js/form-options.js?v=3"></script>
-    <script defer src="js/script.js?v=28"></script>
-    <script defer src="js/wa-chat-viewport.js?v=2"></script>
-    <script defer src="js/conversational-form.js?v=13"></script>
+    <script defer src="js/script.js?v=31"></script>
+    <script defer src="js/wa-chat-viewport.js?v=3"></script>
+    <script defer src="js/conversational-form.js?v=14"></script>
 </body>
 
 </html>

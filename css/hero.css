@@ -3,15 +3,32 @@
    ============================================ */
 
 .hero {
-    margin-top: 0; /* Header não é mais fixo */
+    margin-top: 0;
     padding: var(--spacing-3xl) 0 0;
     background-color: var(--gray-50);
 }
 
-/* Primeira dobra: mais achatada (menos altura útil) */
+/* Primeira tela: exatamente a viewport (vídeo + card). O resto só no scroll. */
 .hero.hero-first-fold {
-    padding-top: calc(var(--spacing-2xl) + clamp(0.5rem, 2vw, 1.25rem));
-    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 100svh;
+    padding: calc(var(--site-header-height, 4.25rem) + clamp(0.75rem, 2vw, 1.5rem)) 0 clamp(1rem, 3vw, 2rem);
+    overflow: hidden;
+}
+
+@supports (height: 100dvh) {
+    .hero.hero-first-fold {
+        min-height: 100dvh;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero.hero-first-fold {
+        padding-top: calc(var(--site-header-bar, 3.5rem) + env(safe-area-inset-top, 0px) + 0.75rem);
+    }
 }
 
 .hero-first-fold {
@@ -51,11 +68,10 @@
     inset: 0;
     z-index: 1;
     background: linear-gradient(
-        100deg,
-        rgba(255, 255, 255, 0.94) 0%,
-        rgba(252, 252, 252, 0.88) 34%,
-        rgba(250, 250, 250, 0.72) 55%,
-        rgba(249, 249, 250, 0.48) 100%
+        180deg,
+        rgba(255, 255, 255, 0.58) 0%,
+        rgba(252, 252, 253, 0.5) 45%,
+        rgba(255, 255, 255, 0.62) 100%
     );
 }
 
@@ -83,7 +99,74 @@
 }
 
 .hero-first-fold .hero-subtitle {
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+    text-shadow: none;
+}
+
+/* Card estilo referência — frase + CTA sobre o vídeo */
+.hero-copy-card {
+    width: fit-content;
+    max-width: min(100%, 52rem);
+    margin-inline: auto;
+    padding: clamp(2rem, 4.5vw, 2.75rem) clamp(1.35rem, 3vw, 2rem);
+    background: #fff;
+    border-radius: clamp(1.75rem, 4vw, 2.75rem);
+    box-shadow:
+        0 18px 50px rgba(15, 23, 42, 0.18),
+        0 4px 14px rgba(15, 23, 42, 0.08);
+    text-align: left;
+    align-items: stretch;
+    gap: 0.7rem;
+}
+
+.hero-copy-card .hero-hook-label {
+    justify-content: flex-start;
+}
+
+.hero-copy-card .hero-buttons {
+    margin-bottom: 0;
+    margin-top: 0.15rem;
+    width: 100%;
+    justify-content: stretch;
+}
+
+.btn.hero-cta-btn,
+a.btn.hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff !important;
+    background: var(--green) !important;
+    background-image: none !important;
+    box-shadow: 0 8px 22px rgba(5, 150, 105, 0.35);
+    border: none;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+}
+
+.btn.hero-cta-btn:hover,
+a.btn.hero-cta-btn:hover {
+    background: #047857 !important;
+    background-image: none !important;
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(5, 150, 105, 0.42);
+}
+
+.hero-below-fold {
+    background-color: var(--gray-50);
+}
+
+.hero-below-fold .hero-certificates {
+    justify-content: center;
+    margin: 0;
+    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-sm);
 }
 
 /* Seta branca para cima no canto superior direito */
@@ -174,24 +257,26 @@
     background-color: var(--gray-50);
     border: none;
     box-shadow: none;
-    padding: 0.5rem 0 0.65rem;
+    padding: 0.85rem 0 1rem;
 }
 
 .hero-clients-track {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0;
     width: max-content;
-    animation: hero-clients-marquee 42s linear infinite;
+    will-change: transform;
+    animation: hero-clients-marquee 48s linear infinite;
     line-height: 0;
 }
 
 .hero-clients-set {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.75rem;
     flex-shrink: 0;
     line-height: 0;
+    padding-right: 1.75rem;
 }
 
 @keyframes hero-clients-marquee {
@@ -200,7 +285,7 @@
     }
 
     to {
-        transform: translateX(calc(-50% - 0.5rem));
+        transform: translateX(-50%);
     }
 }
 
@@ -211,25 +296,29 @@
 }
 
 .hero-client-logo {
-    width: clamp(124px, 11vw, 213px);
-    height: 65px;
+    width: auto;
+    height: 88px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     overflow: visible;
     background: transparent;
+    opacity: 1;
+    margin: 0;
+    padding: 0;
 }
 
 .hero-client-logo img {
-    max-width: 100%;
-    max-height: 100%;
+    height: 100%;
     width: auto;
-    height: auto;
+    max-width: none;
+    max-height: 100%;
     object-fit: contain;
     display: block;
     filter: brightness(0);
-    opacity: 0.82;
+    opacity: 0.88;
+    transform: none;
 }
 
 /* PNG pré-processada — sem filtro CSS (nitidez no Safari) */
@@ -239,19 +328,31 @@
 
 /* Destaque extra para a Brighentti */
 .hero-client-logo--brighentti {
-    width: clamp(250px, 22vw, 400px);
-    height: 98px;
+    height: 108px;
+    margin: 0;
+}
+
+.hero-client-logo--brighentti img {
+    transform: none;
 }
 
 /* Nicopel com altura maior */
 .hero-client-logo--nicopel {
-    width: clamp(212px, 19vw, 330px);
-    height: 97px;
+    height: 112px;
+    margin: 0;
+}
+
+.hero-client-logo--nicopel img {
+    transform: none;
 }
 
 .hero-client-logo--lg {
-    width: clamp(161px, 15vw, 273px);
-    height: 79px;
+    height: 96px;
+    margin: 0;
+}
+
+.hero-client-logo--lg img {
+    transform: none;
 }
 
 .hero .container {
@@ -382,85 +483,92 @@
 }
 
 .hero-first-fold .hero-container-main {
-    gap: var(--spacing-xl);
+    gap: 0;
     align-items: center;
+    width: 100%;
 }
 
 .hero-first-fold .hero-container-main--impact {
-    grid-template-columns: 1fr;
-    max-width: none;
-    padding-bottom: var(--spacing-xl);
+    display: flex;
+    grid-template-columns: none;
+    justify-content: center;
+    align-items: center;
+    max-width: min(100%, 48rem);
+    margin-inline: auto;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .hero-first-fold .hero-container-main--impact .hero-content {
-    max-width: 42rem;
+    max-width: none;
 }
 
 @media (min-width: 769px) {
     .hero-first-fold .hero-container-main--impact {
-        justify-items: center;
+        justify-content: center;
     }
 
     .hero-first-fold .hero-container-main--impact .hero-content {
-        max-width: 46rem;
+        max-width: none;
         margin-inline: auto;
-        align-items: center;
-        text-align: center;
-    }
-
-    .hero-hook-label {
-        justify-content: center;
-    }
-
-    .hero-first-fold .hero-subtitle {
-        max-width: 36rem;
-        margin-inline: auto;
-    }
-
-    .hero-first-fold .hero-buttons {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .hero-certificates {
-        justify-content: center;
-        width: 100%;
     }
 }
 
 @media (min-width: 1025px) {
-    .hero-first-fold .hero-container-main--impact .hero-content {
-        max-width: 52rem;
+    .hero-copy-card {
+        max-width: min(100%, 56rem);
     }
 
     .hero-title--impact {
-        font-size: clamp(2.25rem, 3.8vw, 3.35rem);
+        font-size: clamp(2rem, 3.4vw, 2.85rem);
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+    .hero.hero-first-fold {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     .hero-first-fold .hero-container-main--impact {
-        padding-top: var(--spacing-lg);
+        padding-top: 0;
+        padding-inline: var(--spacing-sm);
     }
 
     .hero-first-fold .hero-container-main--impact .hero-content {
         max-width: none;
     }
+
+    .hero-copy-card {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 1.6rem;
+        padding: 1.75rem 1.15rem 1.85rem;
+        gap: 0.65rem;
+    }
+
+    .hero-copy-card .hero-title-lead,
+    .hero-copy-card .hero-title-rest {
+        white-space: normal;
+        width: 100%;
+    }
 }
 
 .hero-first-fold .hero-content {
-    gap: var(--spacing-md);
+    gap: clamp(0.75rem, 2vw, 1.1rem);
 }
 
 .hero-first-fold .hero-title {
-    font-size: clamp(2.2rem, 4.8vw, 3.35rem);
+    font-size: clamp(1.7rem, 5vw, 2.85rem);
     line-height: 1.12;
 }
 
 .hero-title--impact {
-    font-size: clamp(1.85rem, 5vw, 3rem);
-    line-height: 1.18;
+    width: 100%;
+    font-size: clamp(1.7rem, 5vw, 2.75rem);
+    line-height: 1.16;
     letter-spacing: -0.03em;
+    color: #0a0a0a;
 }
 
 .hero-title-lead,
@@ -468,21 +576,36 @@
     display: block;
 }
 
-.hero-title-lead {
-    margin-bottom: 0.2em;
+.hero-copy-card .hero-title-lead {
+    width: max-content;
+    max-width: 100%;
+    font-size: clamp(2.35rem, 5vw, 3.35rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+    color: #0a0a0a;
+    margin-bottom: 0.35em;
+    white-space: normal;
 }
 
-.hero-title-rest {
-    max-width: none;
+.hero-copy-card .hero-title-rest {
+    width: max-content;
+    max-width: 100%;
+    font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: #27272a;
+    white-space: nowrap;
 }
 
-.hero-first-fold .hero-subtitle {
-    line-height: 1.62;
-    max-width: 95%;
+.hero-copy-card .hero-title-emphasis {
+    color: #dc2626;
+    font-weight: 800;
 }
 
 .hero-first-fold .hero-buttons {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 0;
 }
 
 .hero-hook-label {
@@ -506,12 +629,9 @@
     opacity: 0.7;
 }
 
+.hero-below-fold .hero-conveyor-wrap,
 .hero-first-fold .hero-conveyor-wrap {
     margin-top: 0;
     background-color: var(--gray-50);
-}
-
-.hero-first-fold {
-    padding-bottom: 0;
 }
 

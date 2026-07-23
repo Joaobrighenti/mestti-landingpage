@@ -453,3 +453,34 @@ body.has-site-header {
     transition: var(--transition);
 }
 
+/* Home: vídeo sob o header + header transparente na primeira tela */
+body[data-page="home"].has-site-header {
+    padding-top: 0;
+}
+
+@media (max-width: 768px) {
+    body[data-page="home"].has-site-header {
+        padding-top: 0 !important;
+    }
+}
+
+.header.header--over-hero {
+    background-color: transparent;
+    border-bottom-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+}
+
+.header.header--over-hero.header--tractian {
+    background-color: transparent;
+}
+
+/* Menu mobile aberto: volta o fundo sólido para legibilidade */
+.header.header--over-hero:has(.header-nav.active) {
+    background-color: var(--header-bg);
+    border-bottom-color: var(--header-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+

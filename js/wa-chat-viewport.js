@@ -107,6 +107,7 @@
             content.style.maxHeight = '';
             content.style.transform = '';
             content.style.paddingBottom = '';
+            content.style.borderRadius = '';
             lastHeight = 0;
             lastTop = 0;
             lastLeft = 0;
@@ -140,6 +141,12 @@
             }
             lastLift = appliedLift;
 
+            const margin = 12;
+            const available = Math.max(280, window.innerHeight - (keyboardOpen ? appliedLift : 0) - margin * 2);
+            const panelHeight = Math.min(640, Math.round(available * 0.85), available);
+            const panelWidth = Math.max(260, window.innerWidth - margin * 2);
+            const top = Math.max(margin, window.innerHeight - (keyboardOpen ? appliedLift : 0) - panelHeight - margin);
+
             modal.classList.add('wa-inapp-mode');
             modal.classList.toggle('wa-kb-open', keyboardOpen);
             document.documentElement.style.setProperty(
@@ -148,19 +155,14 @@
             );
 
             content.style.position = 'fixed';
-            content.style.top = '0';
-            content.style.left = '0';
-            content.style.width = '100%';
+            content.style.top = `${top}px`;
+            content.style.left = `${margin}px`;
+            content.style.width = `${panelWidth}px`;
+            content.style.height = `${panelHeight}px`;
+            content.style.maxHeight = `${panelHeight}px`;
             content.style.transform = '';
             content.style.paddingBottom = '0';
-
-            if (keyboardOpen) {
-                content.style.height = `calc(100dvh - ${appliedLift}px)`;
-                content.style.maxHeight = `calc(100dvh - ${appliedLift}px)`;
-            } else {
-                content.style.height = '100dvh';
-                content.style.maxHeight = '100dvh';
-            }
+            content.style.borderRadius = '18px';
         }
 
         function beginTyping() {
@@ -224,27 +226,36 @@
             const vv = window.visualViewport;
             if (!vv) return;
 
+            const margin = 12;
             const height = Math.max(280, Math.round(vv.height));
             const offsetTop = Math.max(0, Math.round(vv.offsetTop));
             const offsetLeft = Math.max(0, Math.round(vv.offsetLeft));
             const width = Math.round(vv.width);
             const keyboardOpen = baselineHeight && height < baselineHeight - KEYBOARD_THRESHOLD;
+            const panelWidth = Math.max(260, width - margin * 2);
+            const panelHeight = Math.min(
+                640,
+                Math.round(height * 0.72),
+                Math.max(280, height - margin * 2)
+            );
+            const top = offsetTop + height - panelHeight - margin;
+            const left = offsetLeft + margin;
 
             if (
-                height === lastHeight
-                && offsetTop === lastTop
-                && offsetLeft === lastLeft
-                && width === lastWidth
+                panelHeight === lastHeight
+                && top === lastTop
+                && left === lastLeft
+                && panelWidth === lastWidth
                 && modal.classList.contains('wa-vv-sync')
                 && keyboardOpen === modal.classList.contains('wa-kb-open')
             ) {
                 return;
             }
 
-            lastHeight = height;
-            lastTop = offsetTop;
-            lastLeft = offsetLeft;
-            lastWidth = width;
+            lastHeight = panelHeight;
+            lastTop = top;
+            lastLeft = left;
+            lastWidth = panelWidth;
 
             modal.classList.add('wa-vv-sync');
             modal.classList.toggle('wa-kb-open', keyboardOpen);
@@ -257,15 +268,14 @@
             modal.style.height = '';
 
             content.style.position = 'fixed';
-            content.style.top = '0';
-            content.style.left = '0';
-            content.style.width = `${width}px`;
-            content.style.height = `${height}px`;
-            content.style.maxHeight = `${height}px`;
+            content.style.top = `${top}px`;
+            content.style.left = `${left}px`;
+            content.style.width = `${panelWidth}px`;
+            content.style.height = `${panelHeight}px`;
+            content.style.maxHeight = `${panelHeight}px`;
             content.style.paddingBottom = '0';
-            content.style.transform = offsetLeft || offsetTop
-                ? `translate3d(${offsetLeft}px, ${offsetTop}px, 0)`
-                : '';
+            content.style.transform = 'none';
+            content.style.borderRadius = '18px';
         }
 
         function syncViewport({ immediate = false } = {}) {
