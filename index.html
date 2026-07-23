@@ -29,7 +29,7 @@
             transform: none !important;
         }
     </style>
-    <link rel="stylesheet" href="css/entry.css?v=66">
+    <link rel="stylesheet" href="css/entry.css?v=68">
     <link rel="stylesheet" href="css/landing-producao.css?v=9">
 </head>
 
@@ -490,12 +490,21 @@
         </div>
     </div>
 
+    <div class="sistema-lightbox" id="sistemaLightbox" hidden aria-hidden="true">
+        <button type="button" class="sistema-lightbox-backdrop" data-lightbox-close aria-label="Fechar"></button>
+        <div class="sistema-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+            <button type="button" class="sistema-lightbox-close" data-lightbox-close aria-label="Fechar">&times;</button>
+            <img class="sistema-lightbox-img" id="sistemaLightboxImg" src="" alt="">
+            <p class="sistema-lightbox-caption" id="sistemaLightboxCaption"></p>
+        </div>
+    </div>
+
     <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script defer src="js/i18n-page-strings.js"></script>
     <script defer src="js/i18n.js?v=8"></script>
     <script defer src="js/theme.js?v=1"></script>
     <script defer src="js/form-options.js?v=3"></script>
-    <script defer src="js/script.js?v=32"></script>
+    <script defer src="js/script.js?v=33"></script>
     <script defer src="js/wa-chat-viewport.js?v=4"></script>
     <script defer src="js/conversational-form.js?v=14"></script>
 </body>

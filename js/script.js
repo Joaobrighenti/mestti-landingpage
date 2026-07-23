@@ -1013,6 +1013,77 @@ if ('loading' in HTMLImageElement.prototype) {
 // Roadmap de implementação (home)
 // ============================================
 
+function initSistemaGridLightbox() {
+    const lightbox = document.getElementById('sistemaLightbox');
+    const lightboxImg = document.getElementById('sistemaLightboxImg');
+    const lightboxCaption = document.getElementById('sistemaLightboxCaption');
+    const grid = document.querySelector('.sistema-grid');
+    if (!lightbox || !lightboxImg || !grid) return;
+
+    let lastFocus = null;
+
+    function openLightbox(img, captionText) {
+        lastFocus = document.activeElement;
+        lightboxImg.src = img.currentSrc || img.src;
+        lightboxImg.alt = img.alt || '';
+        if (lightboxCaption) {
+            lightboxCaption.textContent = captionText || '';
+            lightboxCaption.hidden = !captionText;
+        }
+        lightbox.hidden = false;
+        lightbox.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(() => {
+            lightbox.classList.add('is-open');
+        });
+        document.body.classList.add('is-lightbox-open');
+        lightbox.querySelector('.sistema-lightbox-close')?.focus();
+    }
+
+    function closeLightbox() {
+        if (!lightbox.classList.contains('is-open') && lightbox.hidden) return;
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('is-lightbox-open');
+
+        const finish = () => {
+            lightbox.hidden = true;
+            lightboxImg.removeAttribute('src');
+            if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+            lastFocus = null;
+        };
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            finish();
+            return;
+        }
+
+        lightbox.addEventListener('transitionend', finish, { once: true });
+        window.setTimeout(finish, 320);
+    }
+
+    grid.addEventListener('click', (event) => {
+        const media = event.target.closest('.sistema-grid-media');
+        if (!media || !grid.contains(media)) return;
+        const img = media.querySelector('img');
+        if (!img) return;
+        const card = media.closest('.sistema-grid-card');
+        const captionText = card?.querySelector('.sistema-grid-caption span')?.textContent?.trim() || '';
+        openLightbox(img, captionText);
+    });
+
+    lightbox.addEventListener('click', (event) => {
+        if (event.target.closest('[data-lightbox-close]')) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+            closeLightbox();
+        }
+    });
+}
+
 function initImplementationRoadmap() {
     const phases = Array.from(document.querySelectorAll('.impl-roadmap-phase'));
     if (!phases.length) return;
@@ -1238,6 +1309,7 @@ function initAosAnimations() {
 
 document.addEventListener('DOMContentLoaded', () => {
     initImplementationRoadmap();
+    initSistemaGridLightbox();
     initHeroClientsStrip();
     initLpSystemCarousel();
     initAosAnimations();
