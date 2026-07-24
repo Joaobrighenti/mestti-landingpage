@@ -102,8 +102,43 @@
 }
 
 [data-theme="dark"] .service-offer-cta,
-[data-theme="dark"] .service-offer-cta:hover {
-    color: var(--on-primary);
+[data-theme="dark"] a.service-offer-cta {
+    background: var(--primary-blue) !important;
+    background-image: none !important;
+    color: #fff !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+[data-theme="dark"] .service-offer-cta:hover,
+[data-theme="dark"] a.service-offer-cta:hover {
+    background: var(--primary-dark) !important;
+    color: #fff !important;
+    box-shadow: none !important;
+}
+
+[data-theme="dark"] .service-offer-details-summary {
+    color: var(--gray-600);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--gray-200);
+}
+
+[data-theme="dark"] .service-offer-details-summary:hover {
+    color: var(--gray-800);
+    background: rgba(255, 255, 255, 0.07);
+    border-color: var(--gray-300);
+}
+
+[data-theme="dark"] .service-offer-details[open] .service-offer-details-summary {
+    color: var(--gray-700);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--gray-200);
+    border-bottom-color: transparent;
+}
+
+[data-theme="dark"] .service-offer-details-panel {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: var(--gray-200);
 }
 
 /* Sensor animado na faixa do hero — corpo do dispositivo em branco */
@@ -286,6 +321,19 @@
 [data-theme="dark"] .header-bottom,
 [data-theme="dark"] .header-bottom a {
     color: var(--on-primary);
+}
+
+[data-theme="dark"] .btn-primary {
+    background: var(--primary-blue) !important;
+    background-image: none !important;
+    box-shadow: none;
+    border: none;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+    background: var(--primary-dark) !important;
+    background-image: none !important;
+    box-shadow: none;
 }
 
 [data-theme="dark"] .impl-roadmap-timeline-block.is-highlight {
@@ -706,6 +754,20 @@
 [data-theme="dark"] .lp-emphasis {
     color: var(--gray-900) !important;
     border-top-color: var(--gray-200);
+}
+
+[data-theme="dark"] .home-practice-cta-btn,
+[data-theme="dark"] a.home-practice-cta-btn {
+    background: var(--primary-blue) !important;
+    color: #fff !important;
+    box-shadow: none;
+}
+
+[data-theme="dark"] .home-practice-cta-btn:hover,
+[data-theme="dark"] a.home-practice-cta-btn:hover {
+    background: var(--primary-dark) !important;
+    color: #fff !important;
+    box-shadow: none;
 }
 
 [data-theme="dark"] .lp-impact-card h3 {

@@ -110,7 +110,7 @@
                     <span class="hero-title-rest">Se a resposta demora, o <span class="hero-title-emphasis">problema</span> já começou.</span>
                 </h1>
                 <div class="hero-buttons">
-                    <a href="/" data-home-section="#controle-total" class="btn hero-cta-btn" data-i18n="home.hero.cta">Ver como funciona</a>
+                    <a href="/" data-home-section="#perguntas-sensor" class="btn hero-cta-btn" data-i18n="home.hero.cta">Ver como funciona</a>
                 </div>
             </div>
         </div>
@@ -137,8 +137,9 @@
     </div>
 
     <!-- Grade — telas do sistema (3 por linha) -->
-    <section class="sistema-grid-section" data-i18n-aria="home.grid.label" aria-label="Funcionalidades do sistema MESTTI">
+    <section class="sistema-grid-section" aria-labelledby="sistema-grid-title">
         <div class="container container--wide">
+            <h2 class="section-title" id="sistema-grid-title" data-aos="fade-up" data-i18n="home.grid.label">Funcionalidades do sistema</h2>
             <div class="sistema-grid" data-aos="fade-up">
                 <figure class="sistema-grid-card">
                     <figcaption class="sistema-grid-caption"><span data-i18n="home.grid.c1">Sequenciamento de produção</span></figcaption>
@@ -190,7 +191,7 @@
     </section>
 
     <!-- Na prática — perguntas do sensor -->
-    <div class="lp-page home-practice-wrap">
+    <div class="lp-page home-practice-wrap" id="perguntas-sensor">
         <section class="lp-section lp-section--alt" aria-labelledby="home-practice-title">
             <div class="container">
                 <div class="lp-section-head">
@@ -205,7 +206,9 @@
                     <div class="lp-question-card" data-i18n="page.sensoriamento.practice.q5">Qual máquina está com menor disponibilidade?</div>
                     <div class="lp-question-card" data-i18n="page.sensoriamento.practice.q6">A produção real está acompanhando o planejado?</div>
                 </div>
-                <p class="lp-emphasis" data-i18n="page.sensoriamento.practice.close">Essas respostas precisam estar disponíveis para o gestor no momento certo — não no fim do turno.</p>
+                <div class="home-practice-cta">
+                    <a href="/" data-home-section="#controle-total" class="btn home-practice-cta-btn" data-i18n="home.practice.cta">Veja como resolver</a>
+                </div>
             </div>
         </section>
     </div>
@@ -300,46 +303,44 @@
                                 <img src="images/sensor4.0.jpeg" alt="Sensoriamento de chão de fábrica" loading="lazy"
                                     decoding="async">
                             </div>
-                            <div class="service-offer-body">
-                                <h3 class="service-offer-title" data-i18n="home.s1.title">Sensoriamento de chão de fábrica</h3>
-                                <p class="service-offer-lead" data-i18n="home.s1.lead">Sensores industriais conectados ao MESTTI para capturar o
-                                    que acontece na linha, sem planilhas e sem atraso na informação.</p>
-                                <hr class="service-offer-divider">
-                                <p class="service-offer-list-heading" data-i18n="home.s1.heading">O que entra no sistema:</p>
-                                <ul class="service-offer-list">
-                                    <li data-i18n="home.s1.li1">Instalação orientada de sensores (contagem, máquina ligada/desligada, metro
-                                        linear e demais modelos do catálogo).</li>
-                                    <li data-i18n="home.s1.li2">Leitura em tempo real no painel MESTTI, com vínculo a ordens, máquinas e turnos.
-                                    </li>
-                                    <li data-i18n="home.s1.li3">Apontamento automático de produção e base para cálculo de OEE e perdas.</li>
-                                    <li data-i18n="home.s1.li4">Alertas configuráveis e histórico para auditoria e melhoria contínua.</li>
-                                </ul>
-                                <a href="/sensoriamento/" class="btn service-offer-cta" data-i18n="home.s1.cta">Saiba mais</a>
-                            </div>
+                            <h3 class="service-offer-title" data-i18n="home.s1.title">Sensoriamento de chão de fábrica</h3>
+                            <a href="/sensoriamento/" class="btn service-offer-cta" data-i18n="home.s1.cta">Nossos sensores</a>
+                            <details class="service-offer-details">
+                                <summary class="service-offer-details-summary" data-i18n="home.s1.heading">O que entra no sistema</summary>
+                                <div class="service-offer-details-panel">
+                                    <ul class="service-offer-list">
+                                        <li data-i18n="home.s1.li1">Instalação orientada de sensores (contagem, máquina ligada/desligada, metro
+                                            linear e demais modelos do catálogo).</li>
+                                        <li data-i18n="home.s1.li2">Leitura em tempo real no painel MESTTI, com vínculo a ordens, máquinas e turnos.
+                                        </li>
+                                        <li data-i18n="home.s1.li3">Apontamento automático de produção e base para cálculo de OEE e perdas.</li>
+                                        <li data-i18n="home.s1.li4">Alertas configuráveis e histórico para auditoria e melhoria contínua.</li>
+                                    </ul>
+                                </div>
+                            </details>
                         </article>
                         <article class="service-offer-card">
                             <div class="service-offer-photo" aria-label="Imagem do serviço">
                                 <img src="images/sequenciamento_page.png" alt="Sequenciamento e programação do chão de fábrica"
                                     loading="lazy" decoding="async">
                             </div>
-                            <div class="service-offer-body">
-                                <h3 class="service-offer-title" data-i18n="home.s2.title">Sequenciamento e programação do chão de fábrica</h3>
-                                <p class="service-offer-lead" data-i18n="home.s2.lead">Organize filas, prioridades e ritmo da produção com regras
-                                    alinhadas ao que acontece fisicamente na planta.</p>
-                                <hr class="service-offer-divider">
-                                <p class="service-offer-list-heading" data-i18n="home.s2.heading">O que entra no sistema:</p>
-                                <ul class="service-offer-list">
-                                    <li data-i18n="home.s2.li1">Definição e ajuste de sequências de ordens, rotas e gargalos visíveis no MESTTI.
-                                    </li>
-                                    <li data-i18n="home.s2.li2">Sincronização entre planejado e executado, com rastreio do que foi produzido em
-                                        cada etapa.</li>
-                                    <li data-i18n="home.s2.li3">Integração com seu fluxo atual (ERP/MES/outros) conforme o desenho do projeto.
-                                    </li>
-                                    <li data-i18n="home.s2.li4">Cenários de “o que acontece se…” para suportar decisões de programação no dia a
-                                        dia.</li>
-                                </ul>
-                                <a href="/sequenciamento/" class="btn service-offer-cta" data-i18n="home.s2.cta">Saiba mais</a>
-                            </div>
+                            <h3 class="service-offer-title" data-i18n="home.s2.title">Sequenciamento e programação do chão de fábrica</h3>
+                            <a href="/sequenciamento/" class="btn service-offer-cta" data-i18n="home.s2.cta">Nosso sequenciamento</a>
+                            <details class="service-offer-details">
+                                <summary class="service-offer-details-summary" data-i18n="home.s2.heading">O que entra no sistema</summary>
+                                <div class="service-offer-details-panel">
+                                    <ul class="service-offer-list">
+                                        <li data-i18n="home.s2.li1">Definição e ajuste de sequências de ordens, rotas e gargalos visíveis no MESTTI.
+                                        </li>
+                                        <li data-i18n="home.s2.li2">Sincronização entre planejado e executado, com rastreio do que foi produzido em
+                                            cada etapa.</li>
+                                        <li data-i18n="home.s2.li3">Integração com seu fluxo atual (ERP/MES/outros) conforme o desenho do projeto.
+                                        </li>
+                                        <li data-i18n="home.s2.li4">Cenários de “o que acontece se…” para suportar decisões de programação no dia a
+                                            dia.</li>
+                                    </ul>
+                                </div>
+                            </details>
                         </article>
                     </div>
                 </div>

@@ -131,8 +131,33 @@
     justify-content: stretch;
 }
 
+@keyframes hero-cta-pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 8px 22px rgba(5, 150, 105, 0.32);
+    }
+
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 10px 26px rgba(5, 150, 105, 0.42);
+    }
+}
+
+@keyframes hero-cta-pulse-ring {
+    0% {
+        transform: scale(1);
+        opacity: 0.28;
+    }
+
+    100% {
+        transform: scale(1.08);
+        opacity: 0;
+    }
+}
+
 .btn.hero-cta-btn,
 a.btn.hero-cta-btn {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -147,9 +172,23 @@ a.btn.hero-cta-btn {
     color: #fff !important;
     background: var(--green) !important;
     background-image: none !important;
-    box-shadow: 0 8px 22px rgba(5, 150, 105, 0.35);
+    box-shadow: 0 8px 22px rgba(5, 150, 105, 0.32);
     border: none;
-    transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+    transition: background-color 0.22s ease;
+    animation: hero-cta-pulse 2.4s ease-in-out infinite;
+    z-index: 0;
+}
+
+.btn.hero-cta-btn::before,
+a.btn.hero-cta-btn::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 11px;
+    border: 1.5px solid rgba(5, 150, 105, 0.35);
+    animation: hero-cta-pulse-ring 2.4s ease-out infinite;
+    pointer-events: none;
+    z-index: -1;
 }
 
 .btn.hero-cta-btn:hover,
@@ -157,8 +196,15 @@ a.btn.hero-cta-btn:hover {
     background: #047857 !important;
     background-image: none !important;
     color: #fff !important;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(5, 150, 105, 0.42);
+    transform: scale(1.02);
+    box-shadow: 0 10px 26px rgba(5, 150, 105, 0.42);
+    animation: none;
+}
+
+.btn.hero-cta-btn:hover::before,
+a.btn.hero-cta-btn:hover::before {
+    animation: none;
+    opacity: 0;
 }
 
 .hero-below-fold {
@@ -293,6 +339,13 @@ a.btn.hero-cta-btn:hover {
 
 @media (prefers-reduced-motion: reduce) {
     .hero-clients-track {
+        animation: none;
+    }
+
+    .btn.hero-cta-btn,
+    a.btn.hero-cta-btn,
+    .btn.hero-cta-btn::before,
+    a.btn.hero-cta-btn::before {
         animation: none;
     }
 }
@@ -442,16 +495,18 @@ a.btn.hero-cta-btn:hover {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary-blue), var(--primary-light));
+    background: var(--primary-blue) !important;
+    background-image: none !important;
     color: var(--white);
-    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+    border: none;
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.5);
+    background: var(--primary-dark) !important;
+    background-image: none !important;
+    transform: translateY(-2px);
+    box-shadow: none;
 }
 
 .btn-whatsapp {

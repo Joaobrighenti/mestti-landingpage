@@ -415,6 +415,45 @@
     border-top: 1px solid var(--gray-200);
 }
 
+.home-practice-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.75rem;
+    text-align: center;
+}
+
+.home-practice-cta-btn,
+a.home-practice-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: min(100%, 22rem);
+    min-height: 3.25rem;
+    padding: 1rem 1.75rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    color: #fff !important;
+    background: var(--primary-blue) !important;
+    background-image: none !important;
+    box-shadow: none;
+    transition: transform 0.22s ease, background-color 0.22s ease;
+}
+
+.home-practice-cta-btn:hover,
+a.home-practice-cta-btn:hover {
+    background: var(--primary-dark) !important;
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: none;
+}
+
 .lp-impact,
 .lp-fit,
 .lp-objections {

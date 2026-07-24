@@ -1,8 +1,10 @@
-/* Aplicar tema salvo antes do CSS pintar (evita flash) */
+/* Aplicar tema salvo antes do CSS pintar (evita flash). Padrão: escuro. */
 (function () {
     try {
-        if (localStorage.getItem('mesttiTheme') === 'dark') {
+        if (localStorage.getItem('mesttiTheme') !== 'light') {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
-    } catch { /* ignore */ }
+    } catch {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
 })();

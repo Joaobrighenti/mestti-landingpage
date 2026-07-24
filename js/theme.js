@@ -11,9 +11,9 @@
     function getStoredTheme() {
         try {
             const saved = localStorage.getItem(STORAGE_KEY);
-            return THEMES.includes(saved) ? saved : 'light';
+            return THEMES.includes(saved) ? saved : 'dark';
         } catch {
-            return 'light';
+            return 'dark';
         }
     }
 
@@ -23,7 +23,7 @@
     }
 
     function applyTheme(theme) {
-        if (!THEMES.includes(theme)) theme = 'light';
+        if (!THEMES.includes(theme)) theme = 'dark';
         const root = document.documentElement;
         if (theme === 'dark') {
             root.setAttribute('data-theme', 'dark');
