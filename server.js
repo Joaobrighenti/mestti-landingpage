@@ -46,6 +46,11 @@ app.get("/cmms/", (_req, res) => sendPage(res, path.join("cmms", "index.html")))
 app.get("/pass/", (_req, res) => sendPage(res, path.join("pass", "index.html")));
 app.get("/barra-pass/", (_req, res) => res.redirect(301, "/pass/"));
 
+// Hidden route for app download
+app.get("/download-app", (_req, res) => {
+  res.download(path.join(__dirname, "downloads", "mestti-apontamento.apk"));
+});
+
 app.post("/api/lead", async (req, res) => {
   try {
     const payload = req.body || {};
