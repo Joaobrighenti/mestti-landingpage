@@ -36,14 +36,6 @@
   color: #e4e4e7;
 }
 
-.mestti-cookie-banner__text--short {
-  display: none;
-}
-
-.mestti-cookie-banner__text--full {
-  display: inline;
-}
-
 .mestti-cookie-banner__actions {
   display: flex;
   flex-wrap: nowrap;
@@ -172,16 +164,8 @@ html.mestti-cookie-open .fab-contact {
 
   .mestti-cookie-banner__text {
     flex: none;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     line-height: 1.35;
-  }
-
-  .mestti-cookie-banner__text--short {
-    display: inline;
-  }
-
-  .mestti-cookie-banner__text--full {
-    display: none;
   }
 
   .mestti-cookie-banner__actions {
@@ -191,9 +175,11 @@ html.mestti-cookie-open .fab-contact {
 
   .mestti-cookie-banner__btn {
     flex: 1;
-    font-size: 0.8rem;
-    padding: 0.55rem 0.65rem;
+    font-size: 0.75rem;
+    padding: 0.55rem 0.5rem;
     min-height: 2.5rem;
+    white-space: normal;
+    line-height: 1.2;
   }
 
   .mestti-cookie-prefs-link {
