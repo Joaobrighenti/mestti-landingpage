@@ -600,15 +600,41 @@ async function syncLeadProgress(form, formId, {
     }
 }
 
-function sendLeadEmailInBackground(payload) {
-    fetch('/api/lead', {
+function attachMetaLeadFields(payload, form) {
+    const eventId =
+        (typeof window.generateMetaEventId === 'function'
+            ? window.generateMetaEventId()
+            : null) ||
+        (typeof crypto !== 'undefined' && crypto.randomUUID
+            ? crypto.randomUUID()
+            : `lead_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`);
+
+    const cookies = window.MesttiMeta?.getMetaCookies?.() || {};
+    const sessionId = form ? getOrCreateLeadSessionId(form) : '';
+
+    payload.eventId = eventId;
+    payload.eventSourceUrl = window.location.href;
+    payload.sessionId = sessionId;
+    payload.externalId = sessionId;
+    payload.marketingConsent = Boolean(window.MesttiMeta?.hasConsent?.());
+    if (cookies.fbp) payload.fbp = cookies.fbp;
+    if (cookies.fbc) payload.fbc = cookies.fbc;
+
+    return eventId;
+}
+
+async function sendLeadToApi(payload) {
+    const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
         keepalive: true
-    }).catch(() => {
-        /* Resend em segundo plano — falha não afeta a UX */
     });
+    if (!res.ok) {
+        throw new Error(`lead_http_${res.status}`);
+    }
+    const data = await res.json().catch(() => ({ ok: true }));
+    return data;
 }
 
 async function submitLeadForm(form, formId, {
@@ -632,14 +658,12 @@ async function submitLeadForm(form, formId, {
         payload.email = `whatsapp+${phoneDigits}@lead.mestti.local`;
     }
 
+    const metaEventId = attachMetaLeadFields(payload, form);
+
     form.dataset.mesttiSubmitting = '1';
 
     if (submitButton) {
         submitButton.disabled = true;
-    }
-
-    if (trackConversion) {
-        gtag_report_conversion();
     }
 
     const successMessage = mesttiT(
@@ -652,7 +676,38 @@ async function submitLeadForm(form, formId, {
         leadSource
     });
 
-    sendLeadEmailInBackground(payload);
+    let leadOk = false;
+    try {
+        const result = await sendLeadToApi(payload);
+        leadOk = Boolean(result?.ok !== false);
+    } catch {
+        leadOk = false;
+    }
+
+    if (!leadOk) {
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+        }
+        form.dataset.mesttiSubmitting = '';
+        openMesttiPopup({
+            title: mesttiT('form.errorTitle', 'Não foi possível enviar'),
+            message: mesttiT(
+                'form.error',
+                'Tente novamente em instantes ou fale conosco pelo WhatsApp.'
+            )
+        });
+        return false;
+    }
+
+    // Google Ads + Meta Lead somente após aceite do lead no backend
+    if (trackConversion) {
+        gtag_report_conversion();
+    }
+
+    if (window.MesttiMeta?.hasConsent?.()) {
+        window.MesttiMeta.trackMetaLead(metaEventId);
+    }
 
     clearLeadSessionId(form);
     form.dataset.mesttiSubmitted = '1';

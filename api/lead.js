@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { scheduleLeadMetaEvent } from "../lib/meta-lead.js";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const LEADS_TO_EMAIL = process.env.LEADS_TO_EMAIL || "";
@@ -32,8 +33,14 @@ export default async function handler(req, res) {
       return res.status(400).json({ ok: false, error: "name_email_required" });
     }
 
+    // Lead aceito → envia CAPI (falha da Meta não altera ok:true)
+    const finishOk = async (emailStatus) => {
+      await scheduleLeadMetaEvent(req, payload);
+      return res.status(200).json({ ok: true, email: emailStatus });
+    };
+
     if (!RESEND_API_KEY || !LEADS_TO_EMAIL) {
-      return res.status(200).json({ ok: true, email: "skipped" });
+      return await finishOk("skipped");
     }
 
     const resend = new Resend(RESEND_API_KEY);
@@ -90,12 +97,19 @@ export default async function handler(req, res) {
 
     if (error) {
       console.error("Resend error:", error);
-      return res.status(200).json({ ok: true, email: "failed" });
+      return await finishOk("failed");
     }
 
-    return res.status(200).json({ ok: true, email: "sent" });
+    return await finishOk("sent");
   } catch (err) {
     console.error("Lead email error:", err);
+    // Mesmo com falha de e-mail, o lead foi aceito — tenta CAPI se o payload for válido
+    try {
+      const payload = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+      await scheduleLeadMetaEvent(req, payload);
+    } catch {
+      /* ignore */
+    }
     return res.status(200).json({ ok: true, email: "failed" });
   }
 }

@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "node server.js",
-    "build": "node scripts/vercel-build.mjs"
+    "build": "node scripts/vercel-build.mjs",
+    "test": "node --test ./tests"
   },
   "dependencies": {
     "dotenv": "^16.6.1",

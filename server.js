@@ -7,6 +7,18 @@ import {
   normalizeLeadProgressPayload,
   forwardLeadToGoogleSheets,
 } from "./lib/sheets-sync.js";
+import { scheduleLeadMetaEvent } from "./lib/meta-lead.js";
+import { getMetaConversionsService } from "./lib/meta-conversions.js";
+import {
+  checkRateLimit,
+  getClientIp,
+  getClientUserAgent,
+  isAllowedEventName,
+  isAllowedEventSourceUrl,
+  isValidEventId,
+  sanitizeCookieToken,
+  sanitizeCustomData,
+} from "./lib/meta-request.js";
 
 dotenv.config();
 
@@ -20,6 +32,7 @@ const FROM_EMAIL = process.env.FROM_EMAIL || "onboarding@resend.dev";
 const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL || "";
 
 const app = express();
+app.set("trust proxy", 1);
 app.use(express.json({ limit: "200kb" }));
 
 // Static assets
@@ -75,8 +88,13 @@ app.post("/api/lead", async (req, res) => {
       return res.status(400).json({ ok: false, error: "name_contact_required" });
     }
 
+    const finishOk = async (emailStatus) => {
+      await scheduleLeadMetaEvent(req, payload);
+      return res.json({ ok: true, email: emailStatus });
+    };
+
     if (!RESEND_API_KEY || !LEADS_TO_EMAIL) {
-      return res.json({ ok: true, email: "skipped" });
+      return await finishOk("skipped");
     }
 
     const resend = new Resend(RESEND_API_KEY);
@@ -132,13 +150,88 @@ app.post("/api/lead", async (req, res) => {
 
     if (error) {
       console.error("Resend error:", error);
-      return res.json({ ok: true, email: "failed" });
+      return await finishOk("failed");
     }
 
-    return res.json({ ok: true, email: "sent" });
+    return await finishOk("sent");
   } catch (err) {
     console.error("Lead email error:", err);
+    try {
+      await scheduleLeadMetaEvent(req, req.body || {});
+    } catch {
+      /* ignore */
+    }
     return res.json({ ok: true, email: "failed" });
+  }
+});
+
+app.post("/api/meta-events", async (req, res) => {
+  try {
+    const ip = getClientIp(req);
+    const rate = checkRateLimit(`meta:${ip || "unknown"}`, { windowMs: 60_000, max: 40 });
+    if (!rate.allowed) {
+      return res.status(429).json({ ok: false, error: "rate_limited" });
+    }
+
+    const raw = req.body || {};
+    if (raw.access_token != null || raw.accessToken != null) {
+      return res.status(400).json({ ok: false, error: "invalid_payload" });
+    }
+
+    const eventName = typeof raw.eventName === "string" ? raw.eventName.trim() : "";
+    if (!isAllowedEventName(eventName, { publicOnly: true })) {
+      return res.status(400).json({ ok: false, error: "event_not_allowed" });
+    }
+
+    const eventId = typeof raw.eventId === "string" ? raw.eventId.trim() : "";
+    if (!isValidEventId(eventId)) {
+      return res.status(400).json({ ok: false, error: "invalid_event_id" });
+    }
+
+    const meta = getMetaConversionsService();
+    const eventSourceUrl =
+      typeof raw.eventSourceUrl === "string" ? raw.eventSourceUrl.trim() : "";
+
+    if (!isAllowedEventSourceUrl(eventSourceUrl, meta.siteDomain)) {
+      return res.status(400).json({ ok: false, error: "invalid_event_source_url" });
+    }
+
+    const fbp = sanitizeCookieToken(raw.fbp);
+    const fbc = sanitizeCookieToken(raw.fbc);
+    const externalId =
+      typeof raw.externalId === "string" ? raw.externalId.trim().slice(0, 128) : "";
+    const customData = sanitizeCustomData(raw.customData);
+    const userAgent = getClientUserAgent(req);
+
+    const baseParams = {
+      eventId,
+      eventSourceUrl,
+      clientIpAddress: ip,
+      clientUserAgent: userAgent,
+      fbp: fbp || undefined,
+      fbc: fbc || undefined,
+      externalId: externalId || undefined,
+      customData,
+    };
+
+    try {
+      if (eventName === "Contact") {
+        const contactMethod =
+          typeof raw.contactMethod === "string"
+            ? raw.contactMethod.trim().slice(0, 32)
+            : customData?.contact_method;
+        await meta.sendContact({ ...baseParams, contactMethod });
+      } else {
+        await meta.sendViewContent(baseParams);
+      }
+    } catch {
+      /* já logado no serviço */
+    }
+
+    return res.json({ ok: true });
+  } catch (err) {
+    console.error("[meta-events] error", { error: err?.message || "unknown" });
+    return res.json({ ok: true, warning: "accepted_with_error" });
   }
 });
 

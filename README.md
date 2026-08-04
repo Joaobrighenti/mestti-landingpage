@@ -127,6 +127,15 @@ Edite as variáveis CSS no início de `styles.css`:
 - **Tablet**: Grids adaptam para 2 colunas
 - **Mobile**: Layout em coluna única, menu hamburger
 
+## 📊 Meta Pixel + Conversions API
+
+Rastreamento híbrido (navegador + servidor) com eventos Lead, Contact e ViewContent.
+Documentação completa: [`docs/meta-conversions.md`](docs/meta-conversions.md).
+
+```bash
+npm test
+```
+
 ## 🔧 Tecnologias
 
 - HTML5 semântico

@@ -1,0 +1,127 @@
+/* Banner mínimo de consentimento de cookies de marketing */
+
+.mestti-cookie-banner {
+  position: fixed;
+  z-index: 10050;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
+}
+
+.mestti-cookie-banner__inner {
+  pointer-events: auto;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  padding: 1rem 1.15rem;
+  background: var(--gray-900, #18181b);
+  color: #f4f4f5;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
+}
+
+.mestti-cookie-banner__text {
+  flex: 1 1 280px;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: #e4e4e7;
+}
+
+.mestti-cookie-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+}
+
+.mestti-cookie-banner__btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.mestti-cookie-banner__btn--primary {
+  background: var(--primary-blue, #024578);
+  color: #fff;
+}
+
+.mestti-cookie-banner__btn--primary:hover {
+  background: var(--primary-light, #0369a1);
+}
+
+.mestti-cookie-banner__btn--ghost {
+  background: transparent;
+  color: #e4e4e7;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.mestti-cookie-banner__btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mestti-cookie-prefs-link {
+  position: fixed;
+  z-index: 10040;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  appearance: none;
+  border: 1px solid var(--gray-300, #d4d4d8);
+  background: var(--white, #fff);
+  color: var(--gray-600, #52525b);
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.35rem 0.55rem;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.85;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.mestti-cookie-prefs-link:hover {
+  opacity: 1;
+  color: var(--gray-800, #27272a);
+}
+
+html.dark .mestti-cookie-prefs-link,
+body.dark-theme .mestti-cookie-prefs-link {
+  background: #27272a;
+  border-color: #3f3f46;
+  color: #a1a1aa;
+}
+
+@media (max-width: 480px) {
+  .mestti-cookie-banner__inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mestti-cookie-banner__actions {
+    width: 100%;
+  }
+
+  .mestti-cookie-banner__btn {
+    flex: 1;
+  }
+
+  .mestti-cookie-prefs-link {
+    left: auto;
+    right: 0.75rem;
+  }
+}
