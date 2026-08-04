@@ -72,6 +72,7 @@
 
   function hideBanner() {
     document.getElementById('mesttiCookieBanner')?.remove();
+    document.documentElement.classList.remove('mestti-cookie-open');
   }
 
   function showBanner() {
@@ -83,15 +84,16 @@
     banner.setAttribute('role', 'dialog');
     banner.setAttribute('aria-live', 'polite');
     banner.setAttribute('aria-label', 'Preferências de cookies');
+    document.documentElement.classList.add('mestti-cookie-open');
     banner.innerHTML = `
       <div class="mestti-cookie-banner__inner">
         <p class="mestti-cookie-banner__text">
-          Usamos cookies de marketing (Meta Pixel) para medir campanhas e melhorar nossos anúncios.
-          Cookies estritamente necessários continuam ativos. Você pode aceitar ou recusar.
+          <span class="mestti-cookie-banner__text--short">Usamos cookies de marketing para melhorar nossos anúncios. Você aceita?</span>
+          <span class="mestti-cookie-banner__text--full">Para entender o que funciona melhor nos nossos anúncios, usamos cookies de marketing. Os essenciais já estão ativos — e você escolhe se aceita os demais.</span>
         </p>
         <div class="mestti-cookie-banner__actions">
           <button type="button" class="mestti-cookie-banner__btn mestti-cookie-banner__btn--ghost" data-consent="decline">
-            Recusar
+            Agora não
           </button>
           <button type="button" class="mestti-cookie-banner__btn mestti-cookie-banner__btn--primary" data-consent="accept">
             Aceitar
