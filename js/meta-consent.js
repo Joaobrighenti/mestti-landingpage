@@ -52,12 +52,14 @@
   function acceptMarketing() {
     writeConsent(ACCEPTED);
     hideBanner();
+    ensurePrefsLink();
     notify(ACCEPTED);
   }
 
   function declineMarketing() {
     writeConsent(DECLINED);
     hideBanner();
+    ensurePrefsLink();
     notify(DECLINED);
   }
 
@@ -67,6 +69,7 @@
     } catch {
       /* ignore */
     }
+    document.getElementById('mesttiCookiePrefs')?.remove();
     showBanner();
   }
 
@@ -111,6 +114,11 @@
   }
 
   function ensurePrefsLink() {
+    // Só após o usuário decidir — evita conflito com o FAB do WhatsApp
+    if (!hasDecided()) {
+      document.getElementById('mesttiCookiePrefs')?.remove();
+      return;
+    }
     if (document.getElementById('mesttiCookiePrefs')) return;
     const link = document.createElement('button');
     link.type = 'button';
@@ -125,11 +133,13 @@
   }
 
   function init() {
-    ensurePrefsLink();
     if (!hasDecided()) {
       showBanner();
-    } else if (hasMarketingConsent()) {
-      notify(ACCEPTED);
+    } else {
+      ensurePrefsLink();
+      if (hasMarketingConsent()) {
+        notify(ACCEPTED);
+      }
     }
   }
 
