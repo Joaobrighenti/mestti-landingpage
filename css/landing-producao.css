@@ -610,10 +610,9 @@ a.home-practice-cta-btn:hover {
 }
 
 .lp-question-card {
-    padding: 1rem 1.1rem;
-    border-radius: 12px;
-    border: 1px solid var(--lp-border);
-    background: var(--white);
+    padding: 0.35rem 0;
+    border: none;
+    background: transparent;
     color: var(--lp-blue-dark);
     font-weight: 750;
     font-size: 0.95rem;

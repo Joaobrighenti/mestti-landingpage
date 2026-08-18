@@ -1,21 +1,21 @@
 /* Entry point: importa módulos (manter ordem) */
 
 @import url("./base.css");
-@import url("./header.css?v=5");
+@import url("./header.css?v=6");
 @import url("./lang-switcher.css?v=1");
 @import url("./theme-switcher.css?v=1");
 @import url("./components-popup.css");
-@import url("./hero.css");
-@import url("./site-sections.css");
+@import url("./hero.css?v=7");
+@import url("./site-sections.css?v=4");
 @import url("./sistema-carousel.css?v=14");
-@import url("./cta-modal-footer-pages.css");
+@import url("./cta-modal-footer-pages.css?v=1");
 @import url("./conversational-form.css?v=14");
 @import url("./sensor-footer.css");
 @import url("./atuacao-sensores.css?v=7");
-@import url("./implementation-roadmap.css?v=13");
+@import url("./implementation-roadmap.css?v=18");
 @import url("./cmms.css");
 @import url("./responsive.css?v=4");
-@import url("./dark-theme.css?v=18");
+@import url("./dark-theme.css?v=30");
 @import url("./fab-contact.css?v=3");
-@import url("./mobile-ios.css?v=10");
+@import url("./mobile-ios.css?v=11");
 @import url("./cookie-consent.css?v=5");

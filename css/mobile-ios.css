@@ -26,10 +26,6 @@ html.no-aos [data-aos] {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .hero-video-bg-media {
-        display: none;
-    }
-
     .hero-clients-track {
         animation: none !important;
     }
@@ -72,25 +68,6 @@ html.no-aos [data-aos] {
 
     .header-nav {
         padding-bottom: max(var(--spacing-xl), env(safe-area-inset-bottom, 0px));
-    }
-}
-
-/* Vídeo de fundo — Safari iOS */
-.hero-video-bg,
-.hero-video-bg-media {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
-@media (max-width: 768px) {
-    .hero-first-fold .hero-video-bg {
-        max-height: 100%;
-    }
-
-    .hero-video-bg-media {
-        object-position: center top;
     }
 }
 

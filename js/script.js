@@ -1140,30 +1140,78 @@ function initSistemaGridLightbox() {
 }
 
 function initImplementationRoadmap() {
-    const phases = Array.from(document.querySelectorAll('.impl-roadmap-phase'));
-    if (!phases.length) return;
+    const flow = document.querySelector('.impl-roadmap-flow');
+    const steps = Array.from(document.querySelectorAll('.impl-roadmap-step'));
+    const dotsWrap = document.querySelector('.impl-roadmap-dots');
+    if (!flow || !steps.length || !dotsWrap) return;
 
-    function setPhaseOpen(phase, open) {
-        const btn = phase.querySelector('.impl-roadmap-phase-head');
-        const body = phase.querySelector('.impl-roadmap-phase-body');
-        if (!btn || !body) return;
+    const mq = window.matchMedia('(max-width: 900px)');
+    let active = 0;
 
-        phase.classList.toggle('is-open', open);
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        body.setAttribute('aria-hidden', open ? 'false' : 'true');
+    function labelFor(index) {
+        const lang = window.MESTTI_LANG || window.MesttiI18n?.getLang?.() || 'pt';
+        if (lang === 'en') return `Step ${index + 1} of ${steps.length}`;
+        if (lang === 'es') return `Etapa ${index + 1} de ${steps.length}`;
+        return `Etapa ${index + 1} de ${steps.length}`;
     }
 
-    phases.forEach((phase) => {
-        const btn = phase.querySelector('.impl-roadmap-phase-head');
-        if (!btn) return;
-
-        setPhaseOpen(phase, false);
-
-        btn.addEventListener('click', () => {
-            const willOpen = !phase.classList.contains('is-open');
-            phases.forEach((other) => setPhaseOpen(other, other === phase && willOpen));
+    function nearestIndex() {
+        const left = flow.scrollLeft;
+        let best = 0;
+        let bestDist = Infinity;
+        steps.forEach((step, index) => {
+            const dist = Math.abs(step.offsetLeft - left);
+            if (dist < bestDist) {
+                bestDist = dist;
+                best = index;
+            }
         });
-    });
+        return best;
+    }
+
+    function setActive(index, scroll) {
+        active = Math.max(0, Math.min(index, steps.length - 1));
+        Array.from(dotsWrap.children).forEach((dot, i) => {
+            dot.classList.toggle('is-active', i === active);
+            dot.setAttribute('aria-current', i === active ? 'true' : 'false');
+        });
+        if (scroll) {
+            const left = steps[active].getBoundingClientRect().left - flow.getBoundingClientRect().left + flow.scrollLeft;
+            flow.scrollTo({ left, behavior: 'smooth' });
+        }
+    }
+
+    function renderDots() {
+        dotsWrap.replaceChildren();
+        if (!mq.matches) {
+            dotsWrap.hidden = true;
+            return;
+        }
+        dotsWrap.hidden = false;
+        steps.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = `impl-roadmap-dot${index === active ? ' is-active' : ''}`;
+            dot.setAttribute('aria-label', labelFor(index));
+            dot.addEventListener('click', () => setActive(index, true));
+            dotsWrap.appendChild(dot);
+        });
+        setActive(nearestIndex(), false);
+    }
+
+    flow.addEventListener('scroll', () => {
+        if (!mq.matches) return;
+        const next = nearestIndex();
+        if (next !== active) setActive(next, false);
+    }, { passive: true });
+
+    if (typeof mq.addEventListener === 'function') {
+        mq.addEventListener('change', renderDots);
+    } else if (typeof mq.addListener === 'function') {
+        mq.addListener(renderDots);
+    }
+
+    renderDots();
 }
 
 function lpCarouselDotLabel(index, total) {

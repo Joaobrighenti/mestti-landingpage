@@ -4,6 +4,7 @@
 (function () {
     const STORAGE_KEY = 'mesttiTheme';
     const THEMES = ['light', 'dark'];
+    const DEFAULT_THEME = 'light';
 
     const SUN = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
     const MOON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>';
@@ -11,9 +12,9 @@
     function getStoredTheme() {
         try {
             const saved = localStorage.getItem(STORAGE_KEY);
-            return THEMES.includes(saved) ? saved : 'dark';
+            return THEMES.includes(saved) ? saved : DEFAULT_THEME;
         } catch {
-            return 'dark';
+            return DEFAULT_THEME;
         }
     }
 
@@ -23,7 +24,7 @@
     }
 
     function applyTheme(theme) {
-        if (!THEMES.includes(theme)) theme = 'dark';
+        if (!THEMES.includes(theme)) theme = DEFAULT_THEME;
         const root = document.documentElement;
         if (theme === 'dark') {
             root.setAttribute('data-theme', 'dark');
