@@ -795,6 +795,21 @@ a.footer-apk-btn:hover {
     border-top: 1px solid var(--gray-200);
 }
 
+.footer-legal-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+}
+
+.footer-cnpj {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    line-height: 1.5;
+}
+
 .footer-legal {
     font-size: 0.8rem;
     color: var(--gray-500);

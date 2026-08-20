@@ -30,6 +30,7 @@
         solucao: [
             { value: 'sensoriamento', labelKey: 'options.solucao.sensoriamento', label: 'Sensoriamento de chão de fábrica' },
             { value: 'sequenciamento', labelKey: 'options.solucao.sequenciamento', label: 'Sequenciamento e programação' },
+            { value: 'eficiencia-energetica', labelKey: 'options.solucao.energia', label: 'Eficiência energética' },
             { value: 'monitoramento', labelKey: 'options.solucao.monitoramento', label: 'Monitoramento de indicadores em tempo real' },
             { value: 'plataforma', labelKey: 'options.solucao.plataforma', label: 'Plataforma completa MESTTI' }
         ]

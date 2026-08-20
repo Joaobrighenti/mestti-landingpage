@@ -44,9 +44,9 @@
     /* Transições */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    /* Cabeçalho — cinza claro neutro (sem tom azulado) */
-    --header-bg: var(--gray-100);
-    --header-nav-muted: var(--gray-700);
+    /* Cabeçalho — tema claro: fundo branco e texto preto */
+    --header-bg: #ffffff;
+    --header-nav-muted: var(--gray-900);
     --header-border: var(--gray-200);
 
     --page-bg: #ffffff;

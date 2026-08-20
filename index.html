@@ -29,8 +29,8 @@
             transform: none !important;
         }
     </style>
-    <link rel="stylesheet" href="css/entry.css?v=84">
-    <link rel="stylesheet" href="css/landing-producao.css?v=10">
+    <link rel="stylesheet" href="css/entry.css?v=106">
+    <link rel="stylesheet" href="css/landing-producao.css?v=14">
 </head>
 
 <body data-page="home">
@@ -237,6 +237,23 @@
         </div>
     </div>
 
+    <!-- Investimento — eficiência energética -->
+    <section class="news-split" id="eficiencia-energetica" aria-labelledby="invest-energy-title">
+        <div class="container container--wide">
+            <div class="news-split-grid">
+                <figure class="news-split-media" data-aos="fade-up">
+                    <img src="img-empresa/STARTUP.png" alt="MESTTI selecionada para acelerar a eficiência energética nas indústrias" loading="lazy" decoding="async" data-i18n-alt="invest.energy.imgAlt">
+                </figure>
+                <div class="news-split-copy" data-aos="fade-up" data-aos-delay="80">
+                    <p class="news-split-kicker" data-i18n="invest.energy.kicker">Novidade</p>
+                    <h2 id="invest-energy-title" class="news-split-title" data-i18n="invest.energy.title">Tecnologia da Mestti ganha reconhecimento nacional</h2>
+                    <p class="news-split-body" data-i18n="invest.energy.body">A Mestti foi a única startup do Sul do Brasil selecionada para uma iniciativa nacional voltada à eficiência energética na indústria.</p>
+                    <p class="news-split-body" data-i18n="invest.energy.body2">O projeto impulsiona o desenvolvimento da nossa nova geração de sensoriamento industrial, conectando máquinas, consumo de energia e dados de produção para identificar desperdícios e transformar energia em um indicador estratégico de gestão.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Grade — telas do sistema (3 por linha) -->
     <section class="sistema-grid-section" aria-labelledby="sistema-grid-title">
         <div class="container container--wide">
@@ -291,24 +308,92 @@
         </div>
     </section>
 
-    <!-- Na prática — perguntas do sensor -->
+    <!-- Na prática — como o sensor responde no chão de fábrica -->
     <div class="lp-page home-practice-wrap" id="perguntas-sensor">
-        <section class="lp-section lp-section--alt" aria-labelledby="home-practice-title">
-            <div class="container">
-                <div class="lp-section-head">
+        <section class="lp-section lp-solve" id="como-resolver" data-practice-solve aria-labelledby="home-practice-title">
+            <div class="container container--wide">
+                <div class="lp-solve-head">
                     <p class="lp-section-label" data-i18n="page.sensoriamento.practice.label">Na prática</p>
-                    <h2 id="home-practice-title" data-i18n="page.sensoriamento.practice.h2">Perguntas que o sensor responde todos os dias.</h2>
+                    <h2 id="home-practice-title" class="lp-solve-title" data-i18n="home.solve.title">Como o sensor responde no chão de fábrica</h2>
                 </div>
-                <div class="lp-question-grid">
-                    <div class="lp-question-card" data-i18n="page.sensoriamento.practice.q1">Quanto a máquina produziu hoje?</div>
-                    <div class="lp-question-card" data-i18n="page.sensoriamento.practice.q2">Quanto tempo ela ficou rodando?</div>
-                    <div class="lp-question-card" data-i18n="page.sensoriamento.practice.q3">Quanto tempo ficou parada?</div>
-                    <div class="lp-question-card" data-i18n="page.sensoriamento.practice.q4">Em qual horário a parada aconteceu?</div>
-                    <div class="lp-question-card" data-i18n="page.sensoriamento.practice.q5">Qual máquina está com menor disponibilidade?</div>
-                    <div class="lp-question-card" data-i18n="page.sensoriamento.practice.q6">A produção real está acompanhando o planejado?</div>
-                </div>
-                <div class="home-practice-cta">
-                    <a href="/" data-home-section="#controle-total" class="btn home-practice-cta-btn" data-i18n="home.practice.cta">Veja como resolver</a>
+                <div class="lp-solve-grid">
+                    <div class="lp-solve-visual">
+                        <div class="lp-solve-canvas lp-solve-canvas--photo">
+                            <figure class="lp-solve-photo">
+                                <img src="img-sistema/sensor.png" alt="Sensor MESTTI instalado no chão de fábrica" width="800" height="800" loading="lazy" decoding="async">
+                            </figure>
+                            <div class="lp-solve-live is-active" data-solve-panel="0">
+                                <p class="lp-solve-live-kicker"><i></i> <span data-i18n="home.solve.live1.kicker">Produção ao vivo</span></p>
+                                <dl>
+                                    <div><dt data-i18n="home.solve.live1.a">Peças hoje</dt><dd>1.284</dd></div>
+                                    <div><dt data-i18n="home.solve.live1.b">Cadência</dt><dd>184 pç/h</dd></div>
+                                    <div><dt data-i18n="home.solve.live1.c">Turno</dt><dd>6h 18min</dd></div>
+                                </dl>
+                            </div>
+                            <div class="lp-solve-live" data-solve-panel="1">
+                                <p class="lp-solve-live-kicker"><i></i> <span data-i18n="home.solve.live2.kicker">Status da máquina</span></p>
+                                <dl>
+                                    <div><dt data-i18n="home.solve.live2.a">Estado</dt><dd data-i18n="home.hero.board.running">RODANDO</dd></div>
+                                    <div><dt data-i18n="home.solve.live2.b">Tempo rodando</dt><dd>6h 18min</dd></div>
+                                    <div><dt data-i18n="home.solve.live2.c">Última parada</dt><dd>09:42</dd></div>
+                                </dl>
+                            </div>
+                            <div class="lp-solve-live" data-solve-panel="2">
+                                <p class="lp-solve-live-kicker"><i></i> <span data-i18n="home.solve.live3.kicker">Parada registrada</span></p>
+                                <dl>
+                                    <div><dt data-i18n="home.solve.live3.a">Início</dt><dd>09:42</dd></div>
+                                    <div><dt data-i18n="home.solve.live3.b">Duração</dt><dd>18 min</dd></div>
+                                    <div><dt data-i18n="home.solve.live3.c">Disponibilidade</dt><dd>91.8%</dd></div>
+                                </dl>
+                            </div>
+                            <div class="lp-solve-live" data-solve-panel="3">
+                                <p class="lp-solve-live-kicker"><i></i> <span data-i18n="home.solve.live4.kicker">Real vs planejado</span></p>
+                                <dl>
+                                    <div><dt data-i18n="home.solve.live4.a">Planejado</dt><dd>1.450</dd></div>
+                                    <div><dt data-i18n="home.solve.live4.b">Real</dt><dd>1.284</dd></div>
+                                    <div><dt data-i18n="home.solve.live4.c">OEE</dt><dd>87.4%</dd></div>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lp-solve-list">
+                        <button type="button" class="lp-solve-item is-active" aria-expanded="true" data-solve-item="0">
+                            <span class="lp-solve-check" aria-hidden="true">
+                                <svg viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="4"/><path d="M5.2 10.4l3.1 3.1 6.5-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span class="lp-solve-item-body">
+                                <span class="lp-solve-item-title" data-i18n="home.solve.item1.title">Contagem automática de peças em tempo real</span>
+                                <span class="lp-solve-item-desc" data-i18n="home.solve.item1.desc">Cada peça produzida é capturada 24 horas por dia, sem digitação e sem conferência no fim do turno. Desde o primeiro dia, a equipe tem a produção real de cada máquina.</span>
+                            </span>
+                        </button>
+                        <button type="button" class="lp-solve-item" aria-expanded="false" data-solve-item="1">
+                            <span class="lp-solve-check" aria-hidden="true">
+                                <svg viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="4"/><path d="M5.2 10.4l3.1 3.1 6.5-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span class="lp-solve-item-body">
+                                <span class="lp-solve-item-title" data-i18n="home.solve.item2.title">Monitoramento contínuo de status da máquina</span>
+                                <span class="lp-solve-item-desc" data-i18n="home.solve.item2.desc">O sensor identifica se o equipamento está rodando ou parado, com horário e duração. A gestão vê o chão de fábrica ao vivo — não no relatório do dia seguinte.</span>
+                            </span>
+                        </button>
+                        <button type="button" class="lp-solve-item" aria-expanded="false" data-solve-item="2">
+                            <span class="lp-solve-check" aria-hidden="true">
+                                <svg viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="4"/><path d="M5.2 10.4l3.1 3.1 6.5-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span class="lp-solve-item-body">
+                                <span class="lp-solve-item-title" data-i18n="home.solve.item3.title">Paradas registradas no momento em que acontecem</span>
+                                <span class="lp-solve-item-desc" data-i18n="home.solve.item3.desc">Quando a linha para, o horário entra no MESTTI automaticamente. Fica visível quanto tempo ficou parada, em qual horário e qual máquina está com menor disponibilidade.</span>
+                            </span>
+                        </button>
+                        <button type="button" class="lp-solve-item" aria-expanded="false" data-solve-item="3">
+                            <span class="lp-solve-check" aria-hidden="true">
+                                <svg viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="4"/><path d="M5.2 10.4l3.1 3.1 6.5-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span class="lp-solve-item-body">
+                                <span class="lp-solve-item-title" data-i18n="home.solve.item4.title">Produção real acompanhando o planejado</span>
+                                <span class="lp-solve-item-desc" data-i18n="home.solve.item4.desc">Volume produzido, OEE e disponibilidade no mesmo painel. A decisão deixa de depender de estimativa e passa a ser baseada no que a máquina realmente fez.</span>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -418,7 +503,7 @@
                     <div class="services-offer-grid">
                         <article class="service-offer-card">
                             <div class="service-offer-photo" aria-label="Imagem do serviço">
-                                <img src="images/sensor4.0.jpeg" alt="Sensoriamento de chão de fábrica" loading="lazy"
+                                <img class="service-offer-photo-img--sensor" src="img-sistema/sensor.png" alt="Sensoriamento de chão de fábrica" loading="lazy"
                                     decoding="async">
                             </div>
                             <div class="service-offer-body">
@@ -436,6 +521,17 @@
                                 <h3 class="service-offer-title" data-i18n="home.s2.title">Sequenciamento e programação do chão de fábrica</h3>
                                 <p class="service-offer-lead" data-i18n="home.s2.lead">Organize filas, prioridades e ritmo da produção com regras alinhadas ao que acontece fisicamente na planta.</p>
                                 <a href="/sequenciamento/" class="btn service-offer-cta" data-i18n="home.s2.cta">Nosso sequenciamento</a>
+                            </div>
+                        </article>
+                        <article class="service-offer-card">
+                            <div class="service-offer-photo" aria-label="Imagem do serviço">
+                                <img src="img-sistema/energia.png" alt="Eficiência energética industrial com a MESTTI"
+                                    loading="lazy" decoding="async">
+                            </div>
+                            <div class="service-offer-body">
+                                <h3 class="service-offer-title" data-i18n="home.s3.title">Eficiência energética</h3>
+                                <p class="service-offer-lead" data-i18n="home.s3.lead">Monitore o consumo de energia ligado à produção, identifique desperdícios e transforme kWh em um indicador de gestão no MESTTI.</p>
+                                <a href="/" data-home-section="#eficiencia-energetica" class="btn service-offer-cta" data-i18n="home.s3.cta">Nossa eficiência energética</a>
                             </div>
                         </article>
                     </div>
@@ -517,7 +613,10 @@
                 </div>
             </div>
             <div class="footer-tractian-bottom">
-                <p class="footer-legal" data-i18n="footer.legal">© 2026 MESTTI. Todos os direitos reservados.</p>
+                <div class="footer-legal-block">
+                    <p class="footer-cnpj" data-i18n="footer.cnpj">Mestti Tecnologia LTDA - 63.380.944/0001-51</p>
+                    <p class="footer-legal" data-i18n="footer.legal">© 2026 MESTTI. Todos os direitos reservados.</p>
+                </div>
                 <div class="footer-social" aria-label="Redes sociais">
                     <a href="https://www.linkedin.com/company/mestti/" target="_blank" rel="noopener noreferrer"
                         aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -601,13 +700,13 @@
 
     <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script defer src="js/i18n-page-strings.js"></script>
-    <script defer src="js/i18n.js?v=14"></script>
+    <script defer src="js/i18n.js?v=19"></script>
     <script defer src="js/theme.js?v=2"></script>
     <script defer src="js/hero-live.js?v=3"></script>
-    <script defer src="js/form-options.js?v=3"></script>
+    <script defer src="js/form-options.js?v=5"></script>
     <script defer src="js/meta-consent.js?v=5"></script>
     <script defer src="js/meta-pixel.js?v=1"></script>
-    <script defer src="js/script.js?v=35"></script>
+    <script defer src="js/script.js?v=38"></script>
     <script defer src="js/wa-chat-viewport.js?v=4"></script>
     <script defer src="js/conversational-form.js?v=14"></script>
 </body>

@@ -193,7 +193,7 @@
     display: none; /* Setas removidas - carrossel rola automaticamente */
 }
 
-/* Grade de soluções — escala de 1 a 3 colunas */
+/* Soluções — carrossel estático (lado a lado, sem animação) */
 .services-offer-carousel {
     position: relative;
     max-width: 100%;
@@ -221,21 +221,11 @@
     max-width: none;
     min-width: 0;
     background: var(--white);
-    border: 2px solid #1f2933;
-    border-radius: 0.95rem;
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
     overflow: hidden;
-    box-shadow:
-        0 14px 36px rgba(24, 24, 27, 0.08),
-        0 2px 8px rgba(24, 24, 27, 0.04);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    box-shadow: none;
     box-sizing: border-box;
-}
-
-.service-offer-card:hover {
-    box-shadow:
-        0 18px 40px rgba(24, 24, 27, 0.12),
-        0 4px 12px rgba(24, 24, 27, 0.06);
-    transform: translateY(-2px);
 }
 
 .service-offer-photo {
@@ -272,6 +262,10 @@
 
 .service-offer-photo:has(img)::after {
     display: none;
+}
+
+.service-offer-photo img.service-offer-photo-img--sensor {
+    object-position: 62% 22%;
 }
 
 .service-offer-body {
@@ -436,7 +430,7 @@ a.service-offer-cta {
     background-image: none !important;
     color: #fff !important;
     border: none !important;
-    border-radius: 10px;
+    border-radius: 3px;
     text-decoration: none;
     box-shadow: none !important;
     box-sizing: border-box;
@@ -484,16 +478,38 @@ a.service-offer-cta:hover {
 }
 
 @media (min-width: 700px) {
-    .services-offer-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1.25rem;
+    .features-testimonials .container {
+        max-width: 1280px;
     }
 
-    .service-offer-card {
-        flex: 1 1 300px;
-        max-width: 380px;
+    .services-offer-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.85rem;
+    }
+
+    .service-offer-photo {
+        height: 150px;
+    }
+
+    .service-offer-body {
+        gap: 0.55rem;
+        padding: 0.85rem 0.85rem 0.95rem;
+    }
+
+    .service-offer-title {
+        font-size: 1.02rem;
+    }
+
+    .service-offer-lead {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 4;
+    }
+
+    .service-offer-cta,
+    a.service-offer-cta {
+        min-height: 2.6rem;
+        padding: 0.65rem 0.7rem;
+        font-size: 0.78rem;
     }
 }
 
@@ -679,6 +695,97 @@ a.service-offer-cta:hover {
 .feature-link:hover {
     color: var(--primary-dark);
     transform: translateX(4px);
+}
+
+/* ============================================
+   DOBRA — INVESTIMENTO / EFICIÊNCIA ENERGÉTICA
+   ============================================ */
+
+.news-split {
+    padding: clamp(3rem, 7vw, 5.5rem) 0;
+    background: var(--white);
+}
+
+.news-split .container--wide {
+    max-width: 1120px;
+}
+
+.news-split-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 320px) minmax(0, 34rem);
+    gap: clamp(1.75rem, 4vw, 3.25rem);
+    align-items: center;
+    justify-content: center;
+}
+
+.news-split-media {
+    margin: 0;
+    max-width: 320px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--gray-100);
+    box-shadow: 0 16px 36px rgba(24, 24, 27, 0.12);
+}
+
+.news-split-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.news-split-copy {
+    max-width: 34rem;
+}
+
+.news-split-kicker {
+    margin: 0 0 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary-blue);
+}
+
+.news-split-title {
+    margin: 0 0 1rem;
+    font-size: clamp(1.7rem, 3.4vw, 2.55rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.12;
+    color: var(--primary-dark);
+}
+
+.news-split-body {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--gray-600);
+}
+
+.news-split-body + .news-split-body {
+    margin-top: 0.85rem;
+}
+
+@media (max-width: 900px) {
+    .news-split {
+        padding: clamp(2.25rem, 6vw, 3.5rem) 0;
+    }
+
+    .news-split-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .news-split-copy {
+        max-width: 36rem;
+    }
+
+    .news-split-media {
+        max-width: 240px;
+        margin: 0 auto;
+    }
 }
 
 /* ============================================

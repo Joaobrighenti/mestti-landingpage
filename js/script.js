@@ -1410,11 +1410,36 @@ function initAosAnimations() {
 // AOS Initialization
 // ============================================
 
+function initPracticeSolve() {
+    const root = document.querySelector('[data-practice-solve]');
+    if (!root) return;
+
+    const items = Array.from(root.querySelectorAll('[data-solve-item]'));
+    const panels = Array.from(root.querySelectorAll('[data-solve-panel]'));
+    if (!items.length) return;
+
+    function activate(index) {
+        items.forEach((item, i) => {
+            const on = i === index;
+            item.classList.toggle('is-active', on);
+            item.setAttribute('aria-expanded', on ? 'true' : 'false');
+        });
+        panels.forEach((panel) => {
+            panel.classList.toggle('is-active', Number(panel.getAttribute('data-solve-panel')) === index);
+        });
+    }
+
+    items.forEach((item, i) => {
+        item.addEventListener('click', () => activate(i));
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initImplementationRoadmap();
     initSistemaGridLightbox();
     initHeroClientsStrip();
     initLpSystemCarousel();
+    initPracticeSolve();
     initAosAnimations();
 
     // Rodapé fixo: número só ao carregar a página

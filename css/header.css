@@ -1,31 +1,9 @@
 /* ============================================
-   HEADER — sempre visual do tema escuro
+   HEADER — claro: branco / texto preto / logo azul
+   escuro: tokens do [data-theme="dark"]
    ============================================ */
 
 .header {
-    /* Tokens escuros locais: o restante do site segue o tema da página */
-    color-scheme: dark;
-    --white: #141414;
-    --gray-50: #0f0f0f;
-    --gray-100: #1a1a1a;
-    --gray-200: #262626;
-    --gray-300: #404040;
-    --gray-400: #737373;
-    --gray-500: #a3a3a3;
-    --gray-600: #d4d4d4;
-    --gray-700: #e5e5e5;
-    --gray-800: #f0f0f0;
-    --gray-900: #fafafa;
-    --primary-light: #38bdf8;
-    --header-bg: rgba(20, 20, 20, 0.92);
-    --header-nav-muted: #d4d4d4;
-    --header-border: #2e2e2e;
-    --on-primary: #ffffff;
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
-    --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.5);
-    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.55);
-
     position: fixed;
     top: 0;
     left: 0;
@@ -135,11 +113,11 @@ body.has-site-header {
 }
 
 .header .logo-img--light {
-    display: none;
+    display: block;
 }
 
 .header .logo-img--dark {
-    display: block;
+    display: none;
 }
 
 .header-nav {
@@ -181,7 +159,7 @@ body.has-site-header {
 }
 
 .nav-link:hover {
-    color: #fff;
+    color: var(--gray-900);
 }
 
 .nav-link:hover::after,
@@ -279,8 +257,8 @@ body.has-site-header {
 }
 
 .header-icon-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
+    background: rgba(24, 24, 27, 0.06);
+    color: var(--gray-900);
 }
 
 .header-icon-btn svg {
@@ -302,8 +280,8 @@ body.has-site-header {
 }
 
 .header-link-contact:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.06);
+    color: var(--gray-900);
+    background: rgba(24, 24, 27, 0.04);
 }
 
 .header-link-contact[aria-current="page"] {
@@ -364,8 +342,8 @@ body.has-site-header {
 }
 
 .btn-login:hover {
-    color: #fff;
-    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--gray-900);
+    background-color: rgba(24, 24, 27, 0.04);
 }
 
 .btn-demo {
@@ -391,29 +369,29 @@ body.has-site-header {
 /* Botão fantasma (estilo referência) */
 .btn-demo--ghost {
     background: transparent;
-    color: var(--primary-light);
-    border: 1px solid rgba(56, 189, 248, 0.45);
+    color: var(--primary-blue);
+    border: 1px solid rgba(2, 69, 120, 0.35);
     box-shadow: none;
 }
 
 .btn-demo--ghost:hover {
-    background: rgba(56, 189, 248, 0.1);
-    color: #7dd3fc;
-    border-color: var(--primary-light);
+    background: rgba(2, 69, 120, 0.08);
+    color: var(--primary-dark);
+    border-color: var(--primary-blue);
 }
 
 /* Sobrescreve gradiente sólido do .btn-demo no cabeçalho */
 .header--tractian a.btn-demo.btn-demo--ghost {
     background: transparent;
-    color: var(--primary-light);
-    border: 1px solid rgba(56, 189, 248, 0.45);
+    color: var(--primary-blue);
+    border: 1px solid rgba(2, 69, 120, 0.35);
     box-shadow: none;
 }
 
 .header--tractian a.btn-demo.btn-demo--ghost:hover {
-    background: rgba(56, 189, 248, 0.1);
-    color: #7dd3fc;
-    border-color: var(--primary-light);
+    background: rgba(2, 69, 120, 0.08);
+    color: var(--primary-dark);
+    border-color: var(--primary-blue);
     transform: none;
 }
 
@@ -490,11 +468,11 @@ body[data-page="home"].has-site-header {
 
 .header.header--over-hero,
 .header.header--over-hero.header--tractian {
-    background-color: rgba(12, 12, 12, 0.88);
-    border-bottom-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.94);
+    border-bottom-color: var(--header-border);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 18px rgba(24, 24, 27, 0.06);
 }
 
 /* Menu mobile aberto: volta o fundo sólido para legibilidade */
@@ -508,21 +486,21 @@ body[data-page="home"].has-site-header {
 .header .nav-link,
 .header .header-link-contact,
 .header .btn-login {
-    color: #e8e8e8;
+    color: var(--header-nav-muted);
 }
 
 .header .nav-link:hover,
 .header .header-link-contact:hover,
 .header .btn-login:hover {
-    color: #fff;
+    color: var(--gray-900);
 }
 
 .header .header-link-contact[aria-current="page"] {
-    color: var(--primary-light);
+    color: var(--primary-blue);
 }
 
 .header .theme-switcher-btn.is-active {
-    background: var(--gray-200);
-    color: var(--gray-900);
+    background: rgba(2, 69, 120, 0.08);
+    color: var(--primary-blue);
 }
 
