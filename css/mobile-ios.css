@@ -22,6 +22,13 @@ html.no-aos [data-aos] {
     overflow-x: hidden;
 }
 
+@media (max-width: 768px) {
+    .hero-first-fold,
+    .hero.hero-first-fold {
+        overflow: clip;
+    }
+}
+
 /* 100vw causa scroll horizontal no iOS */
 .hero-conveyor-wrap {
     width: 100%;

@@ -259,7 +259,11 @@
     background: transparent;
     box-shadow: none;
     pointer-events: none;
-    touch-action: pan-y;
+    touch-action: auto;
+}
+
+.fabrica-stage * {
+    pointer-events: none;
 }
 
 .fabrica-canvas {
@@ -1502,12 +1506,13 @@ a.btn.hero-cta-btn:hover::before {
 }
 
 @media (max-width: 768px) {
-    .hero.hero-first-fold {
+    .hero.hero-first-fold,
+    .hero-first-fold {
         height: 100svh;
         min-height: 100svh;
         max-height: 100svh;
-        overscroll-behavior: none;
-        touch-action: pan-y;
+        overflow: clip;
+        touch-action: auto;
     }
 
     .hero-live-bar {
@@ -1538,7 +1543,8 @@ a.btn.hero-cta-btn:hover::before {
 
     .fabrica-stage {
         bottom: calc(4.6rem + env(safe-area-inset-bottom, 0px));
-        touch-action: pan-y;
+        overflow: clip;
+        touch-action: auto;
     }
 }
 
