@@ -259,7 +259,7 @@
     background: transparent;
     box-shadow: none;
     pointer-events: none;
-    touch-action: none;
+    touch-action: pan-y;
 }
 
 .fabrica-canvas {
@@ -1150,11 +1150,11 @@ a.btn.hero-cta-btn:hover::before {
 
 @keyframes hero-clients-marquee {
     from {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
 
     to {
-        transform: translateX(-50%);
+        transform: translate3d(-50%, 0, 0);
     }
 }
 
@@ -1502,16 +1502,43 @@ a.btn.hero-cta-btn:hover::before {
 }
 
 @media (max-width: 768px) {
+    .hero.hero-first-fold {
+        height: 100svh;
+        min-height: 100svh;
+        max-height: 100svh;
+        overscroll-behavior: none;
+        touch-action: pan-y;
+    }
+
     .hero-live-bar {
         top: calc(var(--site-header-bar, 3.5rem) + env(safe-area-inset-top, 0px));
     }
 
     .hero-first-fold > .hero-conveyor-wrap {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 4;
+        margin-top: 0;
         padding-bottom: env(safe-area-inset-bottom, 0px);
+        background: #f5f6f8;
+    }
+
+    .hero-first-fold .hero-clients-strip {
+        padding: 0.4rem 0 0.5rem;
+    }
+
+    .hero-first-fold .hero-client-logo,
+    .hero-first-fold .hero-client-logo--brighentti,
+    .hero-first-fold .hero-client-logo--nicopel,
+    .hero-first-fold .hero-client-logo--lg {
+        height: 48px;
     }
 
     .fabrica-stage {
-        bottom: calc(7.75rem + env(safe-area-inset-bottom, 0px));
+        bottom: calc(4.6rem + env(safe-area-inset-bottom, 0px));
+        touch-action: pan-y;
     }
 }
 

@@ -627,14 +627,22 @@ if (stage && canvas) {
                     camera.lookAt(look);
                 }
 
+                let sizedWidth = 0;
+                let sizedHeight = 0;
+
                 function resize() {
                     if (band) stage.style.bottom = band.offsetHeight + 'px';
                     if (strip) stage.style.top = (strip.offsetTop + strip.offsetHeight) + 'px';
                     const width = stage.clientWidth;
                     const height = stage.clientHeight;
-                    if (!width || !height) return;
+                    if (!width || height < 32) return;
+                    const sameWidth = Math.abs(width - sizedWidth) < 2;
+                    const barShift = Math.abs(height - sizedHeight) < 140;
+                    if (sizedWidth && sameWidth && barShift) return;
+                    sizedWidth = width;
+                    sizedHeight = height;
                     camera.aspect = width / height;
-                    camera.fov = width / height > 1.15 ? 40 : 46;
+                    camera.fov = width / height > 1.15 ? 40 : 44;
                     camera.updateProjectionMatrix();
                     renderer.setSize(width, height, false);
                     labelRenderer.setSize(width, height);
