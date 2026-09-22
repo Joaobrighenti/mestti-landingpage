@@ -48,6 +48,7 @@ app.get("/contato/", (_req, res) => sendPage(res, path.join("contato", "index.ht
 app.get("/empresa/", (_req, res) => sendPage(res, path.join("empresa", "index.html")));
 app.get("/atuacao/", (_req, res) => sendPage(res, path.join("atuacao", "index.html")));
 app.get("/sensoriamento/", (_req, res) => sendPage(res, path.join("sensoriamento", "index.html")));
+app.get("/qualidade/", (_req, res) => sendPage(res, path.join("qualidade", "index.html")));
 app.get("/producao/", (_req, res) => sendPage(res, path.join("producao", "index.html")));
 app.get("/sensores/", (_req, res) => sendPage(res, path.join("sensores", "index.html")));
 app.get("/sequenciamento/", (_req, res) => sendPage(res, path.join("sequenciamento", "index.html")));

@@ -1,5 +1,10 @@
 /* Correções Safari / iPhone — carregamento, overflow e animações */
 
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 /* Conteúdo visível antes do AOS inicializar (evita tela “em branco”) */
 body:not(.aos-initialized) [data-aos] {
     opacity: 1 !important;

@@ -37,6 +37,11 @@
       content_category: 'Solução Mestti',
       content_type: 'product',
     },
+    qualidade: {
+      content_name: 'Controle de qualidade',
+      content_category: 'Solução Mestti',
+      content_type: 'product',
+    },
   };
 
   let pixelInitialized = false;
@@ -208,6 +213,7 @@
       '/sensores': VIEW_CONTENT_PAGES.sensores,
       '/atuacao': VIEW_CONTENT_PAGES.atuacao,
       '/cmms': VIEW_CONTENT_PAGES.cmms,
+      '/qualidade': VIEW_CONTENT_PAGES.qualidade,
     };
     return map[path] || null;
   }

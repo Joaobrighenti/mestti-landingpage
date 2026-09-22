@@ -29,6 +29,8 @@
     { "source": "/sensores/", "destination": "/sensores/index.html" },
     { "source": "/sensoriamento", "destination": "/sensoriamento/index.html" },
     { "source": "/sensoriamento/", "destination": "/sensoriamento/index.html" },
+    { "source": "/qualidade", "destination": "/qualidade/index.html" },
+    { "source": "/qualidade/", "destination": "/qualidade/index.html" },
     { "source": "/sequenciamento", "destination": "/sequenciamento/index.html" },
     { "source": "/sequenciamento/", "destination": "/sequenciamento/index.html" },
     { "source": "/pass", "destination": "/pass/index.html" },

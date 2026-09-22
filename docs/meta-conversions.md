@@ -10,7 +10,7 @@ Integração híbrida: Pixel no navegador + Conversions API no backend, com dedu
 | **Contact** | Clique em WhatsApp, `tel:` ou `mailto:` | Pixel + `POST /api/meta-events` |
 | **ViewContent** | Páginas de solução/produto | Pixel + `POST /api/meta-events` |
 
-Páginas com ViewContent: `/sensoriamento/`, `/sequenciamento/`, `/producao/`, `/sensores/`, `/atuacao/`, `/cmms/`.
+Páginas com ViewContent: `/sensoriamento/`, `/sequenciamento/`, `/producao/`, `/sensores/`, `/atuacao/`, `/cmms/`, `/qualidade/`.
 
 Search **não** é implementado (site sem busca interna relevante).
 

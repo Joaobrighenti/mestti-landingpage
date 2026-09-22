@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11486484316"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9K4NZHC0WT');
+        gtag('config', 'AW-11486484316');
+    </script>
+    <meta charset="UTF-8">
+    <script src="../js/theme-init.js?v=2"></script>
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+    <meta name="description" content="Crie checklists digitais, execute inspeções no chão de fábrica e acompanhe cada registro conectado à máquina, ao setor e à ordem de produção com o módulo de Qualidade da MESTTI.">
+    <title>Qualidade industrial | Checklists e inspeções | MESTTI</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body:not(.aos-initialized) [data-aos],
+        html.no-aos [data-aos] {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/entry.css?v=108">
+    <link rel="stylesheet" href="../css/landing-producao.css?v=16">
+    <link rel="stylesheet" href="../css/qualidade.css?v=1">
+</head>
+<body data-page="qualidade">
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <header class="header header--tractian">
+        <div class="container container--wide">
+            <div class="header-tractian-inner">
+                <a href="/" class="header-logo-link">
+                    <img src="../images/MESTTI-logo-header-light.png?v=1" alt="MESTTI" class="logo-img logo-img--light" width="120" height="25" decoding="async"><img src="../images/MESTTI-logo-header-dark.png?v=1" alt="" class="logo-img logo-img--dark" width="120" height="25" decoding="async" aria-hidden="true">
+                </a>
+                <nav class="header-nav" id="headerNav" aria-label="Menu principal">
+                    <div class="mobile-nav-header">
+                        <a href="/" class="header-logo-link">
+                            <img src="../images/MESTTI-logo-header-light.png?v=1" alt="MESTTI" class="logo-img logo-img--light" width="120" height="25" decoding="async"><img src="../images/MESTTI-logo-header-dark.png?v=1" alt="" class="logo-img logo-img--dark" width="120" height="25" decoding="async" aria-hidden="true">
+                        </a>
+                        <button type="button" class="mobile-nav-close" aria-label="Fechar menu" data-i18n-aria="a11y.closeMenu">×</button>
+                    </div>
+                    <a href="/" data-home-section="#controle-total" class="nav-link" data-i18n="nav.solutions">Soluções</a>
+                    <a href="/blog/" class="nav-link" data-i18n="nav.blog">Blog</a>
+                    <a href="/" data-home-section="#implementacao" class="nav-link" data-i18n="nav.installation">Instalação</a>
+                    <a href="/sensores/" class="nav-link" data-i18n="nav.sensors">Sensores</a>
+                    <a href="/empresa/" class="nav-link" data-i18n="nav.about">Sobre</a>
+                    <div class="mobile-nav-contact">
+                        <div class="mobile-nav-section-title" data-i18n="mobile.contact">Contato</div>
+                        <a class="mobile-nav-contact-link" href="tel:+5514974007797">(14) 97400-7797</a>
+                        <a class="mobile-nav-contact-link" href="https://wa.me/5514974007797" target="_blank" rel="noopener" data-i18n="mobile.whatsapp">WhatsApp</a>
+                        <a class="mobile-nav-contact-link" href="/contato/" data-i18n="mobile.contactCenter">Central de contato</a>
+                    </div>
+                    <div class="header-nav-mobile-extras">
+                        <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
+                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Demonstração</button>
+                    </div>
+                </nav>
+                <div class="header-tractian-actions">
+                    <a href="/contato/" class="header-link-contact" data-i18n="header.contact">Contato</a>
+                    <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
+                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Demonstração</button>
+                </div>
+                <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu" data-i18n-aria="a11y.openMenu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="lp-page ql-page" id="main">
+        <section class="lp-hero">
+            <div class="container">
+                <div class="lp-hero-grid">
+                    <div class="lp-hero-copy" data-aos="fade-up">
+                        <p class="lp-kicker" data-i18n="page.qualidade.hero.kicker">Qualidade Mestti</p>
+                        <h1 data-i18n="page.qualidade.hero.h1">Seu padrão de qualidade, conectado à produção.</h1>
+                        <p class="lp-hero-lead" data-i18n="page.qualidade.hero.lead">Crie checklists digitais, execute inspeções no chão de fábrica e acompanhe cada registro dentro do contexto real da operação.</p>
+                        <p class="lp-hero-support" data-i18n="page.qualidade.hero.support">Máquina, setor, responsável, ordem de produção, checklist e revisão: tudo conectado em um único histórico.</p>
+                        <div class="lp-hero-actions">
+                            <a class="lp-btn lp-btn-primary" href="#demonstracao" data-i18n="page.qualidade.hero.ctaPrimary">Solicitar demonstração</a>
+                            <a class="lp-btn lp-btn-secondary" href="#como-funciona" data-i18n="page.qualidade.hero.ctaSecondary">Ver como funciona</a>
+                        </div>
+                        <ul class="ql-hero-proof">
+                            <li data-i18n="page.qualidade.hero.proof1">Menos papel</li>
+                            <li data-i18n="page.qualidade.hero.proof2">Mais rastreabilidade</li>
+                            <li data-i18n="page.qualidade.hero.proof3">Mais controle sobre o processo</li>
+                        </ul>
+                    </div>
+                    <figure class="lp-hero-visual lp-hero-visual--photo ql-hero-visual--board" data-aos="fade-up" data-aos-delay="120">
+                        <div class="ql-board-frame">
+                            <div class="ql-board-chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+                            <img src="../img-sistema/tela-qualidade.png" alt="Quadro de inspeções da qualidade no MESTTI, com status pendente, em preenchimento e finalizado" data-i18n-alt="page.qualidade.hero.imgAlt" loading="eager" decoding="async">
+                        </div>
+                        <figcaption class="lp-hero-photo-caption" data-i18n="page.qualidade.hero.figCaption">A operação da qualidade em um único quadro: o que está pendente, em preenchimento e já concluído.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="lp-section ql-how" id="como-funciona">
+            <div class="container">
+                <div class="ql-how-grid">
+                    <div class="ql-how-copy" data-aos="fade-up">
+                        <p class="ql-how-kicker" data-i18n="page.qualidade.s1.kicker">01 · Estruture</p>
+                        <h2 data-i18n="page.qualidade.s1.h2">Transforme seus padrões de inspeção em checklists digitais.</h2>
+                        <p data-i18n="page.qualidade.s1.p1">Leve para a Mestti os controles que hoje estão em papel, planilhas ou formulários separados.</p>
+                        <p data-i18n="page.qualidade.s1.p2">Crie checklists para cada processo, organize os pontos que precisam ser verificados e mantenha o padrão de inspeção disponível para toda a operação.</p>
+                        <div class="ql-how-points">
+                            <div>
+                                <h3 data-i18n="page.qualidade.s1.f1Title">Padrão por processo</h3>
+                                <p data-i18n="page.qualidade.s1.f1Text">Cada checklist concentra o que precisa ser conferido, no mesmo lugar, para quem executa e para quem acompanha.</p>
+                            </div>
+                            <div>
+                                <h3 data-i18n="page.qualidade.s1.f2Title">Revisão com histórico</h3>
+                                <p data-i18n="page.qualidade.s1.f2Text">O checklist pode evoluir conforme o processo muda, sem apagar as inspeções feitas nas revisões anteriores.</p>
+                            </div>
+                        </div>
+                        <p class="ql-how-close" data-i18n="page.qualidade.s1.close">Do padrão da qualidade para a rotina da fábrica.</p>
+                    </div>
+                    <div class="ql-how-visual" data-aos="fade-up" data-aos-delay="80" aria-hidden="true">
+                        <div class="ql-app">
+                            <div class="ql-app-bar">Checklists · Liberação de máquina<span>Rev. 03 vigente</span></div>
+                            <div class="ql-app-body">
+                                <div class="ql-app-meta">
+                                    <p><small>Nome</small>Liberação — Extrusora 02</p>
+                                    <p><small>Onde</small>Setor ACP · Máquina EXT-02</p>
+                                </div>
+                                <ol class="ql-item-list">
+                                    <li><b>1</b>Temperatura da zona 1 · 180–195 °C<span class="ql-tag">Medição</span></li>
+                                    <li><b>2</b>Dimensão da peça<span class="ql-tag">Medição</span></li>
+                                    <li><b>3</b>Visual da superfície<span class="ql-tag ql-tag--critical">Crítico</span></li>
+                                    <li><b>4</b>Identificação do lote<span class="ql-tag">Texto</span></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lp-section lp-section--alt ql-how ql-how--reverse">
+            <div class="container">
+                <div class="ql-how-grid">
+                    <div class="ql-how-copy" data-aos="fade-up">
+                        <p class="ql-how-kicker" data-i18n="page.qualidade.s2.kicker">02 · Execute</p>
+                        <h2 data-i18n="page.qualidade.s2.h2">A inspeção acontece onde a qualidade é produzida.</h2>
+                        <p data-i18n="page.qualidade.s2.p1">No chão de fábrica, o operador acessa as inspeções disponíveis e realiza o preenchimento pelo celular, tablet ou computador.</p>
+                        <p data-i18n="page.qualidade.s2.p2">Durante a execução, é possível registrar valores, classificar o resultado da verificação e adicionar observações sobre o que foi encontrado.</p>
+                        <div class="ql-how-points">
+                            <div>
+                                <h3 data-i18n="page.qualidade.s2.f1Title">Simples para quem executa</h3>
+                                <p data-i18n="page.qualidade.s2.f1Text">O operador encontra o checklist, inicia a inspeção e responde somente o que precisa ser verificado.</p>
+                            </div>
+                            <div>
+                                <h3 data-i18n="page.qualidade.s2.f2Title">Salvar e retomar</h3>
+                                <p data-i18n="page.qualidade.s2.f2Text">O preenchimento pode ser salvo e retomado sem perder o trabalho realizado.</p>
+                            </div>
+                        </div>
+                        <ul class="ql-neg">
+                            <li data-i18n="page.qualidade.s2.n1">Sem planilhas espalhadas.</li>
+                            <li data-i18n="page.qualidade.s2.n2">Sem formulários perdidos.</li>
+                            <li data-i18n="page.qualidade.s2.n3">Sem depender da memória para registrar depois.</li>
+                        </ul>
+                    </div>
+                    <div class="ql-how-visual" data-aos="fade-up" data-aos-delay="80" aria-hidden="true">
+                        <div class="ql-phone">
+                            <div class="ql-phone-screen">
+                                <div class="ql-phone-head">
+                                    <p>Inspeção em andamento</p>
+                                    <small>CH-0909 · Extrusora 02 · item 2 de 8</small>
+                                </div>
+                                <div class="ql-phone-body">
+                                    <div class="ql-fill">
+                                        <strong>Temperatura da zona 1</strong>
+                                        <div class="ql-fill-value"><span>188 °C</span><span>Dentro da faixa</span></div>
+                                    </div>
+                                    <div class="ql-fill">
+                                        <strong>Visual da superfície</strong>
+                                        <span class="ql-tag ql-tag--ok">Conforme</span>
+                                    </div>
+                                    <div class="ql-phone-actions">
+                                        <span>Salvar rascunho</span>
+                                        <span>Continuar</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lp-section ql-how">
+            <div class="container">
+                <div class="ql-how-grid">
+                    <div class="ql-how-copy" data-aos="fade-up">
+                        <p class="ql-how-kicker" data-i18n="page.qualidade.s3.kicker">03 · Contextualize</p>
+                        <h2 data-i18n="page.qualidade.s3.h2">Um checklist sozinho mostra uma resposta. O contexto mostra o que aconteceu.</h2>
+                        <p data-i18n="page.qualidade.s3.p1">Na Mestti, a inspeção pode fazer parte da própria operação industrial.</p>
+                        <p data-i18n="page.qualidade.s3.p2">Uma execução pode estar relacionada ao setor, máquina, responsável, checklist, revisão e, quando aplicável, à ordem de produção.</p>
+                        <div class="ql-quotes">
+                            <p class="ql-quote ql-quote--from" data-i18n="page.qualidade.s3.from">“A inspeção deu problema.”</p>
+                            <p class="ql-quote ql-quote--to" data-i18n="page.qualidade.s3.to">“Qual inspeção apresentou o problema, em qual máquina, durante qual produção e quem realizou a verificação?”</p>
+                        </div>
+                        <p class="ql-how-close" data-i18n="page.qualidade.s3.close">É qualidade conectada ao processo produtivo.</p>
+                    </div>
+                    <div class="ql-how-visual" data-aos="fade-up" data-aos-delay="80" aria-hidden="true">
+                        <div class="ql-app">
+                            <div class="ql-app-bar">Execução · CH-0909<span>Em preenchimento</span></div>
+                            <div class="ql-app-body">
+                                <div class="ql-context-card">
+                                    <div class="ql-context-row"><span>Checklist</span><b>Liberação — Extrusora 02</b></div>
+                                    <div class="ql-context-row"><span>Revisão</span><b>Rev. 03 vigente</b></div>
+                                    <div class="ql-context-row"><span>Setor</span><b>ACP · Acoplamento</b></div>
+                                    <div class="ql-context-row"><span>Máquina</span><b>EXT-02</b></div>
+                                    <div class="ql-context-row"><span>Ordem de produção</span><b>OP-4418</b></div>
+                                    <div class="ql-context-row"><span>Responsável</span><b>Operador qualidade</b></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lp-section lp-section--alt ql-how ql-how--reverse">
+            <div class="container">
+                <div class="ql-how-grid">
+                    <div class="ql-how-copy" data-aos="fade-up">
+                        <p class="ql-how-kicker" data-i18n="page.qualidade.s4.kicker">04 · Acompanhe</p>
+                        <h2 data-i18n="page.qualidade.s4.h2">Saiba o que está acontecendo sem procurar papel por papel.</h2>
+                        <p data-i18n="page.qualidade.s4.p1">Acompanhe as inspeções realizadas e encontre rapidamente o que precisa ser analisado.</p>
+                        <p data-i18n="page.qualidade.s4.p2">Consulte execuções por checklist, setor, máquina, responsável, revisão e status.</p>
+                        <div class="ql-how-points">
+                            <div>
+                                <h3 data-i18n="page.qualidade.s4.f1Title">Visão da operação</h3>
+                                <p data-i18n="page.qualidade.s4.f1Text">Veja o que está em andamento, o que já foi concluído e os registros que exigem atenção.</p>
+                            </div>
+                            <div>
+                                <h3 data-i18n="page.qualidade.s4.f2Title">A informação deixa de ficar espalhada</h3>
+                                <p data-i18n="page.qualidade.s4.f2Text">A gestão passa a ter uma visão centralizada das inspeções realizadas pela operação.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <figure class="ql-how-visual" data-aos="fade-up" data-aos-delay="80">
+                        <div class="ql-board-frame">
+                            <img src="../img-sistema/tela-qualidade.png" alt="Painel de operação da qualidade com inspeções pendentes, em preenchimento, finalizadas e canceladas" data-i18n-alt="page.qualidade.s4.imgAlt" loading="lazy" decoding="async">
+                        </div>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="lp-section ql-how">
+            <div class="container">
+                <div class="ql-how-grid">
+                    <div class="ql-how-copy" data-aos="fade-up">
+                        <p class="ql-how-kicker" data-i18n="page.qualidade.s5.kicker">05 · Rastreie</p>
+                        <h2 data-i18n="page.qualidade.s5.h2">Cada inspeção deixa um histórico.</h2>
+                        <p data-i18n="page.qualidade.s5.p1">Quem realizou, quando realizou, qual checklist foi utilizado, qual revisão estava vigente, onde a inspeção aconteceu, quais valores foram registrados, qual foi o resultado e quais observações foram feitas.</p>
+                        <p data-i18n="page.qualidade.s5.p2">A informação permanece associada à execução para consultas futuras.</p>
+                        <p class="ql-how-close" data-i18n="page.qualidade.s5.close">Mais rastreabilidade para auditorias, investigação de problemas e melhoria contínua.</p>
+                    </div>
+                    <div class="ql-how-visual" data-aos="fade-up" data-aos-delay="80" aria-hidden="true">
+                        <div class="ql-app">
+                            <div class="ql-app-bar">Histórico da execução<span>CH-0909</span></div>
+                            <div class="ql-app-body">
+                                <ul class="ql-history">
+                                    <li><i></i><div>Iniciada por Operador qualidade<small>21/09/2026 · 14:20 · Extrusora 02</small></div></li>
+                                    <li><i></i><div>Checklist Rev. 03 vigente<small>Liberação de máquina · 8 itens</small></div></li>
+                                    <li><i></i><div>Temperatura da zona 1: 188 °C<small>Dentro da faixa 180–195 °C</small></div></li>
+                                    <li><i></i><div>Visual da superfície: conforme<small>Observação registrada no item</small></div></li>
+                                    <li><i></i><div>Finalizada<small>21/09/2026 · 14:43</small></div></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lp-section lp-section--alt ql-how ql-how--reverse">
+            <div class="container">
+                <div class="ql-how-grid">
+                    <div class="ql-how-copy" data-aos="fade-up">
+                        <p class="ql-how-kicker" data-i18n="page.qualidade.s6.kicker">06 · Analise</p>
+                        <h2 data-i18n="page.qualidade.s6.h2">Encontre padrões antes que eles se tornem problemas maiores.</h2>
+                        <p data-i18n="page.qualidade.s6.p1">Com os registros organizados digitalmente, a gestão consegue consultar o histórico das inspeções e identificar recorrências.</p>
+                        <p data-i18n="page.qualidade.s6.p2">A inspeção deixa de ser apenas um registro e passa a gerar informação para a tomada de decisão.</p>
+                    </div>
+                    <div class="ql-how-visual" data-aos="fade-up" data-aos-delay="80" aria-hidden="true">
+                        <div class="ql-patterns">
+                            <article class="ql-pattern">
+                                <strong data-i18n="page.qualidade.s6.patt1Title">Máquina com o mesmo desvio</strong>
+                                <p data-i18n="page.qualidade.s6.patt1Text">A Extrusora 02 concentra resultados fora da faixa na zona 1.</p>
+                            </article>
+                            <article class="ql-pattern">
+                                <strong data-i18n="page.qualidade.s6.patt2Title">Processo fora do padrão</strong>
+                                <p data-i18n="page.qualidade.s6.patt2Text">Um processo concentra não conformidades em um mesmo ponto de verificação.</p>
+                            </article>
+                            <article class="ql-pattern">
+                                <strong data-i18n="page.qualidade.s6.patt3Title">Checklist com falhas recorrentes</strong>
+                                <p data-i18n="page.qualidade.s6.patt3Text">Itens críticos se repetem e mostram onde o padrão precisa evoluir.</p>
+                            </article>
+                            <article class="ql-pattern">
+                                <strong data-i18n="page.qualidade.s6.patt4Title">Etapa que merece investigação</strong>
+                                <p data-i18n="page.qualidade.s6.patt4Text">Uma etapa da produção acumula registros que pedem análise da gestão.</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lp-section ql-eco">
+            <div class="container">
+                <div class="lp-section-head">
+                    <p class="ql-how-kicker" data-i18n="page.qualidade.eco.kicker">Não é apenas um checklist</p>
+                    <h2 data-i18n="page.qualidade.eco.h2">Qualidade dentro do mesmo ecossistema da sua produção.</h2>
+                    <p data-i18n="page.qualidade.eco.p">A Mestti conecta informações que normalmente ficam separadas. Enquanto ferramentas tradicionais registram apenas o preenchimento do formulário, a Mestti aproxima a qualidade dos dados reais da operação.</p>
+                </div>
+                <div class="ql-eco-flow" data-i18n-aria="page.qualidade.eco.flowAria" aria-label="Fluxo da qualidade conectada à produção">
+                    <span data-i18n="page.qualidade.eco.f1">Produção</span>
+                    <span class="ql-eco-arrow" aria-hidden="true">→</span>
+                    <span data-i18n="page.qualidade.eco.f2">Máquina</span>
+                    <span class="ql-eco-arrow" aria-hidden="true">→</span>
+                    <span data-i18n="page.qualidade.eco.f3">Operador</span>
+                    <span class="ql-eco-arrow" aria-hidden="true">→</span>
+                    <span data-i18n="page.qualidade.eco.f4">Ordem de produção</span>
+                    <span class="ql-eco-arrow" aria-hidden="true">→</span>
+                    <span data-i18n="page.qualidade.eco.f5">Inspeção</span>
+                    <span class="ql-eco-arrow" aria-hidden="true">→</span>
+                    <span data-i18n="page.qualidade.eco.f6">Histórico</span>
+                </div>
+                <p class="ql-eco-note" data-i18n="page.qualidade.eco.close">A gestão consegue entender não apenas o que aconteceu, mas também em qual contexto aconteceu.</p>
+            </div>
+        </section>
+
+        <section class="lp-section">
+            <div class="container">
+                <div class="lp-section-head">
+                    <p class="lp-section-label" data-i18n="page.qualidade.use.kicker">Onde usar?</p>
+                    <h2 data-i18n="page.qualidade.use.h2">Um módulo para diferentes controles da indústria.</h2>
+                </div>
+                <div class="ql-uses-grid">
+                    <article class="ql-use">
+                        <h3 data-i18n="page.qualidade.use.t1">Inspeção de recebimento</h3>
+                        <p data-i18n="page.qualidade.use.d1">Padronize a conferência de matérias-primas e materiais recebidos.</p>
+                    </article>
+                    <article class="ql-use">
+                        <h3 data-i18n="page.qualidade.use.t2">Inspeção de processo</h3>
+                        <p data-i18n="page.qualidade.use.d2">Realize verificações durante as diferentes etapas da produção.</p>
+                    </article>
+                    <article class="ql-use">
+                        <h3 data-i18n="page.qualidade.use.t3">Liberação de máquina ou processo</h3>
+                        <p data-i18n="page.qualidade.use.d3">Confirme os pontos necessários antes do início da operação.</p>
+                    </article>
+                    <article class="ql-use">
+                        <h3 data-i18n="page.qualidade.use.t4">Inspeção de produto final</h3>
+                        <p data-i18n="page.qualidade.use.d4">Registre critérios e resultados antes da liberação do produto.</p>
+                    </article>
+                    <article class="ql-use">
+                        <h3 data-i18n="page.qualidade.use.t5">Auditorias internas</h3>
+                        <p data-i18n="page.qualidade.use.d5">Digitalize verificações periódicas realizadas pela equipe da qualidade.</p>
+                    </article>
+                    <article class="ql-use">
+                        <h3 data-i18n="page.qualidade.use.t6">5S e organização</h3>
+                        <p data-i18n="page.qualidade.use.d6">Crie rotinas de inspeção para áreas, máquinas e setores.</p>
+                    </article>
+                    <article class="ql-use">
+                        <h3 data-i18n="page.qualidade.use.t7">Limpeza e boas práticas</h3>
+                        <p data-i18n="page.qualidade.use.d7">Padronize verificações e mantenha o histórico das execuções.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="lp-section lp-section--alt">
+            <div class="container">
+                <div class="lp-section-head">
+                    <p class="lp-section-label" data-i18n="page.qualidade.start.kicker">Do papel para um processo rastreável</p>
+                    <h2 data-i18n="page.qualidade.start.h2">Comece com o processo que você já possui.</h2>
+                    <p data-i18n="page.qualidade.start.p">Você não precisa reinventar seu sistema de qualidade para começar. Pegamos o checklist que hoje existe no papel, na planilha ou em outro formulário e transformamos a rotina em um processo digital dentro da Mestti.</p>
+                </div>
+                <div class="ql-start-grid">
+                    <article class="ql-start">
+                        <span>1</span>
+                        <h3 data-i18n="page.qualidade.start.s1Title">Digitalize</h3>
+                        <p data-i18n="page.qualidade.start.s1Text">Transforme os controles atuais em checklists dentro da plataforma.</p>
+                    </article>
+                    <article class="ql-start">
+                        <span>2</span>
+                        <h3 data-i18n="page.qualidade.start.s2Title">Execute</h3>
+                        <p data-i18n="page.qualidade.start.s2Text">Disponibilize as inspeções para quem realmente realiza a atividade.</p>
+                    </article>
+                    <article class="ql-start">
+                        <span>3</span>
+                        <h3 data-i18n="page.qualidade.start.s3Title">Acompanhe</h3>
+                        <p data-i18n="page.qualidade.start.s3Text">Centralize as execuções e os resultados da operação.</p>
+                    </article>
+                    <article class="ql-start">
+                        <span>4</span>
+                        <h3 data-i18n="page.qualidade.start.s4Title">Melhore</h3>
+                        <p data-i18n="page.qualidade.start.s4Text">Use o histórico para identificar desvios e evoluir o processo.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="lp-section lp-final" id="demonstracao">
+            <div class="container">
+                <div class="lp-final-grid">
+                    <div>
+                        <p class="lp-section-label" data-i18n="page.qualidade.final.kicker">Qualidade mais perto da produção</p>
+                        <h2 data-i18n="page.qualidade.final.h2">Digitalize suas inspeções e transforme registros em informação para a operação.</h2>
+                        <p style="margin-top:0.85rem" data-i18n="page.qualidade.final.p">Saia do papel e tenha um histórico organizado sobre como, onde e quando cada inspeção foi realizada.</p>
+                        <div class="ql-final-actions">
+                            <a class="lp-btn lp-btn-outline" href="#como-funciona" data-i18n="page.qualidade.final.ctaSecondary">Conhecer o módulo de Qualidade</a>
+                        </div>
+                        <p class="ql-tagline" data-i18n="page.qualidade.final.tagline">Mestti. Transformando dados da fábrica em decisões.</p>
+                    </div>
+                    <div class="lp-form-card">
+                        <form class="demo-form lp-form" id="contactForm" data-i18n-aria="page.qualidade.form.aria" aria-label="Formulário para solicitar demonstração do módulo de Qualidade">
+                            <input type="hidden" name="ddi" value="+55">
+                            <input type="hidden" name="solucao" value="Controle de qualidade">
+                            <input type="text" name="name" data-i18n-placeholder="page.qualidade.form.name" placeholder="Nome" autocomplete="name" required>
+                            <input type="text" name="empresa" data-i18n-placeholder="page.qualidade.form.company" placeholder="Empresa" autocomplete="organization" required>
+                            <input type="text" name="cargo" data-i18n-placeholder="page.qualidade.form.role" placeholder="Cargo" autocomplete="organization-title" required>
+                            <input type="tel" name="phone" data-i18n-placeholder="page.qualidade.form.phone" placeholder="WhatsApp" autocomplete="tel" required>
+                            <select name="controle_atual" required>
+                                <option value="" selected disabled data-i18n="page.qualidade.form.todayLabel">Como a qualidade é controlada hoje?</option>
+                                <option value="Papel" data-i18n="page.qualidade.form.today1">Papel</option>
+                                <option value="Planilha" data-i18n="page.qualidade.form.today2">Planilha</option>
+                                <option value="Sistema" data-i18n="page.qualidade.form.today3">Sistema</option>
+                                <option value="Misto" data-i18n="page.qualidade.form.today4">Misto</option>
+                            </select>
+                            <textarea name="dificuldade_qualidade" data-i18n-placeholder="page.qualidade.form.difficulty" placeholder="Qual inspeção você mais precisa digitalizar primeiro?" rows="4" required></textarea>
+                            <button type="submit" class="demo-submit" data-i18n="page.qualidade.form.submit">Solicitar uma demonstração</button>
+                        </form>
+                        <p class="lp-form-microcopy" data-i18n="page.qualidade.form.microcopy">Sem compromisso. Começamos pelo processo que você já possui.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer footer--tractian">
+        <div class="container container--wide">
+            <div class="footer-legal-block">
+                <p class="footer-cnpj" data-i18n="footer.cnpj">Mestti Tecnologia LTDA - 63.380.944/0001-51</p>
+                <p class="footer-legal" data-i18n="footer.legal">© 2026 MESTTI. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="contactModal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" id="btnCloseModal" aria-label="Fechar" data-i18n-aria="a11y.closeMenu">&times;</button>
+            <div class="demo-modal-card">
+                <div class="demo-modal-head">
+                    <h2 class="demo-modal-title" data-i18n="modal.title">Solicite sua demonstração</h2>
+                    <p class="demo-modal-lead" data-i18n="modal.expert.leadQualidade">Preencha os campos para falar com um especialista sobre o módulo de Qualidade.</p>
+                </div>
+                <form class="demo-form" id="contactFormModal">
+                    <input type="text" name="name" data-i18n-placeholder="modal.name" placeholder="Nome completo" autocomplete="name" required>
+                    <input type="text" name="empresa" data-i18n-placeholder="modal.company" placeholder="Empresa" autocomplete="organization" required>
+                    <input type="email" name="email" data-i18n-placeholder="modal.email" placeholder="E-mail profissional" autocomplete="email" required>
+                    <div class="field-row-3">
+                        <select name="ddi" aria-label="DDI" required>
+                            <option value="+55" selected>+55</option>
+                            <option value="+1">+1</option>
+                        </select>
+                        <input type="tel" name="phone" data-i18n-placeholder="modal.phone" placeholder="Telefone / WhatsApp" autocomplete="tel" required>
+                        <select name="cargo" required data-mestti-options="cargo">
+                            <option value="" selected disabled data-i18n="modal.role">Cargo</option>
+                        </select>
+                    </div>
+                    <select name="setor" required data-mestti-options="setor">
+                        <option value="" selected disabled data-i18n="modal.sector">Setor da Indústria</option>
+                    </select>
+                    <select name="solucao" required data-mestti-options="solucao">
+                        <option value="" selected disabled data-i18n="modal.solution">Selecione a solução de maior interesse</option>
+                    </select>
+                    <textarea name="observacao" data-i18n-placeholder="modal.note" placeholder="Observação (opcional)" rows="3" style="min-height: 90px;"></textarea>
+                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Solicitar demonstração</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="../js/i18n-page-strings.js?v=7"></script>
+    <script defer src="../js/i18n.js?v=6"></script>
+    <script defer src="../js/theme.js?v=2"></script>
+    <script defer src="../js/form-options.js?v=3"></script>
+    <script defer src="../js/meta-consent.js?v=5"></script>
+    <script defer src="../js/meta-pixel.js?v=2"></script>
+    <script defer src="../js/script.js?v=34"></script>
+    <script defer src="../js/wa-chat-viewport.js?v=2"></script>
+    <script defer src="../js/conversational-form.js?v=13"></script>
+</body>
+</html>
