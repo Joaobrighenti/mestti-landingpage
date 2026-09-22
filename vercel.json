@@ -17,6 +17,8 @@
     { "source": "/atuacao/", "destination": "/atuacao/index.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
     { "source": "/blog/", "destination": "/blog/index.html" },
+    { "source": "/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica", "destination": "/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/index.html" },
+    { "source": "/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/", "destination": "/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/index.html" },
     { "source": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo", "destination": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/index.html" },
     { "source": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/", "destination": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/index.html" },
     { "source": "/cmms", "destination": "/cmms/index.html" },

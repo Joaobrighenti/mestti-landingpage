@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11486484316"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9K4NZHC0WT');
+        gtag('config', 'AW-11486484316');
+    </script>
+    <meta charset="UTF-8">
+    <script src="../../js/theme-init.js?v=2"></script>
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+    <title>OEE: o que é, como calcular e por que acompanhar em tempo real | MESTTI</title>
+    <meta name="description" content="Entenda o que é OEE (Overall Equipment Effectiveness), como calcular disponibilidade, performance e qualidade, e por que acompanhar o indicador ao vivo no chão de fábrica.">
+    <meta name="keywords" content="OEE, Overall Equipment Effectiveness, eficiência geral do equipamento, disponibilidade, performance, qualidade, chão de fábrica, monitoramento industrial, tempo real, MESTTI">
+    <link rel="canonical" href="https://mestti.com.br/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="OEE: o que é, como calcular e por que acompanhar em tempo real | MESTTI">
+    <meta property="og:description" content="Entenda o que é OEE, como calcular disponibilidade, performance e qualidade, e por que acompanhar o indicador ao vivo no chão de fábrica.">
+    <meta property="og:url" content="https://mestti.com.br/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/">
+    <meta property="og:image" content="https://mestti.com.br/images/oeemaquina.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="article:published_time" content="2026-09-22">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OEE: o que é, como calcular e por que acompanhar em tempo real">
+    <meta name="twitter:description" content="Guia prático de OEE: fórmula, pilares, erros comuns e por que medir em tempo real.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/entry.css?v=37">
+    <link rel="stylesheet" href="../blog.css?v=5">
+    <link rel="stylesheet" href="../article.css?v=4">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "OEE: o que é, como calcular e por que sua fábrica precisa acompanhar em tempo real",
+        "description": "Entenda o que é OEE (Overall Equipment Effectiveness), como calcular disponibilidade, performance e qualidade, e por que acompanhar o indicador ao vivo no chão de fábrica.",
+        "image": "https://mestti.com.br/images/oeemaquina.png",
+        "datePublished": "2026-09-22",
+        "author": { "@type": "Organization", "name": "MESTTI" },
+        "publisher": { "@type": "Organization", "name": "MESTTI", "logo": { "@type": "ImageObject", "url": "https://mestti.com.br/images/MESTTI.svg" } },
+        "mainEntityOfPage": "https://mestti.com.br/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            { "@type": "Question", "name": "Qual é um bom OEE?", "acceptedAnswer": { "@type": "Answer", "text": "Depende do setor, do processo e da maturidade da planta. Mais importante do que um número mágico é ter medição confiável e tendência de melhoria por máquina e por turno." } },
+            { "@type": "Question", "name": "OEE substitui PCP?", "acceptedAnswer": { "@type": "Answer", "text": "Não. OEE mede eficiência do equipamento. PCP planeja e sequencia a produção. Os dois se reforçam quando o plano conversa com o real." } },
+            { "@type": "Question", "name": "Posso calcular OEE só com apontamento manual?", "acceptedAnswer": { "@type": "Answer", "text": "Dá para começar, mas o atraso e o erro humano limitam o valor. Quanto mais automático for o dado de peça e parada, mais útil o indicador fica para decisão no turno." } },
+            { "@type": "Question", "name": "Por onde começar se minha fábrica ainda não mede nada?", "acceptedAnswer": { "@type": "Answer", "text": "Comece por disponibilidade e contagem de peças nas máquinas críticas. Depois feche performance e qualidade. A MESTTI acelera esse caminho com sensoriamento e painéis em tempo real." } },
+            { "@type": "Question", "name": "Qual a fórmula do OEE?", "acceptedAnswer": { "@type": "Answer", "text": "OEE = Disponibilidade × Performance × Qualidade. Cada fator fica entre 0 e 1 (ou 0% e 100%). Multiplicados, mostram quanto da capacidade teórica se converteu em produção boa." } },
+            { "@type": "Question", "name": "Como a MESTTI ajuda no OEE?", "acceptedAnswer": { "@type": "Answer", "text": "A MESTTI conecta sensores e software para contagem automática, status de máquina ao vivo, registro de paradas no momento e indicadores de OEE, disponibilidade e performance por equipamento — sem digitar e sem esperar o relatório do dia seguinte." } }
+        ]
+    }
+    </script>
+</head>
+<body class="blog-article-page" data-page="blog-article">
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <header class="header header--tractian">
+        <div class="container container--wide">
+            <div class="header-tractian-inner">
+                <a href="/" class="header-logo-link">
+                    <img src="../../images/MESTTI-logo-header-light.png?v=1" alt="MESTTI" class="logo-img logo-img--light" width="120" height="25" decoding="async"><img src="../../images/MESTTI-logo-header-dark.png?v=1" alt="" class="logo-img logo-img--dark" width="120" height="25" decoding="async" aria-hidden="true">
+                </a>
+                <nav class="header-nav" id="headerNav" aria-label="Menu principal">
+                    <div class="mobile-nav-header">
+                        <a href="/" class="header-logo-link">
+                            <img src="../../images/MESTTI-logo-header-light.png?v=1" alt="MESTTI" class="logo-img logo-img--light" width="120" height="25" decoding="async"><img src="../../images/MESTTI-logo-header-dark.png?v=1" alt="" class="logo-img logo-img--dark" width="120" height="25" decoding="async" aria-hidden="true">
+                        </a>
+                        <button type="button" class="mobile-nav-close" aria-label="Fechar menu" data-i18n-aria="a11y.closeMenu">×</button>
+                    </div>
+                    <a href="/" data-home-section="#controle-total" class="nav-link" data-i18n="nav.solutions">Soluções</a>
+                    <a href="/blog/" class="nav-link active" aria-current="page" data-i18n="nav.blog">Blog</a>
+                    <a href="/" data-home-section="#implementacao" class="nav-link" data-i18n="nav.installation">Instalação</a>
+                    <a href="/sensores/" class="nav-link" data-i18n="nav.sensors">Sensores</a>
+                    <a href="/empresa/" class="nav-link" data-i18n="nav.about">Sobre</a>
+                    <div class="mobile-nav-contact">
+                        <div class="mobile-nav-section-title" data-i18n="mobile.contact">Contato</div>
+                        <a class="mobile-nav-contact-link" href="tel:+5514974007797">(14) 97400-7797</a>
+                        <a class="mobile-nav-contact-link" href="https://wa.me/5514974007797" target="_blank" rel="noopener" data-i18n="mobile.whatsapp">WhatsApp</a>
+                        <a class="mobile-nav-contact-link" href="/contato/" data-i18n="mobile.contactCenter">Central de contato</a>
+                    </div>
+                    <div class="header-nav-mobile-extras">
+                        <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
+                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Demonstração</button>
+                    </div>
+                </nav>
+                <div class="header-tractian-actions">
+                    <a href="/contato/" class="header-link-contact" data-i18n="header.contact">Contato</a>
+                    <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
+                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Demonstração</button>
+                </div>
+                <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu" data-i18n-aria="a11y.openMenu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <header class="blog-hero">
+            <div class="container container--wide">
+                <div class="blog-hero-inner">
+                    <nav class="blog-hero-breadcrumb" aria-label="Navegação">
+                        <a href="/blog/">Blog</a>
+                        <span aria-hidden="true">›</span>
+                        <span data-i18n="oee.breadcrumb.cat">Gestão Industrial</span>
+                    </nav>
+                    <span class="blog-hero-badge" data-i18n="oee.badge">Gestão Industrial</span>
+                    <h1 data-i18n="oee.h1">OEE: o que é, como calcular e por que sua fábrica precisa acompanhar em tempo real</h1>
+                    <p class="blog-hero-lead" data-i18n="oee.lead">Entenda o indicador que mostra quanto da capacidade produtiva realmente vira resultado — e como parar de descobrir perdas só no relatório do dia seguinte.</p>
+                    <div class="blog-hero-meta">
+                        <span class="blog-hero-meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            <span data-i18n="oee.readTime">Leitura de 8 a 10 minutos</span>
+                        </span>
+                        <span class="blog-hero-meta-item" data-i18n="oee.updated">Atualizado em set/2026</span>
+                    </div>
+                    <div class="blog-hero-actions">
+                        <a href="#como-calcular" class="blog-hero-btn blog-hero-btn--ghost" data-i18n="oee.ctaFormula">Ver como calcular</a>
+                        <button type="button" class="blog-hero-btn blog-hero-btn--primary btn-open-modal" data-i18n="oee.ctaMestti">Conheça a MESTTI</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <figure class="article-cover" aria-hidden="false">
+            <div class="container container--wide">
+                <div class="article-cover-inner">
+                    <img src="../../images/oeemaquina.png" alt="Painel de OEE por máquina no chão de fábrica" width="1200" height="675" data-i18n-alt="page.blog.post2.imgAlt" loading="eager" decoding="async" fetchpriority="high">
+                </div>
+            </div>
+        </figure>
+
+        <div class="container container--wide">
+            <div class="article-layout">
+                <aside class="article-toc" aria-label="Índice do artigo">
+                    <p class="article-toc-title" data-i18n="oee.tocTitle">Neste artigo</p>
+                    <nav>
+                        <ol>
+                            <li><a href="#introducao" data-i18n="oee.toc.1">Introdução</a></li>
+                            <li><a href="#o-que-e-oee" data-i18n="oee.toc.2">O que é OEE</a></li>
+                            <li><a href="#tres-pilares" data-i18n="oee.toc.3">Os três pilares</a></li>
+                            <li><a href="#como-calcular" data-i18n="oee.toc.4">Como calcular</a></li>
+                            <li><a href="#exemplo-pratico" data-i18n="oee.toc.5">Exemplo prático</a></li>
+                            <li><a href="#erros-comuns" data-i18n="oee.toc.6">Erros comuns</a></li>
+                            <li><a href="#fim-do-dia-vs-ao-vivo" data-i18n="oee.toc.7">Fim do dia vs ao vivo</a></li>
+                            <li><a href="#mestti" data-i18n="oee.toc.8">Como a MESTTI ajuda</a></li>
+                            <li><a href="#checklist" data-i18n="oee.toc.9">Checklist</a></li>
+                            <li><a href="#conclusao" data-i18n="oee.toc.10">Conclusão</a></li>
+                            <li><a href="#faq" data-i18n="oee.toc.11">Perguntas frequentes</a></li>
+                        </ol>
+                    </nav>
+                </aside>
+
+                <article class="article-body">
+                    <details class="article-toc-mobile">
+                        <summary data-i18n="oee.tocMobile">Ver índice do artigo</summary>
+                        <nav aria-label="Índice do artigo (mobile)">
+                            <ol>
+                                <li><a href="#introducao" data-i18n="oee.toc.1">Introdução</a></li>
+                                <li><a href="#o-que-e-oee" data-i18n="oee.toc.2">O que é OEE</a></li>
+                                <li><a href="#tres-pilares" data-i18n="oee.toc.3">Os três pilares</a></li>
+                                <li><a href="#como-calcular" data-i18n="oee.toc.4">Como calcular</a></li>
+                                <li><a href="#exemplo-pratico" data-i18n="oee.toc.5">Exemplo prático</a></li>
+                                <li><a href="#erros-comuns" data-i18n="oee.toc.6">Erros comuns</a></li>
+                                <li><a href="#fim-do-dia-vs-ao-vivo" data-i18n="oee.toc.7">Fim do dia vs ao vivo</a></li>
+                                <li><a href="#mestti" data-i18n="oee.toc.8">Como a MESTTI ajuda</a></li>
+                                <li><a href="#checklist" data-i18n="oee.toc.9">Checklist</a></li>
+                                <li><a href="#conclusao" data-i18n="oee.toc.10">Conclusão</a></li>
+                                <li><a href="#faq" data-i18n="oee.toc.11">Perguntas frequentes</a></li>
+                            </ol>
+                        </nav>
+                    </details>
+
+                    <section id="introducao"><div data-i18n="oee.intro" data-i18n-html></div></section>
+                    <section id="o-que-e-oee"><div data-i18n="oee.s1" data-i18n-html></div></section>
+                    <section id="tres-pilares"><div data-i18n="oee.s2" data-i18n-html></div></section>
+                    <section id="como-calcular"><div data-i18n="oee.s3" data-i18n-html></div></section>
+                    <section id="exemplo-pratico"><div data-i18n="oee.s4" data-i18n-html></div></section>
+
+                    <div class="article-inline-cta">
+                        <p data-i18n="oee.ctaMid.text">Veja OEE, paradas e produção ao vivo — pare de descobrir perdas só no fechamento.</p>
+                        <button type="button" class="blog-hero-btn blog-hero-btn--primary btn-open-modal" data-i18n="oee.ctaMid.btn">Quero ver minha fábrica em tempo real</button>
+                    </div>
+
+                    <section id="erros-comuns"><div data-i18n="oee.s5" data-i18n-html></div></section>
+                    <section id="fim-do-dia-vs-ao-vivo"><div data-i18n="oee.s6" data-i18n-html></div></section>
+                    <section id="mestti"><div data-i18n="oee.s7" data-i18n-html></div></section>
+                    <section id="checklist"><div data-i18n="oee.s8" data-i18n-html></div></section>
+                    <section id="conclusao"><div data-i18n="oee.s9" data-i18n-html></div></section>
+
+                    <section id="faq" class="faq-section">
+                        <h2 data-i18n="oee.faq.h2">Perguntas frequentes</h2>
+                        <div class="faq-list" data-i18n="oee.faq.list" data-i18n-html></div>
+                    </section>
+                </article>
+            </div>
+        </div>
+
+        <section class="article-cta-final" aria-labelledby="cta-final-title">
+            <div class="container container--wide">
+                <div class="article-cta-final-inner">
+                    <h2 id="cta-final-title" data-i18n="oee.ctaFinal.title">Quer acompanhar OEE em tempo real na sua planta?</h2>
+                    <p data-i18n="oee.ctaFinal.lead">A MESTTI ajuda sua indústria a medir produção, paradas, disponibilidade e performance ao vivo, transformando dados do chão de fábrica em gestão com tempo de reação.</p>
+                    <div class="article-cta-final-actions">
+                        <button type="button" class="blog-hero-btn blog-hero-btn--primary btn-open-modal" data-i18n="oee.ctaFinal.btn1">Quero conhecer a MESTTI</button>
+                        <a href="/contato/" class="blog-hero-btn blog-hero-btn--ghost" data-i18n="oee.ctaFinal.btn2">Falar com um especialista</a>
+                        <a href="/blog/" class="blog-hero-btn blog-hero-btn--ghost" data-i18n="oee.ctaFinal.btn3">Ler mais conteúdos no blog</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer footer--tractian">
+        <div class="container container--wide">
+            <div class="footer-legal-block">
+                <p class="footer-cnpj" data-i18n="footer.cnpj">Mestti Tecnologia LTDA - 63.380.944/0001-51</p>
+                <p class="footer-legal" data-i18n="footer.legal">© 2026 MESTTI. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="contactModal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" id="btnCloseModal" aria-label="Fechar" data-i18n-aria="a11y.closeMenu">&times;</button>
+            <div class="demo-modal-card">
+                <div class="demo-modal-head">
+                    <h2 class="demo-modal-title" data-i18n="modal.title">Solicite sua demonstração</h2>
+                    <p class="demo-modal-lead" data-i18n="modal.lead">Preencha os campos para falar com um especialista e entender os benefícios do MESTTI para sua operação.</p>
+                </div>
+                <form class="demo-form" id="contactFormModal">
+                    <input type="text" name="name" data-i18n-placeholder="modal.name" placeholder="Nome completo" autocomplete="name" required>
+                    <input type="text" name="empresa" data-i18n-placeholder="modal.company" placeholder="Empresa" autocomplete="organization" required>
+                    <input type="email" name="email" data-i18n-placeholder="modal.email" placeholder="E-mail profissional" autocomplete="email" required>
+                    <div class="field-row-3">
+                        <select name="ddi" aria-label="DDI" required>
+                            <option value="+55" selected>+55</option>
+                            <option value="+1">+1</option>
+                        </select>
+                        <input type="tel" name="phone" data-i18n-placeholder="modal.phone" placeholder="Telefone / WhatsApp" autocomplete="tel" required>
+                        <select name="cargo" required data-mestti-options="cargo">
+                            <option value="" selected disabled data-i18n="modal.role">Cargo</option>
+                        </select>
+                    </div>
+                    <select name="setor" required data-mestti-options="setor">
+                        <option value="" selected disabled data-i18n="modal.sector">Setor da Indústria</option>
+                    </select>
+                    <select name="solucao" required data-mestti-options="solucao">
+                        <option value="" selected disabled data-i18n="modal.solution">Selecione a solução de maior interesse</option>
+                    </select>
+                    <textarea name="observacao" data-i18n-placeholder="modal.note" placeholder="Observação (opcional)" rows="3" style="min-height: 90px;"></textarea>
+                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Solicitar demonstração</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="../../js/i18n-page-strings.js"></script>
+    <script defer src="../../js/i18n-oee-article.js"></script>
+    <script defer src="../../js/i18n-oee-content.js"></script>
+    <script defer src="../../js/i18n.js?v=8"></script>
+    <script defer src="../../js/theme.js?v=2"></script>
+    <script defer src="../../js/form-options.js?v=3"></script>
+    <script defer src="../../js/meta-consent.js?v=5"></script>
+    <script defer src="../../js/meta-pixel.js?v=1"></script>
+    <script defer src="../../js/script.js?v=34"></script>
+    <script defer src="../../js/wa-chat-viewport.js?v=2"></script>
+    <script defer src="../../js/conversational-form.js?v=13"></script>
+</body>
+</html>
