@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11486484316"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9K4NZHC0WT');
+        gtag('config', 'AW-11486484316');
+    </script>
+    <meta charset="UTF-8">
+    <script src="../../js/theme-init.js?v=2"></script>
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+    <title>Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real | MESTTI</title>
+    <meta name="description" content="Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.">
+    <meta name="keywords" content="sensoriamento industrial, apontamento manual, dados em tempo real, Indústria 4.0, sensores industriais, contagem de peças, status de máquina, OEE, MESTTI">
+    <link rel="canonical" href="https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real | MESTTI">
+    <meta property="og:description" content="Pare de descobrir produção e parada só no fim do turno. Sensoriamento industrial, sensores certos e painel ao vivo — sem buzzword.">
+    <meta property="og:url" content="https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/">
+    <meta property="og:image" content="https://mestti.com.br/images/hardware-mestti.webp">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="article:published_time" content="2026-09-23">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sensoriamento industrial: sair do apontamento manual">
+    <meta name="twitter:description" content="Como coletar produção, paradas e status de máquina em tempo real — sem digitação no fim do turno.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/entry.css?v=37">
+    <link rel="stylesheet" href="../blog.css?v=5">
+    <link rel="stylesheet" href="../article.css?v=4">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real",
+        "description": "Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.",
+        "image": "https://mestti.com.br/images/hardware-mestti.webp",
+        "datePublished": "2026-09-23",
+        "author": { "@type": "Organization", "name": "MESTTI" },
+        "publisher": { "@type": "Organization", "name": "MESTTI", "logo": { "@type": "ImageObject", "url": "https://mestti.com.br/images/MESTTI.svg" } },
+        "mainEntityOfPage": "https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            { "@type": "Question", "name": "Preciso trocar todas as máquinas para ter sensoriamento?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Na maioria dos casos o sensor se adapta ao equipamento existente (contagem, corrente, encoder). O ganho começa nas máquinas críticas, não na troca da linha inteira." } },
+            { "@type": "Question", "name": "Sensor substitui o MES / ERP?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Sensor e dashboard de chão alimentam a operação com o real. MES/ERP continuam no planejamento, estoque e gestão. O ponto é não depender de digitação tardia para saber o que a máquina fez." } },
+            { "@type": "Question", "name": "E se a internet da fábrica cair?", "acceptedAnswer": { "@type": "Answer", "text": "Hardware bem desenhado guarda eventos localmente e sincroniza quando a conexão volta. Sem isso, você perde exatamente os minutos em que mais precisava do histórico." } },
+            { "@type": "Question", "name": "Por onde começar se hoje só temos papel?", "acceptedAnswer": { "@type": "Answer", "text": "Escolha uma máquina gargalo, automatize contagem ou status, coloque no painel e treine o turno a agir com o dado. Depois expanda. A MESTTI acelera esse caminho com sensores e monitoramento em tempo real." } },
+            { "@type": "Question", "name": "Sensores servem só para OEE?", "acceptedAnswer": { "@type": "Answer", "text": "OEE é um dos frutos. Antes disso, você já ganha produção confiável, mapa de paradas, cadência por horário e base para custo, PCP e manutenção." } }
+        ]
+    }
+    </script>
+</head>
+<body class="blog-article-page" data-page="blog-article">
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <header class="header header--tractian">
+        <div class="container container--wide">
+            <div class="header-tractian-inner">
+                <a href="/" class="header-logo-link">
+                    <img src="../../images/MESTTI-logo-header-light.png?v=1" alt="MESTTI" class="logo-img logo-img--light" width="120" height="25" decoding="async"><img src="../../images/MESTTI-logo-header-dark.png?v=1" alt="" class="logo-img logo-img--dark" width="120" height="25" decoding="async" aria-hidden="true">
+                </a>
+                <nav class="header-nav" id="headerNav" aria-label="Menu principal">
+                    <div class="mobile-nav-header">
+                        <a href="/" class="header-logo-link">
+                            <img src="../../images/MESTTI-logo-header-light.png?v=1" alt="MESTTI" class="logo-img logo-img--light" width="120" height="25" decoding="async"><img src="../../images/MESTTI-logo-header-dark.png?v=1" alt="" class="logo-img logo-img--dark" width="120" height="25" decoding="async" aria-hidden="true">
+                        </a>
+                        <button type="button" class="mobile-nav-close" aria-label="Fechar menu" data-i18n-aria="a11y.closeMenu">×</button>
+                    </div>
+                    <a href="/" data-home-section="#controle-total" class="nav-link" data-i18n="nav.solutions">Soluções</a>
+                    <a href="/blog/" class="nav-link active" aria-current="page" data-i18n="nav.blog">Blog</a>
+                    <a href="/" data-home-section="#implementacao" class="nav-link" data-i18n="nav.installation">Instalação</a>
+                    <a href="/sensores/" class="nav-link" data-i18n="nav.sensors">Sensores</a>
+                    <a href="/empresa/" class="nav-link" data-i18n="nav.about">Sobre</a>
+                    <div class="mobile-nav-contact">
+                        <div class="mobile-nav-section-title" data-i18n="mobile.contact">Contato</div>
+                        <a class="mobile-nav-contact-link" href="tel:+5514974007797">(14) 97400-7797</a>
+                        <a class="mobile-nav-contact-link" href="https://wa.me/5514974007797" target="_blank" rel="noopener" data-i18n="mobile.whatsapp">WhatsApp</a>
+                        <a class="mobile-nav-contact-link" href="/contato/" data-i18n="mobile.contactCenter">Central de contato</a>
+                    </div>
+                    <div class="header-nav-mobile-extras">
+                        <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
+                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Demonstração</button>
+                    </div>
+                </nav>
+                <div class="header-tractian-actions">
+                    <a href="/contato/" class="header-link-contact" data-i18n="header.contact">Contato</a>
+                    <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
+                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Demonstração</button>
+                </div>
+                <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu" data-i18n-aria="a11y.openMenu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <header class="blog-hero">
+            <div class="container container--wide">
+                <div class="blog-hero-inner">
+                    <nav class="blog-hero-breadcrumb" aria-label="Navegação">
+                        <a href="/blog/">Blog</a>
+                        <span aria-hidden="true">›</span>
+                        <span data-i18n="sensor.breadcrumb.cat">Indústria 4.0 / Sensoriamento</span>
+                    </nav>
+                    <span class="blog-hero-badge" data-i18n="sensor.badge">Indústria 4.0 / Sensoriamento</span>
+                    <h1 data-i18n="sensor.h1">Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real</h1>
+                    <p class="blog-hero-lead" data-i18n="sensor.lead">Pare de descobrir produção, parada e cadência só no fim do turno. Entenda o que o sensoriamento muda no chão de fábrica — e por onde começar sem cair em buzzword de Indústria 4.0.</p>
+                    <div class="blog-hero-meta">
+                        <span class="blog-hero-meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            <span data-i18n="sensor.readTime">Leitura de 8 a 10 minutos</span>
+                        </span>
+                        <span class="blog-hero-meta-item" data-i18n="sensor.updated">Atualizado em set/2026</span>
+                    </div>
+                    <div class="blog-hero-actions">
+                        <a href="#quais-sensores" class="blog-hero-btn blog-hero-btn--ghost" data-i18n="sensor.ctaSensors">Ver quais sensores usar</a>
+                        <button type="button" class="blog-hero-btn blog-hero-btn--primary btn-open-modal" data-i18n="sensor.ctaMestti">Conheça a MESTTI</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container container--wide">
+            <div class="article-layout">
+                <aside class="article-toc" aria-label="Índice do artigo">
+                    <p class="article-toc-title" data-i18n="sensor.tocTitle">Neste artigo</p>
+                    <nav>
+                        <ol>
+                            <li><a href="#introducao" data-i18n="sensor.toc.1">Introdução</a></li>
+                            <li><a href="#o-que-e" data-i18n="sensor.toc.2">O que é sensoriamento</a></li>
+                            <li><a href="#apontamento-manual" data-i18n="sensor.toc.3">Por que o apontamento falha</a></li>
+                            <li><a href="#industria-40" data-i18n="sensor.toc.4">O que muda de verdade</a></li>
+                            <li><a href="#quais-sensores" data-i18n="sensor.toc.5">Quais sensores usar</a></li>
+                            <li><a href="#exemplo-pratico" data-i18n="sensor.toc.6">Exemplo prático</a></li>
+                            <li><a href="#erros-comuns" data-i18n="sensor.toc.7">Erros comuns</a></li>
+                            <li><a href="#por-onde-comecar" data-i18n="sensor.toc.8">Por onde começar</a></li>
+                            <li><a href="#mestti" data-i18n="sensor.toc.9">Como a MESTTI ajuda</a></li>
+                            <li><a href="#checklist" data-i18n="sensor.toc.10">Checklist</a></li>
+                            <li><a href="#conclusao" data-i18n="sensor.toc.11">Conclusão</a></li>
+                            <li><a href="#faq" data-i18n="sensor.toc.12">Perguntas frequentes</a></li>
+                        </ol>
+                    </nav>
+                </aside>
+
+                <article class="article-body">
+                    <details class="article-toc-mobile">
+                        <summary data-i18n="sensor.tocMobile">Ver índice do artigo</summary>
+                        <nav aria-label="Índice do artigo (mobile)">
+                            <ol>
+                                <li><a href="#introducao" data-i18n="sensor.toc.1">Introdução</a></li>
+                                <li><a href="#o-que-e" data-i18n="sensor.toc.2">O que é sensoriamento</a></li>
+                                <li><a href="#apontamento-manual" data-i18n="sensor.toc.3">Por que o apontamento falha</a></li>
+                                <li><a href="#industria-40" data-i18n="sensor.toc.4">O que muda de verdade</a></li>
+                                <li><a href="#quais-sensores" data-i18n="sensor.toc.5">Quais sensores usar</a></li>
+                                <li><a href="#exemplo-pratico" data-i18n="sensor.toc.6">Exemplo prático</a></li>
+                                <li><a href="#erros-comuns" data-i18n="sensor.toc.7">Erros comuns</a></li>
+                                <li><a href="#por-onde-comecar" data-i18n="sensor.toc.8">Por onde começar</a></li>
+                                <li><a href="#mestti" data-i18n="sensor.toc.9">Como a MESTTI ajuda</a></li>
+                                <li><a href="#checklist" data-i18n="sensor.toc.10">Checklist</a></li>
+                                <li><a href="#conclusao" data-i18n="sensor.toc.11">Conclusão</a></li>
+                                <li><a href="#faq" data-i18n="sensor.toc.12">Perguntas frequentes</a></li>
+                            </ol>
+                        </nav>
+                    </details>
+
+                    <section id="introducao"><div data-i18n="sensor.intro" data-i18n-html></div></section>
+                    <section id="o-que-e"><div data-i18n="sensor.s1" data-i18n-html></div></section>
+                    <section id="apontamento-manual"><div data-i18n="sensor.s2" data-i18n-html></div></section>
+                    <section id="industria-40"><div data-i18n="sensor.s3" data-i18n-html></div></section>
+                    <section id="quais-sensores"><div data-i18n="sensor.s4" data-i18n-html></div></section>
+
+                    <div class="article-inline-cta">
+                        <p data-i18n="sensor.ctaMid.text">Veja produção, paradas e status de máquina ao vivo — sem digitação no fim do turno.</p>
+                        <button type="button" class="blog-hero-btn blog-hero-btn--primary btn-open-modal" data-i18n="sensor.ctaMid.btn">Quero ver minha fábrica em tempo real</button>
+                    </div>
+
+                    <section id="exemplo-pratico"><div data-i18n="sensor.s5" data-i18n-html></div></section>
+                    <section id="erros-comuns"><div data-i18n="sensor.s6" data-i18n-html></div></section>
+                    <section id="por-onde-comecar"><div data-i18n="sensor.s7" data-i18n-html></div></section>
+                    <section id="mestti"><div data-i18n="sensor.s8" data-i18n-html></div></section>
+                    <section id="checklist"><div data-i18n="sensor.s9" data-i18n-html></div></section>
+                    <section id="conclusao"><div data-i18n="sensor.s10" data-i18n-html></div></section>
+
+                    <section id="faq" class="faq-section">
+                        <h2 data-i18n="sensor.faq.h2">Perguntas frequentes</h2>
+                        <div class="faq-list" data-i18n="sensor.faq.list" data-i18n-html></div>
+                    </section>
+                </article>
+            </div>
+        </div>
+
+        <section class="article-cta-final" aria-labelledby="cta-final-title">
+            <div class="container container--wide">
+                <div class="article-cta-final-inner">
+                    <h2 id="cta-final-title" data-i18n="sensor.ctaFinal.title">Quer ver produção e paradas ao vivo na sua planta?</h2>
+                    <p data-i18n="sensor.ctaFinal.lead">A MESTTI combina sensores industriais e software para contagem automática, status de máquina e indicadores no dashboard — sem digitação no fim do turno.</p>
+                    <div class="article-cta-final-actions">
+                        <button type="button" class="blog-hero-btn blog-hero-btn--primary btn-open-modal" data-i18n="sensor.ctaFinal.btn1">Quero conhecer a MESTTI</button>
+                        <a href="/contato/" class="blog-hero-btn blog-hero-btn--ghost" data-i18n="sensor.ctaFinal.btn2">Falar com um especialista</a>
+                        <a href="/blog/" class="blog-hero-btn blog-hero-btn--ghost" data-i18n="sensor.ctaFinal.btn3">Ler mais conteúdos no blog</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer footer--tractian">
+        <div class="container container--wide">
+            <div class="footer-legal-block">
+                <p class="footer-cnpj" data-i18n="footer.cnpj">Mestti Tecnologia LTDA - 63.380.944/0001-51</p>
+                <p class="footer-legal" data-i18n="footer.legal">© 2026 MESTTI. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="contactModal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" id="btnCloseModal" aria-label="Fechar" data-i18n-aria="a11y.closeMenu">&times;</button>
+            <div class="demo-modal-card">
+                <div class="demo-modal-head">
+                    <h2 class="demo-modal-title" data-i18n="modal.title">Solicite sua demonstração</h2>
+                    <p class="demo-modal-lead" data-i18n="modal.lead">Preencha os campos para falar com um especialista e entender os benefícios do MESTTI para sua operação.</p>
+                </div>
+                <form class="demo-form" id="contactFormModal">
+                    <input type="text" name="name" data-i18n-placeholder="modal.name" placeholder="Nome completo" autocomplete="name" required>
+                    <input type="text" name="empresa" data-i18n-placeholder="modal.company" placeholder="Empresa" autocomplete="organization" required>
+                    <input type="email" name="email" data-i18n-placeholder="modal.email" placeholder="E-mail profissional" autocomplete="email" required>
+                    <div class="field-row-3">
+                        <select name="ddi" aria-label="DDI" required>
+                            <option value="+55" selected>+55</option>
+                            <option value="+1">+1</option>
+                        </select>
+                        <input type="tel" name="phone" data-i18n-placeholder="modal.phone" placeholder="Telefone / WhatsApp" autocomplete="tel" required>
+                        <select name="cargo" required data-mestti-options="cargo">
+                            <option value="" selected disabled data-i18n="modal.role">Cargo</option>
+                        </select>
+                    </div>
+                    <select name="setor" required data-mestti-options="setor">
+                        <option value="" selected disabled data-i18n="modal.sector">Setor da Indústria</option>
+                    </select>
+                    <select name="solucao" required data-mestti-options="solucao">
+                        <option value="" selected disabled data-i18n="modal.solution">Selecione a solução de maior interesse</option>
+                    </select>
+                    <textarea name="observacao" data-i18n-placeholder="modal.note" placeholder="Observação (opcional)" rows="3" style="min-height: 90px;"></textarea>
+                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Solicitar demonstração</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="../../js/i18n-page-strings.js"></script>
+    <script defer src="../../js/i18n-sensoriamento-article.js"></script>
+    <script defer src="../../js/i18n-sensoriamento-content.js"></script>
+    <script defer src="../../js/i18n.js?v=8"></script>
+    <script defer src="../../js/theme.js?v=2"></script>
+    <script defer src="../../js/form-options.js?v=3"></script>
+    <script defer src="../../js/meta-consent.js?v=5"></script>
+    <script defer src="../../js/meta-pixel.js?v=1"></script>
+    <script defer src="../../js/script.js?v=34"></script>
+    <script defer src="../../js/wa-chat-viewport.js?v=2"></script>
+    <script defer src="../../js/conversational-form.js?v=13"></script>
+</body>
+</html>
