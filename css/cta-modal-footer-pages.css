@@ -817,6 +817,12 @@ a.footer-apk-btn:hover {
     line-height: 1.5;
 }
 
+.footer-legal a {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
 .footer-social {
     display: flex;
     align-items: center;
