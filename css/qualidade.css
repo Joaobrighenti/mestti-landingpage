@@ -4,6 +4,80 @@
     max-width: 1180px;
 }
 
+.ql-page .lp-hero {
+    color: var(--gray-900);
+    background: #f8fafc;
+}
+
+.ql-page .lp-hero h1 {
+    color: var(--gray-900);
+}
+
+.ql-page .lp-hero .lp-kicker {
+    color: var(--lp-blue);
+}
+
+.ql-page .lp-hero-lead {
+    color: var(--gray-600);
+    font-weight: 500;
+}
+
+.ql-page .lp-hero-photo-caption {
+    color: var(--gray-500);
+}
+
+.ql-hero-phones {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 78%;
+    max-width: 420px;
+    margin: 0 auto 0 -3.5rem;
+}
+
+.ql-hero-phone {
+    width: 56%;
+    height: auto;
+    display: block;
+}
+
+.ql-hero-phone--front {
+    width: 54%;
+    margin-left: -18%;
+    margin-top: 2.1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.ql-hero-zoom {
+    position: absolute;
+    z-index: 2;
+    width: 62%;
+    left: auto;
+    right: -22%;
+    bottom: 10%;
+    height: auto;
+    pointer-events: none;
+}
+
+.ql-page .lp-hero .lp-btn-primary {
+    background: #1b7a3e;
+    box-shadow: none;
+}
+
+.ql-page .lp-hero .lp-btn-primary:hover {
+    background: #166534;
+    box-shadow: none;
+}
+
+.ql-page .lp-hero .lp-btn-secondary,
+.ql-page .lp-hero .lp-btn-secondary:hover {
+    color: #10243d;
+    background: #fff;
+    border-color: rgba(16, 36, 61, 0.16);
+}
+
 .ql-page .lp-hero-visual--board {
     max-width: none;
 }
@@ -27,6 +101,53 @@
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.01em;
+}
+
+.ql-hero-stores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 1.35rem 0 0;
+}
+
+.ql-store {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    min-height: 3.35rem;
+    padding: 0.5rem 1.05rem 0.5rem 0.8rem;
+    border-radius: 12px;
+    border: 1px solid #111;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    line-height: 1.05;
+}
+
+.ql-store svg {
+    width: 1.55rem;
+    height: 1.55rem;
+    flex: none;
+}
+
+.ql-store small {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    opacity: 0.78;
+}
+
+.ql-store strong {
+    display: block;
+    font-size: 1.08rem;
+    font-weight: 700;
+}
+
+.ql-store:hover {
+    background: #2a2a2a;
+    border-color: #2a2a2a;
 }
 
 .ql-board-frame {
@@ -65,6 +186,132 @@
     object-fit: cover;
     object-position: 18% 18%;
     background: #f4f6f8;
+}
+
+.ql-board-frame--shot img {
+    height: auto;
+    object-fit: cover;
+    object-position: center top;
+    background: transparent;
+}
+
+.ql-board-frame--list img {
+    aspect-ratio: 3840 / 2160;
+}
+
+.ql-board-frame--plan img {
+    aspect-ratio: 1672 / 941;
+}
+
+.ql-board-frame--exec img {
+    aspect-ratio: 1898 / 939;
+}
+
+.ql-board-frame--hist img {
+    aspect-ratio: 1412 / 1114;
+}
+
+.ql-shot-stack {
+    position: relative;
+}
+
+.ql-shot-detail {
+    position: absolute;
+    z-index: 2;
+    top: 1.7rem;
+    right: -4%;
+    width: 58%;
+    height: auto;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #152238;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    box-shadow: 0 22px 48px rgba(15, 23, 42, 0.28);
+}
+
+.ql-shot-detail--lg {
+    width: 70%;
+    top: -2.75rem;
+}
+
+.ql-shot-detail img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: auto;
+    object-fit: contain;
+    background: #fff;
+}
+
+.ql-shot-phone {
+    position: absolute;
+    z-index: 2;
+    width: 40%;
+    height: auto;
+    right: 0;
+    bottom: -26%;
+    pointer-events: none;
+}
+
+.ql-shot-phone--verify {
+    width: 32%;
+    right: -2%;
+    bottom: -6%;
+}
+
+.ql-pair {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0;
+}
+
+.ql-pair-phone {
+    width: 44%;
+    height: auto;
+    display: block;
+}
+
+.ql-pair-phone--front {
+    width: 42%;
+    margin-left: -14%;
+    margin-top: 1.8rem;
+    position: relative;
+    z-index: 1;
+}
+
+.ql-pair .ql-ai-badge {
+    top: auto;
+    left: auto;
+    right: 0;
+    bottom: 0;
+}
+
+.ql-ai-badge {
+    position: absolute;
+    z-index: 3;
+    top: 0.7rem;
+    left: 0.7rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    max-width: 16rem;
+    padding: 0.42rem 0.7rem;
+    border-radius: 999px;
+    background: #111827;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.25;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.2);
+}
+
+.ql-ai-badge svg {
+    width: 1.35rem;
+    height: 1.35rem;
+    flex: none;
 }
 
 .ql-how {
@@ -140,6 +387,11 @@
 
 .ql-how-visual {
     min-width: 0;
+}
+
+.ql-how-visual--sm {
+    width: 86%;
+    margin-inline: auto;
 }
 
 .ql-neg {
@@ -639,7 +891,8 @@
 }
 
 @media (min-width: 768px) {
-    .ql-page .lp-hero-copy .ql-hero-proof {
+    .ql-page .lp-hero-copy .ql-hero-proof,
+    .ql-page .lp-hero-copy .ql-hero-stores {
         justify-content: flex-start;
     }
 }
@@ -667,9 +920,91 @@
 }
 
 @media (max-width: 767px) {
-    .ql-board-frame img {
+    .ql-hero-phones {
+        width: 92%;
+        max-width: none;
+        margin: 0 auto;
+        justify-content: center;
+    }
+
+    .ql-hero-zoom {
+        width: 46%;
+        left: auto;
+        right: 0;
+        bottom: 8%;
+    }
+
+    .ql-shot-detail {
+        top: 22%;
+        right: 0;
+        width: 48%;
+    }
+
+    .ql-shot-detail--lg {
+        top: auto;
+        bottom: 0;
+        right: 0.2rem;
+        width: 68%;
+    }
+
+    .ql-shot-phone {
+        right: 0;
+        bottom: -22%;
+        width: 33%;
+    }
+
+    .ql-shot-phone--verify {
+        width: 28%;
+        right: 0;
+        bottom: 0;
+    }
+
+    .ql-pair-phone {
+        width: 46%;
+    }
+
+    .ql-pair-phone--front {
+        width: 44%;
+        margin-top: 1.15rem;
+        margin-left: -12%;
+    }
+
+    .ql-how-visual--sm {
+        width: 100%;
+    }
+
+    .ql-ai-badge {
+        right: 0;
+        bottom: 0;
+        top: auto;
+        left: auto;
+        max-width: 11rem;
+        font-size: 0.68rem;
+    }
+
+    .ql-board-frame:not(.ql-board-frame--shot) img {
         aspect-ratio: 4 / 3;
         object-position: 8% 12%;
+    }
+
+    .ql-board-frame--plan {
+        background: transparent;
+    }
+
+    .ql-board-frame--plan img {
+        aspect-ratio: 1672 / 941;
+        height: auto;
+        object-fit: cover;
+        object-position: center top;
+        background: transparent;
+    }
+
+    .ql-board-frame--exec img {
+        aspect-ratio: 1898 / 939;
+        height: auto;
+        object-fit: cover;
+        object-position: center top;
+        background: transparent;
     }
 
     .ql-app-meta {
@@ -687,10 +1022,20 @@
     }
 }
 
-[data-theme="dark"] .ql-hero-proof li {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.16);
-    color: rgba(255, 255, 255, 0.9);
+[data-theme="dark"] .ql-page .lp-hero {
+    background: var(--page-bg);
+    color: var(--gray-900);
+}
+
+[data-theme="dark"] .ql-page .lp-hero h1,
+[data-theme="dark"] .ql-page .lp-hero-lead,
+[data-theme="dark"] .ql-page .lp-hero-photo-caption {
+    color: var(--gray-900);
+}
+
+[data-theme="dark"] .ql-page .lp-hero-lead,
+[data-theme="dark"] .ql-page .lp-hero-photo-caption {
+    color: var(--gray-600);
 }
 
 [data-theme="dark"] .ql-how-kicker {
