@@ -1139,7 +1139,14 @@ a.btn.hero-cta-btn:hover::before {
     gap: 0;
     width: max-content;
     will-change: transform;
-    animation: hero-clients-marquee 48s linear infinite;
+    animation: hero-clients-marquee var(--hero-clients-duration, 90s) linear infinite;
+    line-height: 0;
+}
+
+.hero-clients-segment {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
     line-height: 0;
 }
 
@@ -1158,7 +1165,7 @@ a.btn.hero-cta-btn:hover::before {
     }
 
     to {
-        transform: translate3d(-50%, 0, 0);
+        transform: translate3d(calc(-1 * var(--hero-clients-shift, 50%)), 0, 0);
     }
 }
 

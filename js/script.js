@@ -1351,6 +1351,10 @@ function initHeroClientsStrip() {
     const strip = document.querySelector('.hero-clients-strip');
     if (!track || !strip) return;
 
+    const HERO_CLIENTS_SCROLL_PX_PER_SEC = 36;
+    let segmentForMeasure = null;
+    let resizeObserver = null;
+
     const makeSet = (withAlt) => {
         const set = document.createElement('div');
         set.className = 'hero-clients-set';
@@ -1360,20 +1364,56 @@ function initHeroClientsStrip() {
         return set;
     };
 
-    const fillTrack = () => {
-        track.innerHTML = '';
-        track.appendChild(makeSet(true));
-        track.appendChild(makeSet(false));
-        track.appendChild(makeSet(false));
-        track.appendChild(makeSet(false));
+    const bindSegmentFallbacks = (root) => {
+        root.querySelectorAll('.hero-client-logo img[data-fallback]').forEach(bindHeroClientLogoFallback);
+    };
 
-        const minWidth = Math.max(strip.clientWidth, window.innerWidth) * 2.25;
+    const buildSegment = (withAltOnFirstSet) => {
+        const segment = document.createElement('div');
+        segment.className = 'hero-clients-segment';
+        segment.appendChild(makeSet(withAltOnFirstSet));
+
+        const viewport = Math.max(strip.clientWidth, window.innerWidth, 320);
         let guard = 0;
-        while (track.scrollWidth < minWidth && guard < 8) {
-            track.appendChild(makeSet(false));
-            track.appendChild(makeSet(false));
+        while (segment.scrollWidth < viewport + 80 && guard < 16) {
+            segment.appendChild(makeSet(false));
             guard += 1;
         }
+        return segment;
+    };
+
+    const syncMarqueeMetrics = () => {
+        if (!segmentForMeasure) return;
+        const shift = segmentForMeasure.offsetWidth;
+        if (shift <= 0) return;
+        track.style.setProperty('--hero-clients-shift', `${shift}px`);
+        track.style.setProperty('--hero-clients-duration', `${shift / HERO_CLIENTS_SCROLL_PX_PER_SEC}s`);
+    };
+
+    const fillTrack = () => {
+        if (resizeObserver) {
+            resizeObserver.disconnect();
+            resizeObserver = null;
+        }
+
+        track.innerHTML = '';
+        const primary = buildSegment(true);
+        const duplicate = primary.cloneNode(true);
+        duplicate.setAttribute('aria-hidden', 'true');
+        duplicate.querySelectorAll('.hero-clients-set').forEach((set) => set.setAttribute('aria-hidden', 'true'));
+        duplicate.querySelectorAll('.hero-client-logo img').forEach((img) => {
+            img.alt = '';
+        });
+        bindSegmentFallbacks(duplicate);
+
+        track.appendChild(primary);
+        track.appendChild(duplicate);
+        segmentForMeasure = primary;
+
+        syncMarqueeMetrics();
+
+        resizeObserver = new ResizeObserver(() => syncMarqueeMetrics());
+        resizeObserver.observe(primary);
     };
 
     fillTrack();
