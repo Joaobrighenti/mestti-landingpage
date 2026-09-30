@@ -1,8 +1,8 @@
 /* Traduções das páginas internas — mesclado em i18n.js */
 window.MESTTI_PAGE_I18N = {
     pt: {
-        'meta.sensores.title': 'Especificações Técnicas | MESTTI',
-        'meta.sensores.description': 'Ficha técnica e especificações dos sensores industriais MESTTI.',
+        'meta.sensores.title': 'Sensores industriais inteligentes | MESTTI',
+        'meta.sensores.description': 'Conheça os sensores industriais inteligentes MESTTI, suas especificações e aplicações no chão de fábrica.',
         'meta.sequenciamento.title': 'Sequenciamento e Programação da Produção | MESTTI',
         'meta.sequenciamento.description': 'Organize sua fila de produção, visualize a capacidade das máquinas e programe com mais segurança usando dados reais da fábrica com a MESTTI.',
         'meta.sensoriamento.title': 'Sensoriamento Industrial | MESTTI',
@@ -443,8 +443,8 @@ window.MESTTI_PAGE_I18N = {
         'modal.sendRequest': 'Enviar Pedido'
     },
     en: {
-        'meta.sensores.title': 'Technical Specifications | MESTTI',
-        'meta.sensores.description': 'Datasheet and specifications for MESTTI industrial sensors.',
+        'meta.sensores.title': 'Smart industrial sensors | MESTTI',
+        'meta.sensores.description': 'Explore MESTTI smart industrial sensors, their specifications and applications on the factory floor.',
         'meta.sequenciamento.title': 'Production Sequencing and Scheduling | MESTTI',
         'meta.sequenciamento.description': 'Organize your production queue, visualize machine capacity and schedule with more confidence using real factory data with MESTTI.',
         'meta.sensoriamento.title': 'Industrial Sensing | MESTTI',
@@ -885,8 +885,8 @@ window.MESTTI_PAGE_I18N = {
         'modal.sendRequest': 'Send request'
     },
     es: {
-        'meta.sensores.title': 'Especificaciones Técnicas | MESTTI',
-        'meta.sensores.description': 'Ficha técnica y especificaciones de sensores industriales MESTTI.',
+        'meta.sensores.title': 'Sensores industriales inteligentes | MESTTI',
+        'meta.sensores.description': 'Conozca los sensores industriales inteligentes MESTTI, sus especificaciones y aplicaciones en planta.',
         'meta.sequenciamento.title': 'Secuenciación y Programación de la Producción | MESTTI',
         'meta.sequenciamento.description': 'Organice su fila de producción, visualice la capacidad de las máquinas y programe con más seguridad usando datos reales de fábrica con MESTTI.',
         'meta.sensoriamento.title': 'Sensorización Industrial | MESTTI',
