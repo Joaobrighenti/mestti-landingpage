@@ -1,0 +1,30 @@
+# MESTTI
+
+> Soluções de automação e informatização do chão de fábrica, com apontamento de produção, sensores industriais e indicadores de OEE.
+
+A MESTTI combina sensores e software para acompanhar produção, paradas e indicadores em tempo real. O site também apresenta recursos de qualidade, checklists, inspeções e sequenciamento da produção. Consulte cada página para conhecer o escopo da solução e fale com a equipe para avaliar sua aplicação.
+
+## Páginas oficiais
+
+- [MESTTI | Sensores Industriais Inteligentes](https://mestti.com.br/atuacao/): MESTTI - Sensores Industriais | Dados em Tempo Real do Chão de Fábrica
+- [Como calcular preço de venda na indústria com RKW e custo do processo | MESTTI](https://mestti.com.br/blog/como-calcular-preco-venda-industria-rkw-custo-processo/): Aprenda como calcular o preço de venda de um produto industrial usando o método RKW, considerando matéria-prima, custos fixos, custo do processo, tempo de máquina, custos variáveis e lucro desejado.
+- [Blog | MESTTI](https://mestti.com.br/blog/): Artigos sobre produção industrial, gestão de custos e chão de fábrica.
+- [Nota fiscal de perda reduz impostos? Entenda quando isso pode acontecer | MESTTI](https://mestti.com.br/blog/nota-fiscal-de-perda-reducao-de-impostos/): Entenda o papel da nota fiscal de perda, as condições no Lucro Real e os cuidados com ICMS. Veja como organizar os registros da sua indústria.
+- [OEE: o que é, como calcular e por que acompanhar em tempo real | MESTTI](https://mestti.com.br/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/): Entenda o que é OEE (Overall Equipment Effectiveness), como calcular disponibilidade, performance e qualidade, e por que acompanhar o indicador ao vivo no chão de fábrica.
+- [Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real | MESTTI](https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/): Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.
+- [Contato | MESTTI](https://mestti.com.br/contato/): Entre em contato com a MESTTI — comercial, suporte e canais oficiais.
+- [Sobre a empresa | MESTTI](https://mestti.com.br/empresa/): Conheça a MESTTI — automação, OEE e sensores para o chão de fábrica.
+- [MESTTI | Apontamento Inteligente em Tempo Real](https://mestti.com.br/): MESTTI - Apontamento automático sem digitação | OEE e indicadores em tempo real
+- [MESTTI | Pass](https://mestti.com.br/pass/): Links MESTTI — site, teste grátis, LinkedIn e YouTube. Apontamento e monitoramento industrial.
+- [Sensoriamento Industrial e Apontamento Digital | MESTTI](https://mestti.com.br/producao/): Colete dados reais das máquinas, registre motivos de parada e acompanhe sua produção em tempo real com o sensoriamento e apontamento digital da MESTTI.
+- [Qualidade industrial | Checklists e inspeções | MESTTI](https://mestti.com.br/qualidade/): Crie checklists digitais, execute inspeções no chão de fábrica e acompanhe cada registro conectado à máquina, ao setor e à ordem de produção com o módulo de Qualidade da MESTTI.
+- [Especificações Técnicas | MESTTI](https://mestti.com.br/sensores/): Ficha técnica e especificações dos sensores industriais MESTTI.
+- [Sensoriamento Industrial | MESTTI](https://mestti.com.br/sensoriamento/): Sensores industriais conectados ao MESTTI para capturar produção, paradas e disponibilidade em tempo real — sem planilhas e sem atraso na informação.
+- [Sequenciamento e Programação da Produção | MESTTI](https://mestti.com.br/sequenciamento/): Organize sua fila de produção, visualize a capacidade das máquinas e programe com mais segurança usando dados reais da fábrica com a MESTTI.
+- [Termos de Uso e Contrato de Serviço | MESTTI](https://mestti.com.br/termos/): Termos de Uso e Contrato de Serviço da Plataforma MESTTI — condições de uso do aplicativo, responsabilidades, pagamentos e cancelamento.
+
+## Contato
+
+- Telefone e WhatsApp: +55 43 99109-5035
+- [WhatsApp](https://wa.me/5543991095035)
+- [Resumo em Markdown](https://mestti.com.br/index.md)
