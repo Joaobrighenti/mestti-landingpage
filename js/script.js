@@ -252,8 +252,8 @@ document.addEventListener('DOMContentLoaded', initMesttiDeferredScroll);
 
 
 
-// WhatsApp para receber demonstrações: 14 97400-7797
-const WHATSAPP_NUMERO = '5514974007797';
+// WhatsApp para receber demonstrações: 43 99109-5035
+const WHATSAPP_NUMERO = '5543991095035';
 
 function mesttiT(key, fallback) {
     return (window.MesttiI18n && window.MesttiI18n.t(window.MESTTI_LANG || 'pt', key)) || fallback;
