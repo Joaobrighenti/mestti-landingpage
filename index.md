@@ -15,6 +15,7 @@ A MESTTI combina sensores e software para acompanhar produção, paradas e indic
 
 - [Sobre a MESTTI](https://mestti.com.br/empresa/)
 - [Artigos sobre produção e gestão industrial](https://mestti.com.br/blog/)
+- [O que é um sistema MES e como a MESTTI ajuda](https://mestti.com.br/blog/o-que-e-sistema-mes-mestti/)
 
 ## Contato oficial
 

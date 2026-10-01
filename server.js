@@ -53,6 +53,9 @@ app.get("/producao/", (_req, res) => sendPage(res, path.join("producao", "index.
 app.get("/sensores/", (_req, res) => sendPage(res, path.join("sensores", "index.html")));
 app.get("/sequenciamento/", (_req, res) => sendPage(res, path.join("sequenciamento", "index.html")));
 app.get("/blog/", (_req, res) => sendPage(res, path.join("blog", "index.html")));
+app.get("/blog/o-que-e-sistema-mes-mestti/", (_req, res) =>
+  sendPage(res, path.join("blog", "o-que-e-sistema-mes-mestti", "index.html"))
+);
 app.get("/blog/como-calcular-preco-venda-industria-rkw-custo-processo/", (_req, res) =>
   sendPage(res, path.join("blog", "como-calcular-preco-venda-industria-rkw-custo-processo", "index.html"))
 );

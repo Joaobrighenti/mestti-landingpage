@@ -1,0 +1,118 @@
+.mes-flow {
+    margin: 1.5rem 0;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    border: 1px solid var(--gray-200);
+    border-radius: 14px;
+    background: var(--gray-50, #f8fafc);
+}
+
+.mes-flow ol {
+    display: grid;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mes-flow li {
+    position: relative;
+    display: grid;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    background: var(--white);
+    line-height: 1.45;
+}
+
+.mes-flow li:not(:last-child)::after {
+    content: "↓";
+    position: absolute;
+    left: 50%;
+    bottom: -1.55rem;
+    transform: translateX(-50%);
+    color: var(--article-brand);
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.mes-flow-label {
+    color: var(--article-brand);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.mes-flow li strong {
+    color: var(--gray-900);
+    font-size: 0.95rem;
+}
+
+.mes-flow li span:last-child {
+    color: var(--gray-600);
+    font-size: 0.84rem;
+}
+
+.mes-flow figcaption {
+    margin-top: 1rem;
+    color: var(--gray-600);
+    font-size: 0.84rem;
+    line-height: 1.55;
+}
+
+.mes-value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: 0.85rem;
+    margin: 1.25rem 0;
+}
+
+.mes-value-card {
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    background: var(--white);
+}
+
+.mes-value-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 0.95rem;
+}
+
+.mes-value-card h3 a {
+    color: var(--article-brand);
+    text-decoration: none;
+}
+
+.mes-value-card h3 a:hover {
+    text-decoration: underline;
+}
+
+.mes-value-card p {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+[data-theme="dark"] .mes-flow-label,
+[data-theme="dark"] .mes-value-card h3 a,
+[data-theme="dark"] .mes-flow li:not(:last-child)::after {
+    color: var(--primary-light, #7dd3fc);
+}
+
+@media (min-width: 720px) {
+    .mes-flow ol {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .mes-flow li:not(:last-child)::after {
+        content: "→";
+        left: auto;
+        right: -1.35rem;
+        bottom: 50%;
+        transform: translateY(50%);
+        z-index: 1;
+    }
+}
