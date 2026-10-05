@@ -91,14 +91,14 @@
     banner.innerHTML = `
       <div class="mestti-cookie-banner__inner">
         <p class="mestti-cookie-banner__text">
-          Ao clicar em “Aceitar todos os cookies”, você concorda com o armazenamento de cookies no seu dispositivo para melhorar a navegação no site, analisar a utilização do site e auxiliar nos nossos esforços de marketing.
+          Usamos cookies para navegação, análise e marketing.
         </p>
         <div class="mestti-cookie-banner__actions">
           <button type="button" class="mestti-cookie-banner__btn mestti-cookie-banner__btn--ghost" data-consent="decline">
             Agora não
           </button>
           <button type="button" class="mestti-cookie-banner__btn mestti-cookie-banner__btn--primary" data-consent="accept">
-            Aceitar todos os cookies
+            Aceitar
           </button>
         </div>
         <button type="button" class="mestti-cookie-banner__prefs" data-consent="prefs" hidden>

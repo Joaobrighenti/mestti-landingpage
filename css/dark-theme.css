@@ -170,7 +170,7 @@
 
 [data-theme="dark"] .service-offer-card {
     background: var(--white);
-    border: 1px solid var(--gray-200);
+    border: 1px solid var(--gray-300);
     box-shadow: none;
 }
 [data-theme="dark"] a.service-offer-cta {
@@ -499,6 +499,16 @@
 [data-theme="dark"] .mestti-popup__btn--cancel:hover {
     background: var(--gray-200);
     color: var(--gray-800);
+}
+
+[data-theme="dark"] .mestti-popup--success .mestti-popup__card {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .mestti-popup--success .mestti-popup__icon {
+    background: rgba(22, 163, 74, 0.16);
+    color: #4ade80;
+    box-shadow: 0 0 0 8px rgba(74, 222, 128, 0.06);
 }
 
 [data-theme="dark"] .mestti-popup__btn.btn-primary,

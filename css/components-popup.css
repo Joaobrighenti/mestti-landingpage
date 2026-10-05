@@ -86,3 +86,102 @@
     background: var(--gray-100);
 }
 
+.mestti-popup__icon {
+    display: none;
+}
+
+.mestti-popup--success .mestti-popup__card {
+    width: min(380px, calc(100vw - 2.5rem));
+    border-radius: 20px;
+    border-color: rgba(15, 23, 42, 0.06);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+    text-align: center;
+}
+
+.mestti-popup--success .mestti-popup__badge {
+    display: none;
+}
+
+.mestti-popup--success .mestti-popup__content {
+    padding: 2rem 1.75rem 1.5rem;
+}
+
+.mestti-popup--success .mestti-popup__icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: #e8f7ee;
+    color: #16a34a;
+    box-shadow: 0 0 0 8px rgba(22, 163, 74, 0.06);
+}
+
+.mestti-popup.mestti-popup--success.is-open .mestti-popup__icon svg path {
+    stroke-dasharray: 24;
+    stroke-dashoffset: 24;
+    animation: mestti-popup-check 0.45s 0.15s ease-out forwards;
+}
+
+.mestti-popup--success .mestti-popup__title {
+    margin-bottom: 0.4rem;
+    font-size: 1.3rem;
+    letter-spacing: -0.03em;
+}
+
+.mestti-popup--success .mestti-popup__message {
+    margin: 0 auto 1.4rem;
+    max-width: 26ch;
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+.mestti-popup--success .mestti-popup__actions {
+    justify-content: center;
+}
+
+.mestti-popup--success .mestti-popup__btn {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+button.is-loading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    cursor: progress;
+}
+
+button.is-loading:disabled {
+    opacity: 0.92;
+}
+
+.btn-spinner {
+    flex: none;
+    width: 1.05em;
+    height: 1.05em;
+    border: 2.5px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: btn-spin 0.7s linear infinite;
+}
+
+@keyframes btn-spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes mestti-popup-check {
+    to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mestti-popup.mestti-popup--success.is-open .mestti-popup__icon svg path {
+        animation: none;
+        stroke-dashoffset: 0;
+    }
+}
+

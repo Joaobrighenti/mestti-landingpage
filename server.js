@@ -1,4 +1,5 @@
 import express from "express";
+import os from "os";
 import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
@@ -26,6 +27,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PORT = Number(process.env.PORT || 5500);
+const HOST = process.env.HOST || "127.0.0.1";
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const LEADS_TO_EMAIL = process.env.LEADS_TO_EMAIL || "";
 const FROM_EMAIL = process.env.FROM_EMAIL || "onboarding@resend.dev";
@@ -254,7 +256,15 @@ app.post("/api/lead-progress", async (req, res) => {
   }
 });
 
-app.listen(PORT, "127.0.0.1", () => {
+app.listen(PORT, HOST, () => {
   console.log(`Server running at http://127.0.0.1:${PORT}/`);
+  if (HOST !== "0.0.0.0") return;
+  const lanUrls = Object.values(os.networkInterfaces())
+    .flat()
+    .filter((item) => item && item.family === "IPv4" && !item.internal)
+    .map((item) => `http://${item.address}:${PORT}/`);
+  if (lanUrls.length) {
+    console.log(`Na rede local: ${lanUrls.join("  ")}`);
+  }
 });
 

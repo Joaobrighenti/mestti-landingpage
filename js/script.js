@@ -278,6 +278,9 @@ function ensureMesttiPopup() {
         <div class="mestti-popup__card" role="document" aria-labelledby="mesttiPopupTitle" aria-describedby="mesttiPopupMessage" tabindex="-1">
             <div class="mestti-popup__badge" aria-hidden="true"></div>
             <div class="mestti-popup__content">
+                <div class="mestti-popup__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+                </div>
                 <h3 class="mestti-popup__title" id="mesttiPopupTitle">Pronto!</h3>
                 <p class="mestti-popup__message" id="mesttiPopupMessage"></p>
                 <div class="mestti-popup__actions">
@@ -302,8 +305,9 @@ function ensureMesttiPopup() {
     return overlay;
 }
 
-function openMesttiPopup({ title = 'Pronto!', message = '' } = {}) {
+function openMesttiPopup({ title = 'Pronto!', message = '', variant = '' } = {}) {
     const overlay = ensureMesttiPopup();
+    overlay.classList.toggle('mestti-popup--success', variant === 'success');
     const titleEl = overlay.querySelector('#mesttiPopupTitle');
     const msgEl = overlay.querySelector('#mesttiPopupMessage');
     const cardEl = overlay.querySelector('.mestti-popup__card');
@@ -324,7 +328,7 @@ function openMesttiPopup({ title = 'Pronto!', message = '' } = {}) {
 function closeMesttiPopup() {
     const overlay = document.getElementById('mesttiPopup');
     if (!overlay) return;
-    overlay.classList.remove('is-open');
+    overlay.classList.remove('is-open', 'mestti-popup--success');
     overlay.setAttribute('aria-hidden', 'true');
 }
 
@@ -487,6 +491,10 @@ function collectLeadPayload(form, formId, leadSource = 'submit') {
     const apontamentoAtual = form.querySelector('[name="apontamento_atual"]');
     const motivosParada = form.querySelector('[name="motivos_parada"]');
     const dificuldadeProducao = form.querySelector('[name="dificuldade_producao"]');
+    const controleAtual = form.querySelector('[name="controle_atual"]');
+    const controlesDesejados = [...form.querySelectorAll('[name="controle_desejado"]:checked')]
+        .map((el) => el.closest('label')?.querySelector('span')?.textContent?.trim() || el.value)
+        .filter(Boolean);
     const observacaoExtra = [
         observacao?.value?.trim() || '',
         maquinas?.value ? `Máquinas: ${maquinas.value}` : '',
@@ -495,7 +503,9 @@ function collectLeadPayload(form, formId, leadSource = 'submit') {
         apontamentoAtual?.value ? `Apontamento atual: ${apontamentoAtual.value}` : '',
         motivosParada?.value ? `Motivos de parada: ${motivosParada.value}` : '',
         dificuldadeProgramacao?.value?.trim() ? `Maior dificuldade na programação: ${dificuldadeProgramacao.value.trim()}` : '',
-        dificuldadeProducao?.value?.trim() ? `Maior dificuldade para medir produção: ${dificuldadeProducao.value.trim()}` : ''
+        dificuldadeProducao?.value?.trim() ? `Maior dificuldade para medir produção: ${dificuldadeProducao.value.trim()}` : '',
+        controleAtual?.value ? `Controle atual das inspeções: ${controleAtual.options?.[controleAtual.selectedIndex]?.text || controleAtual.value}` : '',
+        controlesDesejados.length ? `Quer controlar melhor: ${controlesDesejados.join(', ')}` : ''
     ].filter(Boolean).join('\n');
 
     return {
@@ -536,6 +546,7 @@ function formHasPartialData(form) {
     const programacaoAtual = form.querySelector('[name="programacao_atual"]');
     const apontamentoAtual = form.querySelector('[name="apontamento_atual"]');
     const motivosParada = form.querySelector('[name="motivos_parada"]');
+    const controleAtual = form.querySelector('[name="controle_atual"]');
 
     return Boolean(
         name.length >= 2
@@ -554,6 +565,8 @@ function formHasPartialData(form) {
         || programacaoAtual?.value
         || apontamentoAtual?.value
         || motivosParada?.value
+        || controleAtual?.value
+        || form.querySelector('[name="controle_desejado"]:checked')
     );
 }
 
@@ -641,12 +654,14 @@ async function submitLeadForm(form, formId, {
     leadSource = 'submit',
     trackConversion = true,
     showSuccessPopup = true,
-    closeOnSuccess = true
+    closeOnSuccess = true,
+    successTitle,
+    successMessage: successMessageOverride
 } = {}) {
     if (!form || form.dataset.mesttiSubmitting === '1') return false;
 
     const submitButton = form.querySelector('button[type="submit"]');
-    const originalText = submitButton?.textContent || '';
+    const originalHtml = submitButton?.innerHTML || '';
     const payload = collectLeadPayload(form, formId, leadSource);
 
     const phoneDigits = (payload.phone || '').replace(/\D/g, '');
@@ -662,11 +677,23 @@ async function submitLeadForm(form, formId, {
 
     form.dataset.mesttiSubmitting = '1';
 
+    const resetSubmitButton = () => {
+        if (!submitButton) return;
+        submitButton.classList.remove('is-loading');
+        submitButton.removeAttribute('aria-busy');
+        submitButton.innerHTML = originalHtml;
+        submitButton.style.backgroundColor = '';
+        submitButton.disabled = false;
+    };
+
     if (submitButton) {
         submitButton.disabled = true;
+        submitButton.classList.add('is-loading');
+        submitButton.setAttribute('aria-busy', 'true');
+        submitButton.innerHTML = `<span class="btn-spinner" aria-hidden="true"></span>${mesttiT('form.sending', 'Enviando...')}`;
     }
 
-    const successMessage = mesttiT(
+    const successMessage = successMessageOverride || mesttiT(
         'form.success',
         'Em breve nossa equipe entrará em contato com você.'
     );
@@ -685,10 +712,7 @@ async function submitLeadForm(form, formId, {
     }
 
     if (!leadOk) {
-        if (submitButton) {
-            submitButton.disabled = false;
-            submitButton.textContent = originalText;
-        }
+        resetSubmitButton();
         form.dataset.mesttiSubmitting = '';
         openMesttiPopup({
             title: mesttiT('form.errorTitle', 'Não foi possível enviar'),
@@ -714,25 +738,24 @@ async function submitLeadForm(form, formId, {
     window.MesttiConversationalForm?.clearAllDrafts?.();
 
     if (submitButton) {
+        submitButton.classList.remove('is-loading');
+        submitButton.removeAttribute('aria-busy');
         submitButton.textContent = 'Enviado ✓';
         submitButton.style.backgroundColor = '#059669';
     }
 
     if (showSuccessPopup) {
         openMesttiPopup({
-            title: mesttiT('form.successTitle', 'Obrigado!'),
-            message: successMessage
+            title: successTitle || mesttiT('form.successTitle', 'Obrigado!'),
+            message: successMessage,
+            variant: 'success'
         });
     }
 
     setTimeout(() => {
         form.reset();
         if (closeOnSuccess && typeof closeModal === 'function') closeModal();
-        if (submitButton) {
-            submitButton.textContent = originalText;
-            submitButton.style.backgroundColor = '';
-            submitButton.disabled = false;
-        }
+        resetSubmitButton();
         form.dataset.mesttiSubmitting = '';
         delete form.dataset.mesttiSubmitted;
     }, 2500);
@@ -772,13 +795,90 @@ function montarMensagemWhatsApp(form, formId) {
     return encodeURIComponent(texto);
 }
 
+function maskBrazilPhone(raw) {
+    const digits = String(raw || '').replace(/\D/g, '').slice(0, 11);
+    if (!digits) return '';
+    if (digits.length <= 2) return `(${digits}`;
+    if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+    if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+}
+
+function bindQualidadeLeadForm(form) {
+    const phone = form.querySelector('[name="phone"]');
+    if (phone && phone.dataset.qlMaskBound !== '1') {
+        phone.dataset.qlMaskBound = '1';
+        phone.addEventListener('input', () => {
+            phone.value = maskBrazilPhone(phone.value);
+            phone.classList.remove('is-invalid');
+        });
+    }
+
+    form.querySelectorAll('[name="name"], [name="empresa"], [name="controle_atual"]').forEach((field) => {
+        if (field.dataset.qlInvalidBound === '1') return;
+        field.dataset.qlInvalidBound = '1';
+        field.addEventListener('input', () => field.classList.remove('is-invalid'));
+        field.addEventListener('change', () => field.classList.remove('is-invalid'));
+    });
+
+    form.querySelectorAll('[name="controle_desejado"]').forEach((box) => {
+        if (box.dataset.qlInvalidBound === '1') return;
+        box.dataset.qlInvalidBound = '1';
+        box.addEventListener('change', () => form.querySelector('.ql-choices')?.classList.remove('is-invalid'));
+    });
+}
+
+function validateQualidadeLead(form) {
+    const name = form.querySelector('[name="name"]');
+    const empresa = form.querySelector('[name="empresa"]');
+    const phone = form.querySelector('[name="phone"]');
+    const controle = form.querySelector('[name="controle_atual"]');
+    const choices = form.querySelector('.ql-choices');
+
+    form.querySelectorAll('.is-invalid').forEach((field) => field.classList.remove('is-invalid'));
+
+    const nameVal = (name?.value || '').trim();
+    if (nameVal.length < 2 || nameVal.length > 60) name?.classList.add('is-invalid');
+
+    const empresaVal = (empresa?.value || '').trim();
+    if (empresaVal.length < 2 || empresaVal.length > 80) empresa?.classList.add('is-invalid');
+
+    const digits = (phone?.value || '').replace(/\D/g, '');
+    if (digits.length < 10 || digits.length > 11) phone?.classList.add('is-invalid');
+
+    if (!controle?.value) controle?.classList.add('is-invalid');
+
+    if (!form.querySelector('[name="controle_desejado"]:checked')) choices?.classList.add('is-invalid');
+
+    const firstInvalid = form.querySelector('.is-invalid');
+    if (!firstInvalid) return true;
+
+    const focusTarget = firstInvalid.matches('input, select')
+        ? firstInvalid
+        : firstInvalid.querySelector('input');
+    focusTarget?.focus({ preventScroll: true });
+    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return false;
+}
+
 function handleFormSubmit(form, formId) {
     if (!form || form.dataset.mesttiSubmitBound === '1') return;
     form.dataset.mesttiSubmitBound = '1';
 
+    if (form.dataset.qlLead === '1') bindQualidadeLeadForm(form);
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        await submitLeadForm(form, formId, { leadSource: 'submit' });
+        if (form.dataset.qlLead === '1' && !validateQualidadeLead(form)) return;
+        await submitLeadForm(form, formId, {
+            leadSource: 'submit',
+            successTitle: form.dataset.qlLead === '1'
+                ? mesttiT('page.qualidade.form.thanksTitle', 'Obrigado!')
+                : undefined,
+            successMessage: form.dataset.qlLead === '1'
+                ? mesttiT('page.qualidade.form.thanks', 'Nossa equipe vai entrar em contato.')
+                : undefined
+        });
     });
 }
 
@@ -915,11 +1015,15 @@ if (modalOverlay) {
         if (document.getElementById('fabContact')) return;
 
         const fab = document.createElement('a');
-        fab.href = `https://wa.me/${WHATSAPP_NUMERO}`;
+        const isQualidade = document.body.dataset.page === 'qualidade';
+        const waText = isQualidade
+            ? '?text=' + encodeURIComponent('Olá! Quero conhecer mais o módulo de Qualidade da Mestti.')
+            : '';
+        fab.href = `https://wa.me/${WHATSAPP_NUMERO}${waText}`;
         fab.target = '_blank';
         fab.rel = 'noopener noreferrer';
         fab.id = 'fabContact';
-        fab.className = 'fab-contact';
+        fab.className = isQualidade ? 'fab-contact fab-contact--hot' : 'fab-contact';
         fab.setAttribute('aria-label', 'WhatsApp MESTTI');
         fab.setAttribute('title', 'WhatsApp MESTTI');
         fab.innerHTML = `
