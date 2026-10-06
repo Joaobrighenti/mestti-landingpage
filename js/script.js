@@ -1227,11 +1227,10 @@ function initSistemaGridLightbox() {
     }
 
     grid.addEventListener('click', (event) => {
-        const media = event.target.closest('.sistema-grid-media');
-        if (!media || !grid.contains(media)) return;
-        const img = media.querySelector('img');
+        const card = event.target.closest('.sistema-grid-card');
+        if (!card || !grid.contains(card)) return;
+        const img = card.querySelector('.sistema-grid-media img');
         if (!img) return;
-        const card = media.closest('.sistema-grid-card');
         const captionText = card?.querySelector('.sistema-grid-caption span')?.textContent?.trim() || '';
         openLightbox(img, captionText);
     });
