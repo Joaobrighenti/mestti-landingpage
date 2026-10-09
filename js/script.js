@@ -508,6 +508,8 @@ function collectLeadPayload(form, formId, leadSource = 'submit') {
         controlesDesejados.length ? `Quer controlar melhor: ${controlesDesejados.join(', ')}` : ''
     ].filter(Boolean).join('\n');
 
+    const extraValue = (fieldName) => form.querySelector(`[name="${fieldName}"]`)?.value?.trim() || '';
+
     return {
         formId,
         name,
@@ -521,7 +523,13 @@ function collectLeadPayload(form, formId, leadSource = 'submit') {
         mensagem: mensagem?.value?.trim() || '',
         observacao: observacaoExtra,
         pagePath: window.location.pathname,
-        leadSource: LEAD_SOURCE_LABELS[leadSource] || leadSource
+        leadSource: LEAD_SOURCE_LABELS[leadSource] || leadSource,
+        checklistHoje: extraValue('checklistHoje') || extraValue('checklist_hoje'),
+        volumeMensal: extraValue('volumeMensal') || extraValue('volume_mensal'),
+        unidades: extraValue('unidadesPayload') || extraValue('unidades'),
+        desafio: extraValue('desafio'),
+        utm: extraValue('utm'),
+        anexoNome: extraValue('anexoNome')
     };
 }
 
@@ -663,6 +671,7 @@ async function submitLeadForm(form, formId, {
     const submitButton = form.querySelector('button[type="submit"]');
     const originalHtml = submitButton?.innerHTML || '';
     const payload = collectLeadPayload(form, formId, leadSource);
+    if (form._checklistAnexo) payload.checklistAnexo = form._checklistAnexo;
 
     const phoneDigits = (payload.phone || '').replace(/\D/g, '');
     if (!payload.name || (!payload.email && phoneDigits.length < 8)) {

@@ -1,5 +1,7 @@
 import { Resend } from "resend";
 import { scheduleLeadMetaEvent } from "../lib/meta-lead.js";
+import { applyChecklistQualification } from "../lib/checklist-lead-score.js";
+import { extractChecklistAttachment } from "../lib/lead-attachment.js";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const LEADS_TO_EMAIL = process.env.LEADS_TO_EMAIL || "";
@@ -13,6 +15,11 @@ export default async function handler(req, res) {
 
   try {
     const payload = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    applyChecklistQualification(payload);
+    const checklistFile = extractChecklistAttachment(payload);
+    if (checklistFile.note.startsWith("ignorado")) {
+      payload.observacao = [payload.observacao, `Anexo: ${checklistFile.note}`].filter(Boolean).join("\n");
+    }
     const {
       formId = "",
       name = "",
@@ -93,6 +100,7 @@ export default async function handler(req, res) {
       text,
       html,
       replyTo: safe(email) || undefined,
+      ...(checklistFile.attachment ? { attachments: [checklistFile.attachment] } : {}),
     });
 
     if (error) {

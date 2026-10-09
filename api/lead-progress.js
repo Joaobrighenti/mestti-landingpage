@@ -1,4 +1,5 @@
 import { normalizeLeadProgressPayload, forwardLeadToGoogleSheets } from '../lib/sheets-sync.js';
+import { applyChecklistQualification } from '../lib/checklist-lead-score.js';
 
 const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL || '';
 
@@ -10,6 +11,7 @@ export default async function handler(req, res) {
 
   try {
     const raw = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : req.body || {};
+    applyChecklistQualification(raw);
     const payload = normalizeLeadProgressPayload(raw);
 
     if (!payload.sessionId) {

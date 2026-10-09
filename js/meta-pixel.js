@@ -42,6 +42,11 @@
       content_category: 'Solução Mestti',
       content_type: 'product',
     },
+    checklists: {
+      content_name: 'Checklists digitais',
+      content_category: 'Solução Mestti',
+      content_type: 'product',
+    },
   };
 
   let pixelInitialized = false;
@@ -214,6 +219,7 @@
       '/atuacao': VIEW_CONTENT_PAGES.atuacao,
       '/cmms': VIEW_CONTENT_PAGES.cmms,
       '/qualidade': VIEW_CONTENT_PAGES.qualidade,
+      '/checklists': VIEW_CONTENT_PAGES.checklists,
     };
     return map[path] || null;
   }

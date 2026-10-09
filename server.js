@@ -9,6 +9,8 @@ import {
   forwardLeadToGoogleSheets,
 } from "./lib/sheets-sync.js";
 import { scheduleLeadMetaEvent } from "./lib/meta-lead.js";
+import { applyChecklistQualification } from "./lib/checklist-lead-score.js";
+import { extractChecklistAttachment } from "./lib/lead-attachment.js";
 import { getMetaConversionsService } from "./lib/meta-conversions.js";
 import {
   checkRateLimit,
@@ -35,7 +37,7 @@ const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL || "";
 
 const app = express();
 app.set("trust proxy", 1);
-app.use(express.json({ limit: "200kb" }));
+app.use(express.json({ limit: "3mb" }));
 
 // Static assets
 app.use(express.static(__dirname, { extensions: ["html"] }));
@@ -51,6 +53,8 @@ app.get("/empresa/", (_req, res) => sendPage(res, path.join("empresa", "index.ht
 app.get("/atuacao/", (_req, res) => sendPage(res, path.join("atuacao", "index.html")));
 app.get("/sensoriamento/", (_req, res) => sendPage(res, path.join("sensoriamento", "index.html")));
 app.get("/qualidade/", (_req, res) => sendPage(res, path.join("qualidade", "index.html")));
+app.get("/checklists/", (_req, res) => sendPage(res, path.join("checklists", "index.html")));
+app.get(["/qualidade-2", "/qualidade-2/"], (_req, res) => res.redirect(301, "/checklists/"));
 app.get("/producao/", (_req, res) => sendPage(res, path.join("producao", "index.html")));
 app.get("/sensores/", (_req, res) => sendPage(res, path.join("sensores", "index.html")));
 app.get("/sequenciamento/", (_req, res) => sendPage(res, path.join("sequenciamento", "index.html")));
@@ -73,6 +77,11 @@ app.get("/download-app", (_req, res) => {
 app.post("/api/lead", async (req, res) => {
   try {
     const payload = req.body || {};
+    applyChecklistQualification(payload);
+    const checklistFile = extractChecklistAttachment(payload);
+    if (checklistFile.note.startsWith("ignorado")) {
+      payload.observacao = [payload.observacao, `Anexo: ${checklistFile.note}`].filter(Boolean).join("\n");
+    }
     const {
       formId = "",
       name = "",
@@ -152,6 +161,7 @@ app.post("/api/lead", async (req, res) => {
       text,
       html,
       replyTo: safe(email) || undefined,
+      ...(checklistFile.attachment ? { attachments: [checklistFile.attachment] } : {}),
     });
 
     if (error) {
@@ -243,7 +253,9 @@ app.post("/api/meta-events", async (req, res) => {
 
 app.post("/api/lead-progress", async (req, res) => {
   try {
-    const payload = normalizeLeadProgressPayload(req.body || {});
+    const rawLead = req.body || {};
+    applyChecklistQualification(rawLead);
+    const payload = normalizeLeadProgressPayload(rawLead);
 
     if (!payload.sessionId) {
       return res.status(400).json({ ok: false, error: "session_id_required" });

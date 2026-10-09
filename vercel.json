@@ -6,7 +6,9 @@
   "outputDirectory": "public",
   "redirects": [
     { "source": "/sensores/empresa", "destination": "/empresa/", "permanent": true },
-    { "source": "/sensores/empresa/", "destination": "/empresa/", "permanent": true }
+    { "source": "/sensores/empresa/", "destination": "/empresa/", "permanent": true },
+    { "source": "/qualidade-2", "destination": "/checklists/", "permanent": true },
+    { "source": "/qualidade-2/", "destination": "/checklists/", "permanent": true }
   ],
   "rewrites": [
     { "source": "/contato", "destination": "/contato/index.html" },
@@ -35,6 +37,8 @@
     { "source": "/sensoriamento/", "destination": "/sensoriamento/index.html" },
     { "source": "/qualidade", "destination": "/qualidade/index.html" },
     { "source": "/qualidade/", "destination": "/qualidade/index.html" },
+    { "source": "/checklists", "destination": "/checklists/index.html" },
+    { "source": "/checklists/", "destination": "/checklists/index.html" },
     { "source": "/sequenciamento", "destination": "/sequenciamento/index.html" },
     { "source": "/sequenciamento/", "destination": "/sequenciamento/index.html" },
     { "source": "/pass", "destination": "/pass/index.html" },
