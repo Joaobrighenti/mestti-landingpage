@@ -1,20 +1,17 @@
 /**
- * LP /checklists/: etapas do formulário, eventos e anexo opcional.
+ * LP /checklists/: etapas do formulário e eventos.
  * A pontuação do lead é calculada no servidor (lib/checklist-lead-score.js).
  */
 (function () {
     const form = document.getElementById('checklistForm');
     if (!form) return;
 
-    const MAX_BYTES = Math.floor(1.5 * 1024 * 1024);
-    const ALLOWED_EXT = ['.pdf', '.jpg', '.jpeg', '.png', '.webp', '.csv', '.xls', '.xlsx'];
     const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'];
 
     const step1 = form.querySelector('[data-step-panel="1"]');
     const step2 = form.querySelector('[data-step-panel="2"]');
     const progress = form.querySelector('[data-progress]');
     const success = document.getElementById('checklistSuccess');
-    const fileInput = form.querySelector('[name="checklist_arquivo"]');
     let started = false;
 
     function track(eventName, params) {
@@ -54,7 +51,7 @@
     }
 
     function fieldError(name, message) {
-        const field = form.querySelector(`[name="${name}"]`)?.closest('.ck-field, .ck-file');
+        const field = form.querySelector(`[name="${name}"]`)?.closest('.ck-field');
         if (!field) return;
         field.classList.toggle('is-invalid', Boolean(message));
         const error = field.querySelector('.ck-error');
@@ -110,22 +107,8 @@
             fieldError('unidades', 'Selecione uma opção.');
             ok = false;
         }
-        const fileMessage = fileProblem();
-        if (fileMessage) {
-            fieldError('checklist_arquivo', fileMessage);
-            ok = false;
-        }
         if (!ok) step2.querySelector('.is-invalid input, .is-invalid select')?.focus();
         return ok;
-    }
-
-    function fileProblem() {
-        const file = fileInput?.files?.[0];
-        if (!file) return '';
-        const ext = (file.name.match(/\.[a-z0-9]+$/i) || [''])[0].toLowerCase();
-        if (!ALLOWED_EXT.includes(ext)) return 'Use PDF, imagem ou planilha.';
-        if (file.size > MAX_BYTES) return 'O arquivo precisa ter até 1,5 MB.';
-        return '';
     }
 
     function showStep(step) {
@@ -138,19 +121,6 @@
         focus?.focus();
     }
 
-    function readFile(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = () => {
-                const value = String(reader.result || '');
-                const data = value.slice(value.indexOf(',') + 1);
-                resolve({ name: file.name, type: file.type || 'application/octet-stream', data });
-            };
-            reader.onerror = () => reject(new Error('file_read'));
-            reader.readAsDataURL(file);
-        });
-    }
-
     function fillQualification() {
         const desafio = selected('desafio');
         form.querySelector('[name="mensagem"]').value = desafio;
@@ -158,7 +128,6 @@
         form.querySelector('[name="volumeMensal"]').value = selected('volume_mensal');
         form.querySelector('[name="unidadesPayload"]').value = selected('unidades');
         form.querySelector('[name="utm"]').value = campaign();
-        form.querySelector('[name="anexoNome"]').value = fileInput?.files?.[0]?.name || '';
     }
 
     rememberCampaign();
@@ -198,17 +167,6 @@
         if (form.dataset.mesttiSubmitting === '1') return;
 
         fillQualification();
-        form._checklistAnexo = null;
-        const file = fileInput?.files?.[0];
-        if (file) {
-            try {
-                form._checklistAnexo = await readFile(file);
-            } catch {
-                fieldError('checklist_arquivo', 'Não foi possível ler o arquivo. Tente outro.');
-                track('form_error', { reason: 'anexo' });
-                return;
-            }
-        }
 
         const ok = await window.submitLeadForm?.(form, 'checklists', {
             leadSource: 'submit',
