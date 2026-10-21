@@ -11,6 +11,10 @@ const root = path.join(__dirname, "..");
 const outDir = path.join(root, "public");
 
 const SKIP = new Set([
+  "README.md",
+  "AGENTS.md",
+  "CLAUDE.md",
+  ".env.example",
   "node_modules",
   ".git",
   "public",
@@ -30,7 +34,7 @@ const SKIP = new Set([
 /** Itens na raiz que não entram no deploy estático */
 function skipRootOnly(name) {
   if (SKIP.has(name)) return true;
-  if (name.startsWith(".env") && name !== ".env.example") return true;
+  if (name.startsWith(".")) return true;
   return false;
 }
 

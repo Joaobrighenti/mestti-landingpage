@@ -6,6 +6,9 @@ A MESTTI combina sensores e software para acompanhar produção, paradas e indic
 
 ## Soluções
 
+- [Soluções por problema](https://mestti.com.br/solucoes/)
+- [Como escolher um sistema de monitoramento](https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/)
+
 - [Produção e apontamento digital](https://mestti.com.br/producao/): coleta de dados das máquinas, motivos de parada e acompanhamento da produção.
 - [Sensoriamento industrial](https://mestti.com.br/sensoriamento/): captura de produção, paradas e disponibilidade.
 - [Qualidade](https://mestti.com.br/qualidade/): checklists digitais e inspeções conectadas à operação.

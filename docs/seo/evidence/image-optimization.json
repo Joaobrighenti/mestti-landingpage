@@ -1,0 +1,100 @@
+[
+  {
+    "source": "images/Atendente.png",
+    "output": "images/Atendente.webp",
+    "before": 7617401,
+    "after": 160044,
+    "originalSize": [
+      2048,
+      2048
+    ],
+    "outputSize": [
+      1600,
+      1600
+    ]
+  },
+  {
+    "source": "img-empresa/STARTUP.png",
+    "output": "img-empresa/STARTUP.webp",
+    "before": 7763446,
+    "after": 127872,
+    "originalSize": [
+      3375,
+      4219
+    ],
+    "outputSize": [
+      1280,
+      1600
+    ]
+  },
+  {
+    "source": "qualidade/img/Mestti_Checklist_list.png",
+    "output": "qualidade/img/Mestti_Checklist_list.webp",
+    "before": 5808562,
+    "after": 95560,
+    "originalSize": [
+      3840,
+      2160
+    ],
+    "outputSize": [
+      1600,
+      900
+    ]
+  },
+  {
+    "source": "images/sensor-maquina-ligada.webp",
+    "output": "images/sensor-maquina-ligada-web.webp",
+    "before": 4049144,
+    "after": 172358,
+    "originalSize": [
+      2688,
+      1600
+    ],
+    "outputSize": [
+      1600,
+      952
+    ]
+  },
+  {
+    "source": "images/sensor-temperatura-umidade.webp",
+    "output": "images/sensor-temperatura-umidade-web.webp",
+    "before": 4013710,
+    "after": 231736,
+    "originalSize": [
+      2336,
+      1824
+    ],
+    "outputSize": [
+      1600,
+      1249
+    ]
+  },
+  {
+    "source": "images/sensor-contagem-pecas.webp",
+    "output": "images/sensor-contagem-pecas-web.webp",
+    "before": 3819616,
+    "after": 137142,
+    "originalSize": [
+      2336,
+      1824
+    ],
+    "outputSize": [
+      1600,
+      1249
+    ]
+  },
+  {
+    "source": "images/sensor-contagem-linear.webp",
+    "output": "images/sensor-contagem-linear-web.webp",
+    "before": 3819616,
+    "after": 137142,
+    "originalSize": [
+      2336,
+      1824
+    ],
+    "outputSize": [
+      1600,
+      1249
+    ]
+  }
+]

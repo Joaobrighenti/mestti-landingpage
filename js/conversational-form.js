@@ -3,7 +3,7 @@
  */
 (function () {
     const STORAGE_PREFIX = 'mesttiChatDraft';
-    const AVATAR_SRC = '/images/Atendente.png';
+    const AVATAR_SRC = '/images/Atendente.webp';
     const AVATAR_ALT = 'Giovana — MESTTI';
     const TYPING_DELAY_MS = 480;
 
@@ -211,6 +211,8 @@
             this.card?.classList.add('wa-mode');
             this.modalContent?.classList.add('wa-modal-content', 'wa-modal');
             this.form.classList.add('wa-form-hidden');
+            // O chat é a interface de entrada; o formulário preserva os valores para envio.
+            this.form.inert = true;
 
             this.chatEl = document.createElement('div');
             this.chatEl.className = 'wa-chat';
@@ -463,6 +465,7 @@
             this.inputEl.type = step.type === 'email' ? 'email' : 'text';
             this.inputEl.inputMode = step.type === 'email' ? 'email' : step.type === 'phone' ? 'tel' : 'text';
             this.inputEl.placeholder = this.inputPlaceholder(step);
+            this.inputEl.setAttribute('aria-label', this.inputPlaceholder(step));
             this.scrollToBottom();
             this.refocusInput();
         }

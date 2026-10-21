@@ -993,12 +993,19 @@ function unlockModalBodyScroll() {
 }
 
 if (modalOverlay) {
+    let modalTrigger = null;
     openModal = function openModalFn() {
+        modalTrigger = document.activeElement;
         lockModalBodyScroll();
         modalOverlay.classList.add('active');
+        modalOverlay.setAttribute('aria-hidden', 'false');
+        modalOverlay.setAttribute('role', 'dialog');
+        modalOverlay.setAttribute('aria-modal', 'true');
+        modalOverlay.setAttribute('aria-label', mesttiT('modal.title', 'Solicite sua demonstração'));
         document.body.classList.add('is-modal-open');
         document.body.style.overflow = 'hidden';
         document.querySelector('.header')?.classList.remove('header--hidden');
+        requestAnimationFrame(() => btnCloseModal?.focus({ preventScroll: true }));
     };
 
     closeModal = function closeModalFn() {
@@ -1006,6 +1013,8 @@ if (modalOverlay) {
         closeMesttiPopup();
         restoreMesttiPopupActions();
         modalOverlay.classList.remove('active');
+        modalTrigger?.focus({ preventScroll: true });
+        modalOverlay.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('is-modal-open');
         document.body.style.overflow = '';
         unlockModalBodyScroll();
@@ -1064,6 +1073,20 @@ if (modalOverlay) {
     });
 
     document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab' && modalOverlay.classList.contains('active') &&
+            !document.getElementById('mesttiPopup')?.classList.contains('is-open')) {
+            const controls = [...modalOverlay.querySelectorAll('button, input, select, textarea, a[href], [tabindex]')]
+                .filter((el) => !el.disabled && !el.closest('[inert]') && el.tabIndex >= 0 && el.getClientRects().length);
+            const first = controls[0];
+            const last = controls[controls.length - 1];
+            if (first && e.shiftKey && (document.activeElement === first || !modalOverlay.contains(document.activeElement))) {
+                e.preventDefault();
+                last.focus();
+            } else if (first && !e.shiftKey && (document.activeElement === last || !modalOverlay.contains(document.activeElement))) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
         if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
             requestCloseModal();
         }

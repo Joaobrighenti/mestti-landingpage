@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+    <meta charset="UTF-8">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11486484316"></script>
     <script>
@@ -11,12 +12,10 @@
         gtag('config', 'G-9K4NZHC0WT');
         gtag('config', 'AW-11486484316');
     </script>
-    <meta charset="UTF-8">
     <script src="../js/theme-init.js?v=2"></script>
     <meta name="color-scheme" content="light dark">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
-    <meta name="description"
-        content="CMMS MESTTI — página em construção. Entre em contato para saber mais sobre gestão de manutenção.">
+    <meta name="description" content="O conteúdo de CMMS está em preparação. Converse com a equipe MESTTI para conhecer o escopo atual e avaliar os requisitos de manutenção da sua empresa.">
     <title>CMMS em construção | MESTTI</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +31,18 @@
     </style>
     <link rel="stylesheet" href="../css/entry.css?v=37">
     <link rel="canonical" href="https://mestti.com.br/cmms/">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mestti.com.br/cmms/#webpage","url":"https://mestti.com.br/cmms/","name":"CMMS em construção | MESTTI","description":"CMMS MESTTI — página em construção. Entre em contato para saber mais sobre gestão de manutenção.","inLanguage":"pt-BR","isPartOf":{"@id":"https://mestti.com.br/#website"},"about":{"@id":"https://mestti.com.br/#organization"}}]}</script>
+    <link rel="stylesheet" href="/css/discovery.css?v=1">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MESTTI">
+    <meta property="og:title" content="CMMS em construção | MESTTI">
+    <meta property="og:description" content="O conteúdo de CMMS está em preparação. Converse com a equipe MESTTI para avaliar os requisitos de manutenção da sua empresa.">
+    <meta property="og:url" content="https://mestti.com.br/cmms/">
+    <meta property="og:image" content="https://mestti.com.br/images/hardware-mestti.webp">
+    <meta property="og:image:alt" content="Sensor industrial MESTTI conectado à gestão da produção">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="noindex, follow">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mestti.com.br/cmms/#webpage","url":"https://mestti.com.br/cmms/","name":"CMMS em construção | MESTTI","description":"O conteúdo de CMMS está em preparação. Converse com a equipe MESTTI para conhecer o escopo atual e avaliar os requisitos de manutenção da sua empresa.","inLanguage":"pt-BR","isPartOf":{"@id":"https://mestti.com.br/#website"},"about":{"@id":"https://mestti.com.br/#organization"}}]}</script>
 </head>
 
 <body class="cmms-page" data-page="cmms">
@@ -51,9 +61,9 @@
                         </a>
                         <button type="button" class="mobile-nav-close" aria-label="Fechar menu" data-i18n-aria="a11y.closeMenu">×</button>
                     </div>
-                    <a href="/" data-home-section="#controle-total" class="nav-link" data-i18n="nav.solutions">Soluções</a>
+                    <a href="/solucoes/" class="nav-link" data-i18n="nav.solutions">Soluções</a>
                     <a href="/blog/" class="nav-link" data-i18n="nav.blog">Blog</a>
-                    <a href="/" data-home-section="#implementacao" class="nav-link" data-i18n="nav.installation">Instalação</a>
+                    <a href="/#implementacao" class="nav-link" data-i18n="nav.installation">Instalação</a>
                     <a href="/sensores/" class="nav-link" data-i18n="nav.sensors">Sensores</a>
                     <a href="/empresa/" class="nav-link" data-i18n="nav.about">Sobre</a>
 
@@ -116,7 +126,7 @@
 
     <div id="contactModal" class="modal-overlay" aria-hidden="true">
         <div class="modal-content">
-            <button class="modal-close" id="btnCloseModal" aria-label="Fechar">&times;</button>
+            <button class="modal-close" id="btnCloseModal" aria-label="Fechar demonstração">&times;</button>
             <div class="demo-modal-card">
                 <div class="demo-modal-head">
                     <h2 class="demo-modal-title">Fale com a equipe MESTTI</h2>
@@ -136,16 +146,16 @@
                             <option value="+34">+34</option>
                         </select>
                         <input type="tel" name="phone" placeholder="Telefone / WhatsApp" autocomplete="tel" required>
-                        <select name="cargo" required data-mestti-options="cargo">
+                        <select name="cargo" required data-mestti-options="cargo" aria-label="Cargo">
                             <option value="" selected disabled>Cargo</option>
                         </select>
                     </div>
 
-                    <select name="setor" required data-mestti-options="setor">
+                    <select name="setor" required data-mestti-options="setor" aria-label="Setor da empresa">
                         <option value="" selected disabled>Setor da Indústria</option>
                     </select>
 
-                    <select name="solucao" required data-mestti-options="solucao">
+                    <select name="solucao" required data-mestti-options="solucao" aria-label="Solução de interesse">
                         <option value="" selected disabled>Selecione a solução de maior interesse</option>
                     </select>
 
@@ -157,14 +167,14 @@
     </div>
 
     <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script defer src="../js/i18n.js?v=2"></script>
+    <script defer src="../js/i18n.js?v=24"></script>
     <script defer src="../js/theme.js?v=2"></script>
     <script defer src="../js/form-options.js?v=2"></script>
     <script defer src="../js/meta-consent.js?v=6"></script>
     <script defer src="../js/meta-pixel.js?v=1"></script>
-    <script defer src="../js/script.js?v=39"></script>
+    <script defer src="../js/script.js?v=40"></script>
     <script defer src="../js/wa-chat-viewport.js?v=2"></script>
-    <script defer src="../js/conversational-form.js?v=7"></script>
+    <script defer src="../js/conversational-form.js?v=15"></script>
 </body>
 
 </html>

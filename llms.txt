@@ -6,6 +6,10 @@ A MESTTI combina sensores e software para acompanhar produção, paradas e indic
 
 ## Páginas oficiais
 
+- [Soluções por problema](https://mestti.com.br/solucoes/): produção, PCP, paradas, sensores e qualidade.
+- [Como escolher um sistema de monitoramento](https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/): escopo, critérios técnicos e roteiro de piloto.
+- [Checklists digitais](https://mestti.com.br/checklists/): rotinas de verificação e histórico de execução.
+
 - [MESTTI | Sensores Industriais Inteligentes](https://mestti.com.br/atuacao/): MESTTI - Sensores Industriais | Dados em Tempo Real do Chão de Fábrica
 - [Como calcular preço de venda na indústria com RKW e custo do processo | MESTTI](https://mestti.com.br/blog/como-calcular-preco-venda-industria-rkw-custo-processo/): Aprenda como calcular o preço de venda de um produto industrial usando o método RKW, considerando matéria-prima, custos fixos, custo do processo, tempo de máquina, custos variáveis e lucro desejado.
 - [Blog | MESTTI](https://mestti.com.br/blog/): Artigos sobre produção industrial, gestão de custos e chão de fábrica.
@@ -16,7 +20,6 @@ A MESTTI combina sensores e software para acompanhar produção, paradas e indic
 - [Contato | MESTTI](https://mestti.com.br/contato/): Entre em contato com a MESTTI — comercial, suporte e canais oficiais.
 - [Sobre a empresa | MESTTI](https://mestti.com.br/empresa/): Conheça a MESTTI — automação, OEE e sensores para o chão de fábrica.
 - [MESTTI | Apontamento Inteligente em Tempo Real](https://mestti.com.br/): MESTTI - Apontamento automático sem digitação | OEE e indicadores em tempo real
-- [MESTTI | Pass](https://mestti.com.br/pass/): Links MESTTI — site, teste grátis, LinkedIn e YouTube. Apontamento e monitoramento industrial.
 - [Sensoriamento Industrial e Apontamento Digital | MESTTI](https://mestti.com.br/producao/): Colete dados reais das máquinas, registre motivos de parada e acompanhe sua produção em tempo real com o sensoriamento e apontamento digital da MESTTI.
 - [Qualidade industrial | Checklists e inspeções | MESTTI](https://mestti.com.br/qualidade/): Crie checklists digitais, execute inspeções no chão de fábrica e acompanhe cada registro conectado à máquina, ao setor e à ordem de produção com o módulo de Qualidade da MESTTI.
 - [Especificações Técnicas | MESTTI](https://mestti.com.br/sensores/): Ficha técnica e especificações dos sensores industriais MESTTI.

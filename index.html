@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+    <meta charset="UTF-8">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11486484316"></script>
     <script>
@@ -11,12 +12,11 @@
         gtag('config', 'G-9K4NZHC0WT');
         gtag('config', 'AW-11486484316');
     </script>
-    <meta charset="UTF-8">
     <script src="js/theme-init.js?v=2"></script>
     <meta name="color-scheme" content="light dark">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
-    <meta name="description" content="MESTTI - Apontamento automático sem digitação | OEE e indicadores em tempo real">
-    <title>MESTTI | Apontamento Inteligente em Tempo Real</title>
+    <meta name="description" content="Acompanhe máquinas, ordens, paradas e OEE com sensores e apontamento digital. Conheça a MESTTI, o sequenciamento visual e as inspeções de qualidade.">
+    <title>Monitoramento de produção industrial e OEE | MESTTI</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,10 +32,21 @@
     <link rel="stylesheet" href="css/entry.css?v=132">
     <link rel="stylesheet" href="css/landing-producao.css?v=16">
     <link rel="canonical" href="https://mestti.com.br/">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mestti.com.br/#webpage","url":"https://mestti.com.br/","name":"MESTTI | Apontamento Inteligente em Tempo Real","description":"MESTTI - Apontamento automático sem digitação | OEE e indicadores em tempo real","inLanguage":"pt-BR","isPartOf":{"@id":"https://mestti.com.br/#website"},"about":{"@id":"https://mestti.com.br/#organization"}},{"@type":"Organization","@id":"https://mestti.com.br/#organization","name":"MESTTI","url":"https://mestti.com.br/","telephone":"+55 43 99109-5035","contactPoint":{"@type":"ContactPoint","telephone":"+55 43 99109-5035","contactType":"sales","url":"https://mestti.com.br/contato/","availableLanguage":"Portuguese"}},{"@type":"WebSite","@id":"https://mestti.com.br/#website","url":"https://mestti.com.br/","name":"MESTTI","inLanguage":"pt-BR","publisher":{"@id":"https://mestti.com.br/#organization"}}]}</script>
+    <link rel="stylesheet" href="/css/discovery.css?v=1">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MESTTI">
+    <meta property="og:title" content="Monitoramento de produção industrial e OEE | MESTTI">
+    <meta property="og:description" content="Acompanhe máquinas, ordens, paradas e OEE com sensores e apontamento digital. Conheça a MESTTI, o sequenciamento visual e as inspeções de qualidade.">
+    <meta property="og:url" content="https://mestti.com.br/">
+    <meta property="og:image" content="https://mestti.com.br/images/hardware-mestti.webp">
+    <meta property="og:image:alt" content="Sensor industrial MESTTI conectado à gestão da produção">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mestti.com.br/#webpage","url":"https://mestti.com.br/","name":"Monitoramento de produção industrial e OEE | MESTTI","description":"Acompanhe máquinas, ordens, paradas e OEE com sensores e apontamento digital. Conheça a MESTTI, o sequenciamento visual e as inspeções de qualidade.","inLanguage":"pt-BR","isPartOf":{"@id":"https://mestti.com.br/#website"},"about":{"@id":"https://mestti.com.br/#organization"}},{"@type":"Organization","@id":"https://mestti.com.br/#organization","name":"MESTTI","url":"https://mestti.com.br/","telephone":"+55 43 99109-5035","contactPoint":{"@type":"ContactPoint","telephone":"+55 43 99109-5035","contactType":"sales","url":"https://mestti.com.br/contato/","availableLanguage":"Portuguese"},"legalName":"Mestti Tecnologia LTDA","taxID":"63.380.944/0001-51","logo":"https://mestti.com.br/images/MESTTI-logo-header-light.png","sameAs":["https://www.linkedin.com/company/mestti/","https://www.instagram.com/mesttibrasil/","https://www.youtube.com/@mesttitech"]},{"@type":"WebSite","@id":"https://mestti.com.br/#website","url":"https://mestti.com.br/","name":"MESTTI","inLanguage":"pt-BR","publisher":{"@id":"https://mestti.com.br/#organization"}}]}</script>
 </head>
 
 <body data-page="home">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <div class="nav-overlay" id="navOverlay"></div>
 
     <header class="header header--tractian header--over-hero">
@@ -51,10 +62,10 @@
                         </a>
                         <button type="button" class="mobile-nav-close" aria-label="Fechar menu" data-i18n-aria="a11y.closeMenu">×</button>
                     </div>
-                    <a href="/" data-home-section="#controle-total" class="nav-link" data-i18n="nav.solutions">Soluções</a>
+                    <a href="/solucoes/" class="nav-link" data-i18n="nav.solutions">Soluções</a>
 
                     <a href="/blog/" class="nav-link" data-i18n="nav.blog">Blog</a>
-                    <a href="/" data-home-section="#implementacao" class="nav-link" data-i18n="nav.installation">Instalação</a>
+                    <a href="/#implementacao" class="nav-link" data-i18n="nav.installation">Instalação</a>
                     <a href="/sensores/" class="nav-link" data-i18n="nav.sensors">Sensores</a>
                     <a href="/empresa/" class="nav-link" data-i18n="nav.about">Sobre</a>
 
@@ -90,6 +101,7 @@
             </div>
         </div>
     </header>
+    <main id="conteudo" tabindex="-1">
 
     <!-- Hero — primeira dobra: painel ao vivo do chão de fábrica -->
     <section class="hero hero-first-fold hero-live" aria-labelledby="hero-live-title">
@@ -135,30 +147,23 @@
             </div>
         </div>
     </section>
-
+    <p class="discovery-demo-note">A maquete 3D e seus indicadores são ilustrativos; não representam dados de clientes.</p>
+    <section class="discovery" aria-labelledby="mestti-category"><h2 id="mestti-category">Gestão e monitoramento da produção industrial</h2><p>A MESTTI combina software e sensores para acompanhar produção, máquinas, paradas e indicadores em tempo real. O apontamento digital acrescenta o contexto da operação; o sequenciamento visual e as inspeções ajudam a conectar planejamento, execução e qualidade.</p><p><a href="/solucoes/">Encontre a solução pelo problema da sua fábrica</a> ou consulte o <a href="/blog/como-escolher-sistema-monitoramento-producao/">guia para avaliar um sistema de monitoramento</a>.</p></section>
     <!-- Conteúdo abaixo da primeira tela (scroll) -->
-    <div class="hero-below-fold">
-        <div class="hero-certificates" data-aos="fade-up">
-            <div class="certificate-item">
-                <img src="images/certificado-1.jpg" alt="Certificado 1" loading="lazy">
-            </div>
-            <div class="certificate-item">
-                <img src="images/certificado-2.jpg" alt="Certificado 2" loading="lazy">
-            </div>
-        </div>
-    </div>
+
 
     <!-- Investimento — eficiência energética -->
     <section class="news-split" id="eficiencia-energetica" aria-labelledby="invest-energy-title">
         <div class="container container--wide">
             <div class="news-split-grid">
                 <figure class="news-split-media" data-aos="fade-up">
-                    <img src="img-empresa/STARTUP.png" alt="MESTTI selecionada para acelerar a eficiência energética nas indústrias" loading="lazy" decoding="async" data-i18n-alt="invest.energy.imgAlt">
+                    <img src="img-empresa/STARTUP.webp" alt="MESTTI selecionada para acelerar a eficiência energética nas indústrias" loading="lazy" decoding="async" data-i18n-alt="invest.energy.imgAlt">
                 </figure>
                 <div class="news-split-copy" data-aos="fade-up" data-aos-delay="80">
                     <p class="news-split-kicker" data-i18n="invest.energy.kicker">Novidade</p>
                     <h2 id="invest-energy-title" class="news-split-title" data-i18n="invest.energy.title">Tecnologia da Mestti ganha reconhecimento nacional</h2>
-                    <p class="news-split-body" data-i18n="invest.energy.body">A Mestti foi a única startup do Sul do Brasil selecionada para uma iniciativa nacional voltada à eficiência energética na indústria.</p>
+                    <p class="news-split-body" data-i18n="invest.energy.body">A Mestti está entre as cinco empresas selecionadas na 3ª Chamada Pública do Lab Procel II, iniciativa de eficiência energética executada pela ENBPar em parceria com o SENAI Rio de Janeiro.</p>
+                        <p class="news-split-body"><a href="https://enbpar.gov.br/projetos-selecionados-na-3a-chamada-publica-do-lab-procel-ii-iniciam-etapa-de-aceleracao/">Leia o anúncio da ENBPar, publicado em 29/09/2026</a>.</p>
                     <p class="news-split-body" data-i18n="invest.energy.body2">O projeto impulsiona o desenvolvimento da nossa nova geração de sensoriamento industrial, conectando máquinas, consumo de energia e dados de produção para identificar desperdícios e transformar energia em um indicador estratégico de gestão.</p>
                 </div>
             </div>
@@ -244,6 +249,7 @@
                 <div class="lp-solve-head">
                     <p class="lp-section-label" data-i18n="page.sensoriamento.practice.label">Na prática</p>
                     <h2 id="home-practice-title" class="lp-solve-title" data-i18n="home.solve.title">Como o sensor responde no chão de fábrica</h2>
+                <p class="discovery-demo-note">Valores ilustrativos de uma demonstração, sem resultado medido de cliente.</p>
                 </div>
                 <div class="lp-solve-grid">
                     <div class="lp-solve-visual">
@@ -507,13 +513,14 @@
         </div>
     </section>
 
+        </main>
     <footer class="footer footer--tractian">
         <div class="container container--wide">
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="footer-col-title" data-i18n="footer.product">Produto</div>
                     <ul class="footer-col-list">
-                        <li><a href="/" data-home-section="#controle-total" data-i18n="footer.oee">Apontamento e OEE</a></li>
+                        <li><a href="/producao/" data-i18n="footer.oee">Apontamento e OEE</a></li>
                         <li><a href="/sensores/" data-i18n="footer.sensors">Sensores</a></li>
                         <li><a href="/sensores/" data-i18n="footer.sensorSpecs">Ficha técnica de sensores</a></li>
                     </ul>
@@ -522,7 +529,7 @@
                     <div class="footer-col-title" data-i18n="footer.solutions">Soluções</div>
                     <ul class="footer-col-list">
 
-                        <li><a href="/" data-home-section="#controle-total" data-i18n="footer.monitoring">Monitoramento</a></li>
+                        <li><a href="/producao/" data-i18n="footer.monitoring">Monitoramento</a></li>
                         <li>
                             <a class="footer-apk-btn" href="/download-app" download="mestti.apk" data-i18n="footer.apk">Baixar app Android</a>
                         </li>
@@ -538,7 +545,7 @@
                 <div class="footer-col">
                     <div class="footer-col-title" data-i18n="footer.resources">Recursos</div>
                     <ul class="footer-col-list">
-                        <li><a href="/" data-home-section="#controle-total" data-i18n="footer.features">Funcionalidades</a></li>
+                        <li><a href="/#sistema-grid-title" data-i18n="footer.features">Funcionalidades</a></li>
                         <li><a href="https://app.mestti.com.br" target="_blank" rel="noopener" data-i18n="footer.app">Acesso ao sistema</a>
                         </li>
                     </ul>
@@ -585,7 +592,7 @@
     <!-- Modal de Contato -->
     <div id="contactModal" class="modal-overlay" aria-hidden="true">
         <div class="modal-content">
-            <button class="modal-close" id="btnCloseModal" aria-label="Fechar" data-i18n-aria="a11y.closeMenu">&times;</button>
+            <button class="modal-close" id="btnCloseModal" aria-label="Fechar demonstração" data-i18n-aria="a11y.closeDialog">&times;</button>
             <div class="demo-modal-card">
                 <div class="demo-modal-head">
                     <h2 class="demo-modal-title" data-i18n="modal.title">Solicite sua demonstração</h2>
@@ -608,17 +615,17 @@
                             </select>
                             <input type="tel" id="phone" name="phone" data-i18n-placeholder="modal.phone" placeholder="Telefone / WhatsApp"
                                 autocomplete="tel" required>
-                            <select id="cargo" name="cargo" required data-mestti-options="cargo">
+                            <select id="cargo" name="cargo" required data-mestti-options="cargo" aria-label="Cargo">
                                 <option value="" selected disabled data-i18n="modal.role">Cargo</option>
                             </select>
                         </div>
                     </div>
 
-                    <select id="setor" name="setor" required data-mestti-options="setor">
+                    <select id="setor" name="setor" required data-mestti-options="setor" aria-label="Setor da empresa">
                         <option value="" selected disabled data-i18n="modal.sector">Setor da Indústria</option>
                     </select>
 
-                    <select id="solucao" name="solucao" required data-mestti-options="solucao">
+                    <select id="solucao" name="solucao" required data-mestti-options="solucao" aria-label="Solução de interesse">
                         <option value="" selected disabled data-i18n="modal.solution">Selecione a solução de maior interesse</option>
                     </select>
 
@@ -640,8 +647,8 @@
     </div>
 
     <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script defer src="js/i18n-page-strings.js"></script>
-    <script defer src="js/i18n.js?v=23"></script>
+    <script defer src="js/i18n-page-strings.js?v=2"></script>
+    <script defer src="js/i18n.js?v=24"></script>
     <script type="importmap">
     {
         "imports": {
@@ -655,9 +662,9 @@
     <script defer src="js/form-options.js?v=6"></script>
     <script defer src="js/meta-consent.js?v=6"></script>
     <script defer src="js/meta-pixel.js?v=1"></script>
-    <script defer src="js/script.js?v=39"></script>
+    <script defer src="js/script.js?v=40"></script>
     <script defer src="js/wa-chat-viewport.js?v=4"></script>
-    <script defer src="js/conversational-form.js?v=14"></script>
+    <script defer src="js/conversational-form.js?v=15"></script>
 </body>
 
 </html>
