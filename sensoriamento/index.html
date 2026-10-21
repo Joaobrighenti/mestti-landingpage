@@ -30,7 +30,8 @@
     <link rel="stylesheet" href="../css/entry.css?v=41">
     <link rel="stylesheet" href="../css/landing-producao.css?v=11">
     <link rel="canonical" href="https://mestti.com.br/sensoriamento/">
-    <link rel="stylesheet" href="/css/discovery.css?v=1">
+    <link rel="stylesheet" href="/css/discovery.css?v=2">
+    <link rel="stylesheet" href="/css/product-story.css?v=1">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="MESTTI">
     <meta property="og:title" content="Sensoriamento industrial e coleta de produção | MESTTI">
@@ -61,7 +62,7 @@
                     </div>
                     <a href="/solucoes/" class="nav-link" data-i18n="nav.solutions">Soluções</a>
                     <a href="/blog/" class="nav-link" data-i18n="nav.blog">Blog</a>
-                    <a href="/#implementacao" class="nav-link" data-i18n="nav.installation">Instalação</a>
+                    <a href="/otto/" class="nav-link">Otto</a>
                     <a href="/sensores/" class="nav-link" data-i18n="nav.sensors">Sensores</a>
                     <a href="/empresa/" class="nav-link" data-i18n="nav.about">Sobre</a>
                     <div class="mobile-nav-contact">
@@ -264,7 +265,7 @@
                 </div>
             </div>
         </section>
-    <section class="discovery" id="avaliacao-tecnica"><h2>Como avaliar os sensores na sua máquina</h2><p>Para escolher a coleta, comece pelo evento que precisa registrar: uma peça, um ciclo, uma metragem ou um sinal de funcionamento. A escolha do sensor e do ponto de instalação depende do processo, da velocidade e das condições do equipamento.</p><h3>Máquinas antigas e equipamentos sem CLP</h3><p>A idade da máquina, por si só, não define a compatibilidade. A equipe precisa avaliar se existe um sinal físico confiável e como instalar o sensor. Não é possível confirmar atendimento universal ou ausência de adaptação sem conhecer a máquina.</p><h3>O que conferir antes de implantar</h3><ul><li>Tipo de produto, unidade de contagem e relação entre ciclo e quantidade.</li><li>Ponto de leitura, alimentação e condições do ambiente.</li><li>Cobertura de rede e comportamento esperado em interrupções.</li><li>Conferência da leitura com uma referência da operação.</li><li>Responsáveis pela instalação, configuração e registro dos motivos de parada.</li></ul><p>O buffer local ajuda na continuidade da coleta, mas seu limite e o procedimento de recuperação precisam ser confirmados para o hardware utilizado. Durante a perda de conexão, “sem sinal” indica comunicação; não comprova que a máquina parou.</p><p><a href="/sensores/">Consulte as especificações dos sensores</a>, veja como o <a href="/producao/">apontamento digital acrescenta contexto</a> e leve seu cenário para a <a href="/contato/">avaliação técnica</a>.</p></section>
+    <section class="discovery discovery-context" id="avaliacao-tecnica"><div class="story-wrap"><div class="story-product-row"><div><h2>Como avaliar os sensores na sua máquina</h2><p>Para escolher a coleta, comece pelo evento que precisa registrar: uma peça, um ciclo, uma metragem ou um sinal de funcionamento. A escolha do sensor e do ponto de instalação depende do processo, da velocidade e das condições do equipamento.</p></div><figure><div class="story-screen"><img src="/images/sensor-contagem-pecas-web.webp" width="1600" height="1249" alt="Coletor MESTTI e sensor de contagem" loading="lazy" decoding="async"></div><figcaption>Interface e aplicação ilustrativas. Confirme o cenário, a configuração e os critérios de aceite com a equipe.</figcaption></figure></div><div class="story-context-details"><div class="story-context-detail"><h3>Máquinas antigas e equipamentos sem CLP</h3><p>A idade da máquina, por si só, não define a compatibilidade. A equipe precisa avaliar se existe um sinal físico confiável e como instalar o sensor. Não é possível confirmar atendimento universal ou ausência de adaptação sem conhecer a máquina.</p></div><div class="story-context-detail"><h3>O que conferir antes de implantar</h3><ul><li>Tipo de produto, unidade de contagem e relação entre ciclo e quantidade.</li><li>Ponto de leitura, alimentação e condições do ambiente.</li><li>Cobertura de rede e comportamento esperado em interrupções.</li><li>Conferência da leitura com uma referência da operação.</li><li>Responsáveis pela instalação, configuração e registro dos motivos de parada.</li></ul><p>O buffer local ajuda na continuidade da coleta, mas seu limite e o procedimento de recuperação precisam ser confirmados para o hardware utilizado. Durante a perda de conexão, “sem sinal” indica comunicação; não comprova que a máquina parou.</p><p><a href="/sensores/">Consulte as especificações dos sensores</a>, veja como o <a href="/producao/">apontamento digital acrescenta contexto</a> e leve seu cenário para a <a href="/contato/">avaliação técnica</a>.</p></div></div></div></section>
     </main>
 
     <footer class="footer footer--tractian">
@@ -277,9 +278,9 @@
         </div>
     </footer>
 
-    <div id="contactModal" class="modal-overlay" aria-hidden="true">
+    <div id="contactModal" class="modal-overlay" aria-hidden="true" inert>
         <div class="modal-content">
-            <button class="modal-close" id="btnCloseModal" aria-label="Fechar demonstração" data-i18n-aria="a11y.closeDialog">&times;</button>
+            <button type="button" class="modal-close" id="btnCloseModal" aria-label="Fechar demonstração" data-i18n-aria="a11y.closeDialog">&times;</button>
             <div class="demo-modal-card">
                 <div class="demo-modal-head">
                     <h2 class="demo-modal-title" data-i18n="modal.title">Solicite sua demonstração</h2>
@@ -313,13 +314,13 @@
     </div>
 
     <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script defer src="../js/i18n-page-strings.js?v=2"></script>
-    <script defer src="../js/i18n.js?v=24"></script>
+    <script defer src="../js/i18n-page-strings.js?v=3"></script>
+    <script defer src="../js/i18n.js?v=25"></script>
     <script defer src="../js/theme.js?v=2"></script>
-    <script defer src="../js/form-options.js?v=3"></script>
+    <script defer src="../js/form-options.js?v=4"></script>
     <script defer src="../js/meta-consent.js?v=6"></script>
     <script defer src="../js/meta-pixel.js?v=1"></script>
-    <script defer src="../js/script.js?v=40"></script>
+    <script defer src="../js/script.js?v=41"></script>
     <script defer src="../js/wa-chat-viewport.js?v=2"></script>
     <script defer src="../js/conversational-form.js?v=15"></script>
 </body>

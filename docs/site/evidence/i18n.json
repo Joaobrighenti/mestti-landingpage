@@ -1,0 +1,10 @@
+{
+  "scope": "Dictionary coverage, not a browser language-switch test",
+  "languages": [
+    "pt",
+    "en",
+    "es"
+  ],
+  "homeStoryKeys": 26,
+  "missing": []
+}

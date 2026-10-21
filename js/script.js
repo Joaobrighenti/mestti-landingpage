@@ -997,6 +997,7 @@ if (modalOverlay) {
     openModal = function openModalFn() {
         modalTrigger = document.activeElement;
         lockModalBodyScroll();
+        modalOverlay.inert = false;
         modalOverlay.classList.add('active');
         modalOverlay.setAttribute('aria-hidden', 'false');
         modalOverlay.setAttribute('role', 'dialog');
@@ -1015,6 +1016,7 @@ if (modalOverlay) {
         modalOverlay.classList.remove('active');
         modalTrigger?.focus({ preventScroll: true });
         modalOverlay.setAttribute('aria-hidden', 'true');
+        modalOverlay.inert = true;
         document.body.classList.remove('is-modal-open');
         document.body.style.overflow = '';
         unlockModalBodyScroll();
@@ -1026,7 +1028,6 @@ if (modalOverlay) {
             btn.dataset.mesttiModalBound = '1';
             btn.addEventListener('click', (e) => {
                 if (btn.tagName === 'A') e.preventDefault();
-                gtag_report_conversion();
                 openModal();
             });
         });

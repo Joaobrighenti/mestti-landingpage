@@ -1,10 +1,13 @@
 # MESTTI
 
-> Soluções de automação e informatização do chão de fábrica, com apontamento de produção, sensores industriais e indicadores de OEE.
+> Gestão da operação industrial: engenharia, produção e qualidade, com sensores e o assistente Otto.
 
-A MESTTI combina sensores e software para acompanhar produção, paradas e indicadores em tempo real. O site também apresenta recursos de qualidade, checklists, inspeções e sequenciamento da produção. Consulte cada página para conhecer o escopo da solução e fale com a equipe para avaliar sua aplicação.
+A MESTTI conecta estrutura de produto, componentes e processos às ordens, ao sequenciamento e ao apontamento da produção. Qualidade reúne checklists, inspeções, registros conformes e não conformes e evidências. O Otto consulta dados autorizados e prepara ações suportadas com aprovação humana. Sensores alimentam a coleta conforme a aplicação técnica.
 
 ## Soluções
+
+- [Engenharia de produto](https://mestti.com.br/engenharia/): componentes, materiais e processos ligados às ordens.
+- [Otto](https://mestti.com.br/otto/): assistente de IA com consultas e propostas aprovadas por usuários autorizados.
 
 - [Soluções por problema](https://mestti.com.br/solucoes/)
 - [Como escolher um sistema de monitoramento](https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/)

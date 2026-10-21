@@ -1,5 +1,7 @@
 # Estratégia de SEO, GEO e AEO da MESTTI
 
+> A evolução posterior de posicionamento e UX/UI está em [docs/site/STRATEGY.md](../site/STRATEGY.md): produção, qualidade e engenharia como pilares e Otto como nome público da IA, confirmados pelo responsável. Esse documento complementa as decisões técnicas abaixo.
+
 Decisão editorial e técnica de 21/10/2026. Base examinada: `origin/main` em `ef82bae`. Este documento descreve a implementação proposta; não comprova publicação, indexação ou crescimento comercial. O plano anterior à implementação está em [PLAN.md](PLAN.md), as fontes em [RESEARCH.md](RESEARCH.md) e os testes em [VALIDATION.md](VALIDATION.md).
 
 ## O problema e a posição que queremos explicar

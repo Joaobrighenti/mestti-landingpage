@@ -14,6 +14,8 @@ const SKIP = new Set([
   "README.md",
   "AGENTS.md",
   "CLAUDE.md",
+  "PRODUCT.md",
+  "DESIGN.md",
   ".env.example",
   "node_modules",
   ".git",

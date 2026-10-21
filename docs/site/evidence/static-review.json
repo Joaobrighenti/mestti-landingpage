@@ -1,0 +1,39 @@
+{
+  "versions": {
+    "htmlValidate": "11.17.0",
+    "cssTree": "3.2.1"
+  },
+  "configuration": "See rule exclusions in validation documentation",
+  "scope": "Static parsing, not browser render or WCAG certification",
+  "html": [
+    {
+      "file": "solucoes/index.html",
+      "sha256": "32d4ac6d4ea840de29ef0bf1959209e9c2d3b520aba09a955c088b595208f693",
+      "errorCount": 0,
+      "warningCount": 0,
+      "messages": []
+    },
+    {
+      "file": "engenharia/index.html",
+      "sha256": "5f5d226ccfb2a7abc21bd33463fe9b7182c778caf66f9685fc2499cf1ca218d0",
+      "errorCount": 0,
+      "warningCount": 0,
+      "messages": []
+    },
+    {
+      "file": "otto/index.html",
+      "sha256": "984424414f5b15ecf4a295350f11c6db13f7ffd356c1117b208f66ca8fba366a",
+      "errorCount": 0,
+      "warningCount": 0,
+      "messages": []
+    },
+    {
+      "file": "blog/como-escolher-sistema-monitoramento-producao/index.html",
+      "sha256": "02de51d39385738dd10d74b88a52fa92cbc3083206bbd1a96089af2cf26d566d",
+      "errorCount": 0,
+      "warningCount": 0,
+      "messages": []
+    }
+  ],
+  "cssParseErrors": []
+}

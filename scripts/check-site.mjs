@@ -113,7 +113,7 @@ for (const rule of config.redirects) {
 for (const url of pages.keys()) {
   if (url !== '/' && !redirectSources.has(url.slice(0, -1))) fail('redirects', `URL sem normalização: ${url}`);
 }
-for (const file of ['.env', '.env.example', 'server.js', 'lib', 'api']) {
+for (const file of ['.env', '.env.example', 'server.js', 'lib', 'api', 'docs', '.agents', '.impeccable', 'PRODUCT.md', 'DESIGN.md']) {
   if (root.endsWith('/public') && fs.existsSync(path.join(root, file))) fail('build', `arquivo interno publicado: ${file}`);
 }
 if (errors.length) { console.error(errors.join('\n')); process.exitCode = 1; }

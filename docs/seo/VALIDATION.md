@@ -1,5 +1,7 @@
 # Validação e limites da entrega
 
+> Registro da etapa SEO anterior à evolução visual. O estado atual (23 páginas, 20 URLs indexáveis) e as verificações da nova interface estão em [docs/site/VALIDATION.md](../site/VALIDATION.md). As capturas e auditorias abaixo não validam o novo layout.
+
 Verificações realizadas em 21/10/2026 na branch `feat/seo-geo-aeo`, a partir de `ef82bae`. O site publicado consultado durante a pesquisa era a versão anterior ao PR. Nenhuma medição abaixo comprova publicação, indexação, posição de busca ou recomendação por IA.
 
 ## Verificações reproduzíveis

@@ -10,6 +10,8 @@ Principais entradas:
 
 - `/`: apresentação, demonstrações e implantação.
 - `/solucoes/`: caminhos por problema da operação.
+- `/engenharia/`: estrutura de produto, componentes e processos ligados às ordens.
+- `/otto/`: assistente de IA, consultas e propostas com aprovação humana.
 - `/producao/`, `/sensoriamento/`, `/sequenciamento/`, `/qualidade/`: escopo das soluções industriais.
 - `/sensores/`: especificações; `/atuacao/`: catálogo interativo.
 - `/checklists/`: rotinas de verificação para diferentes segmentos.
@@ -45,4 +47,6 @@ npm run build
 
 A estratégia, as fontes e os limites estão em [docs/seo/STRATEGY.md](docs/seo/STRATEGY.md). O corpus qualitativo de intenções de compradores fica em [docs/seo/query-intents.json](docs/seo/query-intents.json), e as evidências em [docs/seo/VALIDATION.md](docs/seo/VALIDATION.md).
 
-URLs de conteúdo usam barra final; redirects são explícitos para documentos. `/cmms/` e `/pass/` continuam acessíveis com `noindex`. O preview Vercel da branch `feat/seo-geo-aeo` está desabilitado para que a revisão do PR não publique o trabalho.
+A evolução de posicionamento e UX/UI está em [docs/site/STRATEGY.md](docs/site/STRATEGY.md), com capacidades verificadas nos quatro repositórios em [docs/site/DISCOVERY.md](docs/site/DISCOVERY.md). A validação desta interface e suas pendências estão em [docs/site/VALIDATION.md](docs/site/VALIDATION.md). O contexto compartilhado de marketing fica em `.agents/product-marketing.md`.
+
+URLs de conteúdo usam barra final; redirects são explícitos para documentos. `/cmms/`, `/pass/` e o artigo fiscal histórico continuam acessíveis com `noindex`. O preview Vercel da branch `feat/seo-geo-aeo` está desabilitado para que a revisão do PR não publique o trabalho.

@@ -5,6 +5,10 @@
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "redirects": [
+    { "source": "/engenharia/index.html", "destination": "/engenharia/", "permanent": true },
+    { "source": "/engenharia", "destination": "/engenharia/", "permanent": true },
+    { "source": "/otto/index.html", "destination": "/otto/", "permanent": true },
+    { "source": "/otto", "destination": "/otto/", "permanent": true },
     { "source": "/sensores/empresa", "destination": "/empresa/", "permanent": true },
     { "source": "/sensores/empresa/", "destination": "/empresa/", "permanent": true },
     { "source": "/qualidade-2", "destination": "/checklists/", "permanent": true },
@@ -56,6 +60,8 @@
     { "source": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo", "destination": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/engenharia/", "destination": "/engenharia/index.html" },
+    { "source": "/otto/", "destination": "/otto/index.html" },
     { "source": "/contato", "destination": "/contato/index.html" },
     { "source": "/contato/", "destination": "/contato/index.html" },
     { "source": "/empresa", "destination": "/empresa/index.html" },
