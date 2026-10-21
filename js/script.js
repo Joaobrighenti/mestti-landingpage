@@ -34,6 +34,8 @@ const navOverlay = document.getElementById('navOverlay');
 
 if (menuToggle && headerNav && navOverlay) {
     function setMenuVisual(isActive) {
+        document.body.classList.toggle('is-menu-open', isActive);
+        menuToggle.setAttribute('aria-expanded', String(isActive));
         const spans = menuToggle.querySelectorAll('span');
         if (isActive) {
             spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -87,7 +89,7 @@ if (menuToggle && headerNav && navOverlay) {
 
     // Se alternar breakpoint/orientação, garante estado fechado
     window.addEventListener('resize', () => {
-        if (window.innerWidth <= 900) closeMenu();
+        closeMenu();
     });
 }
 

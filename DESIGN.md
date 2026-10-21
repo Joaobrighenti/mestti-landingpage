@@ -137,7 +137,7 @@ A Inter fornece hierarquia e continuidade entre apresentação e leitura. Displa
 - **Body:** parágrafos com medida máxima de 70ch e espaçamento inferior de 18px.
 - O guia tem título próprio (`clamp(2.2rem, 4vw, 3.7rem)`, máximo 22ch) e subtítulos menores no corpo.
 
-O CSS base fixa `html` em 14px; portanto `rem` não equivale a 16px. A extensão usa peso 800 na abertura e 600 nas ações, dentro dos pesos solicitados pelo link Google Fonts (400/500/600/700/800). A legibilidade dos textos pequenos exige inspeção renderizada; não foi validada.
+O CSS base fixa `html` em 14px; portanto `rem` não equivale a 16px. A extensão usa peso 800 na abertura e 600 nas ações, dentro dos pesos solicitados pelo link Google Fonts (400/500/600/700/800). A composição das superfícies novas foi conferida nas capturas e larguras registradas em `docs/site/VALIDATION.md`; isso não aprova toda a tipografia legada ou todos os dispositivos.
 
 ## Layout
 

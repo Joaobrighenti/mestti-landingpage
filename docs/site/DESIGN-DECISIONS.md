@@ -31,10 +31,10 @@ O sidecar `.impeccable/design.json` estende o frontmatter de DESIGN: sombras, mo
 
 Fontes estáticas conferidas: `css/base.css`, `css/product-story.css`, `css/header.css`, `css/conversational-form.css` e HTML de home, soluções, engenharia, Otto e `blog/como-escolher-sistema-monitoramento-producao/`. A revisão independente anterior confirmou no código foco, inert, headers e consistência de copy. Essa conclusão é limitada à inspeção estática.
 
-Não houve captura nova: a navegação local continua desativada no Work, apesar da ativação do plugin pelo usuário. As capturas anteriores em `docs/seo/evidence/` documentam o estado anterior. Não foram usadas como validação da extensão. Não se certificam aparência, renderização, contraste efetivo, acessibilidade, comportamento responsivo ou interação em navegador.
+A navegação foi restabelecida e as capturas novas em `docs/site/evidence/` mostram as composições atuais em desktop/celular e temas. A revisão independente não encontrou defeitos materiais restantes nesses estados após as correções. O menu deixou de sofrer sobreposição do WhatsApp, fecha ao mudar de tamanho e expõe `aria-expanded`; o índice do guia permanece visível com overflow restrito a `clip` no body dessa página. O formulário informa “agendamento automático”. Escopo e limites em [VALIDATION](VALIDATION.md); não é certificação completa de acessibilidade ou desempenho.
 
 O carregador `impeccable context` não executou por `permission denied` no launcher. Contexto e referências foram lidos diretamente; a configuração do navegador não foi contornada.
 
 ## Pendências não canonizadas
 
-A base usa raiz de 14px. A legibilidade de títulos, legendas e textos pequenos requer inspeção renderizada; o legado foi preservado, sem promover sua legibilidade a regra aprovada. Os pesos da extensão agora correspondem aos carregados: 800 na abertura e 600 nas ações. Nenhum outro defeito visual foi inferido sem renderização.
+A base usa raiz de 14px. A hierarquia e a leitura das superfícies novas foram conferidas nas capturas registradas; o legado foi preservado, sem promover toda sua tipografia a regra aprovada. Os pesos da extensão agora correspondem aos carregados: 800 na abertura e 600 nas ações. Nenhum outro defeito visual foi inferido sem renderização.

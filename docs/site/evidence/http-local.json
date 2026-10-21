@@ -1,146 +1,126 @@
 {
-  "origin": "http://127.0.0.1:5502",
-  "scope": "HTTP responses, not browser render",
+  "at": "2026-10-21T20:21:10.186079+00:00",
+  "scope": "Local static HTTP, not rendering or deployment",
   "results": [
     {
       "path": "/atuacao/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "5683e116525777d227cd18881b28f09db6bc41f1924479dc68721e7d1de6ce35"
+      "sha256": "adc3799193e7bca1c37c4c2b3bd9d1867b43ebf53a9c8df813cf3e6b7ed9b453"
     },
     {
       "path": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "86ddbc5534f86232b119a84634ce6723319144ec7d53f48ddaafff2d5b6ba13b"
+      "sha256": "d93e88ed64be8d0195f7d9fddc685ffcce443d6508abfc56cc6e6301709ad623"
     },
     {
       "path": "/blog/como-escolher-sistema-monitoramento-producao/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "02de51d39385738dd10d74b88a52fa92cbc3083206bbd1a96089af2cf26d566d"
+      "sha256": "2e1f690a72eb3f7496792a9d123e5eddc9e528bf924fa3661b8e54a1a4b5a51f"
     },
     {
       "path": "/blog/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "8145952f07e1429529ea94aa6023f9ab57fea56b0cff11d267b65ccedb4a3a42"
+      "sha256": "e13d954aee987e422c2ab7c31026d22861d432d8ea3d8991d87430eed233c116"
     },
     {
       "path": "/blog/o-que-e-sistema-mes-mestti/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "e86addbcc08d9f8b0f130c386c9a3e6050dbfaa85a28a8ed5b9d104e2f2bd624"
+      "sha256": "7d57863827f9be1c6a1ff7359cc16dac617bae4310b08e80045155411397f319"
     },
     {
       "path": "/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "b3f2ec1a050c61bad1dffe3cc34704800572f8bf03d38035616689581f9f4a12"
+      "sha256": "f80c46aea3fa25b1452e40055deb37af01751b339a48385913deef0716b0691c"
     },
     {
       "path": "/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "a51259b9bf4fd6113299f496e5337a55a1bf025020de8238366581cc405688c4"
+      "sha256": "e347b4dc25f64ee13e7ad68e13fe0af7726fd41e603c4db09eab83ee4467a224"
     },
     {
       "path": "/checklists/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "895521ab1f1fb5e1404109ba726a72a31c58a2db81e7f551dfbb2037f312e7d3"
+      "sha256": "21beb858bb75319002c15629106aa05b9233eadbe5641b25abdfb335804861b8"
     },
     {
       "path": "/contato/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "9aa48ec52379da7e1f710fd9e1c1cfd5d7ba811bca8d7b3e80691061a611df91"
+      "sha256": "b0bc5ecf4764121fc63ef9a9dc01cc0dec737493acc3fac3383da3b7b1c36234"
     },
     {
       "path": "/empresa/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "179738f7233896a496b2a2221443e0c56bcc20db26e6687957ace1a5f9311cab"
+      "sha256": "47fdd31a2d6906f257c58be93dd11ee1ec69c6c1a45c1ad6680a30e2aad7d7a6"
     },
     {
       "path": "/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "15c53a2403e6717b9ea97428a1451baff73df56b5d1e8fda783aad7f97d6e5e7"
+      "sha256": "69f8ee7f2436939f9eb067348519d308a5b9d8e919d5dc56c51cd5e670184b2c"
     },
     {
       "path": "/producao/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "b9745477eee0112689868ee6b158940849ef1186f67a0f099e1dc98ba30d91a9"
+      "sha256": "fbf0f809c87642fc451c6ecda7252a45a734fc4e9d0c1bd5fd2eb7a120cbd376"
     },
     {
       "path": "/qualidade/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "9f01fd0870a6160d7acdc39920461c4254bf53af6ca41312c49e5deab8509e7b"
+      "sha256": "c9e3f4ab5de32b3446f498b039eeca8644b9e2c96525e854e438605330cf3c57"
     },
     {
       "path": "/sensores/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "c4fe89c2f12b31f16d4855d82bee3cf3769166c464f83f1bef3146c2adb57aa5"
+      "sha256": "0327ee4ad14d3902afafde5b37274943ea222c327a169a68696a18a5b6683da2"
     },
     {
       "path": "/sensoriamento/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "2c3bb68dfdb74b64abea7a8c0e7c8b8155112dbe44653fd4eb5204d32208e26d"
+      "sha256": "7e1e473766350fd4564b57d2486d36fdf87b6a20c79dc06f59ebd3ddd9ee952a"
     },
     {
       "path": "/sequenciamento/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "0cc808733eb9102ac3c927d9d89fb4956ff17dfb209d81c7c9685ce41f9aa9c3"
+      "sha256": "a6856728d5e78bb494d2e903ef51ff75a04b415c472d2264198ef98d1a1895c1"
     },
     {
       "path": "/solucoes/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "32d4ac6d4ea840de29ef0bf1959209e9c2d3b520aba09a955c088b595208f693"
+      "sha256": "f380bd36c24c20996eae6827f7b771fd52a5cd6a75ec08be78b2f7acf14f2a6c"
     },
     {
       "path": "/termos/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "cf86419faf4b90ad686f11e378bbe901d088a7d93be6f8a9710752e61ff2c77e"
+      "sha256": "596943f2a4cc8e76dedda2f2056508c398c056079c7cc6486898925a6c56ae64"
     },
     {
       "path": "/engenharia/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "5f5d226ccfb2a7abc21bd33463fe9b7182c778caf66f9685fc2499cf1ca218d0"
+      "sha256": "886aa74a12235af9207a7300f1201c77f7c9802466e08850bc314f274c8844a0"
     },
     {
       "path": "/otto/",
       "status": 200,
-      "contentType": "text/html; charset=UTF-8",
       "matchesSource": true,
-      "sha256": "984424414f5b15ecf4a295350f11c6db13f7ffd356c1117b208f66ca8fba366a"
+      "sha256": "c8947ae175bf5a624ceeb28240c8dbecec0a1179acb8e63881554cb10f83bf95"
     }
   ]
 }

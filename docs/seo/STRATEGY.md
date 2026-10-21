@@ -1,3 +1,5 @@
+> Atualização da etapa UX/UI em 21/10/2026: revisão renderizada e teste oficial do guia concluídos; veja [validação atual](../site/VALIDATION.md). Bloqueios e notas abaixo registram etapas anteriores.
+
 # Estratégia de SEO, GEO e AEO da MESTTI
 
 > A evolução posterior de posicionamento e UX/UI está em [docs/site/STRATEGY.md](../site/STRATEGY.md): produção, qualidade e engenharia como pilares e Otto como nome público da IA, confirmados pelo responsável. Esse documento complementa as decisões técnicas abaixo.

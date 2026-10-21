@@ -518,6 +518,11 @@ html[data-theme="dark"] {
     font-weight: 600;
 }
 /* Guia: abertura visual, orientação persistente e medida editorial de leitura. */
+@supports (overflow: clip) {
+    body[data-page="buyer-guide"] {
+        overflow-x: clip;
+    }
+}
 .story-guide {
     padding-bottom: 64px;
 }

@@ -1,3 +1,5 @@
+> Atualização da etapa UX/UI em 21/10/2026: revisão renderizada e teste oficial do guia concluídos; veja [validação atual](../site/VALIDATION.md). Bloqueios e notas abaixo registram etapas anteriores.
+
 # Validação e limites da entrega
 
 > Registro da etapa SEO anterior à evolução visual. O estado atual (23 páginas, 20 URLs indexáveis) e as verificações da nova interface estão em [docs/site/VALIDATION.md](../site/VALIDATION.md). As capturas e auditorias abaixo não validam o novo layout.

@@ -223,7 +223,7 @@
                     </div>
                     <div class="wa-chat-meta">
                         <p class="wa-chat-name">${t('chat.header.name', 'Giovana')}</p>
-                        <p class="wa-chat-status">${t('chat.header.status', 'online')}</p>
+                        <p class="wa-chat-status">${t('chat.header.status', 'agendamento automático')}</p>
                     </div>
                 </div>
                 <div class="wa-chat-body">
@@ -858,7 +858,7 @@
             const nameEl = this.chatEl.querySelector('.wa-chat-name');
             const statusEl = this.chatEl.querySelector('.wa-chat-status');
             if (nameEl) nameEl.textContent = t('chat.header.name', 'Giovana');
-            if (statusEl) statusEl.textContent = t('chat.header.status', 'online');
+            if (statusEl) statusEl.textContent = t('chat.header.status', 'agendamento automático');
             if (this.sendBtn) {
                 this.sendBtn.setAttribute('aria-label', t('chat.send', 'Enviar'));
             }

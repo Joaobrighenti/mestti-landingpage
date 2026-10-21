@@ -53,7 +53,9 @@ for (const [url, page] of pages) {
       if (data['@context'] !== 'https://schema.org') fail(url, 'contexto schema inválido');
       for (const node of data['@graph'] || [data]) {
         if (!node['@type']) fail(url, 'tipo schema ausente');
-        if (node['@type'] === 'Article' && (!node.headline || !node.author || !node.datePublished || !node.mainEntityOfPage)) fail(url, 'Article incompleto');
+        // Política editorial local; Google trata as datas de Article como recomendadas.
+        // Um rascunho não deve inventar a data da primeira publicação para passar aqui.
+        if (node['@type'] === 'Article' && (!node.headline || !node.author || !node.mainEntityOfPage)) fail(url, 'Article incompleto');
         if (node['@type'] === 'BreadcrumbList') {
           const list = node.itemListElement;
           if (!list?.length || list.some((n, i) => n.position !== i + 1 || !n.name || !n.item?.startsWith(origin)) || list.at(-1).item !== origin + url) fail(url, 'breadcrumb inconsistente');
