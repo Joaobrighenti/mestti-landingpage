@@ -55,7 +55,7 @@ Sete versões usadas no site passaram de **36.891.495 bytes para 1.061.854 bytes
 
 ## Validação externa, descoberta e pendências
 
-O teste oficial de resultados enriquecidos foi aberto e preparado em modo de código, mas a revisão automática de aprovação bloqueou a submissão do HTML ainda não publicado ao Google por considerá-la exportação de conteúdo privado. A autorização específica foi solicitada ao usuário. A submissão não foi executada após o bloqueio, e não se declara aprovação pelo Rich Results Test ou Schema.org Validator. A validação local de JSON-LD passou.
+O teste oficial de resultados enriquecidos foi aberto e preparado em modo de código, mas a revisão automática de aprovação inicialmente bloqueou a submissão do HTML ainda não publicado ao Google por considerá-la exportação de conteúdo privado. O usuário autorizou explicitamente o envio do HTML do novo guia ao Google. Na retomada, a revisão automática não conseguiu autorizar nem a abertura de `https://search.google.com/test/rich-results`, devido ao limite de uso da ferramenta de aprovação. Esse segundo bloqueio é operacional, não uma reprovação do HTML ou do seu conteúdo. A submissão continua pendente; não se declara aprovação pelo Rich Results Test ou Schema.org Validator. A validação local de JSON-LD passou.
 
 As buscas de marca e de fornecedores serviram à pesquisa exploratória; não constituem um painel de posições. Não foram executadas campanhas independentes em ChatGPT, Claude, Gemini, Perplexity, DeepSeek, Qwen, GLM e MiMo. Não havia acesso autenticado a Search Console, Bing Webmaster Tools ou dados de conversão. O protocolo de medição longitudinal está em [STRATEGY.md](STRATEGY.md).
 
