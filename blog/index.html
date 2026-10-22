@@ -42,20 +42,22 @@
         <div class="container container--wide">
             <div class="header-tractian-inner">
                 <a href="/" class="header-logo-link">
-                    <img src="../images/MESTTI-logo-header-light.png?v=1" alt="MESTTI" class="logo-img logo-img--light" width="120" height="25" decoding="async"><img src="../images/MESTTI-logo-header-dark.png?v=1" alt="" class="logo-img logo-img--dark" width="120" height="25" decoding="async" aria-hidden="true">
+                    <img src="/images/MESTTI-logo-header-light.png?v=1" alt="MESTTI" class="logo-img logo-img--light" width="120" height="25" decoding="async"><img src="/images/MESTTI-logo-header-dark.png?v=1" alt="" class="logo-img logo-img--dark" width="120" height="25" decoding="async" aria-hidden="true">
                 </a>
                 <nav class="header-nav" id="headerNav" aria-label="Menu principal">
                     <div class="mobile-nav-header">
                         <a href="/" class="header-logo-link">
-                            <img src="../images/MESTTI-logo-header-light.png?v=1" alt="MESTTI" class="logo-img logo-img--light" width="120" height="25" decoding="async"><img src="../images/MESTTI-logo-header-dark.png?v=1" alt="" class="logo-img logo-img--dark" width="120" height="25" decoding="async" aria-hidden="true">
+                            <img src="/images/MESTTI-logo-header-light.png?v=1" alt="MESTTI" class="logo-img logo-img--light" width="120" height="25" decoding="async"><img src="/images/MESTTI-logo-header-dark.png?v=1" alt="" class="logo-img logo-img--dark" width="120" height="25" decoding="async" aria-hidden="true">
                         </a>
                         <button type="button" class="mobile-nav-close" aria-label="Fechar menu" data-i18n-aria="a11y.closeMenu">×</button>
                     </div>
-                    <a href="/solucoes/" class="nav-link" data-i18n="nav.solutions">Soluções</a>
-                    <a href="/blog/" class="nav-link active" aria-current="page" data-i18n="nav.blog">Blog</a>
-                    <a href="/otto/" class="nav-link">Otto</a>
-                    <a href="/sensores/" class="nav-link" data-i18n="nav.sensors">Sensores</a>
+                    <a href="/producao/" class="nav-link" data-i18n="nav.v2.production">Produção</a>
+                    <a href="/engenharia/" class="nav-link" data-i18n="nav.v2.engineering">Engenharia</a>
+                    <a href="/qualidade/" class="nav-link" data-i18n="nav.v2.quality">Qualidade</a>
+                    <a href="/otto/" class="nav-link" data-i18n="nav.v2.otto">Otto</a>
+                    <a href="/casos/industria-moveleira/" class="nav-link" data-i18n="nav.v2.cases">Casos</a>
                     <a href="/empresa/" class="nav-link" data-i18n="nav.about">Sobre</a>
+
                     <div class="mobile-nav-contact">
                         <div class="mobile-nav-section-title" data-i18n="mobile.contact">Contato</div>
                         <a class="mobile-nav-contact-link" href="tel:+5543991095035">(43) 99109-5035</a>
@@ -64,16 +66,21 @@
                     </div>
                     <div class="header-nav-mobile-extras">
                         <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
-                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Demonstração</button>
+                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Diagnóstico</button>
                     </div>
                 </nav>
                 <div class="header-tractian-actions">
-                    <a href="/contato/" class="header-link-contact" data-i18n="header.contact">Contato</a>
+                    <a href="/contato/" class="header-link-contact">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                        <span data-i18n="header.contact">Contato</span>
+                    </a>
                     <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
-                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Demonstração</button>
+                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Diagnóstico</button>
                 </div>
                 <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu" data-i18n-aria="a11y.openMenu">
-                    <span></span><span></span><span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
         </div>
@@ -133,10 +140,51 @@
 
     <footer class="footer footer--tractian">
         <div class="container container--wide">
-            <div class="footer-legal-block">
-                <p class="footer-cnpj" data-i18n="footer.cnpj">Mestti Tecnologia LTDA - 63.380.944/0001-51</p>
-                <p class="footer-legal" data-i18n="footer.legal">© 2026 MESTTI. Todos os direitos reservados.</p>
-                <p class="footer-legal"><a href="/termos/">Termos de uso</a></p>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-col-title" data-i18n="footer.product">Produto</div>
+                    <ul class="footer-col-list"><li><a href="/producao/" data-i18n="footer.v2.production">Produção e PCP</a></li><li><a href="/engenharia/" data-i18n="footer.v2.engineering">Engenharia de produto</a></li><li><a href="/qualidade/" data-i18n="footer.v2.quality">Qualidade</a></li><li><a href="/otto/" data-i18n="footer.v2.otto">Otto, assistente de IA</a></li><li><a href="/sensores/" data-i18n="footer.v2.sensors">Sensores</a></li><li><a href="/#como-funciona" data-i18n="footer.v2.howItWorks">Como funciona</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title" data-i18n="footer.v2.company">Empresa</div>
+                    <ul class="footer-col-list"><li><a href="/empresa/" data-i18n="footer.about">Sobre nós</a></li><li><a href="/casos/industria-moveleira/" data-i18n="footer.v2.case">Caso de cliente</a></li><li><a href="/seguranca/" data-i18n="footer.v2.security">Tecnologia e dados</a></li><li><a href="/contato/" data-i18n="footer.contactUs">Entre em contato</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title" data-i18n="footer.v2.resources">Recursos</div>
+                    <ul class="footer-col-list"><li><a href="/diagnostico/" data-i18n="footer.v2.assessment">Diagnóstico</a></li><li><a href="/glossario/" data-i18n="footer.v2.glossary">Glossário</a></li><li><a href="/mes-ou-erp/" data-i18n="footer.v2.mesErp">MES ou ERP?</a></li><li><a href="/blog/" data-i18n="footer.v2.blog">Blog</a></li><li><a href="/solucoes/" data-i18n="footer.v2.solutions">Soluções por problema</a></li><li><a href="https://app.mestti.com.br" target="_blank" rel="noopener" data-i18n="footer.app">Acesso ao sistema</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title" data-i18n="footer.contact">Contato</div>
+                    <ul class="footer-col-list"><li><a href="tel:+5543991095035" data-i18n="footer.v2.phone">(43) 99109-5035</a></li><li><a href="https://wa.me/5543991095035" target="_blank" rel="noopener" data-i18n="mobile.whatsapp">WhatsApp</a></li><li><a href="/contato/" data-i18n="mobile.contactCenter">Central de contato</a></li></ul>
+                </div>
+            </div>
+            <div class="footer-tractian-bottom">
+                <div class="footer-legal-block">
+                    <p class="footer-cnpj" data-i18n="footer.cnpj">Mestti Tecnologia LTDA - 63.380.944/0001-51</p>
+                    <p class="footer-legal" data-i18n="footer.legal">© 2026 MESTTI. Todos os direitos reservados.</p>
+                    <p class="footer-legal"><a href="/termos/">Termos de uso</a></p>
+                    <p class="footer-legal"><a class="footer-apk-btn" href="/download-app" download="mestti.apk" data-i18n="footer.apk">Baixar app Android</a></p>
+                </div>
+                <div class="footer-social" role="group" aria-label="Redes sociais">
+                    <a href="https://www.linkedin.com/company/mestti/" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" width="20" height="20">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg></a>
+                    <a href="https://www.instagram.com/mesttibrasil/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" width="20" height="20">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg></a>
+                    <a href="https://www.youtube.com/@mesttitech" target="_blank" rel="noopener noreferrer"
+                        aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" width="20" height="20">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg></a>
+                </div>
             </div>
         </div>
     </footer>

@@ -47,3 +47,10 @@ Screenshots existentes mostram interface e dados de exemplo. Diagramas HTML expl
 - Preservar a decisão humana nas ações propostas pelo Otto.
 - Distinguir demonstração do funcionamento de prova de resultado.
 - Manter conteúdo principal compreensível e acessível no HTML.
+
+## Confirmações do responsável (2026-10-22)
+
+- Podem ser citados: parceria com SENAI, Procel, ENBPar, Firjan, Fiep e Móveis Hub de Arapongas; seleção no Lab Procel II com projeto de mais de R$ 1 milhão; tecnologia própria e proteção de dados.
+- Caso de cliente: indústria moveleira com +20% de disponibilidade em um setor ao ligar as máquinas antes do turno. O setor moveleiro aparece só no caso; o restante do site usa uma fábrica genérica.
+- Prioridades públicas: Engenharia, Produção, Qualidade e Cadastros; Suprimentos em segundo plano; Vendas e Nota Fiscal fora da oferta.
+- A fábrica 3D do site reproduz a Fábrica 3D do produto (mestti_frontend · factory-3d) com dados de demonstração.

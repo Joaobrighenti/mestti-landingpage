@@ -10,22 +10,31 @@ A Mestti mede cada máquina com sensores próprios (contagem de peças ou ciclos
 - Tecnologia própria: hardware, firmware, sistema web, app Android e IA desenvolvidos pela Mestti; registro original imutável e dados isolados por empresa.
 - Como começar: diagnóstico de capacidade escondida em um setor (conversa, instalação dos sensores, medição na rotina e apresentação das causas e do plano de ação).
 
-## Soluções
+## Páginas principais
 
-- [Engenharia de produto](https://mestti.com.br/engenharia/): componentes, materiais e processos ligados às ordens.
-- [Otto](https://mestti.com.br/otto/): assistente de IA com consultas e propostas aprovadas por usuários autorizados.
+- [Início](https://mestti.com.br/): a tese da capacidade escondida, o caso de cliente, a fábrica 3D de demonstração e o diagnóstico.
+- [Produção e PCP](https://mestti.com.br/producao/): carteira do PCP, sequenciamento por máquina, apontamento por tablet, sensores, OEE, custo perdido e auditoria.
+- [Engenharia de produto](https://mestti.com.br/engenharia/): componentes, roteiros, máquinas alternativas, tempo de ciclo, peças por ciclo, setup e meta por hora.
+- [Qualidade](https://mestti.com.br/qualidade/): checklists com revisão documental, inspeções disparadas por regra, foto pelo celular e não conformidades no OEE.
+- [Otto](https://mestti.com.br/otto/): assistente de IA que consulta dados autorizados, propõe, simula e só executa ações aprovadas por uma pessoa.
+- [Caso de cliente: indústria moveleira](https://mestti.com.br/casos/industria-moveleira/): +20% de disponibilidade em um setor ao ligar as máquinas antes do turno.
+- [Diagnóstico de capacidade escondida](https://mestti.com.br/diagnostico/): etapas, entregas e calculadora do tamanho da oportunidade.
+- [Tecnologia e proteção de dados](https://mestti.com.br/seguranca/): sensor, sistema e IA próprios; registro imutável; isolamento por empresa.
+- [Glossário](https://mestti.com.br/glossario/): OEE, disponibilidade, performance, microparada, setup, MTTR, MTBF, PCP, MES, ERP e capacidade escondida.
+- [MES ou ERP?](https://mestti.com.br/mes-ou-erp/): diferença, comparativo e quando a indústria precisa dos dois.
+- [Sobre a Mestti](https://mestti.com.br/empresa/): origem em Londrina (2025), fundador João Brighenti, Lab Procel II e parceiros.
+- [Sensores](https://mestti.com.br/sensores/): ficha técnica dos sensores e coletores.
+
+## Outras páginas e conteúdos
 
 - [Soluções por problema](https://mestti.com.br/solucoes/)
 - [Como escolher um sistema de monitoramento](https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/)
 
-- [Produção e apontamento digital](https://mestti.com.br/producao/): coleta de dados das máquinas, motivos de parada e acompanhamento da produção.
 - [Sensoriamento industrial](https://mestti.com.br/sensoriamento/): captura de produção, paradas e disponibilidade.
-- [Qualidade](https://mestti.com.br/qualidade/): checklists digitais e inspeções conectadas à operação.
 - [Sequenciamento](https://mestti.com.br/sequenciamento/): organização da fila de produção e programação das máquinas.
 
 ## Empresa e conteúdo
 
-- [Sobre a MESTTI](https://mestti.com.br/empresa/)
 - [Artigos sobre produção e gestão industrial](https://mestti.com.br/blog/)
 - [O que é um sistema MES e como a MESTTI ajuda](https://mestti.com.br/blog/o-que-e-sistema-mes-mestti/)
 

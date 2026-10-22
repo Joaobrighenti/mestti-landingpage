@@ -962,6 +962,94 @@
         }
     };
 
+    /* v2: cabeçalho, rodapé e modal (gerado) */
+    (function (chrome) {
+        SUPPORTED.forEach((lang) => Object.assign(T[lang], chrome[lang] || {}));
+    })({
+        "pt": {
+            "nav.v2.production": "Produção",
+            "nav.v2.engineering": "Engenharia",
+            "nav.v2.quality": "Qualidade",
+            "nav.v2.otto": "Otto",
+            "nav.v2.cases": "Casos",
+            "header.demo": "Diagnóstico",
+            "modal.title": "Peça seu diagnóstico",
+            "modal.lead": "Conte quem você é e qual setor mais preocupa. Um especialista da Mestti retorna para combinar a conversa inicial.",
+            "modal.submit": "Pedir diagnóstico",
+            "footer.v2.production": "Produção e PCP",
+            "footer.v2.engineering": "Engenharia de produto",
+            "footer.v2.quality": "Qualidade",
+            "footer.v2.otto": "Otto, assistente de IA",
+            "footer.v2.sensors": "Sensores",
+            "footer.v2.howItWorks": "Como funciona",
+            "footer.v2.company": "Empresa",
+            "footer.v2.case": "Caso de cliente",
+            "footer.v2.security": "Tecnologia e dados",
+            "footer.v2.resources": "Recursos",
+            "footer.v2.assessment": "Diagnóstico",
+            "footer.v2.glossary": "Glossário",
+            "footer.v2.mesErp": "MES ou ERP?",
+            "footer.v2.blog": "Blog",
+            "footer.v2.solutions": "Soluções por problema",
+            "footer.v2.phone": "(43) 99109-5035"
+        },
+        "en": {
+            "nav.v2.production": "Production",
+            "nav.v2.engineering": "Engineering",
+            "nav.v2.quality": "Quality",
+            "nav.v2.otto": "Otto",
+            "nav.v2.cases": "Cases",
+            "header.demo": "Assessment",
+            "modal.title": "Request your assessment",
+            "modal.lead": "Tell us who you are and which area worries you most. A Mestti specialist will get back to you to schedule the first conversation.",
+            "modal.submit": "Request assessment",
+            "footer.v2.production": "Production and planning",
+            "footer.v2.engineering": "Product engineering",
+            "footer.v2.quality": "Quality",
+            "footer.v2.otto": "Otto, AI assistant",
+            "footer.v2.sensors": "Sensors",
+            "footer.v2.howItWorks": "How it works",
+            "footer.v2.company": "Company",
+            "footer.v2.case": "Customer case",
+            "footer.v2.security": "Technology and data",
+            "footer.v2.resources": "Resources",
+            "footer.v2.assessment": "Assessment",
+            "footer.v2.glossary": "Glossary",
+            "footer.v2.mesErp": "MES or ERP?",
+            "footer.v2.blog": "Blog",
+            "footer.v2.solutions": "Solutions by problem",
+            "footer.v2.phone": "(43) 99109-5035"
+        },
+        "es": {
+            "nav.v2.production": "Producción",
+            "nav.v2.engineering": "Ingeniería",
+            "nav.v2.quality": "Calidad",
+            "nav.v2.otto": "Otto",
+            "nav.v2.cases": "Casos",
+            "header.demo": "Diagnóstico",
+            "modal.title": "Solicite su diagnóstico",
+            "modal.lead": "Cuéntenos quién es y qué sector le preocupa más. Un especialista de Mestti se pondrá en contacto para coordinar la primera conversación.",
+            "modal.submit": "Solicitar diagnóstico",
+            "footer.v2.production": "Producción y planificación",
+            "footer.v2.engineering": "Ingeniería de producto",
+            "footer.v2.quality": "Calidad",
+            "footer.v2.otto": "Otto, asistente de IA",
+            "footer.v2.sensors": "Sensores",
+            "footer.v2.howItWorks": "Cómo funciona",
+            "footer.v2.company": "Empresa",
+            "footer.v2.case": "Caso de cliente",
+            "footer.v2.security": "Tecnología y datos",
+            "footer.v2.resources": "Recursos",
+            "footer.v2.assessment": "Diagnóstico",
+            "footer.v2.glossary": "Glosario",
+            "footer.v2.mesErp": "¿MES o ERP?",
+            "footer.v2.blog": "Blog",
+            "footer.v2.solutions": "Soluciones por problema",
+            "footer.v2.phone": "(43) 99109-5035"
+        }
+    });
+    /* fim v2 */
+
     if (typeof window.MESTTI_PAGE_I18N === 'object') {
         SUPPORTED.forEach((lang) => {
             Object.assign(T[lang], window.MESTTI_PAGE_I18N[lang] || {});
@@ -1036,6 +1124,7 @@
         });
 
         applyMeta(lang);
+        document.dispatchEvent(new CustomEvent('mestti:lang', { detail: lang }));
         window.MesttiConversationalForm?.applyLanguage?.(lang);
         window.MesttiLpCarousels?.refresh?.();
     }

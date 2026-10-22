@@ -1,699 +1,281 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8" />
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11486484316"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
-            gtag("config", "G-9K4NZHC0WT");
-            gtag("config", "AW-11486484316");
-        </script>
-        <script src="../js/theme-init.js?v=2"></script>
-        <meta name="color-scheme" content="light dark" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content"
-        />
-        <meta
-            name="description"
-            content="Organize produtos, componentes, materiais e processos. Conecte a estrutura de fabricação às ordens e ao planejamento na MESTTI."
-        />
-        <title>Engenharia de produto e processos industriais | MESTTI</title>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="../css/entry.css?v=43" />
-        <link rel="canonical" href="https://mestti.com.br/engenharia/" />
-        <link rel="stylesheet" href="/css/discovery.css?v=2" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="MESTTI" />
-        <meta property="og:title" content="Engenharia de produto e processos industriais | MESTTI" />
-        <meta
-            property="og:description"
-            content="Organize produtos, componentes, materiais e processos. Conecte a estrutura de fabricação às ordens e ao planejamento na MESTTI."
-        />
-        <meta property="og:url" content="https://mestti.com.br/engenharia/" />
-        <meta property="og:image" content="https://mestti.com.br/images/hardware-mestti.webp" />
-        <meta property="og:image:alt" content="Sensor industrial MESTTI conectado à gestão da produção" />
-        <meta property="og:locale" content="pt_BR" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@graph": [
-                    {
-                        "@type": "WebPage",
-                        "@id": "https://mestti.com.br/engenharia/#webpage",
-                        "url": "https://mestti.com.br/engenharia/",
-                        "name": "Engenharia de produto e processos industriais | MESTTI",
-                        "description": "Organize produtos, componentes, materiais e processos. Conecte a estrutura de fabricação às ordens e ao planejamento na MESTTI.",
-                        "inLanguage": "pt-BR",
-                        "about": { "@id": "https://mestti.com.br/#organization" }
-                    },
-                    {
-                        "@type": "BreadcrumbList",
-                        "@id": "https://mestti.com.br/engenharia/#breadcrumb",
-                        "itemListElement": [
-                            {
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "Início",
-                                "item": "https://mestti.com.br/"
-                            },
-                            {
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Engenharia de produto",
-                                "item": "https://mestti.com.br/engenharia/"
-                            }
-                        ]
-                    }
-                ]
-            }
-        </script>
-        <link rel="stylesheet" href="/css/product-story.css?v=2" />
-    </head>
-    <body data-page="engenharia" data-content-lang="pt">
-        <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-        <div class="nav-overlay" id="navOverlay"></div>
-        <header class="header header--tractian">
-            <div class="container container--wide">
-                <div class="header-tractian-inner">
-                    <a href="/" class="header-logo-link">
-                        <img
-                            src="../images/MESTTI-logo-header-light.png?v=1"
-                            alt="MESTTI"
-                            class="logo-img logo-img--light"
-                            width="120"
-                            height="25"
-                            decoding="async"
-                        /><img
-                            src="../images/MESTTI-logo-header-dark.png?v=1"
-                            alt=""
-                            class="logo-img logo-img--dark"
-                            width="120"
-                            height="25"
-                            decoding="async"
-                            aria-hidden="true"
-                        />
-                    </a>
-                    <nav class="header-nav" id="headerNav" aria-label="Menu principal">
-                        <div class="mobile-nav-header">
-                            <a href="/" class="header-logo-link">
-                                <img
-                                    src="../images/MESTTI-logo-header-light.png?v=1"
-                                    alt="MESTTI"
-                                    class="logo-img logo-img--light"
-                                    width="120"
-                                    height="25"
-                                    decoding="async"
-                                /><img
-                                    src="../images/MESTTI-logo-header-dark.png?v=1"
-                                    alt=""
-                                    class="logo-img logo-img--dark"
-                                    width="120"
-                                    height="25"
-                                    decoding="async"
-                                    aria-hidden="true"
-                                />
-                            </a>
-                            <button
-                                type="button"
-                                class="mobile-nav-close"
-                                aria-label="Fechar menu"
-                                data-i18n-aria="a11y.closeMenu"
-                            >
-                                ×
-                            </button>
-                        </div>
-                        <a href="/solucoes/" class="nav-link" data-i18n="nav.solutions">Soluções</a>
 
-                        <a href="/blog/" class="nav-link" data-i18n="nav.blog">Blog</a>
-                        <a href="/otto/" class="nav-link">Otto</a>
-                        <a href="/sensores/" class="nav-link" data-i18n="nav.sensors">Sensores</a>
-                        <a href="/empresa/" class="nav-link" data-i18n="nav.about">Sobre</a>
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11486484316"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9K4NZHC0WT');
+        gtag('config', 'AW-11486484316');
+    </script>
+    <script src="/js/theme-init.js?v=2"></script>
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+    <meta name="description" content="Registre como cada produto deve ser feito — componentes, operações, máquinas, ciclo, peças por ciclo e setup — e use isso para programar, medir e cobrar com justiça na Mestti.">
+    <title>Engenharia de produto: roteiros, tempos de ciclo e metas de produção | Mestti</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/entry.css?v=132">
+    <link rel="stylesheet" href="/css/v2.css?v=1">
+    <link rel="canonical" href="https://mestti.com.br/engenharia/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MESTTI">
+    <meta property="og:title" content="Engenharia de produto: roteiros, tempos de ciclo e metas de produção | Mestti">
+    <meta property="og:description" content="Registre como cada produto deve ser feito — componentes, operações, máquinas, ciclo, peças por ciclo e setup — e use isso para programar, medir e cobrar com justiça na Mestti.">
+    <meta property="og:url" content="https://mestti.com.br/engenharia/">
+    <meta property="og:image" content="https://mestti.com.br/images/v2/og-mestti.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://mestti.com.br/engenharia/#webpage", "url": "https://mestti.com.br/engenharia/", "name": "Engenharia de produto: roteiros, tempos de ciclo e metas de produção | Mestti", "description": "Registre como cada produto deve ser feito — componentes, operações, máquinas, ciclo, peças por ciclo e setup — e use isso para programar, medir e cobrar com justiça na Mestti.", "inLanguage": "pt-BR", "isPartOf": {"@id": "https://mestti.com.br/#website"}, "about": {"@id": "https://mestti.com.br/#organization"}}, {"@type": "Organization", "@id": "https://mestti.com.br/#organization", "name": "MESTTI", "alternateName": "Mestti", "url": "https://mestti.com.br/", "telephone": "+55 43 99109-5035", "legalName": "Mestti Tecnologia LTDA", "taxID": "63.380.944/0001-51", "logo": "https://mestti.com.br/images/MESTTI-logo-header-light.png", "contactPoint": {"@type": "ContactPoint", "telephone": "+55 43 99109-5035", "contactType": "sales", "url": "https://mestti.com.br/contato/", "availableLanguage": ["Portuguese", "English", "Spanish"]}, "sameAs": ["https://www.linkedin.com/company/mestti/", "https://www.instagram.com/mesttibrasil/", "https://www.youtube.com/@mesttitech"], "award": "Selecionada na 3ª Chamada Pública do Lab Procel II (ENBPar e SENAI Rio de Janeiro), 2026", "description": "A Mestti é uma plataforma brasileira de gestão da produção para indústrias pequenas e médias que conecta engenharia de produto, chão de fábrica e qualidade, com sensores, app e inteligência artificial próprios."}, {"@type": "WebSite", "@id": "https://mestti.com.br/#website", "url": "https://mestti.com.br/", "name": "MESTTI", "inLanguage": "pt-BR", "publisher": {"@id": "https://mestti.com.br/#organization"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://mestti.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Engenharia", "item": "https://mestti.com.br/engenharia/"}]}, {"@type": "FAQPage", "@id": "https://mestti.com.br/engenharia/#faq", "inLanguage": "pt-BR", "mainEntity": [{"@type": "Question", "name": "A Mestti é um CAD ou PLM?", "acceptedAnswer": {"@type": "Answer", "text": "Não. A Mestti não desenha peças. Ela registra a estrutura de fabricação — componentes, operações, máquinas e tempos — que o chão de fábrica e o PCP usam no dia a dia."}}, {"@type": "Question", "name": "O que são peças por ciclo?", "acceptedAnswer": {"@type": "Answer", "text": "É quantas peças saem cada vez que a máquina completa um ciclo. Num molde de 4 cavidades, por exemplo, um ciclo gera 4 peças. A Mestti usa isso para calcular a meta e a duração das operações."}}, {"@type": "Question", "name": "Posso cadastrar máquinas alternativas?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Cada operação pode ter uma máquina principal e alternativas, para o PCP redistribuir a fila quando uma máquina estiver parada ou sobrecarregada."}}]}]}</script>
+</head>
 
-                        <div class="mobile-nav-contact">
-                            <div class="mobile-nav-section-title" data-i18n="mobile.contact">Contato</div>
-                            <a class="mobile-nav-contact-link" href="tel:+5543991095035">(43) 99109-5035</a>
-                            <a
-                                class="mobile-nav-contact-link"
-                                href="https://wa.me/5543991095035"
-                                target="_blank"
-                                rel="noopener"
-                                data-i18n="mobile.whatsapp"
-                                >WhatsApp</a
-                            >
-                            <a
-                                class="mobile-nav-contact-link"
-                                href="/contato/"
-                                data-i18n="mobile.contactCenter"
-                                >Central de contato</a
-                            >
-                        </div>
-                        <div class="header-nav-mobile-extras">
-                            <a
-                                href="https://app.mestti.com.br"
-                                target="_blank"
-                                rel="noopener"
-                                class="btn-login"
-                                data-i18n="header.login"
-                                >Login</a
-                            >
-                            <button
-                                type="button"
-                                class="btn-demo btn-demo--ghost btn-open-modal"
-                                data-i18n="header.demo"
-                            >
-                                Demonstração
-                            </button>
-                        </div>
-                    </nav>
-                    <div class="header-tractian-actions">
-                        <a href="/contato/" class="header-link-contact">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="18"
-                                height="18"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                                />
-                            </svg>
-                            <span data-i18n="header.contact">Contato</span>
+<body class="hv-page" data-page="engenharia">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <header class="header header--tractian">
+        <div class="container container--wide">
+            <div class="header-tractian-inner">
+                <a href="/" class="header-logo-link">
+                    <img src="/images/MESTTI-logo-header-light.png?v=1" alt="MESTTI" class="logo-img logo-img--light" width="120" height="25" decoding="async"><img src="/images/MESTTI-logo-header-dark.png?v=1" alt="" class="logo-img logo-img--dark" width="120" height="25" decoding="async" aria-hidden="true">
+                </a>
+                <nav class="header-nav" id="headerNav" aria-label="Menu principal">
+                    <div class="mobile-nav-header">
+                        <a href="/" class="header-logo-link">
+                            <img src="/images/MESTTI-logo-header-light.png?v=1" alt="MESTTI" class="logo-img logo-img--light" width="120" height="25" decoding="async"><img src="/images/MESTTI-logo-header-dark.png?v=1" alt="" class="logo-img logo-img--dark" width="120" height="25" decoding="async" aria-hidden="true">
                         </a>
-                        <a
-                            href="https://app.mestti.com.br"
-                            target="_blank"
-                            rel="noopener"
-                            class="btn-login"
-                            data-i18n="header.login"
-                            >Login</a
-                        >
-                        <button
-                            type="button"
-                            class="btn-demo btn-demo--ghost btn-open-modal"
-                            data-i18n="header.demo"
-                        >
-                            Demonstração
-                        </button>
+                        <button type="button" class="mobile-nav-close" aria-label="Fechar menu" data-i18n-aria="a11y.closeMenu">×</button>
                     </div>
-                    <button
-                        type="button"
-                        class="menu-toggle"
-                        id="menuToggle"
-                        aria-label="Abrir menu"
-                        data-i18n-aria="a11y.openMenu"
-                    >
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </div>
-        </header>
-        <main id="conteudo" class="story" tabindex="-1">
-            <nav class="discovery-breadcrumb" aria-label="Caminho da página">
-                <ol>
-                    <li><a href="/">Início</a></li>
-                    <li aria-current="page">Engenharia de produto</li>
-                </ol>
-            </nav>
-            <section class="story-hero">
-                <div class="story-wrap story-hero-grid">
-                    <div>
-                        <h1>Organize como fabricar. Leve essa referência para a produção.</h1>
-                        <p class="story-lead">
-                            Engenharia de produto conectada aos componentes, processos e ordens da MESTTI.
-                        </p>
-                        <p>
-                            Uma estrutura clara ajuda o PCP a entender o que será produzido, por quais
-                            operações e com quais referências de tempo.
-                        </p>
-                        <div class="story-actions">
-                            <button type="button" class="story-button btn-open-modal">
-                                Solicitar demonstração</button
-                            ><a class="story-text-link" href="#estrutura">Entender o fluxo</a>
-                        </div>
-                    </div>
-                    <div class="story-engineering">
-                        <div class="story-engineering-title">
-                            <svg
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.7"
-                                aria-hidden="true"
-                            >
-                                <path d="m12 3 9 5-9 5-9-5 9-5Zm-9 5v8l9 5 9-5V8M12 13v8" /></svg
-                            ><strong>Do produto às operações</strong>
-                        </div>
-                        <ul class="story-structure">
-                            <li><strong>Produto</strong><span>Estrutura de fabricação</span></li>
-                            <li>
-                                <strong>Componentes e materiais</strong
-                                ><span>Partes, dimensões e especificações do cadastro</span>
-                                <ol aria-label="Exemplo de processos">
-                                    <li>Cortar</li>
-                                    <li>Usinar</li>
-                                    <li>Montar</li>
-                                </ol>
-                            </li>
-                            <li>
-                                <strong>Plano de processos</strong
-                                ><span>Sequência, recursos e tempos de referência</span>
-                            </li>
-                            <li>
-                                <strong>Ordem de produção</strong
-                                ><span>Quantidade e operações para programar</span>
-                            </li>
-                        </ul>
-                        <p class="story-caption">
-                            Esquema explicativo. A estrutura e os processos são definidos para cada produto.
-                        </p>
-                    </div>
-                </div>
-            </section>
-            <nav class="story-jump" aria-label="Nesta página">
-                <div class="story-wrap">
-                    <ul>
-                        <li><a href="#estrutura">Estrutura do produto</a></li>
-                        <li><a href="#processos">Processos e recursos</a></li>
-                        <li><a href="#ordem">Da ficha à ordem</a></li>
-                    </ul>
-                </div>
-            </nav>
-            <section id="estrutura" class="story-section story-wrap">
-                <div class="story-pair">
-                    <div>
-                        <h2>O que compõe o produto fica organizado.</h2>
-                        <p>
-                            Cadastre componentes e suas características para construir a referência de
-                            fabricação. Materiais, dimensões e observações deixam de depender apenas de
-                            arquivos e conhecimento dispersos.
-                        </p>
-                        <p>
-                            A ficha reúne partes e processos para que a equipe tenha um ponto de partida ao
-                            preparar a produção.
-                        </p>
-                    </div>
-                    <div>
-                        <h3>Informações que entram nessa referência</h3>
-                        <ul class="story-facts">
-                            <li>Produto e suas partes.</li>
-                            <li>Componentes, material e dimensões.</li>
-                            <li>Observações e especificações do cadastro.</li>
-                            <li>Processos previstos para cada parte.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            <section id="processos" class="story-section story-section--tint">
-                <div class="story-wrap">
-                    <div class="story-intro">
-                        <h2>O processo aproxima a engenharia da capacidade da fábrica.</h2>
-                        <p>
-                            Relacione a operação aos recursos e aos tempos utilizados no planejamento. Essas
-                            referências precisam representar o processo real e ser revisadas pela equipe
-                            responsável.
-                        </p>
-                    </div>
-                    <ol class="story-flow">
-                        <li>
-                            <strong>Processo</strong>
-                            <p>Defina o trabalho e sua posição no roteiro.</p>
-                        </li>
-                        <li>
-                            <strong>Recurso</strong>
-                            <p>Associe o setor e a máquina previstos.</p>
-                        </li>
-                        <li>
-                            <strong>Preparação</strong>
-                            <p>Registre o setup aplicável e sua referência de tempo.</p>
-                        </li>
-                        <li>
-                            <strong>Execução</strong>
-                            <p>Use o tempo estimado como referência para planejar a operação.</p>
-                        </li>
-                    </ol>
-                    <p class="story-caption">
-                        Esquema do cadastro de processo. A previsão depende da parametrização e das condições
-                        da operação.
-                    </p>
-                </div>
-            </section>
-            <section id="ordem" class="story-wrap story-section">
-                <div class="story-product-row">
-                    <div>
-                        <h2>Da ficha de produto para a ordem que o PCP vai programar.</h2>
-                        <p>
-                            O lançamento da ordem utiliza a estrutura de fabricação, com quantidade e
-                            processos. A equipe confere o que será incluído antes de encaminhar o trabalho
-                            para a programação.
-                        </p>
-                        <p>Depois, ordens, operações e filas permitem acompanhar a execução na MESTTI.</p>
-                        <div class="story-related-links">
-                            <a href="/sequenciamento/">Ver a programação</a
-                            ><a href="/producao/">Acompanhar a produção</a>
-                        </div>
-                    </div>
-                    <figure>
-                        <div class="story-screen">
-                            <img
-                                src="/img-sistema/1.svg"
-                                width="1000"
-                                height="500"
-                                alt="Fila de operações por máquina no sistema MESTTI"
-                                loading="lazy"
-                                decoding="async"
-                            />
-                        </div>
-                        <figcaption>
-                            As operações entram na rotina do PCP. Imagem de interface, sem promessa de prazo
-                            ou ganho de produtividade.
-                        </figcaption>
-                    </figure>
-                </div>
-            </section>
-            <section class="story-section story-section--tint">
-                <div class="story-wrap story-pair">
-                    <div>
-                        <h2>Leve um produto real para a demonstração.</h2>
-                        <p>
-                            Escolha uma ficha e percorra o caminho entre sua estrutura e uma ordem de
-                            produção. Isso permite avaliar a aderência ao seu modo de fabricar.
-                        </p>
-                    </div>
-                    <ul class="story-facts">
-                        <li>Quais componentes e materiais precisam constar?</li>
-                        <li>Como são definidos sequência, máquina e setup?</li>
-                        <li>O tempo informado representa ciclo ou quantidade?</li>
-                        <li>Como a estrutura vira operações na ordem?</li>
-                    </ul>
-                </div>
-            </section>
-            <section class="story-section story-wrap story-faq">
-                <h2>Engenharia aplicada à rotina industrial.</h2>
-                <details>
-                    <summary>É uma ferramenta de desenho ou CAD/CAM?</summary>
-                    <p>
-                        O foco apresentado é a estrutura de fabricação: produto, componentes e processos
-                        ligados às ordens. Recursos de desenho, projeto mecânico ou programação de máquinas
-                        exigem avaliação específica e não são prometidos por esta página.
-                    </p>
-                </details>
-                <details>
-                    <summary>A estrutura calcula sozinha a melhor programação?</summary>
-                    <p>
-                        A estrutura fornece referências para o planejamento. Sequenciamento, restrições e
-                        revisão de prioridades são outra etapa. Demonstre suas regras de fabricação com a
-                        equipe para confirmar o comportamento necessário.
-                    </p>
-                </details>
-            </section>
-            <section class="story-wrap story-close">
-                <div>
-                    <h2>Mostre como seu produto é fabricado hoje.</h2>
-                    <p>
-                        Leve uma ordem, um processo ou uma dificuldade da rotina.<br />A demonstração começa
-                        pelo que sua equipe precisa resolver.
-                    </p>
-                </div>
-                <div class="story-actions">
-                    <button type="button" class="story-button btn-open-modal">Solicitar demonstração</button
-                    ><a class="story-text-link" href="/contato/">Falar com a equipe</a>
-                </div>
-            </section>
-        </main>
-        <footer class="footer footer--tractian">
-            <div class="container container--wide">
-                <div class="footer-grid">
-                    <div class="footer-col">
-                        <div class="footer-col-title" data-i18n="footer.product">Produto</div>
-                        <ul class="footer-col-list">
-                            <li><a href="/producao/" data-i18n="footer.oee">Apontamento e OEE</a></li>
-                            <li><a href="/sensores/" data-i18n="footer.sensors">Sensores</a></li>
-                            <li>
-                                <a href="/sensores/" data-i18n="footer.sensorSpecs"
-                                    >Ficha técnica de sensores</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <div class="footer-col-title" data-i18n="footer.solutions">Soluções</div>
-                        <ul class="footer-col-list">
-                            <li><a href="/producao/" data-i18n="footer.monitoring">Monitoramento</a></li>
-                            <li>
-                                <a
-                                    class="footer-apk-btn"
-                                    href="/download-app"
-                                    download="mestti.apk"
-                                    data-i18n="footer.apk"
-                                    >Baixar app Android</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <div class="footer-col-title" data-i18n="footer.company">Companhia</div>
-                        <ul class="footer-col-list">
-                            <li><a href="/empresa/" data-i18n="footer.about">Sobre nós</a></li>
-                            <li><a href="/contato/" data-i18n="footer.contactUs">Entre em contato</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <div class="footer-col-title" data-i18n="footer.resources">Recursos</div>
-                        <ul class="footer-col-list">
-                            <li>
-                                <a href="/engenharia/" data-i18n="home.s3.title">Engenharia de produto</a>
-                            </li>
-                            <li>
-                                <a href="/otto/" data-i18n="options.solucao.otto">Otto, assistente de IA</a>
-                            </li>
-                            <li><a href="/#diagnostico" data-i18n="nav.installation">Instalação</a></li>
-                            <li>
-                                <a href="/#como-funciona" data-i18n="footer.features">Funcionalidades</a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://app.mestti.com.br"
-                                    target="_blank"
-                                    rel="noopener"
-                                    data-i18n="footer.app"
-                                    >Acesso ao sistema</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <div class="footer-col-title" data-i18n="footer.contact">Contato</div>
-                        <ul class="footer-col-list">
-                            <li><a href="tel:+5543991095035">(43) 99109-5035</a></li>
-                            <li>
-                                <a
-                                    href="https://wa.me/5543991095035"
-                                    target="_blank"
-                                    rel="noopener"
-                                    data-i18n="mobile.whatsapp"
-                                    >WhatsApp</a
-                                >
-                            </li>
-                            <li>
-                                <a href="/contato/" data-i18n="mobile.contactCenter">Central de contato</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-tractian-bottom">
-                    <div class="footer-legal-block">
-                        <p class="footer-cnpj" data-i18n="footer.cnpj">
-                            Mestti Tecnologia LTDA - 63.380.944/0001-51
-                        </p>
-                        <p class="footer-legal" data-i18n="footer.legal">
-                            © 2026 MESTTI. Todos os direitos reservados.
-                        </p>
-                        <p class="footer-legal"><a href="/termos/">Termos de uso</a></p>
-                    </div>
-                    <div class="footer-social" role="group" aria-label="Redes sociais">
-                        <a
-                            href="https://www.linkedin.com/company/mestti/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="LinkedIn"
-                            ><svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                width="20"
-                                height="20"
-                            >
-                                <path
-                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                                /></svg
-                        ></a>
-                        <a
-                            href="https://www.instagram.com/mesttibrasil/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Instagram"
-                            ><svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                width="20"
-                                height="20"
-                            >
-                                <path
-                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-                                /></svg></a
-                        ><a
-                            href="https://www.youtube.com/@mesttitech"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="YouTube"
-                            ><svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                width="20"
-                                height="20"
-                            >
-                                <path
-                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
-                                /></svg
-                        ></a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <script defer src="../js/i18n-page-strings.js?v=3"></script>
-        <script defer src="../js/i18n.js?v=26"></script>
-        <script defer src="../js/theme.js?v=2"></script>
-        <script defer src="../js/form-options.js?v=4"></script>
-        <script defer src="../js/meta-consent.js?v=6"></script>
-        <script defer src="../js/meta-pixel.js?v=1"></script>
-        <script defer src="../js/script.js?v=43"></script>
-        <script defer src="../js/wa-chat-viewport.js?v=2"></script>
-        <script defer src="../js/conversational-form.js?v=16"></script>
+                    <a href="/producao/" class="nav-link" data-i18n="nav.v2.production">Produção</a>
+                    <a href="/engenharia/" class="nav-link" aria-current="page" data-i18n="nav.v2.engineering">Engenharia</a>
+                    <a href="/qualidade/" class="nav-link" data-i18n="nav.v2.quality">Qualidade</a>
+                    <a href="/otto/" class="nav-link" data-i18n="nav.v2.otto">Otto</a>
+                    <a href="/casos/industria-moveleira/" class="nav-link" data-i18n="nav.v2.cases">Casos</a>
+                    <a href="/empresa/" class="nav-link" data-i18n="nav.about">Sobre</a>
 
-        <!-- Modal de Demonstração -->
-        <div id="contactModal" class="modal-overlay" aria-hidden="true" inert>
-            <div class="modal-content">
-                <button
-                    type="button"
-                    class="modal-close"
-                    id="btnCloseModal"
-                    aria-label="Fechar demonstração"
-                    data-i18n-aria="a11y.closeDialog"
-                >
-                    &times;
+                    <div class="mobile-nav-contact">
+                        <div class="mobile-nav-section-title" data-i18n="mobile.contact">Contato</div>
+                        <a class="mobile-nav-contact-link" href="tel:+5543991095035">(43) 99109-5035</a>
+                        <a class="mobile-nav-contact-link" href="https://wa.me/5543991095035" target="_blank" rel="noopener" data-i18n="mobile.whatsapp">WhatsApp</a>
+                        <a class="mobile-nav-contact-link" href="/contato/" data-i18n="mobile.contactCenter">Central de contato</a>
+                    </div>
+                    <div class="header-nav-mobile-extras">
+                        <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
+                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Diagnóstico</button>
+                    </div>
+                </nav>
+                <div class="header-tractian-actions">
+                    <a href="/contato/" class="header-link-contact">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                        <span data-i18n="header.contact">Contato</span>
+                    </a>
+                    <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
+                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Diagnóstico</button>
+                </div>
+                <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu" data-i18n-aria="a11y.openMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
-                <div class="demo-modal-card">
-                    <div class="demo-modal-head">
-                        <h2 class="demo-modal-title" data-i18n="modal.title">Solicite sua demonstração</h2>
-                        <p class="demo-modal-lead" data-i18n="modal.lead">
-                            Preencha os campos para falar com um especialista e entender os benefícios do
-                            MESTTI para sua operação.
-                        </p>
-                    </div>
-                    <form class="demo-form" id="contactFormPage">
-                        <input
-                            type="text"
-                            name="name"
-                            data-i18n-placeholder="modal.name"
-                            placeholder="Nome completo"
-                            autocomplete="name"
-                            required
-                        />
-                        <input
-                            type="text"
-                            name="empresa"
-                            data-i18n-placeholder="modal.company"
-                            placeholder="Empresa"
-                            autocomplete="organization"
-                            required
-                        />
-                        <input
-                            type="email"
-                            name="email"
-                            data-i18n-placeholder="modal.email"
-                            placeholder="E-mail profissional"
-                            autocomplete="email"
-                            required
-                        />
+            </div>
+        </div>
+    </header>
+    <main id="conteudo" tabindex="-1" class="hv">
 
-                        <div class="field-row-3">
-                            <select name="ddi" aria-label="DDI" required>
+    <section class="hv-page-hero hv-page-hero--text" aria-labelledby="engenharia-title">
+        <div class="hv-wrap">
+            <nav class="hv-crumbs" aria-label="Você está em" data-i18n-aria="v2.engenharia.hero.3"><a href="/" data-i18n="v2.engenharia.hero.1">Início</a> <span aria-hidden="true">/</span> <span aria-current="page" data-i18n="v2.engenharia.hero.2">Engenharia</span></nav>
+            <div class="hv-page-hero-grid">
+                <div>
+                    <p class="hv-kicker"><span class="hv-kicker-strip" aria-hidden="true"></span><span data-i18n="v2.engenharia.hero.5">Engenharia de produto</span></p>
+                    <h1 id="engenharia-title" data-i18n="v2.engenharia.hero.6" data-i18n-html>O jeito certo de fabricar, <em>registrado uma vez e usado em todo lugar.</em></h1>
+                    <p class="hv-hero-lead" data-i18n="v2.engenharia.hero.7">Quando o roteiro mora na cabeça de uma pessoa, a fábrica para quando ela falta. Na Mestti, a engenharia registra componentes, operações, máquinas e tempos — e isso vira a ordem de produção, a fila da máquina e a meta do operador.</p>
+                    <div class="hv-hero-actions">
+                        <button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="engenharia-hero" data-i18n="v2.engenharia.hero.8">Quero meu diagnóstico</button>
+                        <a class="hv-btn hv-btn--ghost" href="#meta" data-i18n="v2.engenharia.hero.4">Calcular uma meta</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <section class="hv-section" id="roteiro" aria-labelledby="engenharia-roteiro-t">
+        <div class="hv-wrap">
+            <div class="hv-section-head">
+                <p class="hv-kicker"><span class="hv-kicker-strip" aria-hidden="true"></span><span data-i18n="v2.engenharia.chain.22">O roteiro é a base</span></p>
+                <h2 id="engenharia-roteiro-t" data-i18n="v2.engenharia.chain.23">Tudo o que a produção usa nasce aqui.</h2>
+                
+            </div>
+            <div class="hv-cards"><article class="hv-card"><p class="hv-card-tag" data-i18n="v2.engenharia.chain.1">Produto</p><h3 data-i18n="v2.engenharia.chain.2">Componentes e materiais</h3><p data-i18n="v2.engenharia.chain.3">Cada produto com seus componentes, material, dimensões, peso e custo unitário.</p></article><article class="hv-card"><p class="hv-card-tag" data-i18n="v2.engenharia.chain.4">Processo</p><h3 data-i18n="v2.engenharia.chain.5">Operações em sequência</h3><p data-i18n="v2.engenharia.chain.6">A ordem das operações, a máquina de cada uma e as máquinas alternativas quando a principal estiver ocupada.</p></article><article class="hv-card"><p class="hv-card-tag" data-i18n="v2.engenharia.chain.7">Tempo</p><h3 data-i18n="v2.engenharia.chain.8">Ciclo, peças por ciclo e setup</h3><p data-i18n="v2.engenharia.chain.9">O tempo de um ciclo, quantas peças saem em cada ciclo (as cavidades do molde, por exemplo) e o tempo de preparação.</p></article><article class="hv-card"><p class="hv-card-tag" data-i18n="v2.engenharia.chain.10">PCP</p><h3 data-i18n="v2.engenharia.chain.12">Ordens e programação</h3><p data-i18n="v2.engenharia.chain.13">A ordem já nasce com as operações e a duração prevista de cada uma em cada máquina.</p><a class="hv-link" href="/producao/#planejar" data-i18n="v2.engenharia.chain.11">Ver o planejamento</a></article><article class="hv-card"><p class="hv-card-tag" data-i18n="v2.engenharia.chain.14">Chão de fábrica</p><h3 data-i18n="v2.engenharia.chain.16">Meta por hora</h3><p data-i18n="v2.engenharia.chain.17">A meta do operador vem do ciclo definido pela engenharia, não de um número escolhido no dia.</p><a class="hv-link" href="#meta" data-i18n="v2.engenharia.chain.15">Calcular uma meta</a></article><article class="hv-card"><p class="hv-card-tag" data-i18n="v2.engenharia.chain.18">Custo</p><h3 data-i18n="v2.engenharia.chain.20">Orçamento do produto</h3><p data-i18n="v2.engenharia.chain.21">Material, tempo de máquina e setup somados no orçamento, com o tempo real de produção para conferir a margem.</p><a class="hv-link" href="/blog/como-calcular-preco-venda-industria-rkw-custo-processo/" data-i18n="v2.engenharia.chain.19">Como calcular o preço</a></article></div>
+        </div>
+    </section>
+    <section class="hv-section hv-band" id="meta" aria-labelledby="engenharia-meta-t">
+        <div class="hv-wrap hv-calc-grid">
+            <div>
+                <p class="hv-kicker"><span class="hv-kicker-strip" aria-hidden="true"></span><span data-i18n="v2.engenharia.target.1">Meta justa</span></p>
+                <h2 id="engenharia-meta-t" data-i18n="v2.engenharia.target.2">A meta do operador sai da engenharia, não do achismo.</h2>
+                <p class="hv-section-lead" data-i18n="v2.engenharia.target.3">Com o tempo de ciclo e as peças por ciclo, a meta por hora é uma conta simples — e a mesma para todo mundo. Quando a máquina fica abaixo, a pergunta deixa de ser “quem errou?” e vira “o que aconteceu?”.</p>
+            </div>
+            <form class="hv-calc-box" data-target-calc>
+                <div class="hv-calc-fields">
+                    <label><span data-i18n="v2.engenharia.target.4">Tempo de um ciclo (segundos)</span><input type="number" name="cycle" value="24" min="1" inputmode="numeric"></label>
+                    <label><span data-i18n="v2.engenharia.target.5">Peças por ciclo</span><input type="number" name="cavities" value="4" min="1" inputmode="numeric"></label>
+                </div>
+                <div class="hv-target-out">
+                    <div><span data-i18n="v2.engenharia.target.6">Meta por hora</span><strong data-target-out>600</strong></div>
+                    <div><span data-i18n="v2.engenharia.target.7">Em um turno de 8 h rodando</span><strong data-target-shift>4.800</strong></div>
+                </div>
+                <p class="hv-calc-note" data-i18n="v2.engenharia.target.8">Conta: (3.600 ÷ tempo de ciclo, arredondado para baixo) × peças por ciclo. Um ciclo com várias cavidades é contado inteiro, como faz a Mestti.</p>
+            </form>
+        </div>
+    </section>
+    <section class="hv-section" id="por-que" aria-labelledby="engenharia-por-que-t">
+        <div class="hv-wrap">
+            <div class="hv-section-head">
+                <p class="hv-kicker"><span class="hv-kicker-strip" aria-hidden="true"></span><span data-i18n="v2.engenharia.why.7">Por que importa</span></p>
+                <h2 id="engenharia-por-que-t" data-i18n="v2.engenharia.why.8">O que muda quando a engenharia está no sistema.</h2>
+                
+            </div>
+            <div class="hv-cards"><article class="hv-card"><h3 data-i18n="v2.engenharia.why.1">A fábrica não depende de uma pessoa</h3><p data-i18n="v2.engenharia.why.2">Férias, troca de turno ou saída de alguém experiente não apagam o jeito certo de fazer.</p></article><article class="hv-card"><h3 data-i18n="v2.engenharia.why.3">Prazo prometido com base real</h3><p data-i18n="v2.engenharia.why.4">O PCP soma tempos que existem de verdade, por máquina, em vez de estimar a duração da ordem.</p></article><article class="hv-card"><h3 data-i18n="v2.engenharia.why.5">Preço com o tempo real</h3><p data-i18n="v2.engenharia.why.6">O orçamento usa o tempo padrão; a produção mostra o tempo real. A diferença aparece antes de virar prejuízo.</p></article></div>
+        </div>
+    </section>
+    <section class="hv-section hv-faq" id="perguntas" aria-labelledby="engenharia-faq-title">
+        <div class="hv-wrap hv-faq-grid">
+            <div>
+                <p class="hv-kicker"><span class="hv-kicker-strip" aria-hidden="true"></span><span data-i18n="v2.engenharia.faq.7">Perguntas frequentes</span></p>
+                <h2 id="engenharia-faq-title" data-i18n="v2.engenharia.faq.8">O que perguntam sobre engenharia de produto.</h2>
+                
+            </div>
+            <div class="hv-faq-list"><details><summary data-i18n="v2.engenharia.faq.1">A Mestti é um CAD ou PLM?</summary><p data-i18n="v2.engenharia.faq.2">Não. A Mestti não desenha peças. Ela registra a estrutura de fabricação — componentes, operações, máquinas e tempos — que o chão de fábrica e o PCP usam no dia a dia.</p></details><details><summary data-i18n="v2.engenharia.faq.3">O que são peças por ciclo?</summary><p data-i18n="v2.engenharia.faq.4">É quantas peças saem cada vez que a máquina completa um ciclo. Num molde de 4 cavidades, por exemplo, um ciclo gera 4 peças. A Mestti usa isso para calcular a meta e a duração das operações.</p></details><details><summary data-i18n="v2.engenharia.faq.5">Posso cadastrar máquinas alternativas?</summary><p data-i18n="v2.engenharia.faq.6">Sim. Cada operação pode ter uma máquina principal e alternativas, para o PCP redistribuir a fila quando uma máquina estiver parada ou sobrecarregada.</p></details></div>
+        </div>
+    </section>
+    <section class="hv-final" aria-labelledby="engenharia-final-title">
+        <div class="hv-wrap hv-final-inner">
+            <h2 id="engenharia-final-title" data-i18n="v2.engenharia.final.1">Coloque o jeito certo de fabricar no sistema, não na memória.</h2>
+            <div class="hv-hero-actions">
+                <button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="final-diagnostico" data-i18n="v2.engenharia.final.2">Quero meu diagnóstico</button>
+                <a class="hv-btn hv-btn--ghost hv-btn--on-dark" href="https://wa.me/5543991095035" target="_blank" rel="noopener" data-i18n="v2.engenharia.final.3">Falar no WhatsApp</a>
+            </div>
+        </div>
+    </section>
+    </main>
+    <footer class="footer footer--tractian">
+        <div class="container container--wide">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-col-title" data-i18n="footer.product">Produto</div>
+                    <ul class="footer-col-list"><li><a href="/producao/" data-i18n="footer.v2.production">Produção e PCP</a></li><li><a href="/engenharia/" data-i18n="footer.v2.engineering">Engenharia de produto</a></li><li><a href="/qualidade/" data-i18n="footer.v2.quality">Qualidade</a></li><li><a href="/otto/" data-i18n="footer.v2.otto">Otto, assistente de IA</a></li><li><a href="/sensores/" data-i18n="footer.v2.sensors">Sensores</a></li><li><a href="/#como-funciona" data-i18n="footer.v2.howItWorks">Como funciona</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title" data-i18n="footer.v2.company">Empresa</div>
+                    <ul class="footer-col-list"><li><a href="/empresa/" data-i18n="footer.about">Sobre nós</a></li><li><a href="/casos/industria-moveleira/" data-i18n="footer.v2.case">Caso de cliente</a></li><li><a href="/seguranca/" data-i18n="footer.v2.security">Tecnologia e dados</a></li><li><a href="/contato/" data-i18n="footer.contactUs">Entre em contato</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title" data-i18n="footer.v2.resources">Recursos</div>
+                    <ul class="footer-col-list"><li><a href="/diagnostico/" data-i18n="footer.v2.assessment">Diagnóstico</a></li><li><a href="/glossario/" data-i18n="footer.v2.glossary">Glossário</a></li><li><a href="/mes-ou-erp/" data-i18n="footer.v2.mesErp">MES ou ERP?</a></li><li><a href="/blog/" data-i18n="footer.v2.blog">Blog</a></li><li><a href="/solucoes/" data-i18n="footer.v2.solutions">Soluções por problema</a></li><li><a href="https://app.mestti.com.br" target="_blank" rel="noopener" data-i18n="footer.app">Acesso ao sistema</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title" data-i18n="footer.contact">Contato</div>
+                    <ul class="footer-col-list"><li><a href="tel:+5543991095035" data-i18n="footer.v2.phone">(43) 99109-5035</a></li><li><a href="https://wa.me/5543991095035" target="_blank" rel="noopener" data-i18n="mobile.whatsapp">WhatsApp</a></li><li><a href="/contato/" data-i18n="mobile.contactCenter">Central de contato</a></li></ul>
+                </div>
+            </div>
+            <div class="footer-tractian-bottom">
+                <div class="footer-legal-block">
+                    <p class="footer-cnpj" data-i18n="footer.cnpj">Mestti Tecnologia LTDA - 63.380.944/0001-51</p>
+                    <p class="footer-legal" data-i18n="footer.legal">© 2026 MESTTI. Todos os direitos reservados.</p>
+                    <p class="footer-legal"><a href="/termos/">Termos de uso</a></p>
+                    <p class="footer-legal"><a class="footer-apk-btn" href="/download-app" download="mestti.apk" data-i18n="footer.apk">Baixar app Android</a></p>
+                </div>
+                <div class="footer-social" role="group" aria-label="Redes sociais">
+                    <a href="https://www.linkedin.com/company/mestti/" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" width="20" height="20">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg></a>
+                    <a href="https://www.instagram.com/mesttibrasil/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" width="20" height="20">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg></a>
+                    <a href="https://www.youtube.com/@mesttitech" target="_blank" rel="noopener noreferrer"
+                        aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" width="20" height="20">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="contactModal" class="modal-overlay" aria-hidden="true" inert>
+        <div class="modal-content">
+            <button type="button" class="modal-close" id="btnCloseModal" aria-label="Fechar demonstração" data-i18n-aria="a11y.closeDialog">&times;</button>
+            <div class="demo-modal-card">
+                <div class="demo-modal-head">
+                    <h2 class="demo-modal-title" data-i18n="modal.title">Solicite sua demonstração</h2>
+                    <p class="demo-modal-lead" data-i18n="modal.lead">Preencha os campos para falar com um especialista e entender os
+                        benefícios do MESTTI para sua operação.</p>
+                </div>
+                <form class="demo-form" id="contactForm">
+                    <input type="text" id="name" name="name" data-i18n-placeholder="modal.name" placeholder="Nome completo" autocomplete="name" required>
+                    <input type="text" id="empresa" name="empresa" data-i18n-placeholder="modal.company" placeholder="Empresa" autocomplete="organization" required>
+                    <input type="email" id="email" name="email" data-i18n-placeholder="modal.email" placeholder="E-mail profissional" autocomplete="email"
+                        required>
+
+                    <div class="field-row">
+                        <div class="field-row-3" style="grid-column: 1 / -1;">
+                            <select id="ddi" name="ddi" aria-label="DDI" required>
                                 <option value="+55" selected>+55</option>
                                 <option value="+1">+1</option>
                                 <option value="+351">+351</option>
                                 <option value="+34">+34</option>
                             </select>
-                            <input
-                                type="tel"
-                                name="phone"
-                                data-i18n-placeholder="modal.phone"
-                                placeholder="Telefone / WhatsApp"
-                                autocomplete="tel"
-                                required
-                            />
-                            <select name="cargo" required data-mestti-options="cargo" aria-label="Cargo">
+                            <input type="tel" id="phone" name="phone" data-i18n-placeholder="modal.phone" placeholder="Telefone / WhatsApp"
+                                autocomplete="tel" required>
+                            <select id="cargo" name="cargo" required data-mestti-options="cargo" aria-label="Cargo">
                                 <option value="" selected disabled data-i18n="modal.role">Cargo</option>
                             </select>
                         </div>
+                    </div>
 
-                        <select
-                            name="setor"
-                            required
-                            data-mestti-options="setor"
-                            aria-label="Setor da empresa"
-                        >
-                            <option value="" selected disabled data-i18n="modal.sector">
-                                Setor da Indústria
-                            </option>
-                        </select>
+                    <select id="setor" name="setor" required data-mestti-options="setor" aria-label="Setor da empresa">
+                        <option value="" selected disabled data-i18n="modal.sector">Setor da Indústria</option>
+                    </select>
 
-                        <select
-                            name="solucao"
-                            required
-                            data-mestti-options="solucao"
-                            aria-label="Solução de interesse"
-                        >
-                            <option value="" selected disabled data-i18n="modal.solution">
-                                Selecione a solução de maior interesse
-                            </option>
-                        </select>
+                    <select id="solucao" name="solucao" required data-mestti-options="solucao" aria-label="Solução de interesse">
+                        <option value="" selected disabled data-i18n="modal.solution">Selecione a solução de maior interesse</option>
+                    </select>
 
-                        <textarea
-                            name="observacao"
-                            data-i18n-placeholder="modal.note"
-                            placeholder="Observação (opcional)"
-                            rows="3"
-                            style="min-height: 90px"
-                        ></textarea>
-                        <button type="submit" class="demo-submit" data-i18n="modal.submit">
-                            Solicitar demonstração
-                        </button>
-                    </form>
-                </div>
+                    <textarea id="observacao" name="observacao" data-i18n-placeholder="modal.note" placeholder="Observação (opcional)" rows="3"
+                        style="min-height: 90px;"></textarea>
+                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Solicitar demonstração</button>
+                </form>
             </div>
         </div>
-    </body>
+    </div>
+
+    <script defer src="/js/i18n-page-strings.js?v=3"></script>
+    <script defer src="/js/i18n/engenharia.js?v=1"></script>
+    <script defer src="/js/i18n.js?v=27"></script>
+    <script defer src="/js/theme.js?v=2"></script>
+    <script defer src="/js/form-options.js?v=4"></script>
+    <script defer src="/js/meta-consent.js?v=6"></script>
+    <script defer src="/js/meta-pixel.js?v=1"></script>
+    <script defer src="/js/script.js?v=43"></script>
+    <script defer src="/js/wa-chat-viewport.js?v=4"></script>
+    <script defer src="/js/conversational-form.js?v=16"></script>
+    <script defer src="/js/v2.js?v=1"></script>
+</body>
+
 </html>
