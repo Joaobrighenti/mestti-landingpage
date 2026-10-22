@@ -1,8 +1,14 @@
 # MESTTI
 
-> Gestão da operação industrial: engenharia, produção e qualidade, com sensores e o assistente Otto.
+> A Mestti é uma plataforma brasileira de gestão da produção para indústrias pequenas e médias que conecta engenharia de produto, chão de fábrica e qualidade, com sensores, app e inteligência artificial próprios.
 
-A MESTTI conecta estrutura de produto, componentes e processos às ordens, ao sequenciamento e ao apontamento da produção. Qualidade reúne checklists, inspeções, registros conformes e não conformes e evidências. O Otto consulta dados autorizados e prepara ações suportadas com aprovação humana. Sensores alimentam a coleta conforme a aplicação técnica.
+A Mestti mede cada máquina com sensores próprios (contagem de peças ou ciclos e estado rodando, parada ou microparada), mostra onde a produção perde tempo e em quanto isso custa, e liga o roteiro definido pela engenharia à programação do PCP, ao apontamento do operador no tablet e às inspeções de qualidade. O Otto, assistente de IA da Mestti, consulta apenas dados autorizados e só executa ações aprovadas por uma pessoa.
+
+- Resultado de cliente: +20% de disponibilidade em um setor de uma indústria moveleira, ao identificar que as máquinas precisavam ser ligadas antes do turno para começar aquecidas.
+- Reconhecimento: uma das cinco empresas selecionadas na 3ª Chamada Pública do Lab Procel II, programa da ENBPar executado com o SENAI Rio de Janeiro ([anúncio](https://enbpar.gov.br/projetos-selecionados-na-3a-chamada-publica-do-lab-procel-ii-iniciam-etapa-de-aceleracao/)), com projeto de mais de R$ 1 milhão.
+- Ecossistema: SENAI, Procel, ENBPar, Firjan, Fiep e Móveis Hub de Arapongas.
+- Tecnologia própria: hardware, firmware, sistema web, app Android e IA desenvolvidos pela Mestti; registro original imutável e dados isolados por empresa.
+- Como começar: diagnóstico de capacidade escondida em um setor (conversa, instalação dos sensores, medição na rotina e apresentação das causas e do plano de ação).
 
 ## Soluções
 
