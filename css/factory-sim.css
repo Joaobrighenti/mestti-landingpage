@@ -291,3 +291,7 @@ html[data-theme="dark"] .fpin--alert { color: #2a0805; }
 .fq-bar b { display: block; height: 100%; background: var(--fx-accent); }
 .fq-win { display: flex; justify-content: space-between; gap: 8px; margin: 4px 0 0; font-size: 12.5px; color: var(--fx-ink2); font-variant-numeric: tabular-nums; }
 .fq-win b { color: var(--fx-ink); }
+/* `.fx button { color: inherit }` vencia a cor do pino; o pino de alerta precisa de texto claro sobre o vermelho. */
+.fx .fpin--alert { color: #fff; }
+.fx .fpin--notice { color: var(--s-ink); }
+html[data-theme="dark"] .fx .fpin--alert { color: #1d0603; }
