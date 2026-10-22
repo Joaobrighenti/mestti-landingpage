@@ -6,8 +6,10 @@
  */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
 
 const root = document.querySelector('[data-factory]');
 
@@ -26,7 +28,8 @@ const TX = {
         hint: 'Clique numa máquina ou num pino para ver o detalhe.', hintDrag: 'Arraste para girar · Ctrl + rolagem para aproximar',
         hintTouch: 'Toque numa máquina para ver o detalhe.', demo: 'Dados de demonstração', loading: 'Montando a fábrica…',
         error: 'Não foi possível carregar a maquete 3D. A lista ao lado mostra as mesmas máquinas.', oeeLegend: 'OEE',
-        b_high: '80% ou mais', b_mid: '60 a 79%', b_low: 'abaixo de 60%', b_none: 'sem dado', tomorrow: 'amanhã', attention: 'Precisa de atenção'
+        b_high: '80% ou mais', b_mid: '60 a 79%', b_low: 'abaixo de 60%', b_none: 'sem dado', tomorrow: 'amanhã', attention: 'Precisa de atenção',
+        current: 'Em apontamento', nth: 'ª na fila', applied: 'apontado', load: 'de carga programada', ends: 'termina', todayH: 'Hoje', tomorrowH: 'Amanhã'
     },
     en: {
         factory: 'Sample factory', live: 'Live', search: 'Search machine', noResult: 'No machine found',
@@ -41,7 +44,8 @@ const TX = {
         hint: 'Click a machine or a pin to see the details.', hintDrag: 'Drag to rotate · Ctrl + scroll to zoom',
         hintTouch: 'Tap a machine to see the details.', demo: 'Demo data', loading: 'Building the factory…',
         error: 'The 3D model could not be loaded. The list shows the same machines.', oeeLegend: 'OEE',
-        b_high: '80% or more', b_mid: '60 to 79%', b_low: 'below 60%', b_none: 'no data', tomorrow: 'tomorrow', attention: 'Needs attention'
+        b_high: '80% or more', b_mid: '60 to 79%', b_low: 'below 60%', b_none: 'no data', tomorrow: 'tomorrow', attention: 'Needs attention',
+        current: 'In progress', nth: ' in queue', applied: 'reported', load: 'of scheduled load', ends: 'ends', todayH: 'Today', tomorrowH: 'Tomorrow'
     },
     es: {
         factory: 'Fábrica ejemplo', live: 'En vivo', search: 'Buscar máquina', noResult: 'Ninguna máquina encontrada',
@@ -56,7 +60,8 @@ const TX = {
         hint: 'Haga clic en una máquina o un pin para ver el detalle.', hintDrag: 'Arrastre para girar · Ctrl + rueda para acercar',
         hintTouch: 'Toque una máquina para ver el detalle.', demo: 'Datos de demostración', loading: 'Montando la fábrica…',
         error: 'No se pudo cargar la maqueta 3D. La lista muestra las mismas máquinas.', oeeLegend: 'OEE',
-        b_high: '80% o más', b_mid: '60 a 79%', b_low: 'menos de 60%', b_none: 'sin dato', tomorrow: 'mañana', attention: 'Requiere atención'
+        b_high: '80% o más', b_mid: '60 a 79%', b_low: 'menos de 60%', b_none: 'sin dato', tomorrow: 'mañana', attention: 'Requiere atención',
+        current: 'En registro', nth: 'º en la cola', applied: 'registrado', load: 'de carga programada', ends: 'termina', todayH: 'Hoy', tomorrowH: 'Mañana'
     }
 };
 
@@ -72,50 +77,72 @@ const STOCK_GLYPH = 'M4 7l8-4 8 4-8 4-8-4z M4 7v10l8 4 8-4V7 M12 11v10';
 const ORDER = ['stopped', 'maintenance', 'warning', 'setup', 'running'];
 
 const SECTORS = [
-    { id: 'usinagem', name: { pt: 'Usinagem', en: 'Machining', es: 'Mecanizado' }, x0: -17.4, x1: -5.4, z0: -10.2, z1: -1.4, fill: '#3b82f6' },
-    { id: 'injecao', name: { pt: 'Injeção', en: 'Injection molding', es: 'Inyección' }, x0: -3.6, x1: 9.2, z0: -10.2, z1: -1.4, fill: '#10b981' },
-    { id: 'mp', name: { pt: 'Matéria-prima', en: 'Raw material', es: 'Materia prima' }, x0: 10.8, x1: 17.4, z0: -10.2, z1: -1.4, fill: '#f59e0b' },
-    { id: 'estamparia', name: { pt: 'Estamparia', en: 'Stamping', es: 'Estampado' }, x0: -17.4, x1: -5.4, z0: 1.4, z1: 10.2, fill: '#8b5cf6' },
-    { id: 'montagem', name: { pt: 'Montagem', en: 'Assembly', es: 'Montaje' }, x0: -3.6, x1: 9.2, z0: 1.4, z1: 10.2, fill: '#06b6d4' },
-    { id: 'expedicao', name: { pt: 'Expedição', en: 'Shipping', es: 'Expedición' }, x0: 10.8, x1: 17.4, z0: 1.4, z1: 10.2, fill: '#ec4899' }
+    { id: 'usinagem', name: { pt: 'Usinagem', en: 'Machining', es: 'Mecanizado' }, x0: -17.4, x1: -5.4, z0: -10.2, z1: -1.4, fill: '#3b82f6', border: '#2563eb', ink: '#1d4ed8' },
+    { id: 'injecao', name: { pt: 'Injeção', en: 'Injection molding', es: 'Inyección' }, x0: -3.6, x1: 9.2, z0: -10.2, z1: -1.4, fill: '#10b981', border: '#059669', ink: '#047857' },
+    { id: 'mp', name: { pt: 'Matéria-prima', en: 'Raw material', es: 'Materia prima' }, x0: 10.8, x1: 17.4, z0: -10.2, z1: -1.4, fill: '#f59e0b', border: '#d97706', ink: '#b45309' },
+    { id: 'estamparia', name: { pt: 'Estamparia', en: 'Stamping', es: 'Estampado' }, x0: -17.4, x1: -5.4, z0: 1.4, z1: 10.2, fill: '#8b5cf6', border: '#7c3aed', ink: '#6d28d9' },
+    { id: 'montagem', name: { pt: 'Montagem', en: 'Assembly', es: 'Montaje' }, x0: -3.6, x1: 9.2, z0: 1.4, z1: 10.2, fill: '#06b6d4', border: '#0891b2', ink: '#0e7490' },
+    { id: 'expedicao', name: { pt: 'Expedição', en: 'Shipping', es: 'Expedición' }, x0: 10.8, x1: 17.4, z0: 1.4, z1: 10.2, fill: '#ec4899', border: '#db2777', ink: '#be185d' }
 ];
 
 const L = (pt, en, es) => ({ pt, en, es });
+const PROC = {
+    cnc: L('Fresamento', 'Milling', 'Fresado'),
+    lathe: L('Torneamento', 'Turning', 'Torneado'),
+    injector: L('Injeção', 'Injection', 'Inyección'),
+    press: L('Estampagem', 'Stamping', 'Estampado')
+};
+const P = {
+    flange: L('Flange 4" aço 1020', 'Flange 4" 1020 steel', 'Brida 4" acero 1020'),
+    bucha: L('Bucha guia Ø32', 'Guide bushing Ø32', 'Buje guía Ø32'),
+    eixo: L('Eixo de transmissão 30 mm', 'Drive shaft 30 mm', 'Eje de transmisión 30 mm'),
+    pinoArt: L('Pino de articulação', 'Hinge pin', 'Pasador de articulación'),
+    pinoM12: L('Pino roscado M12', 'Threaded pin M12', 'Perno roscado M12'),
+    luva: L('Luva de redução 1"', '1" reducing coupling', 'Manguito reductor 1"'),
+    tampa: L('Tampa 28 mm PP', 'Cap 28 mm PP', 'Tapa 28 mm PP'),
+    conector: L('Conector 3 vias', '3-way connector', 'Conector 3 vías'),
+    caixa: L('Caixa organizadora 5 L', 'Storage box 5 L', 'Caja organizadora 5 L'),
+    gaveta: L('Gaveta 40 cm', 'Drawer 40 cm', 'Cajón 40 cm'),
+    suporte: L('Suporte em L 2 mm', 'L bracket 2 mm', 'Soporte en L 2 mm'),
+    arruela: L('Arruela lisa 3/8"', 'Flat washer 3/8"', 'Arandela plana 3/8"'),
+    chapa: L('Chapa de fixação', 'Mounting plate', 'Placa de fijación')
+};
+/* Fila no formato da MachineQueueSection: [OP, produto, programado, apontado, [dia, início], [dia, fim]]. dia 0 = hoje. */
 const MACHINES = [
     {
         id: 'cnc01', code: 'CNC-01', type: 'cnc', sector: 'usinagem', x: -14.4, z: -6.2, state: 'running', minutes: 192, oee: 84, eff: 91, produced: 312,
-        op: '2481', product: L('Flange 4" aço 1020', 'Flange 4" 1020 steel', 'Brida 4" acero 1020'), done: 214, planned: 340, operator: 'Marcos',
-        queue: [['2481', L('Flange 4" aço 1020', 'Flange 4" 1020 steel', 'Brida 4" acero 1020'), 340, '14:40'], ['2490', L('Bucha guia Ø32', 'Guide bushing Ø32', 'Buje guía Ø32'), 500, '+1 09:10']]
+        op: '2481', product: P.flange, done: 214, planned: 340, operator: 'Marcos',
+        queue: [['2481', P.flange, 340, 214, [0, '06:10'], [0, '14:40']], ['2490', P.bucha, 500, 0, [0, '14:55'], [1, '09:10']], ['2496', P.flange, 180, 0, [1, '09:25'], [1, '13:40']]]
     },
     {
         id: 'cnc02', code: 'CNC-02', type: 'cnc', sector: 'usinagem', x: -8.6, z: -6.2, state: 'stopped', minutes: 23, oee: 52, eff: 61, produced: 118,
-        reason: L('Falta de material', 'Material shortage', 'Falta de material'), op: '2477', product: L('Eixo de transmissão 30 mm', 'Drive shaft 30 mm', 'Eje de transmisión 30 mm'), done: 118, planned: 260, operator: 'Paula',
-        queue: [['2477', L('Eixo de transmissão 30 mm', 'Drive shaft 30 mm', 'Eje de transmisión 30 mm'), 260, '16:20'], ['2493', L('Pino de articulação', 'Hinge pin', 'Pasador de articulación'), 800, '+1 11:00']]
+        reason: L('Falta de material', 'Material shortage', 'Falta de material'), op: '2477', product: P.eixo, done: 118, planned: 260, operator: 'Paula',
+        queue: [['2477', P.eixo, 260, 118, [0, '07:00'], [0, '16:20']], ['2493', P.pinoArt, 800, 0, [0, '16:35'], [1, '11:00']]]
     },
     {
         id: 'tor01', code: 'TOR-01', type: 'lathe', sector: 'usinagem', x: -11.6, z: -2.9, rotY: 0, state: 'warning', minutes: 4, oee: 71, eff: 78, produced: 486,
-        op: '2479', product: L('Pino roscado M12', 'Threaded pin M12', 'Perno roscado M12'), done: 486, planned: 900, operator: 'Diego',
-        queue: [['2479', L('Pino roscado M12', 'Threaded pin M12', 'Perno roscado M12'), 900, '13:50']]
+        op: '2479', product: P.pinoM12, done: 486, planned: 900, operator: 'Diego',
+        queue: [['2479', P.pinoM12, 900, 486, [0, '06:00'], [0, '13:50']], ['2491', P.luva, 400, 0, [0, '14:05'], [0, '19:30']], ['2499', P.pinoM12, 1200, 0, [1, '06:00'], [1, '15:10']]]
     },
     {
         id: 'inj01', code: 'INJ-01', type: 'injector', sector: 'injecao', x: 0.4, z: -6.4, state: 'running', minutes: 248, oee: 91, eff: 96, produced: 2946,
-        op: '2470', product: L('Tampa 28 mm PP', 'Cap 28 mm PP', 'Tapa 28 mm PP'), done: 2946, planned: 4000, operator: 'Fernanda', worker: true,
-        queue: [['2470', L('Tampa 28 mm PP', 'Cap 28 mm PP', 'Tapa 28 mm PP'), 4000, '15:30'], ['2485', L('Conector 3 vias', '3-way connector', 'Conector 3 vías'), 1200, '+1 07:40']]
+        op: '2470', product: P.tampa, done: 2946, planned: 4000, operator: 'Fernanda',
+        queue: [['2470', P.tampa, 4000, 2946, [0, '05:30'], [0, '15:30']], ['2485', P.conector, 1200, 0, [0, '16:10'], [1, '07:40']], ['2494', P.tampa, 6000, 0, [1, '07:55'], [2, '06:20']]]
     },
     {
         id: 'inj02', code: 'INJ-02', type: 'injector', sector: 'injecao', x: 6.2, z: -6.4, state: 'setup', minutes: 12, oee: 66, eff: 72, produced: 1320,
-        reason: L('Troca de molde', 'Mold change', 'Cambio de molde'), op: '2488', product: L('Caixa organizadora 5 L', 'Storage box 5 L', 'Caja organizadora 5 L'), done: 0, planned: 600, operator: 'Carlos', worker: true,
-        queue: [['2488', L('Caixa organizadora 5 L', 'Storage box 5 L', 'Caja organizadora 5 L'), 600, '17:00']]
+        reason: L('Troca de molde', 'Mold change', 'Cambio de molde'), op: '2488', product: P.caixa, done: 0, planned: 600, operator: 'Carlos',
+        queue: [['2488', P.caixa, 600, 0, [0, '11:20'], [0, '17:00']], ['2492', P.gaveta, 900, 0, [0, '17:40'], [1, '10:30']]]
     },
     {
         id: 'pre01', code: 'PRE-01', type: 'press', sector: 'estamparia', x: -14.2, z: 5.6, state: 'running', minutes: 95, oee: 79, eff: 85, produced: 1680,
-        op: '2475', product: L('Suporte em L 2 mm', 'L bracket 2 mm', 'Soporte en L 2 mm'), done: 1680, planned: 2400, operator: 'Rafael',
-        queue: [['2475', L('Suporte em L 2 mm', 'L bracket 2 mm', 'Soporte en L 2 mm'), 2400, '14:10']]
+        op: '2475', product: P.suporte, done: 1680, planned: 2400, operator: 'Rafael',
+        queue: [['2475', P.suporte, 2400, 1680, [0, '06:30'], [0, '14:10']], ['2486', P.chapa, 1500, 0, [0, '14:25'], [0, '20:15']]]
     },
     {
         id: 'pre02', code: 'PRE-02', type: 'press', sector: 'estamparia', x: -8.8, z: 5.6, state: 'maintenance', minutes: 41, oee: 58, eff: 64, produced: 640,
-        reason: L('Troca de ferramenta', 'Tool change', 'Cambio de herramienta'), op: '2482', product: L('Arruela lisa 3/8"', 'Flat washer 3/8"', 'Arandela plana 3/8"'), done: 640, planned: 3000, operator: 'Bruno',
-        queue: [['2482', L('Arruela lisa 3/8"', 'Flat washer 3/8"', 'Arandela plana 3/8"'), 3000, '18:30']]
+        reason: L('Troca de ferramenta', 'Tool change', 'Cambio de herramienta'), op: '2482', product: P.arruela, done: 640, planned: 3000, operator: 'Bruno',
+        queue: [['2482', P.arruela, 3000, 640, [0, '07:15'], [0, '18:30']], ['2497', P.arruela, 3000, 0, [1, '06:00'], [1, '16:45']]]
     }
 ];
 const STOCKS = [
@@ -300,9 +327,7 @@ function drawer(id) {
             <div><dt>${t('operator')}</dt><dd>${item.operator}</dd></div>
             <div><dt>${t('sector')}</dt><dd>${sector}</dd></div>
         </dl>`;
-    const queue = `<ol class="fx-queue">${item.queue.map(([op, product, qty, eta], index) => `
-        <li class="${index === 0 ? 'is-doing' : ''}"><span class="fx-queue-tag">${index === 0 ? t('doing') : t('todo')}</span>
-        <strong>OP ${op} · ${esc(loc(product))}</strong><small>${fmt(qty)} ${t('pcs')} · ${t('planned')} ${eta.startsWith('+1 ') ? `${t('tomorrow')} ${eta.slice(3)}` : eta}</small></li>`).join('')}</ol>`;
+    const queue = queueMarkup(item);
     return `<aside class="fx-drawer" tabindex="-1" aria-label="${item.code}">
         <div class="fx-drawer-head"><div><p>${sector}</p><h3>${item.code}</h3></div><button type="button" class="fx-icon" data-fx-close aria-label="${t('close')}">${glyph('M6 6l12 12M18 6L6 18', 20)}</button></div>
         <div class="fx-band st-${item.state}">${glyph(state.glyph, 16)}<span>${band}</span></div>
@@ -312,6 +337,55 @@ function drawer(id) {
         </div>
         <div class="fx-drawer-body">${view.tab === 'queue' ? queue : summary}</div>
     </aside>`;
+}
+
+/* Fila igual à MachineQueueSection do produto: trilho com ponto, OP, posição, produto, progresso,
+   "processo · pç · apontado", janela "início → fim" com duração e cabeçalho por dia. */
+function dayAt(offset, hhmm) {
+    const d = new Date();
+    const [h, m] = hhmm.split(':').map(Number);
+    d.setDate(d.getDate() + offset);
+    d.setHours(h, m, 0, 0);
+    return d;
+}
+const locale = () => (lang() === 'en' ? 'en-US' : lang() === 'es' ? 'es-ES' : 'pt-BR');
+const dateTime = (d) => `${d.toLocaleDateString(locale(), { day: '2-digit', month: '2-digit' })} ${d.toLocaleTimeString(locale(), { hour: '2-digit', minute: '2-digit', hour12: false })}`;
+const span = (min) => (min < 60 ? `${min} min` : `${Math.floor(min / 60)}h${min % 60 ? ` ${String(min % 60).padStart(2, '0')}min` : ''}`);
+function dayLabel(offset) {
+    if (offset === 0) return t('todayH');
+    if (offset === 1) return t('tomorrowH');
+    const label = dayAt(offset, '12:00').toLocaleDateString(locale(), { weekday: 'long', day: '2-digit', month: '2-digit' });
+    return label.charAt(0).toUpperCase() + label.slice(1);
+}
+function queueMarkup(item) {
+    const proc = loc(PROC[item.type]);
+    const rows = item.queue.map(([op, product, qty, applied, start, end], index) => ({
+        op, product, qty, applied, index,
+        day: start[0], endDay: end[0], start: dayAt(...start), end: dayAt(...end)
+    }));
+    const totalMin = rows.reduce((sum, r) => sum + Math.round((r.end - r.start) / 60000), 0);
+    const last = rows[rows.length - 1];
+    const hm = (d) => d.toLocaleTimeString(locale(), { hour: '2-digit', minute: '2-digit', hour12: false });
+    const ends = last.endDay === 0 ? hm(last.end) : `${dayLabel(last.endDay).toLowerCase()} ${hm(last.end)}`;
+    let html = `<p class="fq-summary">${span(totalMin)} ${t('load')} · ${t('ends')} ${ends}</p><div class="fq">`;
+    let day = null;
+    rows.forEach((r) => {
+        if (r.day !== day) { day = r.day; html += `<h4 class="fq-day">${dayLabel(day)}</h4>`; }
+        const current = r.index === 0;
+        const progress = Math.min(100, Math.round((r.applied / r.qty) * 100));
+        const isLast = r.index === rows.length - 1;
+        html += `<div class="fq-row${current ? ' is-current' : ''}">
+            <span class="fq-rail${isLast ? ' is-last' : ''}" aria-hidden="true"><i></i></span>
+            <div class="fq-body">
+                <div class="fq-top"><strong>OP ${r.op}</strong><span>${current ? t('current') : `${r.index + 1}${t('nth')}`}</span></div>
+                <p class="fq-prod">${esc(loc(r.product))}</p>
+                ${current ? `<div class="fq-bar" role="progressbar" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100"><b style="width:${progress}%"></b></div>` : ''}
+                <p class="fq-meta">${esc(proc)} · ${fmt(r.qty)} ${t('pcs')} · ${fmt(r.applied)} ${t('applied')}</p>
+                <p class="fq-win"><span>${dateTime(r.start)} → ${dateTime(r.end)}</span><b>${span(Math.round((r.end - r.start) / 60000))}</b></p>
+            </div>
+        </div>`;
+    });
+    return html + '</div>';
 }
 
 function bindHud() {
@@ -382,63 +456,169 @@ function buildScene(canvas, labelsHost) {
     const camera = new THREE.OrthographicCamera(-10, 10, 10, -10, 0.1, 400);
     const labels = new CSS2DRenderer({ element: labelsHost });
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.75));
-    const sun = new THREE.DirectionalLight(0xffffff, 1.05);
-    sun.position.set(12, 22, 10);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+    // Planta compacta: coordenadas do layout em escala de metros parecida com a do produto.
+    const K = 0.78;
+    const MS = 0.72;
+    SECTORS.forEach((s) => { s.x0 *= K; s.x1 *= K; s.z0 *= K; s.z1 *= K; });
+    ALL.forEach((item) => { item.x *= K; item.z *= K; });
+    const B = { minX: -15, maxX: 15, minZ: -9, maxZ: 9 };
+
+    // Mesma iluminação da FactoryScene do produto.
+    scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+    const sun = new THREE.DirectionalLight(0xffffff, 0.95);
+    sun.position.set(10, 16, 8);
+    sun.castShadow = true;
+    sun.shadow.mapSize.set(2048, 2048);
+    Object.assign(sun.shadow.camera, { left: -20, right: 20, top: 20, bottom: -20, near: 1, far: 60 });
+    sun.shadow.bias = -0.0006;
+    sun.shadow.normalBias = 0.03;
     scene.add(sun);
-    const fill = new THREE.DirectionalLight(0xffffff, 0.35);
-    fill.position.set(-10, 9, -6);
+    const fill = new THREE.DirectionalLight(0xffffff, 0.32);
+    fill.position.set(-8, 9, -5);
     scene.add(fill);
     scene.add(new THREE.HemisphereLight(0xffffff, 0x9ca3af, 0.35));
 
     const world = new THREE.Group();
     scene.add(world);
 
-    const palette = () => (isDark()
-        ? { bg: 0x12161a, floor: 0x1c2227, grid: 0x2a3138, wall: 0x2a3036 }
-        : { bg: 0xf1f4f7, floor: 0xe6ebef, grid: 0xc9d2da, wall: 0xdfe5ea });
+    const palette = () => (isDark() ? { bg: 0x121212 } : { bg: 0xf2f2f2 });
 
-    const floorMat = new THREE.MeshStandardMaterial({ color: palette().floor, roughness: 0.9 });
-    const floor = new THREE.Mesh(new THREE.PlaneGeometry(38, 24), floorMat);
-    floor.rotation.x = -Math.PI / 2;
-    floor.userData.floor = true;
-    world.add(floor);
-    let grid = new THREE.GridHelper(38, 38, palette().grid, palette().grid);
-    grid.position.y = 0.006;
-    grid.material.transparent = true;
-    grid.material.opacity = 0.55;
-    world.add(grid);
+    // Instâncias de caixa (piso, nervuras, montantes, parafusos), como FactoryStructureInstances.
+    const unitBox = new THREE.BoxGeometry(1, 1, 1);
+    function instances(list, material, { geometry = unitBox, cast = false, receive = false } = {}) {
+        const mesh = new THREE.InstancedMesh(geometry, material, list.length);
+        const m = new THREE.Matrix4(); const q = new THREE.Quaternion(); const e = new THREE.Euler();
+        list.forEach((it, i) => {
+            e.set(...(it.rot || [0, 0, 0]));
+            q.setFromEuler(e);
+            m.compose(new THREE.Vector3(...it.pos), q, new THREE.Vector3(...it.scale));
+            mesh.setMatrixAt(i, m);
+            if (it.color) mesh.setColorAt(i, new THREE.Color(it.color));
+        });
+        mesh.castShadow = cast;
+        mesh.receiveShadow = receive;
+        world.add(mesh);
+        return mesh;
+    }
+
+    // Piso: placas 1×1 m quadriculadas com laje, cores da FactoryFloorTiles.
+    const WALL_T = 0.14;
+    const SLAB = 0.1;
+    const base = []; const top = [];
+    for (let x = B.minX; x < B.maxX; x += 1) {
+        for (let z = B.minZ; z < B.maxZ; z += 1) {
+            const light = (x + z) % 2 === 0;
+            const ex = x === B.minX ? WALL_T : 0;
+            const ez = z === B.minZ ? WALL_T : 0;
+            const cx = x + 0.5 - ex / 2; const cz = z + 0.5 - ez / 2;
+            base.push({ pos: [cx, -SLAB / 2, cz], scale: [1 + ex, SLAB, 1 + ez], color: light ? '#a8b1b9' : '#a1aab3' });
+            top.push({ pos: [cx, 0.004, cz], scale: [1 + ex - 0.06, 0.004, 1 + ez - 0.06], color: light ? '#cfd6dc' : '#c7ced4' });
+        }
+    }
+    const floorBase = instances(base, new THREE.MeshStandardMaterial({ roughness: 0.82, metalness: 0.06 }), { receive: true });
+    const floorTop = instances(top, new THREE.MeshStandardMaterial({ roughness: 0.36, metalness: 0.1 }), { receive: true });
+    floorBase.userData.floor = true;
+    floorTop.userData.floor = true;
 
     // Setores: preenchimento suave + borda, como FactorySectorAreaMesh.
     SECTORS.forEach((s) => {
         const w = s.x1 - s.x0; const d = s.z1 - s.z0;
-        const area = new THREE.Mesh(new THREE.PlaneGeometry(w, d), new THREE.MeshBasicMaterial({ color: s.fill, transparent: true, opacity: 0.12, depthWrite: false }));
+        const area = new THREE.Mesh(new THREE.PlaneGeometry(w, d), new THREE.MeshBasicMaterial({ color: s.fill, transparent: true, opacity: 0.14, depthWrite: false }));
         area.rotation.x = -Math.PI / 2;
         area.position.set((s.x0 + s.x1) / 2, 0.012, (s.z0 + s.z1) / 2);
         world.add(area);
-        const edge = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(w, d)), new THREE.LineBasicMaterial({ color: s.fill, transparent: true, opacity: 0.9 }));
+        const edge = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(w, d)), new THREE.LineBasicMaterial({ color: s.border, transparent: true, opacity: 0.9 }));
         edge.rotation.x = -Math.PI / 2;
         edge.position.copy(area.position).setY(0.016);
         world.add(edge);
         const el = document.createElement('div');
         el.className = 'fx-sector';
-        el.style.setProperty('--sector', s.fill);
+        el.style.setProperty('--sector', s.ink);
         el.dataset.sector = s.id;
         const label = new CSS2DObject(el);
-        label.position.set(s.x0 + 0.35, 0.05, s.z1 - 0.35);
+        label.position.set(s.x0 + 0.2, 0.05, s.z1 - 0.2);
         label.center.set(0, 1);
         world.add(label);
         s.labelEl = el;
     });
 
-    // Corredor central demarcado.
-    const lane = new THREE.MeshBasicMaterial({ color: 0xe6b423 });
-    [-1.05, 1.05].forEach((z) => {
-        const stripe = new THREE.Mesh(new THREE.PlaneGeometry(35, 0.1), lane);
-        stripe.rotation.x = -Math.PI / 2;
-        stripe.position.set(0, 0.02, z);
-        world.add(stripe);
-    });
+    // Paredes do fundo (−X e −Z) com as medidas e materiais da FactoryBackWalls.
+    (function backWalls() {
+        const H = 1.8; const PANEL_BASE = 0.28; const FRAME = 0.055; const RIB_W = 0.016; const RIB_D = 0.018;
+        const std = (color, roughness, metalness) => new THREE.MeshStandardMaterial({ color, roughness, metalness });
+        const wall = std('#4b5563', 0.72, 0.18); const trim = std('#303946', 0.68, 0.24); const panel = std('#65717e', 0.78, 0.12);
+        const rib = std('#8994a0', 0.66, 0.22); const plinth = std('#8b949e', 0.9, 0.02); const bolt = std('#161d26', 0.5, 0.62);
+        const spanX = B.maxX - B.minX + WALL_T; const spanZ = B.maxZ - B.minZ + WALL_T;
+        const cX = (B.minX + B.maxX) / 2 - WALL_T / 2; const cZ = (B.minZ + B.maxZ) / 2 - WALL_T / 2;
+        const add = (geo, mat, pos, cast = true) => { const mesh = new THREE.Mesh(geo, mat); mesh.position.set(...pos); mesh.castShadow = cast; mesh.receiveShadow = true; world.add(mesh); return mesh; };
+        const bx = (w, h, d) => new THREE.BoxGeometry(w, h, d);
+        add(bx(spanX, H, WALL_T), wall, [cX, H / 2, B.minZ - WALL_T / 2]);
+        add(bx(WALL_T, H, spanZ), wall, [B.minX - WALL_T / 2, H / 2, cZ]);
+        add(bx(spanX - 0.08, H - 0.24, 0.025), panel, [cX, H / 2, B.minZ + 0.0125], false);
+        add(bx(0.025, H - 0.24, spanZ - 0.08), panel, [B.minX + 0.0125, H / 2, cZ], false);
+        add(bx(spanX, PANEL_BASE, 0.037), plinth, [cX, PANEL_BASE / 2, B.minZ + 0.031], false);
+        add(bx(0.037, PANEL_BASE, spanZ), plinth, [B.minX + 0.031, PANEL_BASE / 2, cZ], false);
+        [0.58, 1.25].forEach((y) => {
+            add(bx(spanX, FRAME, FRAME), trim, [cX, y, B.minZ + FRAME / 2]);
+            add(bx(FRAME, FRAME, spanZ), trim, [B.minX + FRAME / 2, y, cZ]);
+        });
+        add(bx(spanX, 0.08, 0.2), trim, [cX, H + 0.04, B.minZ - WALL_T / 2]);
+        add(bx(0.2, 0.08, spanZ), trim, [B.minX - WALL_T / 2, H + 0.04, cZ]);
+        add(bx(spanX, 0.16, 0.1), trim, [cX, 0.08, B.minZ + 0.05]);
+        add(bx(0.1, 0.16, spanZ), trim, [B.minX + 0.05, 0.08, cZ]);
+        const detailH = H - PANEL_BASE - 0.12; const detailY = PANEL_BASE + detailH / 2;
+        const ribs = []; const frames = []; const bolts = [];
+        for (let x = B.minX + 0.2; x < B.maxX - 0.1; x += 0.2) ribs.push({ pos: [x, detailY, B.minZ + 0.025 + RIB_D / 2], scale: [RIB_W, detailH, RIB_D] });
+        for (let z = B.minZ + 0.2; z < B.maxZ - 0.1; z += 0.2) ribs.push({ pos: [B.minX + 0.025 + RIB_D / 2, detailY, z], scale: [RIB_D, detailH, RIB_W] });
+        for (let x = B.minX + 1; x < B.maxX; x += 1) {
+            frames.push({ pos: [x, H / 2, B.minZ + FRAME / 2], scale: [FRAME, H - 0.08, FRAME] }, { pos: [x, 0.018, B.minZ + 0.08], scale: [0.16, 0.036, 0.16] });
+            [0.22, 0.9, 1.58].forEach((y) => bolts.push({ pos: [x, y, B.minZ + FRAME + 0.006], scale: [0.022, 0.014, 0.022], rot: [Math.PI / 2, 0, 0] }));
+        }
+        for (let z = B.minZ + 1; z < B.maxZ; z += 1) {
+            frames.push({ pos: [B.minX + FRAME / 2, H / 2, z], scale: [FRAME, H - 0.08, FRAME] }, { pos: [B.minX + 0.08, 0.018, z], scale: [0.16, 0.036, 0.16] });
+            [0.22, 0.9, 1.58].forEach((y) => bolts.push({ pos: [B.minX + FRAME + 0.006, y, z], scale: [0.022, 0.014, 0.022], rot: [0, 0, Math.PI / 2] }));
+        }
+        instances(ribs, rib, { cast: true });
+        instances(frames, trim, { cast: true });
+        instances(bolts, bolt, { geometry: new THREE.CylinderGeometry(1, 1, 1, 8) });
+
+        // Equipamentos de parede (FactoryWallEquipment): extintores, luminárias e quadro elétrico.
+        const group = (pos) => { const g = new THREE.Group(); g.position.set(...pos); world.add(g); return g; };
+        const part = (g, geo, mat, pos = [0, 0, 0], rot) => { const mesh = new THREE.Mesh(geo, mat); mesh.position.set(...pos); if (rot) mesh.rotation.set(...rot); mesh.castShadow = true; g.add(mesh); return mesh; };
+        const dark = std('#20262d', 0.48, 0.65);
+        const extinguisher = (x) => {
+            const g = group([x, 0.56, B.minZ + 0.13]);
+            part(g, bx(0.25, 0.52, 0.045), std('#252d36', 0.76, 0.3), [0, 0.02, -0.065]);
+            part(g, new THREE.CylinderGeometry(0.095, 0.105, 0.42, 20), std('#d32f2f', 0.42, 0.18));
+            part(g, new THREE.CylinderGeometry(0.035, 0.045, 0.07, 12), dark, [0, 0.245, 0]);
+            part(g, bx(0.12, 0.025, 0.035), dark, [0.055, 0.275, 0]);
+            part(g, new THREE.PlaneGeometry(0.1, 0.13), new THREE.MeshBasicMaterial({ color: '#f5f5f5' }), [0, 0.08, 0.102]);
+            part(g, new THREE.TorusGeometry(0.11, 0.014, 8, 24, Math.PI * 1.35), std('#181d22', 0.7, 0), [0.13, 0.08, 0.02], [0, 0, -0.22]);
+        };
+        const lamp = (x) => {
+            const g = group([x, 1.57, B.minZ + 0.105]);
+            part(g, bx(0.48, 0.16, 0.08), std('#2f3944', 0.6, 0.35), [0, 0, -0.035]);
+            const glow = new THREE.MeshStandardMaterial({ color: '#fff3c4', emissive: '#ffd76a', emissiveIntensity: 1.6, roughness: 0.28 });
+            part(g, bx(0.39, 0.085, 0.025), glow, [0, 0, 0.015]);
+        };
+        const panelBox = (x) => {
+            const g = group([x, 0.92, B.minZ + 0.13]);
+            part(g, bx(0.48, 0.7, 0.13), std('#7d8791', 0.55, 0.38));
+            part(g, bx(0.42, 0.63, 0.025), std('#aab2b9', 0.62, 0.26), [0, 0, 0.076]);
+            part(g, bx(0.025, 0.13, 0.025), std('#242b32', 0.42, 0.7), [0.15, 0, 0.098]);
+            part(g, new THREE.CircleGeometry(0.075, 3), new THREE.MeshBasicMaterial({ color: '#f7c948' }), [0, 0.09, 0.091]);
+            part(g, new THREE.SphereGeometry(0.022, 10, 10), new THREE.MeshStandardMaterial({ color: '#43a047', emissive: '#1b5e20', emissiveIntensity: 0.7 }), [0.04, 0.31, 0.098]);
+            part(g, new THREE.SphereGeometry(0.022, 10, 10), std('#ef5350', 0.35, 0), [-0.04, 0.31, 0.098]);
+        };
+        extinguisher(B.minX + 0.65);
+        extinguisher(1.6);
+        [-9, -3, 4, 10].forEach(lamp);
+        panelBox(B.maxX - 0.72);
+        panelBox(-5.4);
+    })();
 
     const mats = {
         body: new THREE.MeshStandardMaterial({ color: 0xf1f4f7, roughness: 0.55 }),
@@ -454,11 +634,14 @@ function buildScene(canvas, labelsHost) {
     const box = (w, h, d, mat, x = 0, y = 0, z = 0) => {
         const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
         mesh.position.set(x, y + h / 2, z);
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
         return mesh;
     };
     const cyl = (r, h, mat, x = 0, y = 0, z = 0, seg = 24) => {
         const mesh = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, seg), mat);
         mesh.position.set(x, y + h / 2, z);
+        mesh.castShadow = true;
         return mesh;
     };
 
@@ -485,7 +668,7 @@ function buildScene(canvas, labelsHost) {
             g.add(box(2.8, 0.18, 2.0, mats.blue, 0, 2.2));
             g.add(box(0.55, 0.8, 0.18, mats.dark, 1.25, 1.0, 1.15));
             g.add(box(1.0, 0.45, 0.6, mats.steel, 1.9, 0, -0.5));
-            return { group: g, height: 2.4, lightAt: [-1.2, 2.38, -0.8], radius: 1.9 };
+            return { group: g, height: 2.4, lightAt: [-1.2, 2.38, -0.8], radius: 1.9, footprint: [3.0, 2.2] };
         },
         lathe() {
             const g = new THREE.Group();
@@ -499,7 +682,7 @@ function buildScene(canvas, labelsHost) {
             g.add(box(0.5, 0.55, 0.7, mats.body, 1.35, 1.15));
             g.add(box(2.0, 0.7, 0.04, mats.glass, 0.2, 1.2, 0.6));
             g.add(box(0.5, 0.7, 0.2, mats.dark, -1.3, 1.6, 0.65));
-            return { group: g, height: 2.05, lightAt: [-1.6, 2.05, -0.35], radius: 2.0 };
+            return { group: g, height: 2.05, lightAt: [-1.6, 2.05, -0.35], radius: 2.0, footprint: [3.6, 1.1] };
         },
         press() {
             const g = new THREE.Group();
@@ -510,7 +693,7 @@ function buildScene(canvas, labelsHost) {
             g.add(box(1.4, 0.2, 1.0, mats.steel, 0, 0.45));
             [-1.05, 1.05].forEach((x) => g.add(box(0.08, 1.4, 0.08, mats.yellow, x, 0.45, 0.85)));
             g.add(box(0.5, 0.9, 0.3, mats.dark, 1.45, 0.6, 0.6));
-            return { group: g, height: 3.75, lightAt: [1.0, 3.75, -0.3], radius: 1.8 };
+            return { group: g, height: 3.75, lightAt: [1.0, 3.75, -0.3], radius: 1.8, footprint: [2.3, 1.8] };
         },
         bench() {
             const g = new THREE.Group();
@@ -551,9 +734,11 @@ function buildScene(canvas, labelsHost) {
         const group = built.group;
         group.position.set(item.x, 0, item.z);
         if (item.rotY) group.rotation.y = item.rotY;
+        const k = built.scaled ? 1 : MS;
+        group.scale.setScalar(k);
         group.traverse((child) => { if (child.isMesh) { child.userData.itemId = item.id; pickables.push(child); } });
         world.add(group);
-        const entry = { item, group, height: built.height, radius: built.radius || 1.8, lamps: null, ring: null, disc: null, pin: null };
+        const entry = { item, group, height: built.height * k, radius: (built.radius || 1.8) * k, lamps: null, ring: null, disc: null, pin: null, footprint: (built.footprint || [2.4, 2]).map((v) => v * k) };
         if (built.lightAt) entry.lamps = stackLight(group, ...built.lightAt);
         objects.set(item.id, entry);
         return entry;
@@ -562,7 +747,8 @@ function buildScene(canvas, labelsHost) {
     // Bancadas de montagem (sem sensor, sem pino).
     [[0.2, 4.4], [5.2, 4.4], [0.2, 7.6], [5.2, 7.6]].forEach(([x, z]) => {
         const b = builders.bench();
-        b.group.position.set(x, 0, z);
+        b.group.position.set(x * K, 0, z * K);
+        b.group.scale.setScalar(MS);
         world.add(b.group);
     });
 
@@ -664,15 +850,6 @@ function buildScene(canvas, labelsHost) {
         });
     }
 
-    // Paredes de fundo para dar escala, como FactoryBackWalls.
-    const wallMat = new THREE.MeshStandardMaterial({ color: palette().wall, roughness: 0.9 });
-    const backWall = new THREE.Mesh(new THREE.BoxGeometry(38, 3.2, 0.25), wallMat);
-    backWall.position.set(0, 1.6, -12.1);
-    world.add(backWall);
-    const sideWall = new THREE.Mesh(new THREE.BoxGeometry(0.25, 3.2, 24), wallMat);
-    sideWall.position.set(-19.1, 1.6, 0);
-    world.add(sideWall);
-
     // Câmera isométrica com giro limitado; roda do mouse só com Ctrl para não prender a rolagem da página.
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableZoom = false;
@@ -683,7 +860,7 @@ function buildScene(canvas, labelsHost) {
     controls.screenSpacePanning = true;
     controls.mouseButtons = { LEFT: THREE.MOUSE.ROTATE, MIDDLE: THREE.MOUSE.PAN, RIGHT: THREE.MOUSE.PAN };
     controls.enabled = !coarse;
-    const BASE_DIR = new THREE.Vector3(1, 1.05, 1.15).normalize();
+    const BASE_DIR = new THREE.Vector3(1, 0.86, 1.12).normalize();
     camera.position.copy(BASE_DIR.clone().multiplyScalar(80));
     camera.lookAt(0, 0, 0);
 
@@ -729,8 +906,8 @@ function buildScene(canvas, labelsHost) {
         camera.updateMatrixWorld();
         const inv = camera.matrixWorldInverse;
         let minX = Infinity; let maxX = -Infinity; let minY = Infinity; let maxY = -Infinity;
-        [[-18, -11], [18, -11], [-18, 11], [18, 11]].forEach(([x, z]) => {
-            [0, 3].forEach((y) => {
+        [[B.minX, B.minZ], [B.maxX, B.minZ], [B.minX, B.maxZ], [B.maxX, B.maxZ]].forEach(([x, z]) => {
+            [0, 1.9].forEach((y) => {
                 const p = new THREE.Vector3(x, y, z).applyMatrix4(inv);
                 minX = Math.min(minX, p.x); maxX = Math.max(maxX, p.x); minY = Math.min(minY, p.y); maxY = Math.max(maxY, p.y);
             });
@@ -802,16 +979,7 @@ function buildScene(canvas, labelsHost) {
     });
 
     function applyTheme() {
-        const p = palette();
-        scene.background = new THREE.Color(p.bg);
-        floorMat.color.setHex(p.floor);
-        wallMat.color.setHex(p.wall);
-        world.remove(grid);
-        grid = new THREE.GridHelper(38, 38, p.grid, p.grid);
-        grid.position.y = 0.006;
-        grid.material.transparent = true;
-        grid.material.opacity = 0.55;
-        world.add(grid);
+        scene.background = new THREE.Color(palette().bg);
         refreshLabels();
         renderHud();
     }
@@ -828,19 +996,44 @@ function buildScene(canvas, labelsHost) {
     }
 
     const mixer = new THREE.AnimationMixer(world);
-    const walkers = [];
     const loader = new GLTFLoader();
+    // operador.glb vem comprimido com Draco, como no produto.
+    const draco = new DRACOLoader();
+    draco.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/libs/draco/gltf/');
+    loader.setDRACOLoader(draco);
 
     resize();
     applyTheme();
     frame(false);
     new ResizeObserver(() => { resize(); if (!tween) frame(false); }).observe(root);
 
-    Promise.all(['injetora-detalhada.glb', 'operador-animado.glb'].map((file) => loader.loadAsync('/glbimagens/' + file)))
+    // Operador: o mesmo GLB da Fábrica 3D do produto (operador.glb, 1,35 m, clipes por estado da máquina).
+    const ACTIVITY = { running: 'Operando', warning: 'Operando', stopped: 'Aguardando', setup: 'Manutencao', maintenance: 'Manutencao' };
+    function placeOperator(template, clips, entry, seed) {
+        const person = SkeletonUtils.clone(template);
+        person.updateWorldMatrix(true, true);
+        const box3 = new THREE.Box3().setFromObject(person);
+        const scale = 1.35 / Math.max(0.01, box3.max.y - box3.min.y);
+        person.scale.multiplyScalar(scale);
+        person.traverse((child) => { if (child.isMesh) { child.castShadow = true; child.frustumCulled = false; } });
+        // Fica na quina frontal da máquina, olhando para ela a 45° (operatorPosition.ts).
+        const [w, d] = entry.footprint;
+        const rot = entry.item.rotY || 0;
+        const lx = w / 2 - 0.25 + 0.35; const lz = d / 2 - 0.25 + 0.35;
+        person.position.set(entry.item.x + Math.cos(rot) * lx + Math.sin(rot) * lz, 0, entry.item.z - Math.sin(rot) * lx + Math.cos(rot) * lz);
+        person.rotation.y = rot + Math.PI + Math.PI / 4;
+        world.add(person);
+        const clip = THREE.AnimationClip.findByName(clips, ACTIVITY[entry.item.state]) || THREE.AnimationClip.findByName(clips, 'Parado');
+        if (clip) {
+            const action = mixer.clipAction(clip, person);
+            action.play();
+            action.time = seed * clip.duration;
+        }
+    }
+
+    Promise.all([loader.loadAsync('/glbimagens/injetora-detalhada.glb'), loader.loadAsync('/glbimagens/operador-mestti.glb')])
         .then(([injetora, operador]) => {
             const cycle = THREE.AnimationClip.findByName(injetora.animations, 'Ciclo_Injecao');
-            const operate = THREE.AnimationClip.findByName(operador.animations, 'Operar_Painel');
-            const walk = THREE.AnimationClip.findByName(operador.animations, 'Caminhar');
             MACHINES.filter((m) => m.type === 'injector').forEach((m, index) => {
                 const model = injetora.scene.clone(true);
                 model.rotation.y = -Math.PI / 2;
@@ -849,7 +1042,7 @@ function buildScene(canvas, labelsHost) {
                 model.updateWorldMatrix(true, true);
                 const bounds = new THREE.Box3().setFromObject(model);
                 const size = bounds.getSize(new THREE.Vector3());
-                const scale = 5.4 / Math.max(size.x, size.z);
+                const scale = 3.9 / Math.max(size.x, size.z);
                 model.scale.multiplyScalar(scale);
                 model.updateWorldMatrix(true, true);
                 const fitted = new THREE.Box3().setFromObject(model);
@@ -857,34 +1050,17 @@ function buildScene(canvas, labelsHost) {
                 model.position.x -= center.x;
                 model.position.z -= center.z;
                 model.position.y -= fitted.min.y;
+                model.traverse((child) => { if (child.isMesh) { child.castShadow = true; child.receiveShadow = true; } });
                 const height = fitted.max.y - fitted.min.y;
-                const entry = addObject(m, { group: holder, height, lightAt: [2.3, height * 0.7, -1.0], radius: 3.1 });
+                const fsize = fitted.getSize(new THREE.Vector3());
+                addObject(m, { group: holder, height, lightAt: [1.7, height * 0.72, -0.7], radius: 2.3, scaled: true, footprint: [fsize.x, fsize.z] });
                 if (cycle && m.state === 'running') {
                     const action = mixer.clipAction(cycle, model);
                     action.play();
                     action.time = index * 2.1;
                 }
-                if (m.worker) {
-                    const worker = operador.scene.clone(true);
-                    worker.rotation.y = Math.PI;
-                    worker.position.set(m.x - 0.2, 0, m.z + 2.0);
-                    world.add(worker);
-                    if (operate) mixer.clipAction(operate, worker).play();
-                }
-                return entry;
             });
-            // Operadores nas outras máquinas e um passando no corredor.
-            [MACHINES[0], MACHINES[2], MACHINES[5]].forEach((m) => {
-                const worker = operador.scene.clone(true);
-                worker.rotation.y = Math.PI;
-                worker.position.set(m.x + 0.4, 0, m.z + 1.7);
-                world.add(worker);
-                if (operate) { const a = mixer.clipAction(operate, worker); a.play(); a.time = Math.random() * 2; }
-            });
-            const walker = operador.scene.clone(true);
-            world.add(walker);
-            if (walk) mixer.clipAction(walk, walker).play();
-            walkers.push({ person: walker, from: -16, to: 16, z: 0, speed: 1.3, pos: -6 });
+            MACHINES.forEach((m, i) => { const entry = objects.get(m.id); if (entry) placeOperator(operador.scene, operador.animations, entry, (i * 0.37) % 1); });
             refreshLabels();
         })
         .catch((error) => console.warn('fabrica-sim: modelos GLB indisponíveis', error))
@@ -933,14 +1109,6 @@ function buildScene(canvas, labelsHost) {
         controls.update();
         if (!reduceMotion) {
             mixer.update(dt);
-            walkers.forEach((w) => {
-                w.pos += w.speed * dt;
-                const span = w.to - w.from;
-                const p = ((w.pos - w.from) % (span * 2) + span * 2) % (span * 2);
-                const forward = p <= span;
-                w.person.position.set(w.from + (forward ? p : span * 2 - p), 0, w.z);
-                w.person.rotation.y = forward ? Math.PI / 2 : -Math.PI / 2;
-            });
             pulse += dt;
             objects.forEach((entry) => { if (entry.ring) entry.ring.material.opacity = 0.65 + Math.sin(pulse * 3) * 0.3; });
         }

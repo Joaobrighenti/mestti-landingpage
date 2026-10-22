@@ -7,6 +7,7 @@ A Mestti mede cada máquina com sensores próprios (contagem de peças ou ciclos
 - Resultado de cliente: +20% de disponibilidade em um setor de uma indústria moveleira, ao identificar que as máquinas precisavam ser ligadas antes do turno para começar aquecidas.
 - Reconhecimento: uma das cinco empresas selecionadas na 3ª Chamada Pública do Lab Procel II, programa da ENBPar executado com o SENAI Rio de Janeiro ([anúncio](https://enbpar.gov.br/projetos-selecionados-na-3a-chamada-publica-do-lab-procel-ii-iniciam-etapa-de-aceleracao/)), com projeto de mais de R$ 1 milhão.
 - Ecossistema: SENAI, Procel, ENBPar, Firjan, Fiep e Móveis Hub de Arapongas.
+- Sequenciamento: Gantt com a fila de cada máquina, duração calculada pelo tempo de ciclo da engenharia e alerta quando uma ordem termina depois da data de entrega.
 - Tecnologia própria: hardware, firmware, sistema web, app Android e IA desenvolvidos pela Mestti; registro original imutável e dados isolados por empresa.
 - Como começar: sensores prontos em até 7 dias, instalação em 1 dia e 1 semana de demonstração grátis em um setor, com horas perdidas, causas, custo e plano de ação no fim.
 

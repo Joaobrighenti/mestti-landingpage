@@ -287,6 +287,13 @@
                 row.querySelector('[data-calc-hours]').textContent = Math.round(hours * share).toLocaleString(d().locale);
                 row.querySelector('[data-calc-value]').textContent = money(hours * share * read('rate'));
             });
+            // Uma hora a mais por dia em cada máquina.
+            const extra = read('machines') * read('days');
+            const hourValue = form.querySelector('[data-calc-hour-value]');
+            if (hourValue) {
+                hourValue.textContent = money(extra * read('rate'));
+                form.querySelector('[data-calc-hour-hours]').textContent = Math.round(extra).toLocaleString(d().locale);
+            }
         };
         form.addEventListener('input', update);
         form.addEventListener('submit', (event) => event.preventDefault());
@@ -318,7 +325,7 @@
     function initFactory() {
         const host = document.querySelector('[data-factory]');
         if (!host) return;
-        whenVisible(host, () => import('/js/fabrica-sim.js?v=1').catch((error) => console.error(error)), '500px 0px');
+        whenVisible(host, () => import('/js/fabrica-sim.js?v=2').catch((error) => console.error(error)), '500px 0px');
     }
 
     document.querySelectorAll('[data-cta]').forEach((el) => {

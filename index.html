@@ -23,14 +23,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/entry.css?v=132">
     <link rel="stylesheet" href="/css/v2.css?v=1">
-    <link rel="stylesheet" href="/css/factory-sim.css?v=2">
+    <link rel="stylesheet" href="/css/factory-sim.css?v=3">
+    <link rel="stylesheet" href="/css/home-demos.css?v=1">
     <link rel="canonical" href="https://mestti.com.br/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="MESTTI">
     <meta property="og:title" content="Mestti | Sistema de gestão da produção com sensores para indústrias">
     <meta property="og:description" content="A Mestti mede cada máquina com sensores próprios e conecta engenharia, PCP, chão de fábrica e qualidade. Sensores prontos em 7 dias, instalação em 1 dia e 1 semana de demonstração grátis.">
     <meta property="og:url" content="https://mestti.com.br/">
-    <meta property="og:image" content="https://mestti.com.br/images/v2/fabrica-3d.webp">
+    <meta property="og:image" content="https://mestti.com.br/images/v2/monitoramento-cards.webp">
     <meta property="og:locale" content="pt_BR">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="es_ES">
@@ -92,7 +93,7 @@
     <main id="conteudo" tabindex="-1" class="hv">
 
     <section class="hv-hero" aria-labelledby="hv-hero-title">
-        <div class="hv-wrap hv-hero-grid">
+        <div class="hv-wrap hv-hero-grid hv-hero-grid--monitor">
             <div class="hv-hero-copy">
                 <p class="hv-kicker"><span class="hv-kicker-strip" aria-hidden="true"></span><span data-i18n="v2.inicio.hero.4">Sistema de gestão da produção com sensores próprios</span></p>
                 <h1 class="hv-hero-title" id="hv-hero-title" data-i18n="v2.inicio.hero.5" data-i18n-html>Produza mais com as máquinas <em>que você já tem.</em></h1>
@@ -104,48 +105,82 @@
                 <ul class="hv-offer-chips"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4"/></svg><span data-i18n="v2.inicio.hero.1" data-i18n-html>Sensores prontos em <strong>7 dias</strong></span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 7l3 3M5 19l4-1 10-10-3-3L6 15z"/></svg><span data-i18n="v2.inicio.hero.2" data-i18n-html>Instalação em <strong>1 dia</strong></span></li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v8H4v-8M22 7H2v5h20zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg><span data-i18n="v2.inicio.hero.3" data-i18n-html><strong>1 semana</strong> de demonstração grátis</span></li></ul>
             </div>
             <div class="hv-hero-visual">
-                <figure class="hv-window">
+                <figure class="hv-window hv-window--monitor" data-monitor>
                     <div class="hv-window-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.mestti.com.br</span></div>
-                    <img src="/images/v2/fabrica-3d.webp" width="1220" height="790" alt="Visão 3D de uma fábrica na Mestti, com o estado de cada máquina" data-i18n-alt="v2.inicio.hero.9" fetchpriority="high" decoding="async">
-                </figure>
-                <figure class="hv-shift-card" data-shift-card aria-labelledby="hv-shift-caption">
-                    <div class="hv-shift-head">
-                        <div>
-                            <p class="hv-shift-machine">Injetora 03</p>
-                            <p class="hv-shift-sector" data-i18n="v2.inicio.hero.10">Turno A · 06:00 às 14:00</p>
+                    <div class="mon">
+                        <div class="mon-appbar"><span class="mon-brand">MESTTI</span><span class="mon-crumb"><span data-i18n="v2.inicio.hero.33">Produção</span><em>/</em><strong data-i18n="v2.inicio.hero.34">Monitoramento</strong></span><span class="mon-live"><i aria-hidden="true"></i><span data-i18n="v2.inicio.hero.35">Ao vivo</span></span></div>
+                        <div class="mon-toolbar"><div class="mon-chips"><span class="mon-chip is-on"><span data-i18n="v2.inicio.hero.29">Todas</span><b>4</b></span><span class="mon-chip"><i class="mon-dot mon-dot--run"></i><span data-i18n="v2.inicio.hero.30">Rodando</span><b>2</b></span><span class="mon-chip"><i class="mon-dot mon-dot--stop"></i><span data-i18n="v2.inicio.hero.31">Paradas</span><b>1</b></span><span class="mon-chip"><i class="mon-dot mon-dot--setup"></i><span data-i18n="v2.inicio.hero.32">Setup</span><b>1</b></span></div><span class="mon-shift" data-i18n="v2.inicio.hero.36">Turno A · Usinagem e Injeção</span></div>
+                        <div class="mon-grid">
+                        <article class="mc mc--run" data-mc data-since="8045" data-mc-rate="3.6">
+                            <span class="mc-rail" aria-hidden="true"></span>
+                            <div class="mc-body">
+                                <header class="mc-head"><span class="mc-head-side"></span><h3>INJETORA 03</h3><span class="mc-head-side mc-head-side--end"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01M1.5 9a15 15 0 0 1 21 0"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.3-4.3"/></svg></span></header>
+                                <div class="mc-top">
+                                    <div class="mc-status"><span class="mc-dur" data-mc-dur>2h 14min 05s</span><span class="mc-pill"><i aria-hidden="true"></i><b data-i18n="v2.inicio.hero.9">Rodando</b></span></div>
+                                    <div class="mc-oee"><small>OEE</small><span class="mc-ring mc-ring--oee" style="width:60px;height:60px"><svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30.0" cy="30.0" r="27.00" stroke-width="6" class="mc-ring-track"/><circle cx="30.0" cy="30.0" r="27.00" stroke-width="6" class="mc-ring-val" stroke-dasharray="169.65" stroke-dashoffset="21.38" transform="rotate(-90 30.0 30.0)"/></svg><b>87,4</b></span></div>
+                                    <ul class="mc-dpq"><li><span class="mc-ring " style="width:26px;height:26px"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-track"/><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-val" stroke-dasharray="72.26" stroke-dashoffset="2.82" transform="rotate(-90 13.0 13.0)"/></svg><b>D</b></span><span>96,1%</span></li><li><span class="mc-ring " style="width:26px;height:26px"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-track"/><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-val" stroke-dasharray="72.26" stroke-dashoffset="4.48" transform="rotate(-90 13.0 13.0)"/></svg><b>P</b></span><span>93,8%</span></li><li><span class="mc-ring " style="width:26px;height:26px"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-track"/><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-val" stroke-dasharray="72.26" stroke-dashoffset="2.17" transform="rotate(-90 13.0 13.0)"/></svg><b>Q</b></span><span>97,0%</span></li></ul>
+                                </div>
+                                <div class="mc-chips"><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 15.6A9 9 0 1 0 3.6 15.6M12 13l4-5M5 18h14"/></svg>312,4</span><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4M12 14l3-3M12 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>11,5 s</span><span class="mc-chip mc-chip--total"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></svg><b data-mc-total>2.946</b></span></div>
+                                <p class="mc-op"><b>OP 2470</b><span>·</span><span data-i18n="v2.inicio.hero.10">Tampa 28 mm PP</span></p>
+                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.11">Refugos</dt><dd>38</dd><dt data-i18n="v2.inicio.hero.12">Boas</dt><dd data-mc-good>2.908</dd></div><div><dt data-i18n="v2.inicio.hero.13">Esp.</dt><dd>3.120</dd></div></dl>
+                                <div class="mc-tl" aria-hidden="true"><div class="mc-tl-bar"><i class="mc-seg mc-seg--run" style="left:0%;width:41%"></i><i class="mc-seg mc-seg--micro" style="left:41%;width:2.5%"></i><i class="mc-seg mc-seg--run" style="left:43.5%;width:56.5%"></i><i class="mc-tick" style="left:25%"></i><i class="mc-tick" style="left:50%"></i><i class="mc-tick" style="left:75%"></i></div><div class="mc-tl-times" data-mc-times><span>09:00</span><span>09:15</span><span>09:30</span><span>09:45</span><span>10:00</span></div></div>
+                            </div>
+                        </article>
+                        <article class="mc mc--stop" data-mc data-since="1390">
+                            <span class="mc-rail" aria-hidden="true"></span>
+                            <div class="mc-body">
+                                <header class="mc-head"><span class="mc-head-side"><span class="mc-badge" title=""><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8v5M12 16.5h.01"/></svg></span></span><h3>CNC 02</h3><span class="mc-head-side mc-head-side--end"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01M1.5 9a15 15 0 0 1 21 0"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.3-4.3"/></svg></span></header>
+                                <div class="mc-top">
+                                    <div class="mc-status"><span class="mc-dur" data-mc-dur>23min 10s</span><span class="mc-pill"><i aria-hidden="true"></i><b data-i18n="v2.inicio.hero.14">Parada</b></span></div>
+                                    <div class="mc-oee"><small>OEE</small><span class="mc-ring mc-ring--oee" style="width:60px;height:60px"><svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30.0" cy="30.0" r="27.00" stroke-width="6" class="mc-ring-track"/><circle cx="30.0" cy="30.0" r="27.00" stroke-width="6" class="mc-ring-val" stroke-dasharray="169.65" stroke-dashoffset="80.92" transform="rotate(-90 30.0 30.0)"/></svg><b>52,3</b></span></div>
+                                    <ul class="mc-dpq"><li><span class="mc-ring " style="width:26px;height:26px"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-track"/><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-val" stroke-dasharray="72.26" stroke-dashoffset="28.18" transform="rotate(-90 13.0 13.0)"/></svg><b>D</b></span><span>61,0%</span></li><li><span class="mc-ring " style="width:26px;height:26px"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-track"/><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-val" stroke-dasharray="72.26" stroke-dashoffset="8.53" transform="rotate(-90 13.0 13.0)"/></svg><b>P</b></span><span>88,2%</span></li><li><span class="mc-ring " style="width:26px;height:26px"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-track"/><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-val" stroke-dasharray="72.26" stroke-dashoffset="2.02" transform="rotate(-90 13.0 13.0)"/></svg><b>Q</b></span><span>97,2%</span></li></ul>
+                                </div>
+                                <div class="mc-chips"><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 15.6A9 9 0 1 0 3.6 15.6M12 13l4-5M5 18h14"/></svg>18,6</span><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4M12 14l3-3M12 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>3min 12s</span><span class="mc-chip mc-chip--total"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></svg><b data-mc-total>118</b></span></div>
+                                <p class="mc-op mc-op--cause" data-i18n="v2.inicio.hero.15">Falta de material</p>
+                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.16">Refugos</dt><dd>3</dd><dt data-i18n="v2.inicio.hero.17">Boas</dt><dd data-mc-good>115</dd></div><div><dt data-i18n="v2.inicio.hero.18">Esp.</dt><dd>196</dd></div></dl>
+                                <div class="mc-tl" aria-hidden="true"><div class="mc-tl-bar"><i class="mc-seg mc-seg--run" style="left:0%;width:52%"></i><i class="mc-seg mc-seg--run" style="left:52%;width:9.5%"></i><i class="mc-seg mc-seg--stop" style="left:61.5%;width:38.5%"></i><i class="mc-tick" style="left:25%"></i><i class="mc-tick" style="left:50%"></i><i class="mc-tick" style="left:75%"></i></div><div class="mc-tl-times" data-mc-times><span>09:00</span><span>09:15</span><span>09:30</span><span>09:45</span><span>10:00</span></div></div>
+                            </div>
+                        </article>
+                        <article class="mc mc--setup" data-mc data-since="760">
+                            <span class="mc-rail" aria-hidden="true"></span>
+                            <div class="mc-body">
+                                <header class="mc-head"><span class="mc-head-side"></span><h3>PRENSA 01</h3><span class="mc-head-side mc-head-side--end"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01M1.5 9a15 15 0 0 1 21 0"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.3-4.3"/></svg></span></header>
+                                <div class="mc-top">
+                                    <div class="mc-status"><span class="mc-dur" data-mc-dur>12min 40s</span><span class="mc-pill"><i aria-hidden="true"></i><b data-i18n="v2.inicio.hero.19">Setup</b></span></div>
+                                    <div class="mc-oee"><small>OEE</small><span class="mc-ring mc-ring--oee" style="width:60px;height:60px"><svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30.0" cy="30.0" r="27.00" stroke-width="6" class="mc-ring-track"/><circle cx="30.0" cy="30.0" r="27.00" stroke-width="6" class="mc-ring-val" stroke-dasharray="169.65" stroke-dashoffset="57.68" transform="rotate(-90 30.0 30.0)"/></svg><b>66,0</b></span></div>
+                                    <ul class="mc-dpq"><li><span class="mc-ring " style="width:26px;height:26px"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-track"/><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-val" stroke-dasharray="72.26" stroke-dashoffset="19.94" transform="rotate(-90 13.0 13.0)"/></svg><b>D</b></span><span>72,4%</span></li><li><span class="mc-ring " style="width:26px;height:26px"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-track"/><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-val" stroke-dasharray="72.26" stroke-dashoffset="4.26" transform="rotate(-90 13.0 13.0)"/></svg><b>P</b></span><span>94,1%</span></li><li><span class="mc-ring " style="width:26px;height:26px"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-track"/><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-val" stroke-dasharray="72.26" stroke-dashoffset="2.24" transform="rotate(-90 13.0 13.0)"/></svg><b>Q</b></span><span>96,9%</span></li></ul>
+                                </div>
+                                <div class="mc-chips"><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 15.6A9 9 0 1 0 3.6 15.6M12 13l4-5M5 18h14"/></svg>210,0</span><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4M12 14l3-3M12 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>17,1 s</span><span class="mc-chip mc-chip--total"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></svg><b data-mc-total>1.320</b></span></div>
+                                <p class="mc-op"><b>OP 2488</b><span>·</span><span data-i18n="v2.inicio.hero.20">Suporte em L 2 mm</span></p>
+                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.21">Refugos</dt><dd>41</dd><dt data-i18n="v2.inicio.hero.22">Boas</dt><dd data-mc-good>1.279</dd></div><div><dt data-i18n="v2.inicio.hero.23">Esp.</dt><dd>1.840</dd></div></dl>
+                                <div class="mc-tl" aria-hidden="true"><div class="mc-tl-bar"><i class="mc-seg mc-seg--run" style="left:0%;width:64%"></i><i class="mc-seg mc-seg--stop" style="left:64%;width:15%"></i><i class="mc-seg mc-seg--setup" style="left:79%;width:21%"></i><i class="mc-tick" style="left:25%"></i><i class="mc-tick" style="left:50%"></i><i class="mc-tick" style="left:75%"></i></div><div class="mc-tl-times" data-mc-times><span>09:00</span><span>09:15</span><span>09:30</span><span>09:45</span><span>10:00</span></div></div>
+                            </div>
+                        </article>
+                        <article class="mc mc--run" data-mc data-since="3170" data-mc-rate="9">
+                            <span class="mc-rail" aria-hidden="true"></span>
+                            <div class="mc-body">
+                                <header class="mc-head"><span class="mc-head-side"></span><h3>TORNO 01</h3><span class="mc-head-side mc-head-side--end"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01M1.5 9a15 15 0 0 1 21 0"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.3-4.3"/></svg></span></header>
+                                <div class="mc-top">
+                                    <div class="mc-status"><span class="mc-dur" data-mc-dur>52min 50s</span><span class="mc-pill"><i aria-hidden="true"></i><b data-i18n="v2.inicio.hero.24">Rodando</b></span></div>
+                                    <div class="mc-oee"><small>OEE</small><span class="mc-ring mc-ring--oee" style="width:60px;height:60px"><svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30.0" cy="30.0" r="27.00" stroke-width="6" class="mc-ring-track"/><circle cx="30.0" cy="30.0" r="27.00" stroke-width="6" class="mc-ring-val" stroke-dasharray="169.65" stroke-dashoffset="34.61" transform="rotate(-90 30.0 30.0)"/></svg><b>79,6</b></span></div>
+                                    <ul class="mc-dpq"><li><span class="mc-ring " style="width:26px;height:26px"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-track"/><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-val" stroke-dasharray="72.26" stroke-dashoffset="8.67" transform="rotate(-90 13.0 13.0)"/></svg><b>D</b></span><span>88,0%</span></li><li><span class="mc-ring " style="width:26px;height:26px"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-track"/><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-val" stroke-dasharray="72.26" stroke-dashoffset="6.00" transform="rotate(-90 13.0 13.0)"/></svg><b>P</b></span><span>91,7%</span></li><li><span class="mc-ring " style="width:26px;height:26px"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-track"/><circle cx="13.0" cy="13.0" r="11.50" stroke-width="3" class="mc-ring-val" stroke-dasharray="72.26" stroke-dashoffset="1.01" transform="rotate(-90 13.0 13.0)"/></svg><b>Q</b></span><span>98,6%</span></li></ul>
+                                </div>
+                                <div class="mc-chips"><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 15.6A9 9 0 1 0 3.6 15.6M12 13l4-5M5 18h14"/></svg>64,8</span><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4M12 14l3-3M12 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>55,6 s</span><span class="mc-chip mc-chip--total"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></svg><b data-mc-total>486</b></span></div>
+                                <p class="mc-op"><b>OP 2479</b><span>·</span><span data-i18n="v2.inicio.hero.25">Pino roscado M12</span></p>
+                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.26">Refugos</dt><dd>7</dd><dt data-i18n="v2.inicio.hero.27">Boas</dt><dd data-mc-good>479</dd></div><div><dt data-i18n="v2.inicio.hero.28">Esp.</dt><dd>590</dd></div></dl>
+                                <div class="mc-tl" aria-hidden="true"><div class="mc-tl-bar"><i class="mc-seg mc-seg--setup" style="left:0%;width:12%"></i><i class="mc-seg mc-seg--run" style="left:12%;width:30%"></i><i class="mc-seg mc-seg--micro" style="left:42%;width:3%"></i><i class="mc-seg mc-seg--run" style="left:45%;width:55%"></i><i class="mc-tick" style="left:25%"></i><i class="mc-tick" style="left:50%"></i><i class="mc-tick" style="left:75%"></i></div><div class="mc-tl-times" data-mc-times><span>09:00</span><span>09:15</span><span>09:30</span><span>09:45</span><span>10:00</span></div></div>
+                            </div>
+                        </article>
                         </div>
-                        <span class="hv-pill hv-pill--run" data-shift-status><span aria-hidden="true"></span><b data-shift-status-label>Rodando</b></span>
                     </div>
-                    <div class="hv-timeline" data-shift-timeline role="img" aria-label="Linha do tempo do turno: 5 h 50 min rodando e 1 h 40 min perdidos em paradas, setup e microparadas." data-i18n-aria="v2.inicio.hero.11">
-                        <span class="hv-seg hv-seg--setup" style="left:0%;width:3.75%"></span>
-                        <span class="hv-seg hv-seg--run" style="left:3.75%;width:16.04%"></span>
-                        <span class="hv-seg hv-seg--micro" style="left:19.79%;width:1.04%"></span>
-                        <span class="hv-seg hv-seg--run" style="left:20.83%;width:14.58%"></span>
-                        <span class="hv-seg hv-seg--stop" style="left:35.42%;width:7.29%"></span>
-                        <span class="hv-seg hv-seg--run" style="left:42.71%;width:12.5%"></span>
-                        <span class="hv-seg hv-seg--micro" style="left:55.21%;width:2.08%"></span>
-                        <span class="hv-seg hv-seg--run" style="left:57.29%;width:5.21%"></span>
-                        <span class="hv-seg hv-seg--off" style="left:62.5%;width:6.25%"></span>
-                        <span class="hv-seg hv-seg--run" style="left:68.75%;width:9.38%"></span>
-                        <span class="hv-seg hv-seg--stop" style="left:78.13%;width:4.17%"></span>
-                        <span class="hv-seg hv-seg--run" style="left:82.29%;width:8.33%"></span>
-                        <span class="hv-seg hv-seg--micro" style="left:90.63%;width:2.5%"></span>
-                        <span class="hv-seg hv-seg--run" style="left:93.13%;width:6.88%"></span>
-                        <span class="hv-timeline-cursor" data-shift-cursor aria-hidden="true"></span>
-                    </div>
-                    <dl class="hv-shift-stats">
-                        <div><dt data-i18n="v2.inicio.hero.12">Peças</dt><dd data-count-to="882">882</dd></div>
-                        <div><dt data-i18n="v2.inicio.hero.13">Rodando</dt><dd><span data-count-to="78">78</span>%</dd></div>
-                        <div class="is-loss"><dt data-i18n="v2.inicio.hero.14">Perdido</dt><dd data-count-to="100" data-format="hm">1h40</dd></div>
-                    </dl>
-                    <figcaption id="hv-shift-caption" class="hv-sr"><span data-i18n="v2.inicio.hero.15">Exemplo de turno de uma máquina, com dados de demonstração</span></figcaption>
+                    <figcaption class="hv-sr" data-i18n="v2.inicio.hero.37">Tela de monitoramento da Mestti com dados de demonstração. Contadores e tempos mudam ao vivo.</figcaption>
                 </figure>
             </div>
         </div>
 
         <div class="hero-conveyor-wrap hv-clients">
-            <p class="hv-clients-label" data-i18n="v2.inicio.hero.16">Indústrias que já produzem com a Mestti</p>
-            <div class="hero-clients-strip" aria-label="Clientes da Mestti" data-i18n-aria="v2.inicio.hero.17">
+            <p class="hv-clients-label" data-i18n="v2.inicio.hero.38">Indústrias que já produzem com a Mestti</p>
+            <div class="hero-clients-strip" aria-label="Clientes da Mestti" data-i18n-aria="v2.inicio.hero.39">
                 <div class="hero-clients-track">
                     <div class="hero-clients-set"></div>
                     <div class="hero-clients-set" aria-hidden="true"></div>
@@ -157,39 +192,51 @@
         <div class="hv-wrap">
             <div class="hv-section-head hv-section-head--split">
                 <div>
-                    <p class="hv-kicker"><span class="hv-kicker-strip" aria-hidden="true"></span><span data-i18n="v2.inicio.what.17">O que a Mestti faz</span></p>
-                    <h2 id="hv-what-title" data-i18n="v2.inicio.what.18">Do jeito certo de fabricar até a peça aprovada.</h2>
+                    <p class="hv-kicker"><span class="hv-kicker-strip" aria-hidden="true"></span><span data-i18n="v2.inicio.what.29">O que a Mestti faz</span></p>
+                    <h2 id="hv-what-title" data-i18n="v2.inicio.what.30">Um sistema para planejar, medir e melhorar a produção.</h2>
                 </div>
-                <p data-i18n="v2.inicio.what.19">Quatro áreas que costumam viver em planilhas separadas passam a usar o mesmo sistema. A meta vem da engenharia, a fila vem do PCP e o resultado vem da máquina.</p>
+                <p data-i18n="v2.inicio.what.31">Cada área faz a sua parte uma vez e as outras usam a mesma informação. É assim que um dia de produção passa a funcionar:</p>
             </div>
-            <ol class="hv-pillars">
-                <li class="hv-pillar hv-pillar--eng">
-                    <p class="hv-pillar-tag" data-i18n="v2.inicio.what.1">Engenharia</p>
-                    <h3 data-i18n="v2.inicio.what.2">Como a peça deve ser feita</h3>
-                    <p data-i18n="v2.inicio.what.3">Produtos, componentes, roteiros, tempos de ciclo e setup cadastrados uma vez e usados por todos.</p>
-                    <a class="hv-link" href="/engenharia/" data-i18n="v2.inicio.what.4">Ver engenharia</a>
+            <ol class="hv-day">
+                <li class="hv-day-step">
+                    <span class="hv-day-n" aria-hidden="true">1</span>
+                    <p class="hv-day-tag" data-i18n="v2.inicio.what.1">Engenharia</p>
+                    <h3 data-i18n="v2.inicio.what.2">Você cadastra como cada peça é feita.</h3>
+                    <p class="hv-day-text" data-i18n="v2.inicio.what.3">Roteiro, máquina, tempo de ciclo e setup. Daqui sai a meta de peças por hora de cada máquina.</p>
+                    <p class="hv-day-ui" data-i18n="v2.inicio.what.4" data-i18n-html><span>Tampa 28 mm · Injeção</span><b>ciclo 11,5 s → meta 313 pç/h</b></p>
+                    <a class="hv-day-link" href="/engenharia/" data-i18n="v2.inicio.what.5">Ver engenharia</a>
                 </li>
-                <li class="hv-pillar hv-pillar--pcp">
-                    <p class="hv-pillar-tag" data-i18n="v2.inicio.what.5">PCP</p>
-                    <h3 data-i18n="v2.inicio.what.6">O que entra em cada máquina</h3>
-                    <p data-i18n="v2.inicio.what.7">Carteira de ordens, sequenciamento e a fila de cada máquina com a data prevista.</p>
-                    <a class="hv-link" href="/producao/#planejar" data-i18n="v2.inicio.what.8">Ver PCP</a>
+                <li class="hv-day-step">
+                    <span class="hv-day-n" aria-hidden="true">2</span>
+                    <p class="hv-day-tag" data-i18n="v2.inicio.what.6">PCP</p>
+                    <h3 data-i18n="v2.inicio.what.7">Você programa o que cada máquina vai fazer.</h3>
+                    <p class="hv-day-text" data-i18n="v2.inicio.what.8">As ordens entram na fila de cada máquina e o sistema calcula quando cada uma termina e se a entrega fecha.</p>
+                    <p class="hv-day-ui" data-i18n="v2.inicio.what.9" data-i18n-html><span>OP 2470 na Injetora 03</span><b>termina hoje 15:30 · no prazo</b></p>
+                    <a class="hv-day-link" href="#sequenciamento" data-i18n="v2.inicio.what.10">Ver o sequenciamento</a>
                 </li>
-                <li class="hv-pillar hv-pillar--shop">
-                    <p class="hv-pillar-tag" data-i18n="v2.inicio.what.9">Chão de fábrica</p>
-                    <h3 data-i18n="v2.inicio.what.10">O que a máquina fez</h3>
-                    <p data-i18n="v2.inicio.what.11">Sensores contam peças e tempo. O operador aponta no tablet o motivo de cada parada.</p>
-                    <a class="hv-link" href="/producao/#medir" data-i18n="v2.inicio.what.12">Ver monitoramento</a>
+                <li class="hv-day-step">
+                    <span class="hv-day-n" aria-hidden="true">3</span>
+                    <p class="hv-day-tag" data-i18n="v2.inicio.what.11">Chão de fábrica</p>
+                    <h3 data-i18n="v2.inicio.what.12">O sensor mede o que aconteceu.</h3>
+                    <p class="hv-day-text" data-i18n="v2.inicio.what.13">Ele conta peças e tempo sozinho. O operador só informa no tablet o motivo de cada parada.</p>
+                    <p class="hv-day-ui" data-i18n="v2.inicio.what.14" data-i18n-html><span>Injetora 03 · turno A</span><b>2.946 pç · 3 paradas justificadas</b></p>
+                    <a class="hv-day-link" href="/producao/#medir" data-i18n="v2.inicio.what.15">Ver monitoramento</a>
                 </li>
-                <li class="hv-pillar hv-pillar--qual">
-                    <p class="hv-pillar-tag" data-i18n="v2.inicio.what.13">Qualidade</p>
-                    <h3 data-i18n="v2.inicio.what.14">Se a peça saiu certa</h3>
-                    <p data-i18n="v2.inicio.what.15">Inspeções no momento certo, com foto e revisão do documento, ligadas à máquina e à ordem.</p>
-                    <a class="hv-link" href="/qualidade/" data-i18n="v2.inicio.what.16">Ver qualidade</a>
+                <li class="hv-day-step">
+                    <span class="hv-day-n" aria-hidden="true">4</span>
+                    <p class="hv-day-tag" data-i18n="v2.inicio.what.16">Qualidade</p>
+                    <h3 data-i18n="v2.inicio.what.17">A qualidade confirma se a peça saiu certa.</h3>
+                    <p class="hv-day-text" data-i18n="v2.inicio.what.18">Inspeções no momento certo do turno, com foto, autor e a revisão do documento usada.</p>
+                    <p class="hv-day-ui" data-i18n="v2.inicio.what.19" data-i18n-html><span>Primeira peça · 07:12</span><b>aprovada por Fernanda</b></p>
+                    <a class="hv-day-link" href="/qualidade/" data-i18n="v2.inicio.what.20">Ver qualidade</a>
                 </li>
             </ol>
-            <p class="hv-thread-foot" data-i18n="v2.inicio.what.20" data-i18n-html>Por baixo de tudo, os mesmos <strong>cadastros</strong> de máquinas, setores, produtos e causas de parada, e o <strong>suprimento</strong> do material certo na máquina certa.</p>
-            <div class="hv-fold-cta"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="o-que-faz" data-i18n="v2.inicio.what.22">Quero 1 semana grátis</button><a class="hv-btn hv-btn--ghost" href="/sensores/" data-i18n="v2.inicio.what.21">Conhecer os sensores</a></div>
+            <div class="hv-result">
+                <p class="hv-result-title" data-i18n="v2.inicio.what.32">No fim do turno, você sabe:</p>
+                <dl class="hv-result-grid"><div><dt data-i18n="v2.inicio.what.21">Produzido</dt><dd><strong>2.946</strong><span data-i18n="v2.inicio.what.22">peças</span></dd></div><div><dt data-i18n="v2.inicio.what.23">Deveria ter produzido</dt><dd><strong>3.120</strong><span data-i18n="v2.inicio.what.24">pela meta da engenharia</span></dd></div><div><dt data-i18n="v2.inicio.what.25">Tempo perdido</dt><dd><strong>1h40</strong><span data-i18n="v2.inicio.what.26">em 3 paradas</span></dd></div><div><dt data-i18n="v2.inicio.what.27">Maior causa</dt><dd><span data-i18n="v2.inicio.what.28">Falta de material</span></dd></div></dl>
+            </div>
+            <p class="hv-thread-foot" data-i18n="v2.inicio.what.33" data-i18n-html>Por baixo de tudo, os mesmos <strong>cadastros</strong> de máquinas, setores, produtos e causas de parada, e o <strong>suprimento</strong> do material certo na máquina certa.</p>
+            <div class="hv-fold-cta"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="o-que-faz" data-i18n="v2.inicio.what.35">Quero 1 semana grátis</button><a class="hv-btn hv-btn--ghost" href="/sensores/" data-i18n="v2.inicio.what.34">Conhecer os sensores</a></div>
         </div>
     </section>
     <section class="hv-section hv-band hv-roles" aria-labelledby="hv-roles-title">
@@ -211,6 +258,25 @@
                 <div class="hv-fold-cta"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="dores" data-i18n="v2.inicio.pain.8">Quero 1 semana grátis</button></div>
             </div>
             <ul class="hv-quotes"><li><a class="hv-quote" href="/producao/"><blockquote data-i18n="v2.inicio.pain.1">“Dá para produzir mais. Só não sei onde está a perda.”</blockquote><span class="hv-quote-arrow" aria-hidden="true">→</span></a></li><li><a class="hv-quote" href="/producao/#planejar"><blockquote data-i18n="v2.inicio.pain.2">“Só descubro o atraso no dia da entrega.”</blockquote><span class="hv-quote-arrow" aria-hidden="true">→</span></a></li><li><a class="hv-quote" href="/engenharia/"><blockquote data-i18n="v2.inicio.pain.3">“Cobrar a equipe sempre vira discussão.”</blockquote><span class="hv-quote-arrow" aria-hidden="true">→</span></a></li><li><a class="hv-quote" href="/qualidade/"><blockquote data-i18n="v2.inicio.pain.4">“O cliente devolveu e eu não tenho como provar a inspeção.”</blockquote><span class="hv-quote-arrow" aria-hidden="true">→</span></a></li></ul>
+        </div>
+    </section>
+    <section class="hv-section hv-band hv-plan" id="sequenciamento" aria-labelledby="hv-plan-title">
+        <div class="hv-wrap">
+            <div class="hv-section-head hv-section-head--split">
+                <div>
+                    <p class="hv-kicker"><span class="hv-kicker-strip" aria-hidden="true"></span><span data-i18n="v2.inicio.plan.4">Sequenciamento da produção</span></p>
+                    <h2 id="hv-plan-title" data-i18n="v2.inicio.plan.5">Programe a fila de cada máquina e saiba quando cada pedido fica pronto.</h2>
+                </div>
+                <p data-i18n="v2.inicio.plan.6">O Gantt da Mestti calcula a duração de cada operação pelo tempo de ciclo da engenharia e mostra a fila de todas as máquinas numa linha do tempo. Quando a máquina para, o atraso aparece antes do dia da entrega.</p>
+            </div>
+            <ol class="hv-try-steps hv-try-steps--left"><li><b>1</b><span data-i18n="v2.inicio.plan.1">Passe o mouse num bloco</span></li><li><b>2</b><span data-i18n="v2.inicio.plan.2">Programe uma ordem da carteira</span></li><li><b>3</b><span data-i18n="v2.inicio.plan.3">Veja se a entrega fecha</span></li></ol>
+            <div class="hv-window hv-window--gantt">
+                <div class="hv-window-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.mestti.com.br · PCP · Sequenciamento</span></div>
+                <div class="gx" data-gantt>
+                    <p class="gx-fallback" data-i18n="v2.inicio.plan.7">O Gantt interativo carrega aqui. Ele mostra a fila de cada máquina, a duração de cada ordem e se a entrega fica no prazo.</p>
+                </div>
+            </div>
+            <div class="hv-fold-cta"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="sequenciamento" data-i18n="v2.inicio.plan.9">Quero 1 semana grátis</button><a class="hv-btn hv-btn--ghost" href="/sequenciamento/" data-i18n="v2.inicio.plan.8">Ver o sequenciamento da Mestti</a></div>
         </div>
     </section>
     <section class="hv-section hv-factory" id="fabrica-ao-vivo" aria-labelledby="hv-factory-title">
@@ -297,6 +363,38 @@
             </div>
         </div>
     </section>
+    <section class="hv-section hv-calc" id="calculadora" aria-labelledby="hv-calc-title">
+        <div class="hv-wrap hv-calc-grid">
+            <div class="hv-calc-copy">
+                <p class="hv-kicker"><span class="hv-kicker-strip" aria-hidden="true"></span><span data-i18n="v2.inicio.calc.1">Faça a conta</span></p>
+                <h2 id="hv-calc-title" data-i18n="v2.inicio.calc.2">Quanto vale uma hora a mais de máquina produzindo?</h2>
+                <p class="hv-section-lead" data-i18n="v2.inicio.calc.3">Informe um setor e quanto uma hora de máquina vale para você: a margem que ela gera ou o custo que ela carrega. A conta mostra o tamanho da oportunidade. Na semana grátis, a Mestti mede o número real.</p>
+                <div class="hv-fold-cta"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="calculadora" data-i18n="v2.inicio.calc.4">Medir o meu número na semana grátis</button></div>
+            </div>
+            <form class="hv-calc-box" data-calc>
+                <div class="hv-calc-fields">
+                    <label><span data-i18n="v2.inicio.calc.5">Máquinas no setor</span><input type="number" name="machines" value="6" min="1" max="500" inputmode="numeric"></label>
+                    <label><span data-i18n="v2.inicio.calc.6">Horas de produção por dia</span><input type="number" name="hours" value="16" min="1" max="24" inputmode="numeric"></label>
+                    <label><span data-i18n="v2.inicio.calc.7">Dias de produção por mês</span><input type="number" name="days" value="22" min="1" max="31" inputmode="numeric"></label>
+                    <label><span data-i18n="v2.inicio.calc.8">Valor de uma hora de máquina (R$)</span><input type="number" name="rate" value="180" min="1" step="10" inputmode="numeric"></label>
+                </div>
+                <div class="hv-calc-hero" aria-live="polite">
+                    <p class="hv-calc-hero-label" data-i18n="v2.inicio.calc.9">Uma hora a mais por dia em cada máquina</p>
+                    <p class="hv-calc-hero-value"><strong data-calc-hour-value>R$ 23.760</strong><span data-i18n="v2.inicio.calc.10">por mês</span></p>
+                    <p class="hv-calc-hero-sub"><span data-calc-hour-hours>132</span> <span data-i18n="v2.inicio.calc.11">horas de máquina a mais no mês, sem comprar máquina nem abrir turno.</span></p>
+                </div>
+                <table class="hv-calc-table">
+                    <thead><tr><th data-i18n="v2.inicio.calc.12">Tempo recuperado</th><th data-i18n="v2.inicio.calc.13">Horas por mês</th><th data-i18n="v2.inicio.calc.14">Valor por mês</th></tr></thead>
+                    <tbody>
+                        <tr data-calc-row="0.05"><td>5%</td><td data-calc-hours>106</td><td data-calc-value>R$ 19.008</td></tr>
+                        <tr data-calc-row="0.10"><td>10%</td><td data-calc-hours>211</td><td data-calc-value>R$ 38.016</td></tr>
+                        <tr data-calc-row="0.20" class="is-case"><td>20% <small data-i18n="v2.inicio.calc.15">como no caso do cliente</small></td><td data-calc-hours>422</td><td data-calc-value>R$ 76.032</td></tr>
+                    </tbody>
+                </table>
+                <p class="hv-calc-note" data-i18n="v2.inicio.calc.16">Conta: máquinas × horas por dia × dias por mês × percentual recuperado × valor da hora.</p>
+            </form>
+        </div>
+    </section>
     <section class="hv-section hv-start" id="diagnostico" aria-labelledby="hv-start-title">
         <div class="hv-wrap">
             <div class="hv-section-head hv-section-head--split">
@@ -307,7 +405,7 @@
                 <p data-i18n="v2.inicio.start.18">Você não precisa decidir nada antes de ver a sua fábrica medida. Começamos por um setor e você avalia com os seus números.</p>
             </div>
             <ol class="hv-journey"><li><span class="hv-journey-when" data-i18n="v2.inicio.start.1">Hoje</span><strong data-i18n="v2.inicio.start.2">Conversa</strong><p data-i18n="v2.inicio.start.3">Entendemos a operação e escolhemos o setor que mais pesa.</p></li><li><span class="hv-journey-when" data-i18n="v2.inicio.start.4">Em até 7 dias</span><strong data-i18n="v2.inicio.start.5">Sensores prontos</strong><p data-i18n="v2.inicio.start.6">Fabricamos e configuramos os sensores para as suas máquinas.</p></li><li><span class="hv-journey-when" data-i18n="v2.inicio.start.7">1 dia</span><strong data-i18n="v2.inicio.start.8">Instalação</strong><p data-i18n="v2.inicio.start.9">Sensores nas máquinas, sem mexer no comando, e o app no tablet.</p></li><li><span class="hv-journey-when" data-i18n="v2.inicio.start.10">1 semana</span><strong data-i18n="v2.inicio.start.11">Demonstração grátis</strong><p data-i18n="v2.inicio.start.12">A Mestti mede a rotina real e a equipe aprende usando.</p></li><li><span class="hv-journey-when" data-i18n="v2.inicio.start.13">No fim da semana</span><strong data-i18n="v2.inicio.start.14">Resultado</strong><p data-i18n="v2.inicio.start.15">Horas perdidas, causas, custo e por onde começar.</p></li></ol>
-            <div class="hv-fold-cta"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="como-comecar" data-i18n="v2.inicio.start.20">Quero 1 semana grátis</button><a class="hv-btn hv-btn--ghost" href="/diagnostico/#calculadora" data-i18n="v2.inicio.start.19">Calcular o tamanho da oportunidade</a></div>
+            <div class="hv-fold-cta"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="como-comecar" data-i18n="v2.inicio.start.20">Quero 1 semana grátis</button><a class="hv-btn hv-btn--ghost" href="#calculadora" data-i18n="v2.inicio.start.19">Calcular o tamanho da oportunidade</a></div>
         </div>
     </section>
     <section class="hv-section hv-otto" id="otto" aria-labelledby="hv-otto-title">
@@ -502,7 +600,8 @@
     <script defer src="/js/script.js?v=43"></script>
     <script defer src="/js/wa-chat-viewport.js?v=4"></script>
     <script defer src="/js/conversational-form.js?v=16"></script>
-    <script defer src="/js/v2.js?v=1"></script>
+    <script defer src="/js/v2.js?v=2"></script>
+    <script defer src="/js/home-demos.js?v=1"></script>
 </body>
 
 </html>
