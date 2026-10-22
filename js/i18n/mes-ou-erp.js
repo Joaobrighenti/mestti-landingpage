@@ -10,7 +10,7 @@
   "v2.mes-ou-erp.hero.4": "Guia rápido",
   "v2.mes-ou-erp.hero.5": "MES ou ERP? <em>Na maioria das fábricas, os dois.</em>",
   "v2.mes-ou-erp.hero.6": "O ERP responde “o que vendi, comprei e faturei?”. O MES responde “o que está acontecendo na produção agora, e por quê?”. Um não substitui o outro: o ERP cuida da empresa; o MES cuida do chão de fábrica.",
-  "v2.mes-ou-erp.hero.7": "Quero meu diagnóstico",
+  "v2.mes-ou-erp.hero.7": "Quero 1 semana grátis",
   "v2.mes-ou-erp.table.1": "ERP",
   "v2.mes-ou-erp.table.2": "MES (como a Mestti)",
   "v2.mes-ou-erp.table.3": "Planilha",
@@ -40,7 +40,7 @@
   "v2.mes-ou-erp.when.2": "O ERP mostra a ordem aberta, mas não que a máquina parou há uma hora.",
   "v2.mes-ou-erp.when.3": "O número do apontamento não bate",
   "v2.mes-ou-erp.when.4": "Produção anotada à mão diverge do que saiu, e ninguém sabe qual está certo.",
-  "v2.mes-ou-erp.when.5": "Diagnóstico de capacidade escondida",
+  "v2.mes-ou-erp.when.5": "Começar com 1 semana grátis",
   "v2.mes-ou-erp.when.6": "A fábrica parece no limite",
   "v2.mes-ou-erp.when.7": "Antes de comprar máquina ou abrir turno, vale medir onde o tempo vai.",
   "v2.mes-ou-erp.when.8": "Quando você precisa de um MES",
@@ -52,7 +52,7 @@
   "v2.mes-ou-erp.faq.5": "Perguntas frequentes",
   "v2.mes-ou-erp.faq.6": "Perguntas sobre MES e ERP.",
   "v2.mes-ou-erp.final.1": "Seu ERP cuida da empresa. Deixe a Mestti cuidar da fábrica.",
-  "v2.mes-ou-erp.final.2": "Quero meu diagnóstico",
+  "v2.mes-ou-erp.final.2": "Quero 1 semana grátis",
   "v2.mes-ou-erp.final.3": "Falar no WhatsApp"
  },
  "en": {
@@ -64,7 +64,7 @@
   "v2.mes-ou-erp.hero.4": "Quick guide",
   "v2.mes-ou-erp.hero.5": "MES or ERP? <em>In most factories, both.</em>",
   "v2.mes-ou-erp.hero.6": "The ERP answers “what did I sell, buy and invoice?”. The MES answers “what is happening in production right now, and why?”. One doesn’t replace the other: the ERP runs the business; the MES runs the shop floor.",
-  "v2.mes-ou-erp.hero.7": "I want my assessment",
+  "v2.mes-ou-erp.hero.7": "Get 1 free week",
   "v2.mes-ou-erp.table.1": "ERP",
   "v2.mes-ou-erp.table.2": "MES (like Mestti)",
   "v2.mes-ou-erp.table.3": "Spreadsheet",
@@ -94,7 +94,7 @@
   "v2.mes-ou-erp.when.2": "The ERP shows the open order, but not that the machine stopped an hour ago.",
   "v2.mes-ou-erp.when.3": "The reported numbers don’t add up",
   "v2.mes-ou-erp.when.4": "Production written down by hand differs from what came out, and nobody knows which is right.",
-  "v2.mes-ou-erp.when.5": "Hidden-capacity assessment",
+  "v2.mes-ou-erp.when.5": "Start with 1 free week",
   "v2.mes-ou-erp.when.6": "The factory seems maxed out",
   "v2.mes-ou-erp.when.7": "Before buying a machine or adding a shift, it’s worth measuring where the time goes.",
   "v2.mes-ou-erp.when.8": "When you need an MES",
@@ -106,7 +106,7 @@
   "v2.mes-ou-erp.faq.5": "Frequently asked questions",
   "v2.mes-ou-erp.faq.6": "Questions about MES and ERP.",
   "v2.mes-ou-erp.final.1": "Your ERP runs the business. Let Mestti run the factory floor.",
-  "v2.mes-ou-erp.final.2": "I want my assessment",
+  "v2.mes-ou-erp.final.2": "Get 1 free week",
   "v2.mes-ou-erp.final.3": "Chat on WhatsApp"
  },
  "es": {
@@ -118,7 +118,7 @@
   "v2.mes-ou-erp.hero.4": "Guía rápida",
   "v2.mes-ou-erp.hero.5": "¿MES o ERP? <em>En la mayoría de las fábricas, los dos.</em>",
   "v2.mes-ou-erp.hero.6": "El ERP responde “¿qué vendí, compré y facturé?”. El MES responde “¿qué está pasando en la producción ahora y por qué?”. Uno no reemplaza al otro: el ERP se ocupa de la empresa; el MES, de la planta.",
-  "v2.mes-ou-erp.hero.7": "Quiero mi diagnóstico",
+  "v2.mes-ou-erp.hero.7": "Quiero 1 semana gratis",
   "v2.mes-ou-erp.table.1": "ERP",
   "v2.mes-ou-erp.table.2": "MES (como Mestti)",
   "v2.mes-ou-erp.table.3": "Planilla",
@@ -148,7 +148,7 @@
   "v2.mes-ou-erp.when.2": "El ERP muestra la orden abierta, pero no que la máquina se detuvo hace una hora.",
   "v2.mes-ou-erp.when.3": "El número del registro no cuadra",
   "v2.mes-ou-erp.when.4": "La producción anotada a mano difiere de lo que salió, y nadie sabe cuál es correcta.",
-  "v2.mes-ou-erp.when.5": "Diagnóstico de capacidad oculta",
+  "v2.mes-ou-erp.when.5": "Empezar con 1 semana gratis",
   "v2.mes-ou-erp.when.6": "La fábrica parece al límite",
   "v2.mes-ou-erp.when.7": "Antes de comprar una máquina o abrir un turno, conviene medir adónde va el tiempo.",
   "v2.mes-ou-erp.when.8": "Cuándo necesita un MES",
@@ -160,7 +160,7 @@
   "v2.mes-ou-erp.faq.5": "Preguntas frecuentes",
   "v2.mes-ou-erp.faq.6": "Preguntas sobre MES y ERP.",
   "v2.mes-ou-erp.final.1": "Su ERP se ocupa de la empresa. Deje que Mestti se ocupe de la fábrica.",
-  "v2.mes-ou-erp.final.2": "Quiero mi diagnóstico",
+  "v2.mes-ou-erp.final.2": "Quiero 1 semana gratis",
   "v2.mes-ou-erp.final.3": "Hablar por WhatsApp"
  }
 };

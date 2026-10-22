@@ -11,7 +11,7 @@
   "v2.otto.hero.5": "Otto, a IA da Mestti",
   "v2.otto.hero.6": "Pergunte à sua fábrica. <em>A IA propõe; quem decide é você.</em>",
   "v2.otto.hero.7": "O Otto lê os dados da Mestti que o seu usuário pode ver, investiga desvios e prepara ações. Antes de mudar qualquer coisa, ele mostra o que vai fazer, simula o efeito e espera a sua aprovação.",
-  "v2.otto.hero.8": "Quero meu diagnóstico",
+  "v2.otto.hero.8": "Quero 1 semana grátis",
   "v2.otto.ask.1": "Produção",
   "v2.otto.ask.2": "“Onde perdi mais tempo esta semana?”",
   "v2.otto.ask.3": "Paradas por setor, por máquina e por motivo, com o horário em que se repetem.",
@@ -55,7 +55,7 @@
   "v2.otto.faq.7": "Perguntas frequentes",
   "v2.otto.faq.8": "O que perguntam sobre o Otto.",
   "v2.otto.final.1": "Veja o Otto respondendo com os dados da sua fábrica.",
-  "v2.otto.final.2": "Quero meu diagnóstico",
+  "v2.otto.final.2": "Quero 1 semana grátis",
   "v2.otto.final.3": "Falar no WhatsApp"
  },
  "en": {
@@ -68,7 +68,7 @@
   "v2.otto.hero.5": "Otto, Mestti’s AI",
   "v2.otto.hero.6": "Ask your factory. <em>The AI proposes; you decide.</em>",
   "v2.otto.hero.7": "Otto reads the Mestti data your user is allowed to see, investigates deviations and prepares actions. Before changing anything, it shows what it will do, simulates the effect and waits for your approval.",
-  "v2.otto.hero.8": "I want my assessment",
+  "v2.otto.hero.8": "Get 1 free week",
   "v2.otto.ask.1": "Production",
   "v2.otto.ask.2": "“Where did I lose the most time this week?”",
   "v2.otto.ask.3": "Stops by department, machine and reason, with the times they repeat.",
@@ -106,13 +106,13 @@
   "v2.otto.faq.1": "Does Otto replace my manager’s experience?",
   "v2.otto.faq.2": "No. It shortens the way to the information and suggests where to look. The decision stays with whoever knows the factory.",
   "v2.otto.faq.3": "What language can I ask in?",
-  "v2.otto.faq.4": "In Portuguese — the way you would talk to someone on the shop floor.",
+  "v2.otto.faq.4": "In Portuguese, the way you would talk to someone on the shop floor.",
   "v2.otto.faq.5": "Can Otto change production data?",
   "v2.otto.faq.6": "Only actions Mestti supports, and always after approval from an authorized person. The machine’s original record is never changed.",
   "v2.otto.faq.7": "Frequently asked questions",
   "v2.otto.faq.8": "What people ask about Otto.",
   "v2.otto.final.1": "See Otto answer with your factory’s data.",
-  "v2.otto.final.2": "I want my assessment",
+  "v2.otto.final.2": "Get 1 free week",
   "v2.otto.final.3": "Chat on WhatsApp"
  },
  "es": {
@@ -125,7 +125,7 @@
   "v2.otto.hero.5": "Otto, la IA de Mestti",
   "v2.otto.hero.6": "Pregúntele a su fábrica. <em>La IA propone; usted decide.</em>",
   "v2.otto.hero.7": "Otto lee los datos de Mestti que su usuario puede ver, investiga desvíos y prepara acciones. Antes de cambiar algo, muestra lo que hará, simula el efecto y espera su aprobación.",
-  "v2.otto.hero.8": "Quiero mi diagnóstico",
+  "v2.otto.hero.8": "Quiero 1 semana gratis",
   "v2.otto.ask.1": "Producción",
   "v2.otto.ask.2": "“¿Dónde perdí más tiempo esta semana?”",
   "v2.otto.ask.3": "Paradas por sector, por máquina y por motivo, con el horario en que se repiten.",
@@ -169,7 +169,7 @@
   "v2.otto.faq.7": "Preguntas frecuentes",
   "v2.otto.faq.8": "Lo que preguntan sobre Otto.",
   "v2.otto.final.1": "Vea a Otto respondiendo con los datos de su fábrica.",
-  "v2.otto.final.2": "Quiero mi diagnóstico",
+  "v2.otto.final.2": "Quiero 1 semana gratis",
   "v2.otto.final.3": "Hablar por WhatsApp"
  }
 };

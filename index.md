@@ -8,7 +8,7 @@ A Mestti mede cada máquina com sensores próprios (contagem de peças ou ciclos
 - Reconhecimento: uma das cinco empresas selecionadas na 3ª Chamada Pública do Lab Procel II, programa da ENBPar executado com o SENAI Rio de Janeiro ([anúncio](https://enbpar.gov.br/projetos-selecionados-na-3a-chamada-publica-do-lab-procel-ii-iniciam-etapa-de-aceleracao/)), com projeto de mais de R$ 1 milhão.
 - Ecossistema: SENAI, Procel, ENBPar, Firjan, Fiep e Móveis Hub de Arapongas.
 - Tecnologia própria: hardware, firmware, sistema web, app Android e IA desenvolvidos pela Mestti; registro original imutável e dados isolados por empresa.
-- Como começar: diagnóstico de capacidade escondida em um setor (conversa, instalação dos sensores, medição na rotina e apresentação das causas e do plano de ação).
+- Como começar: sensores prontos em até 7 dias, instalação em 1 dia e 1 semana de demonstração grátis em um setor, com horas perdidas, causas, custo e plano de ação no fim.
 
 ## Páginas principais
 
@@ -18,7 +18,7 @@ A Mestti mede cada máquina com sensores próprios (contagem de peças ou ciclos
 - [Qualidade](https://mestti.com.br/qualidade/): checklists com revisão documental, inspeções disparadas por regra, foto pelo celular e não conformidades no OEE.
 - [Otto](https://mestti.com.br/otto/): assistente de IA que consulta dados autorizados, propõe, simula e só executa ações aprovadas por uma pessoa.
 - [Caso de cliente: indústria moveleira](https://mestti.com.br/casos/industria-moveleira/): +20% de disponibilidade em um setor ao ligar as máquinas antes do turno.
-- [Diagnóstico de capacidade escondida](https://mestti.com.br/diagnostico/): etapas, entregas e calculadora do tamanho da oportunidade.
+- [Como começar: 1 semana grátis](https://mestti.com.br/diagnostico/): sensores em 7 dias, instalação em 1 dia, demonstração grátis de 1 semana e calculadora da oportunidade.
 - [Tecnologia e proteção de dados](https://mestti.com.br/seguranca/): sensor, sistema e IA próprios; registro imutável; isolamento por empresa.
 - [Glossário](https://mestti.com.br/glossario/): OEE, disponibilidade, performance, microparada, setup, MTTR, MTBF, PCP, MES, ERP e capacidade escondida.
 - [MES ou ERP?](https://mestti.com.br/mes-ou-erp/): diferença, comparativo e quando a indústria precisa dos dois.

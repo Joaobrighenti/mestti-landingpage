@@ -54,3 +54,6 @@ Screenshots existentes mostram interface e dados de exemplo. Diagramas HTML expl
 - Caso de cliente: indústria moveleira com +20% de disponibilidade em um setor ao ligar as máquinas antes do turno. O setor moveleiro aparece só no caso; o restante do site usa uma fábrica genérica.
 - Prioridades públicas: Engenharia, Produção, Qualidade e Cadastros; Suprimentos em segundo plano; Vendas e Nota Fiscal fora da oferta.
 - A fábrica 3D do site reproduz a Fábrica 3D do produto (mestti_frontend · factory-3d) com dados de demonstração.
+- Oferta pública: sensores prontos em até 7 dias, instalação em 1 dia e 1 semana de demonstração grátis.
+- Otto é o polvo do Mestti OPS (roxo #7040FF), com a versão animada portada de `OpsMascotLive` para `js/otto-mascot.js`. Não usar o ícone antigo.
+- Escrita: sem travessões e sem fórmulas típicas de texto gerado ("não é X, é Y", trincas de "sem").

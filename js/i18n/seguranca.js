@@ -11,7 +11,7 @@
   "v2.seguranca.hero.5": "Tecnologia própria",
   "v2.seguranca.hero.6": "Um número que ninguém maquia. <em>Nem o sistema.</em>",
   "v2.seguranca.hero.7": "Cobrança justa e decisão certa dependem de dado confiável. Por isso a Mestti desenvolve a própria tecnologia, do sensor à IA, e trata cada registro da fábrica como prova.",
-  "v2.seguranca.hero.8": "Quero meu diagnóstico",
+  "v2.seguranca.hero.8": "Quero 1 semana grátis",
   "v2.seguranca.stack.1": "Sensor",
   "v2.seguranca.stack.2": "Ficha técnica",
   "v2.seguranca.stack.3": "Hardware e firmware próprios",
@@ -49,7 +49,7 @@
   "v2.seguranca.faq.8": "Perguntas frequentes",
   "v2.seguranca.faq.9": "O que perguntam sobre dados e segurança.",
   "v2.seguranca.final.1": "Decida com um número em que todo mundo confia.",
-  "v2.seguranca.final.2": "Quero meu diagnóstico",
+  "v2.seguranca.final.2": "Quero 1 semana grátis",
   "v2.seguranca.final.3": "Falar no WhatsApp"
  },
  "en": {
@@ -62,7 +62,7 @@
   "v2.seguranca.hero.5": "Our own technology",
   "v2.seguranca.hero.6": "A number nobody can fudge. <em>Not even the system.</em>",
   "v2.seguranca.hero.7": "Fair accountability and good decisions depend on reliable data. That’s why Mestti builds its own technology, from sensor to AI, and treats every factory record as evidence.",
-  "v2.seguranca.hero.8": "I want my assessment",
+  "v2.seguranca.hero.8": "Get 1 free week",
   "v2.seguranca.stack.1": "Sensor",
   "v2.seguranca.stack.2": "Datasheet",
   "v2.seguranca.stack.3": "Our own hardware and firmware",
@@ -100,7 +100,7 @@
   "v2.seguranca.faq.8": "Frequently asked questions",
   "v2.seguranca.faq.9": "What people ask about data and security.",
   "v2.seguranca.final.1": "Decide with a number everyone trusts.",
-  "v2.seguranca.final.2": "I want my assessment",
+  "v2.seguranca.final.2": "Get 1 free week",
   "v2.seguranca.final.3": "Chat on WhatsApp"
  },
  "es": {
@@ -113,7 +113,7 @@
   "v2.seguranca.hero.5": "Tecnología propia",
   "v2.seguranca.hero.6": "Un número que nadie maquilla. <em>Ni el sistema.</em>",
   "v2.seguranca.hero.7": "Exigir con justicia y decidir bien dependen de datos confiables. Por eso Mestti desarrolla su propia tecnología, del sensor a la IA, y trata cada registro de la fábrica como prueba.",
-  "v2.seguranca.hero.8": "Quiero mi diagnóstico",
+  "v2.seguranca.hero.8": "Quiero 1 semana gratis",
   "v2.seguranca.stack.1": "Sensor",
   "v2.seguranca.stack.2": "Ficha técnica",
   "v2.seguranca.stack.3": "Hardware y firmware propios",
@@ -151,7 +151,7 @@
   "v2.seguranca.faq.8": "Preguntas frecuentes",
   "v2.seguranca.faq.9": "Lo que preguntan sobre datos y seguridad.",
   "v2.seguranca.final.1": "Decida con un número en el que todos confían.",
-  "v2.seguranca.final.2": "Quiero mi diagnóstico",
+  "v2.seguranca.final.2": "Quiero 1 semana gratis",
   "v2.seguranca.final.3": "Hablar por WhatsApp"
  }
 };

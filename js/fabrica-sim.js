@@ -215,11 +215,6 @@ function renderHud() {
                 <span class="fx-sep" aria-hidden="true"></span>
                 <span class="fx-live"><i aria-hidden="true"></i>${t('live')}</span>
             </div>
-            <div class="fx-surface fx-search">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/></svg>
-                <input type="search" data-fx-search placeholder="${t('search')}" aria-label="${t('search')}" autocomplete="off">
-                <ul class="fx-search-results" data-fx-results hidden></ul>
-            </div>
         </div>
         <div class="fx-top-right">
             <div class="fx-layer" role="group" aria-label="${t('layerGroup')}">
@@ -256,7 +251,7 @@ function renderHud() {
             <button type="button" class="fx-icon" data-fx-zoom="out" aria-label="${t('zoomOut')}" title="${t('zoomOut')}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/></svg></button>
             <button type="button" class="fx-icon" data-fx-zoom="fit" aria-label="${t('fit')}" title="${t('fit')}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
         </div>
-        <p class="fx-hint"><span class="fx-demo-tag">${t('demo')}</span>${coarse ? t('hintTouch') : `${t('hint')} <span>${t('hintDrag')}</span>`}</p>
+        <p class="fx-hint"><span class="fx-demo-tag">${t('demo')}</span>${coarse ? '' : `<span>${t('hintDrag')}</span>`}</p>
         ${view.selected ? drawer(view.selected) : ''}`;
 }
 

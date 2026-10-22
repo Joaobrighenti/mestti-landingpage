@@ -135,6 +135,24 @@
         });
     }
 
+    function initCaseVisual() {
+        const el = document.querySelector('[data-case-visual]');
+        if (!el) return;
+        whenVisible(el, () => el.classList.add('is-visible'), '-80px 0px');
+    }
+
+    // Otto vivo: o mesmo polvo do produto, olhos que seguem o mouse e pulinho no clique.
+    function initOttoMascot() {
+        const svgs = document.querySelectorAll('[data-otto-live]');
+        if (!svgs.length) return;
+        import('/js/otto-mascot.js?v=1').then(({ mountOtto }) => {
+            svgs.forEach((svg) => {
+                const poke = svg.parentElement.querySelector('.hv-otto-poke');
+                mountOtto(svg, { size: Number(svg.dataset.size) || 160, onPoke: () => { if (poke) poke.hidden = true; track('v2_otto_poke'); } });
+            });
+        }).catch((error) => console.error(error));
+    }
+
     // Justificar paradas: o sensor já sabe quando e quanto; o operador escolhe o motivo.
     function initStopDemo() {
         const demo = document.querySelector('[data-stop-demo]');
@@ -144,6 +162,8 @@
         const title = demo.querySelector('[data-stop-reason-title]');
         const pareto = demo.querySelector('[data-stop-pareto]');
         const hint = demo.querySelector('[data-stop-hint]');
+        const tip = demo.querySelector('[data-stop-tip]');
+        const progress = demo.querySelector('[data-stop-progress]');
         const assigned = new Map();
         let active = null;
         const reasonLabel = (id) => demo.querySelector(`[data-reason="${id}"]`).textContent;
@@ -177,6 +197,15 @@
                 stop.title = id ? reasonLabel(id) : '';
             });
             if (active) title.textContent = d().why(active.dataset.min);
+            const next = stops.find((s) => !assigned.has(s));
+            if (tip) {
+                tip.hidden = !next || Boolean(active);
+                if (next) tip.style.left = `${parseFloat(next.style.left) + parseFloat(next.style.width) / 2}%`;
+            }
+            if (progress) {
+                progress.textContent = `${assigned.size} / ${stops.length}`;
+                progress.classList.toggle('is-done', assigned.size === stops.length);
+            }
         }
 
         function open(stop) {
@@ -184,6 +213,7 @@
             active = stop;
             title.textContent = d().why(stop.dataset.min);
             box.hidden = false;
+            if (tip) tip.hidden = true;
             box.querySelector('button').focus({ preventScroll: true });
         }
 
@@ -199,6 +229,7 @@
                 const next = stops.find((s) => !assigned.has(s));
                 if (next) open(next);
                 else { box.hidden = true; active = null; track('v2_stop_demo_complete'); }
+                if (next) active = next;
                 render();
             });
         });
@@ -296,6 +327,8 @@
 
     initShiftCard();
     initCase();
+    initCaseVisual();
+    initOttoMascot();
     initStopDemo();
     initOtto();
     initCalc();

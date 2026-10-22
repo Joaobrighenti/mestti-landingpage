@@ -12,7 +12,7 @@
   "v2.qualidade.hero.6": "Qualidade",
   "v2.qualidade.hero.7": "Prove o que foi inspecionado, <em>por quem e quando.</em>",
   "v2.qualidade.hero.8": "Na Mestti, a inspeção acontece no momento certo porque uma regra a dispara. O inspetor preenche no celular, com foto, e o registro fica ligado à máquina, à ordem e à revisão do documento.",
-  "v2.qualidade.hero.9": "Quero meu diagnóstico",
+  "v2.qualidade.hero.9": "Quero 1 semana grátis",
   "v2.qualidade.flow.1": "Checklist",
   "v2.qualidade.flow.2": "Itens e características, com número e data de revisão iguais ao documento da fábrica.",
   "v2.qualidade.flow.3": "Regra",
@@ -49,7 +49,7 @@
   "v2.qualidade.faq.7": "Perguntas frequentes",
   "v2.qualidade.faq.8": "O que perguntam sobre qualidade.",
   "v2.qualidade.final.1": "Na próxima devolução, tenha a resposta em um clique.",
-  "v2.qualidade.final.2": "Quero meu diagnóstico",
+  "v2.qualidade.final.2": "Quero 1 semana grátis",
   "v2.qualidade.final.3": "Falar no WhatsApp"
  },
  "en": {
@@ -63,7 +63,7 @@
   "v2.qualidade.hero.6": "Quality",
   "v2.qualidade.hero.7": "Prove what was inspected, <em>by whom and when.</em>",
   "v2.qualidade.hero.8": "In Mestti, inspections happen at the right moment because a rule triggers them. The inspector fills them in on a phone, with photos, and the record stays linked to the machine, the order and the document revision.",
-  "v2.qualidade.hero.9": "I want my assessment",
+  "v2.qualidade.hero.9": "Get 1 free week",
   "v2.qualidade.flow.1": "Checklist",
   "v2.qualidade.flow.2": "Items and characteristics, with the same revision number and date as the factory document.",
   "v2.qualidade.flow.3": "Rule",
@@ -100,7 +100,7 @@
   "v2.qualidade.faq.7": "Frequently asked questions",
   "v2.qualidade.faq.8": "What people ask about quality.",
   "v2.qualidade.final.1": "Next time parts come back, have the answer in one click.",
-  "v2.qualidade.final.2": "I want my assessment",
+  "v2.qualidade.final.2": "Get 1 free week",
   "v2.qualidade.final.3": "Chat on WhatsApp"
  },
  "es": {
@@ -114,7 +114,7 @@
   "v2.qualidade.hero.6": "Calidad",
   "v2.qualidade.hero.7": "Pruebe qué se inspeccionó, <em>quién lo hizo y cuándo.</em>",
   "v2.qualidade.hero.8": "En Mestti, la inspección ocurre en el momento justo porque una regla la dispara. El inspector la completa en el celular, con foto, y el registro queda vinculado a la máquina, a la orden y a la revisión del documento.",
-  "v2.qualidade.hero.9": "Quiero mi diagnóstico",
+  "v2.qualidade.hero.9": "Quiero 1 semana gratis",
   "v2.qualidade.flow.1": "Checklist",
   "v2.qualidade.flow.2": "Ítems y características, con número y fecha de revisión iguales al documento de la fábrica.",
   "v2.qualidade.flow.3": "Regla",
@@ -151,7 +151,7 @@
   "v2.qualidade.faq.7": "Preguntas frecuentes",
   "v2.qualidade.faq.8": "Lo que preguntan sobre calidad.",
   "v2.qualidade.final.1": "En la próxima devolución, tenga la respuesta en un clic.",
-  "v2.qualidade.final.2": "Quiero mi diagnóstico",
+  "v2.qualidade.final.2": "Quiero 1 semana gratis",
   "v2.qualidade.final.3": "Hablar por WhatsApp"
  }
 };

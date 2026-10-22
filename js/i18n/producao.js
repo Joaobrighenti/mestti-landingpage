@@ -11,9 +11,9 @@
   "v2.producao.hero.5": "Você está em",
   "v2.producao.hero.6": "Ver como funciona",
   "v2.producao.hero.7": "Produção e PCP",
-  "v2.producao.hero.8": "Saiba o que cada máquina está fazendo agora — <em>e o que vai atrasar amanhã.</em>",
+  "v2.producao.hero.8": "Saiba o que cada máquina está fazendo agora <em>e o que vai atrasar amanhã.</em>",
   "v2.producao.hero.9": "A Mestti junta planejamento, execução e medição num mesmo lugar: o PCP programa pela capacidade real, o operador aponta no tablet e o sensor confirma o que a máquina fez.",
-  "v2.producao.hero.10": "Quero meu diagnóstico",
+  "v2.producao.hero.10": "Quero 1 semana grátis",
   "v2.producao.flow.1": "Ordem",
   "v2.producao.flow.2": "A ordem de produção nasce com o roteiro da engenharia.",
   "v2.producao.flow.3": "Liberação",
@@ -65,7 +65,7 @@
   "v2.producao.faq.9": "Perguntas frequentes",
   "v2.producao.faq.10": "O que perguntam sobre produção e PCP.",
   "v2.producao.final.1": "Comece medindo um setor. O resto vem do número.",
-  "v2.producao.final.2": "Quero meu diagnóstico",
+  "v2.producao.final.2": "Quero 1 semana grátis",
   "v2.producao.final.3": "Falar no WhatsApp"
  },
  "en": {
@@ -78,9 +78,9 @@
   "v2.producao.hero.5": "You are here",
   "v2.producao.hero.6": "See how it works",
   "v2.producao.hero.7": "Production and planning",
-  "v2.producao.hero.8": "Know what every machine is doing now — <em>and what will be late tomorrow.</em>",
+  "v2.producao.hero.8": "Know what every machine is doing now <em>and what will be late tomorrow.</em>",
   "v2.producao.hero.9": "Mestti brings planning, execution and measurement together: planners schedule by real capacity, operators report on a tablet and the sensor confirms what the machine did.",
-  "v2.producao.hero.10": "I want my assessment",
+  "v2.producao.hero.10": "Get 1 free week",
   "v2.producao.flow.1": "Order",
   "v2.producao.flow.2": "The production order is created with engineering’s routing.",
   "v2.producao.flow.3": "Release",
@@ -132,7 +132,7 @@
   "v2.producao.faq.9": "Frequently asked questions",
   "v2.producao.faq.10": "What people ask about production and planning.",
   "v2.producao.final.1": "Start by measuring one department. The rest follows from the number.",
-  "v2.producao.final.2": "I want my assessment",
+  "v2.producao.final.2": "Get 1 free week",
   "v2.producao.final.3": "Chat on WhatsApp"
  },
  "es": {
@@ -147,7 +147,7 @@
   "v2.producao.hero.7": "Producción y planificación",
   "v2.producao.hero.8": "Sepa qué hace cada máquina ahora, <em>y qué se atrasará mañana.</em>",
   "v2.producao.hero.9": "Mestti reúne planificación, ejecución y medición en un solo lugar: planificación programa según la capacidad real, el operador registra en la tablet y el sensor confirma lo que hizo la máquina.",
-  "v2.producao.hero.10": "Quiero mi diagnóstico",
+  "v2.producao.hero.10": "Quiero 1 semana gratis",
   "v2.producao.flow.1": "Orden",
   "v2.producao.flow.2": "La orden de producción nace con la ruta de ingeniería.",
   "v2.producao.flow.3": "Liberación",
@@ -199,7 +199,7 @@
   "v2.producao.faq.9": "Preguntas frecuentes",
   "v2.producao.faq.10": "Lo que preguntan sobre producción y planificación.",
   "v2.producao.final.1": "Empiece midiendo un sector. Lo demás viene del número.",
-  "v2.producao.final.2": "Quiero mi diagnóstico",
+  "v2.producao.final.2": "Quiero 1 semana gratis",
   "v2.producao.final.3": "Hablar por WhatsApp"
  }
 };

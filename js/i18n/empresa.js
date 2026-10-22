@@ -12,7 +12,7 @@
   "v2.empresa.hero.6": "Sobre a Mestti",
   "v2.empresa.hero.7": "Nascemos no chão de fábrica. <em>Por isso falamos a língua dele.</em>",
   "v2.empresa.hero.8": "A Mestti começou em 2025, em Londrina, dentro de uma gráfica que precisava enxergar a produção em tempo real sem depender de apontamento manual. A solução cresceu e hoje atende indústrias de diferentes setores.",
-  "v2.empresa.hero.9": "Quero meu diagnóstico",
+  "v2.empresa.hero.9": "Quero 1 semana grátis",
   "v2.empresa.what.1": "Engenharia",
   "v2.empresa.what.2": "Engenharia",
   "v2.empresa.what.3": "O jeito certo de fabricar",
@@ -40,7 +40,7 @@
   "v2.empresa.company.6": "Dados da empresa",
   "v2.empresa.company.7": "Fale com a gente.",
   "v2.empresa.final.1": "Vamos olhar a sua fábrica juntos?",
-  "v2.empresa.final.2": "Quero meu diagnóstico",
+  "v2.empresa.final.2": "Quero 1 semana grátis",
   "v2.empresa.final.3": "Falar no WhatsApp"
  },
  "en": {
@@ -54,7 +54,7 @@
   "v2.empresa.hero.6": "About Mestti",
   "v2.empresa.hero.7": "We were born on the shop floor. <em>That’s why we speak its language.</em>",
   "v2.empresa.hero.8": "Mestti started in 2025 in Londrina, Brazil, inside a printing company that needed to see production in real time without relying on manual reporting. The solution grew and now serves manufacturers in different industries.",
-  "v2.empresa.hero.9": "I want my assessment",
+  "v2.empresa.hero.9": "Get 1 free week",
   "v2.empresa.what.1": "Engineering",
   "v2.empresa.what.2": "Engineering",
   "v2.empresa.what.3": "The right way to make it",
@@ -82,7 +82,7 @@
   "v2.empresa.company.6": "Company details",
   "v2.empresa.company.7": "Talk to us.",
   "v2.empresa.final.1": "Shall we look at your factory together?",
-  "v2.empresa.final.2": "I want my assessment",
+  "v2.empresa.final.2": "Get 1 free week",
   "v2.empresa.final.3": "Chat on WhatsApp"
  },
  "es": {
@@ -96,7 +96,7 @@
   "v2.empresa.hero.6": "Sobre Mestti",
   "v2.empresa.hero.7": "Nacimos en la planta. <em>Por eso hablamos su idioma.</em>",
   "v2.empresa.hero.8": "Mestti empezó en 2025 en Londrina, Brasil, dentro de una imprenta que necesitaba ver la producción en tiempo real sin depender del registro manual. La solución creció y hoy atiende industrias de distintos sectores.",
-  "v2.empresa.hero.9": "Quiero mi diagnóstico",
+  "v2.empresa.hero.9": "Quiero 1 semana gratis",
   "v2.empresa.what.1": "Ingeniería",
   "v2.empresa.what.2": "Ingeniería",
   "v2.empresa.what.3": "La forma correcta de fabricar",
@@ -124,7 +124,7 @@
   "v2.empresa.company.6": "Datos de la empresa",
   "v2.empresa.company.7": "Hable con nosotros.",
   "v2.empresa.final.1": "¿Miramos su fábrica juntos?",
-  "v2.empresa.final.2": "Quiero mi diagnóstico",
+  "v2.empresa.final.2": "Quiero 1 semana gratis",
   "v2.empresa.final.3": "Hablar por WhatsApp"
  }
 };
