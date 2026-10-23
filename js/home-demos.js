@@ -139,7 +139,7 @@
         const hue = Math.round(Math.abs(hash) * 137.508) % 360;
         const sat = 50 + (Math.abs(hash) % 30);
         const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-        return `hsl(${hue}, ${sat}%, ${dark ? 40 : 44}%)`;
+        return `hsl(${hue}, ${sat}%, ${dark ? 34 : 38}%)`;
     }
 
     function initGantt() {
@@ -271,11 +271,125 @@
         root.addEventListener('scroll', hideTip, true);
 
         render();
+        document.addEventListener('hv:tab', (e) => { if (e.detail === 'sequenciamento') render(); });
         onLang(() => { const sc = root.querySelector('[data-gx-scroll]'); state.scroll = sc ? sc.scrollLeft : null; state.toast = null; render(); });
         new MutationObserver(() => render()).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     }
 
-    const start = () => { initMonitor(); initGantt(); };
+    /* ------------------------------------------------------------ abas da demonstração */
+    function initTabs() {
+        const tabs = [...document.querySelectorAll('[data-demo-tab]')];
+        if (!tabs.length) return;
+        const list = tabs[0].parentElement;
+        const ink = list.querySelector('.hv-demo-tabs-ink');
+        const moveInk = () => {
+            const on = tabs.find((t) => t.getAttribute('aria-selected') === 'true');
+            if (!on || !ink) return;
+            ink.style.width = `${on.offsetWidth}px`;
+            ink.style.transform = `translateX(${on.offsetLeft}px)`;
+        };
+        const select = (id, focus, user) => {
+            tabs.forEach((t) => {
+                const on = t.dataset.demoTab === id;
+                t.setAttribute('aria-selected', String(on));
+                t.tabIndex = on ? 0 : -1;
+                document.getElementById(t.dataset.demoTab).hidden = !on;
+                if (on && focus) t.focus();
+            });
+            moveInk();
+            document.dispatchEvent(new CustomEvent('hv:tab', { detail: id }));
+            if (user) {
+                history.replaceState(null, '', `#${id}`);
+                track('home_demo_tab', { tab: id });
+            }
+        };
+        tabs.forEach((t, i) => {
+            t.addEventListener('click', () => select(t.dataset.demoTab, false, true));
+            t.addEventListener('keydown', (e) => {
+                const keys = { ArrowRight: (i + 1) % tabs.length, ArrowLeft: (i + tabs.length - 1) % tabs.length, Home: 0, End: tabs.length - 1 };
+                if (!(e.key in keys)) return;
+                e.preventDefault();
+                select(tabs[keys[e.key]].dataset.demoTab, true, true);
+            });
+        });
+        // Links para #sequenciamento, #turno ou #fabrica-ao-vivo abrem a aba certa.
+        const ids = tabs.map((t) => t.dataset.demoTab);
+        const openFromHash = (hash) => {
+            const id = (hash || '').replace('#', '');
+            if (!ids.includes(id)) return false;
+            select(id, false, true);
+            document.getElementById('demo').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+            return true;
+        };
+        document.addEventListener('click', (e) => {
+            const a = e.target.closest('a[href^="#"]');
+            if (a && openFromHash(a.getAttribute('href'))) e.preventDefault();
+        });
+        if (location.hash) setTimeout(() => openFromHash(location.hash), 60);
+        // No toque, a demo que funciona melhor com o polegar abre primeiro.
+        else if (window.matchMedia('(pointer: coarse)').matches) select('turno');
+        new ResizeObserver(moveInk).observe(list);
+        moveInk();
+    }
+
+    /* ------------------------------------------------------------ entrada das seções e fita de estado */
+    function initReveal() {
+        window.__hvReveal = true;
+        const els = [...document.querySelectorAll('.hv [data-reveal], .hv [data-tape]')];
+        if (!els.length) return;
+        if (!('IntersectionObserver' in window) || reduceMotion) { els.forEach((el) => el.classList.add('is-in')); return; }
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+        }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+        els.forEach((el) => io.observe(el));
+    }
+
+    /* ------------------------------------------------------------ números que contam até o valor */
+    function countUp(el, to, format, ms = 900) {
+        if (reduceMotion) { el.textContent = format(to); return; }
+        const t0 = performance.now();
+        const ease = (k) => 1 - Math.pow(1 - k, 3);
+        const step = (now) => {
+            const k = Math.min(1, (now - t0) / ms);
+            el.textContent = format(to * ease(k));
+            if (k < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+    }
+    function initCounts() {
+        const big = document.querySelector('[data-count-to-pct]');
+        if (!big || !('IntersectionObserver' in window)) return;
+        const to = Number(big.dataset.countToPct);
+        const io = new IntersectionObserver(([en]) => {
+            if (!en.isIntersecting) return;
+            io.disconnect();
+            const num = big.querySelector('[data-count-num]') || big;
+            countUp(num, to, (v) => String(Math.round(v)));
+        }, { threshold: 0.4 });
+        io.observe(big);
+    }
+
+    /* ------------------------------------------------------------ barra do celular e WhatsApp */
+    function initBars() {
+        const bar = document.querySelector('[data-mobilebar]');
+        const heroCta = document.querySelector('.hv-hero .hv-btn--primary');
+        const final = document.querySelector('.hv-final');
+        let heroGone = false; let finalOn = false;
+        const sync = () => {
+            if (bar) bar.classList.toggle('is-on', heroGone && !finalOn && !document.body.classList.contains('is-modal-open'));
+            const scrolled = window.scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight);
+            document.body.classList.toggle('hv-fab-on', scrolled > 0.35);
+        };
+        if ('IntersectionObserver' in window) {
+            if (heroCta) new IntersectionObserver(([en]) => { heroGone = !en.isIntersecting && en.boundingClientRect.top < 0; sync(); }).observe(heroCta);
+            if (final) new IntersectionObserver(([en]) => { finalOn = en.isIntersecting; sync(); }).observe(final);
+        }
+        addEventListener('scroll', sync, { passive: true });
+        new MutationObserver(sync).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+        sync();
+    }
+
+    const start = () => { initMonitor(); initGantt(); initTabs(); initReveal(); initCounts(); initBars(); };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
     else start();
 }());

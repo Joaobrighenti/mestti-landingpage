@@ -291,7 +291,21 @@
             const extra = read('machines') * read('days');
             const hourValue = form.querySelector('[data-calc-hour-value]');
             if (hourValue) {
-                hourValue.textContent = money(extra * read('rate'));
+                // Interpola a partir do valor que está na tela e cancela a animação anterior.
+                const to = extra * read('rate');
+                const from = Number(hourValue.dataset.shown || to);
+                cancelAnimationFrame(Number(hourValue.dataset.raf || 0));
+                const show = (v) => { hourValue.dataset.shown = String(v); hourValue.textContent = money(v); };
+                if (reduceMotion || from === to) show(to);
+                else {
+                    const t0 = performance.now();
+                    const tick = (now) => {
+                        const k = Math.min(1, (now - t0) / 400);
+                        show(from + (to - from) * (1 - Math.pow(1 - k, 3)));
+                        if (k < 1) hourValue.dataset.raf = String(requestAnimationFrame(tick));
+                    };
+                    hourValue.dataset.raf = String(requestAnimationFrame(tick));
+                }
                 form.querySelector('[data-calc-hour-hours]').textContent = Math.round(extra).toLocaleString(d().locale);
             }
         };
