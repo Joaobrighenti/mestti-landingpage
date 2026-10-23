@@ -5,12 +5,78 @@
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "redirects": [
+    { "source": "/engenharia/index.html", "destination": "/engenharia/", "permanent": true },
+    { "source": "/engenharia", "destination": "/engenharia/", "permanent": true },
+    { "source": "/otto/index.html", "destination": "/otto/", "permanent": true },
+    { "source": "/otto", "destination": "/otto/", "permanent": true },
+    { "source": "/casos/industria-moveleira/index.html", "destination": "/casos/industria-moveleira/", "permanent": true },
+    { "source": "/casos/industria-moveleira", "destination": "/casos/industria-moveleira/", "permanent": true },
+    { "source": "/diagnostico/index.html", "destination": "/diagnostico/", "permanent": true },
+    { "source": "/diagnostico", "destination": "/diagnostico/", "permanent": true },
+    { "source": "/glossario/index.html", "destination": "/glossario/", "permanent": true },
+    { "source": "/glossario", "destination": "/glossario/", "permanent": true },
+    { "source": "/mes-ou-erp/index.html", "destination": "/mes-ou-erp/", "permanent": true },
+    { "source": "/mes-ou-erp", "destination": "/mes-ou-erp/", "permanent": true },
+    { "source": "/seguranca/index.html", "destination": "/seguranca/", "permanent": true },
+    { "source": "/seguranca", "destination": "/seguranca/", "permanent": true },
     { "source": "/sensores/empresa", "destination": "/empresa/", "permanent": true },
     { "source": "/sensores/empresa/", "destination": "/empresa/", "permanent": true },
     { "source": "/qualidade-2", "destination": "/checklists/", "permanent": true },
-    { "source": "/qualidade-2/", "destination": "/checklists/", "permanent": true }
+    { "source": "/qualidade-2/", "destination": "/checklists/", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/contato.html", "destination": "/contato/", "permanent": true },
+    { "source": "/atuacao.html", "destination": "/atuacao/", "permanent": true },
+    { "source": "/barra-pass", "destination": "/pass/", "permanent": true },
+    { "source": "/barra-pass/", "destination": "/pass/", "permanent": true },
+    { "source": "/empresa/index.html", "destination": "/empresa/", "permanent": true },
+    { "source": "/pass/index.html", "destination": "/pass/", "permanent": true },
+    { "source": "/qualidade/index.html", "destination": "/qualidade/", "permanent": true },
+    { "source": "/contato/index.html", "destination": "/contato/", "permanent": true },
+    { "source": "/sensores/index.html", "destination": "/sensores/", "permanent": true },
+    { "source": "/blog/index.html", "destination": "/blog/", "permanent": true },
+    { "source": "/solucoes/index.html", "destination": "/solucoes/", "permanent": true },
+    { "source": "/sequenciamento/index.html", "destination": "/sequenciamento/", "permanent": true },
+    { "source": "/termos/index.html", "destination": "/termos/", "permanent": true },
+    { "source": "/sensoriamento/index.html", "destination": "/sensoriamento/", "permanent": true },
+    { "source": "/producao/index.html", "destination": "/producao/", "permanent": true },
+    { "source": "/cmms/index.html", "destination": "/cmms/", "permanent": true },
+    { "source": "/atuacao/index.html", "destination": "/atuacao/", "permanent": true },
+    { "source": "/checklists/index.html", "destination": "/checklists/", "permanent": true },
+    { "source": "/blog/como-escolher-sistema-monitoramento-producao/index.html", "destination": "/blog/como-escolher-sistema-monitoramento-producao/", "permanent": true },
+    { "source": "/blog/nota-fiscal-de-perda-reducao-de-impostos/index.html", "destination": "/blog/nota-fiscal-de-perda-reducao-de-impostos/", "permanent": true },
+    { "source": "/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/index.html", "destination": "/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/", "permanent": true },
+    { "source": "/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/index.html", "destination": "/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/", "permanent": true },
+    { "source": "/blog/o-que-e-sistema-mes-mestti/index.html", "destination": "/blog/o-que-e-sistema-mes-mestti/", "permanent": true },
+    { "source": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/index.html", "destination": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/", "permanent": true },
+    { "source": "/empresa", "destination": "/empresa/", "permanent": true },
+    { "source": "/pass", "destination": "/pass/", "permanent": true },
+    { "source": "/qualidade", "destination": "/qualidade/", "permanent": true },
+    { "source": "/contato", "destination": "/contato/", "permanent": true },
+    { "source": "/sensores", "destination": "/sensores/", "permanent": true },
+    { "source": "/blog", "destination": "/blog/", "permanent": true },
+    { "source": "/solucoes", "destination": "/solucoes/", "permanent": true },
+    { "source": "/sequenciamento", "destination": "/sequenciamento/", "permanent": true },
+    { "source": "/termos", "destination": "/termos/", "permanent": true },
+    { "source": "/sensoriamento", "destination": "/sensoriamento/", "permanent": true },
+    { "source": "/producao", "destination": "/producao/", "permanent": true },
+    { "source": "/cmms", "destination": "/cmms/", "permanent": true },
+    { "source": "/atuacao", "destination": "/atuacao/", "permanent": true },
+    { "source": "/checklists", "destination": "/checklists/", "permanent": true },
+    { "source": "/blog/como-escolher-sistema-monitoramento-producao", "destination": "/blog/como-escolher-sistema-monitoramento-producao/", "permanent": true },
+    { "source": "/blog/nota-fiscal-de-perda-reducao-de-impostos", "destination": "/blog/nota-fiscal-de-perda-reducao-de-impostos/", "permanent": true },
+    { "source": "/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real", "destination": "/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/", "permanent": true },
+    { "source": "/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica", "destination": "/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/", "permanent": true },
+    { "source": "/blog/o-que-e-sistema-mes-mestti", "destination": "/blog/o-que-e-sistema-mes-mestti/", "permanent": true },
+    { "source": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo", "destination": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/engenharia/", "destination": "/engenharia/index.html" },
+    { "source": "/otto/", "destination": "/otto/index.html" },
+    { "source": "/casos/industria-moveleira/", "destination": "/casos/industria-moveleira/index.html" },
+    { "source": "/diagnostico/", "destination": "/diagnostico/index.html" },
+    { "source": "/glossario/", "destination": "/glossario/index.html" },
+    { "source": "/mes-ou-erp/", "destination": "/mes-ou-erp/index.html" },
+    { "source": "/seguranca/", "destination": "/seguranca/index.html" },
     { "source": "/contato", "destination": "/contato/index.html" },
     { "source": "/contato/", "destination": "/contato/index.html" },
     { "source": "/empresa", "destination": "/empresa/index.html" },
@@ -46,44 +112,53 @@
     { "source": "/barra-pass", "destination": "/pass/" },
     { "source": "/barra-pass/", "destination": "/pass/" },
     { "source": "/download-app", "destination": "/downloads/mestti-apontamento.apk" },
-    { "source": "/download-app/", "destination": "/downloads/mestti-apontamento.apk" }
+    { "source": "/download-app/", "destination": "/downloads/mestti-apontamento.apk" },
+    { "source": "/solucoes", "destination": "/solucoes/index.html" },
+    { "source": "/solucoes/", "destination": "/solucoes/index.html" },
+    { "source": "/blog/como-escolher-sistema-monitoramento-producao", "destination": "/blog/como-escolher-sistema-monitoramento-producao/index.html" },
+    { "source": "/blog/como-escolher-sistema-monitoramento-producao/", "destination": "/blog/como-escolher-sistema-monitoramento-producao/index.html" }
   ],
   "headers": [
-  {
-    "source": "/robots.txt",
-    "headers": [
-      {
-        "key": "Content-Type",
-        "value": "text/plain; charset=utf-8"
-      }
-    ]
-  },
-  {
-    "source": "/sitemap.xml",
-    "headers": [
-      {
-        "key": "Content-Type",
-        "value": "application/xml; charset=utf-8"
-      }
-    ]
-  },
-  {
-    "source": "/llms.txt",
-    "headers": [
-      {
-        "key": "Content-Type",
-        "value": "text/plain; charset=utf-8"
-      }
-    ]
-  },
-  {
-    "source": "/index.md",
-    "headers": [
-      {
-        "key": "Content-Type",
-        "value": "text/markdown; charset=utf-8"
-      }
-    ]
-  }
-]
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/llms.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/index.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
+  ],
+  "git": {"deploymentEnabled": {"feat/seo-geo-aeo": false}}
 }

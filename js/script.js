@@ -34,6 +34,8 @@ const navOverlay = document.getElementById('navOverlay');
 
 if (menuToggle && headerNav && navOverlay) {
     function setMenuVisual(isActive) {
+        document.body.classList.toggle('is-menu-open', isActive);
+        menuToggle.setAttribute('aria-expanded', String(isActive));
         const spans = menuToggle.querySelectorAll('span');
         if (isActive) {
             spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -87,7 +89,7 @@ if (menuToggle && headerNav && navOverlay) {
 
     // Se alternar breakpoint/orientação, garante estado fechado
     window.addEventListener('resize', () => {
-        if (window.innerWidth <= 900) closeMenu();
+        closeMenu();
     });
 }
 
@@ -950,10 +952,11 @@ async function requestCloseModal() {
 
             if (shouldSend) {
                 const payload = collectLeadPayload(form, form.id || 'principal', 'modal_close');
-                if (!payload.name || !payload.email) {
+                const phoneOk = (payload.phone || '').replace(/\D/g, '').length >= 8;
+                if (!payload.name || (!payload.email && !phoneOk)) {
                     openMesttiPopup({
                         title: mesttiT('form.abandon.title', 'Enviar antes de sair?'),
-                        message: mesttiT('form.abandon.incomplete', 'Para enviar, preencha pelo menos nome e e-mail.')
+                        message: mesttiT('form.abandon.incomplete', 'Para enviar, preencha pelo menos nome e WhatsApp.')
                     });
                     return;
                 }
@@ -993,12 +996,20 @@ function unlockModalBodyScroll() {
 }
 
 if (modalOverlay) {
+    let modalTrigger = null;
     openModal = function openModalFn() {
+        modalTrigger = document.activeElement;
         lockModalBodyScroll();
+        modalOverlay.inert = false;
         modalOverlay.classList.add('active');
+        modalOverlay.setAttribute('aria-hidden', 'false');
+        modalOverlay.setAttribute('role', 'dialog');
+        modalOverlay.setAttribute('aria-modal', 'true');
+        modalOverlay.setAttribute('aria-label', mesttiT('modal.title', 'Solicite sua demonstração'));
         document.body.classList.add('is-modal-open');
         document.body.style.overflow = 'hidden';
         document.querySelector('.header')?.classList.remove('header--hidden');
+        requestAnimationFrame(() => btnCloseModal?.focus({ preventScroll: true }));
     };
 
     closeModal = function closeModalFn() {
@@ -1006,6 +1017,9 @@ if (modalOverlay) {
         closeMesttiPopup();
         restoreMesttiPopupActions();
         modalOverlay.classList.remove('active');
+        modalTrigger?.focus({ preventScroll: true });
+        modalOverlay.setAttribute('aria-hidden', 'true');
+        modalOverlay.inert = true;
         document.body.classList.remove('is-modal-open');
         document.body.style.overflow = '';
         unlockModalBodyScroll();
@@ -1017,7 +1031,6 @@ if (modalOverlay) {
             btn.dataset.mesttiModalBound = '1';
             btn.addEventListener('click', (e) => {
                 if (btn.tagName === 'A') e.preventDefault();
-                gtag_report_conversion();
                 openModal();
             });
         });
@@ -1064,6 +1077,20 @@ if (modalOverlay) {
     });
 
     document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab' && modalOverlay.classList.contains('active') &&
+            !document.getElementById('mesttiPopup')?.classList.contains('is-open')) {
+            const controls = [...modalOverlay.querySelectorAll('button, input, select, textarea, a[href], [tabindex]')]
+                .filter((el) => !el.disabled && !el.closest('[inert]') && el.tabIndex >= 0 && el.getClientRects().length);
+            const first = controls[0];
+            const last = controls[controls.length - 1];
+            if (first && e.shiftKey && (document.activeElement === first || !modalOverlay.contains(document.activeElement))) {
+                e.preventDefault();
+                last.focus();
+            } else if (first && !e.shiftKey && (document.activeElement === last || !modalOverlay.contains(document.activeElement))) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
         if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
             requestCloseModal();
         }

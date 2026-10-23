@@ -4,8 +4,12 @@
   "type": "module",
   "scripts": {
     "dev": "node server.js",
-    "build": "node scripts/vercel-build.mjs",
-    "test": "node --test ./tests"
+    "build": "node scripts/sync-article-content.mjs --check && node scripts/vercel-build.mjs && node scripts/check-site.mjs public",
+    "test": "node --test ./tests",
+    "content:sync": "node scripts/sync-article-content.mjs",
+    "check:site": "node scripts/site-build.mjs --check && node scripts/sync-article-content.mjs --check && node scripts/check-site.mjs",
+    "site:build": "node scripts/site-build.mjs",
+    "site:check": "node scripts/site-build.mjs --check"
   },
   "dependencies": {
     "dotenv": "^16.6.1",
