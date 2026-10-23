@@ -9,7 +9,8 @@ A Mestti mede cada máquina com sensores próprios (contagem de peças ou ciclos
 - Ecossistema: SENAI, Procel, ENBPar, Firjan, Fiep e Móveis Hub de Arapongas.
 - Sequenciamento: Gantt com a fila de cada máquina, duração calculada pelo tempo de ciclo da engenharia e alerta quando uma ordem termina depois da data de entrega.
 - Tecnologia própria: hardware, firmware, sistema web, app Android e IA desenvolvidos pela Mestti; registro original imutável e dados isolados por empresa.
-- Como começar: sensores prontos em até 7 dias, instalação em 1 dia e 1 semana de demonstração grátis em um setor, com horas perdidas, causas, custo e plano de ação no fim.
+- Como começar: sensores prontos em até 7 dias, instalação em 1 dia e 1 semana de teste grátis em um setor, com horas perdidas, causas, custo e plano de ação no fim. Na semana de teste o sensor é emprestado; sem custo e sem fidelidade, e se a empresa não continuar a Mestti retira os sensores sem custo.
+- ERP: a Mestti integra com o ERP da empresa; as ordens de produção podem vir do ERP e a produção apontada volta para ele.
 
 ## Páginas principais
 

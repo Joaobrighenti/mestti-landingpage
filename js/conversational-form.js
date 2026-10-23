@@ -41,6 +41,7 @@
     }
 
     const MOBILE_CHAT_MAX = 480;
+    const EXTRA_KEYS = ['cargo', 'setor', 'solucao'];
 
     function isMobileChat() {
         return window.innerWidth <= MOBILE_CHAT_MAX;
@@ -56,6 +57,8 @@
             this.form = form;
             this.card = form.closest('.demo-modal-card');
             this.modalContent = form.closest('.modal-content');
+            this.extraStart = 0;
+            this.extraAccepted = false;
             this.steps = this.buildSteps();
             this.stepIndex = 0;
             this.busy = false;
@@ -197,7 +200,7 @@
                 }
             ];
 
-            return specs
+            const all = specs
                 .map((spec) => {
                     const el = findField(this.form, spec.names);
                     if (!el) return null;
@@ -205,6 +208,11 @@
                     return { ...spec, el, optional };
                 })
                 .filter(Boolean);
+            // O chat pede só o obrigatório; o resto vira um bloco opcional, oferecido depois (uma única submissão).
+            const required = all.filter((s) => !s.optional);
+            const extras = all.filter((s) => s.optional && EXTRA_KEYS.includes(s.key));
+            this.extraStart = required.length;
+            return [...required, ...extras];
         }
 
         setupUi() {
@@ -324,7 +332,7 @@
 
             this.reset(false);
             await this.botSay(
-                t('chat.greeting', 'Oi! 👋 Tudo bem? Sou da MESTTI. Só preciso de algumas informações rapidinhas pra agendar sua demonstração.'),
+                t('chat.greeting', 'Oi! 👋 Sou da MESTTI. São só 3 perguntas para marcarmos a sua semana grátis.'),
                 { i18nKey: 'chat.greeting' }
             );
             await this.askCurrentStep();
@@ -435,6 +443,10 @@
                 await this.finishConversation();
                 return;
             }
+            if (this.stepIndex === this.extraStart && this.extraStart < this.steps.length && !this.extraAccepted) {
+                await this.offerExtras();
+                return;
+            }
 
             await this.botSay(this.formatQuestion(step), { i18nKey: step.questionKey });
             await this.setupCurrentStepUi();
@@ -447,6 +459,7 @@
             if (step.type === 'select') {
                 this.dismissKeyboard();
                 this.showSelectOptions(step);
+                if (step.optional) this.showSkipButton();
                 this.composerEl.classList.add('is-hidden');
                 return;
             }
@@ -526,6 +539,34 @@
                 chip.addEventListener('click', () => this.answerStep(option.textContent.trim(), option.value));
                 this.quickRepliesEl.appendChild(chip);
             });
+            this.scrollToBottom();
+        }
+
+        async offerExtras() {
+            await this.botSay(t('chat.extra.ask', 'Pronto, já dá para marcar a conversa. Quer adiantar cargo, setor e o que mais interessa? É opcional.'), { i18nKey: 'chat.extra.ask' });
+            this.dismissKeyboard();
+            this.composerEl.classList.add('is-hidden');
+            this.quickRepliesEl.innerHTML = '';
+            const send = document.createElement('button');
+            send.type = 'button';
+            send.className = 'wa-chip';
+            send.textContent = t('chat.extra.send', 'Enviar agora');
+            send.addEventListener('click', () => {
+                this.quickRepliesEl.innerHTML = '';
+                this.addMessage('user', send.textContent);
+                this.finishConversation();
+            });
+            const more = document.createElement('button');
+            more.type = 'button';
+            more.className = 'wa-chip wa-chip--skip';
+            more.textContent = t('chat.extra.more', 'Responder mais 3');
+            more.addEventListener('click', () => {
+                this.quickRepliesEl.innerHTML = '';
+                this.addMessage('user', more.textContent);
+                this.extraAccepted = true;
+                this.askCurrentStep();
+            });
+            this.quickRepliesEl.append(send, more);
             this.scrollToBottom();
         }
 

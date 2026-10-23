@@ -952,10 +952,11 @@ async function requestCloseModal() {
 
             if (shouldSend) {
                 const payload = collectLeadPayload(form, form.id || 'principal', 'modal_close');
-                if (!payload.name || !payload.email) {
+                const phoneOk = (payload.phone || '').replace(/\D/g, '').length >= 8;
+                if (!payload.name || (!payload.email && !phoneOk)) {
                     openMesttiPopup({
                         title: mesttiT('form.abandon.title', 'Enviar antes de sair?'),
-                        message: mesttiT('form.abandon.incomplete', 'Para enviar, preencha pelo menos nome e e-mail.')
+                        message: mesttiT('form.abandon.incomplete', 'Para enviar, preencha pelo menos nome e WhatsApp.')
                     });
                     return;
                 }
