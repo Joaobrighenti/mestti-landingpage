@@ -4,10 +4,9 @@
  "pt": {
   "meta.caso-moveleiro.title": "Caso: +20% de disponibilidade em uma indústria moveleira sem comprar máquina | Mestti",
   "meta.caso-moveleiro.description": "Como o sensor da Mestti mostrou que as máquinas de um setor começavam o turno ainda aquecendo, e como uma decisão simples aumentou a disponibilidade do setor em 20%.",
+  "v2.caso-moveleiro.hero.3": "Você está em",
   "v2.caso-moveleiro.hero.1": "Início",
   "v2.caso-moveleiro.hero.2": "Caso de cliente",
-  "v2.caso-moveleiro.hero.3": "Você está em",
-  "v2.caso-moveleiro.hero.4": "Caso de cliente · Indústria moveleira",
   "v2.caso-moveleiro.hero.5": "+20% de disponibilidade <em>sem comprar uma máquina.</em>",
   "v2.caso-moveleiro.hero.6": "Uma indústria moveleira cliente da Mestti descobriu que parte do turno ia embora antes de a produção começar de verdade. A solução custou quase nada: mudar o horário de ligar as máquinas.",
   "v2.caso-moveleiro.hero.7": "Quero 1 semana grátis",
@@ -27,15 +26,15 @@
   "v2.caso-moveleiro.story.11": "A capacidade que faltava já estava na fábrica e não aparecia na planilha. Por isso a Mestti começa todo projeto medindo: antes de decidir onde investir, é preciso ver onde o tempo vai.",
   "v2.caso-moveleiro.final.1": "Onde está o tempo escondido na sua fábrica?",
   "v2.caso-moveleiro.final.2": "Quero 1 semana grátis",
-  "v2.caso-moveleiro.final.3": "Falar no WhatsApp"
+  "v2.caso-moveleiro.final.3": "Falar no WhatsApp",
+  "v2.caso-moveleiro.hero.4": "Caso de cliente · Indústria moveleira"
  },
  "en": {
   "meta.caso-moveleiro.title": "Case: +20% availability at a furniture manufacturer without buying machines | Mestti",
   "meta.caso-moveleiro.description": "How Mestti’s sensor showed that a department’s machines started each shift still warming up, and how a simple decision raised the department’s availability by 20%.",
+  "v2.caso-moveleiro.hero.3": "You are here",
   "v2.caso-moveleiro.hero.1": "Home",
   "v2.caso-moveleiro.hero.2": "Customer case",
-  "v2.caso-moveleiro.hero.3": "You are here",
-  "v2.caso-moveleiro.hero.4": "Customer case · Furniture manufacturer",
   "v2.caso-moveleiro.hero.5": "+20% availability <em>without buying a single machine.</em>",
   "v2.caso-moveleiro.hero.6": "A furniture manufacturer using Mestti found that part of every shift was gone before production really started. The fix cost almost nothing: changing when the machines were switched on.",
   "v2.caso-moveleiro.hero.7": "Get 1 free week",
@@ -55,15 +54,15 @@
   "v2.caso-moveleiro.story.11": "The missing capacity was already in the factory and didn’t show up in the spreadsheet. That’s why Mestti starts every project by measuring: before deciding where to invest, you need to see where the time goes.",
   "v2.caso-moveleiro.final.1": "Where is the hidden time in your factory?",
   "v2.caso-moveleiro.final.2": "Get 1 free week",
-  "v2.caso-moveleiro.final.3": "Chat on WhatsApp"
+  "v2.caso-moveleiro.final.3": "Chat on WhatsApp",
+  "v2.caso-moveleiro.hero.4": "Customer case · Furniture manufacturer"
  },
  "es": {
   "meta.caso-moveleiro.title": "Caso: +20% de disponibilidad en una industria del mueble sin comprar máquinas | Mestti",
   "meta.caso-moveleiro.description": "Cómo el sensor de Mestti mostró que las máquinas de un sector empezaban el turno todavía calentándose, y cómo una decisión simple aumentó la disponibilidad del sector en un 20%.",
+  "v2.caso-moveleiro.hero.3": "Usted está en",
   "v2.caso-moveleiro.hero.1": "Inicio",
   "v2.caso-moveleiro.hero.2": "Caso de cliente",
-  "v2.caso-moveleiro.hero.3": "Usted está en",
-  "v2.caso-moveleiro.hero.4": "Caso de cliente · Industria del mueble",
   "v2.caso-moveleiro.hero.5": "+20% de disponibilidad <em>sin comprar una sola máquina.</em>",
   "v2.caso-moveleiro.hero.6": "Una industria del mueble cliente de Mestti descubrió que parte del turno se iba antes de que la producción empezara de verdad. La solución costó casi nada: cambiar el horario de encender las máquinas.",
   "v2.caso-moveleiro.hero.7": "Quiero 1 semana gratis",
@@ -83,7 +82,8 @@
   "v2.caso-moveleiro.story.11": "La capacidad que faltaba ya estaba en la fábrica y no aparecía en la planilla. Por eso Mestti empieza cada proyecto midiendo: antes de decidir dónde invertir, hay que ver adónde va el tiempo.",
   "v2.caso-moveleiro.final.1": "¿Dónde está el tiempo oculto en su fábrica?",
   "v2.caso-moveleiro.final.2": "Quiero 1 semana gratis",
-  "v2.caso-moveleiro.final.3": "Hablar por WhatsApp"
+  "v2.caso-moveleiro.final.3": "Hablar por WhatsApp",
+  "v2.caso-moveleiro.hero.4": "Caso de cliente · Industria del mueble"
  }
 };
     var g = window.MESTTI_PAGE_I18N = window.MESTTI_PAGE_I18N || {};

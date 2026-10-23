@@ -1,0 +1,42 @@
+    <div id="contactModal" class="modal-overlay" aria-hidden="true" inert>
+        <div class="modal-content">
+            <button type="button" class="modal-close" id="btnCloseModal" aria-label="Fechar demonstração" data-i18n-aria="a11y.closeDialog">&times;</button>
+            <div class="demo-modal-card">
+                <div class="demo-modal-head">
+                    <h2 class="demo-modal-title" data-i18n="modal.title">Comece sua semana grátis</h2>
+                    <p class="demo-modal-lead" data-i18n="modal.lead">Deixe seu contato e marcamos a conversa para escolher o setor da sua semana grátis.</p>
+                </div>
+                <form class="demo-form" id="contactForm">
+                    <input type="text" id="name" name="name" data-i18n-placeholder="modal.name" placeholder="Nome completo" autocomplete="name" required>
+                    <div class="demo-form-phone">
+                        <select id="ddi" name="ddi" aria-label="DDI" required>
+                            <option value="+55" selected>+55</option>
+                            <option value="+1">+1</option>
+                            <option value="+351">+351</option>
+                            <option value="+34">+34</option>
+                        </select>
+                        <input type="tel" id="phone" name="phone" data-i18n-placeholder="modal.whatsapp" placeholder="WhatsApp com DDD" autocomplete="tel" inputmode="tel" required>
+                    </div>
+                    <input type="text" id="empresa" name="empresa" data-i18n-placeholder="modal.company" placeholder="Empresa" autocomplete="organization" required>
+                    <details class="demo-form-more">
+                        <summary data-i18n="modal.more">Quer adiantar a conversa? Opcional</summary>
+                        <div class="demo-form-more-fields">
+                            <input type="email" id="email" name="email" data-i18n-placeholder="modal.email" placeholder="E-mail profissional" autocomplete="email">
+                            <select id="cargo" name="cargo" data-mestti-options="cargo" aria-label="Cargo">
+                                <option value="" selected disabled data-i18n="modal.role">Cargo</option>
+                            </select>
+                            <select id="setor" name="setor" data-mestti-options="setor" aria-label="Setor da empresa">
+                                <option value="" selected disabled data-i18n="modal.sector">Setor da Indústria</option>
+                            </select>
+                            <select id="solucao" name="solucao" data-mestti-options="solucao" aria-label="Solução de interesse">
+                                <option value="" selected disabled data-i18n="modal.solution">Selecione a solução de maior interesse</option>
+                            </select>
+                            <textarea id="observacao" name="observacao" data-i18n-placeholder="modal.note" placeholder="Observação (opcional)" rows="3"></textarea>
+                        </div>
+                    </details>
+                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Quero minha semana grátis</button>
+                    <p class="demo-form-assure" data-i18n="modal.assure">Sem custo e sem fidelidade. Na semana de teste o sensor é emprestado.</p>
+                </form>
+            </div>
+        </div>
+    </div>

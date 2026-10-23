@@ -24,6 +24,7 @@ const SKIP = new Set([
   "api",
   "lib",
   "scripts",
+  "site",
   "tests",
   "docs",
   "server.js",

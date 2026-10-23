@@ -10,7 +10,7 @@ const attrs = tag => Object.fromEntries([...tag.matchAll(/([\w:-]+)\s*=\s*(["'])
 const tags = (html, name) => [...html.matchAll(new RegExp(`<${name}\\b[^>]*>`, 'gi'))].map(m => attrs(m[0]));
 function walk(dir) {
   for (const file of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (file.name.startsWith('.') || ['node_modules', 'public', 'docs', 'tests', 'scripts', 'lib', 'api'].includes(file.name)) continue;
+    if (file.name.startsWith('.') || ['node_modules', 'public', 'docs', 'tests', 'scripts', 'lib', 'api', 'site'].includes(file.name)) continue;
     const full = path.join(dir, file.name);
     if (file.isDirectory()) walk(full);
     else if (file.name === 'index.html') {
