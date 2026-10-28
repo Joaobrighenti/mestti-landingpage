@@ -6,7 +6,9 @@ import dotenv from "dotenv";
 import { Resend } from "resend";
 import {
   normalizeLeadProgressPayload,
+  normalizeCadastroPayload,
   forwardLeadToGoogleSheets,
+  forwardCadastroToGoogleSheets,
 } from "./lib/sheets-sync.js";
 import { scheduleLeadMetaEvent } from "./lib/meta-lead.js";
 import { applyChecklistQualification } from "./lib/checklist-lead-score.js";
@@ -68,6 +70,8 @@ app.get("/blog/como-calcular-preco-venda-industria-rkw-custo-processo/", (_req, 
 app.get("/cmms/", (_req, res) => sendPage(res, path.join("cmms", "index.html")));
 app.get("/pass/", (_req, res) => sendPage(res, path.join("pass", "index.html")));
 app.get("/barra-pass/", (_req, res) => res.redirect(301, "/pass/"));
+app.get("/cadastro/", (_req, res) => sendPage(res, path.join("cadastro", "index.html")));
+app.get("/termos/", (_req, res) => sendPage(res, path.join("termos", "index.html")));
 
 // Hidden route for app download
 app.get("/download-app", (_req, res) => {
@@ -265,6 +269,163 @@ app.post("/api/lead-progress", async (req, res) => {
     return res.json({ ok: true, sheets: result.skipped ? "skipped" : "synced" });
   } catch {
     return res.status(502).json({ ok: false, error: "sheets_sync_failed" });
+  }
+});
+
+const CADASTRO_FORMA = new Set(["boleto", "pix_automatico", "cartao_credito"]);
+const CADASTRO_DIA = new Set(["1", "5", "10", "15", "20", "25"]);
+const CADASTRO_FORMA_LABEL = {
+  boleto: "Boleto",
+  pix_automatico: "PIX automático",
+  cartao_credito: "Cartão de crédito",
+};
+
+function cadastroDigits(value) {
+  return String(value || "").replace(/\D/g, "");
+}
+
+function cadastroAceiteOk(value) {
+  const v = String(value || "").trim().toLowerCase();
+  return v === "1" || v === "true" || v === "sim" || v === "yes" || v === "on";
+}
+
+function validateCadastroPayload(payload) {
+  const required = [
+    "razaoSocial",
+    "cnpj",
+    "cep",
+    "logradouro",
+    "numero",
+    "bairro",
+    "cidade",
+    "uf",
+    "representanteNome",
+    "representanteCpf",
+    "email",
+    "phone",
+    "formaPagamento",
+    "diaPagamento",
+    "emailBoletos",
+    "emailNotas",
+  ];
+  for (const key of required) {
+    if (!String(payload[key] || "").trim()) return "required_fields";
+  }
+  if (cadastroDigits(payload.cnpj).length !== 14) return "invalid_cnpj";
+  if (cadastroDigits(payload.representanteCpf).length !== 11) return "invalid_cpf";
+  if (cadastroDigits(payload.cep).length !== 8) return "invalid_cep";
+  if (!CADASTRO_FORMA.has(payload.formaPagamento)) return "invalid_pagamento";
+  if (!CADASTRO_DIA.has(payload.diaPagamento)) return "invalid_dia";
+  if (!cadastroAceiteOk(payload.aceiteTermos)) return "terms_required";
+  const emailOk = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
+  if (!emailOk(payload.email) || !emailOk(payload.emailBoletos) || !emailOk(payload.emailNotas)) {
+    return "invalid_email";
+  }
+  return null;
+}
+
+app.post("/api/cadastro", async (req, res) => {
+  try {
+    const payload = normalizeCadastroPayload(req.body || {});
+    if (!payload.timestamp) payload.timestamp = new Date().toISOString();
+    if (!payload.formId) payload.formId = "cadastro";
+    if (!payload.pagePath) payload.pagePath = "/cadastro/";
+    if (cadastroAceiteOk(payload.aceiteTermos)) payload.aceiteTermos = "sim";
+
+    const error = validateCadastroPayload(payload);
+    if (error) {
+      return res.status(400).json({ ok: false, error });
+    }
+
+    let sheetsStatus = "skipped";
+    try {
+      const sheets = await forwardCadastroToGoogleSheets(payload, GOOGLE_SHEETS_WEBHOOK_URL);
+      sheetsStatus = sheets.skipped ? "skipped" : "synced";
+    } catch {
+      return res.status(502).json({ ok: false, error: "sheets_sync_failed" });
+    }
+
+    let emailStatus = "skipped";
+    if (RESEND_API_KEY && LEADS_TO_EMAIL) {
+      try {
+        const resend = new Resend(RESEND_API_KEY);
+        const safe = (v) => (typeof v === "string" ? v.trim() : "");
+        const phoneFull = [safe(payload.ddi), safe(payload.phone)].filter(Boolean).join(" ");
+        const endereco = [
+          safe(payload.logradouro),
+          safe(payload.numero),
+          safe(payload.complemento),
+          safe(payload.bairro),
+          safe(payload.cidade),
+          safe(payload.uf),
+          safe(payload.cep),
+        ]
+          .filter(Boolean)
+          .join(", ");
+
+        const lines = [
+          ["Razão social", safe(payload.razaoSocial)],
+          ["Nome fantasia", safe(payload.nomeFantasia)],
+          ["CNPJ", safe(payload.cnpj)],
+          ["Endereço", endereco],
+          ["Representante", safe(payload.representanteNome)],
+          ["CPF do representante", safe(payload.representanteCpf)],
+          ["Cargo", safe(payload.representanteCargo)],
+          ["E-mail", safe(payload.email)],
+          ["Telefone", phoneFull],
+          [
+            "Forma de pagamento",
+            CADASTRO_FORMA_LABEL[payload.formaPagamento] || safe(payload.formaPagamento),
+          ],
+          ["Dia de pagamento", safe(payload.diaPagamento)],
+          ["E-mail boletos", safe(payload.emailBoletos)],
+          ["E-mail notas fiscais", safe(payload.emailNotas)],
+          ["Aceite dos termos", safe(payload.aceiteTermos)],
+          ["Observação", safe(payload.observacao)],
+          ["Página", safe(payload.pagePath)],
+        ].filter(([, v]) => v);
+
+        const text = lines.map(([k, v]) => `${k}: ${v}`).join("\n");
+        const html = `
+          <div style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.5;">
+            <h2 style="margin:0 0 12px;">Novo cadastro (contrato)</h2>
+            <table style="border-collapse: collapse; width: 100%; max-width: 720px;">
+              <tbody>
+                ${lines
+                  .map(
+                    ([k, v]) => `
+                  <tr>
+                    <td style="padding:6px 10px; border:1px solid #e5e7eb; font-weight:600; width:38%;">${k}</td>
+                    <td style="padding:6px 10px; border:1px solid #e5e7eb;">${String(v)
+                      .replace(/&/g, "&amp;")
+                      .replace(/</g, "&lt;")
+                      .replace(/>/g, "&gt;")}</td>
+                  </tr>`
+                  )
+                  .join("")}
+              </tbody>
+            </table>
+          </div>
+        `;
+
+        await resend.emails.send({
+          from: FROM_EMAIL,
+          to: LEADS_TO_EMAIL,
+          subject: `Novo cadastro (contrato) — ${safe(payload.razaoSocial) || "MESTTI"}`,
+          text,
+          html,
+        });
+        emailStatus = "sent";
+      } catch (err) {
+        console.error("Cadastro email error:", err);
+        emailStatus = "failed";
+      }
+    }
+
+    return res.json({ ok: true, sheets: sheetsStatus, email: emailStatus });
+  } catch (err) {
+    console.error("Cadastro error:", err);
+    return res.status(500).json({ ok: false, error: "cadastro_failed" });
   }
 });
 

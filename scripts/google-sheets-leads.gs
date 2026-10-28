@@ -1,10 +1,14 @@
 /**
  * MESTTI — Web App Google Sheets
  * - Aba "Leads": upsert por sessionId (chat / formulário)
+ * - Aba "Cadastro": append de cadastro contratual
  * - Aba "dados": append por clique (rastreamento de botões e links)
+ *
+ * Após alterar este arquivo no Apps Script: Implantar → Gerenciar implantações → Nova versão.
  */
 
 const SHEET_LEADS = 'Leads';
+const SHEET_CADASTRO = 'Cadastro';
 const SHEET_DADOS = 'dados';
 
 const LEAD_HEADERS = [
@@ -26,6 +30,34 @@ const LEAD_HEADERS = [
   'observacao',
   'pagePath',
   'leadSource',
+  'formId',
+];
+
+const CADASTRO_HEADERS = [
+  'timestamp',
+  'razaoSocial',
+  'nomeFantasia',
+  'cnpj',
+  'cep',
+  'logradouro',
+  'numero',
+  'complemento',
+  'bairro',
+  'cidade',
+  'uf',
+  'representanteNome',
+  'representanteCpf',
+  'representanteCargo',
+  'email',
+  'phone',
+  'ddi',
+  'formaPagamento',
+  'diaPagamento',
+  'emailBoletos',
+  'emailNotas',
+  'aceiteTermos',
+  'observacao',
+  'pagePath',
   'formId',
 ];
 
@@ -61,7 +93,49 @@ function handleRequest_(params) {
   if (sheet === 'dados' || String(params.type || '').trim().toLowerCase() === 'click') {
     return handleClickTrack_(params);
   }
+  if (sheet === 'cadastro') {
+    return handleCadastro_(params);
+  }
   return handleLeadProgress_(params);
+}
+
+function handleCadastro_(params) {
+  var razaoSocial = String(params.razaoSocial || '').trim();
+  var cnpj = String(params.cnpj || '').trim();
+  if (!razaoSocial || !cnpj) {
+    return jsonResponse_({ status: 'error', message: 'cadastro_required' });
+  }
+
+  var sheet = getOrCreateSheet_(SHEET_CADASTRO, CADASTRO_HEADERS);
+  sheet.appendRow([
+    params.timestamp || new Date().toISOString(),
+    razaoSocial,
+    params.nomeFantasia || '',
+    cnpj,
+    params.cep || '',
+    params.logradouro || '',
+    params.numero || '',
+    params.complemento || '',
+    params.bairro || '',
+    params.cidade || '',
+    params.uf || '',
+    params.representanteNome || '',
+    params.representanteCpf || '',
+    params.representanteCargo || '',
+    params.email || '',
+    params.phone || '',
+    params.ddi || '',
+    params.formaPagamento || '',
+    params.diaPagamento || '',
+    params.emailBoletos || '',
+    params.emailNotas || '',
+    params.aceiteTermos || '',
+    params.observacao || '',
+    params.pagePath || '',
+    params.formId || 'cadastro',
+  ]);
+
+  return jsonResponse_({ status: 'success', sheet: SHEET_CADASTRO });
 }
 
 function handleLeadProgress_(params) {
