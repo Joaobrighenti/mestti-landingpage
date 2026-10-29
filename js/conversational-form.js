@@ -3,7 +3,7 @@
  */
 (function () {
     const STORAGE_PREFIX = 'mesttiChatDraft';
-    const AVATAR_SRC = '/images/Atendente.png';
+    const AVATAR_SRC = '/images/Atendente.webp';
     const AVATAR_ALT = 'Giovana — MESTTI';
     const TYPING_DELAY_MS = 480;
 
@@ -211,6 +211,8 @@
             this.card?.classList.add('wa-mode');
             this.modalContent?.classList.add('wa-modal-content', 'wa-modal');
             this.form.classList.add('wa-form-hidden');
+            // O chat é a interface de entrada; o formulário preserva os valores para envio.
+            this.form.inert = true;
 
             this.chatEl = document.createElement('div');
             this.chatEl.className = 'wa-chat';
@@ -221,7 +223,7 @@
                     </div>
                     <div class="wa-chat-meta">
                         <p class="wa-chat-name">${t('chat.header.name', 'Giovana')}</p>
-                        <p class="wa-chat-status">${t('chat.header.status', 'online')}</p>
+                        <p class="wa-chat-status">${t('chat.header.status', 'agendamento automático')}</p>
                     </div>
                 </div>
                 <div class="wa-chat-body">
@@ -463,6 +465,7 @@
             this.inputEl.type = step.type === 'email' ? 'email' : 'text';
             this.inputEl.inputMode = step.type === 'email' ? 'email' : step.type === 'phone' ? 'tel' : 'text';
             this.inputEl.placeholder = this.inputPlaceholder(step);
+            this.inputEl.setAttribute('aria-label', this.inputPlaceholder(step));
             this.scrollToBottom();
             this.refocusInput();
         }
@@ -855,7 +858,7 @@
             const nameEl = this.chatEl.querySelector('.wa-chat-name');
             const statusEl = this.chatEl.querySelector('.wa-chat-status');
             if (nameEl) nameEl.textContent = t('chat.header.name', 'Giovana');
-            if (statusEl) statusEl.textContent = t('chat.header.status', 'online');
+            if (statusEl) statusEl.textContent = t('chat.header.status', 'agendamento automático');
             if (this.sendBtn) {
                 this.sendBtn.setAttribute('aria-label', t('chat.send', 'Enviar'));
             }
