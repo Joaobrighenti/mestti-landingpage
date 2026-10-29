@@ -279,7 +279,13 @@
     function initCalc() {
         const form = document.querySelector('[data-calc]');
         if (!form) return;
-        const read = (name) => Math.max(0, Number(form.elements[name].value) || 0);
+        // Cada campo respeita o próprio min/max: 100 dias no mês ou 30 h no dia não entram na conta.
+        const read = (name) => {
+            const input = form.elements[name];
+            if (!input) return 0;
+            const max = input.max === '' ? Infinity : Number(input.max);
+            return Math.min(max, Math.max(Number(input.min) || 0, Number(input.value) || 0));
+        };
         const update = () => {
             const hours = read('machines') * read('hours') * read('days');
             form.querySelectorAll('[data-calc-row]').forEach((row) => {
@@ -310,6 +316,19 @@
             }
         };
         form.addEventListener('input', update);
+        // Botões − e + (usados no celular): somam o passo do campo e respeitam min/max.
+        form.querySelectorAll('.hv-calc-step').forEach((btn) => btn.addEventListener('click', () => {
+            const input = btn.parentElement.querySelector('input');
+            const step = Number(input.step) || 1;
+            input.value = Math.min(Number(input.max) || Infinity, Math.max(Number(input.min) || 0, read(input.name) + step * Number(btn.dataset.step)));
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            input.dispatchEvent(new Event('change', { bubbles: true }));
+        }));
+        form.addEventListener('change', (event) => {
+            const input = event.target;
+            if (input.name && input.value !== '' && Number(input.value) !== read(input.name)) input.value = read(input.name);
+            update();
+        });
         form.addEventListener('submit', (event) => event.preventDefault());
         form.addEventListener('change', () => track('v2_calc_change'), { once: true });
         update();
@@ -342,6 +361,82 @@
         whenVisible(host, () => import('/js/fabrica-sim.js?v=2').catch((error) => console.error(error)), '500px 0px');
     }
 
+    // Vídeo: começa sem som quando a pessoa chega nele, pausa quando sai e liga o som num toque.
+    // Clientes e apoiadores no celular: uma faixa que corre devagar. A cópia é só visual (aria-hidden).
+    function initClientsMarquee() {
+        document.querySelectorAll('.hv-clients-logos, .hv-supporters .hv-partners').forEach(marquee);
+    }
+    function marquee(list) {
+        if (list.dataset.marquee) return;
+        list.dataset.marquee = '1';
+        [...list.children].forEach((li) => {
+            const copy = li.cloneNode(true);
+            copy.setAttribute('aria-hidden', 'true');
+            copy.classList.add('is-copy');
+            copy.querySelectorAll('img').forEach((img) => { img.alt = ''; });
+            copy.querySelectorAll('a').forEach((a) => { a.tabIndex = -1; });
+            list.appendChild(copy);
+        });
+    }
+
+    function initVideo() {
+        const frame = document.querySelector('[data-yt]');
+        if (!frame) return;
+        const sound = frame.querySelector('[data-yt-sound]');
+        let iframe = null;
+        let playing = false;
+        let state = -1;
+        let muted = false;
+        const send = (func) => iframe && iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func, args: [] }), '*');
+        const showSound = (on) => { sound.hidden = !on; };
+        // O player avisa estado (1 = tocando) e se está mudo; serve para saber se o navegador barrou o som.
+        window.addEventListener('message', (ev) => {
+            if (!iframe || ev.source !== iframe.contentWindow) return;
+            let data;
+            try { data = typeof ev.data === 'string' ? JSON.parse(ev.data) : ev.data; } catch { return; }
+            const info = data && data.info;
+            if (!info || typeof info !== 'object') return;
+            if (typeof info.playerState === 'number') state = info.playerState;
+            if (typeof info.muted === 'boolean') muted = info.muted;
+            if (state === 1) showSound(muted);
+        });
+        const load = (byClick) => {
+            if (iframe) return;
+            // Tenta sempre com som. Se o navegador não deixar, cai para mudo e mostra "Ligar o som".
+            const params = new URLSearchParams({ autoplay: '1', mute: '0', playsinline: '1', rel: '0', modestbranding: '1', enablejsapi: '1', origin: location.origin });
+            iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube-nocookie.com/embed/${frame.dataset.yt}?${params}`;
+            iframe.title = frame.querySelector('figcaption').textContent;
+            iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+            iframe.allowFullscreen = true;
+            iframe.addEventListener('load', () => {
+                iframe.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 'mestti-video', channel: 'widget' }), '*');
+                setTimeout(() => {
+                    if (state === 1 && !muted) return;
+                    send('mute');
+                    send('playVideo');
+                    showSound(true);
+                }, byClick ? 4000 : 2500);
+            });
+            frame.appendChild(iframe);
+            frame.classList.add('is-playing');
+            playing = true;
+            track('v2_video_start', { click: byClick });
+        };
+        frame.querySelector('[data-yt-play]').addEventListener('click', () => load(true));
+        sound.addEventListener('click', () => { send('unMute'); send('playVideo'); showSound(false); track('v2_video_sound'); });
+        if (reduceMotion || !('IntersectionObserver' in window)) return;
+        // "Chegou no vídeo" = metade dele visível, ou ele ocupando boa parte de uma tela baixa.
+        new IntersectionObserver((entries) => {
+            entries.forEach((en) => {
+                const seen = en.intersectionRatio >= 0.5 || en.intersectionRect.height >= window.innerHeight * 0.6;
+                if (seen && !iframe) load(false);
+                else if (seen && !playing) { send('playVideo'); playing = true; }
+                else if (!en.isIntersecting && playing) { send('pauseVideo'); playing = false; }
+            });
+        }, { threshold: [0, 0.25, 0.5, 0.75] }).observe(frame);
+    }
+
     document.querySelectorAll('[data-cta]').forEach((el) => {
         el.addEventListener('click', () => track('v2_cta', { position: el.dataset.cta, page: document.body.dataset.page }));
     });
@@ -353,6 +448,8 @@
     initStopDemo();
     initOtto();
     initCalc();
+    initVideo();
+    initClientsMarquee();
     initTarget();
     initFactory();
 })();

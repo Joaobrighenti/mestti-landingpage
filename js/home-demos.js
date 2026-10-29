@@ -374,16 +374,27 @@
         const bar = document.querySelector('[data-mobilebar]');
         const heroCta = document.querySelector('.hv-hero .hv-btn--primary');
         const final = document.querySelector('.hv-final');
-        let heroGone = false; let finalOn = false;
+        // No celular a barra some enquanto o CTA da própria dobra está na tela: nunca dois botões iguais disputando.
+        const foldCtas = [...document.querySelectorAll('.hv [data-cta]')].filter((el) => !el.closest('[data-mobilebar]') && el.classList.contains('hv-btn--primary'));
+        const visible = new Set();
+        let heroGone = false; let finalOn = false; let typing = false;
         const sync = () => {
-            if (bar) bar.classList.toggle('is-on', heroGone && !finalOn && !document.body.classList.contains('is-modal-open'));
+            if (bar) bar.classList.toggle('is-on', heroGone && !finalOn && visible.size === 0 && !typing && !document.body.classList.contains('is-modal-open'));
             const scrolled = window.scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight);
             document.body.classList.toggle('hv-fab-on', scrolled > 0.35);
         };
         if ('IntersectionObserver' in window) {
             if (heroCta) new IntersectionObserver(([en]) => { heroGone = !en.isIntersecting && en.boundingClientRect.top < 0; sync(); }).observe(heroCta);
             if (final) new IntersectionObserver(([en]) => { finalOn = en.isIntersecting; sync(); }).observe(final);
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((en) => { if (en.isIntersecting) visible.add(en.target); else visible.delete(en.target); });
+                sync();
+            });
+            foldCtas.forEach((el) => io.observe(el));
         }
+        // Teclado aberto (campo em foco): a barra sai para não cobrir o campo.
+        document.addEventListener('focusin', (e) => { if (e.target.matches('input, textarea, select')) { typing = true; sync(); } });
+        document.addEventListener('focusout', (e) => { if (e.target.matches('input, textarea, select')) { typing = false; sync(); } });
         addEventListener('scroll', sync, { passive: true });
         new MutationObserver(sync).observe(document.body, { attributes: true, attributeFilter: ['class'] });
         sync();
