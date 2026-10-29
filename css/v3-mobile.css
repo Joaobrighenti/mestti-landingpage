@@ -71,7 +71,7 @@
     html.hv-motion .hv-clients-logos { animation: hv-marquee 32s linear infinite; }
 
     /* 03 Vídeo: de ponta a ponta, para render o máximo da tela */
-    .hv-video .hv-wrap > .hv-video-frame { margin-inline: calc(-1 * max(20px, env(safe-area-inset-left, 0px))); border-radius: 0; box-shadow: none; }
+    .hv-video .hv-wrap > .hv-video-frame { margin-inline: 0; width: 100%; border-radius: 14px; }
     .hv-video-play { padding: 6px 16px 6px 6px; font-size: .98rem; }
     .hv-video-play-icon { width: 40px; height: 40px; }
     .hv-video-sound { left: 12px; bottom: 56px; min-height: 44px; }
