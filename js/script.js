@@ -909,6 +909,7 @@ document.querySelectorAll('.demo-form').forEach((form) => {
 });
 
 window.MesttiLead = { submitLeadForm, syncLeadProgress, getOrCreateLeadSessionId };
+window.openMesttiPopup = openMesttiPopup;
 
 // ============================================
 // Formulário de Contato e Modal
