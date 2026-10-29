@@ -1,4 +1,5 @@
 import express from "express";
+import { existsSync } from "node:fs";
 import os from "os";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -40,6 +41,30 @@ const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL || "";
 const app = express();
 app.set("trust proxy", 1);
 app.use(express.json({ limit: "3mb" }));
+
+// URLs de documentos usam o mesmo formato canônico do deploy estático.
+const legacyPages = new Map([
+  ["/contato.html", "/contato/"], ["/atuacao.html", "/atuacao/"],
+  ["/sensores/empresa", "/empresa/"], ["/sensores/empresa/", "/empresa/"],
+  ["/qualidade-2", "/checklists/"], ["/qualidade-2/", "/checklists/"],
+  ["/barra-pass", "/pass/"], ["/barra-pass/", "/pass/"],
+]);
+app.use((req, res, next) => {
+  if (!["GET", "HEAD"].includes(req.method)) return next();
+  const query = req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
+  const alias = legacyPages.get(req.path);
+  if (alias) return res.redirect(301, alias + query);
+  if (/^\/(?:[a-z0-9-]+\/)*index\.html$/.test(req.path)) {
+    const target = req.path.slice(0, -"index.html".length);
+    if (existsSync(path.join(__dirname, req.path))) return res.redirect(301, target + query);
+  }
+  if (/^\/(?:[a-z0-9-]+\/)*[a-z0-9-]+$/.test(req.path) &&
+      existsSync(path.join(__dirname, req.path, "index.html"))) {
+    return res.redirect(301, req.path + "/" + query);
+  }
+  if (req.path === "/index.md") res.set("X-Robots-Tag", "noindex");
+  next();
+});
 
 // Static assets
 app.use(express.static(__dirname, { extensions: ["html"] }));
