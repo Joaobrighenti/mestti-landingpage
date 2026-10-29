@@ -785,3 +785,23 @@ body.hv-page .hv-video-head h2 { margin: 0; font-size: clamp(2.4rem, 4.6vw, 4rem
     .hv-actions .hv-btn--ghost, .hv-fold-cta .hv-btn--ghost { width: auto; }
     .hv-final-inner .hv-hero-actions .hv-btn { width: 100%; }
 }
+
+/* Otto: caixa já preenchida com a próxima pergunta; o envio chama atenção */
+.hv-octo-composer { cursor: pointer; gap: 12px; padding: 6px 6px 6px 18px; box-shadow: inset 0 0 0 1.5px #041121; color: var(--ink); }
+.hv-octo-draft { flex: 1; min-width: 0; font: 500 .95rem/1.35 var(--f-text); color: #0f172a; }
+.hv-octo-draft::after { content: ""; display: inline-block; width: 2px; height: 1.1em; margin-left: 2px; vertical-align: -.2em; background: #041121; animation: hv-caret 1s steps(1) infinite; }
+.hv-octo-send { position: relative; flex: none; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: var(--signal); color: #041121; cursor: pointer; transition: transform 160ms var(--out); }
+.hv-octo-send::before { content: ""; position: absolute; inset: 0; border-radius: 50%; box-shadow: 0 0 0 0 rgba(255, 194, 14, .7); animation: hv-send-pulse 1.8s var(--out) infinite; }
+.hv-octo-send:hover { transform: scale(1.06); }
+.hv-octo-composer.is-busy .hv-octo-send { opacity: .5; }
+.hv-octo-composer.is-busy .hv-octo-send::before { animation: none; }
+.hv-octo-typing { display: inline-flex; gap: 4px; padding: 12px 0; }
+.hv-octo-typing i { width: 7px; height: 7px; border-radius: 50%; background: #9aa3b2; animation: hv-typing 1s ease-in-out infinite; }
+.hv-octo-typing i:nth-child(2) { animation-delay: .15s; }
+.hv-octo-typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes hv-caret { 50% { opacity: 0; } }
+@keyframes hv-send-pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 194, 14, .7); } 70%, 100% { box-shadow: 0 0 0 12px rgba(255, 194, 14, 0); } }
+@keyframes hv-typing { 0%, 60%, 100% { transform: none; opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+    .hv-octo-draft::after, .hv-octo-send::before { animation: none; }
+}

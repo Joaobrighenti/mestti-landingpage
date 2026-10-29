@@ -241,26 +241,36 @@
     function initOtto() {
         const demo = document.querySelector('[data-otto-demo]');
         if (!demo) return;
-        const tabs = [...demo.querySelectorAll('[role="tab"]')];
-        const select = (tab) => {
-            tabs.forEach((t) => {
-                const on = t === tab;
-                t.setAttribute('aria-selected', String(on));
-                t.tabIndex = on ? 0 : -1;
-                document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-            });
-        };
-        tabs.forEach((tab, i) => {
-            tab.addEventListener('click', () => { select(tab); track('v2_otto_question', { question: tab.dataset.ottoQ }); });
-            tab.addEventListener('keydown', (event) => {
-                const delta = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[event.key];
-                if (!delta) return;
-                event.preventDefault();
-                const next = tabs[(i + delta + tabs.length) % tabs.length];
-                next.focus();
-                select(next);
-            });
+        // A próxima pergunta já vem escrita na caixa; a pessoa só toca em enviar.
+        const turns = [...demo.querySelectorAll('[data-otto-turn]')];
+        const composer = demo.querySelector('[data-otto-composer]');
+        const draft = demo.querySelector('[data-otto-draft]');
+        let current = 0;
+        const nextIndex = () => (current + 1) % turns.length;
+        const syncDraft = () => { draft.textContent = turns[nextIndex()].querySelector('.hv-octo-user p').textContent; };
+        composer.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (composer.classList.contains('is-busy')) return;
+            current = nextIndex();
+            const turn = turns[current];
+            const reply = turn.querySelector('.hv-octo-reply');
+            turns.forEach((t) => { t.hidden = t !== turn; });
+            track('v2_otto_question', { question: current + 1 });
+            syncDraft();
+            if (reduceMotion) return;
+            // "Digitando…" antes da resposta, como no produto.
+            reply.hidden = true;
+            const typing = document.createElement('div');
+            typing.className = 'hv-octo-typing';
+            typing.setAttribute('aria-hidden', 'true');
+            typing.innerHTML = '<i></i><i></i><i></i>';
+            reply.before(typing);
+            composer.classList.add('is-busy');
+            setTimeout(() => { typing.remove(); reply.hidden = false; composer.classList.remove('is-busy'); }, 900);
         });
+        composer.addEventListener('click', (event) => { if (!event.target.closest('button')) composer.requestSubmit(); });
+        syncDraft();
+        onLang(syncDraft);
         const approved = new Set();
         demo.querySelectorAll('[data-otto-approve]').forEach((button) => {
             button.addEventListener('click', () => {
