@@ -165,3 +165,13 @@ body.hv-page .tp-related h2 { margin: 0 0 24px; font-size: clamp(1.6rem, 2.4vw, 
 .tp-articles { background: var(--surface); }
 body.hv-page .tp-articles h2 { margin: 0 0 24px; font-size: clamp(1.6rem, 2.4vw, 2rem); }
 .tp-articles .tp-related-card { background: var(--paper); }
+
+/* Topo sem "Resposta curta" (contato, termos) e grade de cartões com link (soluções, canais) */
+.tp-hero-grid--solo { grid-template-columns: minmax(0, 1fr); }
+body.hv-page .tp-hero-grid--solo h1 { max-width: 22ch; }
+.tp-cards { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.tp-section--paper .tp-related-card { background: var(--surface); }
+.tp-legal { padding-block: 0; }
+/* Imagens em pé (celular, sensor) não passam de uma altura confortável */
+.tp-how-shot img { max-height: 620px; width: auto; max-width: 100%; margin-inline: auto; display: block; object-fit: contain; }
+@media (max-width: 640px) { .tp-how-shot img { max-height: 460px; } }

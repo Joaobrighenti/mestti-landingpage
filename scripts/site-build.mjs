@@ -113,7 +113,7 @@ export function buildPage(rel, source, partials) {
     // 3. textos sem elemento que não são de meta (usados por scripts), ao fim
     for (const key of lateKeys) put(key, strings[key], 'comentário @page');
 
-    return { html: out, dict, dictFile: meta.dict, problems };
+    return { html: out, dict, dictFile: meta.dict, problems, localize: meta.localize !== false };
 }
 
 /** Troca cabeçalho e rodapé de uma página que não tem fonte em site/pages. */
@@ -192,7 +192,7 @@ export function buildAll() {
         problems.push(...page.problems);
         files.set(rel, page.html);
         files.set(page.dictFile, pageDictFile(page.dict));
-        built.push({ rel, url: '/' + rel.replace(/index\.html$/, ''), dict: page.dict });
+        if (page.localize) built.push({ rel, url: '/' + rel.replace(/index\.html$/, ''), dict: page.dict });
     }
     // Versões estáticas /en/ e /es/ das páginas de site/pages, com hreflang nas três.
     const chromeT = legacyTranslator(files.get('js/i18n.js') ?? i18n);
