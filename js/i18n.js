@@ -1174,6 +1174,7 @@
             btn.setAttribute('aria-checked', String(on));
         });
         document.querySelectorAll('.lang-current-code').forEach((el) => { el.textContent = lang.toUpperCase(); });
+        document.querySelectorAll('.lang-current-flag').forEach((el) => { el.textContent = LANG_FLAGS[lang]; });
 
         applyMeta(lang);
         document.dispatchEvent(new CustomEvent('mestti:lang', { detail: lang }));
@@ -1181,17 +1182,17 @@
         window.MesttiLpCarousels?.refresh?.();
     }
 
-    // Seletor de idioma no padrão mais comum: globo + idioma atual; o clique abre a lista com os nomes por extenso.
+    // Seletor de idioma no padrão mais comum: bandeira + idioma atual; o clique abre a lista com os nomes por extenso.
     const LANG_NAMES = { pt: 'Português', en: 'English', es: 'Español' };
-    const GLOBE = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>';
+    const LANG_FLAGS = { pt: '🇧🇷', en: '🇺🇸', es: '🇪🇸' };
     const CHEVRON = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
     const CHECK = '<svg class="lang-check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>';
     function langSwitcherMarkup(idSuffix) {
         const id = idSuffix ? `langSwitcher${idSuffix}` : 'langSwitcher';
-        const items = SUPPORTED.map((code) => `<li><button type="button" class="lang-switcher-btn" role="menuitemradio" aria-checked="false" data-lang="${code}" lang="${code === 'pt' ? 'pt-BR' : code}">${LANG_NAMES[code]}${CHECK}</button></li>`).join('');
+        const items = SUPPORTED.map((code) => `<li><button type="button" class="lang-switcher-btn" role="menuitemradio" aria-checked="false" data-lang="${code}" lang="${code === 'pt' ? 'pt-BR' : code}"><span class="lang-flag" aria-hidden="true">${LANG_FLAGS[code]}</span><span class="lang-name">${LANG_NAMES[code]}</span>${CHECK}</button></li>`).join('');
         return `
 <div class="lang-switcher${idSuffix ? ' lang-switcher--mobile' : ''}" id="${id}">
-  <button type="button" class="lang-current" aria-haspopup="true" aria-expanded="false" aria-controls="${id}Menu" data-i18n-aria="a11y.lang">${GLOBE}<span class="lang-current-code">PT</span>${CHEVRON}</button>
+  <button type="button" class="lang-current" aria-haspopup="true" aria-expanded="false" aria-controls="${id}Menu" data-i18n-aria="a11y.lang"><span class="lang-flag lang-current-flag" aria-hidden="true">🇧🇷</span><span class="lang-current-code">PT</span>${CHEVRON}</button>
   <ul class="lang-menu" id="${id}Menu" role="menu" hidden>${items}</ul>
 </div>`;
     }

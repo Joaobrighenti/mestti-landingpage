@@ -76,7 +76,7 @@
     const GX = {
         pt: {
             backlog: 'Carteira de ordens', backlogSub: 'Ordens liberadas, aguardando programação', pending: 'A programar', scheduled: 'Programadas',
-            machine: 'Máquina', program: 'Programar', due: 'Entrega', pcs: 'pç', now: 'Agora', today: 'Hoje', tomorrow: 'Amanhã',
+            machine: 'Máquina', program: 'Programar', tapProgram: 'Toque para programar', due: 'Entrega', pcs: 'pç', now: 'Agora', today: 'Hoje', tomorrow: 'Amanhã',
             ok: 'no prazo', late: 'de atraso', done: 'Programada na', allDone: 'Todas as ordens foram programadas.', reset: 'Recomeçar a demonstração',
             toastOk: (o, m, end, due) => `OP ${o} entrou na fila da ${m}. Termina ${end} e a entrega é ${due}: no prazo.`,
             toastLate: (o, m, end, due, late) => `OP ${o} entrou na fila da ${m}. Termina ${end}, mas a entrega é ${due}: ${late} de atraso. No sistema, você antecipa a ordem ou troca de máquina antes de virar problema.`,
@@ -84,7 +84,7 @@
         },
         en: {
             backlog: 'Order backlog', backlogSub: 'Released orders waiting to be scheduled', pending: 'To schedule', scheduled: 'Scheduled',
-            machine: 'Machine', program: 'Schedule', due: 'Due', pcs: 'pcs', now: 'Now', today: 'Today', tomorrow: 'Tomorrow',
+            machine: 'Machine', program: 'Schedule', tapProgram: 'Tap to schedule', due: 'Due', pcs: 'pcs', now: 'Now', today: 'Today', tomorrow: 'Tomorrow',
             ok: 'on time', late: 'late', done: 'Scheduled on', allDone: 'All orders have been scheduled.', reset: 'Restart the demo',
             toastOk: (o, m, end, due) => `Order ${o} joined the ${m} queue. It finishes ${end} and is due ${due}: on time.`,
             toastLate: (o, m, end, due, late) => `Order ${o} joined the ${m} queue. It finishes ${end}, but it is due ${due}: ${late} late. In the system, you move the order up or switch machines before it becomes a problem.`,
@@ -92,7 +92,7 @@
         },
         es: {
             backlog: 'Cartera de órdenes', backlogSub: 'Órdenes liberadas, esperando programación', pending: 'Por programar', scheduled: 'Programadas',
-            machine: 'Máquina', program: 'Programar', due: 'Entrega', pcs: 'pz', now: 'Ahora', today: 'Hoy', tomorrow: 'Mañana',
+            machine: 'Máquina', program: 'Programar', tapProgram: 'Toque para programar', due: 'Entrega', pcs: 'pz', now: 'Ahora', today: 'Hoy', tomorrow: 'Mañana',
             ok: 'a tiempo', late: 'de atraso', done: 'Programada en', allDone: 'Todas las órdenes fueron programadas.', reset: 'Reiniciar la demostración',
             toastOk: (o, m, end, due) => `La OP ${o} entró en la cola de la ${m}. Termina ${end} y la entrega es ${due}: a tiempo.`,
             toastLate: (o, m, end, due, late) => `La OP ${o} entró en la cola de la ${m}. Termina ${end}, pero la entrega es ${due}: ${late} de atraso. En el sistema, usted adelanta la orden o cambia de máquina antes de que sea un problema.`,
@@ -161,7 +161,7 @@
         const span = (hours) => { const m = Math.round(hours * 60); return m < 60 ? `${m} min` : `${Math.floor(m / 60)}h${m % 60 ? pad(m % 60) : ''}`; };
         let state = null;
         const reset = () => {
-            state = { machines: MACHINES.map((m) => ({ ...m, tasks: m.tasks.map((x) => [...x]) })), backlog: BACKLOG.map((b) => ({ ...b, placed: null })), toast: null, fresh: null };
+            state = { machines: MACHINES.map((m) => ({ ...m, tasks: m.tasks.map((x) => [...x]) })), backlog: BACKLOG.map((b) => ({ ...b, placed: null })), toast: null, fresh: null, touched: false };
         };
         reset();
 
@@ -200,8 +200,10 @@
                 return `<li class="gx-order is-done"><div class="gx-order-top"><strong>OP ${b.op}</strong><span>${num(b.qty)} ${t('pcs')}</span></div><p>${esc(prod)}</p>
                     <p class="gx-result ${late ? 'gx-late' : 'gx-ok'}">${t('done')} ${b.placed.machine} · ${late ? `${span(b.placed.end - b.due)} ${t('late')}` : t('ok')}</p></li>`;
             }
-            return `<li class="gx-order"><div class="gx-order-top"><strong>OP ${b.op}</strong><span>${num(b.qty)} ${t('pcs')} · ${loc(PROC[b.type])}</span></div><p>${esc(prod)}</p>
-                <div class="gx-order-due"><span>${t('due')} ${when(b.due)}</span><button type="button" class="gx-program" data-gx-program="${b.op}">${t('program')}</button></div></li>`;
+            const next = !state.touched && state.backlog.find((x) => !x.placed) === b;
+            const hint = next ? `<span class="hv-tap-hint gx-tap-hint" aria-hidden="true">${t('tapProgram')}</span>` : '';
+            return `<li class="gx-order${next ? ' is-next' : ''}"><div class="gx-order-top"><strong>OP ${b.op}</strong><span>${num(b.qty)} ${t('pcs')} · ${loc(PROC[b.type])}</span></div><p>${esc(prod)}</p>
+                <div class="gx-order-due"><span>${t('due')} ${when(b.due)}</span><span class="gx-program-wrap">${hint}<button type="button" class="gx-program" data-gx-program="${b.op}">${t('program')}</button></span></div></li>`;
         }
 
         function block(m, mi, task, ti) {
@@ -230,6 +232,7 @@
             const late = best.end > b.due;
             best.m.tasks.push([b.op, b.product, best.start, best.end, late]);
             b.placed = { machine: best.m.code, end: best.end };
+            state.touched = true;
             state.fresh = b.op;
             state.toast = late
                 ? t('toastLate')(b.op, best.m.code, when(best.end), when(b.due), span(best.end - b.due))

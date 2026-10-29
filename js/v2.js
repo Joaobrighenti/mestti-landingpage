@@ -398,7 +398,7 @@
     function initFactory() {
         const host = document.querySelector('[data-factory]');
         if (!host) return;
-        whenVisible(host, () => import('/js/fabrica-sim.js?v=2').catch((error) => console.error(error)), '500px 0px');
+        whenVisible(host, () => import('/js/fabrica-sim.js?v=3').catch((error) => console.error(error)), '500px 0px');
     }
 
     // Vídeo: começa sem som quando a pessoa chega nele, pausa quando sai e liga o som num toque.

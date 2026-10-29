@@ -1,4 +1,4 @@
-/* Seletor de idioma: botão com globo + idioma atual; o clique abre a lista com os nomes por extenso. */
+/* Seletor de idioma: botão com bandeira + idioma atual; o clique abre a lista com os nomes por extenso. */
 .lang-switcher { position: relative; display: inline-flex; color: inherit; }
 .lang-current {
     display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 10px; border: 0; border-radius: 8px;
@@ -19,6 +19,9 @@
     font: 500 0.9rem/1 'IBM Plex Sans', system-ui, sans-serif;
 }
 .lang-switcher-btn:hover, .lang-switcher-btn:focus-visible { background: #f1f4f7; outline: none; }
+.lang-flag { font-size: 1.15rem; line-height: 1; font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif; }
+.lang-switcher-btn { justify-content: flex-start; }
+.lang-name { flex: 1; }
 .lang-check { visibility: hidden; color: #1f8a4c; }
 .lang-switcher-btn.is-active { font-weight: 600; }
 .lang-switcher-btn.is-active .lang-check { visibility: visible; }

@@ -26,7 +26,7 @@ const TX = {
         since: 'há', reason: 'Motivo', doing: 'Em apontamento', todo: 'A fazer', planned: 'Previsto', sector: 'Setor',
         stock: 'Estoque', balance: 'Saldo', critical: 'Estoque crítico', ok: 'Normal', capacity: 'da capacidade',
         hint: 'Clique numa máquina ou num pino para ver o detalhe.', hintDrag: 'Arraste para girar · Ctrl + rolagem para aproximar',
-        hintTouch: 'Toque numa máquina para ver o detalhe.', demo: 'Dados de demonstração', loading: 'Montando a fábrica…',
+        hintTouch: 'Toque numa máquina para ver o detalhe.', tapPin: 'Clique para ver o motivo', tapPinTouch: 'Toque para ver o motivo', demo: 'Dados de demonstração', loading: 'Montando a fábrica…',
         error: 'Não foi possível carregar a maquete 3D. A lista ao lado mostra as mesmas máquinas.', oeeLegend: 'OEE',
         b_high: '80% ou mais', b_mid: '60 a 79%', b_low: 'abaixo de 60%', b_none: 'sem dado', tomorrow: 'amanhã', attention: 'Precisa de atenção',
         current: 'Em apontamento', nth: 'ª na fila', applied: 'apontado', load: 'de carga programada', ends: 'termina', todayH: 'Hoje', tomorrowH: 'Amanhã'
@@ -42,7 +42,7 @@ const TX = {
         since: 'for', reason: 'Reason', doing: 'In progress', todo: 'To do', planned: 'Planned', sector: 'Area',
         stock: 'Stock', balance: 'Balance', critical: 'Critical stock', ok: 'Normal', capacity: 'of capacity',
         hint: 'Click a machine or a pin to see the details.', hintDrag: 'Drag to rotate · Ctrl + scroll to zoom',
-        hintTouch: 'Tap a machine to see the details.', demo: 'Demo data', loading: 'Building the factory…',
+        hintTouch: 'Tap a machine to see the details.', tapPin: 'Click to see why', tapPinTouch: 'Tap to see why', demo: 'Demo data', loading: 'Building the factory…',
         error: 'The 3D model could not be loaded. The list shows the same machines.', oeeLegend: 'OEE',
         b_high: '80% or more', b_mid: '60 to 79%', b_low: 'below 60%', b_none: 'no data', tomorrow: 'tomorrow', attention: 'Needs attention',
         current: 'In progress', nth: ' in queue', applied: 'reported', load: 'of scheduled load', ends: 'ends', todayH: 'Today', tomorrowH: 'Tomorrow'
@@ -58,7 +58,7 @@ const TX = {
         since: 'hace', reason: 'Motivo', doing: 'En registro', todo: 'Pendiente', planned: 'Previsto', sector: 'Sector',
         stock: 'Inventario', balance: 'Saldo', critical: 'Inventario crítico', ok: 'Normal', capacity: 'de la capacidad',
         hint: 'Haga clic en una máquina o un pin para ver el detalle.', hintDrag: 'Arrastre para girar · Ctrl + rueda para acercar',
-        hintTouch: 'Toque una máquina para ver el detalle.', demo: 'Datos de demostración', loading: 'Montando la fábrica…',
+        hintTouch: 'Toque una máquina para ver el detalle.', tapPin: 'Haga clic para ver el motivo', tapPinTouch: 'Toque para ver el motivo', demo: 'Datos de demostración', loading: 'Montando la fábrica…',
         error: 'No se pudo cargar la maqueta 3D. La lista muestra las mismas máquinas.', oeeLegend: 'OEE',
         b_high: '80% o más', b_mid: '60 a 79%', b_low: 'menos de 60%', b_none: 'sin dato', tomorrow: 'mañana', attention: 'Requiere atención',
         current: 'En registro', nth: 'º en la cola', applied: 'registrado', load: 'de carga programada', ends: 'termina', todayH: 'Hoy', tomorrowH: 'Mañana'
@@ -74,6 +74,7 @@ const STATES = {
     maintenance: { glyph: 'M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z M12 2v3 M12 19v3 M2 12h3 M19 12h3 M4.9 4.9l2.1 2.1 M17 17l2.1 2.1 M4.9 19.1L7 17 M17 7l2.1-2.1', emphasis: 'notice', label: { pt: 'Manutenção', en: 'Maintenance', es: 'Mantenimiento' }, light: '#6D28D9', dark: '#A78BFA', lamp: 0x8b5cf6 }
 };
 const STOCK_GLYPH = 'M4 7l8-4 8 4-8 4-8-4z M4 7v10l8 4 8-4V7 M12 11v10';
+const FIRST_STOP = 'cnc02';
 const ORDER = ['stopped', 'maintenance', 'warning', 'setup', 'running'];
 
 const SECTORS = [
@@ -168,7 +169,7 @@ const glyph = (path, size = 14) => `<svg width="${size}" height="${size}" viewBo
 const sectorOf = (item) => SECTORS.find((s) => s.id === item.sector);
 
 /* ---------------------------------------------------------------- estado da vista */
-const view = { selected: null, tab: 'summary', layer: 'state', filters: new Set(), nowOpen: true };
+const view = { touched: false, selected: null, tab: 'summary', layer: 'state', filters: new Set(), nowOpen: true };
 
 if (root) init();
 
@@ -440,6 +441,7 @@ function bindHud() {
 
 function select(id) {
     view.selected = id;
+    if (id && !view.touched) { view.touched = true; root.__fx?.refreshLabels(); }
     view.tab = 'summary';
     renderHud();
     root.__fx?.focus(id);
@@ -775,7 +777,8 @@ function buildScene(canvas, labelsHost) {
         const sub = loud ? `<span class="fpin__sub fpin__sub--state">${st.label[lang()]} · ${elapsed(item.minutes)}</span>` : '';
         const lead = loud ? glyph(st.glyph) : '<span class="fpin__dotmark fpin__dotmark--sm"></span>';
         const aria = `${item.code}, ${st.label[lang()]}${loud ? `, ${elapsed(item.minutes)}` : ''}, OEE ${item.oee}%`;
-        return `<button type="button" class="fpin fpin--${tone} st-${item.state}${st.pulse && !oeeLayer ? ' fpin--pulse' : ''}${view.selected === item.id ? ' fpin--selected' : ''}" data-fx-pin="${item.id}" aria-label="${aria}">
+        const tap = !view.touched && !oeeLayer && item.id === FIRST_STOP ? `<span class="hv-tap-hint fx-tap-hint" aria-hidden="true">${t(coarse ? 'tapPinTouch' : 'tapPin')}</span>` : '';
+        return `${tap}<button type="button" class="fpin fpin--${tone} st-${item.state}${st.pulse && !oeeLayer ? ' fpin--pulse' : ''}${view.selected === item.id ? ' fpin--selected' : ''}" data-fx-pin="${item.id}" aria-label="${aria}">
             <span class="fpin__row">${lead}<span class="fpin__code">${item.code}</span>${value}</span>${sub}</button><span class="fpin__leader${loud ? ` st-${item.state}` : ''}"></span>`;
     }
 
