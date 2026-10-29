@@ -1004,7 +1004,16 @@
             "footer.v2.blog": "Blog",
             "footer.v2.solutions": "Soluções por problema",
             "footer.v2.phone": "(43) 99109-5035",
-            "footer.v2.oee": "O que é OEE"
+            "footer.v2.oee": "O que é OEE",
+            "footer.v2.guides": "Guias",
+            "footer.v2.gMes": "Sistema MES",
+            "footer.v2.gPcp": "PCP e PPCP",
+            "footer.v2.gSeq": "Sequenciamento da produção",
+            "footer.v2.gApt": "Apontamento de produção",
+            "footer.v2.gMon": "Monitoramento de máquinas",
+            "footer.v2.gOld": "Máquinas antigas sem CLP",
+            "footer.v2.gI40": "Indústria 4.0",
+            "footer.v2.gIa": "IA na indústria"
         },
         "en": {
             "nav.v2.production": "Production",
@@ -1035,7 +1044,16 @@
             "footer.v2.blog": "Blog",
             "footer.v2.solutions": "Solutions by problem",
             "footer.v2.phone": "(43) 99109-5035",
-            "footer.v2.oee": "What is OEE"
+            "footer.v2.oee": "What is OEE",
+            "footer.v2.guides": "Guides",
+            "footer.v2.gMes": "MES system",
+            "footer.v2.gPcp": "Production planning",
+            "footer.v2.gSeq": "Production scheduling",
+            "footer.v2.gApt": "Production reporting",
+            "footer.v2.gMon": "Machine monitoring",
+            "footer.v2.gOld": "Old machines without a PLC",
+            "footer.v2.gI40": "Industry 4.0",
+            "footer.v2.gIa": "AI in manufacturing"
         },
         "es": {
             "nav.v2.production": "Producción",
@@ -1066,7 +1084,16 @@
             "footer.v2.blog": "Blog",
             "footer.v2.solutions": "Soluciones por problema",
             "footer.v2.phone": "(43) 99109-5035",
-            "footer.v2.oee": "Qué es el OEE"
+            "footer.v2.oee": "Qué es el OEE",
+            "footer.v2.guides": "Guías",
+            "footer.v2.gMes": "Sistema MES",
+            "footer.v2.gPcp": "PCP y PPCP",
+            "footer.v2.gSeq": "Secuenciación de la producción",
+            "footer.v2.gApt": "Registro de producción",
+            "footer.v2.gMon": "Monitoreo de máquinas",
+            "footer.v2.gOld": "Máquinas antiguas sin PLC",
+            "footer.v2.gI40": "Industria 4.0",
+            "footer.v2.gIa": "IA en la industria"
         }
     });
     /* fim v2 */

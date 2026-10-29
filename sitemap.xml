@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://mestti.com.br/</loc><lastmod>2026-10-29</lastmod></url>
-  <url><loc>https://mestti.com.br/atuacao/</loc><lastmod>2026-10-22</lastmod></url>
+  <url><loc>https://mestti.com.br/apontamento-de-producao/</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://mestti.com.br/blog/</loc><lastmod>2026-10-22</lastmod></url>
   <url><loc>https://mestti.com.br/blog/como-calcular-preco-venda-industria-rkw-custo-processo/</loc><lastmod>2026-10-22</lastmod></url>
   <url><loc>https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/</loc><lastmod>2026-10-22</lastmod></url>
-  <url><loc>https://mestti.com.br/blog/o-que-e-sistema-mes-mestti/</loc><lastmod>2026-10-22</lastmod></url>
   <url><loc>https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/</loc><lastmod>2026-10-22</lastmod></url>
   <url><loc>https://mestti.com.br/casos/industria-moveleira/</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://mestti.com.br/checklists/</loc><lastmod>2026-10-21</lastmod></url>
@@ -14,15 +13,20 @@
   <url><loc>https://mestti.com.br/empresa/</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://mestti.com.br/engenharia/</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://mestti.com.br/glossario/</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mestti.com.br/ia-na-industria/</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mestti.com.br/industria-4-0/</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mestti.com.br/maquinas-antigas/</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://mestti.com.br/mes-ou-erp/</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mestti.com.br/mes/</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mestti.com.br/monitoramento-de-maquinas/</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://mestti.com.br/oee/</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://mestti.com.br/otto/</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://mestti.com.br/pcp/</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://mestti.com.br/producao/</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://mestti.com.br/qualidade/</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://mestti.com.br/seguranca/</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://mestti.com.br/sensores/</loc><lastmod>2026-10-22</lastmod></url>
-  <url><loc>https://mestti.com.br/sensoriamento/</loc><lastmod>2026-10-22</lastmod></url>
-  <url><loc>https://mestti.com.br/sequenciamento/</loc><lastmod>2026-10-22</lastmod></url>
+  <url><loc>https://mestti.com.br/sequenciamento/</loc><lastmod>2026-10-29</lastmod></url>
   <url><loc>https://mestti.com.br/solucoes/</loc><lastmod>2026-10-22</lastmod></url>
   <url><loc>https://mestti.com.br/termos/</loc><lastmod>2026-10-22</lastmod></url>
 </urlset>

@@ -44,7 +44,10 @@ app.use(express.json({ limit: "3mb" }));
 
 // URLs de documentos usam o mesmo formato canônico do deploy estático.
 const legacyPages = new Map([
-  ["/contato.html", "/contato/"], ["/atuacao.html", "/atuacao/"],
+  ["/contato.html", "/contato/"], ["/atuacao.html", "/sensores/"],
+  ["/atuacao", "/sensores/"], ["/atuacao/", "/sensores/"], ["/sensoriamento", "/monitoramento-de-maquinas/"], ["/sensoriamento/", "/monitoramento-de-maquinas/"],
+  ["/blog/o-que-e-sistema-mes-mestti", "/mes/"], ["/blog/o-que-e-sistema-mes-mestti/", "/mes/"], ["/ppcp", "/pcp/"], ["/ppcp/", "/pcp/"],
+  ["/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica", "/oee/"], ["/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/", "/oee/"],
   ["/sensores/empresa", "/empresa/"], ["/sensores/empresa/", "/empresa/"],
   ["/qualidade-2", "/checklists/"], ["/qualidade-2/", "/checklists/"],
   ["/barra-pass", "/pass/"], ["/barra-pass/", "/pass/"],
@@ -77,8 +80,6 @@ function sendPage(res, relPath) {
 app.get("/", (_req, res) => sendPage(res, "index.html"));
 app.get("/contato/", (_req, res) => sendPage(res, path.join("contato", "index.html")));
 app.get("/empresa/", (_req, res) => sendPage(res, path.join("empresa", "index.html")));
-app.get("/atuacao/", (_req, res) => sendPage(res, path.join("atuacao", "index.html")));
-app.get("/sensoriamento/", (_req, res) => sendPage(res, path.join("sensoriamento", "index.html")));
 app.get("/qualidade/", (_req, res) => sendPage(res, path.join("qualidade", "index.html")));
 app.get("/checklists/", (_req, res) => sendPage(res, path.join("checklists", "index.html")));
 app.get(["/qualidade-2", "/qualidade-2/"], (_req, res) => res.redirect(301, "/checklists/"));
@@ -86,9 +87,6 @@ app.get("/producao/", (_req, res) => sendPage(res, path.join("producao", "index.
 app.get("/sensores/", (_req, res) => sendPage(res, path.join("sensores", "index.html")));
 app.get("/sequenciamento/", (_req, res) => sendPage(res, path.join("sequenciamento", "index.html")));
 app.get("/blog/", (_req, res) => sendPage(res, path.join("blog", "index.html")));
-app.get("/blog/o-que-e-sistema-mes-mestti/", (_req, res) =>
-  sendPage(res, path.join("blog", "o-que-e-sistema-mes-mestti", "index.html"))
-);
 app.get("/blog/como-calcular-preco-venda-industria-rkw-custo-processo/", (_req, res) =>
   sendPage(res, path.join("blog", "como-calcular-preco-venda-industria-rkw-custo-processo", "index.html"))
 );

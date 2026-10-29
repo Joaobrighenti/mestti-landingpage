@@ -12,8 +12,8 @@ Principais entradas:
 - `/solucoes/`: caminhos por problema da operação.
 - `/engenharia/`: estrutura de produto, componentes e processos ligados às ordens.
 - `/otto/`: assistente de IA, consultas e propostas com aprovação humana.
-- `/producao/`, `/sensoriamento/`, `/sequenciamento/`, `/qualidade/`: escopo das soluções industriais.
-- `/sensores/`: especificações; `/atuacao/`: catálogo interativo.
+- `/producao/`, `/qualidade/`, `/engenharia/`, `/otto/`: produto. Guias por tema: `/mes/`, `/oee/`, `/pcp/`, `/sequenciamento/`, `/apontamento-de-producao/`, `/monitoramento-de-maquinas/`, `/maquinas-antigas/`, `/industria-4-0/`, `/ia-na-industria/`.
+- `/sensores/`: especificações (o antigo catálogo `/atuacao/` e `/sensoriamento/` redirecionam).
 - `/checklists/`: rotinas de verificação para diferentes segmentos.
 - `/blog/`: conteúdo sobre MES, OEE, coleta, custos e avaliação de sistemas.
 - `/empresa/`, `/contato/`, `/termos/`: informações institucionais e canais oficiais.
@@ -40,7 +40,7 @@ npm test
 npm run build
 ```
 
-- `content:sync`: depois de editar os dicionários `js/i18n-{oee,rkw,sensoriamento}-content.js`, sincroniza o português no HTML dos três artigos. O conteúdo continua legível sem JavaScript; a tradução existente permanece.
+- `content:sync`: depois de editar os dicionários `js/i18n-{rkw,sensoriamento}-content.js`, sincroniza o português no HTML dos dois artigos. O conteúdo continua legível sem JavaScript; a tradução existente permanece.
 - `check:site`: verifica sincronização, metadados, JSON-LD, sitemap, links, fragmentos, recursos, redirects e páginas órfãs.
 - `test`: executa os testes existentes da integração de eventos.
 - `build`: verifica a sincronização, gera `public/` e valida a saída estática. Não publica o site.

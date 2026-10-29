@@ -139,3 +139,21 @@ body.hv-page .tp-related h2 { margin: 0 0 24px; font-size: clamp(1.6rem, 2.4vw, 
     .tp-calc-out { padding: 22px; }
     .tp-related-list { grid-template-columns: minmax(0, 1fr); gap: 10px; }
 }
+
+/* Variações usadas pelas demais páginas de tema */
+.tp-factors--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+.tp-factors--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.tp-checks li::before { content: "✓"; width: auto; height: auto; margin-top: 2px; border-radius: 0; background: none; color: var(--run); font-weight: 700; }
+.tp-checks p { font: 500 1.1rem/1.45 var(--f-text); }
+.tp-checks strong { color: var(--ink); }
+.tp-text { display: grid; gap: 18px; max-width: 68ch; }
+.tp-text p { margin: 0; font-size: 1.12rem; line-height: 1.65; color: var(--ink-2); }
+.tp-text strong { color: var(--ink); }
+.tp-compare-more { margin: 24px 0 0; }
+.tp-how-solo .tp-how-copy { max-width: 760px; }
+@media (max-width: 1024px) { .tp-factors--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+    .tp-factors--4, .tp-factors--2 { grid-template-columns: minmax(0, 1fr); }
+    .tp-text p { font-size: 1.05rem; }
+    .tp-checks p { font-size: 1.02rem; }
+}
