@@ -17,6 +17,9 @@ import {
     startTags, closingIndex, blockAt, modalBlock, pagePath, headerFor, pageDictFile, chromeBlock, unescapeAttr
 } from './site-lib.mjs';
 import { buildBlog } from './blog-build.mjs';
+import { legacyTranslator, localizePage, textMap, hreflangLinks, langLinks, localUrl, LOCALES, ORIGIN as I18N_ORIGIN } from './site-i18n.mjs';
+
+const LANGS_MARK = '<!-- @langs -->';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = path.join(ROOT, 'site');
@@ -143,24 +146,6 @@ export function buildAll() {
     };
     const files = new Map();
     const problems = [];
-    const sources = listFiles(path.join(SITE, 'pages'), (n) => n.endsWith('.html'));
-    for (const rel of sources) {
-        const page = buildPage(rel, fs.readFileSync(path.join(SITE, 'pages', rel), 'utf8'), partials);
-        problems.push(...page.problems);
-        files.set(rel, page.html);
-        files.set(page.dictFile, pageDictFile(page.dict));
-    }
-    // Blog em Markdown (content/blog): artigos, índice e feed. As datas vêm dos próprios artigos.
-    const blog = buildBlog(ROOT, (url) => ({ header: headerFor(partials.header, url), footer: partials.footer, modal: partials.modal }));
-    for (const [rel, content] of blog.files) files.set(rel, content);
-    for (const rel of listFiles(ROOT, (n) => n.endsWith('.html'))) {
-        if (files.has(rel)) continue;
-        const html = read(rel);
-        const synced = syncLegacy(rel, html, partials);
-        if (synced !== html) files.set(rel, synced);
-    }
-    const sitemap = buildSitemap(files, problems, blog.dates);
-    if (sitemap) files.set('sitemap.xml', sitemap);
     const i18n = read('js/i18n.js');
     const a = i18n.indexOf(CHROME_START);
     const b = i18n.indexOf(CHROME_END);
@@ -169,6 +154,54 @@ export function buildAll() {
         const chrome = JSON.parse(fs.readFileSync(path.join(SITE, 'i18n/chrome.json'), 'utf8'));
         files.set('js/i18n.js', i18n.slice(0, a) + chromeBlock(chrome) + i18n.slice(b + CHROME_END.length));
     }
+    const sources = listFiles(path.join(SITE, 'pages'), (n) => n.endsWith('.html'));
+    const built = [];
+    for (const rel of sources) {
+        const page = buildPage(rel, fs.readFileSync(path.join(SITE, 'pages', rel), 'utf8'), partials);
+        problems.push(...page.problems);
+        files.set(rel, page.html);
+        files.set(page.dictFile, pageDictFile(page.dict));
+        built.push({ rel, url: '/' + rel.replace(/index\.html$/, ''), dict: page.dict });
+    }
+    // Versões estáticas /en/ e /es/ das páginas de site/pages, com hreflang nas três.
+    const chromeT = legacyTranslator(files.get('js/i18n.js') ?? i18n);
+    const localized = new Set(built.map((p) => p.url));
+    const lastmod = JSON.parse(fs.readFileSync(path.join(SITE, 'lastmod.json'), 'utf8')).pages;
+    const localDates = {};
+    for (const { rel, url, dict } of built) {
+        const pt = files.get(rel);
+        const canonical = `<link rel="canonical" href="${I18N_ORIGIN}${url}">\n`;
+        if (!pt.includes(canonical)) { problems.push(`${rel}: canonical não encontrado para o hreflang`); continue; }
+        files.set(rel, pt.replace(canonical, canonical + hreflangLinks(url)));
+        const titleKey = Object.keys(dict.pt).find((k) => /^meta\.[^.]+\.title$/.test(k));
+        const descKey = Object.keys(dict.pt).find((k) => /^meta\.[^.]+\.description$/.test(k));
+        for (const lang of LOCALES) {
+            const t = (key) => dict[lang]?.[key] ?? chromeT(lang, key);
+            const html = localizePage(files.get(rel), { url, lang, t, ptText: textMap(dict, lang, chromeT), localized, meta: { title: titleKey && dict[lang][titleKey], description: descKey && dict[lang][descKey] } });
+            files.set(`${lang}/${rel}`, html);
+            if (lastmod[url]) localDates[localUrl(url, lang)] = lastmod[url];
+        }
+    }
+    // Blog em Markdown (content/blog): artigos, índice e feed. As datas vêm dos próprios artigos.
+    const blog = buildBlog(ROOT, (url) => ({ header: headerFor(partials.header, url), footer: partials.footer, modal: partials.modal }));
+    for (const [rel, content] of blog.files) files.set(rel, content);
+    for (const rel of listFiles(ROOT, (n) => n.endsWith('.html'))) {
+        if (files.has(rel)) continue;
+        if (/^(en|es)\//.test(rel)) continue;
+        const html = read(rel);
+        const synced = syncLegacy(rel, html, partials);
+        if (synced !== html) files.set(rel, synced);
+    }
+    // Links de idioma no rodapé de todas as páginas.
+    for (const [rel, html] of files) {
+        if (!rel.endsWith('.html') || !html.includes(LANGS_MARK)) continue;
+        const m = rel.match(/^(en|es)\/(.*)$/);
+        const lang = m ? m[1] : 'pt';
+        const url = '/' + (m ? m[2] : rel).replace(/index\.html$/, '');
+        files.set(rel, html.replace(LANGS_MARK, langLinks(url, lang, localized)));
+    }
+    const sitemap = buildSitemap(files, problems, { ...blog.dates, ...localDates });
+    if (sitemap) files.set('sitemap.xml', sitemap);
     return { files, problems };
 }
 

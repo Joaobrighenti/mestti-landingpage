@@ -33,7 +33,9 @@ for (const [url, page] of pages) {
   if (canonical.length !== 1 || canonical[0].href !== origin + url) fail(url, 'canonical inconsistente');
   if (!tags(html, 'meta').some(a => a.name === 'description' && a.content?.length > 40)) fail(url, 'descrição ausente');
   if (tags(html, 'main').length !== 1 || tags(html, 'h1').length !== 1) fail(url, 'verificar main/h1');
-  if (!/^<!doctype html>/i.test(html.trim()) || !tags(html, 'html').some(a => a.lang === 'pt-BR')) fail(url, 'documento/idioma ausente');
+  const lang = url.startsWith('/en/') ? 'en' : url.startsWith('/es/') ? 'es' : 'pt-BR';
+  if (!/^<!doctype html>/i.test(html.trim()) || !tags(html, 'html').some(a => a.lang === lang)) fail(url, `documento/idioma ausente (esperado ${lang})`);
+  page.alternates = tags(html, 'link').filter(a => a.rel === 'alternate' && a.hreflang).map(a => [a.hreflang, a.href]);
   if (/[ÃÂ][\u0080-\u00bf]|inspeÃ|produÃ|\uFFFD/.test(html)) fail(url, 'possível corrupção de caracteres');
   if (/data-i18n-html\s*>\s*<\/div>/.test(html)) fail(url, 'conteúdo depende de JS');
   const ids = tags(html, '[a-z][a-z0-9-]*').map(a => a.id).filter(Boolean);
@@ -92,6 +94,14 @@ for (const [url, { html }] of pages) {
       if (!fs.existsSync(resource) || fs.statSync(resource).isDirectory()) fail(url, `destino inexistente: ${ref}`);
     }
   }
+}
+// hreflang: cada versão aponta para as três, todas existentes, e a própria versão está na lista.
+for (const [url, page] of pages) {
+  if (!page.alternates.length) continue;
+  const hrefs = page.alternates.map(([, h]) => h);
+  if (!hrefs.includes(origin + url)) fail(url, 'hreflang sem a própria página');
+  for (const [, h] of page.alternates) if (!h.startsWith(origin) || !pages.has(h.replace(origin, ''))) fail(url, `hreflang para página inexistente: ${h}`);
+  for (const [, h] of page.alternates) { const other = pages.get(h.replace(origin, '')); if (other && !other.alternates.some(([, x]) => x === origin + url)) fail(url, `hreflang sem reciprocidade em ${h}`); }
 }
 const reachable = new Set(['/']);
 for (const url of reachable) for (const next of edges.get(url) || []) reachable.add(next);

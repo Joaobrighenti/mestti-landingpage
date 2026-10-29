@@ -179,7 +179,7 @@ const HEAD = (title, desc, url, type, ld, extra = '') => `<!DOCTYPE html>
 `;
 
 const SCRIPTS = `    <script defer src="/js/i18n-page-strings.js?v=3"></script>
-    <script defer src="/js/i18n.js?v=28"></script>
+    <script defer src="/js/i18n.js?v=30"></script>
     <script defer src="/js/theme.js?v=3"></script>
     <script defer src="/js/form-options.js?v=4"></script>
     <script defer src="/js/meta-consent.js?v=6"></script>

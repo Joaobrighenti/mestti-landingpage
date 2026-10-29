@@ -39,6 +39,7 @@ npm test
 npm run build
 ```
 
+- Idiomas: `npm run site:build` também gera `/en/` e `/es/` de cada página de `site/pages`, com as traduções dos atributos `data-t-en`/`data-t-es` já no HTML e `hreflang` nas três versões. Não edite `en/` e `es/` à mão.
 - Blog: cada artigo é um arquivo Markdown em `content/blog/<slug>.md` (metadados no topo; ver `scripts/blog-build.mjs`). `npm run site:build` gera o artigo, o índice `/blog/` e o feed `/blog/feed.xml`. O guia de escolha de sistema ainda é HTML e entra no índice por `content/blog/_outros.json`.
 - `check:site`: verifica sincronização, metadados, JSON-LD, sitemap, links, fragmentos, recursos, redirects e páginas órfãs.
 - `test`: executa os testes existentes da integração de eventos.

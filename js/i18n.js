@@ -1112,7 +1112,8 @@
     }
 
     function getStoredLang() {
-        const saved = localStorage.getItem(STORAGE_KEY);
+        let saved = null;
+        try { saved = localStorage.getItem(STORAGE_KEY); } catch { /* sem storage */ }
         return SUPPORTED.includes(saved) ? saved : 'pt';
     }
 
@@ -1139,7 +1140,7 @@
         const fixedLanguage = document.body.dataset.contentLang;
         if (fixedLanguage) lang = fixedLanguage;
         if (!SUPPORTED.includes(lang)) lang = 'pt';
-        if (!fixedLanguage) localStorage.setItem(STORAGE_KEY, lang);
+        if (!fixedLanguage) { try { localStorage.setItem(STORAGE_KEY, lang); } catch { /* sem storage */ } }
         document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
         window.MESTTI_LANG = lang;
 
@@ -1205,9 +1206,30 @@
         }
     }
 
+    // Páginas com versão própria em cada língua (/en/, /es/): a bandeira leva para a URL da língua.
+    function alternates() {
+        const out = {};
+        document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((link) => {
+            const code = link.getAttribute('hreflang').slice(0, 2);
+            // Só o caminho: o hreflang aponta para o domínio de produção; aqui vale o domínio atual.
+            if (SUPPORTED.includes(code)) out[code] = new URL(link.href).pathname;
+        });
+        return out;
+    }
+    const ALTERNATES = alternates();
+    const PAGE_LANG = Object.keys(ALTERNATES).length ? (document.documentElement.lang || 'pt').slice(0, 2) : null;
+
     function bindLangSwitcher() {
         document.querySelectorAll('.lang-switcher-btn').forEach((btn) => {
-            btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                if (PAGE_LANG && ALTERNATES[lang] && lang !== PAGE_LANG) {
+                    try { localStorage.setItem(STORAGE_KEY, lang); } catch { /* sem storage */ }
+                    window.location.href = ALTERNATES[lang] + window.location.hash;
+                    return;
+                }
+                applyLanguage(lang);
+            });
         });
     }
 
@@ -1215,7 +1237,7 @@
         mergePageI18n();
         injectLangSwitcher();
         bindLangSwitcher();
-        applyLanguage(getStoredLang());
+        applyLanguage(PAGE_LANG || getStoredLang());
     }
 
     window.MesttiI18n = { t, applyLanguage, getLang: getStoredLang };
