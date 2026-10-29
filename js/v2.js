@@ -252,6 +252,8 @@
             event.preventDefault();
             if (composer.classList.contains('is-busy')) return;
             current = nextIndex();
+            const hint = demo.querySelector('[data-otto-hint]');
+            if (hint) hint.hidden = true;
             const turn = turns[current];
             const reply = turn.querySelector('.hv-octo-reply');
             turns.forEach((t) => { t.hidden = t !== turn; });

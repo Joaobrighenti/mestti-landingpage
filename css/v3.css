@@ -790,18 +790,25 @@ body.hv-page .hv-video-head h2 { margin: 0; font-size: clamp(2.4rem, 4.6vw, 4rem
 .hv-octo-composer { cursor: pointer; gap: 12px; padding: 6px 6px 6px 18px; box-shadow: inset 0 0 0 1.5px #041121; color: var(--ink); }
 .hv-octo-draft { flex: 1; min-width: 0; font: 500 .95rem/1.35 var(--f-text); color: #0f172a; }
 .hv-octo-draft::after { content: ""; display: inline-block; width: 2px; height: 1.1em; margin-left: 2px; vertical-align: -.2em; background: #041121; animation: hv-caret 1s steps(1) infinite; }
-.hv-octo-send { position: relative; flex: none; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: var(--signal); color: #041121; cursor: pointer; transition: transform 160ms var(--out); }
-.hv-octo-send::before { content: ""; position: absolute; inset: 0; border-radius: 50%; box-shadow: 0 0 0 0 rgba(255, 194, 14, .7); animation: hv-send-pulse 1.8s var(--out) infinite; }
-.hv-octo-send:hover { transform: scale(1.06); }
-.hv-octo-composer.is-busy .hv-octo-send { opacity: .5; }
+.hv-octo-composer { position: relative; }
+/* Botão como no Otto do produto (marinho, seta branca); o chamado é o mesmo das paradas: anel que expande e balão "Toque para enviar" */
+.hv-octo-send { position: relative; flex: none; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: #041121; color: #fff; cursor: pointer; transition: transform 150ms ease, filter 150ms ease; }
+.hv-octo-send:hover { filter: brightness(1.35); }
+.hv-octo-send::before { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #041121; opacity: 0; animation: hv-stop-ring 1.8s ease-out infinite; pointer-events: none; }
+.hv-octo-composer.is-busy .hv-octo-send { opacity: .35; }
 .hv-octo-composer.is-busy .hv-octo-send::before { animation: none; }
+.hv-octo-hint { top: auto; bottom: calc(100% + 10px); right: -2px; left: auto; transform: none; background: #041121; color: #fff; }
+.hv-octo-hint::after { left: auto; right: 16px; transform: none; border-top-color: #041121; }
 .hv-octo-typing { display: inline-flex; gap: 4px; padding: 12px 0; }
 .hv-octo-typing i { width: 7px; height: 7px; border-radius: 50%; background: #9aa3b2; animation: hv-typing 1s ease-in-out infinite; }
 .hv-octo-typing i:nth-child(2) { animation-delay: .15s; }
 .hv-octo-typing i:nth-child(3) { animation-delay: .3s; }
 @keyframes hv-caret { 50% { opacity: 0; } }
-@keyframes hv-send-pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 194, 14, .7); } 70%, 100% { box-shadow: 0 0 0 12px rgba(255, 194, 14, 0); } }
 @keyframes hv-typing { 0%, 60%, 100% { transform: none; opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
-    .hv-octo-draft::after, .hv-octo-send::before { animation: none; }
+    .hv-octo-draft::after, .hv-octo-send::before, .hv-octo-hint { animation: none; }
 }
+.hv-octo-foot:has(.hv-octo-hint:not([hidden])) { padding-top: 46px; }
+.hv-octo-hint { animation: hv-octo-bob 1.4s ease-in-out infinite; }
+@keyframes hv-octo-bob { 0%, 100% { transform: none; } 50% { transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) { .hv-octo-hint { animation: none; } }
