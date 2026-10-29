@@ -1003,7 +1003,17 @@
             "footer.v2.mesErp": "MES ou ERP?",
             "footer.v2.blog": "Blog",
             "footer.v2.solutions": "Soluções por problema",
-            "footer.v2.phone": "(43) 99109-5035"
+            "footer.v2.phone": "(43) 99109-5035",
+            "footer.v2.oee": "O que é OEE",
+            "footer.v2.guides": "Guias",
+            "footer.v2.gMes": "Sistema MES",
+            "footer.v2.gPcp": "PCP e PPCP",
+            "footer.v2.gSeq": "Sequenciamento da produção",
+            "footer.v2.gApt": "Apontamento de produção",
+            "footer.v2.gMon": "Monitoramento de máquinas",
+            "footer.v2.gOld": "Máquinas antigas sem CLP",
+            "footer.v2.gI40": "Indústria 4.0",
+            "footer.v2.gIa": "IA na indústria"
         },
         "en": {
             "nav.v2.production": "Production",
@@ -1033,7 +1043,17 @@
             "footer.v2.mesErp": "MES or ERP?",
             "footer.v2.blog": "Blog",
             "footer.v2.solutions": "Solutions by problem",
-            "footer.v2.phone": "(43) 99109-5035"
+            "footer.v2.phone": "(43) 99109-5035",
+            "footer.v2.oee": "What is OEE",
+            "footer.v2.guides": "Guides",
+            "footer.v2.gMes": "MES system",
+            "footer.v2.gPcp": "Production planning",
+            "footer.v2.gSeq": "Production scheduling",
+            "footer.v2.gApt": "Production reporting",
+            "footer.v2.gMon": "Machine monitoring",
+            "footer.v2.gOld": "Old machines without a PLC",
+            "footer.v2.gI40": "Industry 4.0",
+            "footer.v2.gIa": "AI in manufacturing"
         },
         "es": {
             "nav.v2.production": "Producción",
@@ -1063,7 +1083,17 @@
             "footer.v2.mesErp": "¿MES o ERP?",
             "footer.v2.blog": "Blog",
             "footer.v2.solutions": "Soluciones por problema",
-            "footer.v2.phone": "(43) 99109-5035"
+            "footer.v2.phone": "(43) 99109-5035",
+            "footer.v2.oee": "Qué es el OEE",
+            "footer.v2.guides": "Guías",
+            "footer.v2.gMes": "Sistema MES",
+            "footer.v2.gPcp": "PCP y PPCP",
+            "footer.v2.gSeq": "Secuenciación de la producción",
+            "footer.v2.gApt": "Registro de producción",
+            "footer.v2.gMon": "Monitoreo de máquinas",
+            "footer.v2.gOld": "Máquinas antiguas sin PLC",
+            "footer.v2.gI40": "Industria 4.0",
+            "footer.v2.gIa": "IA en la industria"
         }
     });
     /* fim v2 */
@@ -1082,7 +1112,8 @@
     }
 
     function getStoredLang() {
-        const saved = localStorage.getItem(STORAGE_KEY);
+        let saved = null;
+        try { saved = localStorage.getItem(STORAGE_KEY); } catch { /* sem storage */ }
         return SUPPORTED.includes(saved) ? saved : 'pt';
     }
 
@@ -1109,7 +1140,7 @@
         const fixedLanguage = document.body.dataset.contentLang;
         if (fixedLanguage) lang = fixedLanguage;
         if (!SUPPORTED.includes(lang)) lang = 'pt';
-        if (!fixedLanguage) localStorage.setItem(STORAGE_KEY, lang);
+        if (!fixedLanguage) { try { localStorage.setItem(STORAGE_KEY, lang); } catch { /* sem storage */ } }
         document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
         window.MESTTI_LANG = lang;
 
@@ -1138,8 +1169,12 @@
         });
 
         document.querySelectorAll('.lang-switcher-btn').forEach((btn) => {
-            btn.classList.toggle('is-active', btn.getAttribute('data-lang') === lang);
+            const on = btn.getAttribute('data-lang') === lang;
+            btn.classList.toggle('is-active', on);
+            btn.setAttribute('aria-checked', String(on));
         });
+        document.querySelectorAll('.lang-current-code').forEach((el) => { el.textContent = lang.toUpperCase(); });
+        document.querySelectorAll('.lang-current-flag').forEach((el) => { el.textContent = LANG_FLAGS[lang]; });
 
         applyMeta(lang);
         document.dispatchEvent(new CustomEvent('mestti:lang', { detail: lang }));
@@ -1147,20 +1182,38 @@
         window.MesttiLpCarousels?.refresh?.();
     }
 
+    // Seletor de idioma no padrão mais comum: bandeira + idioma atual; o clique abre a lista com os nomes por extenso.
+    const LANG_NAMES = { pt: 'Português', en: 'English', es: 'Español' };
+    const LANG_FLAGS = { pt: '🇧🇷', en: '🇺🇸', es: '🇪🇸' };
+    const CHEVRON = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+    const CHECK = '<svg class="lang-check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>';
     function langSwitcherMarkup(idSuffix) {
         const id = idSuffix ? `langSwitcher${idSuffix}` : 'langSwitcher';
+        const items = SUPPORTED.map((code) => `<li><button type="button" class="lang-switcher-btn" role="menuitemradio" aria-checked="false" data-lang="${code}" lang="${code === 'pt' ? 'pt-BR' : code}"><span class="lang-flag" aria-hidden="true">${LANG_FLAGS[code]}</span><span class="lang-name">${LANG_NAMES[code]}</span>${CHECK}</button></li>`).join('');
         return `
-<div class="lang-switcher${idSuffix ? ' lang-switcher--mobile' : ''}" id="${id}" role="group" data-i18n-aria="a11y.lang">
-  <button type="button" class="lang-switcher-btn is-active" data-lang="pt" data-i18n-aria="a11y.langPt" title="Português">
-    <span class="lang-switcher-flag" aria-hidden="true">🇧🇷</span>
-  </button>
-  <button type="button" class="lang-switcher-btn" data-lang="en" data-i18n-aria="a11y.langEn" title="English">
-    <span class="lang-switcher-flag" aria-hidden="true">🇺🇸</span>
-  </button>
-  <button type="button" class="lang-switcher-btn" data-lang="es" data-i18n-aria="a11y.langEs" title="Español">
-    <span class="lang-switcher-flag" aria-hidden="true">🇪🇸</span>
-  </button>
+<div class="lang-switcher${idSuffix ? ' lang-switcher--mobile' : ''}" id="${id}">
+  <button type="button" class="lang-current" aria-haspopup="true" aria-expanded="false" aria-controls="${id}Menu" data-i18n-aria="a11y.lang"><span class="lang-flag lang-current-flag" aria-hidden="true">🇧🇷</span><span class="lang-current-code">PT</span>${CHEVRON}</button>
+  <ul class="lang-menu" id="${id}Menu" role="menu" hidden>${items}</ul>
 </div>`;
+    }
+
+    function bindLangMenus() {
+        document.querySelectorAll('.lang-switcher').forEach((box) => {
+            const btn = box.querySelector('.lang-current');
+            const menu = box.querySelector('.lang-menu');
+            if (!btn || !menu) return;
+            const close = () => { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); };
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const open = menu.hidden;
+                document.querySelectorAll('.lang-menu').forEach((m) => { m.hidden = true; });
+                menu.hidden = !open;
+                btn.setAttribute('aria-expanded', String(open));
+                if (open) menu.querySelector('[aria-checked="true"]')?.focus();
+            });
+            document.addEventListener('click', (e) => { if (!box.contains(e.target)) close(); });
+            box.addEventListener('keydown', (e) => { if (e.key === 'Escape') { close(); btn.focus(); } });
+        });
     }
 
     function injectLangSwitcher() {
@@ -1175,9 +1228,30 @@
         }
     }
 
+    // Páginas com versão própria em cada língua (/en/, /es/): a bandeira leva para a URL da língua.
+    function alternates() {
+        const out = {};
+        document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((link) => {
+            const code = link.getAttribute('hreflang').slice(0, 2);
+            // Só o caminho: o hreflang aponta para o domínio de produção; aqui vale o domínio atual.
+            if (SUPPORTED.includes(code)) out[code] = new URL(link.href).pathname;
+        });
+        return out;
+    }
+    const ALTERNATES = alternates();
+    const PAGE_LANG = Object.keys(ALTERNATES).length ? (document.documentElement.lang || 'pt').slice(0, 2) : null;
+
     function bindLangSwitcher() {
         document.querySelectorAll('.lang-switcher-btn').forEach((btn) => {
-            btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                if (PAGE_LANG && ALTERNATES[lang] && lang !== PAGE_LANG) {
+                    try { localStorage.setItem(STORAGE_KEY, lang); } catch { /* sem storage */ }
+                    window.location.href = ALTERNATES[lang] + window.location.hash;
+                    return;
+                }
+                applyLanguage(lang);
+            });
         });
     }
 
@@ -1185,7 +1259,8 @@
         mergePageI18n();
         injectLangSwitcher();
         bindLangSwitcher();
-        applyLanguage(getStoredLang());
+        bindLangMenus();
+        applyLanguage(PAGE_LANG || getStoredLang());
     }
 
     window.MesttiI18n = { t, applyLanguage, getLang: getStoredLang };

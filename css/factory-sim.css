@@ -295,3 +295,6 @@ html[data-theme="dark"] .fpin--alert { color: #2a0805; }
 .fx .fpin--alert { color: #fff; }
 .fx .fpin--notice { color: var(--s-ink); }
 html[data-theme="dark"] .fx .fpin--alert { color: #1d0603; }
+
+/* Dica de clique sobre a primeira máquina parada, até a primeira seleção */
+.fx-tap-hint { position: relative; top: auto; left: auto; transform: none; margin-bottom: 10px; }

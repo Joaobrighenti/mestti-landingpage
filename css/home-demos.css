@@ -244,3 +244,10 @@ html[data-theme="dark"] .gx-program { color: #08203f; }
 @media (prefers-reduced-motion: reduce) {
     .mon-live i, .mc.is-bump .mc-chip--total, .gx-block.is-new { animation: none !important; }
 }
+
+/* Dica de toque no primeiro "Programar", no mesmo padrão das paradas */
+.gx-program-wrap { position: relative; display: inline-flex; }
+.gx-tap-hint { left: 50%; top: -44px; }
+.gx-order.is-next .gx-program { animation: hv-stop-pulse 1.8s ease-in-out infinite; box-shadow: 0 0 0 0 var(--mon-primary); }
+.gx-order.is-next .gx-program-wrap::after { content: ''; position: absolute; inset: -4px; border-radius: 9px; border: 2px solid var(--mon-primary); opacity: 0; animation: hv-stop-ring 1.8s ease-out infinite; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .gx-order.is-next .gx-program, .gx-order.is-next .gx-program-wrap::after { animation: none; } }

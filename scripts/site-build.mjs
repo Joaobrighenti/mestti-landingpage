@@ -16,6 +16,23 @@ import {
     LANGS, KINDS, PAGE_HEAD, CHROME_START, CHROME_END, HEADER_OPEN, FOOTER_OPEN,
     startTags, closingIndex, blockAt, modalBlock, pagePath, headerFor, pageDictFile, chromeBlock, unescapeAttr
 } from './site-lib.mjs';
+import { buildBlog } from './blog-build.mjs';
+import { legacyTranslator, localizePage, textMap, hreflangLinks, langLinks, localUrl, LOCALES, ORIGIN as I18N_ORIGIN } from './site-i18n.mjs';
+
+const LANGS_MARK = '<!-- @langs -->';
+const ARTICLES_MARK = '<!-- @artigos -->';
+/** Página de tema → tema dos artigos do blog (campo "topic"). */
+const TOPIC_OF = { '/mes/': 'mes', '/oee/': 'oee', '/pcp/': 'pcp', '/sequenciamento/': 'sequenciamento', '/apontamento-de-producao/': 'apontamento',
+    '/monitoramento-de-maquinas/': 'monitoramento', '/maquinas-antigas/': 'maquinas-antigas', '/industria-4-0/': 'industria-4-0', '/ia-na-industria/': 'ia', '/qualidade/': 'qualidade' };
+const ARTICLES_TITLE = { pt: 'Artigos sobre este tema', en: 'Articles on this topic (in Portuguese)', es: 'Artículos sobre este tema (en portugués)' };
+const escHtml = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+function articlesBlock(url, lang, articles) {
+    const topic = TOPIC_OF[url];
+    const list = articles.filter((a) => a.topic === topic || (a.related || []).includes(url)).slice(0, 6);
+    if (!list.length) return '';
+    const cards = list.map((a) => `<li><a class="tp-related-card" href="${a.url}" hreflang="pt-BR"><strong>${escHtml(a.title)}</strong><span>${escHtml(a.description)}</span></a></li>`).join('');
+    return `<section class="hv-section tp-section tp-articles" aria-labelledby="tp-art-title"><div class="hv-wrap"><h2 id="tp-art-title">${ARTICLES_TITLE[lang]}</h2><ul class="tp-related-list">${cards}</ul></div></section>`;
+}
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = path.join(ROOT, 'site');
@@ -96,7 +113,7 @@ export function buildPage(rel, source, partials) {
     // 3. textos sem elemento que não são de meta (usados por scripts), ao fim
     for (const key of lateKeys) put(key, strings[key], 'comentário @page');
 
-    return { html: out, dict, dictFile: meta.dict, problems };
+    return { html: out, dict, dictFile: meta.dict, problems, localize: meta.localize !== false };
 }
 
 /** Troca cabeçalho e rodapé de uma página que não tem fonte em site/pages. */
@@ -109,6 +126,48 @@ export function syncLegacy(rel, html, partials) {
     return out;
 }
 
+/**
+ * css/site.css: o entry.css com os @import resolvidos num arquivo só. Os @import em cadeia viravam uma fila de 20
+ * downloads antes do primeiro texto no celular. O tema escuro (removido do site) fica de fora.
+ */
+const CSS_SKIP = new Set(['dark-theme.css']);
+export function bundleCss() {
+    const seen = new Set();
+    const inline = (file) => {
+        const name = path.basename(file);
+        if (seen.has(name) || CSS_SKIP.has(name)) return '';
+        seen.add(name);
+        const css = fs.readFileSync(path.join(ROOT, 'css', name), 'utf8');
+        return css.replace(/@import\s+url\(["']?\.\/([^"')?]+)(?:\?[^"')]*)?["']?\);?/g, (m, dep) => inline(dep)).trim() + '\n';
+    };
+    return '/* Gerado por scripts/site-build.mjs a partir de css/entry.css. Não edite: edite os arquivos importados. */\n' + inline('entry.css');
+}
+
+const ORIGIN = 'https://mestti.com.br';
+
+/**
+ * sitemap.xml = páginas indexáveis (index.html sem noindex). lastmod vem de site/lastmod.json, nunca do horário do
+ * build: só deve mudar quando o conteúdo da página mudar de fato.
+ */
+export function buildSitemap(files, problems, extraDates = {}) {
+    const dates = { ...JSON.parse(fs.readFileSync(path.join(SITE, 'lastmod.json'), 'utf8')).pages, ...extraDates };
+    const html = new Map();
+    for (const rel of listFiles(ROOT, (n) => n === 'index.html')) html.set(rel, files.get(rel) ?? read(rel));
+    for (const [rel, content] of files) if (rel.endsWith('index.html')) html.set(rel, content);
+    const urls = [];
+    for (const [rel, content] of html) {
+        if (rel.split('/').some((part) => ['docs', 'tests', 'scripts', 'lib', 'api'].includes(part))) continue;
+        if (/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(content)) continue;
+        const url = '/' + rel.replace(/index\.html$/, '');
+        if (!dates[url]) problems.push(`site/lastmod.json: falta a data de ${url}`);
+        urls.push(url);
+    }
+    for (const url of Object.keys(dates)) if (!urls.includes(url)) problems.push(`sitemap: ${url} tem data mas não é uma página indexável`);
+    urls.sort((a, b) => (a === '/' ? -1 : b === '/' ? 1 : a.localeCompare(b)));
+    const rows = urls.map((url) => `  <url><loc>${ORIGIN}${url}</loc>${dates[url] ? `<lastmod>${dates[url]}</lastmod>` : ''}</url>`);
+    return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${rows.join('\n')}\n</urlset>\n`;
+}
+
 export function buildAll() {
     const partials = {
         header: fs.readFileSync(path.join(SITE, 'partials/header.html'), 'utf8').replace(/\n$/, ''),
@@ -117,19 +176,6 @@ export function buildAll() {
     };
     const files = new Map();
     const problems = [];
-    const sources = listFiles(path.join(SITE, 'pages'), (n) => n.endsWith('.html'));
-    for (const rel of sources) {
-        const page = buildPage(rel, fs.readFileSync(path.join(SITE, 'pages', rel), 'utf8'), partials);
-        problems.push(...page.problems);
-        files.set(rel, page.html);
-        files.set(page.dictFile, pageDictFile(page.dict));
-    }
-    for (const rel of listFiles(ROOT, (n) => n.endsWith('.html'))) {
-        if (files.has(rel)) continue;
-        const html = read(rel);
-        const synced = syncLegacy(rel, html, partials);
-        if (synced !== html) files.set(rel, synced);
-    }
     const i18n = read('js/i18n.js');
     const a = i18n.indexOf(CHROME_START);
     const b = i18n.indexOf(CHROME_END);
@@ -138,6 +184,55 @@ export function buildAll() {
         const chrome = JSON.parse(fs.readFileSync(path.join(SITE, 'i18n/chrome.json'), 'utf8'));
         files.set('js/i18n.js', i18n.slice(0, a) + chromeBlock(chrome) + i18n.slice(b + CHROME_END.length));
     }
+    files.set('css/site.css', bundleCss());
+    const sources = listFiles(path.join(SITE, 'pages'), (n) => n.endsWith('.html'));
+    const built = [];
+    for (const rel of sources) {
+        const page = buildPage(rel, fs.readFileSync(path.join(SITE, 'pages', rel), 'utf8'), partials);
+        problems.push(...page.problems);
+        files.set(rel, page.html);
+        files.set(page.dictFile, pageDictFile(page.dict));
+        if (page.localize) built.push({ rel, url: '/' + rel.replace(/index\.html$/, ''), dict: page.dict });
+    }
+    // Versões estáticas /en/ e /es/ das páginas de site/pages, com hreflang nas três.
+    const chromeT = legacyTranslator(files.get('js/i18n.js') ?? i18n);
+    const localized = new Set(built.map((p) => p.url));
+    const lastmod = JSON.parse(fs.readFileSync(path.join(SITE, 'lastmod.json'), 'utf8')).pages;
+    const localDates = {};
+    for (const { rel, url, dict } of built) {
+        const pt = files.get(rel);
+        const canonical = `<link rel="canonical" href="${I18N_ORIGIN}${url}">\n`;
+        if (!pt.includes(canonical)) { problems.push(`${rel}: canonical não encontrado para o hreflang`); continue; }
+        files.set(rel, pt.replace(canonical, canonical + hreflangLinks(url)));
+        const titleKey = Object.keys(dict.pt).find((k) => /^meta\.[^.]+\.title$/.test(k));
+        const descKey = Object.keys(dict.pt).find((k) => /^meta\.[^.]+\.description$/.test(k));
+        for (const lang of LOCALES) {
+            const t = (key) => dict[lang]?.[key] ?? chromeT(lang, key);
+            const html = localizePage(files.get(rel), { url, lang, t, ptText: textMap(dict, lang, chromeT), localized, meta: { title: titleKey && dict[lang][titleKey], description: descKey && dict[lang][descKey] } });
+            files.set(`${lang}/${rel}`, html);
+            if (lastmod[url]) localDates[localUrl(url, lang)] = lastmod[url];
+        }
+    }
+    // Blog em Markdown (content/blog): artigos, índice e feed. As datas vêm dos próprios artigos.
+    const blog = buildBlog(ROOT, (url) => ({ header: headerFor(partials.header, url), footer: partials.footer, modal: partials.modal }));
+    for (const [rel, content] of blog.files) files.set(rel, content);
+    for (const rel of listFiles(ROOT, (n) => n.endsWith('.html'))) {
+        if (files.has(rel)) continue;
+        if (/^(en|es)\//.test(rel)) continue;
+        const html = read(rel);
+        const synced = syncLegacy(rel, html, partials);
+        if (synced !== html) files.set(rel, synced);
+    }
+    // Links de idioma no rodapé de todas as páginas.
+    for (const [rel, html] of files) {
+        if (!rel.endsWith('.html') || !html.includes(LANGS_MARK)) continue;
+        const m = rel.match(/^(en|es)\/(.*)$/);
+        const lang = m ? m[1] : 'pt';
+        const url = '/' + (m ? m[2] : rel).replace(/index\.html$/, '');
+        files.set(rel, html.replace(LANGS_MARK, langLinks(url, lang, localized)).replace(ARTICLES_MARK, articlesBlock(url, lang, blog.articles)));
+    }
+    const sitemap = buildSitemap(files, problems, { ...blog.dates, ...localDates });
+    if (sitemap) files.set('sitemap.xml', sitemap);
     return { files, problems };
 }
 

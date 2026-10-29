@@ -12,8 +12,8 @@ Principais entradas:
 - `/solucoes/`: caminhos por problema da operação.
 - `/engenharia/`: estrutura de produto, componentes e processos ligados às ordens.
 - `/otto/`: assistente de IA, consultas e propostas com aprovação humana.
-- `/producao/`, `/sensoriamento/`, `/sequenciamento/`, `/qualidade/`: escopo das soluções industriais.
-- `/sensores/`: especificações; `/atuacao/`: catálogo interativo.
+- `/producao/`, `/qualidade/`, `/engenharia/`, `/otto/`: produto. Guias por tema: `/mes/`, `/oee/`, `/pcp/`, `/sequenciamento/`, `/apontamento-de-producao/`, `/monitoramento-de-maquinas/`, `/maquinas-antigas/`, `/industria-4-0/`, `/ia-na-industria/`.
+- `/sensores/`: especificações (o antigo catálogo `/atuacao/` e `/sensoriamento/` redirecionam).
 - `/checklists/`: rotinas de verificação para diferentes segmentos.
 - `/blog/`: conteúdo sobre MES, OEE, coleta, custos e avaliação de sistemas.
 - `/empresa/`, `/contato/`, `/termos/`: informações institucionais e canais oficiais.
@@ -34,13 +34,13 @@ Consulte `.env.example` e [docs/google-sheets-leads.md](docs/google-sheets-leads
 ## Conteúdo e verificação
 
 ```sh
-npm run content:sync
 npm run check:site
 npm test
 npm run build
 ```
 
-- `content:sync`: depois de editar os dicionários `js/i18n-{oee,rkw,sensoriamento}-content.js`, sincroniza o português no HTML dos três artigos. O conteúdo continua legível sem JavaScript; a tradução existente permanece.
+- Idiomas: `npm run site:build` também gera `/en/` e `/es/` de cada página de `site/pages`, com as traduções dos atributos `data-t-en`/`data-t-es` já no HTML e `hreflang` nas três versões. Não edite `en/` e `es/` à mão.
+- Blog: cada artigo é um arquivo Markdown em `content/blog/<slug>.md` (metadados no topo; ver `scripts/blog-build.mjs`). `npm run site:build` gera o artigo, o índice `/blog/` e o feed `/blog/feed.xml`. O guia de escolha de sistema ainda é HTML e entra no índice por `content/blog/_outros.json`.
 - `check:site`: verifica sincronização, metadados, JSON-LD, sitemap, links, fragmentos, recursos, redirects e páginas órfãs.
 - `test`: executa os testes existentes da integração de eventos.
 - `build`: verifica a sincronização, gera `public/` e valida a saída estática. Não publica o site.

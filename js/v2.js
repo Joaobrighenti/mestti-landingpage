@@ -347,6 +347,34 @@
         onLang(update);
     }
 
+    // Calculadora de OEE das páginas de tema: D × P × Q com os números do turno.
+    function initOeeCalc() {
+        const form = document.querySelector('[data-oee-calc]');
+        if (!form) return;
+        const num = (name) => {
+            const input = form.elements[name];
+            const v = Number(input.value);
+            return Number.isFinite(v) ? Math.min(Number(input.max) || Infinity, Math.max(Number(input.min) || 0, v)) : 0;
+        };
+        const pct = (v) => (Number.isFinite(v) ? (v * 100).toLocaleString(d().locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '%' : '–');
+        const update = () => {
+            const planned = num('planned');
+            const run = Math.max(0, planned - num('stopped'));
+            const total = num('total');
+            const good = Math.min(num('good'), total);
+            const avail = planned ? run / planned : NaN;
+            const perf = run ? (total * num('cycle')) / 60 / run : NaN;
+            const qual = total ? good / total : NaN;
+            const out = { avail, perf, qual, oee: avail * perf * qual };
+            form.querySelectorAll('[data-oee-out]').forEach((el) => { el.textContent = pct(out[el.dataset.oeeOut]); });
+        };
+        form.addEventListener('input', update);
+        form.addEventListener('submit', (event) => event.preventDefault());
+        form.addEventListener('change', () => track('v2_oee_calc_change'), { once: true });
+        update();
+        onLang(update);
+    }
+
     // Meta por hora a partir do roteiro (página de engenharia).
     function initTarget() {
         const form = document.querySelector('[data-target-calc]');
@@ -370,7 +398,7 @@
     function initFactory() {
         const host = document.querySelector('[data-factory]');
         if (!host) return;
-        whenVisible(host, () => import('/js/fabrica-sim.js?v=2').catch((error) => console.error(error)), '500px 0px');
+        whenVisible(host, () => import('/js/fabrica-sim.js?v=3').catch((error) => console.error(error)), '500px 0px');
     }
 
     // Vídeo: começa sem som quando a pessoa chega nele, pausa quando sai e liga o som num toque.
@@ -460,6 +488,7 @@
     initStopDemo();
     initOtto();
     initCalc();
+    initOeeCalc();
     initVideo();
     initClientsMarquee();
     initTarget();

@@ -109,7 +109,7 @@
     .hv-demo-panel > .hv-window, .hv-demo-panel > .hv-console { margin-inline: calc(-1 * max(20px, env(safe-area-inset-left, 0px))); border-radius: 0; }
     .hv-console-main, .hv-console-side { padding: 20px; }
     .hv-timeline--xl { height: 64px; }
-    .hv-reason { margin-top: 16px; padding: 16px; border-radius: 12px; background: #fff; color: var(--ink); }
+    .hv-reason { margin-top: 16px; padding: 0; background: none; color: var(--ink); }
     .hv-reason-title { color: var(--ink) !important; font-size: 1rem; }
     .hv-reason-options { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
     .hv-reason-options button { min-height: 52px; padding: 8px 10px; line-height: 1.25; text-align: center; white-space: normal; font-size: .92rem; }

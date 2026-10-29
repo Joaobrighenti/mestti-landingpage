@@ -1,0 +1,31 @@
+{
+  "_doc": "Data da última mudança REAL de conteúdo de cada página indexável (AAAA-MM-DD). Atualize só quando o conteúdo mudar de fato; troca de cabeçalho/rodapé não conta. O build gera sitemap.xml a partir daqui e falha se faltar página. Os artigos do blog em content/blog e o índice /blog/ trazem a própria data (campo \"updated\").",
+  "pages": {
+    "/": "2026-10-29",
+    "/apontamento-de-producao/": "2026-10-29",
+    "/blog/como-escolher-sistema-monitoramento-producao/": "2026-10-22",
+    "/casos/industria-moveleira/": "2026-10-29",
+    "/checklists/": "2026-10-29",
+    "/contato/": "2026-10-29",
+    "/diagnostico/": "2026-10-29",
+    "/empresa/": "2026-10-29",
+    "/engenharia/": "2026-10-29",
+    "/glossario/": "2026-10-29",
+    "/ia-na-industria/": "2026-10-29",
+    "/industria-4-0/": "2026-10-29",
+    "/maquinas-antigas/": "2026-10-29",
+    "/mes-ou-erp/": "2026-10-29",
+    "/mes/": "2026-10-29",
+    "/monitoramento-de-maquinas/": "2026-10-29",
+    "/oee/": "2026-10-29",
+    "/otto/": "2026-10-29",
+    "/pcp/": "2026-10-29",
+    "/producao/": "2026-10-29",
+    "/qualidade/": "2026-10-29",
+    "/seguranca/": "2026-10-29",
+    "/sensores/": "2026-10-29",
+    "/sequenciamento/": "2026-10-29",
+    "/solucoes/": "2026-10-29",
+    "/termos/": "2026-10-29"
+  }
+}

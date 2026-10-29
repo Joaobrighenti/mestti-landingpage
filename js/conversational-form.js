@@ -3,7 +3,7 @@
  */
 (function () {
     const STORAGE_PREFIX = 'mesttiChatDraft';
-    const AVATAR_SRC = '/images/Atendente.webp';
+    const AVATAR_SRC = '/images/Atendente-96.webp';
     const AVATAR_ALT = 'Giovana — MESTTI';
     const TYPING_DELAY_MS = 480;
 

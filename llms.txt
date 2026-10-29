@@ -12,6 +12,10 @@ A Mestti mede cada máquina com sensores próprios (contagem de peças ou ciclos
 - Como começar: sensores prontos em até 7 dias, instalação em 1 dia e 1 semana de teste grátis em um setor, com horas perdidas, causas, custo e plano de ação no fim. Na semana de teste o sensor é emprestado; sem custo e sem fidelidade, e se a empresa não continuar a Mestti retira os sensores sem custo.
 - ERP: a Mestti integra com o ERP da empresa; as ordens de produção podem vir do ERP e a produção apontada volta para ele.
 
+## Idiomas
+
+As páginas de produto, de tema, a home e as institucionais também existem em inglês (https://mestti.com.br/en/) e espanhol (https://mestti.com.br/es/), com hreflang. O blog é só em português.
+
 ## Páginas principais
 
 - [Início](https://mestti.com.br/): a tese da capacidade escondida, o caso de cliente, a fábrica 3D de demonstração e o diagnóstico.
@@ -27,20 +31,44 @@ A Mestti mede cada máquina com sensores próprios (contagem de peças ou ciclos
 - [Sobre a Mestti](https://mestti.com.br/empresa/): origem em Londrina (2025), fundador João Brighenti, Lab Procel II e parceiros.
 - [Sensores](https://mestti.com.br/sensores/): ficha técnica dos sensores e coletores.
 
+## Guias por tema
+
+- [Sistema MES](https://mestti.com.br/mes/): o que é, o que faz entre o ERP e as máquinas, sinais de que a fábrica precisa de um e como funciona o MES da Mestti.
+- [PCP e PPCP](https://mestti.com.br/pcp/): planejamento, programação e controle da produção; PCP ou PPCP; onde a planilha falha; carteira do PCP na Mestti.
+- [Sequenciamento da produção](https://mestti.com.br/sequenciamento/): o que entra na conta, regras de prioridade (FIFO, EDD, SPT, setup) e Gantt por máquina com alerta de atraso.
+- [Apontamento de produção](https://mestti.com.br/apontamento-de-producao/): papel, tablet ou sensor; erros comuns; apontamento automático com motivo de parada no tablet.
+- [Monitoramento de máquinas](https://mestti.com.br/monitoramento-de-maquinas/): estado, paradas, OEE e custo de cada máquina ao vivo; fábrica 3D; limites (não é manutenção preditiva).
+- [Máquinas antigas sem CLP](https://mestti.com.br/maquinas-antigas/): sinais que o sensor lê (pulso, fim de curso, medição linear, corrente), o que conferir e instalação em 1 dia.
+- [Indústria 4.0](https://mestti.com.br/industria-4-0/): pilares sem jargão, mitos e um primeiro passo de 30 dias para pequena e média indústria.
+- [IA na indústria](https://mestti.com.br/ia-na-industria/): onde a IA já ajuda, a memória da fábrica (company brain), cuidados e o Otto com aprovação humana.
+- [OEE: o que é, como calcular e acompanhar ao vivo](https://mestti.com.br/oee/): fórmula de disponibilidade, performance e qualidade, calculadora de OEE, erros comuns e como a Mestti mede o OEE por máquina.
+
+## Blog
+
+- [Blog da Mestti](https://mestti.com.br/blog/) · [feed Atom](https://mestti.com.br/blog/feed.xml)
+- [Como calcular a capacidade produtiva de uma máquina](https://mestti.com.br/blog/capacidade-produtiva-de-uma-maquina/): Capacidade produtiva é quantas peças uma máquina consegue fazer no tempo disponível. Veja a conta passo a passo, a diferença entre capacidade teórica, disponível e real, e por que a fila do PCP depende dela.
+- [Como calcular o preço de venda de um produto na indústria usando RKW e custo do processo](https://mestti.com.br/blog/como-calcular-preco-venda-industria-rkw-custo-processo/): Aprenda como calcular o preço de venda de um produto industrial usando o método RKW, considerando matéria-prima, custos fixos, custo do processo, tempo de máquina, custos variáveis e lucro desejado.
+- [Como reduzir o tempo de setup na prática](https://mestti.com.br/blog/como-reduzir-tempo-de-setup/): Setup longo consome capacidade a cada troca de produto. Veja como medir o setup de verdade, separar o que pode ser feito com a máquina rodando (SMED) e acompanhar a melhora por máquina e por turno.
+- [Contagem automática de peças: como funciona e o que conferir](https://mestti.com.br/blog/contagem-automatica-de-pecas/): A contagem automática de peças usa um sensor que lê um sinal da máquina a cada peça ou ciclo. Veja os tipos de sinal, a diferença entre contar ciclos e peças, o que conferir na instalação e os erros mais comuns.
+- [Quanto custa uma hora de máquina parada](https://mestti.com.br/blog/custo-da-hora-de-maquina-parada/): A hora parada custa mais do que o salário do operador. Veja como calcular o valor de uma hora de máquina, um exemplo com números, o que entra na conta e por que olhar as paradas em reais muda as prioridades.
+- [Inspeção de primeira peça: como fazer e registrar](https://mestti.com.br/blog/inspecao-de-primeira-peca/): A inspeção de primeira peça confirma que o processo está certo antes de produzir o lote. Veja quando fazer, o que conferir, como registrar com foto e nome, e os erros que fazem o refugo aparecer no meio do lote.
+- [Microparadas: o que são, quanto custam e como encontrar](https://mestti.com.br/blog/microparadas/): Microparadas são paradas curtas que quase nunca são anotadas, mas somam horas no fim do turno. Veja como identificar, quanto custam, as causas mais comuns e como medir sem depender de apontamento manual.
+- [Motivos de parada de máquina: como montar a lista e registrar no turno](https://mestti.com.br/blog/motivos-de-parada-de-maquina/): Uma boa lista de motivos de parada é curta, clara e separada por categoria. Veja um exemplo de lista, como registrar o motivo sem atrapalhar o operador e como transformar os motivos num ranking de perdas.
+- [MTBF e MTTR: o que são, como calcular e para que servem](https://mestti.com.br/blog/mtbf-e-mttr/): MTBF é o tempo médio entre falhas; MTTR é o tempo médio para reparar. Veja as fórmulas, um exemplo calculado, como os dois se relacionam com a disponibilidade e quais dados você precisa registrar.
+- [Planilha de PCP no Excel: quando ela deixa de funcionar](https://mestti.com.br/blog/planilha-de-pcp-no-excel/): A planilha de PCP funciona no começo, mas passa a falhar quando a fábrica cresce. Veja os sinais de que ela chegou ao limite, o que uma boa programação precisa ter e como sair dela sem parar a fábrica.
+- [Como controlar refugo e retrabalho por máquina](https://mestti.com.br/blog/refugo-e-retrabalho-por-maquina/): Refugo e retrabalho custam material, tempo de máquina e prazo. Veja a diferença entre os dois, como registrar por máquina, turno e produto, os indicadores que importam e como eles entram no OEE.
+- [Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real](https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/): Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.
+- [Como escolher um sistema de monitoramento de produção industrial](https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/): escopo, critérios técnicos e roteiro de piloto.
+
 ## Outras páginas e conteúdos
 
 - [Soluções por problema](https://mestti.com.br/solucoes/): produção, PCP, paradas, sensores e qualidade.
-- [Como escolher um sistema de monitoramento](https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/): escopo, critérios técnicos e roteiro de piloto.
 - [Checklists digitais](https://mestti.com.br/checklists/): rotinas de verificação e histórico de execução.
 
-- [MESTTI | Sensores Industriais Inteligentes](https://mestti.com.br/atuacao/): MESTTI - Sensores Industriais | Dados em Tempo Real do Chão de Fábrica
-- [Como calcular preço de venda na indústria com RKW e custo do processo | MESTTI](https://mestti.com.br/blog/como-calcular-preco-venda-industria-rkw-custo-processo/): Aprenda como calcular o preço de venda de um produto industrial usando o método RKW, considerando matéria-prima, custos fixos, custo do processo, tempo de máquina, custos variáveis e lucro desejado.
-- [Blog | MESTTI](https://mestti.com.br/blog/): Artigos sobre produção industrial, gestão de custos e chão de fábrica.
-- [O que é um sistema MES e qual valor a MESTTI agrega à indústria?](https://mestti.com.br/blog/o-que-e-sistema-mes-mestti/): Entenda o papel do MES entre a operação e a gestão, e como sensoriamento, apontamento, indicadores, programação e qualidade da MESTTI ajudam a acompanhar a fábrica.
-- [OEE: o que é, como calcular e por que acompanhar em tempo real | MESTTI](https://mestti.com.br/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/): Entenda o que é OEE (Overall Equipment Effectiveness), como calcular disponibilidade, performance e qualidade, e por que acompanhar o indicador ao vivo no chão de fábrica.
-- [Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real | MESTTI](https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/): Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.
+- [MESTTI | Sensores Industriais Inteligentes](https://mestti.com.br/sensores/): MESTTI - Sensores Industriais | Dados em Tempo Real do Chão de Fábrica
+- [O que é um sistema MES e qual valor a MESTTI agrega à indústria?](https://mestti.com.br/mes/): Entenda o papel do MES entre a operação e a gestão, e como sensoriamento, apontamento, indicadores, programação e qualidade da MESTTI ajudam a acompanhar a fábrica.
 - [Contato | MESTTI](https://mestti.com.br/contato/): Contato com a MESTTI: comercial, suporte e canais oficiais.
-- [Sensoriamento Industrial | MESTTI](https://mestti.com.br/sensoriamento/): Sensores industriais conectados ao MESTTI para capturar produção, paradas e disponibilidade em tempo real, sem planilhas e sem atraso na informação.
+- [Sensoriamento Industrial | MESTTI](https://mestti.com.br/monitoramento-de-maquinas/): Sensores industriais conectados ao MESTTI para capturar produção, paradas e disponibilidade em tempo real, sem planilhas e sem atraso na informação.
 - [Sequenciamento e Programação da Produção | MESTTI](https://mestti.com.br/sequenciamento/): Organize sua fila de produção, visualize a capacidade das máquinas e programe com mais segurança usando dados reais da fábrica com a MESTTI.
 - [Termos de Uso e Contrato de Serviço | MESTTI](https://mestti.com.br/termos/): Termos de Uso e Contrato de Serviço da Plataforma MESTTI: condições de uso do aplicativo, responsabilidades, pagamentos e cancelamento.
 

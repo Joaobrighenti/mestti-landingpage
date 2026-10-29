@@ -32,13 +32,13 @@ A Mestti mede cada máquina com sensores próprios (contagem de peças ou ciclos
 - [Soluções por problema](https://mestti.com.br/solucoes/)
 - [Como escolher um sistema de monitoramento](https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/)
 
-- [Sensoriamento industrial](https://mestti.com.br/sensoriamento/): captura de produção, paradas e disponibilidade.
+- [Monitoramento de máquinas](https://mestti.com.br/monitoramento-de-maquinas/): estado, paradas e OEE de cada máquina ao vivo.
 - [Sequenciamento](https://mestti.com.br/sequenciamento/): organização da fila de produção e programação das máquinas.
 
 ## Empresa e conteúdo
 
 - [Artigos sobre produção e gestão industrial](https://mestti.com.br/blog/)
-- [O que é um sistema MES e como a MESTTI ajuda](https://mestti.com.br/blog/o-que-e-sistema-mes-mestti/)
+- [Sistema MES: o que é e o que faz](https://mestti.com.br/mes/)
 
 ## Contato oficial
 

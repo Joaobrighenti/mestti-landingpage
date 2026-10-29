@@ -27,6 +27,7 @@ const SKIP = new Set([
   "site",
   "tests",
   "docs",
+  "content",
   "server.js",
   "package.json",
   "package-lock.json",

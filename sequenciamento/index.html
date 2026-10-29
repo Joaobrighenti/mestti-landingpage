@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11486484316"></script>
+    <!-- Google tag (gtag.js), carregado depois da página -->
+    <script>addEventListener('load',function(){setTimeout(function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=AW-11486484316';document.head.appendChild(s)},1200)})</script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -11,41 +12,38 @@
         gtag('config', 'G-9K4NZHC0WT');
         gtag('config', 'AW-11486484316');
     </script>
-    <script src="../js/theme-init.js?v=2"></script>
-    <meta name="color-scheme" content="light dark">
+    <script src="/js/theme-init.js?v=2"></script>
+    <meta name="color-scheme" content="light">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
-    <meta name="description" content="Organize ordens, máquinas e prioridades em uma programação visual. Avalie com a MESTTI o fluxo do PCP, a execução e os requisitos da sua fábrica.">
-    <title>Sequenciamento da produção e programação do PCP | MESTTI</title>
+    <meta name="description" content="Sequenciamento da produção é definir a ordem das operações em cada máquina, com capacidade, setup, prioridade e entrega. Veja o que entra na conta, regras de prioridade e como ver o atraso antes de começar.">
+    <title>Sequenciamento da produção: como programar a fila de cada máquina | Mestti</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        body:not(.aos-initialized) [data-aos],
-        html.no-aos [data-aos] {
-            opacity: 1 !important;
-            transform: none !important;
-        }
-    </style>
-    <link rel="stylesheet" href="../css/entry.css?v=37">
-    <link rel="stylesheet" href="./sequenciamento.css?v=18">
-    <link rel="stylesheet" href="../css/atuacao-sensores.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/site.css?v=5">
+    <link rel="stylesheet" href="/css/v2.css?v=2">
+    <link rel="stylesheet" href="/css/v3.css?v=38">
+    <link rel="stylesheet" href="/css/v3-mobile.css?v=19">
+    <link rel="stylesheet" href="/css/v3-topic.css?v=5">
     <link rel="canonical" href="https://mestti.com.br/sequenciamento/">
-    <link rel="stylesheet" href="/css/discovery.css?v=2">
-    <link rel="stylesheet" href="/css/product-story.css?v=2">
-    <meta property="og:type" content="website">
+    <link rel="alternate" hreflang="pt-BR" href="https://mestti.com.br/sequenciamento/">
+    <link rel="alternate" hreflang="en" href="https://mestti.com.br/en/sequenciamento/">
+    <link rel="alternate" hreflang="es" href="https://mestti.com.br/es/sequenciamento/">
+    <link rel="alternate" hreflang="x-default" href="https://mestti.com.br/sequenciamento/">
+    <meta property="og:type" content="article">
     <meta property="og:site_name" content="MESTTI">
-    <meta property="og:title" content="Sequenciamento da produção e programação do PCP | MESTTI">
-    <meta property="og:description" content="Organize ordens, máquinas e prioridades em uma programação visual. Avalie com a MESTTI o fluxo do PCP, a execução e os requisitos da sua fábrica.">
+    <meta property="og:title" content="Sequenciamento da produção: como programar a fila de cada máquina | Mestti">
+    <meta property="og:description" content="Sequenciamento da produção é definir a ordem das operações em cada máquina, com capacidade, setup, prioridade e entrega. Veja o que entra na conta, regras de prioridade e como ver o atraso antes de começar.">
     <meta property="og:url" content="https://mestti.com.br/sequenciamento/">
-    <meta property="og:image" content="https://mestti.com.br/images/hardware-mestti.webp">
-    <meta property="og:image:alt" content="Sensor industrial MESTTI conectado à gestão da produção">
+    <meta property="og:image" content="https://mestti.com.br/images/v2/sequenciamento.webp">
     <meta property="og:locale" content="pt_BR">
     <meta name="twitter:card" content="summary_large_image">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mestti.com.br/sequenciamento/#webpage","url":"https://mestti.com.br/sequenciamento/","name":"Sequenciamento da produção e programação do PCP | MESTTI","description":"Organize ordens, máquinas e prioridades em uma programação visual. Avalie com a MESTTI o fluxo do PCP, a execução e os requisitos da sua fábrica.","inLanguage":"pt-BR","isPartOf":{"@id":"https://mestti.com.br/#website"},"about":{"@id":"https://mestti.com.br/#organization"}},{"@type":"BreadcrumbList","@id":"https://mestti.com.br/sequenciamento/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://mestti.com.br/"},{"@type":"ListItem","position":2,"name":"Sequenciamento da produção","item":"https://mestti.com.br/sequenciamento/"}]}]}</script>
+    <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('hv-motion');setTimeout(function(){if(!window.__hvReveal)document.querySelectorAll('[data-reveal]').forEach(function(e){e.classList.add('is-in')})},2500)}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://mestti.com.br/sequenciamento/#webpage", "url": "https://mestti.com.br/sequenciamento/", "name": "Sequenciamento da produção: como programar a fila de cada máquina | Mestti", "description": "Sequenciamento da produção é definir a ordem das operações em cada máquina, com capacidade, setup, prioridade e entrega. Veja o que entra na conta, regras de prioridade e como ver o atraso antes de começar.", "inLanguage": "pt-BR", "isPartOf": {"@id": "https://mestti.com.br/#website"}, "breadcrumb": {"@id": "https://mestti.com.br/sequenciamento/#breadcrumb"}}, {"@type": "Article", "@id": "https://mestti.com.br/sequenciamento/#article", "headline": "Sequenciamento da produção: como programar a fila de cada máquina", "description": "Sequenciamento da produção é definir a ordem das operações em cada máquina, com capacidade, setup, prioridade e entrega. Veja o que entra na conta, regras de prioridade e como ver o atraso antes de começar.", "inLanguage": "pt-BR", "mainEntityOfPage": {"@id": "https://mestti.com.br/sequenciamento/#webpage"}, "datePublished": "2026-10-22", "dateModified": "2026-10-29", "author": {"@type": "Person", "@id": "https://mestti.com.br/empresa/#joao-brighenti", "name": "João Brighenti", "jobTitle": "Fundador", "url": "https://mestti.com.br/empresa/", "sameAs": ["https://www.linkedin.com/in/jo%C3%A3o-gabriel-brighenti/"], "worksFor": {"@id": "https://mestti.com.br/#organization"}}, "publisher": {"@id": "https://mestti.com.br/#organization"}, "about": [{"@type": "Thing", "name": "Sequenciamento da produção"}], "image": "https://mestti.com.br/images/v2/sequenciamento.webp"}, {"@type": "BreadcrumbList", "@id": "https://mestti.com.br/sequenciamento/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://mestti.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Sequenciamento da produção", "item": "https://mestti.com.br/sequenciamento/"}]}, {"@type": "FAQPage", "@id": "https://mestti.com.br/sequenciamento/#faq", "mainEntity": [{"@type": "Question", "name": "Sequenciamento é o mesmo que APS?", "acceptedAnswer": {"@type": "Answer", "text": "APS (Advanced Planning and Scheduling) é o nome dado a softwares que calculam a programação considerando capacidade finita. A Mestti mostra a fila de cada máquina pela capacidade e calcula as datas previstas; a decisão da sequência continua com o PCP."}}, {"@type": "Question", "name": "O que é capacidade finita?", "acceptedAnswer": {"@type": "Answer", "text": "É programar sabendo que cada máquina só faz uma operação por vez e tem horas limitadas por dia. A fila cresce para a frente, em vez de empilhar tudo no mesmo dia."}}, {"@type": "Question", "name": "O que acontece quando uma máquina para?", "acceptedAnswer": {"@type": "Answer", "text": "A parada aparece na hora no monitoramento, e a previsão da operação em andamento considera o que ainda falta produzir. O PCP decide se troca a sequência ou a máquina."}}, {"@type": "Question", "name": "Dá para usar máquinas alternativas?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. A engenharia define em quais máquinas cada operação pode rodar, e o PCP escolhe na programação."}}, {"@type": "Question", "name": "Minha fábrica é pequena. Faz sentido?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Mesmo com poucas máquinas, ver a fila e a data prevista de cada pedido evita prometer prazo no escuro."}}]}, {"@type": "Organization", "@id": "https://mestti.com.br/#organization", "name": "MESTTI", "url": "https://mestti.com.br/"}]}</script>
 </head>
-<body data-page="sequenciamento">
+
+<body class="hv-page" data-page="sequenciamento">
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <div class="nav-overlay" id="navOverlay"></div>
 
@@ -96,271 +94,57 @@
             </div>
         </div>
     </header>
+    <main id="conteudo" tabindex="-1" class="hv tp">
 
-    <main class="seq-page" id="conteudo" tabindex="-1">
-<nav class="discovery-breadcrumb" aria-label="Caminho da página"><ol><li><a href="/">Início</a></li><li><span aria-current="page">Sequenciamento da produção</span></li></ol></nav>
-        <section class="seq-hero">
-            <div class="container">
-                <div class="seq-hero-grid">
-                    <div class="seq-hero-copy" data-aos="fade-up">
-                        <p class="seq-kicker" data-i18n="page.sequenciamento.hero.kicker">Sequenciamento da produção</p>
-                        <h1 data-i18n="page.sequenciamento.hero.h1">Sua fábrica promete prazo com base em dados ou no improviso?</h1>
-                        <p class="seq-hero-lead" data-i18n="page.sequenciamento.hero.lead">Organize sua fila de produção, visualize a capacidade das máquinas e programe com mais segurança usando a MESTTI.</p>
-                        <p class="seq-hero-support" data-i18n="page.sequenciamento.hero.support">Pare de depender apenas de planilhas, apontamentos atrasados e decisões no escuro para definir o que entra primeiro na produção.</p>
-                        <div class="seq-hero-actions" data-i18n-aria="page.sequenciamento.hero.actionsAria" aria-label="Ações principais">
-                            <a class="seq-btn seq-btn-primary" href="#diagnostico-programacao" data-i18n="page.sequenciamento.hero.ctaPrimary">Quero organizar minha programação</a>
-                            <a class="seq-btn seq-btn-secondary" href="#como-funciona" data-i18n="page.sequenciamento.hero.ctaSecondary">Ver como funciona</a>
-                        </div>
-                    </div>
-
-                    <figure class="seq-hero-visual" data-aos="fade-up" data-aos-delay="120">
-                        <div class="seq-screen-card">
-                            <img src="../img-sistema/2.svg" alt="Quadro de programação visual da MESTTI" data-i18n-alt="page.sequenciamento.hero.imgAlt" loading="lazy">
-                        </div>
-                        <figcaption data-i18n="page.sequenciamento.hero.figCaption">Quadro visual para acompanhar ordens, máquinas e prioridades.</figcaption>
-                    </figure>
-                </div>
+    <section class="tp-hero" aria-labelledby="tp-title">
+        <div class="hv-wrap tp-hero-grid">
+            <div class="tp-hero-copy">
+                <nav class="tp-crumbs" aria-label="Você está em" data-i18n-aria="v2.sequenciamento.2"><a href="/" data-i18n="v2.sequenciamento.1">Início</a> <span aria-hidden="true">/</span> <span aria-current="page" data-i18n="v2.sequenciamento.3">Sequenciamento da produção</span></nav>
+                <p class="tp-overline" data-i18n="v2.sequenciamento.4">Guia · Sequenciamento</p>
+                <h1 id="tp-title" data-i18n="v2.sequenciamento.5">Sequenciamento da produção: como programar a fila de cada máquina</h1>
+                <div class="tp-byline"><img src="/images/v2/joao-brighenti.webp" alt="" width="40" height="40" loading="eager" decoding="async"><p><span data-i18n="v2.sequenciamento.6" data-i18n-html>Por <a href="/empresa/" rel="author">João Brighenti</a>, fundador da Mestti</span><span aria-hidden="true"> · </span><span data-i18n="v2.sequenciamento.7" data-i18n-html>Revisado em <time datetime="2026-10-29">29/10/2026</time></span></p></div>
             </div>
-        </section>
+            <aside class="tp-answer" aria-labelledby="tp-answer-title">
+                <p class="tp-answer-label" id="tp-answer-title" data-i18n="v2.sequenciamento.8">Resposta curta</p>
+                <p class="tp-answer-text" data-i18n="v2.sequenciamento.9" data-i18n-html>Sequenciamento da produção é definir a ordem em que as operações entram em cada máquina, respeitando a <strong>capacidade</strong>, o <strong>setup</strong>, as <strong>prioridades</strong> e a <strong>data de entrega</strong>. Um bom sequenciamento mostra, antes de começar, quando cada pedido deve ficar pronto e qual vai atrasar.</p>
+                <p class="tp-answer-formula"><span data-i18n="v2.sequenciamento.10">Duração = ciclo × quantidade + setup</span><small data-i18n="v2.sequenciamento.11">Somada na fila da máquina, dentro do calendário de turnos.</small></p>
+                <div class="tp-answer-cta"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="sequenciamento-hero" data-i18n="v2.sequenciamento.12">Ver a fila das minhas máquinas</button><p class="hv-cta-micro" data-i18n="v2.sequenciamento.13">Saiba qual pedido vai atrasar antes de começar.</p></div>
+            </aside>
+        </div>
+    </section>
 
-        <section class="seq-section seq-pain">
-            <div class="container">
-                <div class="seq-pain-layout">
-                    <div class="seq-pain-intro">
-                        <p class="seq-section-label" data-i18n="page.sequenciamento.pain.label">Isso soa familiar?</p>
-                        <h2 data-i18n="page.sequenciamento.pain.h2">Programar a produção não deveria ser um jogo de adivinhação.</h2>
-                        <p data-i18n="page.sequenciamento.pain.p">Em muitas indústrias, o PCP precisa tomar decisões importantes sem ter uma visão clara da capacidade real da fábrica.</p>
-                    </div>
-                    <div class="seq-short-lines" data-i18n-aria="page.sequenciamento.pain.aria" aria-label="Sinais de programação sem visibilidade">
-                        <span data-i18n="page.sequenciamento.pain.line1">A ordem muda.</span>
-                        <span data-i18n="page.sequenciamento.pain.line2">O cliente antecipa.</span>
-                        <span data-i18n="page.sequenciamento.pain.line3">A máquina atrasa.</span>
-                        <span data-i18n="page.sequenciamento.pain.line4">A fila cresce.</span>
-                        <span data-i18n="page.sequenciamento.pain.line5">E o planejamento precisa ser refeito várias vezes.</span>
-                    </div>
-                    <p class="seq-emphasis seq-section-close seq-pain-close" data-i18n="page.sequenciamento.pain.close">O problema não é falta de esforço. É falta de visibilidade.</p>
-                </div>
-            </div>
-        </section>
+    <nav class="tp-toc" aria-label="Neste guia" data-i18n-aria="v2.sequenciamento.19">
+        <div class="hv-wrap"><p class="tp-toc-title" data-i18n="v2.sequenciamento.20">Neste guia</p><ol><li><a href="#o-que-entra" data-i18n="v2.sequenciamento.14">O que entra na conta</a></li><li><a href="#regras" data-i18n="v2.sequenciamento.15">Regras de prioridade</a></li><li><a href="#planilha-ou-gantt" data-i18n="v2.sequenciamento.16">Planilha ou visual</a></li><li><a href="#como-a-mestti-faz" data-i18n="v2.sequenciamento.17">Como a Mestti faz</a></li><li><a href="#perguntas" data-i18n="v2.sequenciamento.18">Perguntas</a></li></ol></div>
+    </nav>
 
-        <section class="seq-section seq-impact">
-            <div class="container">
-                <div class="seq-section-head">
-                    <p class="seq-section-label" data-i18n="page.sequenciamento.impact.label">Quem sente na prática</p>
-                    <h2 data-i18n="page.sequenciamento.impact.h2">O custo da programação no escuro aparece no atraso.</h2>
-                    <p data-i18n="page.sequenciamento.impact.p">Quando a produção é programada sem uma visão clara da capacidade, os problemas começam pequenos e terminam caros.</p>
-                </div>
-                <div class="seq-impact-body">
-                    <div class="seq-impact-grid">
-                        <article class="seq-card seq-impact-card">
-                            <span class="seq-card-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
-                            </span>
-                            <h3 data-i18n="page.sequenciamento.impact.pcp">PCP</h3>
-                            <p data-i18n="page.sequenciamento.impact.pcpText" data-i18n-html>Mais <span class="seq-highlight">retrabalho</span> para reprogramar.</p>
-                        </article>
-                        <article class="seq-card seq-impact-card">
-                            <span class="seq-card-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                            </span>
-                            <h3 data-i18n="page.sequenciamento.impact.production">Produção</h3>
-                            <p data-i18n="page.sequenciamento.impact.productionText" data-i18n-html>Mais troca de prioridade e <span class="seq-highlight">perda</span> de ritmo.</p>
-                        </article>
-                        <article class="seq-card seq-impact-card">
-                            <span class="seq-card-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18h2"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
-                            </span>
-                            <h3 data-i18n="page.sequenciamento.impact.delivery">Entrega</h3>
-                            <p data-i18n="page.sequenciamento.impact.deliveryText" data-i18n-html>Mais risco de <span class="seq-highlight">atraso</span> para o cliente.</p>
-                        </article>
-                        <article class="seq-card seq-impact-card">
-                            <span class="seq-card-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-4 3 3 5-6"/></svg>
-                            </span>
-                            <h3 data-i18n="page.sequenciamento.impact.management">Gestão</h3>
-                            <p data-i18n="page.sequenciamento.impact.managementText" data-i18n-html>Menos <span class="seq-highlight">confiança</span> para tomar decisão.</p>
-                        </article>
-                        <article class="seq-card seq-impact-card">
-                            <span class="seq-card-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                            </span>
-                            <h3 data-i18n="page.sequenciamento.impact.finance">Financeiro</h3>
-                            <p data-i18n="page.sequenciamento.impact.financeText" data-i18n-html><span class="seq-highlight">Desperdício</span> de capacidade produtiva.</p>
-                        </article>
-                    </div>
-                    <p class="seq-quote" data-i18n="page.sequenciamento.impact.quote">O atraso raramente começa na expedição. Ele começa quando a fábrica programa sem visibilidade.</p>
-                </div>
-            </div>
-        </section>
+    <section class="hv-section tp-section" id="o-que-entra" aria-labelledby="tp-o-que-entra-title"><div class="hv-wrap"><div class="hv-head"><h2 id="tp-o-que-entra-title" data-i18n="v2.sequenciamento.21">O que entra na conta</h2></div><ol class="tp-factors tp-factors--4"><li class="tp-factor" data-reveal><h3 data-i18n="v2.sequenciamento.22">Capacidade</h3><p data-i18n="v2.sequenciamento.23">Turnos, calendário e paradas programadas de cada máquina.</p></li><li class="tp-factor" data-reveal><h3 data-i18n="v2.sequenciamento.24">Tempo da operação</h3><p data-i18n="v2.sequenciamento.25">Tempo de ciclo da engenharia, quantidade, peças por ciclo e setup.</p></li><li class="tp-factor" data-reveal><h3 data-i18n="v2.sequenciamento.26">Restrições</h3><p data-i18n="v2.sequenciamento.27">Não começar antes de, terminar até e máquinas alternativas.</p></li><li class="tp-factor" data-reveal><h3 data-i18n="v2.sequenciamento.28">Prioridade e entrega</h3><p data-i18n="v2.sequenciamento.29">A data prometida ao cliente e a urgência de cada pedido.</p></li></ol></div></section>
+    <section class="hv-section tp-section tp-section--paper" id="regras" aria-labelledby="tp-regras-title"><div class="hv-wrap"><div class="hv-head"><h2 id="tp-regras-title" data-i18n="v2.sequenciamento.30">Regras de prioridade mais usadas</h2><p class="hv-lead" data-i18n="v2.sequenciamento.31">Nenhuma regra é a melhor sempre. O importante é ver o efeito de cada escolha nas datas de entrega.</p></div><ol class="tp-factors tp-factors--4"><li class="tp-factor" data-reveal><h3 data-i18n="v2.sequenciamento.32">Ordem de chegada</h3><p class="tp-formula" data-i18n="v2.sequenciamento.33">FIFO</p><p data-i18n="v2.sequenciamento.34">Simples e justa, mas ignora a data de entrega.</p></li><li class="tp-factor" data-reveal><h3 data-i18n="v2.sequenciamento.35">Menor data de entrega</h3><p class="tp-formula" data-i18n="v2.sequenciamento.36">EDD</p><p data-i18n="v2.sequenciamento.37">Reduz atrasos, mas pode aumentar trocas de setup.</p></li><li class="tp-factor" data-reveal><h3 data-i18n="v2.sequenciamento.38">Menor tempo de operação</h3><p class="tp-formula" data-i18n="v2.sequenciamento.39">SPT</p><p data-i18n="v2.sequenciamento.40">Termina mais ordens antes; as longas podem esperar demais.</p></li><li class="tp-factor" data-reveal><h3 data-i18n="v2.sequenciamento.41">Agrupar por setup</h3><p data-i18n="v2.sequenciamento.42">Junta produtos parecidos e reduz o tempo de troca.</p></li></ol></div></section>
+    <section class="hv-section tp-section" id="planilha-ou-gantt" aria-labelledby="tp-planilha-ou-gantt-title"><div class="hv-wrap"><div class="hv-head"><h2 id="tp-planilha-ou-gantt-title" data-i18n="v2.sequenciamento.43">Planilha ou sequenciamento visual?</h2></div><div class="tp-compare"><div class="tp-compare-card is-late"><h3 data-i18n="v2.sequenciamento.47">Na planilha</h3><ul><li><span data-i18n="v2.sequenciamento.44">A data é calculada à mão, com o tempo que alguém lembra.</span></li><li><span data-i18n="v2.sequenciamento.45">Mudar uma prioridade obriga a refazer a fila inteira.</span></li><li><span data-i18n="v2.sequenciamento.46">O atraso aparece quando o cliente liga.</span></li></ul></div><div class="tp-compare-card is-live"><h3 data-i18n="v2.sequenciamento.51">No sequenciamento visual</h3><ul><li><span data-i18n="v2.sequenciamento.48">A duração vem do tempo de ciclo cadastrado pela engenharia.</span></li><li><span data-i18n="v2.sequenciamento.49">Cada máquina tem a sua fila numa linha do tempo.</span></li><li><span data-i18n="v2.sequenciamento.50">A ordem que passa da data de entrega fica marcada antes de começar.</span></li></ul></div></div></div></section>
+    <section class="hv-section tp-section tp-how" id="como-a-mestti-faz" aria-labelledby="tp-como-a-mestti-faz-title"><div class="hv-wrap"><div class="tp-how-grid"><div class="tp-how-copy"><h2 id="tp-como-a-mestti-faz-title" data-i18n="v2.sequenciamento.52">Sequenciamento na Mestti</h2><ol class="tp-steps"><li data-reveal><span class="tp-step-n" aria-hidden="true">01</span><p data-i18n="v2.sequenciamento.53">O PCP programa uma ordem da carteira e ela entra na fila da máquina, com início e fim previstos.</p></li><li data-reveal><span class="tp-step-n" aria-hidden="true">02</span><p data-i18n="v2.sequenciamento.54">A duração vem do roteiro da engenharia: tempo de ciclo, peças por ciclo e quantidade.</p></li><li data-reveal><span class="tp-step-n" aria-hidden="true">03</span><p data-i18n="v2.sequenciamento.55">O calendário e os turnos entram na conta; paradas programadas não viram perda.</p></li><li data-reveal><span class="tp-step-n" aria-hidden="true">04</span><p data-i18n="v2.sequenciamento.56">A ordem que termina depois da entrega aparece marcada, e o monitoramento mostra na hora quando uma máquina para.</p></li></ol><div class="hv-actions"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="sequenciamento-como" data-i18n="v2.sequenciamento.57">Programar a minha fábrica pela capacidade real</button><p class="hv-cta-micro" data-i18n="v2.sequenciamento.58">A decisão da sequência continua com o seu PCP.</p><a class="hv-btn hv-btn--ghost" href="/#demo" data-i18n="v2.sequenciamento.59">Testar a fila das máquinas na demonstração</a></div></div><figure class="tp-how-shot"><img src="/images/v2/sequenciamento.webp" alt="Gantt do sequenciamento da Mestti com a fila de cada máquina" data-i18n-alt="v2.sequenciamento.60" width="913" height="531" loading="lazy" decoding="async"><figcaption data-i18n="v2.sequenciamento.61">Tela real do sistema, com dados de demonstração.</figcaption></figure></div></div></section>
 
-        <section class="seq-section seq-solution">
-            <div class="container">
-                <div class="seq-split">
-                    <div class="seq-split-copy">
-                        <p class="seq-section-label" data-i18n="page.sequenciamento.solution.label">O que muda na prática</p>
-                        <h2 data-i18n="page.sequenciamento.solution.h2">Com a MESTTI, sua programação fica visual, organizada e conectada à realidade da produção.</h2>
-                        <p data-i18n="page.sequenciamento.solution.p1">O módulo de Sequenciamento e Programação da MESTTI ajuda sua indústria a visualizar ordens, máquinas, filas e prioridades em um quadro claro e prático.</p>
-                        <p data-i18n="page.sequenciamento.solution.p2">Assim, o PCP consegue planejar melhor, a produção entende melhor a sequência e a gestão acompanha com mais segurança o que está acontecendo.</p>
-                        <a class="seq-btn seq-btn-primary" href="#diagnostico-programacao" data-i18n="page.sequenciamento.solution.cta">Quero ver minha programação com mais clareza</a>
-                    </div>
-                    <ul class="seq-benefit-list">
-                        <li data-i18n="page.sequenciamento.solution.b1">Visualize a programação por máquina</li>
-                        <li data-i18n="page.sequenciamento.solution.b2">Organize filas e prioridades</li>
-                        <li data-i18n="page.sequenciamento.solution.b3">Acompanhe ordens planejadas, em andamento e pendentes</li>
-                        <li data-i18n="page.sequenciamento.solution.b4">Identifique gargalos antes que virem atraso</li>
-                        <li data-i18n="page.sequenciamento.solution.b5">Tome decisões com mais clareza</li>
-                        <li data-i18n="page.sequenciamento.solution.b6">Reduza improvisos na rotina do PCP</li>
-                        <li data-i18n="page.sequenciamento.solution.b7">Aumente a previsibilidade da produção</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+    <section class="hv-section hv-faq" id="perguntas" aria-labelledby="tp-faq-title">
+        <div class="hv-wrap hv-faq-grid">
+            <div><h2 id="tp-faq-title" data-i18n="v2.sequenciamento.72">Perguntas sobre sequenciamento</h2></div>
+            <div class="hv-faq-list"><details><summary data-i18n="v2.sequenciamento.62">Sequenciamento é o mesmo que APS?</summary><p data-i18n="v2.sequenciamento.63">APS (Advanced Planning and Scheduling) é o nome dado a softwares que calculam a programação considerando capacidade finita. A Mestti mostra a fila de cada máquina pela capacidade e calcula as datas previstas; a decisão da sequência continua com o PCP.</p></details><details><summary data-i18n="v2.sequenciamento.64">O que é capacidade finita?</summary><p data-i18n="v2.sequenciamento.65">É programar sabendo que cada máquina só faz uma operação por vez e tem horas limitadas por dia. A fila cresce para a frente, em vez de empilhar tudo no mesmo dia.</p></details><details><summary data-i18n="v2.sequenciamento.66">O que acontece quando uma máquina para?</summary><p data-i18n="v2.sequenciamento.67">A parada aparece na hora no monitoramento, e a previsão da operação em andamento considera o que ainda falta produzir. O PCP decide se troca a sequência ou a máquina.</p></details><details><summary data-i18n="v2.sequenciamento.68">Dá para usar máquinas alternativas?</summary><p data-i18n="v2.sequenciamento.69">Sim. A engenharia define em quais máquinas cada operação pode rodar, e o PCP escolhe na programação.</p></details><details><summary data-i18n="v2.sequenciamento.70">Minha fábrica é pequena. Faz sentido?</summary><p data-i18n="v2.sequenciamento.71">Sim. Mesmo com poucas máquinas, ver a fila e a data prevista de cada pedido evita prometer prazo no escuro.</p></details></div>
+        </div>
+    </section>
 
-        <section class="seq-section seq-product-view">
-            <div class="container">
-                <div class="seq-section-head">
-                    <p class="seq-section-label" data-i18n="page.sequenciamento.product.label">Visão do sistema</p>
-                    <h2 data-i18n="page.sequenciamento.product.h2">Veja sua programação em uma única visão.</h2>
-                    <p data-i18n="page.sequenciamento.product.p">Acompanhe a distribuição das ordens, a ocupação das máquinas e os pontos de atenção da produção em um quadro visual simples de entender.</p>
-                </div>
-                <div class="seq-system-gallery">
-                    <figure class="seq-system-frame">
-                        <img src="../img-sistema/2.svg" alt="Quadro de programação da produção por máquina e horário na MESTTI" data-i18n-alt="page.sequenciamento.product.img1Alt" loading="lazy">
-                        <figcaption data-i18n="page.sequenciamento.product.fig1">Programação por máquina: ordens, horários e ocupação em uma linha do tempo.</figcaption>
-                    </figure>
-                    <figure class="seq-system-frame">
-                        <img src="../img-sistema/1.svg" alt="Sequenciamento de produção por fila e prioridade na MESTTI" data-i18n-alt="page.sequenciamento.product.img2Alt" loading="lazy">
-                        <figcaption data-i18n="page.sequenciamento.product.fig2">Sequenciamento por fila: organize prioridades e mova ordens entre máquinas.</figcaption>
-                    </figure>
-                </div>
-            </div>
-        </section>
+    <section class="hv-section tp-section tp-articles" aria-labelledby="tp-art-title"><div class="hv-wrap"><h2 id="tp-art-title">Artigos sobre este tema</h2><ul class="tp-related-list"><li><a class="tp-related-card" href="/blog/planilha-de-pcp-no-excel/" hreflang="pt-BR"><strong>Planilha de PCP no Excel: quando ela deixa de funcionar</strong><span>A planilha de PCP funciona no começo, mas passa a falhar quando a fábrica cresce. Veja os sinais de que ela chegou ao limite, o que uma boa programação precisa ter e como sair dela sem parar a fábrica.</span></a></li><li><a class="tp-related-card" href="/blog/capacidade-produtiva-de-uma-maquina/" hreflang="pt-BR"><strong>Como calcular a capacidade produtiva de uma máquina</strong><span>Capacidade produtiva é quantas peças uma máquina consegue fazer no tempo disponível. Veja a conta passo a passo, a diferença entre capacidade teórica, disponível e real, e por que a fila do PCP depende dela.</span></a></li></ul></div></section>
 
-        <section class="seq-section seq-fit">
-            <div class="container">
-                <div class="seq-section-head">
-                    <p class="seq-section-label" data-i18n="page.sequenciamento.fit.label">Para quem é</p>
-                    <h2 data-i18n="page.sequenciamento.fit.h2">A MESTTI é para indústrias que querem parar de programar no escuro.</h2>
-                    <p data-i18n="page.sequenciamento.fit.p">Essa solução faz sentido para sua empresa se hoje você:</p>
-                </div>
-                <div class="seq-check-grid">
-                    <span data-i18n="page.sequenciamento.fit.c1">Programa a produção em planilhas</span>
-                    <span data-i18n="page.sequenciamento.fit.c2">Depende de informações manuais</span>
-                    <span data-i18n="page.sequenciamento.fit.c3">Tem dificuldade para enxergar a capacidade das máquinas</span>
-                    <span data-i18n="page.sequenciamento.fit.c4">Muda a sequência de produção com frequência</span>
-                    <span data-i18n="page.sequenciamento.fit.c5">Sofre com atrasos e urgências</span>
-                    <span data-i18n="page.sequenciamento.fit.c6">Quer tomar decisões com dados mais confiáveis</span>
-                </div>
-                <div class="seq-fit-close-wrap">
-                    <p class="seq-emphasis" data-i18n="page.sequenciamento.fit.close">Se sua fábrica já produz, mas ainda tem dificuldade para enxergar e organizar a fila, a MESTTI pode ajudar.</p>
-                </div>
-            </div>
-        </section>
+    <section class="hv-section tp-section tp-related" aria-labelledby="tp-rel-title">
+        <div class="hv-wrap">
+            <h2 id="tp-rel-title" data-i18n="v2.sequenciamento.81">Continue lendo</h2>
+            <ul class="tp-related-list"><li><a class="tp-related-card" href="/pcp/"><strong data-i18n="v2.sequenciamento.73">PCP e PPCP</strong><span data-i18n="v2.sequenciamento.74">Planejar, programar e controlar a produção sem planilha.</span></a></li><li><a class="tp-related-card" href="/engenharia/"><strong data-i18n="v2.sequenciamento.75">Engenharia de produto</strong><span data-i18n="v2.sequenciamento.76">Roteiros, tempos de ciclo e máquinas alternativas.</span></a></li><li><a class="tp-related-card" href="/oee/"><strong data-i18n="v2.sequenciamento.77">O que é OEE</strong><span data-i18n="v2.sequenciamento.78">Fórmula, calculadora e erros que distorcem o indicador.</span></a></li><li><a class="tp-related-card" href="/producao/"><strong data-i18n="v2.sequenciamento.79">Produção e PCP na Mestti</strong><span data-i18n="v2.sequenciamento.80">Carteira, sequenciamento, tablet e sensores.</span></a></li></ul>
+        </div>
+    </section>
 
-        <section class="seq-section seq-how" id="como-funciona">
-            <div class="container">
-                <div class="seq-section-head">
-                    <p class="seq-section-label" data-i18n="page.sequenciamento.how.label">Como funciona</p>
-                    <h2 data-i18n="page.sequenciamento.how.h2">Uma forma mais simples de organizar sua produção.</h2>
-                </div>
-                <div class="seq-steps">
-                    <article class="seq-step">
-                        <span>1</span>
-                        <h3 data-i18n="page.sequenciamento.how.step1Title">Entendemos sua rotina de produção</h3>
-                        <p data-i18n="page.sequenciamento.how.step1Text">Mapeamos como sua indústria programa ordens, máquinas, prioridades e prazos.</p>
-                    </article>
-                    <article class="seq-step">
-                        <span>2</span>
-                        <h3 data-i18n="page.sequenciamento.how.step2Title">Organizamos sua programação no sistema</h3>
-                        <p data-i18n="page.sequenciamento.how.step2Text">As ordens passam a ser visualizadas em um quadro claro, com filas, horários e máquinas.</p>
-                    </article>
-                    <article class="seq-step">
-                        <span>3</span>
-                        <h3 data-i18n="page.sequenciamento.how.step3Title">Sua equipe acompanha e ajusta com mais segurança</h3>
-                        <p data-i18n="page.sequenciamento.how.step3Text">O PCP e a gestão conseguem tomar decisões com mais clareza, reduzindo improvisos.</p>
-                    </article>
-                    <article class="seq-step">
-                        <span>4</span>
-                        <h3 data-i18n="page.sequenciamento.how.step4Title">A produção ganha previsibilidade</h3>
-                        <p data-i18n="page.sequenciamento.how.step4Text">A fábrica passa a enxergar melhor capacidade, gargalos e riscos de atraso.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="seq-section seq-objections">
-            <div class="container">
-                <div class="seq-split seq-split-top">
-                    <div>
-                        <p class="seq-section-label" data-i18n="page.sequenciamento.objections.label">Ainda com dúvida?</p>
-                        <h2 data-i18n="page.sequenciamento.objections.h2">Você não precisa ter uma fábrica perfeita para começar.</h2>
-                        <p data-i18n="page.sequenciamento.objections.p">A MESTTI foi criada para indústrias que querem evoluir a gestão da produção de forma simples, prática e acessível.</p>
-                        <p class="seq-emphasis" data-i18n="page.sequenciamento.objections.emphasis">Não é sobre trocar tudo de uma vez. É sobre começar a enxergar melhor.</p>
-                    </div>
-                    <div class="seq-faq">
-                        <details>
-                            <summary data-i18n="page.sequenciamento.faq.q1">Já uso planilha. Ainda faz sentido?</summary>
-                            <p data-i18n="page.sequenciamento.faq.a1">Sim. A planilha pode ajudar no começo, mas ela não mostra a operação com clareza visual e não acompanha a rotina da produção com a mesma praticidade.</p>
-                        </details>
-                        <details>
-                            <summary data-i18n="page.sequenciamento.faq.q2">Minha equipe não é muito tecnológica. Isso pode ser um problema?</summary>
-                            <p data-i18n="page.sequenciamento.faq.a2">A MESTTI é feita para ser simples, objetiva e próxima da realidade industrial. A ideia é facilitar a rotina, não complicar.</p>
-                        </details>
-                        <details>
-                            <summary data-i18n="page.sequenciamento.faq.q3">Preciso parar a fábrica para implantar?</summary>
-                            <p data-i18n="page.sequenciamento.faq.a3">A proposta da MESTTI é ter uma implantação prática e não invasiva, respeitando a operação da indústria.</p>
-                        </details>
-                        <details>
-                            <summary data-i18n="page.sequenciamento.faq.q4">Minha fábrica é pequena para isso?</summary>
-                            <p data-i18n="page.sequenciamento.faq.a4">Não. Pequenas e médias indústrias também precisam de dados claros para produzir melhor, reduzir perdas e cumprir prazos com mais segurança.</p>
-                        </details>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="seq-section seq-final" id="diagnostico-programacao">
-            <div class="container">
-                <div class="seq-final-grid">
-                    <div class="seq-final-copy">
-                        <p class="seq-section-label" data-i18n="page.sequenciamento.final.label">Próximo passo</p>
-                        <h2 data-i18n="page.sequenciamento.final.h2">Quer entender como melhorar sua programação?</h2>
-                        <p data-i18n="page.sequenciamento.final.p1">Preencha o formulário e vamos conversar sobre a realidade da sua produção.</p>
-                        <p data-i18n="page.sequenciamento.final.p2">Vamos analisar como sua indústria organiza a fila hoje, onde estão os principais gargalos e como a MESTTI pode ajudar a trazer mais clareza para o PCP e para a gestão.</p>
-                    </div>
-                    <div class="seq-form-card">
-                        <form class="demo-form seq-form" id="contactForm" data-i18n-aria="page.sequenciamento.form.aria" aria-label="Formulário para conversar sobre a programação da produção">
-                            <input type="hidden" name="ddi" value="+55">
-                            <input type="hidden" name="solucao" value="Sequenciamento e programação">
-                            <input type="text" name="name" data-i18n-placeholder="page.sequenciamento.form.name" placeholder="Nome" autocomplete="name" required>
-                            <input type="email" name="email" data-i18n-placeholder="modal.email" placeholder="E-mail profissional" autocomplete="email" required>
-                            <input type="text" name="empresa" data-i18n-placeholder="page.sequenciamento.form.company" placeholder="Empresa" autocomplete="organization" required>
-                            <input type="text" name="cargo" data-i18n-placeholder="modal.role" placeholder="Cargo" autocomplete="organization-title" required>
-                            <input type="tel" name="phone" data-i18n-placeholder="page.sequenciamento.form.phone" placeholder="WhatsApp" autocomplete="tel" required>
-                            <select name="maquinas" required>
-                                <option value="" selected disabled data-i18n="page.sequenciamento.form.machinesLabel">Quantas máquinas sua fábrica possui?</option>
-                                <option value="1 a 5 máquinas" data-i18n="page.sequenciamento.form.machines1">1 a 5 máquinas</option>
-                                <option value="6 a 15 máquinas" data-i18n="page.sequenciamento.form.machines2">6 a 15 máquinas</option>
-                                <option value="16 a 30 máquinas" data-i18n="page.sequenciamento.form.machines3">16 a 30 máquinas</option>
-                                <option value="Mais de 30 máquinas" data-i18n="page.sequenciamento.form.machines4">Mais de 30 máquinas</option>
-                            </select>
-                            <select name="programacao_atual" required>
-                                <option value="" selected disabled data-i18n="page.sequenciamento.form.scheduleLabel">Hoje vocês programam por planilha, sistema ou papel?</option>
-                                <option value="Planilha" data-i18n="page.sequenciamento.form.scheduleSpreadsheet">Planilha</option>
-                                <option value="Sistema" data-i18n="page.sequenciamento.form.scheduleSystem">Sistema</option>
-                                <option value="Papel" data-i18n="page.sequenciamento.form.schedulePaper">Papel</option>
-                                <option value="Mistura de planilha, sistema e papel" data-i18n="page.sequenciamento.form.scheduleMixed">Mistura de planilha, sistema e papel</option>
-                            </select>
-                            <textarea name="dificuldade_programacao" data-i18n-placeholder="page.sequenciamento.form.difficulty" placeholder="Qual maior dificuldade na programação?" rows="4" required></textarea>
-                            <button type="submit" class="demo-submit" data-i18n="page.sequenciamento.form.submit">Quero conversar sobre minha programação</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    <section class="discovery discovery-context" id="avaliar-programacao"><div class="story-wrap"><div class="story-product-row"><div><h2>O que levar para avaliar a programação da sua fábrica</h2><p>Separe uma fila real de ordens, as máquinas disponíveis, os turnos e os tempos de processo utilizados pelo PCP ou PPCP. Na demonstração, confira como a programação por máquina representa sua sequência e como a equipe revisa prioridades diante de um atraso.</p></div><figure><div class="story-screen"><img src="/img-sistema/2.svg" width="1000" height="500" alt="Programação das máquinas em uma linha do tempo" loading="lazy" decoding="async"></div><figcaption>Interface e aplicação ilustrativas. Confirme o cenário, a configuração e os critérios de aceite com a equipe.</figcaption></figure></div><div class="story-context-details"><div class="story-context-detail"><h3>Sequenciamento visual e APS têm escopos diferentes</h3><p>A MESTTI apresenta filas, prioridades e programação visual. Isso não comprova, por si só, otimização automática de capacidade finita ou reprogramação autônoma após uma falha. Se essas regras são obrigatórias para a sua operação, leve-as para a avaliação e confirme o escopo na proposta.</p></div><div class="story-context-detail"><h3>Planejar depende de conferir a execução</h3><p>Uma previsão precisa ser confrontada com o andamento real. Conheça o <a href="/producao/">monitoramento e apontamento de produção</a> para entender a origem das informações utilizadas pela equipe. Integrações com ERP e cadastros existentes precisam ser avaliadas caso a caso.</p><p><a href="/blog/como-escolher-sistema-monitoramento-producao/#escopo">Compare os papéis de MES, PCP e APS</a> ou <a href="/contato/">solicite uma demonstração com uma ordem da sua fábrica</a>.</p></div></div></div></section>
+    <section class="hv-final" aria-labelledby="tp-final-title">
+        <div class="hv-wrap hv-final-inner">
+            <h2 id="tp-final-title" data-i18n="v2.sequenciamento.82">Prometa prazo com base na fila real, não no improviso.</h2>
+            <div class="hv-hero-actions"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="sequenciamento-final" data-i18n="v2.sequenciamento.83">Quero 1 semana grátis</button><p class="hv-cta-micro" data-i18n="v2.sequenciamento.84">Sensores prontos em até 7 dias. Instalação em 1 dia.</p></div>
+        </div>
+    </section>
     </main>
-
     <footer class="footer footer--tractian">
         <div class="container container--wide">
             <div class="footer-grid">
@@ -377,6 +161,10 @@
                     <ul class="footer-col-list"><li><a href="/diagnostico/" data-i18n="footer.v2.assessment">Como começar</a></li><li><a href="/glossario/" data-i18n="footer.v2.glossary">Glossário</a></li><li><a href="/mes-ou-erp/" data-i18n="footer.v2.mesErp">MES ou ERP?</a></li><li><a href="/blog/" data-i18n="footer.v2.blog">Blog</a></li><li><a href="/solucoes/" data-i18n="footer.v2.solutions">Soluções por problema</a></li><li><a href="https://app.mestti.com.br" target="_blank" rel="noopener" data-i18n="footer.app">Acesso ao sistema</a></li></ul>
                 </div>
                 <div class="footer-col">
+                    <div class="footer-col-title" data-i18n="footer.v2.guides">Guias</div>
+                    <ul class="footer-col-list"><li><a href="/mes/" data-i18n="footer.v2.gMes">Sistema MES</a></li><li><a href="/oee/" data-i18n="footer.v2.oee">O que é OEE</a></li><li><a href="/pcp/" data-i18n="footer.v2.gPcp">PCP e PPCP</a></li><li><a href="/sequenciamento/" data-i18n="footer.v2.gSeq">Sequenciamento da produção</a></li><li><a href="/apontamento-de-producao/" data-i18n="footer.v2.gApt">Apontamento de produção</a></li><li><a href="/monitoramento-de-maquinas/" data-i18n="footer.v2.gMon">Monitoramento de máquinas</a></li><li><a href="/maquinas-antigas/" data-i18n="footer.v2.gOld">Máquinas antigas sem CLP</a></li><li><a href="/industria-4-0/" data-i18n="footer.v2.gI40">Indústria 4.0</a></li><li><a href="/ia-na-industria/" data-i18n="footer.v2.gIa">IA na indústria</a></li></ul>
+                </div>
+                <div class="footer-col">
                     <div class="footer-col-title" data-i18n="footer.contact">Contato</div>
                     <ul class="footer-col-list"><li><a href="tel:+5543991095035" data-i18n="footer.v2.phone">(43) 99109-5035</a></li><li><a href="https://wa.me/5543991095035" target="_blank" rel="noopener" data-i18n="mobile.whatsapp">WhatsApp</a></li><li><a href="/contato/" data-i18n="mobile.contactCenter">Central de contato</a></li></ul>
                 </div>
@@ -386,6 +174,7 @@
                     <p class="footer-cnpj" data-i18n="footer.cnpj">Mestti Tecnologia LTDA - 63.380.944/0001-51</p>
                     <p class="footer-legal" data-i18n="footer.legal">© 2026 MESTTI. Todos os direitos reservados.</p>
                     <p class="footer-legal"><a href="/termos/">Termos de uso</a></p>
+                    <nav class="footer-langs" aria-label="Idioma"><ul><li><a href="/sequenciamento/" hreflang="pt-BR" lang="pt-BR" aria-current="true">Português</a></li><li><a href="/en/sequenciamento/" hreflang="en" lang="en">English</a></li><li><a href="/es/sequenciamento/" hreflang="es" lang="es">Español</a></li></ul></nav>
                     <p class="footer-legal"><a class="footer-apk-btn" href="/download-app" download="mestti.apk" data-i18n="footer.apk">Baixar app Android</a></p>
                 </div>
                 <div class="footer-social" role="group" aria-label="Redes sociais">
@@ -412,57 +201,60 @@
         </div>
     </footer>
 
-    <!-- Modal de Contato -->
     <div id="contactModal" class="modal-overlay" aria-hidden="true" inert>
         <div class="modal-content">
             <button type="button" class="modal-close" id="btnCloseModal" aria-label="Fechar demonstração" data-i18n-aria="a11y.closeDialog">&times;</button>
             <div class="demo-modal-card">
                 <div class="demo-modal-head">
-                    <h2 class="demo-modal-title" data-i18n="modal.expert.title">Fale com um especialista</h2>
-                    <p class="demo-modal-lead" data-i18n="modal.expert.leadSeq">Entenda como otimizar seu sequenciamento de produção.</p>
+                    <h2 class="demo-modal-title" data-i18n="modal.title">Comece sua semana grátis</h2>
+                    <p class="demo-modal-lead" data-i18n="modal.lead">Deixe seu contato e marcamos a conversa para escolher o setor da sua semana grátis.</p>
                 </div>
-                <form class="demo-form" id="contactFormModal">
-                    <input type="text" name="name" data-i18n-placeholder="modal.name" placeholder="Nome completo" autocomplete="name" required>
-                    <input type="text" name="empresa" data-i18n-placeholder="modal.company" placeholder="Empresa" autocomplete="organization" required>
-                    <input type="email" name="email" data-i18n-placeholder="modal.email" placeholder="E-mail profissional" autocomplete="email" required>
-
-                    <div class="field-row-3">
-                        <select name="ddi" aria-label="DDI" required>
+                <form class="demo-form" id="contactForm">
+                    <input type="text" id="name" name="name" data-i18n-placeholder="modal.name" placeholder="Nome completo" autocomplete="name" required>
+                    <div class="demo-form-phone">
+                        <select id="ddi" name="ddi" aria-label="DDI" required>
                             <option value="+55" selected>+55</option>
                             <option value="+1">+1</option>
                             <option value="+351">+351</option>
                             <option value="+34">+34</option>
                         </select>
-                        <input type="tel" name="phone" data-i18n-placeholder="modal.phone" placeholder="Telefone / WhatsApp" autocomplete="tel" required>
-                        <select name="cargo" required data-mestti-options="cargo" aria-label="Cargo">
-                            <option value="" selected disabled data-i18n="modal.role">Cargo</option>
-                        </select>
+                        <input type="tel" id="phone" name="phone" data-i18n-placeholder="modal.whatsapp" placeholder="WhatsApp com DDD" autocomplete="tel" inputmode="tel" required>
                     </div>
-
-                    <select name="setor" required data-mestti-options="setor" aria-label="Setor da empresa">
-                        <option value="" selected disabled data-i18n="modal.sector">Setor da Indústria</option>
-                    </select>
-
-                    <select name="solucao" required data-mestti-options="solucao" aria-label="Solução de interesse">
-                        <option value="" selected disabled data-i18n="modal.solution">Selecione a solução de maior interesse</option>
-                    </select>
-
-                    <textarea name="observacao" data-i18n-placeholder="modal.note" placeholder="Observação (opcional)" rows="3" style="min-height: 90px;"></textarea>
-                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Solicitar demonstração</button>
+                    <input type="text" id="empresa" name="empresa" data-i18n-placeholder="modal.company" placeholder="Empresa" autocomplete="organization" required>
+                    <details class="demo-form-more">
+                        <summary data-i18n="modal.more">Quer adiantar a conversa? Opcional</summary>
+                        <div class="demo-form-more-fields">
+                            <input type="email" id="email" name="email" data-i18n-placeholder="modal.email" placeholder="E-mail profissional" autocomplete="email">
+                            <select id="cargo" name="cargo" data-mestti-options="cargo" aria-label="Cargo">
+                                <option value="" selected disabled data-i18n="modal.role">Cargo</option>
+                            </select>
+                            <select id="setor" name="setor" data-mestti-options="setor" aria-label="Setor da empresa">
+                                <option value="" selected disabled data-i18n="modal.sector">Setor da Indústria</option>
+                            </select>
+                            <select id="solucao" name="solucao" data-mestti-options="solucao" aria-label="Solução de interesse">
+                                <option value="" selected disabled data-i18n="modal.solution">Selecione a solução de maior interesse</option>
+                            </select>
+                            <textarea id="observacao" name="observacao" data-i18n-placeholder="modal.note" placeholder="Observação (opcional)" rows="3"></textarea>
+                        </div>
+                    </details>
+                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Quero minha semana grátis</button>
+                    <p class="demo-form-assure" data-i18n="modal.assure">Sem custo e sem fidelidade. Na semana de teste o sensor é emprestado.</p>
                 </form>
             </div>
         </div>
     </div>
 
-    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script defer src="../js/i18n-page-strings.js?v=3"></script>
-    <script defer src="../js/i18n.js?v=26"></script>
-    <script defer src="../js/theme.js?v=2"></script>
-    <script defer src="../js/form-options.js?v=4"></script>
-    <script defer src="../js/meta-consent.js?v=6"></script>
-    <script defer src="../js/meta-pixel.js?v=1"></script>
-    <script defer src="../js/script.js?v=43"></script>
-    <script defer src="../js/wa-chat-viewport.js?v=2"></script>
-    <script defer src="../js/conversational-form.js?v=16"></script>
+    <script defer src="/js/i18n/sequenciamento.js?v=1"></script>
+    <script defer src="/js/i18n.js?v=33"></script>
+    <script defer src="/js/theme.js?v=3"></script>
+    <script defer src="/js/form-options.js?v=4"></script>
+    <script defer src="/js/meta-consent.js?v=7"></script>
+    <script defer src="/js/meta-pixel.js?v=1"></script>
+    <script defer src="/js/script.js?v=44"></script>
+    <script defer src="/js/wa-chat-viewport.js?v=4"></script>
+    <script defer src="/js/conversational-form.js?v=17"></script>
+    <script defer src="/js/v2.js?v=17"></script>
+    <script defer src="/js/home-demos.js?v=7"></script>
 </body>
+
 </html>

@@ -1259,3 +1259,9 @@ a.footer-apk-btn:hover {
     box-shadow: 0 8px 24px rgba(34, 197, 94, 0.35);
 }
 
+
+/* Links de idioma no rodapé (gerados pelo build): uma linha discreta */
+.footer-langs ul { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0; padding: 0; list-style: none; }
+.footer-langs a { font-size: 0.82rem; color: inherit; opacity: 0.75; text-decoration: none; }
+.footer-langs a:hover { opacity: 1; text-decoration: underline; }
+.footer-langs a[aria-current] { opacity: 1; font-weight: 600; }
