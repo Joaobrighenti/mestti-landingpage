@@ -617,23 +617,36 @@ body[data-page="home"].has-site-header {
     color: var(--primary-blue);
 }
 
-/* Seletor de idioma em texto: PT · EN · ES. Herda a cor do contexto (cabeçalho escuro ou menu do celular). */
-.lang-switcher { display: inline-flex; align-items: center; gap: 2px; padding: 0; border: 0; background: none; color: inherit; }
-.lang-switcher--mobile { margin-bottom: 0.75rem; }
-.lang-switcher-btn {
-    position: relative; min-width: 32px; min-height: 32px; padding: 0 6px; border: 0; border-radius: 6px;
-    background: transparent; color: inherit; cursor: pointer;
-    font: 600 0.75rem/1 'IBM Plex Mono', ui-monospace, monospace; letter-spacing: 0.06em;
-    opacity: 0.55; transition: opacity 0.16s ease, background-color 0.16s ease;
+/* Seletor de idioma: botão com globo + idioma atual; o clique abre a lista com os nomes por extenso. */
+.lang-switcher { position: relative; display: inline-flex; color: inherit; }
+.lang-current {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 10px; border: 0; border-radius: 8px;
+    background: transparent; color: inherit; cursor: pointer; font: 500 0.875rem/1 'IBM Plex Sans', system-ui, sans-serif;
+    transition: background-color 0.16s ease;
 }
-.lang-switcher-btn:hover { opacity: 0.9; }
-.lang-switcher-btn.is-active { opacity: 1; }
-.lang-switcher-btn.is-active::after { content: ""; position: absolute; left: 8px; right: 8px; bottom: 4px; height: 2px; border-radius: 1px; background: #ffc20e; }
-.lang-switcher-btn:focus-visible { outline: 2px solid currentColor; outline-offset: 1px; opacity: 1; }
-.lang-switcher-btn + .lang-switcher-btn::before { content: ""; position: absolute; left: -1px; top: 50%; width: 1px; height: 10px; margin-top: -5px; background: currentColor; opacity: 0.25; }
+.lang-current:hover, .lang-current[aria-expanded="true"] { background: rgba(127, 127, 127, 0.14); }
+.lang-current:focus-visible { outline: 2px solid currentColor; outline-offset: 1px; }
+.lang-current svg:last-child { opacity: 0.7; transition: transform 0.16s ease; }
+.lang-current[aria-expanded="true"] svg:last-child { transform: rotate(180deg); }
+.lang-menu {
+    position: absolute; top: calc(100% + 6px); right: 0; z-index: 1200; min-width: 168px; margin: 0; padding: 6px; list-style: none;
+    border-radius: 12px; background: #ffffff; color: #111820; box-shadow: 0 12px 32px rgba(10, 27, 46, 0.18), 0 0 0 1px rgba(10, 27, 46, 0.06);
+}
+.lang-switcher-btn {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 40px; padding: 0 12px;
+    border: 0; border-radius: 8px; background: transparent; color: inherit; cursor: pointer; text-align: left;
+    font: 500 0.9rem/1 'IBM Plex Sans', system-ui, sans-serif;
+}
+.lang-switcher-btn:hover, .lang-switcher-btn:focus-visible { background: #f1f4f7; outline: none; }
+.lang-check { visibility: hidden; color: #1f8a4c; }
+.lang-switcher-btn.is-active { font-weight: 600; }
+.lang-switcher-btn.is-active .lang-check { visibility: visible; }
+.lang-switcher--mobile { margin-bottom: 0.75rem; }
+.lang-switcher--mobile .lang-current { min-height: 44px; padding: 0 12px; border: 1px solid rgba(127, 127, 127, 0.3); }
+.lang-switcher--mobile .lang-menu { top: auto; bottom: calc(100% + 6px); left: 0; right: auto; }
+.lang-switcher--mobile .lang-switcher-btn { min-height: 44px; }
 @media (max-width: 900px) {
     .header-tractian-actions .lang-switcher { display: none; }
-    .lang-switcher--mobile .lang-switcher-btn { min-width: 44px; min-height: 44px; font-size: 0.85rem; }
 }
 
 /* Seletor de tema claro / escuro — header */
