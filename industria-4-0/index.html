@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11486484316"></script>
+    <!-- Google tag (gtag.js), carregado depois da página -->
+    <script>addEventListener('load',function(){setTimeout(function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=AW-11486484316';document.head.appendChild(s)},1200)})</script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/entry.css?v=132">
+    <link rel="stylesheet" href="/css/site.css?v=1">
     <link rel="stylesheet" href="/css/v2.css?v=2">
     <link rel="stylesheet" href="/css/v3.css?v=35">
     <link rel="stylesheet" href="/css/v3-mobile.css?v=18">
@@ -127,6 +127,8 @@
             <div class="hv-faq-list"><details><summary data-i18n="v2.industria-4-0.49">Indústria 4.0 e MES são a mesma coisa?</summary><p data-i18n="v2.industria-4-0.50">Não. Indústria 4.0 é a ideia de decidir com dados conectados. O MES é um dos sistemas que tornam isso possível no chão de fábrica.</p></details><details><summary data-i18n="v2.industria-4-0.51">Preciso de uma equipe de TI?</summary><p data-i18n="v2.industria-4-0.52">Não para começar. O sistema roda na nuvem, abre no navegador e o app fica no tablet. A rede precisa de Wi‑Fi de 2,4 GHz perto das máquinas.</p></details><details><summary data-i18n="v2.industria-4-0.53">Dá para começar sem integrar o ERP?</summary><p data-i18n="v2.industria-4-0.54">Sim. A integração com o ERP pode vir depois, quando os números da produção já estiverem confiáveis.</p></details><details><summary data-i18n="v2.industria-4-0.55">Quanto custa começar?</summary><p data-i18n="v2.industria-4-0.56">A semana de teste é grátis, com o sensor emprestado. Depois, o preço depende do número de máquinas e do que a fábrica vai usar.</p></details></div>
         </div>
     </section>
+
+    
 
     <section class="hv-section tp-section tp-related" aria-labelledby="tp-rel-title">
         <div class="hv-wrap">
@@ -241,7 +243,6 @@
         </div>
     </div>
 
-    <script defer src="/js/i18n-page-strings.js?v=3"></script>
     <script defer src="/js/i18n/industria-4-0.js?v=1"></script>
     <script defer src="/js/i18n.js?v=30"></script>
     <script defer src="/js/theme.js?v=3"></script>

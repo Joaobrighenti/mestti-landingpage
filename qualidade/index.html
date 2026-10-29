@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11486484316"></script>
+    <!-- Google tag (gtag.js), carregado depois da página -->
+    <script>addEventListener('load',function(){setTimeout(function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=AW-11486484316';document.head.appendChild(s)},1200)})</script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/entry.css?v=132">
+    <link rel="stylesheet" href="/css/site.css?v=1">
     <link rel="stylesheet" href="/css/v2.css?v=2">
     <link rel="stylesheet" href="/css/v3.css?v=8">
     <link rel="canonical" href="https://mestti.com.br/qualidade/">
@@ -142,6 +142,7 @@
             <div class="hv-faq-list"><details><summary data-i18n="v2.qualidade.faq.1">Consigo usar os checklists que já tenho em papel?</summary><p data-i18n="v2.qualidade.faq.2">Sim. Os itens são cadastrados uma vez, com o mesmo número e data de revisão do documento físico, para o histórico bater com o seu controle de documentos.</p></details><details><summary data-i18n="v2.qualidade.faq.3">Funciona no celular do inspetor?</summary><p data-i18n="v2.qualidade.faq.4">Sim. A qualidade tem uma versão para celular com botões grandes, foto pela câmera e indicação do que falta preencher.</p></details><details><summary data-i18n="v2.qualidade.faq.5">A qualidade conversa com a produção?</summary><p data-i18n="v2.qualidade.faq.6">Sim. A inspeção fica ligada à máquina e à ordem, e as não conformidades entram nos indicadores de produção.</p></details></div>
         </div>
     </section>
+    <section class="hv-section tp-section tp-articles" aria-labelledby="tp-art-title"><div class="hv-wrap"><h2 id="tp-art-title">Artigos sobre este tema</h2><ul class="tp-related-list"><li><a class="tp-related-card" href="/blog/refugo-e-retrabalho-por-maquina/" hreflang="pt-BR"><strong>Como controlar refugo e retrabalho por máquina</strong><span>Refugo e retrabalho custam material, tempo de máquina e prazo. Veja a diferença entre os dois, como registrar por máquina, turno e produto, os indicadores que importam e como eles entram no OEE.</span></a></li><li><a class="tp-related-card" href="/blog/inspecao-de-primeira-peca/" hreflang="pt-BR"><strong>Inspeção de primeira peça: como fazer e registrar</strong><span>A inspeção de primeira peça confirma que o processo está certo antes de produzir o lote. Veja quando fazer, o que conferir, como registrar com foto e nome, e os erros que fazem o refugo aparecer no meio do lote.</span></a></li></ul></div></section>
     <section class="hv-final" aria-labelledby="qualidade-final-title">
         <div class="hv-wrap hv-final-inner">
             <h2 id="qualidade-final-title" data-i18n="v2.qualidade.final.1">Na próxima devolução, tenha a resposta em um clique.</h2>
@@ -251,7 +252,6 @@
         </div>
     </div>
 
-    <script defer src="/js/i18n-page-strings.js?v=3"></script>
     <script defer src="/js/i18n/qualidade.js?v=1"></script>
     <script defer src="/js/i18n.js?v=30"></script>
     <script defer src="/js/theme.js?v=3"></script>

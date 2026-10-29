@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11486484316"></script>
+    <!-- Google tag (gtag.js), carregado depois da página -->
+    <script>addEventListener('load',function(){setTimeout(function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=AW-11486484316';document.head.appendChild(s)},1200)})</script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/entry.css?v=132">
+    <link rel="stylesheet" href="/css/site.css?v=1">
     <link rel="stylesheet" href="/css/v2.css?v=2">
     <link rel="stylesheet" href="/css/v3.css?v=35">
     <link rel="stylesheet" href="/css/v3-mobile.css?v=18">
@@ -127,6 +127,8 @@
             <div class="hv-faq-list"><details><summary data-i18n="v2.apontamento-de-producao.46">Will my operators feel watched?</summary><p data-i18n="v2.apontamento-de-producao.47">The sensor counts parts and sees whether the machine is running or stopped. It doesn’t watch people. Whoever was at the machine gives the reason for the stop, under their own name.</p></details><details><summary data-i18n="v2.apontamento-de-producao.48">Does it work on machines without a sensor?</summary><p data-i18n="v2.apontamento-de-producao.49">Yes. Manual reporting on the tablet remains available for machines without a sensor and for adjustments.</p></details><details><summary data-i18n="v2.apontamento-de-producao.50">What if the operator forgets the stop reason?</summary><p data-i18n="v2.apontamento-de-producao.51">The stop stays recorded with start and end, and is flagged as unexplained until someone explains it.</p></details><details><summary data-i18n="v2.apontamento-de-producao.52">Do I need a computer at each machine?</summary><p data-i18n="v2.apontamento-de-producao.53">No. Reporting is done on an Android tablet, with the Mestti app.</p></details><details><summary data-i18n="v2.apontamento-de-producao.54">Can a report be corrected?</summary><p data-i18n="v2.apontamento-de-producao.55">Yes. The correction is recorded with the name of who changed it and the original record is preserved.</p></details></div>
         </div>
     </section>
+
+    <section class="hv-section tp-section tp-articles" aria-labelledby="tp-art-title"><div class="hv-wrap"><h2 id="tp-art-title">Articles on this topic (in Portuguese)</h2><ul class="tp-related-list"><li><a class="tp-related-card" href="/blog/motivos-de-parada-de-maquina/" hreflang="pt-BR"><strong>Motivos de parada de máquina: como montar a lista e registrar no turno</strong><span>Uma boa lista de motivos de parada é curta, clara e separada por categoria. Veja um exemplo de lista, como registrar o motivo sem atrapalhar o operador e como transformar os motivos num ranking de perdas.</span></a></li><li><a class="tp-related-card" href="/blog/contagem-automatica-de-pecas/" hreflang="pt-BR"><strong>Contagem automática de peças: como funciona e o que conferir</strong><span>A contagem automática de peças usa um sensor que lê um sinal da máquina a cada peça ou ciclo. Veja os tipos de sinal, a diferença entre contar ciclos e peças, o que conferir na instalação e os erros mais comuns.</span></a></li><li><a class="tp-related-card" href="/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/" hreflang="pt-BR"><strong>Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real</strong><span>Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.</span></a></li><li><a class="tp-related-card" href="/blog/como-calcular-preco-venda-industria-rkw-custo-processo/" hreflang="pt-BR"><strong>Como calcular o preço de venda de um produto na indústria usando RKW e custo do processo</strong><span>Aprenda como calcular o preço de venda de um produto industrial usando o método RKW, considerando matéria-prima, custos fixos, custo do processo, tempo de máquina, custos variáveis e lucro desejado.</span></a></li></ul></div></section>
 
     <section class="hv-section tp-section tp-related" aria-labelledby="tp-rel-title">
         <div class="hv-wrap">
@@ -241,7 +243,6 @@
         </div>
     </div>
 
-    <script defer src="/js/i18n-page-strings.js?v=3"></script>
     <script defer src="/js/i18n/apontamento-de-producao.js?v=1"></script>
     <script defer src="/js/i18n.js?v=30"></script>
     <script defer src="/js/theme.js?v=3"></script>

@@ -20,6 +20,19 @@ import { buildBlog } from './blog-build.mjs';
 import { legacyTranslator, localizePage, textMap, hreflangLinks, langLinks, localUrl, LOCALES, ORIGIN as I18N_ORIGIN } from './site-i18n.mjs';
 
 const LANGS_MARK = '<!-- @langs -->';
+const ARTICLES_MARK = '<!-- @artigos -->';
+/** Página de tema → tema dos artigos do blog (campo "topic"). */
+const TOPIC_OF = { '/mes/': 'mes', '/oee/': 'oee', '/pcp/': 'pcp', '/sequenciamento/': 'sequenciamento', '/apontamento-de-producao/': 'apontamento',
+    '/monitoramento-de-maquinas/': 'monitoramento', '/maquinas-antigas/': 'maquinas-antigas', '/industria-4-0/': 'industria-4-0', '/ia-na-industria/': 'ia', '/qualidade/': 'qualidade' };
+const ARTICLES_TITLE = { pt: 'Artigos sobre este tema', en: 'Articles on this topic (in Portuguese)', es: 'Artículos sobre este tema (en portugués)' };
+const escHtml = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+function articlesBlock(url, lang, articles) {
+    const topic = TOPIC_OF[url];
+    const list = articles.filter((a) => a.topic === topic || (a.related || []).includes(url)).slice(0, 6);
+    if (!list.length) return '';
+    const cards = list.map((a) => `<li><a class="tp-related-card" href="${a.url}" hreflang="pt-BR"><strong>${escHtml(a.title)}</strong><span>${escHtml(a.description)}</span></a></li>`).join('');
+    return `<section class="hv-section tp-section tp-articles" aria-labelledby="tp-art-title"><div class="hv-wrap"><h2 id="tp-art-title">${ARTICLES_TITLE[lang]}</h2><ul class="tp-related-list">${cards}</ul></div></section>`;
+}
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = path.join(ROOT, 'site');
@@ -113,6 +126,23 @@ export function syncLegacy(rel, html, partials) {
     return out;
 }
 
+/**
+ * css/site.css: o entry.css com os @import resolvidos num arquivo só. Os @import em cadeia viravam uma fila de 20
+ * downloads antes do primeiro texto no celular. O tema escuro (removido do site) fica de fora.
+ */
+const CSS_SKIP = new Set(['dark-theme.css']);
+export function bundleCss() {
+    const seen = new Set();
+    const inline = (file) => {
+        const name = path.basename(file);
+        if (seen.has(name) || CSS_SKIP.has(name)) return '';
+        seen.add(name);
+        const css = fs.readFileSync(path.join(ROOT, 'css', name), 'utf8');
+        return css.replace(/@import\s+url\(["']?\.\/([^"')?]+)(?:\?[^"')]*)?["']?\);?/g, (m, dep) => inline(dep)).trim() + '\n';
+    };
+    return '/* Gerado por scripts/site-build.mjs a partir de css/entry.css. Não edite: edite os arquivos importados. */\n' + inline('entry.css');
+}
+
 const ORIGIN = 'https://mestti.com.br';
 
 /**
@@ -154,6 +184,7 @@ export function buildAll() {
         const chrome = JSON.parse(fs.readFileSync(path.join(SITE, 'i18n/chrome.json'), 'utf8'));
         files.set('js/i18n.js', i18n.slice(0, a) + chromeBlock(chrome) + i18n.slice(b + CHROME_END.length));
     }
+    files.set('css/site.css', bundleCss());
     const sources = listFiles(path.join(SITE, 'pages'), (n) => n.endsWith('.html'));
     const built = [];
     for (const rel of sources) {
@@ -198,7 +229,7 @@ export function buildAll() {
         const m = rel.match(/^(en|es)\/(.*)$/);
         const lang = m ? m[1] : 'pt';
         const url = '/' + (m ? m[2] : rel).replace(/index\.html$/, '');
-        files.set(rel, html.replace(LANGS_MARK, langLinks(url, lang, localized)));
+        files.set(rel, html.replace(LANGS_MARK, langLinks(url, lang, localized)).replace(ARTICLES_MARK, articlesBlock(url, lang, blog.articles)));
     }
     const sitemap = buildSitemap(files, problems, { ...blog.dates, ...localDates });
     if (sitemap) files.set('sitemap.xml', sitemap);

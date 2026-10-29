@@ -88,6 +88,15 @@
     <summary>Setup longo consome capacidade a cada troca de produto. Veja como medir o setup de verdade, separar o que pode ser feito com a máquina rodando (SMED) e acompanhar a melhora por máquina e por turno.</summary>
   </entry>
   <entry>
+    <title>Como escolher um sistema de monitoramento de produção industrial</title>
+    <link href="https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/"/>
+    <id>https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/</id>
+    <published>2026-10-21T00:00:00-03:00</published>
+    <updated>2026-10-29T00:00:00-03:00</updated>
+    <author><name>João Brighenti</name></author>
+    <summary>Um roteiro para avaliar sistemas de monitoramento de produção com critérios verificáveis: o tipo de sistema, o que é medido, máquinas antigas, um piloto que ajuda a decidir e o que conferir na proposta.</summary>
+  </entry>
+  <entry>
     <title>Como calcular a capacidade produtiva de uma máquina</title>
     <link href="https://mestti.com.br/blog/capacidade-produtiva-de-uma-maquina/"/>
     <id>https://mestti.com.br/blog/capacidade-produtiva-de-uma-maquina/</id>
@@ -95,15 +104,6 @@
     <updated>2026-10-29T00:00:00-03:00</updated>
     <author><name>Leonardo Ernica</name></author>
     <summary>Capacidade produtiva é quantas peças uma máquina consegue fazer no tempo disponível. Veja a conta passo a passo, a diferença entre capacidade teórica, disponível e real, e por que a fila do PCP depende dela.</summary>
-  </entry>
-  <entry>
-    <title>Como escolher um sistema de monitoramento de produção industrial</title>
-    <link href="https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/"/>
-    <id>https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/</id>
-    <published>2026-10-21T00:00:00-03:00</published>
-    <updated>2026-10-21T00:00:00-03:00</updated>
-    <author><name>João Brighenti</name></author>
-    <summary>Escopo, critérios técnicos e roteiro de piloto para escolher um sistema de monitoramento da produção.</summary>
   </entry>
   <entry>
     <title>Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real</title>

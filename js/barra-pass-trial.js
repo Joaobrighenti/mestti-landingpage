@@ -2,7 +2,7 @@
  * Chat de teste grátis — Barra Pass
  */
 (function () {
-    const AVATAR_SRC = '/images/Atendente.webp';
+    const AVATAR_SRC = '/images/Atendente-96.webp';
     const TYPING_MS = 520;
     const PAUSE_MS = 680;
     const CLOSE_AFTER_MS = 1200;
