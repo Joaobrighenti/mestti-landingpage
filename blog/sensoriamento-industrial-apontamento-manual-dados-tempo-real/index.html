@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11486484316"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -10,33 +12,35 @@
         gtag('config', 'G-9K4NZHC0WT');
         gtag('config', 'AW-11486484316');
     </script>
-    <script src="../../js/theme-init.js?v=2"></script>
-    <meta name="color-scheme" content="light dark">
+    <script src="/js/theme-init.js?v=2"></script>
+    <meta name="color-scheme" content="light">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
-    <title>Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real | MESTTI</title>
     <meta name="description" content="Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.">
-    <meta name="keywords" content="sensoriamento industrial, apontamento manual, dados em tempo real, Indústria 4.0, sensores industriais, contagem de peças, status de máquina, OEE, MESTTI">
-    <link rel="canonical" href="https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/">
+    <title>Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real | MESTTI</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/entry.css?v=37">
-    <link rel="stylesheet" href="../blog.css?v=5">
-    <link rel="stylesheet" href="../article.css?v=4">
-    <link rel="stylesheet" href="/css/discovery.css?v=1">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/entry.css?v=132">
+    <link rel="stylesheet" href="/css/v2.css?v=2">
+    <link rel="stylesheet" href="/css/v3.css?v=35">
+    <link rel="stylesheet" href="/css/v3-mobile.css?v=18">
+    <link rel="stylesheet" href="/css/v3-topic.css?v=2">
+    <link rel="stylesheet" href="/css/v3-blog.css?v=2">
+    <link rel="canonical" href="https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/">
+    <link rel="alternate" type="application/atom+xml" title="Blog da Mestti" href="https://mestti.com.br/blog/feed.xml">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="MESTTI">
     <meta property="og:title" content="Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real | MESTTI">
     <meta property="og:description" content="Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.">
     <meta property="og:url" content="https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/">
-    <meta property="og:image" content="https://mestti.com.br/images/hardware-mestti.webp">
-    <meta property="og:image:alt" content="Sensor industrial MESTTI conectado à gestão da produção">
+    <meta property="og:image" content="https://mestti.com.br/images/v2/monitoramento-cards.webp">
     <meta property="og:locale" content="pt_BR">
     <meta name="twitter:card" content="summary_large_image">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real","description":"Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.","image":"https://mestti.com.br/images/hardware-mestti.webp","datePublished":"2026-09-23","author":{"@type":"Organization","name":"MESTTI","url":"https://mestti.com.br/empresa/"},"publisher":{"@id":"https://mestti.com.br/#organization"},"mainEntityOfPage":"https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/","@id":"https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/#article","inLanguage":"pt-BR"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Preciso trocar todas as máquinas para ter sensoriamento?","acceptedAnswer":{"@type":"Answer","text":"Não. Na maioria dos casos o sensor se adapta ao equipamento existente (contagem, corrente, encoder). O ganho começa nas máquinas críticas, não na troca da linha inteira."}},{"@type":"Question","name":"Sensor substitui o MES / ERP?","acceptedAnswer":{"@type":"Answer","text":"Não. Sensor e dashboard de chão alimentam a operação com o real. MES/ERP continuam no planejamento, estoque e gestão. O ponto é não depender de digitação tardia para saber o que a máquina fez."}},{"@type":"Question","name":"E se a internet da fábrica cair?","acceptedAnswer":{"@type":"Answer","text":"Hardware bem desenhado guarda eventos localmente e sincroniza quando a conexão volta. Sem isso, você perde exatamente os minutos em que mais precisava do histórico."}},{"@type":"Question","name":"Por onde começar se hoje só temos papel?","acceptedAnswer":{"@type":"Answer","text":"Escolha uma máquina gargalo, automatize contagem ou status, coloque no painel e treine o turno a agir com o dado. Depois expanda. A MESTTI acelera esse caminho com sensores e monitoramento em tempo real."}},{"@type":"Question","name":"Sensores servem só para OEE?","acceptedAnswer":{"@type":"Answer","text":"OEE é um dos frutos. Antes disso, você já ganha produção confiável, mapa de paradas, cadência por horário e base para custo, PCP e manutenção."}}]},{"@type":"BreadcrumbList","@id":"https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://mestti.com.br/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://mestti.com.br/blog/"},{"@type":"ListItem","position":3,"name":"Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real","item":"https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/"}]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/#webpage","url":"https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/","name":"Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real | MESTTI","description":"Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.","inLanguage":"pt-BR","isPartOf":{"@id":"https://mestti.com.br/#website"},"breadcrumb":{"@id":"https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/#breadcrumb"}},{"@type":"BlogPosting","@id":"https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/#article","headline":"Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real","description":"Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.","inLanguage":"pt-BR","mainEntityOfPage":{"@id":"https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/#webpage"},"datePublished":"2026-09-23","dateModified":"2026-09-23","author":{"@type":"Person","@id":"https://mestti.com.br/empresa/#joao-brighenti","name":"João Brighenti","jobTitle":"Fundador","url":"https://mestti.com.br/empresa/","worksFor":{"@id":"https://mestti.com.br/#organization"}},"publisher":{"@id":"https://mestti.com.br/#organization"},"image":"https://mestti.com.br/images/v2/monitoramento-cards.webp","about":{"@type":"Thing","name":"Apontamento de produção"},"isPartOf":{"@id":"https://mestti.com.br/blog/#blog"}},{"@type":"BreadcrumbList","@id":"https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://mestti.com.br/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://mestti.com.br/blog/"},{"@type":"ListItem","position":3,"name":"Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real","item":"https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/"}]},{"@type":"FAQPage","@id":"https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/#faq","mainEntity":[{"@type":"Question","name":"Preciso trocar todas as máquinas para ter sensoriamento?","acceptedAnswer":{"@type":"Answer","text":"Não. Na maioria dos casos o sensor se adapta ao equipamento existente (contagem, corrente, encoder). O ganho começa nas máquinas críticas, não na troca da linha inteira."}},{"@type":"Question","name":"Sensor substitui o MES / ERP?","acceptedAnswer":{"@type":"Answer","text":"Não. Sensor e dashboard de chão alimentam a operação com o real. MES/ERP continuam no planejamento, estoque e gestão. O ponto é não depender de digitação tardia para saber o que a máquina fez."}},{"@type":"Question","name":"E se a internet da fábrica cair?","acceptedAnswer":{"@type":"Answer","text":"Hardware bem desenhado guarda eventos localmente e sincroniza quando a conexão volta. Sem isso, você perde exatamente os minutos em que mais precisava do histórico."}},{"@type":"Question","name":"Por onde começar se hoje só temos papel?","acceptedAnswer":{"@type":"Answer","text":"Escolha uma máquina gargalo, automatize contagem ou status, coloque no painel e treine o turno a agir com o dado. Depois expanda. A MESTTI acelera esse caminho com sensores e monitoramento em tempo real."}},{"@type":"Question","name":"Sensores servem só para OEE?","acceptedAnswer":{"@type":"Answer","text":"OEE é um dos frutos. Antes disso, você já ganha produção confiável, mapa de paradas, cadência por horário e base para custo, PCP e manutenção. O indicador completo fica muito mais honesto quando a coleta deixa de ser manual."}}]},{"@type":"Organization","@id":"https://mestti.com.br/#organization","name":"MESTTI","url":"https://mestti.com.br/"}]}</script>
 </head>
-<body class="blog-article-page" data-page="blog-article">
+
+<body class="hv-page" data-page="blog-artigo">
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <div class="nav-overlay" id="navOverlay"></div>
 
@@ -87,151 +91,104 @@
             </div>
         </div>
     </header>
+    <main id="conteudo" tabindex="-1" class="hv tp bp">
 
-    <main id="conteudo" tabindex="-1">
-<nav class="discovery-breadcrumb" aria-label="Caminho da página"><ol><li><a href="/">Início</a></li><li><a href="/blog/">Blog</a></li><li><span aria-current="page">Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real</span></li></ol></nav>
-        <header class="blog-hero">
-            <div class="container container--wide">
-                <div class="blog-hero-inner">
-                    <span class="blog-hero-badge" data-i18n="sensor.badge">Indústria 4.0 / Sensoriamento</span>
-                    <h1 data-i18n="sensor.h1">Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real</h1>
-                    <p class="blog-hero-lead" data-i18n="sensor.lead">Pare de descobrir produção, parada e cadência só no fim do turno. Entenda o que o sensoriamento muda no chão de fábrica — e por onde começar sem cair em buzzword de Indústria 4.0.</p>
-                    <div class="blog-hero-meta">
-                        <span class="blog-hero-meta-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            <span data-i18n="sensor.readTime">Leitura de 8 a 10 minutos</span>
-                        </span>
-                        <span class="blog-hero-meta-item" data-i18n="sensor.updated">Atualizado em set/2026</span>
-                    </div>
-                    <div class="blog-hero-actions">
-                        <a href="#quais-sensores" class="blog-hero-btn blog-hero-btn--ghost" data-i18n="sensor.ctaSensors">Ver quais sensores usar</a>
-                        <button type="button" class="blog-hero-btn blog-hero-btn--primary btn-open-modal" data-i18n="sensor.ctaMestti">Conheça a MESTTI</button>
-                    </div>
-                </div>
+    <section class="tp-hero" aria-labelledby="tp-title">
+        <div class="hv-wrap tp-hero-grid">
+            <div class="tp-hero-copy">
+                <nav class="tp-crumbs" aria-label="Você está em"><a href="/">Início</a> <span aria-hidden="true">/</span> <a href="/blog/">Blog</a></nav>
+                <p class="tp-overline"><a href="/apontamento-de-producao/">Apontamento de produção</a></p>
+                <h1 id="tp-title">Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real</h1>
+                <div class="tp-byline"><img src="/images/v2/joao-brighenti.webp" alt="" width="40" height="40" loading="eager" decoding="async"><p>Por <a href="https://mestti.com.br/empresa/">João Brighenti</a>, fundador da Mestti<span aria-hidden="true"> · </span>Revisado em <time datetime="2026-09-23">23/09/2026</time><span aria-hidden="true"> · </span>8 min de leitura</p></div>
             </div>
-        </header>
+            <aside class="tp-answer" aria-labelledby="tp-answer-title">
+                <p class="tp-answer-label" id="tp-answer-title">Resposta curta</p>
+                <p class="tp-answer-text">Sensoriamento industrial é instalar sensores nas máquinas para registrar sozinho a produção, as paradas e se a máquina está rodando. Ele substitui a anotação de quantidade e horário no papel; as pessoas continuam informando o motivo das paradas.</p>
+                <div class="tp-answer-cta"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="blog-sensoriamento-industrial-apontamento-manual-dados-tempo-real-topo">Automatizar a coleta na minha fábrica</button><p class="hv-cta-micro">1 semana grátis, com o sensor emprestado.</p></div>
+            </aside>
+        </div>
+    </section>
 
-        <div class="container container--wide">
-            <div class="article-layout">
-                <aside class="article-toc" aria-label="Índice do artigo">
-                    <p class="article-toc-title" data-i18n="sensor.tocTitle">Neste artigo</p>
-                    <nav>
-                        <ol>
-                            <li><a href="#introducao" data-i18n="sensor.toc.1">Introdução</a></li>
-                            <li><a href="#o-que-e" data-i18n="sensor.toc.2">O que é sensoriamento</a></li>
-                            <li><a href="#apontamento-manual" data-i18n="sensor.toc.3">Por que o apontamento falha</a></li>
-                            <li><a href="#industria-40" data-i18n="sensor.toc.4">O que muda de verdade</a></li>
-                            <li><a href="#quais-sensores" data-i18n="sensor.toc.5">Quais sensores usar</a></li>
-                            <li><a href="#exemplo-pratico" data-i18n="sensor.toc.6">Exemplo prático</a></li>
-                            <li><a href="#erros-comuns" data-i18n="sensor.toc.7">Erros comuns</a></li>
-                            <li><a href="#por-onde-comecar" data-i18n="sensor.toc.8">Por onde começar</a></li>
-                            <li><a href="#mestti" data-i18n="sensor.toc.9">Como a MESTTI ajuda</a></li>
-                            <li><a href="#checklist" data-i18n="sensor.toc.10">Checklist</a></li>
-                            <li><a href="#conclusao" data-i18n="sensor.toc.11">Conclusão</a></li>
-                            <li><a href="#faq" data-i18n="sensor.toc.12">Perguntas frequentes</a></li>
-                        </ol>
-                    </nav>
-                </aside>
-
-                <article class="article-body">
-<p class="discovery-related">Conteúdo da equipe <a href="/empresa/">MESTTI</a>.</p>
-                    <details class="article-toc-mobile">
-                        <summary data-i18n="sensor.tocMobile">Ver índice do artigo</summary>
-                        <nav aria-label="Índice do artigo (mobile)">
-                            <ol>
-                                <li><a href="#introducao" data-i18n="sensor.toc.1">Introdução</a></li>
-                                <li><a href="#o-que-e" data-i18n="sensor.toc.2">O que é sensoriamento</a></li>
-                                <li><a href="#apontamento-manual" data-i18n="sensor.toc.3">Por que o apontamento falha</a></li>
-                                <li><a href="#industria-40" data-i18n="sensor.toc.4">O que muda de verdade</a></li>
-                                <li><a href="#quais-sensores" data-i18n="sensor.toc.5">Quais sensores usar</a></li>
-                                <li><a href="#exemplo-pratico" data-i18n="sensor.toc.6">Exemplo prático</a></li>
-                                <li><a href="#erros-comuns" data-i18n="sensor.toc.7">Erros comuns</a></li>
-                                <li><a href="#por-onde-comecar" data-i18n="sensor.toc.8">Por onde começar</a></li>
-                                <li><a href="#mestti" data-i18n="sensor.toc.9">Como a MESTTI ajuda</a></li>
-                                <li><a href="#checklist" data-i18n="sensor.toc.10">Checklist</a></li>
-                                <li><a href="#conclusao" data-i18n="sensor.toc.11">Conclusão</a></li>
-                                <li><a href="#faq" data-i18n="sensor.toc.12">Perguntas frequentes</a></li>
-                            </ol>
-                        </nav>
-                    </details>
-
-                    <section id="introducao"><div data-i18n="sensor.intro" data-i18n-html><!-- static-content --><p>Em muita fábrica, o “dado de produção” ainda nasce assim: o operador anota no papel, digita no sistema no fim do turno, alguém consolida a planilha e a gestão só vê o resultado no dia seguinte.</p>
+    <div class="hv-wrap bp-layout">
+        <nav class="bp-toc" aria-label="Neste artigo"><p class="tp-toc-title">Neste artigo</p><ol><li><a href="#o-que-e">O que é sensoriamento industrial (sem jargão)</a></li><li><a href="#apontamento-manual">Por que o apontamento manual falha no turno</a></li><li><a href="#industria-40">O que a Indústria 4.0 muda de verdade no chão de fábrica</a></li><li><a href="#quais-sensores">Quais sensores resolvem quais dores</a></li><li><a href="#exemplo-pratico">Exemplo prático: o mesmo turno, dois jeitos de ver</a></li><li><a href="#erros-comuns">Erros comuns ao “digitalizar” a coleta de dados</a></li><li><a href="#por-onde-comecar">Por onde começar (passo a passo)</a></li><li><a href="#mestti">Como a MESTTI ajuda</a></li><li><a href="#checklist">Checklist rápido: sua coleta de dados está pronta?</a></li><li><a href="#conclusao">Conclusão</a></li></ol></nav>
+        <article class="bp-body">
+<section id="introducao"><div><p>Em muita fábrica, o “dado de produção” ainda nasce assim: o operador anota no papel, digita no sistema no fim do turno, alguém consolida a planilha e a gestão só vê o resultado no dia seguinte.</p>
 <p>O problema não é falta de esforço. É atraso, inconsistência e perda de contexto. Quando a peça foi produzida? Em qual máquina a linha realmente parou? A cadência caiu às 10h ou só no fechamento “parece” que o turno foi fraco?</p>
 <p>Indústria 4.0, nesse cenário, deixa de ser slide e vira uma pergunta prática: <strong>dá para coletar o que a máquina fez sem depender de digitação?</strong></p>
 <p>A resposta passa por sensoriamento industrial — hardware simples, bem instalado, ligado a um painel ao vivo. Neste artigo você vai entender o que é sensoriamento no chão de fábrica, por que o apontamento manual falha, quais sensores resolvem quais dores e como a MESTTI transforma contagem, status de máquina e paradas em gestão com tempo de reação.</p>
 <p><strong>Neste artigo, você vai entender:</strong></p>
 <ul class="article-intro-list">
-    <li>O que é sensoriamento industrial (sem jargão)</li>
-    <li>Por que o apontamento manual falha no turno</li>
-    <li>O que a Indústria 4.0 muda de verdade no chão de fábrica</li>
-    <li>Quais sensores resolvem quais dores</li>
-    <li>Um exemplo prático do mesmo turno, dois jeitos de ver</li>
-    <li>Erros comuns ao digitalizar a coleta</li>
-    <li>Por onde começar e como a MESTTI ajuda</li>
-</ul><!-- /static-content --></div></section>
-                    <section id="o-que-e"><div data-i18n="sensor.s1" data-i18n-html><!-- static-content --><h2>O que é sensoriamento industrial (sem jargão)</h2>
+<li>O que é sensoriamento industrial (sem jargão)</li>
+<li>Por que o apontamento manual falha no turno</li>
+<li>O que a Indústria 4.0 muda de verdade no chão de fábrica</li>
+<li>Quais sensores resolvem quais dores</li>
+<li>Um exemplo prático do mesmo turno, dois jeitos de ver</li>
+<li>Erros comuns ao digitalizar a coleta</li>
+<li>Por onde começar e como a MESTTI ajuda</li>
+</ul></div></section>
+<section id="o-que-e"><div><h2>O que é sensoriamento industrial (sem jargão)</h2>
 <p>Sensoriamento industrial é capturar eventos reais da operação — peça produzida, máquina ligada ou parada, comprimento extrudado, ciclo concluído — e enviá-los automaticamente para um sistema, em vez de pedir que alguém digite depois.</p>
 <p>Não é “substituir o operador”. É tirar do operador a tarefa de ser o relógio e o contador da fábrica, para que ele foque em setup, qualidade e resolução de problema.</p>
 <p>Em termos práticos, o sensor:</p>
 <ol>
-    <li><strong>Detecta</strong> um evento físico (passagem de peça, corrente elétrica, fim de curso, encoder de comprimento).</li>
-    <li><strong>Registra</strong> horário e máquina.</li>
-    <li><strong>Envia</strong> o dado para o dashboard (e guarda localmente se a rede oscilar).</li>
-    <li><strong>Alimenta</strong> indicadores: produção, disponibilidade, performance, OEE, histórico por turno.</li>
+<li><strong>Detecta</strong> um evento físico (passagem de peça, corrente elétrica, fim de curso, encoder de comprimento).</li>
+<li><strong>Registra</strong> horário e máquina.</li>
+<li><strong>Envia</strong> o dado para o dashboard (e guarda localmente se a rede oscilar).</li>
+<li><strong>Alimenta</strong> indicadores: produção, disponibilidade, performance, OEE, histórico por turno.</li>
 </ol>
 <div class="highlight-box">
-    <p>Sem esse elo, qualquer indicador bonito no PowerPoint ainda depende de memória humana.</p>
-</div><!-- /static-content --></div></section>
-                    <section id="apontamento-manual"><div data-i18n="sensor.s2" data-i18n-html><!-- static-content --><h2>Por que o apontamento manual falha no turno</h2>
+<p>Sem esse elo, qualquer indicador bonito no PowerPoint ainda depende de memória humana.</p>
+</div></div></section>
+<section id="apontamento-manual"><div><h2>Por que o apontamento manual falha no turno</h2>
 <p>Apontamento manual até “funciona” em volume baixo. Em operação real, ele costuma quebrar em cinco pontos:</p>
 <ol>
-    <li><strong>Atraso</strong> — o dado chega depois da decisão que importava.</li>
-    <li><strong>Erro de digitação</strong> — número trocado, máquina errada, turno misturado.</li>
-    <li><strong>Microparadas invisíveis</strong> — ninguém anota a parada de 40 segundos que se repete 30 vezes.</li>
-    <li><strong>Carga no operador</strong> — em alta cadência, anotar compete com produzir.</li>
-    <li><strong>Falta de timestamp confiável</strong> — “parou de manhã” não ajuda manutenção nem PCP.</li>
+<li><strong>Atraso</strong> — o dado chega depois da decisão que importava.</li>
+<li><strong>Erro de digitação</strong> — número trocado, máquina errada, turno misturado.</li>
+<li><strong>Microparadas invisíveis</strong> — ninguém anota a parada de 40 segundos que se repete 30 vezes.</li>
+<li><strong>Carga no operador</strong> — em alta cadência, anotar compete com produzir.</li>
+<li><strong>Falta de timestamp confiável</strong> — “parou de manhã” não ajuda manutenção nem PCP.</li>
 </ol>
 <div class="example-box">
-    <p class="example-box-title">Exemplo típico do fim do turno</p>
-    <ul>
-        <li>Produção apontada: 1.200 peças</li>
-        <li>Realidade da linha (se houvesse contagem automática): 1.080 peças + várias microparadas</li>
-    </ul>
-    <p>Resultado: PCP planeja o dia seguinte com base em um número otimista, a manutenção não vê o padrão de falha, e a gestão discute “produtividade” sem saber onde o tempo foi embora.</p>
+<p class="example-box-title">Exemplo típico do fim do turno</p>
+<ul>
+<li>Produção apontada: 1.200 peças</li>
+<li>Realidade da linha (se houvesse contagem automática): 1.080 peças + várias microparadas</li>
+</ul>
+<p>Resultado: PCP planeja o dia seguinte com base em um número otimista, a manutenção não vê o padrão de falha, e a gestão discute “produtividade” sem saber onde o tempo foi embora.</p>
 </div>
-<p>O apontamento não é vilão por ser antigo. É limitado porque o chão de fábrica é rápido demais para papel e planilha.</p><!-- /static-content --></div></section>
-                    <section id="industria-40"><div data-i18n="sensor.s3" data-i18n-html><!-- static-content --><h2>O que a Indústria 4.0 muda de verdade no chão de fábrica</h2>
+<p>O apontamento não é vilão por ser antigo. É limitado porque o chão de fábrica é rápido demais para papel e planilha.</p></div></section>
+<section id="industria-40"><div><h2>O que a Indústria 4.0 muda de verdade no chão de fábrica</h2>
 <p>Esqueça a lista genérica de “pilares”. No turno, Indústria 4.0 útil costuma significar três mudanças concretas:</p>
 <table class="cost-table">
-    <thead>
-        <tr><th>Antes (manual)</th><th>Depois (sensor + painel)</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>Produção digitada no fim do turno</td><td>Contagem automática 24/7</td></tr>
-        <tr><td>“A máquina parou um pouco”</td><td>Parada com início, fim e duração</td></tr>
-        <tr><td>Indicador no relatório do dia seguinte</td><td>Alerta e visão ao vivo</td></tr>
-        <tr><td>Média da planta esconde gargalo</td><td>Visão por máquina e por posto</td></tr>
-        <tr><td>Decisão por percepção do turno</td><td>Decisão com dado atual</td></tr>
-    </tbody>
+<thead>
+<tr><th>Antes (manual)</th><th>Depois (sensor + painel)</th></tr>
+</thead>
+<tbody>
+<tr><td>Produção digitada no fim do turno</td><td>Contagem automática 24/7</td></tr>
+<tr><td>“A máquina parou um pouco”</td><td>Parada com início, fim e duração</td></tr>
+<tr><td>Indicador no relatório do dia seguinte</td><td>Alerta e visão ao vivo</td></tr>
+<tr><td>Média da planta esconde gargalo</td><td>Visão por máquina e por posto</td></tr>
+<tr><td>Decisão por percepção do turno</td><td>Decisão com dado atual</td></tr>
+</tbody>
 </table>
 <div class="highlight-box">
-    <p>Isso não exige fábrica nova. Exige <strong>coleta automática confiável</strong> nas máquinas que mais importam — e disciplina para agir no mesmo turno em que a perda aparece.</p>
-</div><!-- /static-content --></div></section>
-                    <section id="quais-sensores"><div data-i18n="sensor.s4" data-i18n-html><!-- static-content --><h2>Quais sensores resolvem quais dores</h2>
+<p>Isso não exige fábrica nova. Exige <strong>coleta automática confiável</strong> nas máquinas que mais importam — e disciplina para agir no mesmo turno em que a perda aparece.</p>
+</div></div></section>
+<section id="quais-sensores"><div><h2>Quais sensores resolvem quais dores</h2>
 <p>Nem todo sensor serve para tudo. O erro comum é comprar hardware “bonito” sem cruzar com a dor do processo.</p>
 <div class="sigla-grid">
-    <div class="sigla-card">
-        <abbr title="Contagem">Contagem de peças</abbr>
-        <p>Produção real, cadência e base para performance e OEE.</p>
-    </div>
-    <div class="sigla-card">
-        <abbr title="Status">Status da máquina</abbr>
-        <p>Disponibilidade com horário — ligada, parada ou setup.</p>
-    </div>
-    <div class="sigla-card">
-        <abbr title="Encoder">Metro linear</abbr>
-        <p>Extrusão e processos contínuos medidos em comprimento.</p>
-    </div>
+<div class="sigla-card">
+<abbr title="Contagem">Contagem de peças</abbr>
+<p>Produção real, cadência e base para performance e OEE.</p>
+</div>
+<div class="sigla-card">
+<abbr title="Status">Status da máquina</abbr>
+<p>Disponibilidade com horário — ligada, parada ou setup.</p>
+</div>
+<div class="sigla-card">
+<abbr title="Encoder">Metro linear</abbr>
+<p>Extrusão e processos contínuos medidos em comprimento.</p>
+</div>
 </div>
 <h3>1. Contagem de peças</h3>
 <p><strong>Para quê:</strong> linhas com peça unitária, esteira, montagem, injeção, processos repetitivos.</p>
@@ -246,130 +203,102 @@
 <p><strong>O que resolve:</strong> produção em centímetros (ou metros) 24/7, com histórico na nuvem e base para rendimento do turno.</p>
 <h3>4. O que o sensor sozinho não resolve</h3>
 <div class="warning-box">
-    <p>Sensor sem painel vira log esquecido. Painel sem sensor vira tela alimentada por digitação. O valor está no <strong>conjunto</strong>: evento físico → registro confiável → indicador acionável → ação no turno.</p>
-</div><!-- /static-content --></div></section>
-
-                    <div class="article-inline-cta">
-                        <p data-i18n="sensor.ctaMid.text">Veja produção, paradas e status de máquina ao vivo — sem digitação no fim do turno.</p>
-                        <button type="button" class="blog-hero-btn blog-hero-btn--primary btn-open-modal" data-i18n="sensor.ctaMid.btn">Quero ver minha fábrica em tempo real</button>
-                    </div>
-
-                    <section id="exemplo-pratico"><div data-i18n="sensor.s5" data-i18n-html><!-- static-content --><h2>Exemplo prático: o mesmo turno, dois jeitos de ver</h2>
+<p>Sensor sem painel vira log esquecido. Painel sem sensor vira tela alimentada por digitação. O valor está no <strong>conjunto</strong>: evento físico → registro confiável → indicador acionável → ação no turno.</p>
+</div></div></section>
+<div class="article-inline-cta">
+<p>Veja produção, paradas e status de máquina ao vivo — sem digitação no fim do turno.</p>
+</div>
+<section id="exemplo-pratico"><div><h2>Exemplo prático: o mesmo turno, dois jeitos de ver</h2>
 <p>Cenário: uma célula com máquina crítica, turno de 8 horas, meta de ritmo conhecida.</p>
 <div class="example-box">
-    <p class="example-box-title">Com apontamento manual</p>
-    <ul>
-        <li>Operador anota totais a cada 2 horas (quando dá).</li>
-        <li>Uma microparada de 1 minuto se repete dezenas de vezes — some do radar.</li>
-        <li>Às 16h, o supervisor “sente” que o turno foi fraco.</li>
-        <li>Só no relatório do dia seguinte a produção fecha abaixo do plano — sem horário claro da queda.</li>
-    </ul>
+<p class="example-box-title">Com apontamento manual</p>
+<ul>
+<li>Operador anota totais a cada 2 horas (quando dá).</li>
+<li>Uma microparada de 1 minuto se repete dezenas de vezes — some do radar.</li>
+<li>Às 16h, o supervisor “sente” que o turno foi fraco.</li>
+<li>Só no relatório do dia seguinte a produção fecha abaixo do plano — sem horário claro da queda.</li>
+</ul>
 </div>
 <div class="example-box">
-    <p class="example-box-title">Com sensoriamento + dashboard</p>
-    <ul>
-        <li>Cada peça (ou metro) entra no sistema no momento do evento.</li>
-        <li>Status de máquina marca início e fim de cada parada.</li>
-        <li>Às 10:15 o painel já mostra cadência abaixo do padrão naquela máquina.</li>
-        <li>Manutenção e liderança atuam ainda no turno; o PCP ajusta a sequência com base no real, não no “achismo”.</li>
-    </ul>
+<p class="example-box-title">Com sensoriamento + dashboard</p>
+<ul>
+<li>Cada peça (ou metro) entra no sistema no momento do evento.</li>
+<li>Status de máquina marca início e fim de cada parada.</li>
+<li>Às 10:15 o painel já mostra cadência abaixo do padrão naquela máquina.</li>
+<li>Manutenção e liderança atuam ainda no turno; o PCP ajusta a sequência com base no real, não no “achismo”.</li>
+</ul>
 </div>
 <div class="highlight-box">
-    <p>A diferença não é cosmética. É <strong>tempo de reação</strong> — o mesmo ativo que o artigo de OEE da MESTTI trata como dinheiro no chão de fábrica.</p>
-</div><!-- /static-content --></div></section>
-                    <section id="erros-comuns"><div data-i18n="sensor.s6" data-i18n-html><!-- static-content --><h2>Erros comuns ao “digitalizar” a coleta de dados</h2>
+<p>A diferença não é cosmética. É <strong>tempo de reação</strong> — o mesmo ativo que o artigo de OEE da MESTTI trata como dinheiro no chão de fábrica.</p>
+</div></div></section>
+<section id="erros-comuns"><div><h2>Erros comuns ao “digitalizar” a coleta de dados</h2>
 <ol>
-    <li><strong>Querer sensor em tudo no dia 1</strong> — comece pelas máquinas gargalo e pelas linhas de maior volume.</li>
-    <li><strong>Trocar papel por planilha e chamar de Indústria 4.0</strong> — se ainda depende de digitação, o atraso continua.</li>
-    <li><strong>Ignorar instalação e ambiente</strong> — sensor mal posicionado gera falso positivo e mata a confiança no dado.</li>
-    <li><strong>Olhar só o total do dia</strong> — sem visão por horário e por máquina, você só confirma o problema depois.</li>
-    <li><strong>Não definir o que cada evento significa</strong> — “contagem” sem regra de peça boa/ruim, ou “parada” sem política de setup, vira indicador confuso.</li>
-    <li><strong>Esquecer a rede</strong> — oscilação de Wi-Fi sem buffer local perde evento; hardware sério grava e sincroniza depois.</li>
-</ol><!-- /static-content --></div></section>
-                    <section id="por-onde-comecar"><div data-i18n="sensor.s7" data-i18n-html><!-- static-content --><h2>Por onde começar (passo a passo)</h2>
+<li><strong>Querer sensor em tudo no dia 1</strong> — comece pelas máquinas gargalo e pelas linhas de maior volume.</li>
+<li><strong>Trocar papel por planilha e chamar de Indústria 4.0</strong> — se ainda depende de digitação, o atraso continua.</li>
+<li><strong>Ignorar instalação e ambiente</strong> — sensor mal posicionado gera falso positivo e mata a confiança no dado.</li>
+<li><strong>Olhar só o total do dia</strong> — sem visão por horário e por máquina, você só confirma o problema depois.</li>
+<li><strong>Não definir o que cada evento significa</strong> — “contagem” sem regra de peça boa/ruim, ou “parada” sem política de setup, vira indicador confuso.</li>
+<li><strong>Esquecer a rede</strong> — oscilação de Wi-Fi sem buffer local perde evento; hardware sério grava e sincroniza depois.</li>
+</ol></div></section>
+<section id="por-onde-comecar"><div><h2>Por onde começar (passo a passo)</h2>
 <ol>
-    <li><strong>Liste as 3–5 máquinas</strong> que mais limitam o throughput ou geram mais dúvida de produção.</li>
-    <li><strong>Escolha o evento certo:</strong> peça, status elétrico ou metro linear.</li>
-    <li><strong>Instale com a equipe da planta</strong> (quando o hardware permitir instalação rápida) e valide contagem/parada por algumas horas.</li>
-    <li><strong>Coloque o dado no painel ao vivo</strong> — produção, paradas, disponibilidade.</li>
-    <li><strong>Treine a liderança do turno</strong> a olhar o painel e agir no mesmo turno.</li>
-    <li><strong>Só então</strong> expanda para mais postos e feche o ciclo com OEE completo.</li>
+<li><strong>Liste as 3–5 máquinas</strong> que mais limitam o throughput ou geram mais dúvida de produção.</li>
+<li><strong>Escolha o evento certo:</strong> peça, status elétrico ou metro linear.</li>
+<li><strong>Instale com a equipe da planta</strong> (quando o hardware permitir instalação rápida) e valide contagem/parada por algumas horas.</li>
+<li><strong>Coloque o dado no painel ao vivo</strong> — produção, paradas, disponibilidade.</li>
+<li><strong>Treine a liderança do turno</strong> a olhar o painel e agir no mesmo turno.</li>
+<li><strong>Só então</strong> expanda para mais postos e feche o ciclo com OEE completo.</li>
 </ol>
 <div class="highlight-box">
-    <p>Digitalização que funciona é incremental e ligada à dor — não um projeto de TI de 18 meses sem resultado no chão.</p>
-</div><!-- /static-content --></div></section>
-                    <section id="mestti"><div data-i18n="sensor.s8" data-i18n-html><!-- static-content --><h2>Como a MESTTI ajuda</h2>
+<p>Digitalização que funciona é incremental e ligada à dor — não um projeto de TI de 18 meses sem resultado no chão.</p>
+</div></div></section>
+<section id="mestti"><div><h2>Como a MESTTI ajuda</h2>
 <p>A MESTTI combina sensores industriais e software para monitoramento em tempo real: contagem automática, status de máquina, paradas com horário e indicadores no dashboard — sem digitação no fim do turno.</p>
 <p>Na prática:</p>
 <ul>
-    <li><strong>Sensor de contagem de peças</strong> (infravermelho, indutivo, laser ou mecânico), com integração ao painel</li>
-    <li><strong>Sensor de status da máquina</strong> por leitura de corrente (instalação rápida, tipicamente em minutos)</li>
-    <li><strong>Encoder de metro linear</strong> para processos contínuos (extrusão / moveleiro)</li>
-    <li><strong>Buffer local</strong> contra queda de internet — o evento não some se a rede oscilar</li>
-    <li><strong>Visão por máquina</strong> de produção, paradas, disponibilidade e performance</li>
-    <li>Base sólida para <strong>OEE ao vivo</strong>, sequenciamento e decisão de turno</li>
+<li><strong>Sensor de contagem de peças</strong> (infravermelho, indutivo, laser ou mecânico), com integração ao painel</li>
+<li><strong>Sensor de status da máquina</strong> por leitura de corrente (instalação rápida, tipicamente em minutos)</li>
+<li><strong>Encoder de metro linear</strong> para processos contínuos (extrusão / moveleiro)</li>
+<li><strong>Buffer local</strong> contra queda de internet — o evento não some se a rede oscilar</li>
+<li><strong>Visão por máquina</strong> de produção, paradas, disponibilidade e performance</li>
+<li>Base sólida para <strong>OEE ao vivo</strong>, sequenciamento e decisão de turno</li>
 </ul>
-<p>Se a sua planta ainda responde “quanto produzimos hoje?” só depois do fechamento, o gargalo provavelmente não é falta de reunião — é falta de coleta automática no momento em que a peça sai e a máquina para.</p><!-- /static-content --></div></section>
-                    <section id="checklist"><div data-i18n="sensor.s9" data-i18n-html><!-- static-content --><h2>Checklist rápido: sua coleta de dados está pronta?</h2>
+<p>Se a sua planta ainda responde “quanto produzimos hoje?” só depois do fechamento, o gargalo provavelmente não é falta de reunião — é falta de coleta automática no momento em que a peça sai e a máquina para.</p></div></section>
+<section id="checklist"><div><h2>Checklist rápido: sua coleta de dados está pronta?</h2>
 <ul class="checklist">
-    <li>Evento de produção definido (peça, ciclo ou metro linear)</li>
-    <li>Máquinas críticas mapeadas (não a planta inteira de uma vez)</li>
-    <li>Contagem ou status automático — não só planilha</li>
-    <li>Paradas com início, fim e duração</li>
-    <li>Painel olhado <strong>durante</strong> o turno</li>
-    <li>Responsável do turno sabe o que fazer quando a cadência cai</li>
-    <li>Rede/Wi-Fi com plano para oscilação (buffer / sincronização)</li>
-    <li>Comparativo por máquina e por turno (não só média)</li>
+<li>Evento de produção definido (peça, ciclo ou metro linear)</li>
+<li>Máquinas críticas mapeadas (não a planta inteira de uma vez)</li>
+<li>Contagem ou status automático — não só planilha</li>
+<li>Paradas com início, fim e duração</li>
+<li>Painel olhado <strong>durante</strong> o turno</li>
+<li>Responsável do turno sabe o que fazer quando a cadência cai</li>
+<li>Rede/Wi-Fi com plano para oscilação (buffer / sincronização)</li>
+<li>Comparativo por máquina e por turno (não só média)</li>
 </ul>
-<p>Se várias dessas caixas ainda estão abertas, a planta provavelmente ainda decide com atraso — ou com dados incompletos.</p><!-- /static-content --></div></section>
-                    <section id="conclusao"><div data-i18n="sensor.s10" data-i18n-html><!-- static-content --><h2>Conclusão</h2>
+<p>Se várias dessas caixas ainda estão abertas, a planta provavelmente ainda decide com atraso — ou com dados incompletos.</p></div></section>
+<section id="conclusao"><div><h2>Conclusão</h2>
 <p>Sensoriamento industrial não é moda. É o jeito de transformar o que a máquina fez em informação útil <strong>enquanto o turno ainda pode corrigir o rumo</strong>.</p>
 <p>Apontamento manual registra o passado com atraso. Sensor + painel mostram o presente com horário, máquina e contexto.</p>
-<p>A MESTTI existe para esse presente: hardware no chão de fábrica, dados na nuvem e gestão sem digitação — da contagem ao status da máquina, com indicadores que dão tempo de reação de verdade.</p><!-- /static-content --></div></section>
+<p>A MESTTI existe para esse presente: hardware no chão de fábrica, dados na nuvem e gestão sem digitação — da contagem ao status da máquina, com indicadores que dão tempo de reação de verdade.</p></div></section>
+            
+            <section class="bp-faq" id="perguntas" aria-labelledby="bp-faq-title"><h2 id="bp-faq-title">Perguntas frequentes</h2><div class="hv-faq-list"><details><summary>Preciso trocar todas as máquinas para ter sensoriamento?</summary><p>Não. Na maioria dos casos o sensor se adapta ao equipamento existente (contagem, corrente, encoder). O ganho começa nas máquinas críticas, não na troca da linha inteira.</p></details><details><summary>Sensor substitui o MES / ERP?</summary><p>Não. Sensor e dashboard de chão alimentam a operação com o real. MES/ERP continuam no planejamento, estoque e gestão. O ponto é não depender de digitação tardia para saber o que a máquina fez.</p></details><details><summary>E se a internet da fábrica cair?</summary><p>Hardware bem desenhado guarda eventos localmente e sincroniza quando a conexão volta. Sem isso, você perde exatamente os minutos em que mais precisava do histórico.</p></details><details><summary>Por onde começar se hoje só temos papel?</summary><p>Escolha uma máquina gargalo, automatize contagem ou status, coloque no painel e treine o turno a agir com o dado. Depois expanda. A MESTTI acelera esse caminho com sensores e monitoramento em tempo real.</p></details><details><summary>Sensores servem só para OEE?</summary><p>OEE é um dos frutos. Antes disso, você já ganha produção confiável, mapa de paradas, cadência por horário e base para custo, PCP e manutenção. O indicador completo fica muito mais honesto quando a coleta deixa de ser manual.</p></details></div></section>
+        </article>
+    </div>
 
-                    <section id="faq" class="faq-section">
-                        <h2 data-i18n="sensor.faq.h2">Perguntas frequentes</h2>
-                        <div class="faq-list" data-i18n="sensor.faq.list" data-i18n-html><!-- static-content --><p>Confira respostas diretas para as dúvidas mais comuns sobre sensoriamento, coleta automática e monitoramento em tempo real.</p>
-<details class="faq-item">
-    <summary>Preciso trocar todas as máquinas para ter sensoriamento?</summary>
-    <p>Não. Na maioria dos casos o sensor se adapta ao equipamento existente (contagem, corrente, encoder). O ganho começa nas máquinas críticas, não na troca da linha inteira.</p>
-</details>
-<details class="faq-item">
-    <summary>Sensor substitui o MES / ERP?</summary>
-    <p>Não. Sensor e dashboard de chão alimentam a operação com o real. MES/ERP continuam no planejamento, estoque e gestão. O ponto é não depender de digitação tardia para saber o que a máquina fez.</p>
-</details>
-<details class="faq-item">
-    <summary>E se a internet da fábrica cair?</summary>
-    <p>Hardware bem desenhado guarda eventos localmente e sincroniza quando a conexão volta. Sem isso, você perde exatamente os minutos em que mais precisava do histórico.</p>
-</details>
-<details class="faq-item">
-    <summary>Por onde começar se hoje só temos papel?</summary>
-    <p>Escolha uma máquina gargalo, automatize contagem ou status, coloque no painel e treine o turno a agir com o dado. Depois expanda. A MESTTI acelera esse caminho com sensores e monitoramento em tempo real.</p>
-</details>
-<details class="faq-item">
-    <summary>Sensores servem só para OEE?</summary>
-    <p>OEE é um dos frutos. Antes disso, você já ganha produção confiável, mapa de paradas, cadência por horário e base para custo, PCP e manutenção. O indicador completo fica muito mais honesto quando a coleta deixa de ser manual.</p>
-</details><!-- /static-content --></div>
-                    </section>
-                </article>
-            </div>
+    <section class="hv-section tp-section tp-related" aria-labelledby="tp-rel-title">
+        <div class="hv-wrap">
+            <h2 id="tp-rel-title">Continue lendo</h2>
+            <ul class="tp-related-list"><li><a class="tp-related-card" href="/apontamento-de-producao/"><strong>Apontamento de produção</strong><span>Guia completo sobre o tema.</span></a></li><li><a class="tp-related-card" href="/maquinas-antigas/"><strong>Máquinas antigas</strong><span>Guia completo sobre o tema.</span></a></li><li><a class="tp-related-card" href="/monitoramento-de-maquinas/"><strong>Monitoramento de máquinas</strong><span>Guia completo sobre o tema.</span></a></li><li><a class="tp-related-card" href="/oee/"><strong>OEE</strong><span>Guia completo sobre o tema.</span></a></li></ul>
         </div>
+    </section>
 
-        <section class="article-cta-final" aria-labelledby="cta-final-title">
-            <div class="container container--wide">
-                <div class="article-cta-final-inner">
-                    <h2 id="cta-final-title" data-i18n="sensor.ctaFinal.title">Quer ver produção e paradas ao vivo na sua planta?</h2>
-                    <p data-i18n="sensor.ctaFinal.lead">A MESTTI combina sensores industriais e software para contagem automática, status de máquina e indicadores no dashboard — sem digitação no fim do turno.</p>
-                    <div class="article-cta-final-actions">
-                        <button type="button" class="blog-hero-btn blog-hero-btn--primary btn-open-modal" data-i18n="sensor.ctaFinal.btn1">Quero conhecer a MESTTI</button>
-                        <a href="/contato/" class="blog-hero-btn blog-hero-btn--ghost" data-i18n="sensor.ctaFinal.btn2">Falar com um especialista</a>
-                        <a href="/blog/" class="blog-hero-btn blog-hero-btn--ghost" data-i18n="sensor.ctaFinal.btn3">Ler mais conteúdos no blog</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section class="hv-final" aria-labelledby="tp-final-title">
+        <div class="hv-wrap hv-final-inner">
+            <h2 id="tp-final-title">Veja os números reais da sua fábrica em 1 semana.</h2>
+            <div class="hv-hero-actions"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="blog-sensoriamento-industrial-apontamento-manual-dados-tempo-real-final">Quero 1 semana grátis</button><p class="hv-cta-micro">Se não servir, retiramos o sensor e você não paga nada.</p></div>
+        </div>
+    </section>
     </main>
-
     <footer class="footer footer--tractian">
         <div class="container container--wide">
             <div class="footer-grid">
@@ -430,46 +359,54 @@
             <button type="button" class="modal-close" id="btnCloseModal" aria-label="Fechar demonstração" data-i18n-aria="a11y.closeDialog">&times;</button>
             <div class="demo-modal-card">
                 <div class="demo-modal-head">
-                    <h2 class="demo-modal-title" data-i18n="modal.title">Solicite sua demonstração</h2>
-                    <p class="demo-modal-lead" data-i18n="modal.lead">Preencha os campos para falar com um especialista e entender os benefícios do MESTTI para sua operação.</p>
+                    <h2 class="demo-modal-title" data-i18n="modal.title">Comece sua semana grátis</h2>
+                    <p class="demo-modal-lead" data-i18n="modal.lead">Deixe seu contato e marcamos a conversa para escolher o setor da sua semana grátis.</p>
                 </div>
-                <form class="demo-form" id="contactFormModal">
-                    <input type="text" name="name" data-i18n-placeholder="modal.name" placeholder="Nome completo" autocomplete="name" required>
-                    <input type="text" name="empresa" data-i18n-placeholder="modal.company" placeholder="Empresa" autocomplete="organization" required>
-                    <input type="email" name="email" data-i18n-placeholder="modal.email" placeholder="E-mail profissional" autocomplete="email" required>
-                    <div class="field-row-3">
-                        <select name="ddi" aria-label="DDI" required>
+                <form class="demo-form" id="contactForm">
+                    <input type="text" id="name" name="name" data-i18n-placeholder="modal.name" placeholder="Nome completo" autocomplete="name" required>
+                    <div class="demo-form-phone">
+                        <select id="ddi" name="ddi" aria-label="DDI" required>
                             <option value="+55" selected>+55</option>
                             <option value="+1">+1</option>
+                            <option value="+351">+351</option>
+                            <option value="+34">+34</option>
                         </select>
-                        <input type="tel" name="phone" data-i18n-placeholder="modal.phone" placeholder="Telefone / WhatsApp" autocomplete="tel" required>
-                        <select name="cargo" required data-mestti-options="cargo" aria-label="Cargo">
-                            <option value="" selected disabled data-i18n="modal.role">Cargo</option>
-                        </select>
+                        <input type="tel" id="phone" name="phone" data-i18n-placeholder="modal.whatsapp" placeholder="WhatsApp com DDD" autocomplete="tel" inputmode="tel" required>
                     </div>
-                    <select name="setor" required data-mestti-options="setor" aria-label="Setor da empresa">
-                        <option value="" selected disabled data-i18n="modal.sector">Setor da Indústria</option>
-                    </select>
-                    <select name="solucao" required data-mestti-options="solucao" aria-label="Solução de interesse">
-                        <option value="" selected disabled data-i18n="modal.solution">Selecione a solução de maior interesse</option>
-                    </select>
-                    <textarea name="observacao" data-i18n-placeholder="modal.note" placeholder="Observação (opcional)" rows="3" style="min-height: 90px;"></textarea>
-                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Solicitar demonstração</button>
+                    <input type="text" id="empresa" name="empresa" data-i18n-placeholder="modal.company" placeholder="Empresa" autocomplete="organization" required>
+                    <details class="demo-form-more">
+                        <summary data-i18n="modal.more">Quer adiantar a conversa? Opcional</summary>
+                        <div class="demo-form-more-fields">
+                            <input type="email" id="email" name="email" data-i18n-placeholder="modal.email" placeholder="E-mail profissional" autocomplete="email">
+                            <select id="cargo" name="cargo" data-mestti-options="cargo" aria-label="Cargo">
+                                <option value="" selected disabled data-i18n="modal.role">Cargo</option>
+                            </select>
+                            <select id="setor" name="setor" data-mestti-options="setor" aria-label="Setor da empresa">
+                                <option value="" selected disabled data-i18n="modal.sector">Setor da Indústria</option>
+                            </select>
+                            <select id="solucao" name="solucao" data-mestti-options="solucao" aria-label="Solução de interesse">
+                                <option value="" selected disabled data-i18n="modal.solution">Selecione a solução de maior interesse</option>
+                            </select>
+                            <textarea id="observacao" name="observacao" data-i18n-placeholder="modal.note" placeholder="Observação (opcional)" rows="3"></textarea>
+                        </div>
+                    </details>
+                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Quero minha semana grátis</button>
+                    <p class="demo-form-assure" data-i18n="modal.assure">Sem custo e sem fidelidade. Na semana de teste o sensor é emprestado.</p>
                 </form>
             </div>
         </div>
     </div>
 
-    <script defer src="../../js/i18n-page-strings.js?v=3"></script>
-    <script defer src="../../js/i18n-sensoriamento-article.js"></script>
-    <script defer src="../../js/i18n-sensoriamento-content.js"></script>
-    <script defer src="../../js/i18n.js?v=26"></script>
-    <script defer src="../../js/theme.js?v=2"></script>
-    <script defer src="../../js/form-options.js?v=4"></script>
-    <script defer src="../../js/meta-consent.js?v=6"></script>
-    <script defer src="../../js/meta-pixel.js?v=1"></script>
-    <script defer src="../../js/script.js?v=43"></script>
-    <script defer src="../../js/wa-chat-viewport.js?v=2"></script>
-    <script defer src="../../js/conversational-form.js?v=16"></script>
+    <script defer src="/js/i18n-page-strings.js?v=3"></script>
+    <script defer src="/js/i18n.js?v=28"></script>
+    <script defer src="/js/theme.js?v=3"></script>
+    <script defer src="/js/form-options.js?v=4"></script>
+    <script defer src="/js/meta-consent.js?v=6"></script>
+    <script defer src="/js/meta-pixel.js?v=1"></script>
+    <script defer src="/js/script.js?v=44"></script>
+    <script defer src="/js/wa-chat-viewport.js?v=4"></script>
+    <script defer src="/js/conversational-form.js?v=17"></script>
+    <script defer src="/js/v2.js?v=16"></script>
 </body>
+
 </html>

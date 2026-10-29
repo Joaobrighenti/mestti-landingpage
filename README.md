@@ -34,13 +34,12 @@ Consulte `.env.example` e [docs/google-sheets-leads.md](docs/google-sheets-leads
 ## Conteúdo e verificação
 
 ```sh
-npm run content:sync
 npm run check:site
 npm test
 npm run build
 ```
 
-- `content:sync`: depois de editar os dicionários `js/i18n-{rkw,sensoriamento}-content.js`, sincroniza o português no HTML dos dois artigos. O conteúdo continua legível sem JavaScript; a tradução existente permanece.
+- Blog: cada artigo é um arquivo Markdown em `content/blog/<slug>.md` (metadados no topo; ver `scripts/blog-build.mjs`). `npm run site:build` gera o artigo, o índice `/blog/` e o feed `/blog/feed.xml`. O guia de escolha de sistema ainda é HTML e entra no índice por `content/blog/_outros.json`.
 - `check:site`: verifica sincronização, metadados, JSON-LD, sitemap, links, fragmentos, recursos, redirects e páginas órfãs.
 - `test`: executa os testes existentes da integração de eventos.
 - `build`: verifica a sincronização, gera `public/` e valida a saída estática. Não publica o site.

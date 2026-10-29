@@ -1,12 +1,9 @@
 {
-  "_doc": "Data da última mudança REAL de conteúdo de cada página indexável (AAAA-MM-DD). Atualize só quando o conteúdo mudar de fato; troca de cabeçalho/rodapé não conta. O build gera sitemap.xml a partir daqui e falha se faltar página.",
+  "_doc": "Data da última mudança REAL de conteúdo de cada página indexável (AAAA-MM-DD). Atualize só quando o conteúdo mudar de fato; troca de cabeçalho/rodapé não conta. O build gera sitemap.xml a partir daqui e falha se faltar página. Os artigos do blog em content/blog e o índice /blog/ trazem a própria data (campo \"updated\").",
   "pages": {
     "/": "2026-10-29",
     "/apontamento-de-producao/": "2026-10-29",
-    "/blog/": "2026-10-22",
-    "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/": "2026-10-22",
     "/blog/como-escolher-sistema-monitoramento-producao/": "2026-10-22",
-    "/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/": "2026-10-22",
     "/casos/industria-moveleira/": "2026-10-29",
     "/checklists/": "2026-10-21",
     "/contato/": "2026-10-22",

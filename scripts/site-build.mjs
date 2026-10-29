@@ -16,6 +16,7 @@ import {
     LANGS, KINDS, PAGE_HEAD, CHROME_START, CHROME_END, HEADER_OPEN, FOOTER_OPEN,
     startTags, closingIndex, blockAt, modalBlock, pagePath, headerFor, pageDictFile, chromeBlock, unescapeAttr
 } from './site-lib.mjs';
+import { buildBlog } from './blog-build.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = path.join(ROOT, 'site');
@@ -115,8 +116,8 @@ const ORIGIN = 'https://mestti.com.br';
  * sitemap.xml = páginas indexáveis (index.html sem noindex). lastmod vem de site/lastmod.json, nunca do horário do
  * build: só deve mudar quando o conteúdo da página mudar de fato.
  */
-export function buildSitemap(files, problems) {
-    const dates = JSON.parse(fs.readFileSync(path.join(SITE, 'lastmod.json'), 'utf8')).pages;
+export function buildSitemap(files, problems, extraDates = {}) {
+    const dates = { ...JSON.parse(fs.readFileSync(path.join(SITE, 'lastmod.json'), 'utf8')).pages, ...extraDates };
     const html = new Map();
     for (const rel of listFiles(ROOT, (n) => n === 'index.html')) html.set(rel, files.get(rel) ?? read(rel));
     for (const [rel, content] of files) if (rel.endsWith('index.html')) html.set(rel, content);
@@ -128,7 +129,7 @@ export function buildSitemap(files, problems) {
         if (!dates[url]) problems.push(`site/lastmod.json: falta a data de ${url}`);
         urls.push(url);
     }
-    for (const url of Object.keys(dates)) if (!urls.includes(url)) problems.push(`site/lastmod.json: ${url} não é uma página indexável`);
+    for (const url of Object.keys(dates)) if (!urls.includes(url)) problems.push(`sitemap: ${url} tem data mas não é uma página indexável`);
     urls.sort((a, b) => (a === '/' ? -1 : b === '/' ? 1 : a.localeCompare(b)));
     const rows = urls.map((url) => `  <url><loc>${ORIGIN}${url}</loc>${dates[url] ? `<lastmod>${dates[url]}</lastmod>` : ''}</url>`);
     return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${rows.join('\n')}\n</urlset>\n`;
@@ -149,13 +150,16 @@ export function buildAll() {
         files.set(rel, page.html);
         files.set(page.dictFile, pageDictFile(page.dict));
     }
+    // Blog em Markdown (content/blog): artigos, índice e feed. As datas vêm dos próprios artigos.
+    const blog = buildBlog(ROOT, (url) => ({ header: headerFor(partials.header, url), footer: partials.footer, modal: partials.modal }));
+    for (const [rel, content] of blog.files) files.set(rel, content);
     for (const rel of listFiles(ROOT, (n) => n.endsWith('.html'))) {
         if (files.has(rel)) continue;
         const html = read(rel);
         const synced = syncLegacy(rel, html, partials);
         if (synced !== html) files.set(rel, synced);
     }
-    const sitemap = buildSitemap(files, problems);
+    const sitemap = buildSitemap(files, problems, blog.dates);
     if (sitemap) files.set('sitemap.xml', sitemap);
     const i18n = read('js/i18n.js');
     const a = i18n.indexOf(CHROME_START);

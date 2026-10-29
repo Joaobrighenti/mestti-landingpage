@@ -1,0 +1,108 @@
+/* =====================================================================
+   Blog (gerado de content/blog): artigo com o topo das páginas de tema,
+   corpo de leitura em uma coluna e índice lateral no desktop.
+   Também estiliza os componentes dos artigos migrados (caixas de exemplo,
+   fórmula, alerta, tabelas de custo e etapas) com os tokens de v3.css.
+   ===================================================================== */
+
+.bp .tp-overline a { color: inherit; text-decoration: none; }
+.bp .tp-overline a:hover { text-decoration: underline; text-underline-offset: 3px; }
+body.hv-page .bp .tp-hero h1 { max-width: 20ch; font-size: clamp(2.2rem, 4vw, 3.6rem); }
+
+/* Leitura: índice à esquerda (desktop), texto em ~68 caracteres */
+.bp-layout { display: grid; grid-template-columns: 240px minmax(0, 720px); gap: clamp(32px, 5vw, 80px); justify-content: center; padding-block: clamp(48px, 6vw, 88px); }
+.bp-toc { position: sticky; top: 96px; align-self: start; display: grid; gap: 12px; }
+.bp-toc ol { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; counter-reset: bp; border-left: 2px solid var(--line); }
+.bp-toc li a { display: block; padding: 6px 0 6px 14px; margin-left: -2px; border-left: 2px solid transparent; color: var(--ink-2); font-size: .92rem; line-height: 1.35; text-decoration: none; }
+.bp-toc li a:hover { color: var(--ink); border-left-color: var(--signal); }
+
+.bp-body { min-width: 0; color: var(--ink); font-size: 1.1rem; line-height: 1.7; }
+.bp-body > * + *, .bp-body section > * + *, .bp-body section > div > * + * { margin-top: 1.1em; }
+.bp-body section + section { margin-top: 2.4em; }
+.bp-body p { margin: 0; color: var(--ink-2); }
+.bp-body p + p { margin-top: 1em; }
+body.hv-page .bp-body h2 { margin: 2.2em 0 .6em; font: 600 clamp(1.6rem, 2.4vw, 2rem)/1.15 var(--f-head); color: var(--ink); scroll-margin-top: 96px; }
+body.hv-page .bp-body > h2:first-child, body.hv-page .bp-body section:first-child h2 { margin-top: 0; }
+body.hv-page .bp-body h3 { margin: 1.6em 0 .4em; font: 600 1.3rem/1.25 var(--f-head); color: var(--ink); }
+.bp-body strong { color: var(--ink); }
+.bp-body a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--signal); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.bp-body ul, .bp-body ol { margin: 0; padding-left: 1.3em; color: var(--ink-2); }
+.bp-body li + li { margin-top: .4em; }
+.bp-body li::marker { color: var(--muted); }
+.bp-body blockquote { margin: 1.4em 0; padding: 4px 0 4px 20px; border-left: 4px solid var(--signal); }
+.bp-body blockquote p { font: 500 1.2rem/1.5 var(--f-head); color: var(--ink); }
+.bp-body code { padding: 2px 6px; border-radius: 4px; background: var(--paper); font: 500 .92em/1 var(--f-data); color: var(--ink); }
+
+/* Tabelas: rolam dentro do próprio quadro no celular */
+.bp-table, .bp-body .cost-table { width: 100%; }
+.bp-table { overflow-x: auto; }
+.bp-body table { width: 100%; border-collapse: collapse; font-size: .98rem; }
+.bp-body th, .bp-body td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.bp-body th { font: 600 .82rem/1.3 var(--f-data); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); background: var(--paper); }
+.bp-body td { color: var(--ink-2); }
+
+/* Componentes dos artigos migrados */
+.bp-body .highlight-box, .bp-body .example-box, .bp-body .formula-box, .bp-body .warning-box, .bp-body .example-calc { margin: 1.6em 0; padding: 20px 22px; border-radius: 12px; background: var(--paper); }
+.bp-body .highlight-box { border-left: 4px solid var(--signal); }
+.bp-body .warning-box { border-left: 4px solid var(--stop); background: #fdf2f1; }
+.bp-body .example-box-title, .bp-body .formula-box-label { margin: 0 0 10px; font: 600 .8rem/1 var(--f-data); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.bp-body .formula-box { background: var(--panel); }
+.bp-body .formula-box-label { color: var(--panel-soft); }
+.bp-body .formula-box-formula { margin: 0; font: 600 1.15rem/1.4 var(--f-data); color: #fff; }
+.bp-body .formula-box p:not([class]) { color: var(--panel-soft); }
+.bp-body .sigla-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.bp-body .sigla-card { padding: 16px; border-radius: 10px; background: var(--paper); }
+.bp-body .step-card { position: relative; margin-top: 1em; padding: 18px 20px 18px 64px; border-radius: 12px; background: var(--paper); }
+.bp-body .step-card-num { position: absolute; left: 18px; top: 18px; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: #fff; font: 600 .8rem/1 var(--f-data); }
+.bp-body .error-item::marker { color: var(--stop); }
+.bp-body .article-intro-list { padding: 16px 20px 16px 40px; border-radius: 12px; background: var(--paper); }
+.bp-body .faq-section { display: none; }
+
+/* "Na Mestti": a ligação com o produto, no fim do texto e sem interromper a leitura */
+.bp-mestti { display: grid; gap: 12px; margin-top: 2.4em !important; padding: 24px; border-radius: 14px; background: var(--panel); color: var(--panel-ink); }
+.bp-mestti .tp-answer-label { color: var(--panel-soft); }
+.bp-mestti p:not(.tp-answer-label) { margin: 0; color: var(--panel-ink); font-size: 1.05rem; line-height: 1.6; }
+.bp-mestti a { color: #fff; }
+.bp-mestti .hv-btn { justify-self: start; }
+
+.bp-faq { margin-top: 2.4em !important; }
+body.hv-page .bp-faq h2 { margin-top: 0; }
+
+/* Índice do blog */
+.bp-index-hero .hv-wrap { display: grid; gap: 16px; }
+body.hv-page .bp-index-hero h1 { max-width: 18ch; }
+.bp-index-lead { margin: 0; max-width: 56ch; font-size: 1.2rem; line-height: 1.55; color: var(--panel-soft); }
+.bp-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin: 0; padding: 0; list-style: none; }
+.bp-card { display: grid; gap: 10px; align-content: start; height: 100%; padding: 24px; border-radius: 14px; background: var(--surface); border-top: 4px solid var(--ink); color: var(--ink); text-decoration: none; transition: transform 160ms var(--out), box-shadow 160ms var(--out); }
+.bp-card:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -24px rgba(10, 27, 46, .4); }
+.bp-card-topic { font: 600 .75rem/1 var(--f-data); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.bp-card strong { font: 600 1.25rem/1.25 var(--f-head); }
+.bp-card-desc { font-size: .98rem; line-height: 1.5; color: var(--ink-2); }
+.bp-card-meta { margin-top: 4px; font: 500 .85rem/1 var(--f-data); color: var(--muted); }
+.bp .tp-section { background: var(--paper); }
+
+@media (max-width: 1024px) {
+    .bp-layout { grid-template-columns: minmax(0, 720px); }
+    .bp-toc { position: static; padding: 16px 20px; border-radius: 12px; background: var(--paper); }
+    .bp-toc ol { border-left: 0; }
+    .bp-toc li a { padding-left: 0; border-left: 0; }
+    .bp-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+    .bp-layout { padding-block: 32px 48px; gap: 24px; }
+    .bp-body { font-size: 1.04rem; }
+    .bp-body .step-card { padding-left: 58px; }
+    .bp-mestti { padding: 20px; }
+    .bp-mestti .hv-btn { justify-self: stretch; justify-content: center; }
+    .bp-cards { grid-template-columns: minmax(0, 1fr); }
+    .bp-index-lead { font-size: 1.05rem; }
+}
+
+/* O fundo da leitura é --paper: as caixas usam branco para se destacar */
+.bp-body .highlight-box, .bp-body .example-box, .bp-body .example-calc, .bp-body .sigla-card, .bp-body .step-card, .bp-body .article-intro-list { background: var(--surface); box-shadow: 0 1px 2px rgba(10, 27, 46, .06); }
+.bp-body .warning-box { background: #fdf2f1; }
+.bp-body .formula-box p { color: var(--panel-soft); }
+.bp-body .formula-box .formula-box-formula { color: #fff; }
+.bp-body th { background: var(--surface); }
+.bp-body code { background: var(--surface); }
+.bp-body .bp-table, .bp-body table { background: var(--surface); border-radius: 10px; }
