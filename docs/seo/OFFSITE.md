@@ -94,7 +94,7 @@ Assistentes de IA citam muito comparadores B2B quando alguém pede "melhores sis
 ## 7. Perfis próprios
 
 - [ ] **LinkedIn da empresa:** descrição longa, site, categoria e localização iguais aos dados oficiais; publicar os guias novos (MES, OEE, PCP) e os artigos.
-- [ ] **LinkedIn do João Brighenti:** cargo "Fundador da Mestti" e link para o site. Mandar a URL do perfil para incluir no `sameAs` do autor nas páginas.
+- [ ] **LinkedIn dos autores:** João Brighenti (fundador) e Leonardo Ernica (cofundador) com o cargo na Mestti e link para o site. Os dois perfis já estão no `sameAs` dos autores nas páginas.
 - [ ] **YouTube:** descrição do vídeo da home com link para o site e para `/monitoramento-de-maquinas/`; legenda revisada em português (o arquivo de legenda também serve para a transcrição na home).
 
 ## 8. Medição mensal nas IAs

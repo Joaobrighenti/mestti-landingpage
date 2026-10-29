@@ -3,6 +3,7 @@ title: Como calcular a capacidade produtiva de uma máquina
 description: Capacidade produtiva é quantas peças uma máquina consegue fazer no tempo disponível. Veja a conta passo a passo, a diferença entre capacidade teórica, disponível e real, e por que a fila do PCP depende dela.
 answer: Capacidade produtiva é o tempo disponível da máquina dividido pelo tempo de ciclo de cada peça (vezes as peças que saem por ciclo). Comece pelas horas do turno, desconte pausas e paradas programadas, e compare com o que a máquina realmente produziu para descobrir a capacidade real.
 date: 2026-10-29
+author: leonardo
 topic: sequenciamento
 cta: Descobrir a capacidade real das minhas máquinas
 mestti: Na Mestti, o tempo de ciclo e as peças por ciclo vêm do roteiro da engenharia, o calendário de turnos define o tempo disponível e o sensor mostra quanto cada máquina produziu de fato. O sequenciamento usa essa conta para calcular quando cada ordem fica pronta.

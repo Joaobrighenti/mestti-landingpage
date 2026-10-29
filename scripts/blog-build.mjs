@@ -4,7 +4,7 @@
  * Cada artigo começa com metadados entre linhas "---" (YAML simples) e segue em Markdown:
  *   ## e ### títulos · parágrafos · listas "-" e "1." · "> " citação · tabelas "| a | b |"
  *   **negrito**, *itálico*, `código`, [link](/url) · linhas que começam com "<" passam como HTML.
- * Metadados: title, seo_title, description, answer, date, updated, topic, mestti, cta, related (lista de URLs),
+ * Metadados: title, seo_title, author (joao | leonardo), description, answer, date, updated, topic, mestti, cta, related (lista de URLs),
  * faq (lista de "q:"/"a:"), noindex. Datas em AAAA-MM-DD; "updated" é a data da última revisão real.
  * O texto é só português (o seletor de idioma traduz cabeçalho e rodapé).
  */
@@ -13,7 +13,13 @@ import path from 'node:path';
 
 export const ORIGIN = 'https://mestti.com.br';
 const ORG = `${ORIGIN}/#organization`;
-const AUTHOR = { name: 'João Brighenti', jobTitle: 'Fundador', url: `${ORIGIN}/empresa/`, id: `${ORIGIN}/empresa/#joao-brighenti`, photo: '/images/v2/joao-brighenti.webp' };
+/** Autores (campo "author" do artigo; padrão: joao). O nome leva à página do autor; sameAs liga ao LinkedIn. */
+const LEO_IN = 'https://www.linkedin.com/in/leonardo-ernica-almeida-de-cerqueira-c%C3%A9sar-558a8a1b5/';
+export const AUTHORS = {
+    joao: { name: 'João Brighenti', jobTitle: 'Fundador', role: 'fundador da Mestti', url: `${ORIGIN}/empresa/`, href: '/empresa/', id: `${ORIGIN}/empresa/#joao-brighenti`, sameAs: ['https://www.linkedin.com/in/jo%C3%A3o-gabriel-brighenti/'], avatar: '<img src="/images/v2/joao-brighenti.webp" alt="" width="40" height="40" loading="eager" decoding="async">' },
+    leonardo: { name: 'Leonardo Ernica', jobTitle: 'Cofundador', role: 'cofundador da Mestti', url: LEO_IN, href: LEO_IN, id: `${ORIGIN}/empresa/#leonardo-ernica`, sameAs: [LEO_IN], avatar: '<span class="tp-avatar" aria-hidden="true">LE</span>' }
+};
+const authorOf = (a) => AUTHORS[a.author || 'joao'];
 
 /** Páginas de tema: nome e URL usados no rótulo do artigo e nos links. */
 export const TOPICS = {
@@ -162,7 +168,7 @@ const HEAD = (title, desc, url, type, ld, extra = '') => `<!DOCTYPE html>
     <link rel="stylesheet" href="/css/v2.css?v=2">
     <link rel="stylesheet" href="/css/v3.css?v=35">
     <link rel="stylesheet" href="/css/v3-mobile.css?v=18">
-    <link rel="stylesheet" href="/css/v3-topic.css?v=2">
+    <link rel="stylesheet" href="/css/v3-topic.css?v=3">
     <link rel="stylesheet" href="/css/v3-blog.css?v=2">
     <link rel="canonical" href="${ORIGIN}${url}">
     <link rel="alternate" type="application/atom+xml" title="Blog da Mestti" href="${ORIGIN}/blog/feed.xml">
@@ -193,7 +199,7 @@ const SCRIPTS = `    <script defer src="/js/i18n-page-strings.js?v=3"></script>
 </html>
 `;
 
-const byline = (a) => `<div class="tp-byline"><img src="${AUTHOR.photo}" alt="" width="40" height="40" loading="eager" decoding="async"><p>Por <a href="${AUTHOR.url}">${AUTHOR.name}</a>, fundador da Mestti<span aria-hidden="true"> · </span>Revisado em <time datetime="${a.updated}">${dateBR(a.updated)}</time><span aria-hidden="true"> · </span>${a.minutes} min de leitura</p></div>`;
+const byline = (a) => { const au = authorOf(a); const ext = au.href.startsWith('http') ? ' target="_blank" rel="author noopener"' : ' rel="author"'; return `<div class="tp-byline">${au.avatar}<p>Por <a href="${au.href}"${ext}>${au.name}</a>, ${au.role}<span aria-hidden="true"> · </span>Revisado em <time datetime="${a.updated}">${dateBR(a.updated)}</time><span aria-hidden="true"> · </span>${a.minutes} min de leitura</p></div>`; };
 
 function articlePage(a, all, chrome) {
     const [topicName, topicUrl] = TOPICS[a.topic];
@@ -208,7 +214,7 @@ function articlePage(a, all, chrome) {
     const ld = { '@context': 'https://schema.org', '@graph': [
         { '@type': 'WebPage', '@id': `${ORIGIN}${url}#webpage`, url: `${ORIGIN}${url}`, name: a.seo_title || a.title, description: a.description, inLanguage: 'pt-BR', isPartOf: { '@id': `${ORIGIN}/#website` }, breadcrumb: { '@id': `${ORIGIN}${url}#breadcrumb` } },
         { '@type': 'BlogPosting', '@id': `${ORIGIN}${url}#article`, headline: a.title, description: a.description, inLanguage: 'pt-BR', mainEntityOfPage: { '@id': `${ORIGIN}${url}#webpage` }, datePublished: a.date, dateModified: a.updated,
-          author: { '@type': 'Person', '@id': AUTHOR.id, name: AUTHOR.name, jobTitle: AUTHOR.jobTitle, url: AUTHOR.url, worksFor: { '@id': ORG } }, publisher: { '@id': ORG }, image: `${ORIGIN}/images/v2/monitoramento-cards.webp`, about: { '@type': 'Thing', name: topicName }, isPartOf: { '@id': `${ORIGIN}/blog/#blog` } },
+          author: { '@type': 'Person', '@id': authorOf(a).id, name: authorOf(a).name, jobTitle: authorOf(a).jobTitle, url: authorOf(a).url, sameAs: authorOf(a).sameAs, worksFor: { '@id': ORG } }, publisher: { '@id': ORG }, image: `${ORIGIN}/images/v2/monitoramento-cards.webp`, about: { '@type': 'Thing', name: topicName }, isPartOf: { '@id': `${ORIGIN}/blog/#blog` } },
         { '@type': 'BreadcrumbList', '@id': `${ORIGIN}${url}#breadcrumb`, itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Início', item: `${ORIGIN}/` },
             { '@type': 'ListItem', position: 2, name: 'Blog', item: `${ORIGIN}/blog/` },
@@ -336,7 +342,7 @@ function feed(list, extra) {
     <id>${ORIGIN}${a.url}</id>
     <published>${a.date}T00:00:00-03:00</published>
     <updated>${a.updated}T00:00:00-03:00</updated>
-    <author><name>${AUTHOR.name}</name></author>
+    <author><name>${(AUTHORS[a.author || 'joao'] || AUTHORS.joao).name}</name></author>
     <summary>${esc(a.description)}</summary>
   </entry>`).join('\n');
     return `<?xml version="1.0" encoding="utf-8"?>

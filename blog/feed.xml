@@ -30,7 +30,7 @@
     <id>https://mestti.com.br/blog/mtbf-e-mttr/</id>
     <published>2026-10-29T00:00:00-03:00</published>
     <updated>2026-10-29T00:00:00-03:00</updated>
-    <author><name>João Brighenti</name></author>
+    <author><name>Leonardo Ernica</name></author>
     <summary>MTBF é o tempo médio entre falhas; MTTR é o tempo médio para reparar. Veja as fórmulas, um exemplo calculado, como os dois se relacionam com a disponibilidade e quais dados você precisa registrar.</summary>
   </entry>
   <entry>
@@ -48,7 +48,7 @@
     <id>https://mestti.com.br/blog/microparadas/</id>
     <published>2026-10-29T00:00:00-03:00</published>
     <updated>2026-10-29T00:00:00-03:00</updated>
-    <author><name>João Brighenti</name></author>
+    <author><name>Leonardo Ernica</name></author>
     <summary>Microparadas são paradas curtas que quase nunca são anotadas, mas somam horas no fim do turno. Veja como identificar, quanto custam, as causas mais comuns e como medir sem depender de apontamento manual.</summary>
   </entry>
   <entry>
@@ -75,7 +75,7 @@
     <id>https://mestti.com.br/blog/contagem-automatica-de-pecas/</id>
     <published>2026-10-29T00:00:00-03:00</published>
     <updated>2026-10-29T00:00:00-03:00</updated>
-    <author><name>João Brighenti</name></author>
+    <author><name>Leonardo Ernica</name></author>
     <summary>A contagem automática de peças usa um sensor que lê um sinal da máquina a cada peça ou ciclo. Veja os tipos de sinal, a diferença entre contar ciclos e peças, o que conferir na instalação e os erros mais comuns.</summary>
   </entry>
   <entry>
@@ -93,7 +93,7 @@
     <id>https://mestti.com.br/blog/capacidade-produtiva-de-uma-maquina/</id>
     <published>2026-10-29T00:00:00-03:00</published>
     <updated>2026-10-29T00:00:00-03:00</updated>
-    <author><name>João Brighenti</name></author>
+    <author><name>Leonardo Ernica</name></author>
     <summary>Capacidade produtiva é quantas peças uma máquina consegue fazer no tempo disponível. Veja a conta passo a passo, a diferença entre capacidade teórica, disponível e real, e por que a fila do PCP depende dela.</summary>
   </entry>
   <entry>

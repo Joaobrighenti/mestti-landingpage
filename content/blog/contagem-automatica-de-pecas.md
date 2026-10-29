@@ -3,6 +3,7 @@ title: Contagem automática de peças: como funciona e o que conferir
 description: A contagem automática de peças usa um sensor que lê um sinal da máquina a cada peça ou ciclo. Veja os tipos de sinal, a diferença entre contar ciclos e peças, o que conferir na instalação e os erros mais comuns.
 answer: A contagem automática de peças usa um sensor que registra um sinal a cada peça ou a cada ciclo da máquina, como um pulso infravermelho ou um fim de curso, e envia a contagem para o sistema. Quando cada ciclo produz mais de uma peça, a contagem multiplica os ciclos pelas peças por ciclo. O ponto mais importante é conferir a leitura com uma contagem de referência nos primeiros dias.
 date: 2026-10-29
+author: leonardo
 topic: maquinas-antigas
 cta: Automatizar a contagem nas minhas máquinas
 mestti: Na Mestti, o sensor lê pulsos de contagem, fim de curso ou medição linear; as peças por ciclo vêm do cadastro da engenharia. A contagem aparece ao vivo no cartão de cada máquina e alimenta o apontamento e o OEE sem digitação.
