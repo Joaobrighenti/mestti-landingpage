@@ -1,0 +1,141 @@
+/* =====================================================================
+   Páginas de tema (/oee/, /mes/, /pcp/...): guia com resposta curta,
+   autor, conteúdo prático e CTA nos pontos de decisão. Usa os tokens
+   e componentes de v3.css; o mobile segue v3-mobile.css.
+   ===================================================================== */
+
+/* Topo: resposta direta à pergunta, à vista na primeira tela */
+.tp-hero { background: var(--panel); color: var(--panel-ink); padding-block: clamp(40px, 5vw, 72px) clamp(56px, 7vw, 104px); }
+.tp-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 500px); gap: clamp(32px, 5vw, 80px); align-items: start; }
+.tp-hero-copy { display: grid; gap: 20px; align-content: start; padding-top: 8px; }
+.tp-crumbs { font-size: .9rem; color: var(--panel-soft); }
+.tp-crumbs a { color: var(--panel-soft); text-decoration: underline; text-underline-offset: 3px; }
+.tp-crumbs [aria-current] { color: var(--panel-ink); }
+.tp-overline { margin: 8px 0 0; font: 600 .8rem/1 var(--f-data); letter-spacing: .08em; text-transform: uppercase; color: var(--signal); }
+body.hv-page .tp-hero h1 { margin: 0; font: 700 clamp(2.5rem, 4.8vw, 4.4rem)/1 var(--f-head); letter-spacing: -.025em; color: #fff; max-width: 16ch; text-wrap: balance; }
+.tp-byline { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+.tp-byline img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; }
+.tp-byline p { margin: 0; font-size: .95rem; line-height: 1.45; color: var(--panel-soft); }
+.tp-byline a { color: var(--panel-ink); text-decoration: underline; text-underline-offset: 3px; }
+
+.tp-answer { display: grid; gap: 16px; padding: clamp(24px, 3vw, 32px); border-radius: 14px; background: var(--surface); color: var(--ink); box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .55); }
+.tp-answer-label { display: inline-flex; align-items: center; gap: 10px; margin: 0; font: 600 .78rem/1 var(--f-data); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.tp-answer-label::before { content: ""; width: 10px; height: 10px; border-radius: 2px; background: var(--signal); }
+.tp-answer-text { margin: 0; font-size: 1.12rem; line-height: 1.55; color: var(--ink); }
+.tp-answer-text strong { color: var(--ink); }
+.tp-answer-formula { display: grid; gap: 4px; margin: 0; padding: 14px 16px; border-radius: 10px; background: var(--paper); }
+.tp-answer-formula span { font: 600 1.3rem/1.2 var(--f-data); letter-spacing: -.01em; color: var(--ink); }
+.tp-answer-formula small { font: 500 .9rem/1.4 var(--f-data); color: var(--muted); }
+.tp-answer-cta { display: grid; gap: 8px; }
+.tp-answer-cta .hv-btn { width: 100%; justify-content: center; min-height: 56px; }
+.tp-answer-cta .hv-cta-micro { text-align: center; max-width: none; }
+
+/* Índice: atalhos para as seções, sem competir com o conteúdo */
+.tp-toc { border-bottom: 1px solid var(--line); background: var(--surface); }
+.tp-toc .hv-wrap { display: flex; align-items: center; gap: 24px; padding-block: 16px; }
+.tp-toc-title { flex: none; margin: 0; font: 600 .8rem/1 var(--f-data); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.tp-toc ol { display: flex; gap: 8px; margin: 0; padding: 0; list-style: none; overflow-x: auto; scrollbar-width: none; }
+.tp-toc ol::-webkit-scrollbar { display: none; }
+.tp-toc a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 999px; background: var(--paper); color: var(--ink); font: 500 .92rem/1 var(--f-text); text-decoration: none; white-space: nowrap; transition: background-color 160ms var(--out); }
+.tp-toc a:hover { background: #e6eaef; }
+
+.tp-section { scroll-margin-top: 88px; }
+.tp-section--paper { background: var(--paper); }
+
+/* Os três fatores: o mesmo padrão de colunas de "Como funciona" */
+.tp-factors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin: 0; padding: 0; list-style: none; }
+.tp-factor { display: grid; gap: 14px; align-content: start; padding-top: 20px; border-top: 4px solid var(--ink); }
+body.hv-page .tp-factor h3 { margin: 0; font: 600 1.5rem/1.15 var(--f-head); color: var(--ink); }
+.tp-formula { justify-self: start; margin: 0; padding: 8px 12px; border-radius: 8px; background: var(--paper); font: 600 .95rem/1.35 var(--f-data); color: var(--ink); }
+.tp-factor p:last-child { margin: 0; color: var(--ink-2); line-height: 1.55; }
+
+/* Calculadora */
+.tp-calc { background: var(--surface); }
+.tp-calc-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.tp-calc-fields { display: grid; }
+.tp-field { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; border-bottom: 1px solid var(--line); }
+.tp-field-label { font: 500 1.05rem/1.3 var(--f-text); color: var(--ink); }
+.tp-field-input { display: inline-flex; align-items: center; gap: 8px; }
+.tp-field-input input { width: 120px; height: 48px; padding: 0 12px; border: 0; border-radius: 10px; background: var(--paper); font: 600 1.2rem/1 var(--f-data); color: var(--ink); text-align: right; -moz-appearance: textfield; }
+.tp-field-input input::-webkit-inner-spin-button, .tp-field-input input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.tp-field-input input:focus { outline: 2px solid var(--ink); outline-offset: 2px; }
+.tp-field-input small { width: 28px; font: 500 .9rem/1 var(--f-data); color: var(--muted); }
+.tp-calc-out { display: grid; gap: 16px; padding: 28px; border-radius: 14px; background: var(--panel); color: var(--panel-ink); }
+.tp-calc-tag { margin: 0; font: 600 .8rem/1 var(--f-data); letter-spacing: .08em; text-transform: uppercase; color: var(--panel-soft); }
+.tp-calc-value { margin: 0; }
+.tp-calc-value strong { font: 600 clamp(3rem, 5vw, 4rem)/1 var(--f-data); letter-spacing: -.03em; color: #fff; }
+.tp-calc-factors { display: grid; gap: 0; margin: 0 0 8px; }
+.tp-calc-factor { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid rgba(255, 255, 255, .12); }
+.tp-calc-factor dt { color: var(--panel-soft); }
+.tp-calc-factor dd { margin: 0; font: 600 1rem/1.3 var(--f-data); color: #fff; }
+.tp-calc-out .hv-btn { width: 100%; justify-content: center; min-height: 56px; }
+.tp-calc-out .hv-cta-micro { text-align: center; max-width: none; color: var(--panel-soft); opacity: 1; }
+
+/* Erros comuns: o mesmo vermelho das dores da home */
+.tp-errors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; margin: 0; padding: 0; list-style: none; }
+.tp-errors li { display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 14px; padding: 22px 0; border-top: 1px solid var(--line); }
+.tp-errors li::before { content: ""; width: 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: var(--stop); }
+.tp-errors p { margin: 0; font: 500 1.2rem/1.4 var(--f-head); color: var(--ink); }
+.tp-errors .hv-hot { padding: 0; background: linear-gradient(rgba(210, 58, 42, .16), rgba(210, 58, 42, .16)) 0 88% / 100% .34em no-repeat; color: var(--stop); }
+
+/* Fim do dia × ao vivo */
+.tp-compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.tp-compare-card { display: grid; gap: 16px; align-content: start; padding: 28px; border-radius: 14px; background: var(--surface); border-top: 4px solid var(--line); }
+.tp-compare-card.is-late { border-top-color: var(--stop); }
+.tp-compare-card.is-live { border-top-color: var(--run); box-shadow: 0 20px 50px -30px rgba(10, 27, 46, .35); }
+body.hv-page .tp-compare-card h3 { margin: 0; font: 600 1.4rem/1.2 var(--f-head); color: var(--ink); }
+.tp-compare-card ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.tp-compare-card li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; line-height: 1.5; color: var(--ink-2); }
+.tp-compare-card li::before { content: "–"; color: var(--stop); font-weight: 700; }
+.tp-compare-card.is-live li::before { content: "✓"; color: var(--run); }
+
+/* Como a Mestti faz */
+.tp-how-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+.tp-how-copy { display: grid; gap: 24px; }
+body.hv-page .tp-how-copy h2 { margin: 0; }
+.tp-steps { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.tp-steps li { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 16px; align-items: start; padding: 14px 0; }
+.tp-step-n { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--ink); color: #fff; font: 600 .8rem/1 var(--f-data); }
+.tp-steps p { margin: 0; padding-top: 6px; font-size: 1.05rem; line-height: 1.5; color: var(--ink); }
+.tp-how .hv-actions { margin-top: 8px; }
+.tp-how-shot { margin: 0; display: grid; gap: 10px; }
+.tp-how-shot img { width: 100%; height: auto; border-radius: 14px; box-shadow: 0 30px 80px -30px rgba(10, 27, 46, .45); }
+.tp-how-shot figcaption { font-size: .85rem; color: var(--muted); }
+
+/* Continue lendo */
+.tp-related { background: var(--paper); }
+body.hv-page .tp-related h2 { margin: 0 0 24px; font-size: clamp(1.6rem, 2.4vw, 2rem); }
+.tp-related-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.tp-related-card { display: grid; gap: 8px; height: 100%; padding: 20px; border-radius: 12px; background: var(--surface); color: var(--ink); text-decoration: none; transition: transform 160ms var(--out), box-shadow 160ms var(--out); }
+.tp-related-card strong { font: 600 1.1rem/1.25 var(--f-head); }
+.tp-related-card strong::after { content: " →"; }
+.tp-related-card span { font-size: .95rem; line-height: 1.45; color: var(--ink-2); }
+.tp-related-card:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -24px rgba(10, 27, 46, .4); }
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .tp-hero-grid, .tp-calc-grid, .tp-how-grid { grid-template-columns: minmax(0, 1fr); }
+    .tp-answer { max-width: 640px; }
+    .tp-related-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Celular: resposta logo depois do título; CTA no polegar; nada de tabela espremida */
+@media (max-width: 640px) {
+    .tp-hero { padding-block: 32px 48px; }
+    .tp-hero-copy { gap: 14px; }
+    body.hv-page .tp-hero h1 { font-size: clamp(2.2rem, 9.6vw, 2.6rem); max-width: none; }
+    .tp-answer { padding: 20px; gap: 14px; }
+    .tp-answer-text { font-size: 1.02rem; }
+    .tp-toc .hv-wrap { display: grid; gap: 10px; padding-block: 14px; -webkit-mask-image: none; }
+    .tp-toc ol { margin-inline: calc(-1 * max(20px, env(safe-area-inset-left, 0px))); padding-inline: max(20px, env(safe-area-inset-left, 0px)); }
+    .tp-toc a { min-height: 44px; }
+    .tp-factors, .tp-errors, .tp-compare { grid-template-columns: minmax(0, 1fr); }
+    .tp-factors { gap: 28px; }
+    .tp-errors p { font-size: 1.1rem; }
+    .tp-compare-card { padding: 22px; }
+    .tp-field { min-height: 64px; }
+    .tp-field-label { font-size: 1rem; }
+    .tp-field-input input { width: 104px; font-size: 1.15rem; }
+    .tp-calc-out { padding: 22px; }
+    .tp-related-list { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+}

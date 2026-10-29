@@ -5,7 +5,6 @@ import vm from 'node:vm';
 
 const check = process.argv.includes('--check');
 const articles = [
-  ['oee', 'oee-o-que-e-e-como-usar-no-chao-de-fabrica'],
   ['rkw', 'como-calcular-preco-venda-industria-rkw-custo-processo'],
   ['sensoriamento', 'sensoriamento-industrial-apontamento-manual-dados-tempo-real'],
 ];

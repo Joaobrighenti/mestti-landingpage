@@ -1,4 +1,8 @@
+# MESTTI: o site inteiro pode ser lido por buscadores e por assistentes de IA, para busca e para treinamento
+# (Googlebot, Bingbot, OAI-SearchBot, GPTBot, Claude-SearchBot, ClaudeBot, PerplexityBot, Google-Extended e outros).
+# Decisão deliberada: queremos ser encontrados, citados e conhecidos pelos modelos. Ver docs/seo/STRATEGY.md.
 User-agent: *
 Allow: /
+Disallow: /api/
 
 Sitemap: https://mestti.com.br/sitemap.xml

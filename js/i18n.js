@@ -1003,7 +1003,8 @@
             "footer.v2.mesErp": "MES ou ERP?",
             "footer.v2.blog": "Blog",
             "footer.v2.solutions": "Soluções por problema",
-            "footer.v2.phone": "(43) 99109-5035"
+            "footer.v2.phone": "(43) 99109-5035",
+            "footer.v2.oee": "O que é OEE"
         },
         "en": {
             "nav.v2.production": "Production",
@@ -1033,7 +1034,8 @@
             "footer.v2.mesErp": "MES or ERP?",
             "footer.v2.blog": "Blog",
             "footer.v2.solutions": "Solutions by problem",
-            "footer.v2.phone": "(43) 99109-5035"
+            "footer.v2.phone": "(43) 99109-5035",
+            "footer.v2.oee": "What is OEE"
         },
         "es": {
             "nav.v2.production": "Producción",
@@ -1063,7 +1065,8 @@
             "footer.v2.mesErp": "¿MES o ERP?",
             "footer.v2.blog": "Blog",
             "footer.v2.solutions": "Soluciones por problema",
-            "footer.v2.phone": "(43) 99109-5035"
+            "footer.v2.phone": "(43) 99109-5035",
+            "footer.v2.oee": "Qué es el OEE"
         }
     });
     /* fim v2 */

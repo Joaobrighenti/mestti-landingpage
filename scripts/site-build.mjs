@@ -109,6 +109,31 @@ export function syncLegacy(rel, html, partials) {
     return out;
 }
 
+const ORIGIN = 'https://mestti.com.br';
+
+/**
+ * sitemap.xml = páginas indexáveis (index.html sem noindex). lastmod vem de site/lastmod.json, nunca do horário do
+ * build: só deve mudar quando o conteúdo da página mudar de fato.
+ */
+export function buildSitemap(files, problems) {
+    const dates = JSON.parse(fs.readFileSync(path.join(SITE, 'lastmod.json'), 'utf8')).pages;
+    const html = new Map();
+    for (const rel of listFiles(ROOT, (n) => n === 'index.html')) html.set(rel, files.get(rel) ?? read(rel));
+    for (const [rel, content] of files) if (rel.endsWith('index.html')) html.set(rel, content);
+    const urls = [];
+    for (const [rel, content] of html) {
+        if (rel.split('/').some((part) => ['docs', 'tests', 'scripts', 'lib', 'api'].includes(part))) continue;
+        if (/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(content)) continue;
+        const url = '/' + rel.replace(/index\.html$/, '');
+        if (!dates[url]) problems.push(`site/lastmod.json: falta a data de ${url}`);
+        urls.push(url);
+    }
+    for (const url of Object.keys(dates)) if (!urls.includes(url)) problems.push(`site/lastmod.json: ${url} não é uma página indexável`);
+    urls.sort((a, b) => (a === '/' ? -1 : b === '/' ? 1 : a.localeCompare(b)));
+    const rows = urls.map((url) => `  <url><loc>${ORIGIN}${url}</loc>${dates[url] ? `<lastmod>${dates[url]}</lastmod>` : ''}</url>`);
+    return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${rows.join('\n')}\n</urlset>\n`;
+}
+
 export function buildAll() {
     const partials = {
         header: fs.readFileSync(path.join(SITE, 'partials/header.html'), 'utf8').replace(/\n$/, ''),
@@ -130,6 +155,8 @@ export function buildAll() {
         const synced = syncLegacy(rel, html, partials);
         if (synced !== html) files.set(rel, synced);
     }
+    const sitemap = buildSitemap(files, problems);
+    if (sitemap) files.set('sitemap.xml', sitemap);
     const i18n = read('js/i18n.js');
     const a = i18n.indexOf(CHROME_START);
     const b = i18n.indexOf(CHROME_END);

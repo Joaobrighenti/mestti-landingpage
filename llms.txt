@@ -22,6 +22,7 @@ A Mestti mede cada máquina com sensores próprios (contagem de peças ou ciclos
 - [Caso de cliente: indústria moveleira](https://mestti.com.br/casos/industria-moveleira/): +20% de disponibilidade em um setor ao ligar as máquinas antes do turno.
 - [Como começar: 1 semana grátis](https://mestti.com.br/diagnostico/): sensores em 7 dias, instalação em 1 dia, demonstração grátis de 1 semana e calculadora da oportunidade.
 - [Tecnologia e proteção de dados](https://mestti.com.br/seguranca/): sensor, sistema e IA próprios; registro imutável; isolamento por empresa.
+- [OEE: o que é, como calcular e acompanhar ao vivo](https://mestti.com.br/oee/): fórmula de disponibilidade, performance e qualidade, calculadora de OEE, erros comuns e como a Mestti mede o OEE por máquina.
 - [Glossário](https://mestti.com.br/glossario/): OEE, disponibilidade, performance, microparada, setup, MTTR, MTBF, PCP, MES, ERP e capacidade escondida.
 - [MES ou ERP?](https://mestti.com.br/mes-ou-erp/): diferença, comparativo e quando a indústria precisa dos dois.
 - [Sobre a Mestti](https://mestti.com.br/empresa/): origem em Londrina (2025), fundador João Brighenti, Lab Procel II e parceiros.
@@ -37,7 +38,6 @@ A Mestti mede cada máquina com sensores próprios (contagem de peças ou ciclos
 - [Como calcular preço de venda na indústria com RKW e custo do processo | MESTTI](https://mestti.com.br/blog/como-calcular-preco-venda-industria-rkw-custo-processo/): Aprenda como calcular o preço de venda de um produto industrial usando o método RKW, considerando matéria-prima, custos fixos, custo do processo, tempo de máquina, custos variáveis e lucro desejado.
 - [Blog | MESTTI](https://mestti.com.br/blog/): Artigos sobre produção industrial, gestão de custos e chão de fábrica.
 - [O que é um sistema MES e qual valor a MESTTI agrega à indústria?](https://mestti.com.br/blog/o-que-e-sistema-mes-mestti/): Entenda o papel do MES entre a operação e a gestão, e como sensoriamento, apontamento, indicadores, programação e qualidade da MESTTI ajudam a acompanhar a fábrica.
-- [OEE: o que é, como calcular e por que acompanhar em tempo real | MESTTI](https://mestti.com.br/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/): Entenda o que é OEE (Overall Equipment Effectiveness), como calcular disponibilidade, performance e qualidade, e por que acompanhar o indicador ao vivo no chão de fábrica.
 - [Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real | MESTTI](https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/): Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.
 - [Contato | MESTTI](https://mestti.com.br/contato/): Contato com a MESTTI: comercial, suporte e canais oficiais.
 - [Sensoriamento Industrial | MESTTI](https://mestti.com.br/sensoriamento/): Sensores industriais conectados ao MESTTI para capturar produção, paradas e disponibilidade em tempo real, sem planilhas e sem atraso na informação.

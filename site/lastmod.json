@@ -1,0 +1,30 @@
+{
+  "_doc": "Data da última mudança REAL de conteúdo de cada página indexável (AAAA-MM-DD). Atualize só quando o conteúdo mudar de fato; troca de cabeçalho/rodapé não conta. O build gera sitemap.xml a partir daqui e falha se faltar página.",
+  "pages": {
+    "/": "2026-10-29",
+    "/atuacao/": "2026-10-22",
+    "/blog/": "2026-10-22",
+    "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/": "2026-10-22",
+    "/blog/como-escolher-sistema-monitoramento-producao/": "2026-10-22",
+    "/blog/o-que-e-sistema-mes-mestti/": "2026-10-22",
+    "/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/": "2026-10-22",
+    "/casos/industria-moveleira/": "2026-10-29",
+    "/checklists/": "2026-10-21",
+    "/contato/": "2026-10-22",
+    "/diagnostico/": "2026-10-29",
+    "/empresa/": "2026-10-29",
+    "/engenharia/": "2026-10-29",
+    "/glossario/": "2026-10-29",
+    "/mes-ou-erp/": "2026-10-29",
+    "/oee/": "2026-10-29",
+    "/otto/": "2026-10-29",
+    "/producao/": "2026-10-29",
+    "/qualidade/": "2026-10-29",
+    "/seguranca/": "2026-10-29",
+    "/sensores/": "2026-10-22",
+    "/sensoriamento/": "2026-10-22",
+    "/sequenciamento/": "2026-10-22",
+    "/solucoes/": "2026-10-22",
+    "/termos/": "2026-10-22"
+  }
+}
