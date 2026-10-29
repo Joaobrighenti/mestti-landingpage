@@ -288,3 +288,20 @@
     .hv-calc-field { grid-template-columns: minmax(0, 1fr) 44px 80px 44px; gap: 4px; }
     .hv-calc-money .hv-calc-num { width: 48px; }
 }
+@media (max-width: 640px) {
+    /* Apoiadores = clientes: mesmo rótulo, mesmo ritmo, logos com o mesmo peso visual */
+    .hv-supporters-row { padding-block: 40px; gap: 24px; }
+    .hv-supporters .hv-supporters-label { margin: 0; font: 500 .875rem/1.4 var(--f-text); letter-spacing: 0; color: var(--muted); }
+    .hv-supporters .hv-partners { gap: 40px !important; }
+    .hv-supporters .hv-partner img { height: 26px; }
+    .hv-supporters .hv-partner img[src*="senai"] { height: 19px; }
+    .hv-supporters .hv-partner img[src*="procel"] { height: 28px; }
+    .hv-supporters .hv-partner img[src*="enbpar"] { height: 26px; }
+    .hv-supporters .hv-partner img[src*="firjan"] { height: 24px; }
+    .hv-supporters .hv-partner img[src*="fiep"] { height: 16px; }
+    .hv-supporters .hv-partner img[src*="moveis-hub"] { height: 15px; }
+    /* A faixa some suave na margem, em vez de cortar o logo na borda da tela */
+    .hv-clients-row, .hv-supporters-row { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%); }
+}
+@media (max-width: 640px) { .hv-section.hv-nation { padding-block: 0; } }
+@media (max-width: 640px) { .hv-nation-grid { padding-block: 0; gap: 40px; } .hv-nation-main { padding-block: 56px 64px; } }
