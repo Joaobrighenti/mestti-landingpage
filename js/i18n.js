@@ -1178,19 +1178,13 @@
         window.MesttiLpCarousels?.refresh?.();
     }
 
+    // Seletor de idioma em texto (PT · EN · ES): bandeira é país, não idioma. O nome por extenso fica no rótulo.
     function langSwitcherMarkup(idSuffix) {
         const id = idSuffix ? `langSwitcher${idSuffix}` : 'langSwitcher';
+        const opt = (code, label, name) => `<button type="button" class="lang-switcher-btn" data-lang="${code}" lang="${name}" aria-label="${label}" title="${label}">${code.toUpperCase()}</button>`;
         return `
 <div class="lang-switcher${idSuffix ? ' lang-switcher--mobile' : ''}" id="${id}" role="group" data-i18n-aria="a11y.lang">
-  <button type="button" class="lang-switcher-btn is-active" data-lang="pt" data-i18n-aria="a11y.langPt" title="Português">
-    <span class="lang-switcher-flag" aria-hidden="true">🇧🇷</span>
-  </button>
-  <button type="button" class="lang-switcher-btn" data-lang="en" data-i18n-aria="a11y.langEn" title="English">
-    <span class="lang-switcher-flag" aria-hidden="true">🇺🇸</span>
-  </button>
-  <button type="button" class="lang-switcher-btn" data-lang="es" data-i18n-aria="a11y.langEs" title="Español">
-    <span class="lang-switcher-flag" aria-hidden="true">🇪🇸</span>
-  </button>
+  ${opt('pt', 'Português', 'pt-BR')}${opt('en', 'English', 'en')}${opt('es', 'Español', 'es')}
 </div>`;
     }
 

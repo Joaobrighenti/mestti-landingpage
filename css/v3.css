@@ -115,9 +115,10 @@ body.hv-page .header .logo-img--light { display: none !important; }
 body.hv-page .header .logo-img--dark { display: block !important; }
 body.hv-page .header .btn-demo, html[data-theme="dark"] body.hv-page .header .btn-demo { background: var(--signal) !important; color: var(--signal-ink) !important; border: 0 !important; border-radius: var(--r) !important; font: 600 .95rem/1 var(--f-text) !important; }
 body.hv-page .header .menu-toggle span { background: #fff; }
-body.hv-page .header .theme-switcher, body.hv-page .header .lang-switcher { background: transparent; border: 0; box-shadow: none; gap: 0; }
-body.hv-page .header .theme-switcher-btn, body.hv-page .header .lang-switcher-btn { color: var(--panel-soft); background: transparent; opacity: .7; transition: opacity 160ms var(--out); }
-body.hv-page .header .theme-switcher-btn.is-active, body.hv-page .header .lang-switcher-btn.is-active { opacity: 1; background: rgba(255, 255, 255, .1); box-shadow: none; }
+body.hv-page .header .theme-switcher { background: transparent; border: 0; box-shadow: none; gap: 0; }
+body.hv-page .header .lang-switcher { color: var(--panel-ink); }
+body.hv-page .header .theme-switcher-btn { color: var(--panel-soft); background: transparent; opacity: .7; transition: opacity 160ms var(--out); }
+body.hv-page .header .theme-switcher-btn.is-active { opacity: 1; background: rgba(255, 255, 255, .1); box-shadow: none; }
 @media (max-width: 1024px) {
     body.hv-page .header .header-nav .nav-link { color: var(--ink); }
 }
@@ -812,3 +813,8 @@ body.hv-page .hv-video-head h2 { margin: 0; font-size: clamp(2.4rem, 4.6vw, 4rem
 .hv-octo-hint { animation: hv-octo-bob 1.4s ease-in-out infinite; }
 @keyframes hv-octo-bob { 0%, 100% { transform: none; } 50% { transform: translateY(-4px); } }
 @media (prefers-reduced-motion: reduce) { .hv-octo-hint { animation: none; } }
+
+/* Menu do celular tem fundo branco: seletor de idioma e Login na cor do texto */
+@media (max-width: 1024px) {
+    body.hv-page .header .header-nav .lang-switcher, body.hv-page .header .header-nav .btn-login { color: var(--ink); }
+}
