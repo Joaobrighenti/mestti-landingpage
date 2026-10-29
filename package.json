@@ -8,7 +8,8 @@
     "test": "node --test ./tests",
     "check:site": "node scripts/site-build.mjs --check && node scripts/check-site.mjs",
     "site:build": "node scripts/site-build.mjs",
-    "site:check": "node scripts/site-build.mjs --check"
+    "site:check": "node scripts/site-build.mjs --check",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "dotenv": "^16.6.1",
