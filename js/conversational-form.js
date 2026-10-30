@@ -224,6 +224,7 @@
                         <p class="wa-chat-status">${t('chat.header.status', 'online')}</p>
                     </div>
                 </div>
+                <p class="wa-chat-privacy">Os dados informados serão usados para atender sua solicitação. <a href="/privacidade-site/" target="_blank" rel="noopener">Como tratamos seus dados</a>.</p>
                 <div class="wa-chat-body">
                     <div class="wa-chat-scroll">
                         <div class="wa-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
@@ -562,34 +563,6 @@
             await this.answerStep(displayValue, rawValue);
         }
 
-        syncProgress(event, completedStep = null) {
-            const sync = window.MesttiLead?.syncLeadProgress;
-            if (typeof sync !== 'function') return;
-
-            const totalSteps = this.steps.length;
-            let chatStepKey = '';
-            let stepIndex = 0;
-
-            if (event === 'step_completed' && completedStep) {
-                chatStepKey = completedStep.key;
-                stepIndex = this.steps.findIndex((s) => s.key === completedStep.key) + 1;
-            } else if (event === 'abandoned') {
-                const done = Math.min(this.stepIndex, this.steps.length);
-                stepIndex = done;
-                if (done > 0) {
-                    chatStepKey = this.steps[done - 1]?.key || '';
-                }
-            }
-
-            sync(this.form, this.form.id || 'principal', {
-                event,
-                chatStepKey,
-                stepIndex,
-                totalSteps,
-                leadSource: event === 'abandoned' ? 'chat_abandoned' : 'chat_progress'
-            });
-        }
-
         async answerStep(displayValue, rawValue, skipped = false) {
             const step = this.currentStep();
             if (!step || this.busy) return;
@@ -617,7 +590,6 @@
                 step.el.value = '';
             }
 
-            this.syncProgress('step_completed', step);
 
             this.stepIndex += 1;
             this.busy = false;
@@ -930,13 +902,6 @@
             } else if (!isActive && wasActive) {
                 instances.forEach((instance) => {
                     instance.saveDraft();
-                    if (
-                        instance.messageLog.length > 0
-                        && !instance.finished
-                        && instance.form.dataset.mesttiSubmitted !== '1'
-                    ) {
-                        instance.syncProgress('abandoned');
-                    }
                 });
             }
             wasActive = isActive;

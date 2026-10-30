@@ -261,6 +261,10 @@ app.post("/api/lead-progress", async (req, res) => {
     applyChecklistQualification(rawLead);
     const payload = normalizeLeadProgressPayload(rawLead);
 
+    if (payload.event !== 'submitted') {
+      return res.status(400).json({ ok: false, error: 'only_completed_submissions' });
+    }
+
     if (!payload.sessionId) {
       return res.status(400).json({ ok: false, error: "session_id_required" });
     }

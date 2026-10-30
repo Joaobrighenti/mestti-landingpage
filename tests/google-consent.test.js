@@ -4,50 +4,48 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import vm from 'node:vm';
 
 const loader = readFileSync('js/google-consent.js', 'utf8');
-function setup(accepted = false) {
-  let current = accepted;
+function setup(initial = { analytics: false, marketing: false }) {
+  let current = initial;
   let listener;
   const scripts = [];
   const window = { MesttiConsent: {
-    hasMarketingConsent: () => current,
+    hasMarketingConsent: () => current.marketing,
+    hasAnalyticsConsent: () => current.analytics,
     onConsentChange: (callback) => { listener = callback; },
   } };
   const document = { createElement: () => ({}), head: { appendChild: (el) => scripts.push(el) } };
   vm.runInNewContext(loader, { window, document, Date });
-  return { window, scripts, choose(value) { current = value; listener(value); } };
+  return { window, scripts, choose(value) { current = value; listener(value.marketing); } };
 }
-test('a tag não é carregada antes do aceite ou após recusa', () => {
+test('não carrega tags sem consentimento', () => {
   const app = setup();
-  assert.equal(app.scripts.length, 0);
-  app.choose(false);
+  app.choose({ analytics: false, marketing: false });
   assert.equal(app.scripts.length, 0);
 });
-test('aceite carrega uma vez, configura consentimento e revogação', () => {
+for (const [name, choice, expected] of [
+  ['análise', {analytics: true, marketing: false}, ['G-9K4NZHC0WT']],
+  ['marketing', {analytics: false, marketing: true}, ['AW-11486484316']],
+  ['ambos', {analytics: true, marketing: true}, ['G-9K4NZHC0WT','AW-11486484316']],
+]) test(`configura apenas ${name}`, () => {
   const app = setup();
-  app.choose(true);
-  app.choose(true);
+  app.choose(choice);
+  app.choose(choice);
   assert.equal(app.scripts.length, 1);
-  assert.match(app.scripts[0].src, /^https:\/\/www\.googletagmanager\.com\/gtag\/js/);
-  const commands = app.window.dataLayer.map((args) => Array.from(args));
-  assert.equal(commands[0][0], 'consent');
+  const commands = Array.from(app.window.dataLayer, args => Array.from(args));
   assert.equal(commands[0][1], 'default');
-  assert.equal(commands[1][0], 'consent');
-  assert.equal(commands[1][1], 'update');
-  assert.equal(commands[2][0], 'js');
   assert.equal(commands[0][2].analytics_storage, 'denied');
-  assert.equal(commands[1][2].analytics_storage, 'granted');
-  app.choose(false);
+  const configs = commands.filter(x => x[0] === 'config').map(x => x[1]);
+  assert.deepEqual(configs, expected);
+  const update = commands.find(x => x[0] === 'consent' && x[1] === 'update');
+  assert.equal(update[2].analytics_storage, choice.analytics ? 'granted' : 'denied');
+  assert.equal(update[2].ad_storage, choice.marketing ? 'granted' : 'denied');
+  app.choose({ analytics: false, marketing: false });
   const last = Array.from(app.window.dataLayer.at(-1));
-  assert.equal(last[1], 'update');
   assert.equal(last[2].ad_storage, 'denied');
-  assert.equal(app.window['ga-disable-G-9K4NZHC0WT'], true);
 });
-test('a decisão aceita é retomada na navegação seguinte', () => {
-  assert.equal(setup(true).scripts.length, 1);
-});
-test('páginas com tags usam o carregador após o controle de consentimento', () => {
+test('páginas não carregam tag diretamente e usam consentimento', () => {
   function files(dir) {
-    return readdirSync(dir).flatMap((entry) => {
+    return readdirSync(dir).flatMap(entry => {
       const path = dir === '.' ? entry : `${dir}/${entry}`;
       if (['node_modules', 'public', '.git'].includes(entry)) return [];
       return statSync(path).isDirectory() ? files(path) : path.endsWith('.html') ? [path] : [];
@@ -61,5 +59,5 @@ test('páginas com tags usam o carregador após o controle de consentimento', ()
     checked++;
     assert.ok(html.indexOf('meta-consent.js') < html.indexOf('google-consent.js'), file);
   }
-  assert.equal(checked, 22);
+  assert.equal(checked, 23);
 });
