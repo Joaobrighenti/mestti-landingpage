@@ -11,6 +11,8 @@
     { "source": "/qualidade-2/", "destination": "/checklists/", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/privacidade", "destination": "/privacidade/index.html" },
+    { "source": "/privacidade/", "destination": "/privacidade/index.html" },
     { "source": "/contato", "destination": "/contato/index.html" },
     { "source": "/contato/", "destination": "/contato/index.html" },
     { "source": "/empresa", "destination": "/empresa/index.html" },
