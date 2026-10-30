@@ -165,3 +165,18 @@
         background: var(--gray-50);
     }
 }
+
+/* O atalho permanece disponível para navegação por teclado. */
+.legal-skip-link {
+    position: fixed;
+    z-index: 10000;
+    top: 8px;
+    left: 8px;
+    transform: translateY(-160%);
+    padding: 10px 14px;
+    border-radius: 6px;
+    background: #fff;
+    color: #024578;
+    font-weight: 700;
+}
+.legal-skip-link:focus { transform: translateY(0); outline: 3px solid #024578; }
