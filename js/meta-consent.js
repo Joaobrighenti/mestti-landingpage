@@ -3,7 +3,7 @@
  * Não afirma conformidade jurídica por si só — apenas controla o carregamento do Pixel.
  */
 (function () {
-  const STORAGE_KEY = 'mestti_marketing_consent';
+  const STORAGE_KEY = 'mestti_analytics_marketing_consent_v2';
   const ACCEPTED = 'accepted';
   const DECLINED = 'declined';
 
@@ -57,18 +57,25 @@
   }
 
   function declineMarketing() {
+    const wasAccepted = hasMarketingConsent();
     writeConsent(DECLINED);
     hideBanner();
     ensurePrefsLink();
     notify(DECLINED);
+    if (typeof window.fbq === 'function') window.fbq('consent', 'revoke');
+    if (wasAccepted) window.location.reload();
   }
 
   function resetConsent() {
+    const wasAccepted = hasMarketingConsent();
     try {
       localStorage.removeItem(STORAGE_KEY);
     } catch {
       /* ignore */
     }
+    notify(DECLINED);
+    if (typeof window.fbq === 'function') window.fbq('consent', 'revoke');
+    if (wasAccepted) { window.location.reload(); return; }
     document.getElementById('mesttiCookiePrefs')?.remove();
     showBanner();
   }
@@ -91,14 +98,14 @@
     banner.innerHTML = `
       <div class="mestti-cookie-banner__inner">
         <p class="mestti-cookie-banner__text">
-          Usamos cookies para navegação, análise e marketing.
+          Usamos cookies necessários para o site. Com sua autorização, também usamos cookies de análise e marketing. <a href="/cookies/">Saiba mais</a>.
         </p>
         <div class="mestti-cookie-banner__actions">
           <button type="button" class="mestti-cookie-banner__btn mestti-cookie-banner__btn--ghost" data-consent="decline">
-            Agora não
+            Recusar análise e marketing
           </button>
           <button type="button" class="mestti-cookie-banner__btn mestti-cookie-banner__btn--primary" data-consent="accept">
-            Aceitar
+            Aceitar análise e marketing
           </button>
         </div>
         <button type="button" class="mestti-cookie-banner__prefs" data-consent="prefs" hidden>
@@ -125,7 +132,7 @@
     link.id = 'mesttiCookiePrefs';
     link.className = 'mestti-cookie-prefs-link';
     link.textContent = 'Cookies';
-    link.setAttribute('aria-label', 'Revisar preferência de cookies de marketing');
+    link.setAttribute('aria-label', 'Revisar preferência de cookies de análise e marketing');
     link.addEventListener('click', () => {
       resetConsent();
     });
