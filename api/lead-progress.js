@@ -14,6 +14,10 @@ export default async function handler(req, res) {
     applyChecklistQualification(raw);
     const payload = normalizeLeadProgressPayload(raw);
 
+    if (payload.event !== 'submitted') {
+      return res.status(400).json({ ok: false, error: 'only_completed_submissions' });
+    }
+
     if (!payload.sessionId) {
       return res.status(400).json({ ok: false, error: 'session_id_required' });
     }

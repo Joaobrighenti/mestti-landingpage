@@ -10,7 +10,7 @@ function gtag_report_conversion(url) {
         }
     };
 
-    if (typeof window.gtag === 'function') {
+    if (window.MesttiConsent?.hasMarketingConsent?.() && typeof window.gtag === 'function') {
         window.gtag('event', 'conversion', {
             send_to: 'AW-11486484316/IgS3CL2-7I4ZENyul-Uq',
             event_callback: callback
@@ -585,7 +585,7 @@ async function syncLeadProgress(form, formId, {
     totalSteps = 0,
     leadSource = 'chat_progress'
 } = {}) {
-    if (!form) return;
+    if (!form || event !== 'submitted') return;
 
     const hasPartial = formHasPartialData(form);
     if (!hasPartial && event !== 'submitted') return;
@@ -630,7 +630,7 @@ function attachMetaLeadFields(payload, form) {
             ? crypto.randomUUID()
             : `lead_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`);
 
-    const cookies = window.MesttiMeta?.getMetaCookies?.() || {};
+    const cookies = window.MesttiMeta?.hasConsent?.() ? (window.MesttiMeta?.getMetaCookies?.() || {}) : {};
     const sessionId = form ? getOrCreateLeadSessionId(form) : '';
 
     payload.eventId = eventId;

@@ -11,6 +11,10 @@
     { "source": "/qualidade-2/", "destination": "/checklists/", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/privacidade-site", "destination": "/privacidade-site/index.html" },
+    { "source": "/privacidade-site/", "destination": "/privacidade-site/index.html" },
+    { "source": "/cookies", "destination": "/cookies/index.html" },
+    { "source": "/cookies/", "destination": "/cookies/index.html" },
     { "source": "/privacidade", "destination": "/privacidade/index.html" },
     { "source": "/privacidade/", "destination": "/privacidade/index.html" },
     { "source": "/contato", "destination": "/contato/index.html" },
