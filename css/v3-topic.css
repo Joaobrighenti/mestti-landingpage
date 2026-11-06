@@ -103,20 +103,11 @@ body.hv-page .tp-how-copy h2 { margin: 0; }
 .tp-how-shot figcaption { font-size: .85rem; color: var(--muted); }
 
 /* Continue lendo */
-.tp-related { background: var(--paper); }
-body.hv-page .tp-related h2 { margin: 0 0 24px; font-size: clamp(1.6rem, 2.4vw, 2rem); }
-.tp-related-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
-.tp-related-card { display: grid; gap: 8px; height: 100%; padding: 20px; border-radius: 12px; background: var(--surface); color: var(--ink); text-decoration: none; transition: transform 160ms var(--out), box-shadow 160ms var(--out); }
-.tp-related-card strong { font: 600 1.1rem/1.25 var(--f-head); }
-.tp-related-card strong::after { content: " →"; }
-.tp-related-card span { font-size: .95rem; line-height: 1.45; color: var(--ink-2); }
-.tp-related-card:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -24px rgba(10, 27, 46, .4); }
 
 /* Tablet */
 @media (max-width: 1024px) {
     .tp-hero-grid, .tp-calc-grid, .tp-how-grid { grid-template-columns: minmax(0, 1fr); }
     .tp-answer { max-width: 640px; }
-    .tp-related-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Celular: resposta logo depois do título; CTA no polegar; nada de tabela espremida */
@@ -137,7 +128,6 @@ body.hv-page .tp-related h2 { margin: 0 0 24px; font-size: clamp(1.6rem, 2.4vw, 
     .tp-field-label { font-size: 1rem; }
     .tp-field-input input { width: 104px; font-size: 1.15rem; }
     .tp-calc-out { padding: 22px; }
-    .tp-related-list { grid-template-columns: minmax(0, 1fr); gap: 10px; }
 }
 
 /* Variações usadas pelas demais páginas de tema */
@@ -160,11 +150,6 @@ body.hv-page .tp-related h2 { margin: 0 0 24px; font-size: clamp(1.6rem, 2.4vw, 
 
 /* Autor sem foto: iniciais no mesmo tamanho da foto */
 .tp-avatar { display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--signal); color: var(--signal-ink); font: 600 .85rem/1 var(--f-data); letter-spacing: .02em; }
-
-/* Artigos do blog sobre o tema (gerado pelo build a partir de content/blog) */
-.tp-articles { background: var(--surface); }
-body.hv-page .tp-articles h2 { margin: 0 0 24px; font-size: clamp(1.6rem, 2.4vw, 2rem); }
-.tp-articles .tp-related-card { background: var(--paper); }
 
 /* Topo sem "Resposta curta" (contato, termos) e grade de cartões com link (soluções, canais) */
 .tp-hero-grid--solo { grid-template-columns: minmax(0, 1fr); }
