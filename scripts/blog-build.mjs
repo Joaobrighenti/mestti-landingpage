@@ -166,7 +166,7 @@ const HEAD = (title, desc, url, type, ld, extra = '') => `<!DOCTYPE html>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/site.css?v=5">
     <link rel="stylesheet" href="/css/v2.css?v=2">
-    <link rel="stylesheet" href="/css/v3.css?v=39">
+    <link rel="stylesheet" href="/css/v3.css?v=60">
     <link rel="stylesheet" href="/css/v3-mobile.css?v=19">
     <link rel="stylesheet" href="/css/v3-topic.css?v=6">
     <link rel="stylesheet" href="/css/v3-blog.css?v=2">
@@ -184,7 +184,7 @@ const HEAD = (title, desc, url, type, ld, extra = '') => `<!DOCTYPE html>
 </head>
 `;
 
-const SCRIPTS = `    <script defer src="/js/i18n.js?v=33"></script>
+const SCRIPTS = `    <script defer src="/js/i18n.js?v=35"></script>
     <script defer src="/js/theme.js?v=3"></script>
     <script defer src="/js/form-options.js?v=4"></script>
     <script defer src="/js/meta-consent.js?v=7"></script>

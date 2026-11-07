@@ -16,7 +16,7 @@ import {
     LANGS, KINDS, PAGE_HEAD, CHROME_START, CHROME_END, HEADER_OPEN, FOOTER_OPEN,
     startTags, closingIndex, blockAt, modalBlock, pagePath, headerFor, pageDictFile, chromeBlock, unescapeAttr
 } from './site-lib.mjs';
-import { buildBlog } from './blog-build.mjs';
+import { buildBlog, TOPICS } from './blog-build.mjs';
 import { legacyTranslator, localizePage, textMap, hreflangLinks, langLinks, localUrl, LOCALES, ORIGIN as I18N_ORIGIN } from './site-i18n.mjs';
 
 const LANGS_MARK = '<!-- @langs -->';
@@ -25,13 +25,53 @@ const ARTICLES_MARK = '<!-- @artigos -->';
 const TOPIC_OF = { '/mes/': 'mes', '/oee/': 'oee', '/pcp/': 'pcp', '/sequenciamento/': 'sequenciamento', '/apontamento-de-producao/': 'apontamento',
     '/monitoramento-de-maquinas/': 'monitoramento', '/maquinas-antigas/': 'maquinas-antigas', '/industria-4-0/': 'industria-4-0', '/ia-na-industria/': 'ia', '/qualidade/': 'qualidade' };
 const ARTICLES_TITLE = { pt: 'Artigos sobre este tema', en: 'Articles on this topic (in Portuguese)', es: 'Artículos sobre este tema (en portugués)' };
+const ARTICLES_NAV = { pt: ['Anteriores', 'Próximos'], en: ['Previous', 'Next'], es: ['Anteriores', 'Siguientes'] };
 const escHtml = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const navArrow = (d) => `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg>`;
+/** Setas embaixo da fileira (só aparecem quando ela não cabe) e o script que as liga. */
+function railNav(lang) {
+    const [prev, next] = ARTICLES_NAV[lang];
+    return `<div class="tp-art-nav" data-art-nav hidden><button type="button" class="tp-art-prev" data-art-prev aria-label="${prev}">${navArrow('M19 12H5M11 6l-6 6 6 6')}</button><button type="button" class="tp-art-next" data-art-next aria-label="${next}">${navArrow('M5 12h14M13 6l6 6-6 6')}</button></div>`
+        + `<script>(function(){var s=document.currentScript.parentNode,r=s.querySelector('[data-art-rail]'),n=s.querySelector('[data-art-nav]'),p=s.querySelector('[data-art-prev]'),x=s.querySelector('[data-art-next]');function u(){n.hidden=r.scrollWidth<=r.clientWidth+2;p.disabled=r.scrollLeft<4;x.disabled=r.scrollLeft+r.clientWidth>=r.scrollWidth-4}function go(d){var c=r.querySelector('li');r.scrollBy({left:d*(c?c.offsetWidth+20:300),behavior:'smooth'})}p.addEventListener('click',function(){go(-1)});x.addEventListener('click',function(){go(1)});r.addEventListener('scroll',u,{passive:true});addEventListener('resize',u);u()})();</script>`;
+}
+const cardImg = (src) => `<span class="tp-art-img">${src ? `<img src="${src}" alt="" width="720" height="480" loading="lazy" decoding="async">` : ''}</span>`;
+/** Fileira de artigos: imagem, tema e tempo de leitura, título. */
 function articlesBlock(url, lang, articles) {
     const topic = TOPIC_OF[url];
-    const list = articles.filter((a) => a.topic === topic || (a.related || []).includes(url)).slice(0, 6);
+    const list = articles.filter((a) => a.topic === topic || (a.related || []).includes(url)).slice(0, 8);
     if (!list.length) return '';
-    const cards = list.map((a) => `<li><a class="tp-related-card" href="${a.url}" hreflang="pt-BR"><strong>${escHtml(a.title)}</strong><span>${escHtml(a.description)}</span></a></li>`).join('');
-    return `<section class="hv-section tp-section tp-articles" aria-labelledby="tp-art-title"><div class="hv-wrap"><h2 id="tp-art-title">${ARTICLES_TITLE[lang]}</h2><ul class="tp-related-list">${cards}</ul></div></section>`;
+    const cards = list.map((a) => {
+        const slug = a.url.split('/').filter(Boolean).pop();
+        const img = fs.existsSync(path.join(ROOT, 'images/blog', `${slug}.webp`)) ? `/images/blog/${slug}.webp` : null;
+        const meta = `<span class="tp-art-meta"><b>${escHtml((TOPICS[a.topic] || [''])[0])}</b>${a.minutes ? `<span aria-hidden="true">·</span>${a.minutes} min` : ''}</span>`;
+        return `<li><a class="tp-art" href="${a.url}" hreflang="pt-BR">${cardImg(img)}${meta}<span class="tp-art-title">${escHtml(a.title)}</span></a></li>`;
+    }).join('');
+    return `<section class="hv-section tp-articles" aria-labelledby="tp-art-title"><div class="hv-wrap"><h2 id="tp-art-title">${ARTICLES_TITLE[lang]}</h2><ul class="tp-art-rail" data-art-rail>${cards}</ul>${railNav(lang)}</div></section>`;
+}
+/** "Continue lendo": os mesmos cartões da fileira de artigos (imagem, tipo da página, título), sem o resumo. */
+const KIND = { guide: ['Guia', 'Guide', 'Guía'], article: ['Artigo', 'Article', 'Artículo'], case: ['Case', 'Case', 'Caso'], page: ['Produto', 'Product', 'Producto'] };
+const GUIDES = new Set([...Object.keys(TOPIC_OF), '/mes-ou-erp/']);
+function relatedCard(href, strongAttrs, title, lang) {
+    const base = href.replace(/^\/(en|es)\//, '/');
+    const li = ['pt', 'en', 'es'].indexOf(lang);
+    let kind = 'page'; let img = null;
+    if (base.startsWith('/blog/')) {
+        kind = 'article';
+        const slug = base.split('/').filter(Boolean).pop();
+        if (fs.existsSync(path.join(ROOT, 'images/blog', `${slug}.webp`))) img = `/images/blog/${slug}.webp`;
+    } else {
+        kind = base.startsWith('/casos/') ? 'case' : (GUIDES.has(base) || base === '/glossario/') ? 'guide' : 'page';
+        const key = base.split('/').filter(Boolean).join('-');
+        if (key && fs.existsSync(path.join(ROOT, 'images/cards', `${key}.webp`))) img = `/images/cards/${key}.webp`;
+    }
+    return `<li><a class="tp-art" href="${href}">${cardImg(img)}<span class="tp-art-meta"><b>${KIND[kind][li]}</b></span><strong class="tp-art-title"${strongAttrs}>${title}</strong></a></li>`;
+}
+function relatedRail(html, lang) {
+    return html.replace(/(<section class="[^"]*\btp-related\b[^"]*"[^>]*>[\s\S]*?)<ul class="tp-related-list">([\s\S]*?)<\/ul>/g, (all, head, items) => {
+        const cards = [...items.matchAll(/<a class="tp-related-card" href="([^"]+)"[^>]*><strong([^>]*)>([\s\S]*?)<\/strong>/g)].map(([, h, at, t]) => relatedCard(h, at, t, lang));
+        if (!cards.length) return all;
+        return `${head}<ul class="tp-art-rail" data-art-rail>${cards.join('')}</ul>${railNav(lang)}`;
+    });
 }
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -229,7 +269,15 @@ export function buildAll() {
         const m = rel.match(/^(en|es)\/(.*)$/);
         const lang = m ? m[1] : 'pt';
         const url = '/' + (m ? m[2] : rel).replace(/index\.html$/, '');
-        files.set(rel, html.replace(LANGS_MARK, langLinks(url, lang, localized)).replace(ARTICLES_MARK, articlesBlock(url, lang, blog.articles)));
+        files.set(rel, relatedRail(html.replace(LANGS_MARK, langLinks(url, lang, localized)).replace(ARTICLES_MARK, articlesBlock(url, lang, blog.articles)), lang));
+    }
+    // Sem trilha "Início / Página" visível: a home fica no logo. (O BreadcrumbList do JSON-LD continua.)
+    const CRUMBS = /\s*<nav class="(?:tp-crumbs|hv-crumbs|discovery-breadcrumb)"[^>]*>[\s\S]*?<\/nav>/g;
+    for (const rel of new Set([...files.keys(), ...listFiles(ROOT, (n) => n.endsWith('.html'))])) {
+        if (!rel.endsWith('.html')) continue;
+        const html = files.has(rel) ? files.get(rel) : read(rel);
+        const clean = html.replace(CRUMBS, '');
+        if (clean !== html) files.set(rel, clean);
     }
     const sitemap = buildSitemap(files, problems, { ...blog.dates, ...localDates });
     if (sitemap) files.set('sitemap.xml', sitemap);

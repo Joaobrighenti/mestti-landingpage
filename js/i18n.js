@@ -980,7 +980,7 @@
             "nav.v2.engineering": "Engenharia",
             "nav.v2.quality": "Qualidade",
             "nav.v2.otto": "Otto",
-            "nav.v2.cases": "Casos",
+            "nav.v2.cases": "Cases",
             "header.demo": "1 semana grátis",
             "modal.title": "Comece sua semana grátis",
             "modal.lead": "Deixe seu contato e marcamos a conversa para escolher o setor da sua semana grátis.",
@@ -995,7 +995,7 @@
             "footer.v2.sensors": "Sensores",
             "footer.v2.howItWorks": "Como funciona",
             "footer.v2.company": "Empresa",
-            "footer.v2.case": "Caso de cliente",
+            "footer.v2.case": "Cases",
             "footer.v2.security": "Tecnologia e dados",
             "footer.v2.resources": "Recursos",
             "footer.v2.assessment": "Como começar",
@@ -1013,7 +1013,8 @@
             "footer.v2.gMon": "Monitoramento de máquinas",
             "footer.v2.gOld": "Máquinas antigas sem CLP",
             "footer.v2.gI40": "Indústria 4.0",
-            "footer.v2.gIa": "IA na indústria"
+            "footer.v2.gIa": "IA na indústria",
+            "footer.v2.app": "App na Play Store"
         },
         "en": {
             "nav.v2.production": "Production",
@@ -1053,7 +1054,8 @@
             "footer.v2.gMon": "Machine monitoring",
             "footer.v2.gOld": "Old machines without a PLC",
             "footer.v2.gI40": "Industry 4.0",
-            "footer.v2.gIa": "AI in manufacturing"
+            "footer.v2.gIa": "AI in manufacturing",
+            "footer.v2.app": "App on the Play Store"
         },
         "es": {
             "nav.v2.production": "Producción",
@@ -1093,7 +1095,8 @@
             "footer.v2.gMon": "Monitoreo de máquinas",
             "footer.v2.gOld": "Máquinas antiguas sin PLC",
             "footer.v2.gI40": "Industria 4.0",
-            "footer.v2.gIa": "IA en la industria"
+            "footer.v2.gIa": "IA en la industria",
+            "footer.v2.app": "App en la Play Store"
         }
     });
     /* fim v2 */
