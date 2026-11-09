@@ -246,7 +246,6 @@
 }
 @media (max-width: 640px) {
     .hv-window--app .fx { height: 600px; }
-    .fx-dock-wrap { left: 12px; transform: none; max-width: calc(100% - 76px); align-items: flex-start; }
     .fx-dock { scrollbar-width: none; }
 }
 
@@ -305,3 +304,26 @@
 }
 @media (max-width: 640px) { .hv-section.hv-nation { padding-block: 0; } }
 @media (max-width: 640px) { .hv-nation-grid { padding-block: 0; gap: 40px; } .hv-nation-main { padding-block: 56px 64px; } }
+
+/* Título longo do hero e 3D no topo, no celular */
+@media (max-width: 720px) {
+    .hv-page .hv-hero-title { max-width: none; font-size: clamp(2rem, 8.4vw, 2.35rem); line-height: 1.04; letter-spacing: -0.04em; }
+    .hv-window--hero3d .fx { height: 560px; }
+}
+@media (max-width: 640px) {
+    /* Calculadora: valor e unidade como uma peça só, no centro entre − e +; o R$ fica junto do número. */
+    .hv-calc-field { grid-template-columns: minmax(0, 1fr) 40px 92px 40px; gap: 6px; }
+    .hv-calc-step { width: 40px; height: 40px; }
+    .hv-calc-field > .hv-calc-num, .hv-calc-field > .hv-calc-money { justify-self: stretch; height: 40px; background: none; box-shadow: none; }
+    .hv-calc-field > .hv-calc-money { display: flex; justify-content: center; align-items: baseline; gap: 4px; padding: 0; line-height: 40px; font: 500 .8rem/1 var(--f-data); color: var(--muted); }
+    .hv-calc-field > .hv-calc-money .hv-calc-num { width: 100%; max-width: 44px; height: 40px; box-shadow: none; background: none; text-align: left; font-size: 1.25rem; field-sizing: content; min-width: 3ch; }
+    .hv-calc-field > .hv-calc-num { width: 100%; font-size: 1.25rem; }
+}
+@media (max-width: 640px) {
+    .hv-calc-sentence .hv-calc-field > .hv-calc-num, .hv-calc-sentence .hv-calc-field > .hv-calc-money { width: 92px !important; max-width: none !important; margin: 0; justify-self: center; box-sizing: border-box; }
+}
+@media (max-width: 360px) {
+    .hv-calc-field { grid-template-columns: minmax(0, 1fr) 36px 84px 36px; gap: 4px; }
+    .hv-calc-step { width: 36px; height: 36px; }
+    .hv-calc-sentence .hv-calc-field > .hv-calc-num, .hv-calc-sentence .hv-calc-field > .hv-calc-money { width: 84px !important; max-width: none !important; }
+}

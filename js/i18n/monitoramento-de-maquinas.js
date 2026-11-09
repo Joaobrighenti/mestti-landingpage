@@ -80,7 +80,7 @@
   "v2.monitoramento-de-maquinas.73": "Caso: +20% de disponibilidade",
   "v2.monitoramento-de-maquinas.74": "Como uma moveleira achou a perda no começo de cada turno.",
   "v2.monitoramento-de-maquinas.76": "Saiba qual máquina parou, por quê e quanto custou.",
-  "v2.monitoramento-de-maquinas.77": "Quero 1 semana grátis",
+  "v2.monitoramento-de-maquinas.77": "Agendar uma demo",
   "v2.monitoramento-de-maquinas.78": "Se não servir, retiramos o sensor e você não paga nada."
  },
  "en": {
@@ -162,7 +162,7 @@
   "v2.monitoramento-de-maquinas.73": "Case: +20% availability",
   "v2.monitoramento-de-maquinas.74": "How a furniture maker found the loss at the start of each shift.",
   "v2.monitoramento-de-maquinas.76": "Know which machine stopped, why and what it cost.",
-  "v2.monitoramento-de-maquinas.77": "Get 1 free week",
+  "v2.monitoramento-de-maquinas.77": "Book a demo",
   "v2.monitoramento-de-maquinas.78": "If it does not fit, we remove the sensor and you pay nothing."
  },
  "es": {
@@ -244,7 +244,7 @@
   "v2.monitoramento-de-maquinas.73": "Caso: +20% de disponibilidad",
   "v2.monitoramento-de-maquinas.74": "Cómo una mueblería encontró la pérdida al inicio de cada turno.",
   "v2.monitoramento-de-maquinas.76": "Sepa qué máquina se detuvo, por qué y cuánto costó.",
-  "v2.monitoramento-de-maquinas.77": "Quiero 1 semana gratis",
+  "v2.monitoramento-de-maquinas.77": "Agendar una demo",
   "v2.monitoramento-de-maquinas.78": "Si no le sirve, retiramos el sensor y no paga nada."
  }
 };

@@ -9,7 +9,7 @@
   "v2.glossario.hero.2": "Glossário",
   "v2.glossario.hero.5": "Os termos do chão de fábrica, <em>sem enrolação.</em>",
   "v2.glossario.hero.6": "Definições curtas para quem quer falar a mesma língua da produção, do PCP e da qualidade.",
-  "v2.glossario.hero.7": "Quero 1 semana grátis",
+  "v2.glossario.hero.7": "Agendar uma demo",
   "v2.glossario.terms.55": "Ir para o termo",
   "v2.glossario.terms.1": "Apontamento de produção",
   "v2.glossario.terms.2": "Capacidade escondida",
@@ -66,7 +66,7 @@
   "v2.glossario.terms.53": "Setup",
   "v2.glossario.terms.54": "Preparação da máquina para um novo produto: troca de molde, ferramenta ou regulagem. Setup longo ou frequente reduz a disponibilidade.",
   "v2.glossario.final.1": "Quer ver esses números na sua fábrica?",
-  "v2.glossario.final.2": "Quero 1 semana grátis",
+  "v2.glossario.final.2": "Agendar uma demo",
   "v2.glossario.final.3": "Falar no WhatsApp",
   "v2.glossario.hero.4": "Glossário"
  },
@@ -78,7 +78,7 @@
   "v2.glossario.hero.2": "Glossary",
   "v2.glossario.hero.5": "Shop-floor terms, <em>without the jargon.</em>",
   "v2.glossario.hero.6": "Short definitions for anyone who wants to speak the same language as production, planning and quality.",
-  "v2.glossario.hero.7": "Get 1 free week",
+  "v2.glossario.hero.7": "Book a demo",
   "v2.glossario.terms.55": "Jump to term",
   "v2.glossario.terms.1": "Production reporting",
   "v2.glossario.terms.2": "Hidden capacity",
@@ -135,7 +135,7 @@
   "v2.glossario.terms.53": "Setup",
   "v2.glossario.terms.54": "Preparing the machine for a new product: changing a mold or tool, or adjusting settings. Long or frequent setups reduce availability.",
   "v2.glossario.final.1": "Want to see these numbers in your factory?",
-  "v2.glossario.final.2": "Get 1 free week",
+  "v2.glossario.final.2": "Book a demo",
   "v2.glossario.final.3": "Chat on WhatsApp",
   "v2.glossario.hero.4": "Glossary"
  },
@@ -147,7 +147,7 @@
   "v2.glossario.hero.2": "Glosario",
   "v2.glossario.hero.5": "Los términos de la planta, <em>sin rodeos.</em>",
   "v2.glossario.hero.6": "Definiciones cortas para quien quiere hablar el mismo idioma que producción, planificación y calidad.",
-  "v2.glossario.hero.7": "Quiero 1 semana gratis",
+  "v2.glossario.hero.7": "Agendar una demo",
   "v2.glossario.terms.55": "Ir al término",
   "v2.glossario.terms.1": "Registro de producción",
   "v2.glossario.terms.2": "Capacidad oculta",
@@ -204,7 +204,7 @@
   "v2.glossario.terms.53": "Setup",
   "v2.glossario.terms.54": "Preparación de la máquina para un nuevo producto: cambio de molde, herramienta o ajuste. Un setup largo o frecuente reduce la disponibilidad.",
   "v2.glossario.final.1": "¿Quiere ver estos números en su fábrica?",
-  "v2.glossario.final.2": "Quiero 1 semana gratis",
+  "v2.glossario.final.2": "Agendar una demo",
   "v2.glossario.final.3": "Hablar por WhatsApp",
   "v2.glossario.hero.4": "Glosario"
  }

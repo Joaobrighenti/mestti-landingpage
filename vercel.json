@@ -63,7 +63,11 @@
     { "source": "/maquinas-antigas", "destination": "/maquinas-antigas/", "permanent": true },
     { "source": "/maquinas-antigas/index.html", "destination": "/maquinas-antigas/", "permanent": true },
     { "source": "/industria-4-0", "destination": "/industria-4-0/", "permanent": true },
+    { "source": "/mom", "destination": "/mom/", "permanent": true },
+    { "source": "/smart-factory", "destination": "/smart-factory/", "permanent": true },
     { "source": "/industria-4-0/index.html", "destination": "/industria-4-0/", "permanent": true },
+    { "source": "/mom/index.html", "destination": "/mom/", "permanent": true },
+    { "source": "/smart-factory/index.html", "destination": "/smart-factory/", "permanent": true },
     { "source": "/ia-na-industria", "destination": "/ia-na-industria/", "permanent": true },
     { "source": "/ia-na-industria/index.html", "destination": "/ia-na-industria/", "permanent": true },
     { "source": "/blog/o-que-e-sistema-mes-mestti", "destination": "/mes/", "permanent": true },
@@ -131,7 +135,11 @@
     { "source": "/en/engenharia", "destination": "/en/engenharia/", "permanent": true },
     { "source": "/en/engenharia/index.html", "destination": "/en/engenharia/", "permanent": true },
     { "source": "/en/industria-4-0", "destination": "/en/industria-4-0/", "permanent": true },
+    { "source": "/en/mom", "destination": "/en/mom/", "permanent": true },
+    { "source": "/en/smart-factory", "destination": "/en/smart-factory/", "permanent": true },
     { "source": "/en/industria-4-0/index.html", "destination": "/en/industria-4-0/", "permanent": true },
+    { "source": "/en/mom/index.html", "destination": "/en/mom/", "permanent": true },
+    { "source": "/en/smart-factory/index.html", "destination": "/en/smart-factory/", "permanent": true },
     { "source": "/en/otto", "destination": "/en/otto/", "permanent": true },
     { "source": "/en/otto/index.html", "destination": "/en/otto/", "permanent": true },
     { "source": "/en/sequenciamento", "destination": "/en/sequenciamento/", "permanent": true },
@@ -173,7 +181,11 @@
     { "source": "/es/engenharia", "destination": "/es/engenharia/", "permanent": true },
     { "source": "/es/engenharia/index.html", "destination": "/es/engenharia/", "permanent": true },
     { "source": "/es/industria-4-0", "destination": "/es/industria-4-0/", "permanent": true },
+    { "source": "/es/mom", "destination": "/es/mom/", "permanent": true },
+    { "source": "/es/smart-factory", "destination": "/es/smart-factory/", "permanent": true },
     { "source": "/es/industria-4-0/index.html", "destination": "/es/industria-4-0/", "permanent": true },
+    { "source": "/es/mom/index.html", "destination": "/es/mom/", "permanent": true },
+    { "source": "/es/smart-factory/index.html", "destination": "/es/smart-factory/", "permanent": true },
     { "source": "/es/otto", "destination": "/es/otto/", "permanent": true },
     { "source": "/es/otto/index.html", "destination": "/es/otto/", "permanent": true },
     { "source": "/es/sequenciamento", "destination": "/es/sequenciamento/", "permanent": true },
@@ -242,6 +254,8 @@
     { "source": "/en/oee/", "destination": "/en/oee/index.html" },
     { "source": "/en/engenharia/", "destination": "/en/engenharia/index.html" },
     { "source": "/en/industria-4-0/", "destination": "/en/industria-4-0/index.html" },
+    { "source": "/en/mom/", "destination": "/en/mom/index.html" },
+    { "source": "/en/smart-factory/", "destination": "/en/smart-factory/index.html" },
     { "source": "/en/otto/", "destination": "/en/otto/index.html" },
     { "source": "/en/sequenciamento/", "destination": "/en/sequenciamento/index.html" },
     { "source": "/en/producao/", "destination": "/en/producao/index.html" },
@@ -263,6 +277,8 @@
     { "source": "/es/oee/", "destination": "/es/oee/index.html" },
     { "source": "/es/engenharia/", "destination": "/es/engenharia/index.html" },
     { "source": "/es/industria-4-0/", "destination": "/es/industria-4-0/index.html" },
+    { "source": "/es/mom/", "destination": "/es/mom/index.html" },
+    { "source": "/es/smart-factory/", "destination": "/es/smart-factory/index.html" },
     { "source": "/es/otto/", "destination": "/es/otto/index.html" },
     { "source": "/es/sequenciamento/", "destination": "/es/sequenciamento/index.html" },
     { "source": "/es/producao/", "destination": "/es/producao/index.html" },
@@ -283,6 +299,8 @@
     { "source": "/monitoramento-de-maquinas/", "destination": "/monitoramento-de-maquinas/index.html" },
     { "source": "/maquinas-antigas/", "destination": "/maquinas-antigas/index.html" },
     { "source": "/industria-4-0/", "destination": "/industria-4-0/index.html" },
+    { "source": "/mom/", "destination": "/mom/index.html" },
+    { "source": "/smart-factory/", "destination": "/smart-factory/index.html" },
     { "source": "/ia-na-industria/", "destination": "/ia-na-industria/index.html" },
     { "source": "/seguranca/", "destination": "/seguranca/index.html" },
     { "source": "/contato", "destination": "/contato/index.html" },
@@ -325,6 +343,15 @@
     { "source": "/blog/como-escolher-sistema-monitoramento-producao/", "destination": "/blog/como-escolher-sistema-monitoramento-producao/index.html" }
   ],
   "headers": [
+    {
+      "source": "/glbimagens/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
+    },
     {
       "source": "/robots.txt",
       "headers": [

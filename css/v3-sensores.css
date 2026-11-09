@@ -1,0 +1,24 @@
+/* Sensores: desenho técnico do sensor (vindo do site anterior) no hero e na ficha técnica. */
+.sx-hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+body.hv-page .sx-hero h1 { margin: 0; max-width: 13ch; }
+.hv .sx-lead { margin: 22px 0 0; max-width: 52ch; color: var(--ink-2); }
+.hv .sx-lead strong { color: var(--ink); font-weight: 600; }
+.hv .sx-facts { display: grid; gap: 4px; margin: 22px 0 0; }
+.sx-facts span { font: 600 .95rem/1.4 var(--f-data); color: var(--ink); }
+.sx-facts small { font-size: .95rem; color: var(--muted); }
+.sx-cta { margin-top: 28px; align-items: center; }
+.sx-cta .hv-cta-micro { margin: 0; }
+.sx-draw { margin: 0; display: grid; place-items: center; }
+.sx-draw-img { display: block; width: 100%; max-width: 440px; height: auto; transition: transform .6s var(--out); }
+.sx-draw--open .sx-draw-img { max-width: 400px; }
+html[data-theme="dark"] .sx-draw-img { filter: invert(1) hue-rotate(180deg); }
+.sx-spec-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 88px); align-items: center; }
+.sx-specs { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 40px 32px; }
+@media (hover: hover) { .sx-draw:hover .sx-draw-img { transform: translateY(-6px) rotate(-1deg); } }
+@media (max-width: 900px) {
+    .sx-hero-grid, .sx-spec-grid { grid-template-columns: minmax(0, 1fr); }
+    .sx-draw-img { max-width: 300px; }
+    .sx-draw--open { order: 2; }
+}
+@media (max-width: 560px) { .sx-specs { grid-template-columns: minmax(0, 1fr) !important; } }
+@media (prefers-reduced-motion: reduce) { .sx-draw-img { transition: none; } }

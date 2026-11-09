@@ -160,3 +160,9 @@ body.hv-page .tp-hero-grid--solo h1 { max-width: 22ch; }
 /* Imagens em pé (celular, sensor) não passam de uma altura confortável */
 .tp-how-shot img { max-height: 620px; width: auto; max-width: 100%; margin-inline: auto; display: block; object-fit: contain; }
 @media (max-width: 640px) { .tp-how-shot img { max-height: 460px; } }
+
+.tp-compare--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 900px) { .tp-compare--3 { grid-template-columns: minmax(0, 1fr); } }
+/* Comparação de 3 conceitos: nenhum é "errado", então sem traço vermelho nem sombra. */
+.tp-compare--3 .tp-compare-card li::before { content: "·"; color: var(--muted); }
+.tp-compare--3 .tp-compare-card.is-live { box-shadow: none; border-top-color: var(--ink); }

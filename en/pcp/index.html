@@ -20,12 +20,12 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/site.css?v=5">
     <link rel="stylesheet" href="/css/v2.css?v=2">
-    <link rel="stylesheet" href="/css/v3.css?v=60">
-    <link rel="stylesheet" href="/css/v3-mobile.css?v=19">
-    <link rel="stylesheet" href="/css/v3-topic.css?v=6">
+    <link rel="stylesheet" href="/css/v3.css?v=95">
+    <link rel="stylesheet" href="/css/v3-mobile.css?v=27">
+    <link rel="stylesheet" href="/css/v3-topic.css?v=8">
     <link rel="canonical" href="https://mestti.com.br/en/pcp/">
     <link rel="alternate" hreflang="pt-BR" href="https://mestti.com.br/pcp/">
     <link rel="alternate" hreflang="en" href="https://mestti.com.br/en/pcp/">
@@ -75,7 +75,7 @@
                     </div>
                     <div class="header-nav-mobile-extras">
                         <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
-                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">1 free week</button>
+                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Book a demo</button>
                     </div>
                 </nav>
                 <div class="header-tractian-actions">
@@ -84,7 +84,7 @@
                         <span data-i18n="header.contact">Contact</span>
                     </a>
                     <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
-                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">1 free week</button>
+                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Book a demo</button>
                 </div>
                 <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" data-i18n-aria="a11y.openMenu">
                     <span></span>
@@ -119,7 +119,7 @@
     <section class="hv-section tp-section" id="etapas" aria-labelledby="tp-etapas-title"><div class="hv-wrap"><div class="hv-head"><h2 id="tp-etapas-title" data-i18n="v2.pcp.21">The three planning steps</h2></div><ol class="tp-factors tp-factors--3"><li class="tp-factor" data-reveal><h3 data-i18n="v2.pcp.22">Planning</h3><p class="tp-formula" data-i18n="v2.pcp.23">What and how much to make</p><p data-i18n="v2.pcp.24">Starts from orders and forecast, and checks machine capacity and materials.</p></li><li class="tp-factor" data-reveal><h3 data-i18n="v2.pcp.25">Scheduling</h3><p class="tp-formula" data-i18n="v2.pcp.26">On which machine and when</p><p data-i18n="v2.pcp.27">Puts operations into each machine’s queue, with start and end dates.</p></li><li class="tp-factor" data-reveal><h3 data-i18n="v2.pcp.28">Control</h3><p class="tp-formula" data-i18n="v2.pcp.29">Actual × planned</p><p data-i18n="v2.pcp.30">Tracks what was produced, what stopped and what will be late, and fixes the plan.</p></li></ol></div></section>
     <section class="hv-section tp-section tp-section--paper" id="pcp-ou-ppcp" aria-labelledby="tp-pcp-ou-ppcp-title"><div class="hv-wrap"><div class="hv-head"><h2 id="tp-pcp-ou-ppcp-title" data-i18n="v2.pcp.31">PCP or PPCP?</h2></div><div class="tp-text"><p data-i18n="v2.pcp.32" data-i18n-html>Both acronyms describe the same area. <strong>PPCP</strong> makes <strong>scheduling</strong> explicit: besides planning what to produce, someone has to decide the sequence on each machine. In many small factories, one person does all three.</p><p data-i18n="v2.pcp.33" data-i18n-html>What changes from one factory to another is not the name, but where the data comes from: a spreadsheet filled in at the end of the shift, or the machine, right away.</p></div></div></section>
     <section class="hv-section tp-section" id="planilha" aria-labelledby="tp-planilha-title"><div class="hv-wrap"><div class="hv-head"><h2 id="tp-planilha-title" data-i18n="v2.pcp.34">Where the planning spreadsheet fails</h2></div><ul class="tp-errors"><li data-reveal><p data-i18n="v2.pcp.35" data-i18n-html>It doesn’t know if <mark class="hv-hot">the machine is stopped right now</mark>.</p></li><li data-reveal><p data-i18n="v2.pcp.36" data-i18n-html>The promised date <mark class="hv-hot">ignores the machine’s real queue</mark>.</p></li><li data-reveal><p data-i18n="v2.pcp.37" data-i18n-html>Every priority change <mark class="hv-hot">means redoing everything</mark>.</p></li><li data-reveal><p data-i18n="v2.pcp.38" data-i18n-html>Actuals arrive <mark class="hv-hot">late and typed by hand</mark>.</p></li><li data-reveal><p data-i18n="v2.pcp.39" data-i18n-html>Only one person <mark class="hv-hot">understands the spreadsheet</mark>.</p></li></ul></div></section>
-    <section class="hv-section tp-section tp-how" id="como-a-mestti-faz" aria-labelledby="tp-como-a-mestti-faz-title"><div class="hv-wrap"><div class="tp-how-grid"><div class="tp-how-copy"><h2 id="tp-como-a-mestti-faz-title" data-i18n="v2.pcp.40">Planning at Mestti</h2><ol class="tp-steps"><li data-reveal><span class="tp-step-n" aria-hidden="true">01</span><p data-i18n="v2.pcp.41">The planning backlog shows each order: awaiting release, released, scheduled or in progress.</p></li><li data-reveal><span class="tp-step-n" aria-hidden="true">02</span><p data-i18n="v2.pcp.42">Scheduling puts operations in each machine’s queue, with expected start and end.</p></li><li data-reveal><span class="tp-step-n" aria-hidden="true">03</span><p data-i18n="v2.pcp.43">An order that finishes after its due date is flagged before it starts.</p></li><li data-reveal><span class="tp-step-n" aria-hidden="true">04</span><p data-i18n="v2.pcp.44">Actuals come from the sensor and the tablet, with no typing at the end of the shift.</p></li></ol><div class="hv-actions"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="pcp-como" data-i18n="v2.pcp.45">See my machines’ real queue</button><p class="hv-cta-micro" data-i18n="v2.pcp.46">Starts with one department, without dropping the spreadsheet on day one.</p><a class="hv-btn hv-btn--ghost" href="/en/sequenciamento/" data-i18n="v2.pcp.47">See how scheduling works</a></div></div><figure class="tp-how-shot"><img src="/images/v2/sequenciamento.webp" alt="Mestti scheduling: queue of operations per machine on a timeline" data-i18n-alt="v2.pcp.48" width="913" height="531" loading="lazy" decoding="async"><figcaption data-i18n="v2.pcp.49">Real system screen, with demo data.</figcaption></figure></div></div></section>
+    <section class="hv-section tp-section tp-how" id="como-a-mestti-faz" aria-labelledby="tp-como-a-mestti-faz-title"><div class="hv-wrap"><div class="tp-how-grid"><div class="tp-how-copy"><h2 id="tp-como-a-mestti-faz-title" data-i18n="v2.pcp.40">Planning at Mestti</h2><ol class="tp-steps"><li data-reveal><span class="tp-step-n" aria-hidden="true">01</span><p data-i18n="v2.pcp.41">The planning backlog shows each order: awaiting release, released, scheduled or in progress.</p></li><li data-reveal><span class="tp-step-n" aria-hidden="true">02</span><p data-i18n="v2.pcp.42">Scheduling puts operations in each machine’s queue, with expected start and end.</p></li><li data-reveal><span class="tp-step-n" aria-hidden="true">03</span><p data-i18n="v2.pcp.43">An order that finishes after its due date is flagged before it starts.</p></li><li data-reveal><span class="tp-step-n" aria-hidden="true">04</span><p data-i18n="v2.pcp.44">Actuals come from the sensor and the tablet, with no typing at the end of the shift.</p></li></ol><div class="hv-actions"><a class="hv-btn hv-btn--primary" href="#formulario" data-cta="pcp-como" data-i18n="v2.pcp.45">See my machines’ real queue</a><p class="hv-cta-micro" data-i18n="v2.pcp.46">Starts with one department, without dropping the spreadsheet on day one.</p><a class="hv-btn hv-btn--ghost" href="/en/sequenciamento/" data-i18n="v2.pcp.47">See how scheduling works</a></div></div><figure class="tp-how-shot"><img src="/images/v2/sequenciamento.webp" alt="Mestti scheduling: queue of operations per machine on a timeline" data-i18n-alt="v2.pcp.48" width="913" height="531" loading="lazy" decoding="async"><figcaption data-i18n="v2.pcp.49">Real system screen, with demo data.</figcaption></figure></div></div></section>
 
     <section class="hv-section hv-faq" id="perguntas" aria-labelledby="tp-faq-title">
         <div class="hv-wrap hv-faq-grid">
@@ -137,10 +137,24 @@
         </div>
     </section>
 
-    <section class="hv-final" aria-labelledby="tp-final-title">
-        <div class="hv-wrap hv-final-inner">
-            <h2 id="tp-final-title" data-i18n="v2.pcp.70">Schedule by your machines’ real queue.</h2>
-            <div class="hv-hero-actions"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="pcp-final" data-i18n="v2.pcp.71">Start the free trial</button><p class="hv-cta-micro" data-i18n="v2.pcp.72">1 week with the sensor on loan, at no cost.</p></div>
+    <section class="lead-fold" id="formulario" aria-labelledby="lead-title">
+        <div class="hv-wrap lead-grid">
+            <div class="lead-copy">
+                <h2 id="lead-title" data-i18n="v2.pcp.70">Schedule by your machines’ real queue.</h2>
+                <p class="lead-lead">Leave your contact and we will schedule the demo at the best time for you.</p>
+                <p class="lead-micro">1 week with the sensor on loan, at no cost.</p>
+                <p class="lead-alt">Prefer to talk now? <a href="https://wa.me/5543991095035" target="_blank" rel="noopener">WhatsApp</a> · <a href="tel:+5543991095035">(43) 99109-5035</a></p>
+            </div>
+            <form class="demo-form lead-form" id="leadForm">
+                <input type="hidden" name="ddi" value="+55">
+                <input type="hidden" name="solucao" value="Formulário da página /pcp/">
+                <div class="lead-row"><div class="lead-field"><label for="lead-name">Name</label><input type="text" id="lead-name" name="name" autocomplete="name" required></div><div class="lead-field"><label for="lead-company">Company</label><input type="text" id="lead-company" name="empresa" autocomplete="organization" required></div></div>
+                <div class="lead-row"><div class="lead-field"><label for="lead-phone">WhatsApp with area code</label><input type="tel" id="lead-phone" name="phone" autocomplete="tel" inputmode="tel" required></div><div class="lead-field"><label for="lead-email">Email (optional)</label><input type="email" id="lead-email" name="email" autocomplete="email"></div></div>
+                <div class="lead-field"><label for="lead-machines">How many machines does the factory have?</label><select id="lead-machines" name="maquinas"><option value="" selected>Select</option><option value="1 to 5">1 to 5</option><option value="6 to 15">6 to 15</option><option value="16 to 30">16 to 30</option><option value="More than 30">More than 30</option></select></div>
+                <div class="lead-field"><label for="lead-note">Message (optional)</label><textarea id="lead-note" name="observacao" rows="3" placeholder="E.g.: I want to measure stops in injection molding"></textarea></div>
+                <button type="submit" class="demo-submit lead-submit">Book a demo</button>
+                <p class="lead-assure">No cost and no commitment. We only use your data to reply to this contact.</p>
+            </form>
         </div>
     </section>
     </main>
@@ -161,7 +175,7 @@
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title" data-i18n="footer.v2.guides">Guides</div>
-                    <ul class="footer-col-list"><li><a href="/en/mes/" data-i18n="footer.v2.gMes">MES system</a></li><li><a href="/en/oee/" data-i18n="footer.v2.oee">What is OEE</a></li><li><a href="/en/pcp/" data-i18n="footer.v2.gPcp">Production planning</a></li><li><a href="/en/sequenciamento/" data-i18n="footer.v2.gSeq">Production scheduling</a></li><li><a href="/en/apontamento-de-producao/" data-i18n="footer.v2.gApt">Production reporting</a></li><li><a href="/en/monitoramento-de-maquinas/" data-i18n="footer.v2.gMon">Machine monitoring</a></li><li><a href="/en/maquinas-antigas/" data-i18n="footer.v2.gOld">Old machines without a PLC</a></li><li><a href="/en/industria-4-0/" data-i18n="footer.v2.gI40">Industry 4.0</a></li><li><a href="/en/ia-na-industria/" data-i18n="footer.v2.gIa">AI in manufacturing</a></li></ul>
+                    <ul class="footer-col-list"><li><a href="/en/mes/" data-i18n="footer.v2.gMes">MES system</a></li><li><a href="/en/oee/" data-i18n="footer.v2.oee">What is OEE</a></li><li><a href="/en/pcp/" data-i18n="footer.v2.gPcp">Production planning</a></li><li><a href="/en/sequenciamento/" data-i18n="footer.v2.gSeq">Production scheduling</a></li><li><a href="/en/apontamento-de-producao/" data-i18n="footer.v2.gApt">Production reporting</a></li><li><a href="/en/monitoramento-de-maquinas/" data-i18n="footer.v2.gMon">Machine monitoring</a></li><li><a href="/en/maquinas-antigas/" data-i18n="footer.v2.gOld">Old machines without a PLC</a></li><li><a href="/en/industria-4-0/" data-i18n="footer.v2.gI40">Industry 4.0</a></li><li><a href="/en/ia-na-industria/" data-i18n="footer.v2.gIa">AI in manufacturing</a></li><li><a href="/en/smart-factory/" data-i18n="footer.v2.gSmart">Smart factory</a></li><li><a href="/en/mom/" data-i18n="footer.v2.gMom">MOM: operations management</a></li></ul>
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title" data-i18n="footer.contact">Contact</div>
@@ -205,8 +219,8 @@
             <button type="button" class="modal-close" id="btnCloseModal" aria-label="Close demonstration form" data-i18n-aria="a11y.closeDialog">&times;</button>
             <div class="demo-modal-card">
                 <div class="demo-modal-head">
-                    <h2 class="demo-modal-title" data-i18n="modal.title">Start your free week</h2>
-                    <p class="demo-modal-lead" data-i18n="modal.lead">Leave your contact and we will schedule the conversation to pick the department for your free week.</p>
+                    <h2 class="demo-modal-title" data-i18n="modal.title">Book a demo</h2>
+                    <p class="demo-modal-lead" data-i18n="modal.lead">Leave your contact and we will schedule the demo at the best time for you.</p>
                 </div>
                 <form class="demo-form" id="contactForm">
                     <input type="text" id="name" name="name" data-i18n-placeholder="modal.name" placeholder="Full name" autocomplete="name" required>
@@ -236,8 +250,8 @@
                             <textarea id="observacao" name="observacao" data-i18n-placeholder="modal.note" placeholder="Notes (optional)" rows="3"></textarea>
                         </div>
                     </details>
-                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Get my free week</button>
-                    <p class="demo-form-assure" data-i18n="modal.assure">No cost and no commitment. During the trial week the sensor is on loan.</p>
+                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Book a demo</button>
+                    <p class="demo-form-assure" data-i18n="modal.assure">No cost and no commitment.</p>
                 </form>
             </div>
         </div>
@@ -252,8 +266,8 @@
     <script defer src="/js/script.js?v=44"></script>
     <script defer src="/js/wa-chat-viewport.js?v=4"></script>
     <script defer src="/js/conversational-form.js?v=17"></script>
-    <script defer src="/js/v2.js?v=17"></script>
-    <script defer src="/js/home-demos.js?v=7"></script>
+    <script defer src="/js/v2.js?v=44"></script>
+    <script defer src="/js/home-demos.js?v=8"></script>
 </body>
 
 </html>

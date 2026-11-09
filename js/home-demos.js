@@ -101,34 +101,34 @@
     };
     const L = (pt, en, es) => ({ pt, en, es });
     const PRODUCTS = {
-        flange: L('Flange 4" aço 1020', 'Flange 4" 1020 steel', 'Brida 4" acero 1020'),
-        bucha: L('Bucha guia Ø32', 'Guide bushing Ø32', 'Buje guía Ø32'),
-        eixo: L('Eixo de transmissão 30 mm', 'Drive shaft 30 mm', 'Eje de transmisión 30 mm'),
-        pinoArt: L('Pino de articulação', 'Hinge pin', 'Pasador de articulación'),
-        pinoM12: L('Pino roscado M12', 'Threaded pin M12', 'Perno roscado M12'),
-        luva: L('Luva de redução 1"', '1" reducing coupling', 'Manguito reductor 1"'),
-        tampa: L('Tampa 28 mm PP', 'Cap 28 mm PP', 'Tapa 28 mm PP'),
-        conector: L('Conector 3 vias', '3-way connector', 'Conector 3 vías'),
-        caixa: L('Caixa organizadora 5 L', 'Storage box 5 L', 'Caja organizadora 5 L'),
+        lateral: L('Lateral 18 mm 2.100 × 550', 'Side panel 18 mm 2100 × 550', 'Lateral 18 mm 2.100 × 550'),
+        tampo: L('Tampo 25 mm 1.200 × 600', 'Top 25 mm 1200 × 600', 'Tablero 25 mm 1.200 × 600'),
+        porta: L('Porta 18 mm 700 × 400', 'Door 18 mm 700 × 400', 'Puerta 18 mm 700 × 400'),
+        prateleira: L('Prateleira 15 mm', 'Shelf 15 mm', 'Estante 15 mm'),
+        lateralFurada: L('Lateral de roupeiro furada', 'Drilled wardrobe side', 'Lateral de ropero perforada'),
+        base: L('Base de cômoda', 'Dresser base', 'Base de cómoda'),
+        puxador: L('Puxador 128 mm', 'Handle 128 mm', 'Tirador 128 mm'),
+        pe: L('Pé nivelador', 'Leveling foot', 'Pata niveladora'),
+        organizador: L('Organizador de gaveta', 'Drawer organizer', 'Organizador de cajón'),
         gaveta: L('Gaveta 40 cm', 'Drawer 40 cm', 'Cajón 40 cm'),
-        suporte: L('Suporte em L 2 mm', 'L bracket 2 mm', 'Soporte en L 2 mm'),
-        chapa: L('Chapa de fixação', 'Mounting plate', 'Placa de fijación')
+        portaFita: L('Porta 18 mm com fita', 'Edge-banded door 18 mm', 'Puerta 18 mm con canto'),
+        tampoMesa: L('Tampo de mesa 25 mm', 'Table top 25 mm', 'Tablero de mesa 25 mm')
     };
-    const PROC = { cnc: L('Fresamento', 'Milling', 'Fresado'), lathe: L('Torneamento', 'Turning', 'Torneado'), inj: L('Injeção', 'Injection', 'Inyección'), press: L('Estampagem', 'Stamping', 'Estampado') };
-    const COMP = { flange: L('Corpo', 'Body', 'Cuerpo'), tampa: L('Tampa', 'Cap', 'Tapa'), bucha: L('Bucha', 'Bushing', 'Buje') };
-    // Horas a partir de hoje 06:00.
+    const PROC = { corte: L('Corte', 'Cutting', 'Corte'), furo: L('Furação', 'Drilling', 'Taladrado'), inj: L('Injeção', 'Injection', 'Inyección'), borda: L('Bordeamento', 'Edge banding', 'Canteado') };
+    const COMP = { lateral: L('Lateral esquerda', 'Left side', 'Lateral izquierda'), puxador: L('Corpo', 'Body', 'Cuerpo') };
+    // Horas a partir de hoje 06:00. Mesmas máquinas e ordens da Fábrica 3D.
     const MACHINES = [
-        { code: 'CNC-01', type: 'cnc', state: 'running', tasks: [['2481', 'flange', 0.17, 8.67], ['2490', 'bucha', 8.92, 27.17], ['2496', 'flange', 27.42, 31.67]] },
-        { code: 'CNC-02', type: 'cnc', state: 'stopped', tasks: [['2477', 'eixo', 1.0, 10.72], ['2493', 'pinoArt', 10.97, 29.4]] },
-        { code: 'TOR-01', type: 'lathe', state: 'running', tasks: [['2479', 'pinoM12', 0, 7.83], ['2491', 'luva', 8.08, 13.5], ['2499', 'pinoM12', 24, 33.17]] },
-        { code: 'INJ-01', type: 'inj', state: 'running', tasks: [['2470', 'tampa', 0, 9.5], ['2485', 'conector', 10.17, 25.67], ['2494', 'tampa', 25.92, 46]] },
-        { code: 'INJ-02', type: 'inj', state: 'setup', tasks: [['2488', 'caixa', 5.33, 11], ['2492', 'gaveta', 11.67, 28.5]] },
-        { code: 'PRE-01', type: 'press', state: 'running', tasks: [['2475', 'suporte', 0.5, 8.17], ['2486', 'chapa', 8.42, 14.25]] }
+        { code: 'SEC-01', type: 'corte', state: 'running', tasks: [['2481', 'lateral', 0.17, 8.67], ['2490', 'tampo', 8.92, 27.17], ['2496', 'lateral', 27.42, 31.67]] },
+        { code: 'CNC-02', type: 'corte', state: 'stopped', tasks: [['2477', 'porta', 1.0, 10.72], ['2493', 'prateleira', 10.97, 29.4]] },
+        { code: 'FUR-01', type: 'furo', state: 'running', tasks: [['2479', 'lateralFurada', 0, 7.83], ['2491', 'base', 8.08, 13.5], ['2499', 'lateralFurada', 24, 33.17]] },
+        { code: 'INJ-01', type: 'inj', state: 'running', tasks: [['2470', 'puxador', 0, 9.5], ['2485', 'pe', 10.17, 25.67], ['2494', 'puxador', 25.92, 46]] },
+        { code: 'INJ-02', type: 'inj', state: 'setup', tasks: [['2488', 'organizador', 5.33, 11], ['2492', 'gaveta', 11.67, 28.5]] },
+        { code: 'COL-01', type: 'borda', state: 'running', tasks: [['2475', 'portaFita', 0.5, 8.17], ['2486', 'tampoMesa', 8.42, 14.25]] }
     ];
     const BACKLOG = [
-        { op: '2503', product: 'suporte', qty: 1800, type: 'press', hours: 7, due: 30 },
-        { op: '2502', product: 'bucha', qty: 400, type: 'cnc', hours: 6, due: 54 },
-        { op: '2501', product: 'tampa', qty: 3000, type: 'inj', hours: 9.6, due: 36 }
+        { op: '2503', product: 'portaFita', qty: 1800, type: 'borda', hours: 7, due: 30 },
+        { op: '2502', product: 'tampo', qty: 400, type: 'corte', hours: 6, due: 54 },
+        { op: '2501', product: 'puxador', qty: 3000, type: 'inj', hours: 9.6, due: 36 }
     ];
     const SPAN = 48; const NOW = 4.25; const HOUR_W = 38;
 

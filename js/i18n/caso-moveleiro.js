@@ -7,7 +7,7 @@
   "v2.caso.n.k": "Case · Indústria moveleira",
   "v2.caso.n.h": "+20% de disponibilidade sem comprar nenhuma máquina.",
   "v2.caso.n.lead": "O setor perdia tempo todo dia logo no começo do turno, e isso não aparecia em nenhum relatório. A solução foi mudar o horário de ligar as máquinas.",
-  "v2.caso.n.cta": "Quero 1 semana grátis",
+  "v2.caso.n.cta": "Agendar uma demo",
   "v2.caso.n.r": "Resultado",
   "v2.caso.n.r1": "de disponibilidade no setor",
   "v2.caso.n.r2": "máquinas novas",
@@ -27,7 +27,7 @@
   "v2.caso.n.s3h": "As máquinas passaram a ser ligadas antes do turno.",
   "v2.caso.n.s3p": "Quando a equipe chega ao posto, a máquina já está aquecida e pronta para produzir. A fábrica não comprou equipamento e não contratou ninguém.",
   "v2.caso.n.f": "Quanto tempo a sua fábrica perde sem aparecer em nenhum relatório?",
-  "v2.caso.n.cta2": "Quero 1 semana grátis",
+  "v2.caso.n.cta2": "Agendar uma demo",
   "v2.caso.n.wa": "Falar no WhatsApp",
   "v2.caso-moveleiro.hero.4": "Caso de cliente · Indústria moveleira"
  },
@@ -37,7 +37,7 @@
   "v2.caso.n.k": "Case · Furniture manufacturer",
   "v2.caso.n.h": "+20% availability without buying a single machine.",
   "v2.caso.n.lead": "The sector lost time every day right at the start of the shift, and it showed up in no report. The fix was changing when the machines were turned on.",
-  "v2.caso.n.cta": "I want 1 free week",
+  "v2.caso.n.cta": "Book a demo",
   "v2.caso.n.r": "Result",
   "v2.caso.n.r1": "availability in the sector",
   "v2.caso.n.r2": "new machines",
@@ -57,7 +57,7 @@
   "v2.caso.n.s3h": "The machines started being turned on before the shift.",
   "v2.caso.n.s3p": "When the crew reaches their station, the machine is already warmed up and ready to produce. The factory bought no equipment and hired no one.",
   "v2.caso.n.f": "How much time does your factory lose without it showing up in any report?",
-  "v2.caso.n.cta2": "I want 1 free week",
+  "v2.caso.n.cta2": "Book a demo",
   "v2.caso.n.wa": "Talk on WhatsApp",
   "v2.caso-moveleiro.hero.4": "Customer case · Furniture manufacturer"
  },
@@ -67,7 +67,7 @@
   "v2.caso.n.k": "Case · Industria del mueble",
   "v2.caso.n.h": "+20% de disponibilidad sin comprar ninguna máquina.",
   "v2.caso.n.lead": "El sector perdía tiempo todos los días al inicio del turno, y eso no aparecía en ningún informe. La solución fue cambiar el horario de encender las máquinas.",
-  "v2.caso.n.cta": "Quiero 1 semana gratis",
+  "v2.caso.n.cta": "Agendar una demo",
   "v2.caso.n.r": "Resultado",
   "v2.caso.n.r1": "de disponibilidad en el sector",
   "v2.caso.n.r2": "máquinas nuevas",
@@ -87,7 +87,7 @@
   "v2.caso.n.s3h": "Las máquinas pasaron a encenderse antes del turno.",
   "v2.caso.n.s3p": "Cuando el equipo llega a su puesto, la máquina ya está caliente y lista para producir. La fábrica no compró equipos ni contrató a nadie.",
   "v2.caso.n.f": "¿Cuánto tiempo pierde su fábrica sin que aparezca en ningún informe?",
-  "v2.caso.n.cta2": "Quiero 1 semana gratis",
+  "v2.caso.n.cta2": "Agendar una demo",
   "v2.caso.n.wa": "Hablar por WhatsApp",
   "v2.caso-moveleiro.hero.4": "Caso de cliente · Industria del mueble"
  }

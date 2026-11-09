@@ -83,7 +83,7 @@
   "v2.maquinas-antigas.76": "Caso: +20% de disponibilidade",
   "v2.maquinas-antigas.77": "Como uma moveleira achou a perda no começo de cada turno.",
   "v2.maquinas-antigas.79": "Antes de comprar a próxima máquina, meça as que você já tem.",
-  "v2.maquinas-antigas.80": "Quero 1 semana grátis",
+  "v2.maquinas-antigas.80": "Agendar uma demo",
   "v2.maquinas-antigas.81": "Sensores prontos em até 7 dias. Instalação em 1 dia."
  },
  "en": {
@@ -168,7 +168,7 @@
   "v2.maquinas-antigas.76": "Case: +20% availability",
   "v2.maquinas-antigas.77": "How a furniture maker found the loss at the start of each shift.",
   "v2.maquinas-antigas.79": "Before buying the next machine, measure the ones you have.",
-  "v2.maquinas-antigas.80": "Get 1 free week",
+  "v2.maquinas-antigas.80": "Book a demo",
   "v2.maquinas-antigas.81": "Sensors ready within 7 days. Installed in 1 day."
  },
  "es": {
@@ -253,7 +253,7 @@
   "v2.maquinas-antigas.76": "Caso: +20% de disponibilidad",
   "v2.maquinas-antigas.77": "Cómo una mueblería encontró la pérdida al inicio de cada turno.",
   "v2.maquinas-antigas.79": "Antes de comprar la próxima máquina, mida las que ya tiene.",
-  "v2.maquinas-antigas.80": "Quiero 1 semana gratis",
+  "v2.maquinas-antigas.80": "Agendar una demo",
   "v2.maquinas-antigas.81": "Sensores listos en hasta 7 días. Instalación en 1 día."
  }
 };

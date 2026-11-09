@@ -38,7 +38,7 @@
   "v2.app.q5q": "Cada pessoa vê tudo?",
   "v2.app.q5a": "Não. O que cada usuário vê e pode fazer depende do perfil e das permissões que a empresa define.",
   "v2.app.f": "Sua fábrica ainda não usa a Mestti?",
-  "v2.app.cta": "Quero 1 semana grátis",
+  "v2.app.cta": "Agendar uma demo",
   "v2.app.wa": "Falar no WhatsApp"
  },
  "en": {
@@ -78,7 +78,7 @@
   "v2.app.q5q": "Does everyone see everything?",
   "v2.app.q5a": "No. What each user sees and can do depends on the profile and permissions the company sets.",
   "v2.app.f": "Your factory doesn’t use Mestti yet?",
-  "v2.app.cta": "I want 1 free week",
+  "v2.app.cta": "Book a demo",
   "v2.app.wa": "Talk on WhatsApp"
  },
  "es": {
@@ -118,7 +118,7 @@
   "v2.app.q5q": "¿Cada persona ve todo?",
   "v2.app.q5a": "No. Lo que cada usuario ve y puede hacer depende del perfil y los permisos que define la empresa.",
   "v2.app.f": "¿Su fábrica todavía no usa Mestti?",
-  "v2.app.cta": "Quiero 1 semana gratis",
+  "v2.app.cta": "Agendar una demo",
   "v2.app.wa": "Hablar por WhatsApp"
  }
 };

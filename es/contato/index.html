@@ -20,12 +20,12 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/site.css?v=5">
     <link rel="stylesheet" href="/css/v2.css?v=2">
-    <link rel="stylesheet" href="/css/v3.css?v=60">
-    <link rel="stylesheet" href="/css/v3-mobile.css?v=19">
-    <link rel="stylesheet" href="/css/v3-topic.css?v=6">
+    <link rel="stylesheet" href="/css/v3.css?v=95">
+    <link rel="stylesheet" href="/css/v3-mobile.css?v=27">
+    <link rel="stylesheet" href="/css/v3-topic.css?v=8">
     <link rel="canonical" href="https://mestti.com.br/es/contato/">
     <link rel="alternate" hreflang="pt-BR" href="https://mestti.com.br/contato/">
     <link rel="alternate" hreflang="en" href="https://mestti.com.br/en/contato/">
@@ -75,7 +75,7 @@
                     </div>
                     <div class="header-nav-mobile-extras">
                         <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Iniciar sesión</a>
-                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">1 semana gratis</button>
+                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Agendar demo</button>
                     </div>
                 </nav>
                 <div class="header-tractian-actions">
@@ -84,7 +84,7 @@
                         <span data-i18n="header.contact">Contacto</span>
                     </a>
                     <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Iniciar sesión</a>
-                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">1 semana gratis</button>
+                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Agendar demo</button>
                 </div>
                 <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menú" data-i18n-aria="a11y.openMenu">
                     <span></span>
@@ -107,7 +107,7 @@
                 <p class="tp-answer-label" id="tp-answer-title" data-i18n="v2.contato.6">Respuesta corta</p>
                 <p class="tp-answer-text" data-i18n="v2.contato.7" data-i18n-html>La forma más rápida es el <strong>WhatsApp +55 43 99109-5035</strong>, con el equipo comercial. Los clientes con contrato tienen soporte en <strong>suporte@mestti.com.br</strong>.</p>
                 
-                <div class="tp-answer-cta"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="contato-hero" data-i18n="v2.contato.8">Quiero 1 semana gratis</button><p class="hv-cta-micro" data-i18n="v2.contato.9">O complete el formulario y lo contactamos.</p></div>
+                <div class="tp-answer-cta"><a class="hv-btn hv-btn--primary" href="#formulario" data-cta="contato-hero" data-i18n="v2.contato.8">Agendar una demo</a><p class="hv-cta-micro" data-i18n="v2.contato.9">O complete el formulario y lo contactamos.</p></div>
             </aside>
         </div>
     </section>
@@ -125,10 +125,24 @@
 
     
 
-    <section class="hv-final" aria-labelledby="tp-final-title">
-        <div class="hv-wrap hv-final-inner">
-            <h2 id="tp-final-title" data-i18n="v2.contato.30">¿Prefiere verlo antes de hablar? Pruébelo 1 semana.</h2>
-            <div class="hv-hero-actions"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="contato-final" data-i18n="v2.contato.31">Quiero 1 semana gratis</button><p class="hv-cta-micro" data-i18n="v2.contato.32">Si no le sirve, retiramos el sensor y no paga nada.</p></div>
+    <section class="lead-fold" id="formulario" aria-labelledby="lead-title">
+        <div class="hv-wrap lead-grid">
+            <div class="lead-copy">
+                <h2 id="lead-title" data-i18n="v2.contato.30">¿Prefiere verlo antes de hablar? Pruébelo 1 semana.</h2>
+                <p class="lead-lead">Deje su contacto y agendamos la demostración en el mejor horario para usted.</p>
+                <p class="lead-micro">Si no le sirve, retiramos el sensor y no paga nada.</p>
+                <p class="lead-alt">¿Prefiere hablar ahora? <a href="https://wa.me/5543991095035" target="_blank" rel="noopener">WhatsApp</a> · <a href="tel:+5543991095035">(43) 99109-5035</a></p>
+            </div>
+            <form class="demo-form lead-form" id="leadForm">
+                <input type="hidden" name="ddi" value="+55">
+                <input type="hidden" name="solucao" value="Formulário da página /contato/">
+                <div class="lead-row"><div class="lead-field"><label for="lead-name">Nombre</label><input type="text" id="lead-name" name="name" autocomplete="name" required></div><div class="lead-field"><label for="lead-company">Empresa</label><input type="text" id="lead-company" name="empresa" autocomplete="organization" required></div></div>
+                <div class="lead-row"><div class="lead-field"><label for="lead-phone">WhatsApp con código de área</label><input type="tel" id="lead-phone" name="phone" autocomplete="tel" inputmode="tel" required></div><div class="lead-field"><label for="lead-email">Correo (opcional)</label><input type="email" id="lead-email" name="email" autocomplete="email"></div></div>
+                <div class="lead-field"><label for="lead-machines">¿Cuántas máquinas tiene la fábrica?</label><select id="lead-machines" name="maquinas"><option value="" selected>Seleccione</option><option value="1 a 5">1 a 5</option><option value="6 a 15">6 a 15</option><option value="16 a 30">16 a 30</option><option value="Más de 30">Más de 30</option></select></div>
+                <div class="lead-field"><label for="lead-note">Mensaje (opcional)</label><textarea id="lead-note" name="observacao" rows="3" placeholder="Ej.: quiero medir las paradas de la inyección"></textarea></div>
+                <button type="submit" class="demo-submit lead-submit">Agendar demo</button>
+                <p class="lead-assure">Sin costo y sin compromiso. Usamos sus datos solo para responder a este contacto.</p>
+            </form>
         </div>
     </section>
     </main>
@@ -149,7 +163,7 @@
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title" data-i18n="footer.v2.guides">Guías</div>
-                    <ul class="footer-col-list"><li><a href="/es/mes/" data-i18n="footer.v2.gMes">Sistema MES</a></li><li><a href="/es/oee/" data-i18n="footer.v2.oee">Qué es el OEE</a></li><li><a href="/es/pcp/" data-i18n="footer.v2.gPcp">PCP y PPCP</a></li><li><a href="/es/sequenciamento/" data-i18n="footer.v2.gSeq">Secuenciación de la producción</a></li><li><a href="/es/apontamento-de-producao/" data-i18n="footer.v2.gApt">Registro de producción</a></li><li><a href="/es/monitoramento-de-maquinas/" data-i18n="footer.v2.gMon">Monitoreo de máquinas</a></li><li><a href="/es/maquinas-antigas/" data-i18n="footer.v2.gOld">Máquinas antiguas sin PLC</a></li><li><a href="/es/industria-4-0/" data-i18n="footer.v2.gI40">Industria 4.0</a></li><li><a href="/es/ia-na-industria/" data-i18n="footer.v2.gIa">IA en la industria</a></li></ul>
+                    <ul class="footer-col-list"><li><a href="/es/mes/" data-i18n="footer.v2.gMes">Sistema MES</a></li><li><a href="/es/oee/" data-i18n="footer.v2.oee">Qué es el OEE</a></li><li><a href="/es/pcp/" data-i18n="footer.v2.gPcp">PCP y PPCP</a></li><li><a href="/es/sequenciamento/" data-i18n="footer.v2.gSeq">Secuenciación de la producción</a></li><li><a href="/es/apontamento-de-producao/" data-i18n="footer.v2.gApt">Registro de producción</a></li><li><a href="/es/monitoramento-de-maquinas/" data-i18n="footer.v2.gMon">Monitoreo de máquinas</a></li><li><a href="/es/maquinas-antigas/" data-i18n="footer.v2.gOld">Máquinas antiguas sin PLC</a></li><li><a href="/es/industria-4-0/" data-i18n="footer.v2.gI40">Industria 4.0</a></li><li><a href="/es/ia-na-industria/" data-i18n="footer.v2.gIa">IA en la industria</a></li><li><a href="/es/smart-factory/" data-i18n="footer.v2.gSmart">Smart factory</a></li><li><a href="/es/mom/" data-i18n="footer.v2.gMom">MOM: gestión de operaciones</a></li></ul>
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title" data-i18n="footer.contact">Contacto</div>
@@ -193,8 +207,8 @@
             <button type="button" class="modal-close" id="btnCloseModal" aria-label="Cerrar demostración" data-i18n-aria="a11y.closeDialog">&times;</button>
             <div class="demo-modal-card">
                 <div class="demo-modal-head">
-                    <h2 class="demo-modal-title" data-i18n="modal.title">Empiece su semana gratis</h2>
-                    <p class="demo-modal-lead" data-i18n="modal.lead">Deje su contacto y agendamos la conversación para elegir el sector de su semana gratis.</p>
+                    <h2 class="demo-modal-title" data-i18n="modal.title">Agende una demo</h2>
+                    <p class="demo-modal-lead" data-i18n="modal.lead">Deje su contacto y agendamos la demostración en el mejor horario para usted.</p>
                 </div>
                 <form class="demo-form" id="contactForm">
                     <input type="text" id="name" name="name" data-i18n-placeholder="modal.name" placeholder="Nombre completo" autocomplete="name" required>
@@ -224,8 +238,8 @@
                             <textarea id="observacao" name="observacao" data-i18n-placeholder="modal.note" placeholder="Observación (opcional)" rows="3"></textarea>
                         </div>
                     </details>
-                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Quiero mi semana gratis</button>
-                    <p class="demo-form-assure" data-i18n="modal.assure">Sin costo y sin permanencia. En la semana de prueba el sensor es prestado.</p>
+                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Agendar demo</button>
+                    <p class="demo-form-assure" data-i18n="modal.assure">Sin costo y sin compromiso.</p>
                 </form>
             </div>
         </div>
@@ -240,8 +254,8 @@
     <script defer src="/js/script.js?v=44"></script>
     <script defer src="/js/wa-chat-viewport.js?v=4"></script>
     <script defer src="/js/conversational-form.js?v=17"></script>
-    <script defer src="/js/v2.js?v=17"></script>
-    <script defer src="/js/home-demos.js?v=7"></script>
+    <script defer src="/js/v2.js?v=44"></script>
+    <script defer src="/js/home-demos.js?v=8"></script>
 </body>
 
 </html>

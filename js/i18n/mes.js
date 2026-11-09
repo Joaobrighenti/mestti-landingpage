@@ -65,7 +65,7 @@
   "v2.mes.58": "O MES substitui o ERP?",
   "v2.mes.59": "Não. O ERP continua cuidando de pedidos, compras, estoque e faturamento. O MES cuida do que acontece na produção e devolve ao ERP o que foi produzido.",
   "v2.mes.60": "MES é só para indústria grande?",
-  "v2.mes.61": "Não. A Mestti foi feita para indústrias pequenas e médias e começa por um setor, com poucas máquinas.",
+  "v2.mes.61": "Não. A Mestti atende indústrias de todos os portes e pode começar por um setor, com poucas máquinas.",
   "v2.mes.62": "Quanto tempo leva para implantar um MES?",
   "v2.mes.63": "Na Mestti, os sensores ficam prontos em até 7 dias, a instalação leva 1 dia e você usa 1 semana de teste grátis antes de decidir. Cadastros de peças e roteiros podem entrar aos poucos.",
   "v2.mes.64": "Preciso de CLP nas máquinas?",
@@ -78,11 +78,11 @@
   "v2.mes.71": "O que é OEE",
   "v2.mes.72": "Fórmula, calculadora e erros que distorcem o indicador.",
   "v2.mes.73": "PCP e PPCP",
-  "v2.mes.74": "Planejar, programar e controlar a produção sem planilha.",
+  "v2.mes.74": "Planejar, programar e controlar a produção.",
   "v2.mes.75": "Apontamento de produção",
   "v2.mes.76": "Do papel ao automático, com sensor e tablet.",
   "v2.mes.78": "Veja o que acontece na sua produção, máquina por máquina.",
-  "v2.mes.79": "Quero 1 semana grátis",
+  "v2.mes.79": "Agendar uma demo",
   "v2.mes.80": "Se não servir, retiramos o sensor e você não paga nada."
  },
  "en": {
@@ -149,7 +149,7 @@
   "v2.mes.58": "Does an MES replace the ERP?",
   "v2.mes.59": "No. The ERP keeps handling orders, purchasing, inventory and invoicing. The MES handles what happens in production and sends back to the ERP what was produced.",
   "v2.mes.60": "Is an MES only for large manufacturers?",
-  "v2.mes.61": "No. Mestti was built for small and mid-sized manufacturers and starts with one department, with a few machines.",
+  "v2.mes.61": "No. Mestti serves manufacturers of every size and can start with one department, with a few machines.",
   "v2.mes.62": "How long does it take to implement an MES?",
   "v2.mes.63": "At Mestti, sensors are ready within 7 days, installation takes 1 day and you get a 1-week free trial before deciding. Parts and routings can be added gradually.",
   "v2.mes.64": "Do my machines need a PLC?",
@@ -162,11 +162,11 @@
   "v2.mes.71": "What is OEE",
   "v2.mes.72": "Formula, calculator and mistakes that distort the indicator.",
   "v2.mes.73": "Production planning (PCP)",
-  "v2.mes.74": "Planning, scheduling and controlling production without spreadsheets.",
+  "v2.mes.74": "Planning, scheduling and controlling production.",
   "v2.mes.75": "Production reporting",
   "v2.mes.76": "From paper to automatic, with sensor and tablet.",
   "v2.mes.78": "See what happens in your production, machine by machine.",
-  "v2.mes.79": "Get 1 free week",
+  "v2.mes.79": "Book a demo",
   "v2.mes.80": "If it does not fit, we remove the sensor and you pay nothing."
  },
  "es": {
@@ -233,7 +233,7 @@
   "v2.mes.58": "¿El MES reemplaza al ERP?",
   "v2.mes.59": "No. El ERP sigue con pedidos, compras, stock y facturación. El MES se ocupa de lo que pasa en la producción y devuelve al ERP lo producido.",
   "v2.mes.60": "¿El MES es solo para industrias grandes?",
-  "v2.mes.61": "No. Mestti se hizo para industrias pequeñas y medianas y empieza por un sector, con pocas máquinas.",
+  "v2.mes.61": "No. Mestti atiende industrias de todos los tamaños y puede empezar por un sector, con pocas máquinas.",
   "v2.mes.62": "¿Cuánto tiempo lleva implantar un MES?",
   "v2.mes.63": "En Mestti, los sensores están listos en hasta 7 días, la instalación lleva 1 día y usted tiene 1 semana de prueba gratis antes de decidir. Piezas y rutas pueden cargarse de a poco.",
   "v2.mes.64": "¿Necesito PLC en las máquinas?",
@@ -246,11 +246,11 @@
   "v2.mes.71": "Qué es el OEE",
   "v2.mes.72": "Fórmula, calculadora y errores que distorsionan el indicador.",
   "v2.mes.73": "PCP y PPCP",
-  "v2.mes.74": "Planificar, programar y controlar la producción sin planillas.",
+  "v2.mes.74": "Planificar, programar y controlar la producción.",
   "v2.mes.75": "Registro de producción",
   "v2.mes.76": "Del papel al automático, con sensor y tablet.",
   "v2.mes.78": "Vea lo que pasa en su producción, máquina por máquina.",
-  "v2.mes.79": "Quiero 1 semana gratis",
+  "v2.mes.79": "Agendar una demo",
   "v2.mes.80": "Si no le sirve, retiramos el sensor y no paga nada."
  }
 };

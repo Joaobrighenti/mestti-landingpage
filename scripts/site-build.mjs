@@ -50,7 +50,7 @@ function articlesBlock(url, lang, articles) {
 }
 /** "Continue lendo": os mesmos cartões da fileira de artigos (imagem, tipo da página, título), sem o resumo. */
 const KIND = { guide: ['Guia', 'Guide', 'Guía'], article: ['Artigo', 'Article', 'Artículo'], case: ['Case', 'Case', 'Caso'], page: ['Produto', 'Product', 'Producto'] };
-const GUIDES = new Set([...Object.keys(TOPIC_OF), '/mes-ou-erp/']);
+const GUIDES = new Set([...Object.keys(TOPIC_OF), '/mes-ou-erp/', '/mom/', '/smart-factory/']);
 function relatedCard(href, strongAttrs, title, lang) {
     const base = href.replace(/^\/(en|es)\//, '/');
     const li = ['pt', 'en', 'es'].indexOf(lang);
@@ -72,6 +72,64 @@ function relatedRail(html, lang) {
         if (!cards.length) return all;
         return `${head}<ul class="tp-art-rail" data-art-rail>${cards.join('')}</ul>${railNav(lang)}`;
     });
+}
+
+/** Última dobra com formulário: substitui a faixa final (hv-final) nas páginas onde quem chega já quer conversar. */
+const FORM_PAGES = new Set(['/', '/contato/', '/producao/', '/engenharia/', '/qualidade/', '/sensores/', '/otto/', '/diagnostico/', '/solucoes/', '/empresa/',
+    '/casos/industria-moveleira/', '/oee/', '/mes/', '/pcp/', '/sequenciamento/', '/apontamento-de-producao/', '/monitoramento-de-maquinas/',
+    '/maquinas-antigas/', '/industria-4-0/', '/ia-na-industria/', '/mes-ou-erp/', '/mom/', '/smart-factory/']);
+/** Botões que passam a levar ao formulário (os demais continuam abrindo a janela de contato). */
+const TO_FORM = new Set(['dores', 'caso', 'calculadora', 'como-comecar', 'faq', 'contato-hero', 'sensores-como', 'oee-calculadora',
+    ...['mes', 'pcp', 'sequenciamento', 'apontamento-de-producao', 'monitoramento-de-maquinas', 'maquinas-antigas', 'industria-4-0', 'ia-na-industria', 'mom', 'smart-factory'].map((k) => `${k}-como`)]);
+const LEAD = {
+    pt: { lead: 'Deixe seu contato e marcamos a demonstração no melhor horário para você.', name: 'Nome', phone: 'WhatsApp com DDD', company: 'Empresa', email: 'E-mail (opcional)',
+        machines: 'Quantas máquinas a fábrica tem?', machinesOpt: ['1 a 5', '6 a 15', '16 a 30', 'Mais de 30'], note: 'Mensagem (opcional)', notePh: 'Ex.: quero medir as paradas da injeção',
+        submit: 'Agendar demo', assure: 'Sem custo e sem compromisso.', privacy: 'Usamos seus dados só para responder a este contato.',
+        alt: 'Prefere falar agora?', choose: 'Selecione' },
+    en: { lead: 'Leave your contact and we will schedule the demo at the best time for you.', name: 'Name', phone: 'WhatsApp with area code', company: 'Company', email: 'Email (optional)',
+        machines: 'How many machines does the factory have?', machinesOpt: ['1 to 5', '6 to 15', '16 to 30', 'More than 30'], note: 'Message (optional)', notePh: 'E.g.: I want to measure stops in injection molding',
+        submit: 'Book a demo', assure: 'No cost and no commitment.', privacy: 'We only use your data to reply to this contact.',
+        alt: 'Prefer to talk now?', choose: 'Select' },
+    es: { lead: 'Deje su contacto y agendamos la demostración en el mejor horario para usted.', name: 'Nombre', phone: 'WhatsApp con código de área', company: 'Empresa', email: 'Correo (opcional)',
+        machines: '¿Cuántas máquinas tiene la fábrica?', machinesOpt: ['1 a 5', '6 a 15', '16 a 30', 'Más de 30'], note: 'Mensaje (opcional)', notePh: 'Ej.: quiero medir las paradas de la inyección',
+        submit: 'Agendar demo', assure: 'Sin costo y sin compromiso.', privacy: 'Usamos sus datos solo para responder a este contacto.',
+        alt: '¿Prefiere hablar ahora?', choose: 'Seleccione' }
+};
+function leadFold(finalHtml, url, lang) {
+    const L = LEAD[lang];
+    const h2 = (finalHtml.match(/<h2[^>]*>[\s\S]*?<\/h2>/) || [''])[0].replace(/ id="[^"]*"/, ' id="lead-title"');
+    const micro = (finalHtml.match(/<p class="hv-cta-micro"[^>]*>([\s\S]*?)<\/p>/) || [])[1];
+    const f = (id, label, control) => `<div class="lead-field"><label for="lead-${id}">${label}</label>${control}</div>`;
+    const opts = L.machinesOpt.map((o) => `<option value="${o}">${o}</option>`).join('');
+    return `<section class="lead-fold" id="formulario" aria-labelledby="lead-title">
+        <div class="hv-wrap lead-grid">
+            <div class="lead-copy">
+                ${h2}
+                <p class="lead-lead">${L.lead}</p>
+                ${micro ? `<p class="lead-micro">${micro}</p>` : ''}
+                <p class="lead-alt">${L.alt} <a href="https://wa.me/5543991095035" target="_blank" rel="noopener">WhatsApp</a> · <a href="tel:+5543991095035">(43) 99109-5035</a></p>
+            </div>
+            <form class="demo-form lead-form" id="leadForm">
+                <input type="hidden" name="ddi" value="+55">
+                <input type="hidden" name="solucao" value="Formulário da página ${url}">
+                <div class="lead-row">${f('name', L.name, '<input type="text" id="lead-name" name="name" autocomplete="name" required>')}${f('company', L.company, '<input type="text" id="lead-company" name="empresa" autocomplete="organization" required>')}</div>
+                <div class="lead-row">${f('phone', L.phone, '<input type="tel" id="lead-phone" name="phone" autocomplete="tel" inputmode="tel" required>')}${f('email', L.email, '<input type="email" id="lead-email" name="email" autocomplete="email">')}</div>
+                ${f('machines', L.machines, `<select id="lead-machines" name="maquinas"><option value="" selected>${L.choose}</option>${opts}</select>`)}
+                ${f('note', L.note, `<textarea id="lead-note" name="observacao" rows="3" placeholder="${L.notePh}"></textarea>`)}
+                <button type="submit" class="demo-submit lead-submit">${L.submit}</button>
+                <p class="lead-assure">${L.assure} ${L.privacy}</p>
+            </form>
+        </div>
+    </section>`;
+}
+function withLeadForm(html, url, lang) {
+    if (!FORM_PAGES.has(url)) return html;
+    let out = html.replace(/<section class="hv-final"[^>]*>[\s\S]*?<\/section>/, (fin) => leadFold(fin, url, lang));
+    if (out === html) return html;
+    // Alguns CTAs do meio da página passam a levar ao formulário.
+    out = out.replace(/<button type="button" class="([^"]*)\bbtn-open-modal\b([^"]*)" data-cta="([^"]+)"([^>]*)>([\s\S]*?)<\/button>/g, (all, a, b, cta, rest, label) =>
+        TO_FORM.has(cta) ? `<a class="${(a + b).replace(/\s+/g, ' ').trim()}" href="#formulario" data-cta="${cta}"${rest}>${label}</a>` : all);
+    return out;
 }
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -269,7 +327,7 @@ export function buildAll() {
         const m = rel.match(/^(en|es)\/(.*)$/);
         const lang = m ? m[1] : 'pt';
         const url = '/' + (m ? m[2] : rel).replace(/index\.html$/, '');
-        files.set(rel, relatedRail(html.replace(LANGS_MARK, langLinks(url, lang, localized)).replace(ARTICLES_MARK, articlesBlock(url, lang, blog.articles)), lang));
+        files.set(rel, withLeadForm(relatedRail(html.replace(LANGS_MARK, langLinks(url, lang, localized)).replace(ARTICLES_MARK, articlesBlock(url, lang, blog.articles)), lang), url, lang));
     }
     // Sem trilha "Início / Página" visível: a home fica no logo. (O BreadcrumbList do JSON-LD continua.)
     const CRUMBS = /\s*<nav class="(?:tp-crumbs|hv-crumbs|discovery-breadcrumb)"[^>]*>[\s\S]*?<\/nav>/g;

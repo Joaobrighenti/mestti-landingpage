@@ -70,7 +70,7 @@
   "v2.apontamento-de-producao.63": "Produção e PCP na Mestti",
   "v2.apontamento-de-producao.64": "Carteira, sequenciamento, tablet e sensores.",
   "v2.apontamento-de-producao.66": "Deixe a máquina contar. Sua equipe só explica o que parou.",
-  "v2.apontamento-de-producao.67": "Quero 1 semana grátis",
+  "v2.apontamento-de-producao.67": "Agendar uma demo",
   "v2.apontamento-de-producao.68": "Na semana de teste, o sensor é emprestado."
  },
  "en": {
@@ -142,7 +142,7 @@
   "v2.apontamento-de-producao.63": "Production and planning at Mestti",
   "v2.apontamento-de-producao.64": "Backlog, scheduling, tablet and sensors.",
   "v2.apontamento-de-producao.66": "Let the machine count. Your team only explains what stopped.",
-  "v2.apontamento-de-producao.67": "Get 1 free week",
+  "v2.apontamento-de-producao.67": "Book a demo",
   "v2.apontamento-de-producao.68": "During the trial week, the sensor is on loan."
  },
  "es": {
@@ -214,7 +214,7 @@
   "v2.apontamento-de-producao.63": "Producción y planificación en Mestti",
   "v2.apontamento-de-producao.64": "Cartera, secuenciación, tablet y sensores.",
   "v2.apontamento-de-producao.66": "Deje que la máquina cuente. Su equipo solo explica lo que paró.",
-  "v2.apontamento-de-producao.67": "Quiero 1 semana gratis",
+  "v2.apontamento-de-producao.67": "Agendar una demo",
   "v2.apontamento-de-producao.68": "En la semana de prueba, el sensor es prestado."
  }
 };

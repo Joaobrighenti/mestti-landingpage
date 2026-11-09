@@ -11,7 +11,7 @@
   "v2.contato.5": "Fale com quem construiu a Mestti",
   "v2.contato.6": "Resposta curta",
   "v2.contato.7": "O jeito mais rápido é o <strong>WhatsApp (43) 99109-5035</strong>, com a equipe comercial. Para clientes com contrato, o suporte atende em <strong>suporte@mestti.com.br</strong>.",
-  "v2.contato.8": "Quero 1 semana grátis",
+  "v2.contato.8": "Agendar uma demo",
   "v2.contato.9": "Ou preencha o formulário e a gente chama você.",
   "v2.contato.12": "Neste guia",
   "v2.contato.13": "Neste guia",
@@ -34,7 +34,7 @@
   "v2.contato.28": "<strong>Mestti Tecnologia LTDA</strong> · CNPJ 63.380.944/0001-51",
   "v2.contato.29": "Rua Santa Terezinha, 1300, Londrina, PR, Brasil.",
   "v2.contato.30": "Prefere ver antes de conversar? Teste 1 semana.",
-  "v2.contato.31": "Quero 1 semana grátis",
+  "v2.contato.31": "Agendar uma demo",
   "v2.contato.32": "Se não servir, retiramos o sensor e você não paga nada."
  },
  "en": {
@@ -47,7 +47,7 @@
   "v2.contato.5": "Talk to the people who built Mestti",
   "v2.contato.6": "Short answer",
   "v2.contato.7": "The fastest way is <strong>WhatsApp +55 43 99109-5035</strong>, with the sales team. Customers with a contract get support at <strong>suporte@mestti.com.br</strong>.",
-  "v2.contato.8": "Get 1 free week",
+  "v2.contato.8": "Book a demo",
   "v2.contato.9": "Or fill in the form and we will reach out.",
   "v2.contato.12": "In this guide",
   "v2.contato.13": "In this guide",
@@ -70,7 +70,7 @@
   "v2.contato.28": "<strong>Mestti Tecnologia LTDA</strong> · CNPJ 63.380.944/0001-51",
   "v2.contato.29": "Rua Santa Terezinha, 1300, Londrina, PR, Brazil.",
   "v2.contato.30": "Prefer to see it before talking? Try it for 1 week.",
-  "v2.contato.31": "Get 1 free week",
+  "v2.contato.31": "Book a demo",
   "v2.contato.32": "If it does not fit, we remove the sensor and you pay nothing."
  },
  "es": {
@@ -83,7 +83,7 @@
   "v2.contato.5": "Hable con quien construyó Mestti",
   "v2.contato.6": "Respuesta corta",
   "v2.contato.7": "La forma más rápida es el <strong>WhatsApp +55 43 99109-5035</strong>, con el equipo comercial. Los clientes con contrato tienen soporte en <strong>suporte@mestti.com.br</strong>.",
-  "v2.contato.8": "Quiero 1 semana gratis",
+  "v2.contato.8": "Agendar una demo",
   "v2.contato.9": "O complete el formulario y lo contactamos.",
   "v2.contato.12": "En esta guía",
   "v2.contato.13": "En esta guía",
@@ -106,7 +106,7 @@
   "v2.contato.28": "<strong>Mestti Tecnologia LTDA</strong> · CNPJ 63.380.944/0001-51",
   "v2.contato.29": "Rua Santa Terezinha, 1300, Londrina, PR, Brasil.",
   "v2.contato.30": "¿Prefiere verlo antes de hablar? Pruébelo 1 semana.",
-  "v2.contato.31": "Quiero 1 semana gratis",
+  "v2.contato.31": "Agendar una demo",
   "v2.contato.32": "Si no le sirve, retiramos el sensor y no paga nada."
  }
 };

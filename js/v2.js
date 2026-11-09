@@ -394,11 +394,67 @@
         onLang(update);
     }
 
-    // Fábrica 3D: só carrega perto da tela, depois do conteúdo.
+    // Fábrica 3D na primeira dobra: espera a página terminar de carregar e um momento livre do navegador,
+    // para não disputar com o texto e as imagens do topo. Fora da tela, só carrega quando chega perto.
+    // Como funciona: uma etapa aberta por vez (a 1 começa aberta).
+    function initFlow() {
+        const tabs = [...document.querySelectorAll('[data-flow-tab]')];
+        tabs.forEach((tab) => tab.addEventListener('click', () => {
+            tabs.forEach((other) => {
+                const on = other === tab;
+                other.setAttribute('aria-expanded', String(on));
+                other.closest('.hv-howf-item').classList.toggle('is-open', on);
+                document.getElementById(other.getAttribute('aria-controls')).hidden = !on;
+            });
+            track('home_flow_step', { step: tab.id });
+        }));
+    }
+
+    // Celular: as etapas viram cartões deslizantes. Setas, pontos e um vaivém inicial mostram que dá para deslizar.
+    function initFlowSwipe() {
+        const track = document.querySelector('.hv-howf');
+        const nav = document.querySelector('.hv-howf-nav');
+        if (!track || !nav) return;
+        const items = [...track.querySelectorAll('.hv-howf-item')];
+        const pips = [...nav.querySelectorAll('.hv-howf-pips i')];
+        const prev = nav.querySelector('[data-howf-prev]');
+        const next = nav.querySelector('[data-howf-next]');
+        const step = () => (items[1] ? items[1].offsetLeft - items[0].offsetLeft : track.clientWidth);
+        const current = () => Math.min(items.length - 1, Math.round(track.scrollLeft / Math.max(1, step())));
+        const go = (i) => track.scrollTo({ left: Math.max(0, Math.min(items.length - 1, i)) * step(), behavior: 'smooth' });
+        const mark = () => {
+            const i = current();
+            pips.forEach((p, j) => p.classList.toggle('is-on', j === i));
+            prev.disabled = i === 0;
+            next.disabled = i === items.length - 1;
+            if (i > 0) nav.classList.add('is-used');
+        };
+        prev.addEventListener('click', () => go(current() - 1));
+        next.addEventListener('click', () => go(current() + 1));
+        track.addEventListener('scroll', () => requestAnimationFrame(mark), { passive: true });
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduce && 'IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                if (!entries.some((e) => e.isIntersecting) || track.scrollWidth <= track.clientWidth + 4) return;
+                io.disconnect();
+                setTimeout(() => {
+                    if (track.scrollLeft > 4) return;
+                    track.scrollTo({ left: 56, behavior: 'smooth' });
+                    setTimeout(() => track.scrollTo({ left: 0, behavior: 'smooth' }), 550);
+                }, 500);
+            }, { threshold: 0.6 });
+            io.observe(track);
+        }
+    }
+
     function initFactory() {
         const host = document.querySelector('[data-factory]');
         if (!host) return;
-        whenVisible(host, () => import('/js/fabrica-sim.js?v=3').catch((error) => console.error(error)), '500px 0px');
+        const load = () => import('/js/fabrica-sim.js?v=28').catch((error) => console.error(error));
+        const idle = (fn) => ('requestIdleCallback' in window ? window.requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 300));
+        const start = () => idle(() => whenVisible(host, load, '300px 0px'));
+        if (document.readyState === 'complete') start();
+        else window.addEventListener('load', start, { once: true });
     }
 
     // Vídeo: começa sem som quando a pessoa chega nele, pausa quando sai e liga o som num toque.
@@ -493,4 +549,6 @@
     initClientsMarquee();
     initTarget();
     initFactory();
+    initFlow();
+    initFlowSwipe();
 })();

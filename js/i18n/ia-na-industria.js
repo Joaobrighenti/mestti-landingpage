@@ -62,13 +62,13 @@
   "v2.ia-na-industria.55": "Otto, a IA da Mestti",
   "v2.ia-na-industria.56": "Perguntas, propostas e aprovação humana.",
   "v2.ia-na-industria.57": "Indústria 4.0",
-  "v2.ia-na-industria.58": "Por onde começar na pequena e média indústria.",
+  "v2.ia-na-industria.58": "O que é e como levar para a sua fábrica.",
   "v2.ia-na-industria.59": "Sistema MES",
   "v2.ia-na-industria.60": "O que o MES faz entre o ERP e as máquinas.",
   "v2.ia-na-industria.61": "Tecnologia e proteção de dados",
   "v2.ia-na-industria.62": "Dados isolados por empresa e registro imutável.",
   "v2.ia-na-industria.64": "Primeiro, dados confiáveis. Depois, uma IA que responde com eles.",
-  "v2.ia-na-industria.65": "Quero 1 semana grátis",
+  "v2.ia-na-industria.65": "Agendar uma demo",
   "v2.ia-na-industria.66": "Se não servir, retiramos o sensor e você não paga nada."
  },
  "en": {
@@ -132,13 +132,13 @@
   "v2.ia-na-industria.55": "Otto, Mestti’s AI",
   "v2.ia-na-industria.56": "Questions, proposals and human approval.",
   "v2.ia-na-industria.57": "Industry 4.0",
-  "v2.ia-na-industria.58": "Where small and mid-sized manufacturers should start.",
+  "v2.ia-na-industria.58": "What it is and how to bring it to your factory.",
   "v2.ia-na-industria.59": "MES system",
   "v2.ia-na-industria.60": "What an MES does between the ERP and the machines.",
   "v2.ia-na-industria.61": "Technology and data protection",
   "v2.ia-na-industria.62": "Data isolated per company and an immutable record.",
   "v2.ia-na-industria.64": "First, reliable data. Then, an AI that answers with it.",
-  "v2.ia-na-industria.65": "Get 1 free week",
+  "v2.ia-na-industria.65": "Book a demo",
   "v2.ia-na-industria.66": "If it does not fit, we remove the sensor and you pay nothing."
  },
  "es": {
@@ -202,13 +202,13 @@
   "v2.ia-na-industria.55": "Otto, la IA de Mestti",
   "v2.ia-na-industria.56": "Preguntas, propuestas y aprobación humana.",
   "v2.ia-na-industria.57": "Industria 4.0",
-  "v2.ia-na-industria.58": "Por dónde empezar en la pequeña y mediana industria.",
+  "v2.ia-na-industria.58": "Qué es y cómo llevarla a su fábrica.",
   "v2.ia-na-industria.59": "Sistema MES",
   "v2.ia-na-industria.60": "Qué hace el MES entre el ERP y las máquinas.",
   "v2.ia-na-industria.61": "Tecnología y protección de datos",
   "v2.ia-na-industria.62": "Datos aislados por empresa y registro inmutable.",
   "v2.ia-na-industria.64": "Primero, datos confiables. Después, una IA que responde con ellos.",
-  "v2.ia-na-industria.65": "Quiero 1 semana gratis",
+  "v2.ia-na-industria.65": "Agendar una demo",
   "v2.ia-na-industria.66": "Si no le sirve, retiramos el sensor y no paga nada."
  }
 };

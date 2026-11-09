@@ -163,11 +163,11 @@ const HEAD = (title, desc, url, type, ld, extra = '') => `<!DOCTYPE html>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/site.css?v=5">
     <link rel="stylesheet" href="/css/v2.css?v=2">
-    <link rel="stylesheet" href="/css/v3.css?v=60">
-    <link rel="stylesheet" href="/css/v3-mobile.css?v=19">
+    <link rel="stylesheet" href="/css/v3.css?v=89">
+    <link rel="stylesheet" href="/css/v3-mobile.css?v=26">
     <link rel="stylesheet" href="/css/v3-topic.css?v=6">
     <link rel="stylesheet" href="/css/v3-blog.css?v=2">
     <link rel="canonical" href="${ORIGIN}${url}">
@@ -192,7 +192,7 @@ const SCRIPTS = `    <script defer src="/js/i18n.js?v=35"></script>
     <script defer src="/js/script.js?v=44"></script>
     <script defer src="/js/wa-chat-viewport.js?v=4"></script>
     <script defer src="/js/conversational-form.js?v=17"></script>
-    <script defer src="/js/v2.js?v=17"></script>
+    <script defer src="/js/v2.js?v=37"></script>
 </body>
 
 </html>
@@ -243,7 +243,7 @@ function articlePage(a, all, chrome) {
             <aside class="tp-answer" aria-labelledby="tp-answer-title">
                 <p class="tp-answer-label" id="tp-answer-title">Resposta curta</p>
                 <p class="tp-answer-text">${inline(esc(a.answer))}</p>
-                <div class="tp-answer-cta"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="blog-${a.slug}-topo">${esc(a.cta || 'Quero 1 semana grátis')}</button><p class="hv-cta-micro">1 semana grátis, com o sensor emprestado.</p></div>
+                <div class="tp-answer-cta"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="blog-${a.slug}-topo">${esc(a.cta || 'Agendar uma demo')}</button><p class="hv-cta-micro">1 semana grátis, com o sensor emprestado.</p></div>
             </aside>
         </div>
     </section>
@@ -267,7 +267,7 @@ ${a.body.html}
     <section class="hv-final" aria-labelledby="tp-final-title">
         <div class="hv-wrap hv-final-inner">
             <h2 id="tp-final-title">Veja os números reais da sua fábrica em 1 semana.</h2>
-            <div class="hv-hero-actions"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="blog-${a.slug}-final">Quero 1 semana grátis</button><p class="hv-cta-micro">Se não servir, retiramos o sensor e você não paga nada.</p></div>
+            <div class="hv-hero-actions"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="blog-${a.slug}-final">Agendar uma demo</button><p class="hv-cta-micro">Se não servir, retiramos o sensor e você não paga nada.</p></div>
         </div>
     </section>
     </main>
@@ -321,7 +321,7 @@ function indexPage(list, chrome, extra) {
     <section class="hv-final" aria-labelledby="tp-final-title">
         <div class="hv-wrap hv-final-inner">
             <h2 id="tp-final-title">Leu o suficiente? Veja na sua fábrica.</h2>
-            <div class="hv-hero-actions"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="blog-indice-final">Quero 1 semana grátis</button><p class="hv-cta-micro">Sensores prontos em até 7 dias. Instalação em 1 dia.</p></div>
+            <div class="hv-hero-actions"><button type="button" class="hv-btn hv-btn--primary btn-open-modal" data-cta="blog-indice-final">Agendar uma demo</button><p class="hv-cta-micro">Sensores prontos em até 7 dias. Instalação em 1 dia.</p></div>
         </div>
     </section>
     </main>
