@@ -717,6 +717,7 @@ body.hv-page .hv-video-head h2 { margin: 0; font-size: clamp(2.4rem, 4.6vw, 4rem
 .hv-video-head .hv-lead { margin: 0 !important; max-width: 46ch; }
 .hv-video-frame { position: relative; margin: 0; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 14px; overflow: hidden; background: var(--panel); box-shadow: 0 30px 80px -24px rgba(10, 27, 46, .45), 0 0 0 1px rgba(10, 27, 46, .06); }
 .hv-video-poster, .hv-video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.hv-video-frame:not(.is-playing) iframe { opacity: 0; pointer-events: none; }
 .hv-video-poster { object-fit: cover; transition: transform 700ms var(--out); }
 .hv-video-frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 27, 46, 0) 40%, rgba(10, 27, 46, .55)); pointer-events: none; transition: opacity 300ms var(--out); }
 .hv-video-frame.is-playing::after, .hv-video-frame.is-playing .hv-video-play, .hv-video-frame.is-playing .hv-video-poster { opacity: 0; pointer-events: none; }

@@ -3,13 +3,14 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-function fixture({ touch = true, saveData = false } = {}) {
+function fixture({ touch = true, saveData = false, webgl = true } = {}) {
     const listeners = new Map(); let visible; let idle; let reloads = 0;
     const button = { hidden: true, addEventListener: (n, fn) => listeners.set(n, fn) };
-    const host = { querySelector: () => button, classList: { add() {}, remove() {} }, setAttribute() {}, removeAttribute() {} };
+    const classes = new Set();
+    const host = { classes, querySelector: () => button, classList: { add: c => classes.add(c), remove: c => classes.delete(c) }, setAttribute() {}, removeAttribute() {} };
     const window = { addEventListener() {}, IntersectionObserver: true, requestIdleCallback(fn) { idle = fn; } };
     class IntersectionObserver { constructor(fn) { visible = fn; } observe() {} disconnect() {} }
-    const context = { window, IntersectionObserver, document: { readyState: 'complete', documentElement: { lang: 'pt-BR' } }, navigator: { connection: { saveData } }, matchMedia: q => ({ matches: q.includes('coarse') && touch }), location: { reload() { reloads++; } } };
+    const context = { window, IntersectionObserver, document: { readyState: 'complete', documentElement: { lang: 'pt-BR' }, createElement: () => ({ getContext: () => (webgl ? { getExtension: () => ({ loseContext() {} }) } : null) }) }, navigator: { connection: { saveData } }, matchMedia: q => ({ matches: q.includes('coarse') && touch }), location: { reload() { reloads++; } } };
     vm.runInNewContext(fs.readFileSync('js/factory-loader.js', 'utf8'), context);
     return { mount: window.MesttiFactoryLoader.mount, button, host, visible: on => visible([{ isIntersecting: on }]), idle: () => idle(), tap: () => listeners.get('click')(), reloads: () => reloads };
 }
@@ -38,4 +39,11 @@ test('erro de download oferece recuperação por recarregamento', async () => {
     f.mount(f.host, () => Promise.reject(Error('offline'))); f.visible(true); f.idle();
     await Promise.resolve(); assert.equal(f.button.hidden, false);
     f.tap(); assert.equal(f.reloads(), 1);
+});
+
+test('sem WebGL não baixa a cena e mantém só a imagem estática', () => {
+    const f = fixture({ webgl: false }); let loads = 0;
+    f.mount(f.host, () => { loads++; return Promise.resolve(); });
+    f.visible(true); f.idle();
+    assert.equal(loads, 0); assert.ok(f.host.classes.has('fx--static')); assert.equal(f.button.hidden, true);
 });

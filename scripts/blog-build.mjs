@@ -157,7 +157,7 @@ const HEAD = (title, desc, url, type, ld, extra = '') => `<!DOCTYPE html>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/site.css?v=7">
     <link rel="stylesheet" href="/css/v2.css?v=2">
-    <link rel="stylesheet" href="/css/v3.css?v=96">
+    <link rel="stylesheet" href="/css/v3.css?v=97">
     <link rel="stylesheet" href="/css/v3-mobile.css?v=26">
     <link rel="stylesheet" href="/css/v3-topic.css?v=6">
     <link rel="stylesheet" href="/css/v3-blog.css?v=2">
@@ -184,7 +184,7 @@ const SCRIPTS = `    <script defer src="/js/i18n.js?v=35"></script>
     <script defer src="/js/script.js?v=45"></script>
     <script defer src="/js/wa-chat-viewport.js?v=4"></script>
     <script defer src="/js/conversational-form.js?v=18"></script>
-    <script defer src="/js/v2.js?v=46"></script>
+    <script defer src="/js/v2.js?v=47"></script>
 </body>
 
 </html>

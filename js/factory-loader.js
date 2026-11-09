@@ -1,12 +1,14 @@
 /* A maquete abre automaticamente quando visível, após os recursos iniciais da página. */
 (function () {
-    function mount(host, load = () => import('/js/fabrica-sim.js?v=31')) {
+    function mount(host, load = () => import('/js/fabrica-sim.js?v=32')) {
         const button = host.querySelector('[data-factory-start]');
         const deferWork = matchMedia('(pointer: coarse)').matches || navigator.connection?.saveData;
         let started = false;
         const start = () => {
             if (started) return;
             started = true;
+            // Sem WebGL não baixa nada: a imagem da fábrica já é o conteúdo.
+            if (!hasWebGL()) { host.classList.add('fx--static'); return; }
             host.classList.add('fx--requested');
             host.setAttribute('aria-busy', 'true');
             load().catch(() => {
@@ -32,6 +34,14 @@
         };
         if (document.readyState === 'complete') whenVisible();
         else window.addEventListener('load', whenVisible, { once: true });
+    }
+    function hasWebGL() {
+        try {
+            const canvas = document.createElement('canvas');
+            const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+            gl?.getExtension('WEBGL_lose_context')?.loseContext();
+            return !!gl;
+        } catch { return false; }
     }
     window.MesttiFactoryLoader = { mount };
 })();

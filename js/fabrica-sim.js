@@ -12,7 +12,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
 import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import { createFactoryFullscreen } from './factory-fullscreen.js?v=1';
+import { createFactoryFullscreen } from './factory-fullscreen.js?v=2';
 
 const root = document.querySelector('[data-factory]');
 
@@ -23,7 +23,7 @@ const TX = {
         now: 'Fábrica agora', running: 'Rodando', stoppedPl: 'Paradas', lost: 'Sem sinal', machines: 'Máquinas',
         inFilter: 'Máquinas no filtro', noneInFilter: 'Nenhuma máquina neste filtro.', collapse: 'Recolher painel', expand: 'Expandir painel',
         all: 'Todas', layerState: 'Estado', layerOee: 'OEE', layerGroup: 'Colorir o chão por', filterGroup: 'Filtrar a cena por estado',
-        zoomIn: 'Aproximar', zoomOut: 'Afastar', fit: 'Ver a fábrica toda', full: 'Tela cheia', fullExit: 'Sair da tela cheia', hintFull: 'Arraste para girar · role para aproximar · Esc para sair', hintFullTouch: 'Arraste para girar · pinça para aproximar', close: 'Fechar detalhes',
+        zoomIn: 'Aproximar', zoomOut: 'Afastar', fit: 'Ver a fábrica toda', full: 'Tela cheia', fullExit: 'Sair da tela cheia', hintFull: 'Arraste para girar · role para aproximar · Esc para sair', hintFullTouch: 'Arraste para girar · pinça para aproximar', hintPageTouch: 'Arraste para o lado para girar · pinça para aproximar', close: 'Fechar detalhes',
         summary: 'Resumo', queue: 'Fila', today: 'hoje', eff: 'Eficiência', producedToday: 'Produção hoje', pieces: 'peças no dia',
         orderDone: 'Conclusão da ordem', of: 'de', pcs: 'pç', operation: 'Operação', product: 'Produto', operator: 'Operador',
         since: 'há', reason: 'Motivo', doing: 'Em apontamento', todo: 'A fazer', planned: 'Previsto', sector: 'Setor',
@@ -39,7 +39,7 @@ const TX = {
         now: 'Factory now', running: 'Running', stoppedPl: 'Stopped', lost: 'No signal', machines: 'Machines',
         inFilter: 'Machines in filter', noneInFilter: 'No machine in this filter.', collapse: 'Collapse panel', expand: 'Expand panel',
         all: 'All', layerState: 'State', layerOee: 'OEE', layerGroup: 'Color the floor by', filterGroup: 'Filter the scene by state',
-        zoomIn: 'Zoom in', zoomOut: 'Zoom out', fit: 'See the whole factory', full: 'Full screen', fullExit: 'Exit full screen', hintFull: 'Drag to rotate · scroll to zoom · Esc to exit', hintFullTouch: 'Drag to rotate · pinch to zoom', close: 'Close details',
+        zoomIn: 'Zoom in', zoomOut: 'Zoom out', fit: 'See the whole factory', full: 'Full screen', fullExit: 'Exit full screen', hintFull: 'Drag to rotate · scroll to zoom · Esc to exit', hintFullTouch: 'Drag to rotate · pinch to zoom', hintPageTouch: 'Drag sideways to rotate · pinch to zoom', close: 'Close details',
         summary: 'Summary', queue: 'Queue', today: 'today', eff: 'Efficiency', producedToday: 'Produced today', pieces: 'parts today',
         orderDone: 'Order progress', of: 'of', pcs: 'pcs', operation: 'Operation', product: 'Product', operator: 'Operator',
         since: 'for', reason: 'Reason', doing: 'In progress', todo: 'To do', planned: 'Planned', sector: 'Area',
@@ -55,7 +55,7 @@ const TX = {
         now: 'Fábrica ahora', running: 'Operando', stoppedPl: 'Paradas', lost: 'Sin señal', machines: 'Máquinas',
         inFilter: 'Máquinas en el filtro', noneInFilter: 'Ninguna máquina en este filtro.', collapse: 'Contraer panel', expand: 'Expandir panel',
         all: 'Todas', layerState: 'Estado', layerOee: 'OEE', layerGroup: 'Colorear el piso por', filterGroup: 'Filtrar la escena por estado',
-        zoomIn: 'Acercar', zoomOut: 'Alejar', fit: 'Ver toda la fábrica', full: 'Pantalla completa', fullExit: 'Salir de pantalla completa', hintFull: 'Arrastre para girar · desplace para acercar · Esc para salir', hintFullTouch: 'Arrastre para girar · pellizque para acercar', close: 'Cerrar detalles',
+        zoomIn: 'Acercar', zoomOut: 'Alejar', fit: 'Ver toda la fábrica', full: 'Pantalla completa', fullExit: 'Salir de pantalla completa', hintFull: 'Arrastre para girar · desplace para acercar · Esc para salir', hintFullTouch: 'Arrastre para girar · pellizque para acercar', hintPageTouch: 'Arrastre hacia el lado para girar · pellizque para acercar', close: 'Cerrar detalles',
         summary: 'Resumen', queue: 'Cola', today: 'hoy', eff: 'Eficiencia', producedToday: 'Producción hoy', pieces: 'piezas del día',
         orderDone: 'Avance de la orden', of: 'de', pcs: 'pz', operation: 'Operación', product: 'Producto', operator: 'Operador',
         since: 'hace', reason: 'Motivo', doing: 'En registro', todo: 'Pendiente', planned: 'Previsto', sector: 'Sector',
@@ -212,7 +212,8 @@ function init() {
         scene3d = buildScene(canvas, labelsHost);
     } catch (error) {
         console.error(error);
-        fail();
+        // Sem WebGL recarregar não resolve: mantém a imagem estática.
+        fail({ permanent: true });
     }
     root.__fx = scene3d;
 
@@ -220,8 +221,14 @@ function init() {
     new MutationObserver(() => scene3d?.applyTheme()).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 }
 
-function fail() {
+function fail({ permanent = false } = {}) {
     root.removeAttribute('aria-busy');
+    if (permanent) {
+        if (view.full) setFull(false);
+        root.classList.remove('fx--loading', 'fx--ready');
+        root.classList.add('fx--static');
+        return;
+    }
     root.querySelector('[data-fx-hud]').inert = false;
     root.classList.remove('fx--loading');
     root.classList.add('fx--error');
@@ -265,7 +272,6 @@ function renderHud() {
     const chips = ['running', 'stopped', 'warning', 'setup', 'maintenance'].map((key) => ({ key, count: MACHINES.filter((m) => m.state === key).length })).filter((chip) => chip.count > 0);
     const items = listItems();
     hud.innerHTML = `
-        ${view.full ? `<button type="button" class="fx-surface fx-full-exit" data-fx-exit-full><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>${t('fullExit')}</button>` : ''}
         <div class="fx-top-left">
             <div class="fx-surface fx-ident">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 20V9l6 4V9l6 4V5h4l4 15H2z"/></svg>
@@ -295,7 +301,7 @@ function renderHud() {
                 </div>
                 <div class="fx-list-head"><h4>${view.filters.size ? t('inFilter') : t('machines')}</h4><span>${items.length}</span></div>
                 ${items.length === 0 ? `<p class="fx-empty">${t('noneInFilter')}</p>` : `<ul class="fx-list">${items.map(listRow).join('')}</ul>`}
-                <p class="fx-hint"><span class="fx-demo-tag">${t('demo')}</span><span>${t(coarse ? 'hintFullTouch' : (view.full ? 'hintFull' : 'hintDrag'))}</span><a class="fx-credit" href="https://huggingface.co/datasets/nvidia/PhysicalAI-SimReady-Warehouse-01" target="_blank" rel="noopener">${t('credit')}</a></p>
+                <p class="fx-hint"><span class="fx-demo-tag">${t('demo')}</span><span>${t(coarse ? (view.full ? 'hintFullTouch' : 'hintPageTouch') : (view.full ? 'hintFull' : 'hintDrag'))}</span><a class="fx-credit" href="https://huggingface.co/datasets/nvidia/PhysicalAI-SimReady-Warehouse-01" target="_blank" rel="noopener">${t('credit')}</a></p>
             </div>
         </section>
         <div class="fx-dock-wrap">
@@ -446,8 +452,6 @@ function bindHud() {
             else view.filters.add(key);
             renderHud();
             fx?.refreshLabels();
-        } else if (target.hasAttribute('data-fx-exit-full')) {
-            setFull(false);
         } else if (target.hasAttribute('data-fx-full')) {
             setFull(!view.full);
         } else if (target.dataset.fxZoom) {
@@ -491,7 +495,7 @@ function setFull(on) {
         fullscreen.exit();
     }
     root.__fx?.setFull(on);
-    root.querySelector(on ? '[data-fx-exit-full]' : '[data-fx-full]')?.focus({ preventScroll: true });
+    root.querySelector('[data-fx-full]')?.focus({ preventScroll: true });
     window.dispatchEvent(new CustomEvent('mestti:factory-fullscreen', { detail: { active: on } }));
     if (on && typeof window.gtag === 'function') window.gtag('event', 'home_factory_fullscreen');
 }
@@ -1056,6 +1060,7 @@ function buildScene(canvas, labelsHost) {
     controls.screenSpacePanning = true;
     controls.mouseButtons = { LEFT: THREE.MOUSE.ROTATE, MIDDLE: THREE.MOUSE.PAN, RIGHT: THREE.MOUSE.PAN };
     // Interação direta no celular e desktop; o primeiro gesto interrompe o passeio cinema.
+    // Fora da tela cheia o CSS (pan-y) entrega a rolagem vertical ao navegador: só o arrasto lateral gira.
     let tour = null;
     function applyControls() {
         controls.enabled = !tour;
@@ -1174,7 +1179,10 @@ function buildScene(canvas, labelsHost) {
     const BASE_ANGLE = Math.atan2(BASE_DIR.x, BASE_DIR.z);
     const BASE_PITCH = Math.asin(BASE_DIR.y);
     const IDLE_RESUME = 18000;
+    // Celular: depois de um tempo sem toque, congela a cena (para de renderizar) para poupar bateria.
+    const IDLE_SLEEP = coarse ? 45000 : Infinity;
     let lastInput = 0;
+    let awakeAt = 0;
     function startTour() {
         if (reduceMotion || tour || !root.clientWidth) return;
         tween = null;
@@ -1608,6 +1616,7 @@ function buildScene(canvas, labelsHost) {
         .then(() => {
             refreshLabels();
             sceneReady = true;
+            awakeAt = performance.now();
         })
         .catch((error) => { console.warn('fabrica-sim: modelos GLB indisponíveis', error); fail(); });
 
@@ -1647,7 +1656,12 @@ function buildScene(canvas, labelsHost) {
     let lastCollision = 0;
 
     let visible = true;
-    new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(root);
+    new IntersectionObserver(([e]) => {
+        if (e.isIntersecting && !visible) awakeAt = performance.now();
+        visible = e.isIntersecting;
+    }).observe(root);
+    // A GPU do celular pode descartar o contexto (memória, aba em segundo plano): volta à imagem estática.
+    renderer.domElement.addEventListener('webglcontextlost', () => fail({ permanent: true }));
     const clock = new THREE.Clock();
     let pulse = 0;
     let stutterClock = 0;
@@ -1661,6 +1675,7 @@ function buildScene(canvas, labelsHost) {
         lastFrame = now;
         const dt = Math.min(clock.getDelta(), 0.05);
         if (!sceneReady || !visible || document.hidden) return;
+        if (!firstFrame && !view.full && now - Math.max(lastInput, awakeAt) > IDLE_SLEEP) return;
         if (tour) tourStep(dt);
         else {
             if (tween) tween(now);

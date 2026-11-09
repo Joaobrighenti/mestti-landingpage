@@ -475,60 +475,143 @@
         const frame = document.querySelector('[data-yt]');
         if (!frame) return;
         const sound = frame.querySelector('[data-yt-sound]');
+        const playerOrigin = 'https://www.youtube-nocookie.com';
+        const language = () => ['en', 'es'].includes(window.MESTTI_LANG) ? window.MESTTI_LANG : 'pt';
         let iframe = null;
-        let playing = false;
-        let state = -1;
-        let muted = false;
-        const send = (func) => iframe && iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func, args: [] }), '*');
-        const showSound = (on) => { sound.hidden = !on; };
-        // O player avisa estado (1 = tocando) e se está mudo; serve para saber se o navegador barrou o som.
-        window.addEventListener('message', (ev) => {
-            if (!iframe || ev.source !== iframe.contentWindow) return;
-            let data;
-            try { data = typeof ev.data === 'string' ? JSON.parse(ev.data) : ev.data; } catch { return; }
-            const info = data && data.info;
-            if (!info || typeof info !== 'object') return;
-            if (typeof info.playerState === 'number') state = info.playerState;
-            if (typeof info.muted === 'boolean') muted = info.muted;
-            if (state === 1) showSound(muted);
-        });
-        const load = (byClick) => {
+        let ready = false;
+        let wantsPlay = false;
+        let withSound = false;
+        let tracked = false;
+        let listening = null;
+        let listened = 0;
+        let soundAt = 0;
+        let soundBlocked = false;
+        const send = (func, args = []) => iframe?.contentWindow.postMessage(JSON.stringify({ event: 'command', func, args }), playerOrigin);
+        const locked = () => document.documentElement.classList.contains('fx-lock');
+        const showSound = (on) => { sound.hidden = !on || soundBlocked; };
+        const reveal = () => { frame.classList.add('is-playing'); iframe.tabIndex = 0; iframe.removeAttribute('aria-hidden'); };
+        // iOS não aceita ligar o som por comando vindo da página: na segunda recusa, mantém mudo e deixa o
+        // controle de volume do próprio YouTube (já visível) fazer isso, sem ciclo de botões.
+        const giveUpSound = () => {
+            soundBlocked = true;
+            withSound = false;
+            showSound(false);
+            send('mute');
+            send('playVideo');
+        };
+        const captions = () => {
+            if (!ready) return;
+            if (language() === 'pt') send('unloadModule', ['captions']);
+            else {
+                send('loadModule', ['captions']);
+                // O vídeo só tem a faixa automática em português; EN/ES usam a tradução dela.
+                send('setOption', ['captions', 'track', { languageCode: 'pt', translationLanguage: { languageCode: language() } }]);
+            }
+        };
+        const play = () => {
+            if (!ready || !wantsPlay || locked()) return;
+            send(withSound ? 'unMute' : 'mute');
+            send('playVideo');
+        };
+        const requestPlay = (byClick) => {
+            wantsPlay = true;
+            if (byClick) withSound = true;
+            prepare();
+            play();
+            if (!tracked) { track('v2_video_start', { click: byClick }); tracked = true; }
+        };
+        const listen = () => {
+            if (!iframe || ready) return;
+            iframe.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 'mestti-video', channel: 'widget' }), playerOrigin);
+            ['onReady', 'onStateChange', 'onAutoplayBlocked', 'onApiChange'].forEach(event => send('addEventListener', [event]));
+        };
+        const prepare = () => {
             if (iframe) return;
-            // Tenta sempre com som. Se o navegador não deixar, cai para mudo e mostra "Ligar o som".
-            const params = new URLSearchParams({ autoplay: '1', mute: '0', playsinline: '1', rel: '0', modestbranding: '1', enablejsapi: '1', origin: location.origin });
+            // Pré-carrega o player sem tocar fora da tela; o autoplay visível já começa mudo.
+            const lang = language();
+            const params = new URLSearchParams({ autoplay: '0', mute: '1', playsinline: '1', rel: '0', enablejsapi: '1', origin: location.origin, hl: lang, cc_load_policy: lang === 'pt' ? '0' : '1', cc_lang_pref: lang });
             iframe = document.createElement('iframe');
-            iframe.src = `https://www.youtube-nocookie.com/embed/${frame.dataset.yt}?${params}`;
+            iframe.src = `${playerOrigin}/embed/${frame.dataset.yt}?${params}`;
             iframe.title = frame.querySelector('figcaption').textContent;
             iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
             iframe.allowFullscreen = true;
+            // Invisível até tocar: fora da ordem de foco e da árvore de acessibilidade.
+            iframe.tabIndex = -1;
+            iframe.setAttribute('aria-hidden', 'true');
             iframe.addEventListener('load', () => {
-                iframe.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 'mestti-video', channel: 'widget' }), '*');
-                setTimeout(() => {
-                    if (state === 1 && !muted) return;
+                clearInterval(listening);
+                listened = 0;
+                listen();
+                listening = setInterval(() => { if (ready || ++listened >= 60) clearInterval(listening); else listen(); }, 250);
+            });
+            frame.appendChild(iframe);
+        };
+        window.addEventListener('message', (ev) => {
+            if (!iframe || ev.source !== iframe.contentWindow || ev.origin !== playerOrigin) return;
+            let data;
+            try { data = typeof ev.data === 'string' ? JSON.parse(ev.data) : ev.data; } catch { return; }
+            if (!data || typeof data !== 'object') return;
+            if (!ready && ['onReady', 'initialDelivery'].includes(data.event)) {
+                ready = true;
+                clearInterval(listening);
+                captions();
+                play();
+            }
+            if (data.event === 'onApiChange') captions();
+            const soundRefused = soundAt && performance.now() - soundAt < 2500;
+            if (data.event === 'onAutoplayBlocked' && wantsPlay && !locked()) {
+                if (soundRefused) giveUpSound();
+                else {
+                    withSound = false;
                     send('mute');
                     send('playVideo');
                     showSound(true);
-                }, byClick ? 4000 : 2500);
-            });
-            frame.appendChild(iframe);
-            frame.classList.add('is-playing');
-            playing = true;
-            track('v2_video_start', { click: byClick });
-        };
-        frame.querySelector('[data-yt-play]').addEventListener('click', () => load(true));
-        window.addEventListener('mestti:factory-fullscreen', (event) => {
-            if (event.detail.active && iframe) { send('pauseVideo'); playing = false; }
+                }
+                reveal();
+            }
+            const info = data.info;
+            const state = data.event === 'onStateChange' ? info : info?.playerState;
+            // Pausa logo após pedir som = navegador barrou o som (iOS).
+            if (state === 2 && soundRefused && wantsPlay && !locked()) { soundAt = 0; giveUpSound(); }
+            if (state === 1) {
+                if (!wantsPlay || locked()) send('pauseVideo');
+                else { reveal(); showSound(typeof info?.muted === 'boolean' ? info.muted : !withSound); }
+            }
+            if (state === 1 && typeof info?.muted === 'boolean') showSound(info.muted);
         });
-        sound.addEventListener('click', () => { send('unMute'); send('playVideo'); showSound(false); track('v2_video_sound'); });
-        if (reduceMotion || !('IntersectionObserver' in window)) return;
-        // "Chegou no vídeo" = metade dele visível, ou ele ocupando boa parte de uma tela baixa.
+        frame.querySelector('[data-yt-play]').addEventListener('click', () => requestPlay(true));
+        sound.addEventListener('click', () => { soundAt = performance.now(); requestPlay(true); showSound(false); track('v2_video_sound'); });
+        window.addEventListener('mestti:factory-fullscreen', (event) => {
+            if (event.detail.active) { wantsPlay = false; send('pauseVideo'); }
+        });
+        document.addEventListener('mestti:lang', captions);
+        if (!('IntersectionObserver' in window)) return;
+        const saveData = navigator.connection?.saveData;
+        // Longe da seção só abre as conexões (barato); perto dela cria o player, sem iniciar o vídeo.
+        const warm = new IntersectionObserver(([entry]) => {
+            if (!entry.isIntersecting) return;
+            warm.disconnect();
+            [playerOrigin].forEach((href) => {
+                const link = document.createElement('link');
+                link.rel = 'preconnect';
+                link.href = href;
+                document.head.appendChild(link);
+            });
+        }, { rootMargin: '1200px 0px' });
+        if (!saveData) warm.observe(frame);
+        const preload = new IntersectionObserver(([entry]) => {
+            if (!entry.isIntersecting || locked()) return;
+            prepare();
+            preload.disconnect();
+        }, { rootMargin: saveData ? '0px' : '350px 0px' });
+        preload.observe(frame);
+        if (reduceMotion) return;
         new IntersectionObserver((entries) => {
             entries.forEach((en) => {
-                if (document.documentElement.classList.contains('fx-lock')) return;
+                if (locked()) return;
                 const seen = en.intersectionRatio >= 0.5 || en.intersectionRect.height >= window.innerHeight * 0.6;
-                if (seen && !iframe) load(false);
-                else if (seen && !playing) { send('playVideo'); playing = true; }
-                else if (!en.isIntersecting && playing) { send('pauseVideo'); playing = false; }
+                if (seen) { if (!wantsPlay) requestPlay(false); }
+                else if (!en.isIntersecting) { wantsPlay = false; send('pauseVideo'); }
             });
         }, { threshold: [0, 0.25, 0.5, 0.75] }).observe(frame);
     }

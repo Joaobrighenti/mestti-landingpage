@@ -62,12 +62,24 @@ test('HUD móvel tem interação direta e saída de tela cheia em PT/EN/ES, sem 
     const window = { MESTTI_LANG: 'pt', matchMedia: q => ({ matches: q.includes('coarse') }) };
     const source = fs.readFileSync('js/fabrica-sim.js', 'utf8').replace(/^import .*;\n/gm, '').replace('if (root) init();', '');
     const context = vm.createContext({ document, window }); vm.runInContext(source, context);
-    for (const [language, expected] of [['pt', 'Arraste para girar · pinça para aproximar'], ['en', 'Drag to rotate · pinch to zoom'], ['es', 'Arrastre para girar · pellizque para acercar']]) {
+    const hints = { pt: ['Arraste para o lado para girar · pinça para aproximar', 'Arraste para girar · pinça para aproximar'], en: ['Drag sideways to rotate · pinch to zoom', 'Drag to rotate · pinch to zoom'], es: ['Arrastre hacia el lado para girar · pellizque para acercar', 'Arrastre para girar · pellizque para acercar'] };
+    for (const [language, [page, full]] of Object.entries(hints)) {
         window.MESTTI_LANG = language; vm.runInContext('renderHud()', context);
-        assert.ok(hud.innerHTML.includes(expected)); assert.ok(!hud.innerHTML.includes('[object Object]'));
+        // Na página a rolagem vertical é do site: a dica fala em arrastar para o lado.
+        assert.ok(hud.innerHTML.includes(page)); assert.ok(!hud.innerHTML.includes('[object Object]'));
         assert.ok(!hud.innerHTML.includes('data-fx-explore')); assert.ok(!hud.innerHTML.includes('fx-explore'));
         vm.runInContext('view.full = true; renderHud()', context);
-        assert.ok(hud.innerHTML.includes('data-fx-exit-full'));
+        assert.ok(!hud.innerHTML.includes('data-fx-exit-full'));
+        assert.match(hud.innerHTML, /data-fx-full aria-pressed="true"/);
+        assert.ok(hud.innerHTML.includes(full));
         vm.runInContext('view.full = false', context);
     }
+});
+
+test('fora da tela cheia o 3D deixa a rolagem vertical com a página; na tela cheia captura todos os gestos', () => {
+    const css = fs.readFileSync('css/factory-sim.css', 'utf8');
+    assert.match(css, /\.fx-canvas \{[^}]*touch-action: pan-y/);
+    assert.match(css, /\.fx-scene \{ touch-action: pan-y; \}/);
+    assert.match(css, /\.fx\.fx--full \.fx-scene, \.fx\.fx--full \.fx-canvas \{ touch-action: none; \}/);
+    assert.doesNotMatch(css.replace(/\.fx\.fx--full[^{]*\{[^}]*\}/g, ''), /\.fx-(scene|canvas)[^{]*\{[^}]*touch-action: none/);
 });
