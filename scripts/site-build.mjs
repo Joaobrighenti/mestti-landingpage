@@ -17,6 +17,7 @@ import {
     startTags, closingIndex, blockAt, modalBlock, pagePath, headerFor, pageDictFile, chromeBlock, unescapeAttr
 } from './site-lib.mjs';
 import { buildBlog, TOPICS } from './blog-build.mjs';
+import { buildVercelConfig } from './vercel-routes.mjs';
 import { legacyTranslator, localizePage, textMap, hreflangLinks, langLinks, localUrl, LOCALES, ORIGIN as I18N_ORIGIN } from './site-i18n.mjs';
 
 const LANGS_MARK = '<!-- @langs -->';
@@ -283,6 +284,7 @@ export function buildAll() {
         files.set('js/i18n.js', i18n.slice(0, a) + chromeBlock(chrome) + i18n.slice(b + CHROME_END.length));
     }
     files.set('css/site.css', bundleCss());
+    files.set('vercel.json', buildVercelConfig());
     const sources = listFiles(path.join(SITE, 'pages'), (n) => n.endsWith('.html'));
     const built = [];
     for (const rel of sources) {

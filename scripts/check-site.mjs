@@ -1,6 +1,7 @@
 // Validação offline do HTML que será entregue; não substitui Search Console ou QA no navegador.
 import fs from 'node:fs';
 import path from 'node:path';
+import { compileRoutes } from './vercel-routes.mjs';
 
 const root = path.resolve(process.argv[2] || '.');
 const origin = 'https://mestti.com.br';
@@ -128,7 +129,12 @@ for (const [url, page] of pages) {
 for (const url of listed) if (!pages.has(url.replace(origin, ''))) fail('sitemap', `URL sem página: ${url}`);
 const robots = fs.readFileSync(path.join(root, 'robots.txt'), 'utf8');
 if (!robots.includes(`Sitemap: ${origin}/sitemap.xml`) || /Disallow:\s*\/\s*$/m.test(robots)) fail('robots.txt', 'sitemap ausente ou bloqueio geral');
-const config = JSON.parse(fs.readFileSync(new URL('../vercel.json', import.meta.url), 'utf8'));
+const config = JSON.parse(fs.readFileSync(new URL('../site/routing.json', import.meta.url), 'utf8'));
+const deployedConfig = JSON.parse(fs.readFileSync(new URL('../vercel.json', import.meta.url), 'utf8'));
+if (JSON.stringify(deployedConfig.routes) !== JSON.stringify(compileRoutes(config)) ||
+    ['headers', 'redirects', 'rewrites'].some(key => key in deployedConfig)) {
+  fail('vercel.json', 'roteamento desatualizado: rode npm run site:build');
+}
 const redirectSources = new Set();
 for (const rule of config.redirects) {
   if (redirectSources.has(rule.source) || rule.source === rule.destination || !pages.has(rule.destination)) fail('redirects', `regra inválida: ${rule.source}`);
