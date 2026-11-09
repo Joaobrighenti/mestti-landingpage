@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-21",
+  "input": "HTML code, explicitly authorized by owner",
+  "file": "blog/como-escolher-sistema-monitoramento-producao/index.html",
+  "sha256": "2e1f690a72eb3f7496792a9d123e5eddc9e528bf924fa3661b8e54a1a4b5a51f",
+  "resultUrl": "https://search.google.com/test/rich-results/result?id=p8kESHqmdcf7OUaflJaLMQ",
+  "validItems": [
+    "Article",
+    "BreadcrumbList"
+  ],
+  "criticalErrors": 0,
+  "displayedNonCriticalWarnings": 0,
+  "scope": "Code validation only; not crawlability, deployment or indexation"
+}

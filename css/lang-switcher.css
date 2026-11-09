@@ -1,60 +1,34 @@
-/* Seletor de idioma — bandeiras no header */
-
-.lang-switcher {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    padding: 0.2rem;
-    border-radius: 999px;
-    border: 1px solid var(--gray-200);
-    background: var(--white);
+/* Seletor de idioma: botão com bandeira + idioma atual; o clique abre a lista com os nomes por extenso. */
+.lang-switcher { position: relative; display: inline-flex; color: inherit; }
+.lang-current {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 10px; border: 0; border-radius: 8px;
+    background: transparent; color: inherit; cursor: pointer; font: 500 0.875rem/1 'IBM Plex Sans', system-ui, sans-serif;
+    transition: background-color 0.16s ease;
 }
-
-.lang-switcher--mobile {
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 0.75rem;
+.lang-current:hover, .lang-current[aria-expanded="true"] { background: rgba(127, 127, 127, 0.14); }
+.lang-current:focus-visible { outline: 2px solid currentColor; outline-offset: 1px; }
+.lang-current svg:last-child { opacity: 0.7; transition: transform 0.16s ease; }
+.lang-current[aria-expanded="true"] svg:last-child { transform: rotate(180deg); }
+.lang-menu {
+    position: absolute; top: calc(100% + 6px); right: 0; z-index: 1200; min-width: 168px; margin: 0; padding: 6px; list-style: none;
+    border-radius: 12px; background: #ffffff; color: #111820; box-shadow: 0 12px 32px rgba(10, 27, 46, 0.18), 0 0 0 1px rgba(10, 27, 46, 0.06);
 }
-
 .lang-switcher-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    padding: 0;
-    border: 2px solid transparent;
-    border-radius: 50%;
-    background: transparent;
-    cursor: pointer;
-    font-size: 1.15rem;
-    line-height: 1;
-    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 40px; padding: 0 12px;
+    border: 0; border-radius: 8px; background: transparent; color: inherit; cursor: pointer; text-align: left;
+    font: 500 0.9rem/1 'IBM Plex Sans', system-ui, sans-serif;
 }
-
-.lang-switcher-btn:hover {
-    transform: scale(1.06);
-    border-color: var(--gray-300);
-}
-
-.lang-switcher-btn.is-active {
-    border-color: var(--primary-blue);
-    box-shadow: 0 0 0 2px rgba(2, 69, 120, 0.15);
-}
-
-.lang-switcher-btn:focus-visible {
-    outline: 2px solid var(--primary-blue);
-    outline-offset: 2px;
-}
-
-.lang-switcher-flag {
-    display: block;
-    font-size: 1.1rem;
-    line-height: 1;
-}
-
+.lang-switcher-btn:hover, .lang-switcher-btn:focus-visible { background: #f1f4f7; outline: none; }
+.lang-flag { font-size: 1.15rem; line-height: 1; font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif; }
+.lang-switcher-btn { justify-content: flex-start; }
+.lang-name { flex: 1; }
+.lang-check { visibility: hidden; color: #1f8a4c; }
+.lang-switcher-btn.is-active { font-weight: 600; }
+.lang-switcher-btn.is-active .lang-check { visibility: visible; }
+.lang-switcher--mobile { margin-bottom: 0.75rem; }
+.lang-switcher--mobile .lang-current { min-height: 44px; padding: 0 12px; border: 1px solid rgba(127, 127, 127, 0.3); }
+.lang-switcher--mobile .lang-menu { top: auto; bottom: calc(100% + 6px); left: 0; right: auto; }
+.lang-switcher--mobile .lang-switcher-btn { min-height: 44px; }
 @media (max-width: 900px) {
-    .header-tractian-actions .lang-switcher {
-        display: none;
-    }
+    .header-tractian-actions .lang-switcher { display: none; }
 }

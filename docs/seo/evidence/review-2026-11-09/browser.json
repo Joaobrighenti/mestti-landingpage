@@ -1,0 +1,1043 @@
+{
+  "date": "2026-11-09",
+  "note": "Chromium headless; terceiros de analytics, Meta e YouTube bloqueados; comparação CSS public versus fonte; sem envio de formulários.",
+  "results": [
+    {
+      "url": "/",
+      "width": 1440,
+      "title": "Mestti | Sistema de gestão da produção com sensores e IA",
+      "lang": "pt-BR",
+      "h1": [
+        "A nova geração de inteligência operacional para indústrias em crescimento"
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://mestti.com.br/#webpage",
+              "url": "https://mestti.com.br/",
+              "name": "Mestti | Sistema de gestão da produção com sensores e IA",
+              "description": "Sensores próprios medem cada máquina e mostram onde a produção para e quando cada pedido fica pronto. O Otto, agente de IA, propõe a próxima ação.",
+              "inLanguage": "pt-BR",
+              "isPartOf": {
+                "@id": "https://mestti.com.br/#website"
+              },
+              "about": {
+                "@id": "https://mestti.com.br/#organization"
+              },
+              "video": {
+                "@id": "https://mestti.com.br/#video"
+              }
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://mestti.com.br/#organization",
+              "name": "MESTTI",
+              "alternateName": "Mestti",
+              "url": "https://mestti.com.br/",
+              "telephone": "+55 43 99109-5035",
+              "legalName": "Mestti Tecnologia LTDA",
+              "taxID": "63.380.944/0001-51",
+              "logo": "https://mestti.com.br/images/MESTTI-logo-header-light.png",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+55 43 99109-5035",
+                "contactType": "sales",
+                "url": "https://mestti.com.br/contato/",
+                "availableLanguage": [
+                  "Portuguese",
+                  "English",
+                  "Spanish"
+                ]
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/mestti/",
+                "https://www.instagram.com/mesttibrasil/",
+                "https://www.youtube.com/@mesttitech"
+              ],
+              "award": "Selecionada na 3ª Chamada Pública do Lab Procel II (ENBPar e SENAI Rio de Janeiro), 2026",
+              "description": "A Mestti é uma plataforma brasileira de gestão da produção para indústrias de todos os portes que conecta engenharia de produto, chão de fábrica e qualidade, com sensores próprios, app e agentes de inteligência artificial.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Londrina",
+                "addressRegion": "PR",
+                "addressCountry": "BR"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+              },
+              "knowsAbout": [
+                "Sistema MES",
+                "OEE",
+                "PCP",
+                "Sequenciamento da produção",
+                "Apontamento de produção",
+                "Monitoramento de máquinas industriais",
+                "Sensores industriais",
+                "Controle de qualidade industrial",
+                "Indústria 4.0"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://mestti.com.br/#website",
+              "url": "https://mestti.com.br/",
+              "name": "MESTTI",
+              "inLanguage": "pt-BR",
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              }
+            },
+            {
+              "@type": "SoftwareApplication",
+              "@id": "https://mestti.com.br/#software",
+              "name": "Mestti",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web, Android",
+              "inLanguage": [
+                "pt-BR",
+                "en",
+                "es"
+              ],
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              },
+              "description": "Sistema de gestão da produção com engenharia de produto, PCP e sequenciamento, monitoramento de máquinas por sensores próprios, apontamento por tablet, qualidade e o assistente de IA Otto.",
+              "offers": {
+                "@type": "Offer",
+                "description": "1 semana de demonstração grátis, com sensores prontos em até 7 dias e instalação em 1 dia."
+              }
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://mestti.com.br/#faq",
+              "inLanguage": "pt-BR",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Quanto custa?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Depende do número de máquinas e do que você vai usar. A semana de teste é grátis e o sensor é emprestado. No fim, você recebe a proposta com os seus números. Se não quiser seguir, retiramos os sensores, sem custo e sem fidelidade."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "O que é a Mestti?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Um sistema brasileiro de gestão da produção para indústrias de todos os portes. Sensores próprios medem cada máquina, e engenharia, planejamento, fábrica e qualidade usam os mesmos dados."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Quanto tempo leva para começar?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sensores prontos em até 7 dias, instalação em 1 dia e 1 semana de teste grátis antes de decidir."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Meus operadores vão se sentir vigiados?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Não. O sensor conta peças e vê se a máquina está rodando ou parada. Ele não vigia pessoas. Quem estava na máquina informa o motivo da parada, e isso fica no nome dele."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Já tenho ERP. Preciso trocar?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Não. A Mestti se conecta ao seu ERP: as ordens vêm dele e a produção volta para ele. O ERP segue com pedidos, compras e faturamento."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Funciona em máquinas antigas?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sim. O sensor lê a contagem ou o sinal elétrico da máquina. Não precisa de CLP e não mexe no comando."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Dá para usar sem sensor?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sim. Em bancada, montagem ou máquina sem sensor, o operador aponta no tablet: inicia, pausa, finaliza e lança a quantidade. Os dados entram na mesma meta, no mesmo OEE e na mesma fila das máquinas com sensor."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "E se a internet da fábrica cair?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "O sensor guarda tudo e envia quando a conexão volta. Nada se perde."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Meus dados ficam seguros?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Os dados de cada empresa ficam isolados e o acesso é por permissão. O registro original não pode ser alterado. O Otto só faz algo depois que uma pessoa aprova."
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "VideoObject",
+              "@id": "https://mestti.com.br/#video",
+              "name": "Quanto sua fábrica produziu hoje? Sistema MES de monitoramento em tempo real",
+              "description": "Em menos de 1 minuto, a Mestti numa fábrica: cada máquina na tela, ao vivo, com o que está rodando, o que parou e por quê.",
+              "thumbnailUrl": "https://mestti.com.br/images/v2/video-mestti.webp",
+              "uploadDate": "2026-10-22T08:11:36-07:00",
+              "duration": "PT57S",
+              "embedUrl": "https://www.youtube-nocookie.com/embed/v9ebdO-P66E",
+              "contentUrl": "https://www.youtube.com/watch?v=v9ebdO-P66E",
+              "inLanguage": "pt-BR",
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              }
+            }
+          ]
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/url-inexistente-review/",
+      "width": 1440,
+      "title": "Página não encontrada | Mestti",
+      "lang": "pt-BR",
+      "h1": [
+        "Esta página parou."
+      ],
+      "overflow": false,
+      "schemas": [],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "countBefore": "Máquinas paradas: 188",
+      "countAfter": "Máquinas paradas: 178",
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/url-inexistente-review/",
+      "width": 390,
+      "title": "Página não encontrada | Mestti",
+      "lang": "pt-BR",
+      "h1": [
+        "Esta página parou."
+      ],
+      "overflow": false,
+      "schemas": [],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "countBefore": "Máquinas paradas: 47",
+      "countAfter": "Máquinas paradas: 38",
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/oee/",
+      "width": 390,
+      "title": "OEE: o que é, como calcular e acompanhar ao vivo | Mestti",
+      "lang": "pt-BR",
+      "h1": [
+        "OEE: o que é, como calcular e como acompanhar ao vivo"
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://mestti.com.br/oee/#webpage",
+              "url": "https://mestti.com.br/oee/",
+              "name": "OEE: o que é, como calcular e acompanhar ao vivo | Mestti",
+              "description": "OEE = disponibilidade × performance × qualidade. Fórmula, calculadora, erros que distorcem o número e como medir por máquina, ao vivo.",
+              "inLanguage": "pt-BR",
+              "isPartOf": {
+                "@id": "https://mestti.com.br/#website"
+              },
+              "about": {
+                "@id": "https://mestti.com.br/oee/#oee"
+              },
+              "breadcrumb": {
+                "@id": "https://mestti.com.br/oee/#breadcrumb"
+              },
+              "primaryImageOfPage": "https://mestti.com.br/images/v2/monitoramento-cards.webp"
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://mestti.com.br/oee/#oee",
+              "name": "OEE (Overall Equipment Effectiveness)",
+              "alternateName": [
+                "Eficiência Global do Equipamento",
+                "Eficiência Geral do Equipamento"
+              ],
+              "description": "Indicador que mostra quanto do tempo planejado de uma máquina virou peça boa: disponibilidade × performance × qualidade.",
+              "inDefinedTermSet": "https://mestti.com.br/glossario/"
+            },
+            {
+              "@type": "Article",
+              "@id": "https://mestti.com.br/oee/#article",
+              "headline": "OEE: o que é, como calcular e como acompanhar ao vivo",
+              "description": "OEE = disponibilidade × performance × qualidade. Fórmula, calculadora, erros que distorcem o número e como medir por máquina, ao vivo.",
+              "inLanguage": "pt-BR",
+              "mainEntityOfPage": {
+                "@id": "https://mestti.com.br/oee/#webpage"
+              },
+              "datePublished": "2026-09-22",
+              "dateModified": "2026-10-29",
+              "image": "https://mestti.com.br/images/v2/monitoramento-cards.webp",
+              "author": {
+                "@type": "Person",
+                "@id": "https://mestti.com.br/empresa/#joao-brighenti",
+                "name": "João Brighenti",
+                "jobTitle": "Fundador",
+                "url": "https://mestti.com.br/empresa/",
+                "sameAs": [
+                  "https://www.linkedin.com/in/jo%C3%A3o-gabriel-brighenti/"
+                ],
+                "worksFor": {
+                  "@id": "https://mestti.com.br/#organization"
+                }
+              },
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://mestti.com.br/oee/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Início",
+                  "item": "https://mestti.com.br/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "OEE",
+                  "item": "https://mestti.com.br/oee/"
+                }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://mestti.com.br/oee/#faq",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Qual é um bom OEE?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Não existe um número único. O valor de 85% é muito citado como referência de classe mundial, mas o OEE varia com o tipo de processo. O mais útil é comparar a mesma máquina ao longo do tempo e descobrir em qual fator ela perde mais."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Qual a diferença entre OEE e produtividade?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Produtividade costuma olhar quanto saiu. O OEE compara o que saiu com o que a máquina poderia ter feito no tempo planejado e separa a perda em tempo parado, ritmo e qualidade."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Microparada entra no OEE?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Entra. Paradas curtas reduzem o tempo rodando ou o ritmo, dependendo de como a fábrica as classifica. Sem registro automático, elas costumam sumir do apontamento manual."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Preciso de sensor para medir OEE?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Dá para calcular com apontamento manual, mas os horários de parada e a contagem ficam menos confiáveis. Com sensor, a contagem e o tempo parado são registrados sozinhos e o operador só informa o motivo."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Dá para medir OEE em máquinas antigas?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sim, na maioria dos casos. O sensor da Mestti lê pulsos de contagem ou o sinal elétrico da máquina, sem precisar de CLP e sem mexer no comando."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "O OEE serve para a fábrica toda ou para cada máquina?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Para as duas coisas, mas o OEE por máquina é o que mostra onde agir. A média da fábrica esconde a máquina que mais perde."
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://mestti.com.br/#organization",
+              "name": "MESTTI",
+              "url": "https://mestti.com.br/"
+            }
+          ]
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/en/oee/",
+      "width": 1440,
+      "title": "OEE: what it is, how to calculate it and track it live | Mestti",
+      "lang": "en",
+      "h1": [
+        "OEE: what it is, how to calculate it and how to track it live"
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://mestti.com.br/en/oee/#webpage",
+              "url": "https://mestti.com.br/en/oee/",
+              "name": "OEE: what it is, how to calculate it and track it live | Mestti",
+              "description": "OEE = availability × performance × quality. The formula, a calculator, mistakes that distort the number and how to measure it per machine, live.",
+              "inLanguage": "en",
+              "isPartOf": {
+                "@id": "https://mestti.com.br/#website"
+              },
+              "about": {
+                "@id": "https://mestti.com.br/en/oee/#oee"
+              },
+              "breadcrumb": {
+                "@id": "https://mestti.com.br/en/oee/#breadcrumb"
+              },
+              "primaryImageOfPage": "https://mestti.com.br/images/v2/monitoramento-cards.webp"
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://mestti.com.br/en/oee/#oee",
+              "name": "OEE (Overall Equipment Effectiveness)",
+              "alternateName": [
+                "Eficiência Global do Equipamento",
+                "Eficiência Geral do Equipamento"
+              ],
+              "description": "Indicador que mostra quanto do tempo planejado de uma máquina virou peça boa: disponibilidade × performance × qualidade.",
+              "inDefinedTermSet": "https://mestti.com.br/en/glossario/"
+            },
+            {
+              "@type": "Article",
+              "@id": "https://mestti.com.br/en/oee/#article",
+              "headline": "OEE: what it is, how to calculate it and how to track it live",
+              "description": "OEE = availability × performance × quality. The formula, a calculator, mistakes that distort the number and how to measure it per machine, live.",
+              "inLanguage": "en",
+              "mainEntityOfPage": {
+                "@id": "https://mestti.com.br/en/oee/#webpage"
+              },
+              "datePublished": "2026-09-22",
+              "dateModified": "2026-10-29",
+              "image": "https://mestti.com.br/images/v2/monitoramento-cards.webp",
+              "author": {
+                "@type": "Person",
+                "@id": "https://mestti.com.br/en/empresa/#joao-brighenti",
+                "name": "João Brighenti",
+                "jobTitle": "Fundador",
+                "url": "https://mestti.com.br/en/empresa/",
+                "sameAs": [
+                  "https://www.linkedin.com/in/jo%C3%A3o-gabriel-brighenti/"
+                ],
+                "worksFor": {
+                  "@id": "https://mestti.com.br/#organization"
+                }
+              },
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://mestti.com.br/en/oee/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://mestti.com.br/en/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "OEE",
+                  "item": "https://mestti.com.br/en/oee/"
+                }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://mestti.com.br/en/oee/#faq",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What is a good OEE?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "There is no single number. 85% is often cited as a world-class reference, but OEE varies with the type of process. The most useful thing is to compare the same machine over time and find the factor where it loses the most."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What is the difference between OEE and productivity?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Productivity usually looks at how much came out. OEE compares that with what the machine could have made in the planned time and splits the loss into stopped time, pace and quality."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do micro-stops count in OEE?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Short stops reduce run time or pace, depending on how the factory classifies them. Without automatic recording, they tend to disappear from manual reports."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do I need a sensor to measure OEE?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can calculate it from manual reports, but stop times and counts become less reliable. With a sensor, the count and stopped time are recorded automatically and the operator only gives the reason."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can OEE be measured on old machines?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, in most cases. The Mestti sensor reads count pulses or the machine’s electrical signal, with no PLC and no changes to the controls."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is OEE for the whole factory or for each machine?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Both, but OEE per machine is what shows where to act. The factory average hides the machine that loses the most."
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://mestti.com.br/#organization",
+              "name": "MESTTI",
+              "url": "https://mestti.com.br/en/"
+            }
+          ]
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/es/pcp/",
+      "width": 390,
+      "title": "PCP y PPCP: qué es la planificación de la producción | Mestti",
+      "lang": "es",
+      "h1": [
+        "PCP y PPCP: qué es la planificación y control de la producción"
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://mestti.com.br/es/pcp/#webpage",
+              "url": "https://mestti.com.br/es/pcp/",
+              "name": "PCP y PPCP: qué es la planificación de la producción | Mestti",
+              "description": "El PCP es planificar, programar y controlar la producción. Las etapas, la diferencia con PPCP y cómo programar cada máquina por capacidad real.",
+              "inLanguage": "es",
+              "isPartOf": {
+                "@id": "https://mestti.com.br/#website"
+              },
+              "breadcrumb": {
+                "@id": "https://mestti.com.br/es/pcp/#breadcrumb"
+              }
+            },
+            {
+              "@type": "Article",
+              "@id": "https://mestti.com.br/es/pcp/#article",
+              "headline": "PCP y PPCP: qué es la planificación y control de la producción",
+              "description": "El PCP es planificar, programar y controlar la producción. Las etapas, la diferencia con PPCP y cómo programar cada máquina por capacidad real.",
+              "inLanguage": "es",
+              "mainEntityOfPage": {
+                "@id": "https://mestti.com.br/es/pcp/#webpage"
+              },
+              "datePublished": "2026-10-29",
+              "dateModified": "2026-10-29",
+              "author": {
+                "@type": "Person",
+                "@id": "https://mestti.com.br/es/empresa/#joao-brighenti",
+                "name": "João Brighenti",
+                "jobTitle": "Fundador",
+                "url": "https://mestti.com.br/es/empresa/",
+                "sameAs": [
+                  "https://www.linkedin.com/in/jo%C3%A3o-gabriel-brighenti/"
+                ],
+                "worksFor": {
+                  "@id": "https://mestti.com.br/#organization"
+                }
+              },
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              },
+              "about": [
+                {
+                  "@type": "Thing",
+                  "name": "Planejamento e controle da produção"
+                }
+              ],
+              "image": "https://mestti.com.br/images/v2/sequenciamento.webp"
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://mestti.com.br/es/pcp/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Inicio",
+                  "item": "https://mestti.com.br/es/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "PCP y PPCP",
+                  "item": "https://mestti.com.br/es/pcp/"
+                }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://mestti.com.br/es/pcp/#faq",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "¿PCP y PPCP son lo mismo?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "En la práctica, sí. PPCP solo deja la programación explícita en el nombre. Las dos siglas describen planificar, programar y controlar la producción."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "¿Cuál es la diferencia entre PCP y MES?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El PCP es el área y el trabajo de planificar y controlar. El MES es el sistema que da al PCP los datos de la ejecución: lo que cada máquina produjo, paró y va a atrasar."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "¿Mestti reemplaza al PCP?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Da al PCP la cola real de cada máquina y el avance de cada orden. Las decisiones siguen con el equipo."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "¿Las órdenes pueden venir del ERP?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí. Las órdenes de producción pueden venir del ERP y la producción registrada vuelve a él."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "¿Tengo que dejar la planilla el primer día?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Lo normal es empezar por un sector y usar los dos juntos hasta que el equipo confíe en los números."
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://mestti.com.br/#organization",
+              "name": "MESTTI",
+              "url": "https://mestti.com.br/es/"
+            }
+          ]
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/privacidade/",
+      "width": 390,
+      "title": "Política de Privacidade do aplicativo MESTTI",
+      "lang": "pt-BR",
+      "h1": [
+        "Política de Privacidade"
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Política de Privacidade do aplicativo MESTTI",
+          "url": "https://mestti.com.br/privacidade/",
+          "inLanguage": "pt-BR"
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/qualidade/",
+      "width": 1440,
+      "title": "Qualidade industrial: checklists e inspeções com foto | Mestti",
+      "lang": "pt-BR",
+      "h1": [
+        "Prove o que foi inspecionado, por quem e quando."
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://mestti.com.br/qualidade/#webpage",
+              "url": "https://mestti.com.br/qualidade/",
+              "name": "Qualidade industrial: checklists e inspeções com foto | Mestti",
+              "description": "Inspeções disparadas por regra, feitas no celular com foto e ligadas à máquina, à ordem e à revisão do documento. Refugo e retrabalho entram no OEE.",
+              "inLanguage": "pt-BR",
+              "isPartOf": {
+                "@id": "https://mestti.com.br/#website"
+              },
+              "about": {
+                "@id": "https://mestti.com.br/#organization"
+              }
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://mestti.com.br/#organization",
+              "name": "MESTTI",
+              "alternateName": "Mestti",
+              "url": "https://mestti.com.br/",
+              "telephone": "+55 43 99109-5035",
+              "legalName": "Mestti Tecnologia LTDA",
+              "taxID": "63.380.944/0001-51",
+              "logo": "https://mestti.com.br/images/MESTTI-logo-header-light.png",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+55 43 99109-5035",
+                "contactType": "sales",
+                "url": "https://mestti.com.br/contato/",
+                "availableLanguage": [
+                  "Portuguese",
+                  "English",
+                  "Spanish"
+                ]
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/mestti/",
+                "https://www.instagram.com/mesttibrasil/",
+                "https://www.youtube.com/@mesttitech"
+              ],
+              "award": "Selecionada na 3ª Chamada Pública do Lab Procel II (ENBPar e SENAI Rio de Janeiro), 2026",
+              "description": "A Mestti é uma plataforma brasileira de gestão da produção para indústrias de todos os portes que conecta engenharia de produto, chão de fábrica e qualidade, com sensores próprios, app e agentes de inteligência artificial."
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://mestti.com.br/#website",
+              "url": "https://mestti.com.br/",
+              "name": "MESTTI",
+              "inLanguage": "pt-BR",
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Início",
+                  "item": "https://mestti.com.br/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Qualidade",
+                  "item": "https://mestti.com.br/qualidade/"
+                }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://mestti.com.br/qualidade/#faq",
+              "inLanguage": "pt-BR",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Consigo usar os checklists que já tenho em papel?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sim. Os itens são cadastrados uma vez, com o mesmo número e data de revisão do documento físico, para o histórico bater com o seu controle de documentos."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Funciona no celular do inspetor?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sim. O app da Mestti roda no celular e no tablet, com foto pela câmera ou pela galeria e indicação do que falta preencher."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Quem decide quando a inspeção acontece?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Uma regra cadastrada pela qualidade: por setor ou máquina, em dias e horários definidos. A inspeção aparece no planejamento e no app de quem vai executar."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "A qualidade conversa com a produção?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sim. A inspeção fica ligada à máquina e à ordem, e o refugo e o retrabalho registrados como não conformidade entram no OEE da máquina."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/blog/mtbf-e-mttr/",
+      "width": 390,
+      "title": "MTBF e MTTR: o que são, como calcular e para que servem | Mestti",
+      "lang": "pt-BR",
+      "h1": [
+        "MTBF e MTTR: o que são, como calcular e para que servem"
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://mestti.com.br/blog/mtbf-e-mttr/#webpage",
+              "url": "https://mestti.com.br/blog/mtbf-e-mttr/",
+              "name": "MTBF e MTTR: o que são, como calcular e para que servem",
+              "description": "MTBF é o tempo médio entre falhas; MTTR, o tempo médio de reparo. Fórmulas, um exemplo calculado e a relação com a disponibilidade da máquina.",
+              "inLanguage": "pt-BR",
+              "isPartOf": {
+                "@id": "https://mestti.com.br/#website"
+              },
+              "breadcrumb": {
+                "@id": "https://mestti.com.br/blog/mtbf-e-mttr/#breadcrumb"
+              }
+            },
+            {
+              "@type": "BlogPosting",
+              "@id": "https://mestti.com.br/blog/mtbf-e-mttr/#article",
+              "headline": "MTBF e MTTR: o que são, como calcular e para que servem",
+              "description": "MTBF é o tempo médio entre falhas; MTTR, o tempo médio de reparo. Fórmulas, um exemplo calculado e a relação com a disponibilidade da máquina.",
+              "inLanguage": "pt-BR",
+              "mainEntityOfPage": {
+                "@id": "https://mestti.com.br/blog/mtbf-e-mttr/#webpage"
+              },
+              "datePublished": "2026-10-29",
+              "dateModified": "2026-10-29",
+              "author": {
+                "@type": "Person",
+                "@id": "https://mestti.com.br/empresa/#leonardo-ernica",
+                "name": "Leonardo Ernica",
+                "jobTitle": "Cofundador",
+                "url": "https://www.linkedin.com/in/leonardo-ernica-almeida-de-cerqueira-c%C3%A9sar-558a8a1b5/",
+                "sameAs": [
+                  "https://www.linkedin.com/in/leonardo-ernica-almeida-de-cerqueira-c%C3%A9sar-558a8a1b5/"
+                ],
+                "worksFor": {
+                  "@id": "https://mestti.com.br/#organization"
+                }
+              },
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              },
+              "image": "https://mestti.com.br/images/v2/monitoramento-cards.webp",
+              "about": {
+                "@type": "Thing",
+                "name": "Monitoramento de máquinas"
+              },
+              "isPartOf": {
+                "@id": "https://mestti.com.br/blog/#blog"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://mestti.com.br/blog/mtbf-e-mttr/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Início",
+                  "item": "https://mestti.com.br/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://mestti.com.br/blog/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "MTBF e MTTR: o que são, como calcular e para que servem",
+                  "item": "https://mestti.com.br/blog/mtbf-e-mttr/"
+                }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://mestti.com.br/blog/mtbf-e-mttr/#faq",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Qual a diferença entre MTBF e MTTR?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "O MTBF mede a frequência das falhas (quanto tempo a máquina roda entre uma falha e outra). O MTTR mede a duração do reparo (quanto tempo leva para voltar). Um olha a confiabilidade; o outro, a velocidade da manutenção."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Setup entra no cálculo de MTBF?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Não. MTBF e MTTR consideram falhas. Setup, falta de material e paradas planejadas ficam de fora, ou o indicador deixa de medir a confiabilidade da máquina."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Como MTBF e MTTR se relacionam com a disponibilidade?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Uma forma comum de estimar a disponibilidade por falhas é MTBF ÷ (MTBF + MTTR). Quanto mais tempo entre falhas e mais rápido o reparo, maior a disponibilidade."
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://mestti.com.br/#organization",
+              "name": "MESTTI",
+              "url": "https://mestti.com.br/"
+            }
+          ]
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    }
+  ],
+  "status": [
+    {
+      "url": "/url-inexistente-review/",
+      "status": 404,
+      "location": null,
+      "robots": null
+    },
+    {
+      "url": "/en/url-inexistente/",
+      "status": 404,
+      "location": null,
+      "robots": null
+    },
+    {
+      "url": "/privacidade/",
+      "status": 200,
+      "location": null,
+      "robots": null
+    },
+    {
+      "url": "/privacidade",
+      "status": 301,
+      "location": "/privacidade/",
+      "robots": null
+    },
+    {
+      "url": "/oee/",
+      "status": 200,
+      "location": null,
+      "robots": null
+    },
+    {
+      "url": "/index.md",
+      "status": 200,
+      "location": null,
+      "robots": "noindex"
+    },
+    {
+      "url": "/robots.txt",
+      "status": 200,
+      "location": null,
+      "robots": null
+    }
+  ]
+}

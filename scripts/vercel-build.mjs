@@ -5,12 +5,19 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { buildCorpus, purgeCss } from "./css-purge.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
 const outDir = path.join(root, "public");
 
 const SKIP = new Set([
+  "README.md",
+  "AGENTS.md",
+  "CLAUDE.md",
+  "PRODUCT.md",
+  "DESIGN.md",
+  ".env.example",
   "node_modules",
   ".git",
   "public",
@@ -18,8 +25,10 @@ const SKIP = new Set([
   "api",
   "lib",
   "scripts",
+  "site",
   "tests",
   "docs",
+  "content",
   "server.js",
   "package.json",
   "package-lock.json",
@@ -30,7 +39,7 @@ const SKIP = new Set([
 /** Itens na raiz que não entram no deploy estático */
 function skipRootOnly(name) {
   if (SKIP.has(name)) return true;
-  if (name.startsWith(".env") && name !== ".env.example") return true;
+  if (name.startsWith(".")) return true;
   return false;
 }
 
@@ -59,3 +68,23 @@ for (const name of fs.readdirSync(root)) {
 }
 
 console.log("Vercel build: static files copied to public/");
+
+// CSS no ar: só as regras que alguma página usa, minificado (os arquivos do repositório não mudam).
+const corpus = buildCorpus(root);
+let before = 0;
+let after = 0;
+const purgeDir = (dir) => {
+  for (const name of fs.readdirSync(dir)) {
+    const p = path.join(dir, name);
+    if (fs.statSync(p).isDirectory()) purgeDir(p);
+    else if (name.endsWith(".css")) {
+      const css = fs.readFileSync(p, "utf8");
+      const out = purgeCss(css, corpus);
+      before += css.length;
+      after += out.length;
+      fs.writeFileSync(p, out);
+    }
+  }
+};
+purgeDir(outDir);
+console.log(`Vercel build: CSS ${Math.round(before / 1024)} KB -> ${Math.round(after / 1024)} KB`);

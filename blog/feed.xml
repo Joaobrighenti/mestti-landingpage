@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pt-BR">
+  <title>Blog da Mestti</title>
+  <subtitle>Guias práticos de produção industrial: OEE, PCP, sequenciamento, apontamento, paradas e qualidade.</subtitle>
+  <link href="https://mestti.com.br/blog/"/>
+  <link rel="self" href="https://mestti.com.br/blog/feed.xml"/>
+  <id>https://mestti.com.br/blog/</id>
+  <updated>2026-10-29T00:00:00-03:00</updated>
+  <entry>
+    <title>Como controlar refugo e retrabalho por máquina</title>
+    <link href="https://mestti.com.br/blog/refugo-e-retrabalho-por-maquina/"/>
+    <id>https://mestti.com.br/blog/refugo-e-retrabalho-por-maquina/</id>
+    <published>2026-10-29T00:00:00-03:00</published>
+    <updated>2026-10-29T00:00:00-03:00</updated>
+    <author><name>João Brighenti</name></author>
+    <summary>Refugo e retrabalho custam material, tempo de máquina e prazo. A diferença entre os dois, como registrar por máquina e turno e como entram no OEE.</summary>
+  </entry>
+  <entry>
+    <title>Planilha de PCP no Excel: quando ela deixa de funcionar</title>
+    <link href="https://mestti.com.br/blog/planilha-de-pcp-no-excel/"/>
+    <id>https://mestti.com.br/blog/planilha-de-pcp-no-excel/</id>
+    <published>2026-10-29T00:00:00-03:00</published>
+    <updated>2026-10-29T00:00:00-03:00</updated>
+    <author><name>João Brighenti</name></author>
+    <summary>Os sinais de que a planilha de PCP chegou ao limite, o que uma programação confiável precisa ter e como migrar sem parar a fábrica.</summary>
+  </entry>
+  <entry>
+    <title>MTBF e MTTR: o que são, como calcular e para que servem</title>
+    <link href="https://mestti.com.br/blog/mtbf-e-mttr/"/>
+    <id>https://mestti.com.br/blog/mtbf-e-mttr/</id>
+    <published>2026-10-29T00:00:00-03:00</published>
+    <updated>2026-10-29T00:00:00-03:00</updated>
+    <author><name>Leonardo Ernica</name></author>
+    <summary>MTBF é o tempo médio entre falhas; MTTR, o tempo médio de reparo. Fórmulas, um exemplo calculado e a relação com a disponibilidade da máquina.</summary>
+  </entry>
+  <entry>
+    <title>Motivos de parada de máquina: como montar a lista e registrar no turno</title>
+    <link href="https://mestti.com.br/blog/motivos-de-parada-de-maquina/"/>
+    <id>https://mestti.com.br/blog/motivos-de-parada-de-maquina/</id>
+    <published>2026-10-29T00:00:00-03:00</published>
+    <updated>2026-10-29T00:00:00-03:00</updated>
+    <author><name>João Brighenti</name></author>
+    <summary>Uma lista curta de motivos de parada, separada por categoria, como registrar o motivo sem atrapalhar o operador e como montar o ranking de perdas.</summary>
+  </entry>
+  <entry>
+    <title>Microparadas: o que são, quanto custam e como encontrar</title>
+    <link href="https://mestti.com.br/blog/microparadas/"/>
+    <id>https://mestti.com.br/blog/microparadas/</id>
+    <published>2026-10-29T00:00:00-03:00</published>
+    <updated>2026-10-29T00:00:00-03:00</updated>
+    <author><name>Leonardo Ernica</name></author>
+    <summary>Microparadas são paradas curtas que quase ninguém anota e somam horas no turno. Como identificar, quanto custam e as causas mais comuns.</summary>
+  </entry>
+  <entry>
+    <title>Inspeção de primeira peça: como fazer e registrar</title>
+    <link href="https://mestti.com.br/blog/inspecao-de-primeira-peca/"/>
+    <id>https://mestti.com.br/blog/inspecao-de-primeira-peca/</id>
+    <published>2026-10-29T00:00:00-03:00</published>
+    <updated>2026-10-29T00:00:00-03:00</updated>
+    <author><name>João Brighenti</name></author>
+    <summary>A inspeção de primeira peça confirma o processo antes do lote. Quando fazer, o que conferir e como registrar com foto e nome de quem inspecionou.</summary>
+  </entry>
+  <entry>
+    <title>Quanto custa uma hora de máquina parada</title>
+    <link href="https://mestti.com.br/blog/custo-da-hora-de-maquina-parada/"/>
+    <id>https://mestti.com.br/blog/custo-da-hora-de-maquina-parada/</id>
+    <published>2026-10-29T00:00:00-03:00</published>
+    <updated>2026-10-29T00:00:00-03:00</updated>
+    <author><name>João Brighenti</name></author>
+    <summary>Uma hora de máquina parada custa mais que o salário do operador. A conta com um exemplo em números e o que entra no valor da hora.</summary>
+  </entry>
+  <entry>
+    <title>Contagem automática de peças: como funciona e o que conferir</title>
+    <link href="https://mestti.com.br/blog/contagem-automatica-de-pecas/"/>
+    <id>https://mestti.com.br/blog/contagem-automatica-de-pecas/</id>
+    <published>2026-10-29T00:00:00-03:00</published>
+    <updated>2026-10-29T00:00:00-03:00</updated>
+    <author><name>Leonardo Ernica</name></author>
+    <summary>A contagem automática usa um sensor que lê um sinal da máquina a cada peça ou ciclo. Tipos de sinal, ciclos × peças e o que conferir na instalação.</summary>
+  </entry>
+  <entry>
+    <title>Como reduzir o tempo de setup na prática</title>
+    <link href="https://mestti.com.br/blog/como-reduzir-tempo-de-setup/"/>
+    <id>https://mestti.com.br/blog/como-reduzir-tempo-de-setup/</id>
+    <published>2026-10-29T00:00:00-03:00</published>
+    <updated>2026-10-29T00:00:00-03:00</updated>
+    <author><name>João Brighenti</name></author>
+    <summary>Como medir o setup real, separar o que dá para fazer com a máquina rodando (SMED) e acompanhar a redução por máquina e por turno.</summary>
+  </entry>
+  <entry>
+    <title>Como escolher um sistema de monitoramento de produção industrial</title>
+    <link href="https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/"/>
+    <id>https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/</id>
+    <published>2026-10-21T00:00:00-03:00</published>
+    <updated>2026-10-29T00:00:00-03:00</updated>
+    <author><name>João Brighenti</name></author>
+    <summary>Critérios para avaliar um sistema de monitoramento de produção: o que ele mede, se lê máquinas antigas, como fazer o piloto e o que conferir na proposta.</summary>
+  </entry>
+  <entry>
+    <title>Como calcular a capacidade produtiva de uma máquina</title>
+    <link href="https://mestti.com.br/blog/capacidade-produtiva-de-uma-maquina/"/>
+    <id>https://mestti.com.br/blog/capacidade-produtiva-de-uma-maquina/</id>
+    <published>2026-10-29T00:00:00-03:00</published>
+    <updated>2026-10-29T00:00:00-03:00</updated>
+    <author><name>Leonardo Ernica</name></author>
+    <summary>Capacidade produtiva é quantas peças a máquina faz no tempo disponível. A conta passo a passo e a diferença entre capacidade teórica, disponível e real.</summary>
+  </entry>
+  <entry>
+    <title>Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real</title>
+    <link href="https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/"/>
+    <id>https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/</id>
+    <published>2026-09-23T00:00:00-03:00</published>
+    <updated>2026-09-23T00:00:00-03:00</updated>
+    <author><name>João Brighenti</name></author>
+    <summary>Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.</summary>
+  </entry>
+  <entry>
+    <title>Como calcular o preço de venda de um produto na indústria usando RKW e custo do processo</title>
+    <link href="https://mestti.com.br/blog/como-calcular-preco-venda-industria-rkw-custo-processo/"/>
+    <id>https://mestti.com.br/blog/como-calcular-preco-venda-industria-rkw-custo-processo/</id>
+    <published>2026-06-08T00:00:00-03:00</published>
+    <updated>2026-06-08T00:00:00-03:00</updated>
+    <author><name>João Brighenti</name></author>
+    <summary>Como calcular o preço de venda de um produto industrial pelo RKW: matéria-prima, custos fixos e variáveis, tempo de máquina e lucro desejado.</summary>
+  </entry>
+</feed>

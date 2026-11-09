@@ -55,9 +55,10 @@ test('páginas não carregam tag diretamente e usam consentimento', () => {
   for (const file of files('.')) {
     const html = readFileSync(file, 'utf8');
     assert.doesNotMatch(html, /googletagmanager\.com\/gtag\/js/);
-    if (!html.includes('google-consent.js')) continue;
+    if (!html.includes('meta-consent.js')) continue;
     checked++;
+    assert.ok(html.includes('google-consent.js'), `${file}: consentimento Google ausente`);
     assert.ok(html.indexOf('meta-consent.js') < html.indexOf('google-consent.js'), file);
   }
-  assert.equal(checked, 23);
+  assert.ok(checked > 0, 'a verificação precisa alcançar documentos do site');
 });

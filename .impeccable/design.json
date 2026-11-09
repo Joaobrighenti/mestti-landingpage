@@ -1,0 +1,486 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T19:21:21.180902+00:00",
+  "title": "Design System: MESTTI — site institucional",
+  "extensions": {
+    "colorMeta": {
+      "primary-blue": {
+        "role": "primary",
+        "displayName": "Primary blue",
+        "tonalRamp": [
+          "oklch(0.15 0.1050 249.27)",
+          "oklch(0.26 0.1050 249.27)",
+          "oklch(0.38 0.1050 249.27)",
+          "oklch(0.49 0.1050 249.27)",
+          "oklch(0.61 0.1050 249.27)",
+          "oklch(0.72 0.1050 249.27)",
+          "oklch(0.84 0.1050 249.27)",
+          "oklch(0.95 0.1050 249.27)"
+        ]
+      },
+      "primary-dark": {
+        "role": "primary",
+        "displayName": "Primary dark",
+        "tonalRamp": [
+          "oklch(0.15 0.0767 244.75)",
+          "oklch(0.26 0.0767 244.75)",
+          "oklch(0.38 0.0767 244.75)",
+          "oklch(0.49 0.0767 244.75)",
+          "oklch(0.61 0.0767 244.75)",
+          "oklch(0.72 0.0767 244.75)",
+          "oklch(0.84 0.0767 244.75)",
+          "oklch(0.95 0.0767 244.75)"
+        ]
+      },
+      "primary-light": {
+        "role": "primary",
+        "displayName": "Primary light",
+        "tonalRamp": [
+          "oklch(0.15 0.1193 242.75)",
+          "oklch(0.26 0.1193 242.75)",
+          "oklch(0.38 0.1193 242.75)",
+          "oklch(0.49 0.1193 242.75)",
+          "oklch(0.61 0.1193 242.75)",
+          "oklch(0.72 0.1193 242.75)",
+          "oklch(0.84 0.1193 242.75)",
+          "oklch(0.95 0.1193 242.75)"
+        ]
+      },
+      "green": {
+        "role": "secondary",
+        "displayName": "Green",
+        "tonalRamp": [
+          "oklch(0.15 0.1274 163.23)",
+          "oklch(0.26 0.1274 163.23)",
+          "oklch(0.38 0.1274 163.23)",
+          "oklch(0.49 0.1274 163.23)",
+          "oklch(0.61 0.1274 163.23)",
+          "oklch(0.72 0.1274 163.23)",
+          "oklch(0.84 0.1274 163.23)",
+          "oklch(0.95 0.1274 163.23)"
+        ]
+      },
+      "story-action": {
+        "role": "secondary",
+        "displayName": "Story action",
+        "tonalRamp": [
+          "oklch(0.15 0.1049 165.61)",
+          "oklch(0.26 0.1049 165.61)",
+          "oklch(0.38 0.1049 165.61)",
+          "oklch(0.49 0.1049 165.61)",
+          "oklch(0.61 0.1049 165.61)",
+          "oklch(0.72 0.1049 165.61)",
+          "oklch(0.84 0.1049 165.61)",
+          "oklch(0.95 0.1049 165.61)"
+        ]
+      },
+      "story-action-hover": {
+        "role": "secondary",
+        "displayName": "Story action hover",
+        "tonalRamp": [
+          "oklch(0.15 0.0865 166.91)",
+          "oklch(0.26 0.0865 166.91)",
+          "oklch(0.38 0.0865 166.91)",
+          "oklch(0.49 0.0865 166.91)",
+          "oklch(0.61 0.0865 166.91)",
+          "oklch(0.72 0.0865 166.91)",
+          "oklch(0.84 0.0865 166.91)",
+          "oklch(0.95 0.0865 166.91)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "tonalRamp": [
+          "oklch(0.15 0.0000 0.00)",
+          "oklch(0.26 0.0000 0.00)",
+          "oklch(0.38 0.0000 0.00)",
+          "oklch(0.49 0.0000 0.00)",
+          "oklch(0.61 0.0000 0.00)",
+          "oklch(0.72 0.0000 0.00)",
+          "oklch(0.84 0.0000 0.00)",
+          "oklch(0.95 0.0000 0.00)"
+        ]
+      },
+      "gray-50": {
+        "role": "neutral",
+        "displayName": "Gray 50",
+        "tonalRamp": [
+          "oklch(0.15 0.0000 0.00)",
+          "oklch(0.26 0.0000 0.00)",
+          "oklch(0.38 0.0000 0.00)",
+          "oklch(0.49 0.0000 0.00)",
+          "oklch(0.61 0.0000 0.00)",
+          "oklch(0.72 0.0000 0.00)",
+          "oklch(0.84 0.0000 0.00)",
+          "oklch(0.95 0.0000 0.00)"
+        ]
+      },
+      "gray-600": {
+        "role": "neutral",
+        "displayName": "Gray 600",
+        "tonalRamp": [
+          "oklch(0.15 0.0146 285.79)",
+          "oklch(0.26 0.0146 285.79)",
+          "oklch(0.38 0.0146 285.79)",
+          "oklch(0.49 0.0146 285.79)",
+          "oklch(0.61 0.0146 285.79)",
+          "oklch(0.72 0.0146 285.79)",
+          "oklch(0.84 0.0146 285.79)",
+          "oklch(0.95 0.0146 285.79)"
+        ]
+      },
+      "gray-800": {
+        "role": "neutral",
+        "displayName": "Gray 800",
+        "tonalRamp": [
+          "oklch(0.15 0.0055 286.03)",
+          "oklch(0.26 0.0055 286.03)",
+          "oklch(0.38 0.0055 286.03)",
+          "oklch(0.49 0.0055 286.03)",
+          "oklch(0.61 0.0055 286.03)",
+          "oklch(0.72 0.0055 286.03)",
+          "oklch(0.84 0.0055 286.03)",
+          "oklch(0.95 0.0055 286.03)"
+        ]
+      },
+      "gray-900": {
+        "role": "neutral",
+        "displayName": "Gray 900",
+        "tonalRamp": [
+          "oklch(0.15 0.0059 285.89)",
+          "oklch(0.26 0.0059 285.89)",
+          "oklch(0.38 0.0059 285.89)",
+          "oklch(0.49 0.0059 285.89)",
+          "oklch(0.61 0.0059 285.89)",
+          "oklch(0.72 0.0059 285.89)",
+          "oklch(0.84 0.0059 285.89)",
+          "oklch(0.95 0.0059 285.89)"
+        ]
+      },
+      "story-ink": {
+        "role": "neutral",
+        "displayName": "Story ink",
+        "tonalRamp": [
+          "oklch(0.15 0.0540 242.18)",
+          "oklch(0.26 0.0540 242.18)",
+          "oklch(0.38 0.0540 242.18)",
+          "oklch(0.49 0.0540 242.18)",
+          "oklch(0.61 0.0540 242.18)",
+          "oklch(0.72 0.0540 242.18)",
+          "oklch(0.84 0.0540 242.18)",
+          "oklch(0.95 0.0540 242.18)"
+        ]
+      },
+      "story-muted": {
+        "role": "neutral",
+        "displayName": "Story muted",
+        "tonalRamp": [
+          "oklch(0.15 0.0391 240.63)",
+          "oklch(0.26 0.0391 240.63)",
+          "oklch(0.38 0.0391 240.63)",
+          "oklch(0.49 0.0391 240.63)",
+          "oklch(0.61 0.0391 240.63)",
+          "oklch(0.72 0.0391 240.63)",
+          "oklch(0.84 0.0391 240.63)",
+          "oklch(0.95 0.0391 240.63)"
+        ]
+      },
+      "story-surface": {
+        "role": "neutral",
+        "displayName": "Story surface",
+        "tonalRamp": [
+          "oklch(0.15 0.0067 233.64)",
+          "oklch(0.26 0.0067 233.64)",
+          "oklch(0.38 0.0067 233.64)",
+          "oklch(0.49 0.0067 233.64)",
+          "oklch(0.61 0.0067 233.64)",
+          "oklch(0.72 0.0067 233.64)",
+          "oklch(0.84 0.0067 233.64)",
+          "oklch(0.95 0.0067 233.64)"
+        ]
+      },
+      "story-line": {
+        "role": "neutral",
+        "displayName": "Story line",
+        "tonalRamp": [
+          "oklch(0.15 0.0170 236.71)",
+          "oklch(0.26 0.0170 236.71)",
+          "oklch(0.38 0.0170 236.71)",
+          "oklch(0.49 0.0170 236.71)",
+          "oklch(0.61 0.0170 236.71)",
+          "oklch(0.72 0.0170 236.71)",
+          "oklch(0.84 0.0170 236.71)",
+          "oklch(0.95 0.0170 236.71)"
+        ]
+      },
+      "dark-story-ink": {
+        "role": "neutral",
+        "displayName": "Dark story ink",
+        "tonalRamp": [
+          "oklch(0.15 0.0092 232.36)",
+          "oklch(0.26 0.0092 232.36)",
+          "oklch(0.38 0.0092 232.36)",
+          "oklch(0.49 0.0092 232.36)",
+          "oklch(0.61 0.0092 232.36)",
+          "oklch(0.72 0.0092 232.36)",
+          "oklch(0.84 0.0092 232.36)",
+          "oklch(0.95 0.0092 232.36)"
+        ]
+      },
+      "dark-story-muted": {
+        "role": "neutral",
+        "displayName": "Dark story muted",
+        "tonalRamp": [
+          "oklch(0.15 0.0286 239.74)",
+          "oklch(0.26 0.0286 239.74)",
+          "oklch(0.38 0.0286 239.74)",
+          "oklch(0.49 0.0286 239.74)",
+          "oklch(0.61 0.0286 239.74)",
+          "oklch(0.72 0.0286 239.74)",
+          "oklch(0.84 0.0286 239.74)",
+          "oklch(0.95 0.0286 239.74)"
+        ]
+      },
+      "dark-story-surface": {
+        "role": "neutral",
+        "displayName": "Dark story surface",
+        "tonalRamp": [
+          "oklch(0.15 0.0391 245.42)",
+          "oklch(0.26 0.0391 245.42)",
+          "oklch(0.38 0.0391 245.42)",
+          "oklch(0.49 0.0391 245.42)",
+          "oklch(0.61 0.0391 245.42)",
+          "oklch(0.72 0.0391 245.42)",
+          "oklch(0.84 0.0391 245.42)",
+          "oklch(0.95 0.0391 245.42)"
+        ]
+      },
+      "dark-story-paper": {
+        "role": "neutral",
+        "displayName": "Dark story paper",
+        "tonalRamp": [
+          "oklch(0.15 0.0329 246.16)",
+          "oklch(0.26 0.0329 246.16)",
+          "oklch(0.38 0.0329 246.16)",
+          "oklch(0.49 0.0329 246.16)",
+          "oklch(0.61 0.0329 246.16)",
+          "oklch(0.72 0.0329 246.16)",
+          "oklch(0.84 0.0329 246.16)",
+          "oklch(0.95 0.0329 246.16)"
+        ]
+      },
+      "dark-story-line": {
+        "role": "neutral",
+        "displayName": "Dark story line",
+        "tonalRamp": [
+          "oklch(0.15 0.0473 243.59)",
+          "oklch(0.26 0.0473 243.59)",
+          "oklch(0.38 0.0473 243.59)",
+          "oklch(0.49 0.0473 243.59)",
+          "oklch(0.61 0.0473 243.59)",
+          "oklch(0.72 0.0473 243.59)",
+          "oklch(0.84 0.0473 243.59)",
+          "oklch(0.95 0.0473 243.59)"
+        ]
+      },
+      "dark-story-blue": {
+        "role": "primary",
+        "displayName": "Dark story blue",
+        "tonalRamp": [
+          "oklch(0.15 0.0939 240.77)",
+          "oklch(0.26 0.0939 240.77)",
+          "oklch(0.38 0.0939 240.77)",
+          "oklch(0.49 0.0939 240.77)",
+          "oklch(0.61 0.0939 240.77)",
+          "oklch(0.72 0.0939 240.77)",
+          "oklch(0.84 0.0939 240.77)",
+          "oklch(0.95 0.0939 240.77)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Abertura",
+        "purpose": "Títulos da extensão; escala observada no CSS."
+      },
+      "body": {
+        "displayName": "Leitura",
+        "purpose": "Parágrafos da extensão com medida controlada."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-sm",
+        "value": "0 1px 2px rgba(24, 24, 27, 0.06)",
+        "purpose": "Sombra ambiente existente em css/base.css."
+      },
+      {
+        "name": "shadow-md",
+        "value": "0 4px 12px rgba(24, 24, 27, 0.08)",
+        "purpose": "Sombra ambiente existente em css/base.css."
+      },
+      {
+        "name": "shadow-lg",
+        "value": "0 10px 24px rgba(24, 24, 27, 0.1)",
+        "purpose": "Sombra ambiente existente em css/base.css."
+      },
+      {
+        "name": "shadow-xl",
+        "value": "0 20px 40px rgba(24, 24, 27, 0.12)",
+        "purpose": "Sombra ambiente existente em css/base.css."
+      },
+      {
+        "name": "story-screen",
+        "value": "0 18px 42px rgba(2, 45, 75, .1)",
+        "purpose": "Molduras de demonstração da interface."
+      }
+    ],
+    "motion": [
+      {
+        "name": "base-transition",
+        "value": "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Transição global existente."
+      },
+      {
+        "name": "story-button",
+        "value": "background-color .18s, border-color .18s",
+        "purpose": "Estados dos botões da extensão."
+      },
+      {
+        "name": "story-choice",
+        "value": "transform .18s",
+        "purpose": "Seta de escolha; deslocamento de 3px no hover."
+      },
+      {
+        "name": "story-reduced-motion",
+        "value": "transition: none; animation: none; scroll-behavior: auto",
+        "purpose": "Sob prefers-reduced-motion: reduce, dentro da extensão."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "story-mobile-max",
+        "value": "700px"
+      },
+      {
+        "name": "header-mobile-max",
+        "value": "768px"
+      },
+      {
+        "name": "story-stack-max",
+        "value": "950px"
+      },
+      {
+        "name": "story-context-grid-min",
+        "value": "1000px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Ação principal",
+      "kind": "button",
+      "description": "Ação comercial da extensão; amostra sem envio.",
+      "html": "<button class=\"ds-primary\" type=\"button\">Solicitar demonstração</button>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 23px;border:1px solid var(--story-action,#047857);border-radius:6px;background:var(--story-action,#047857);color:#fff;font-size:16px;font-weight:600;text-decoration:none;cursor:pointer;transition:background-color .18s,border-color .18s;font-family:var(--font-family,Inter,sans-serif);}.ds-primary:hover{background:#065f46;border-color:#065f46}.ds-primary:focus-visible{outline:3px solid var(--story-blue,#024578);outline-offset:5px}",
+      "refersTo": "button-primary"
+    },
+    {
+      "name": "Ação contornada",
+      "kind": "button",
+      "description": "Alternativa de exploração com superfície e borda.",
+      "html": "<a class=\"ds-outline\" href=\"#produto\">Conhecer o produto</a>",
+      "css": ".ds-outline{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 23px;border:1px solid var(--story-action,#047857);border-radius:6px;background:var(--story-action,#047857);color:#fff;font-size:16px;font-weight:600;text-decoration:none;cursor:pointer;transition:background-color .18s,border-color .18s;font-family:var(--font-family,Inter,sans-serif);color:var(--story-blue,#024578);border-color:var(--story-line,#d4e0e8);background:var(--story-paper,#fff)}.ds-outline:hover{border-color:var(--story-blue,#024578);background:var(--story-surface,#f0f5f8)}.ds-outline:focus-visible{outline:3px solid var(--story-blue,#024578);outline-offset:5px}",
+      "refersTo": "button-outline"
+    },
+    {
+      "name": "Ação sobre painel azul",
+      "kind": "button",
+      "description": "Variante branca dentro do painel Otto.",
+      "html": "<div class=\"ds-blue\"><button class=\"ds-on-blue\" type=\"button\">Conhecer o Otto</button></div>",
+      "css": ".ds-blue{background:#024578;padding:28px;border-radius:12px}.ds-on-blue{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 23px;border:1px solid var(--story-action,#047857);border-radius:6px;background:var(--story-action,#047857);color:#fff;font-size:16px;font-weight:600;text-decoration:none;cursor:pointer;transition:background-color .18s,border-color .18s;font-family:var(--font-family,Inter,sans-serif);background:#fff;color:#024578;border-color:#fff}.ds-on-blue:hover{background:#e3eff6}.ds-on-blue:focus-visible{outline:3px solid #fff;outline-offset:6px}",
+      "refersTo": "button-on-blue"
+    },
+    {
+      "name": "Navegação de seção",
+      "kind": "nav",
+      "description": "Faixa de orientação com links e quebra de linha.",
+      "html": "<nav class=\"ds-jump\" aria-label=\"Nesta página\"><a href=\"#producao\">Produção</a><a href=\"#qualidade\">Qualidade</a><a href=\"#engenharia\">Engenharia</a></nav>",
+      "css": ".ds-jump{display:flex;flex-wrap:wrap;gap:6px 28px;padding:12px;background:var(--story-surface,#f0f5f8);border-block:1px solid var(--story-line,#d4e0e8);font-family:var(--font-family,Inter,sans-serif);}.ds-jump a{display:inline-flex;align-items:center;min-height:44px;color:var(--story-blue,#024578);font-size:.95rem;font-weight:600;text-underline-offset:4px}.ds-jump a:hover{text-decoration-thickness:2px}.ds-jump a:focus-visible{outline:3px solid var(--story-blue,#024578);outline-offset:5px}"
+    },
+    {
+      "name": "Escolha por necessidade",
+      "kind": "card",
+      "description": "Linha clicável com divisor, descrição e seta SVG.",
+      "html": "<a class=\"ds-choice\" href=\"#producao\"><strong>Produção</strong><span>Ordens, programação e apontamento.</span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></a>",
+      "css": ".ds-choice{display:grid;grid-template-columns:1fr auto;gap:6px 20px;padding:24px 0;border-top:1px solid var(--story-line,#d4e0e8);text-decoration:none;color:var(--story-blue,#024578);font-family:var(--font-family,Inter,sans-serif);}.ds-choice strong{color:var(--story-ink,#15344a);font-size:1.13rem;line-height:1.45}.ds-choice span{color:var(--story-muted,#496071);font-size:.95rem;line-height:1.6}.ds-choice svg{width:22px;height:22px;align-self:center;grid-column:2;grid-row:1/3;transition:transform .18s}.ds-choice:hover strong{color:var(--story-blue,#024578)}.ds-choice:hover svg{transform:translateX(3px)}.ds-choice:focus-visible{outline:3px solid var(--story-blue,#024578);outline-offset:5px}"
+    },
+    {
+      "name": "Tag de processo",
+      "kind": "chip",
+      "description": "Rótulo estático do esquema de engenharia; sem estado interativo.",
+      "html": "<span class=\"ds-tag\">Processo</span>",
+      "css": ".ds-tag{display:inline-block;padding:6px 10px;border:1px solid var(--story-line,#d4e0e8);border-radius:4px;background:var(--story-paper,#fff);color:var(--story-ink,#15344a);font-size:.85rem;font-family:var(--font-family,Inter,sans-serif);}",
+      "refersTo": "process-tag"
+    },
+    {
+      "name": "Painel de engenharia",
+      "kind": "card",
+      "description": "Agrupamento informativo, sem efeito de hover ou ação.",
+      "html": "<section class=\"ds-engineering\"><strong>Estrutura do produto</strong><p>Componentes e processos de fabricação.</p></section>",
+      "css": ".ds-engineering{padding:28px;border:1px solid var(--story-line,#d4e0e8);border-radius:12px;background:var(--story-surface,#f0f5f8);color:var(--story-ink,#15344a);font-family:var(--font-family,Inter,sans-serif);}.ds-engineering strong{font-size:1.1rem}.ds-engineering p{color:var(--story-muted,#496071);font-size:.9rem;line-height:1.75}",
+      "refersTo": "engineering-panel"
+    },
+    {
+      "name": "Checklist editorial",
+      "kind": "input",
+      "description": "Checkbox nativo da leitura guiada.",
+      "html": "<label class=\"ds-check\"><input type=\"checkbox\"><span>Conferir uma ordem real na demonstração</span></label>",
+      "css": ".ds-check{display:flex;align-items:flex-start;gap:12px;padding:16px 0;border-bottom:1px solid var(--story-line,#d4e0e8);color:var(--story-ink,#15344a);cursor:pointer;line-height:1.75;font-family:var(--font-family,Inter,sans-serif);}.ds-check input{margin-top:5px;min-width:20px;width:20px;height:20px;accent-color:var(--story-action,#047857)}.ds-check input:checked+span{color:var(--story-muted,#496071)}.ds-check input:focus-visible{outline:3px solid var(--story-blue,#024578);outline-offset:3px}"
+    },
+    {
+      "name": "Campo da conversa de contato",
+      "kind": "input",
+      "description": "Campo do subsistema conversacional existente; sem integração nesta amostra.",
+      "html": "<input class=\"ds-contact-input\" type=\"text\" aria-label=\"Mensagem\" placeholder=\"Sua mensagem\">",
+      "css": ".ds-contact-input{min-width:0;min-height:44px;border:0;border-radius:999px;padding:.72rem 1rem;font-size:16px;background:#fff;color:#111;font-family:var(--font-family,Inter,sans-serif);}.ds-contact-input:focus{outline:2px solid rgba(7,94,84,.35);outline-offset:0}"
+    },
+    {
+      "name": "Pergunta frequente",
+      "kind": "custom",
+      "description": "Disclosure nativo com foco visível; o navegador fornece abrir/fechar.",
+      "html": "<details class=\"ds-faq\"><summary>Como conhecer o sistema?</summary><p>Leve um processo real para a demonstração.</p></details>",
+      "css": ".ds-faq{border-block:1px solid var(--story-line,#d4e0e8);color:var(--story-ink,#15344a);font-family:var(--font-family,Inter,sans-serif);}.ds-faq summary{padding:22px 36px 22px 0;font-size:1.08rem;font-weight:600;cursor:pointer}.ds-faq summary:focus-visible{outline:3px solid var(--story-blue,#024578);outline-offset:5px}.ds-faq p{padding-bottom:20px;color:var(--story-muted,#496071);margin:0;line-height:1.75}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Demonstração industrial com a identidade existente",
+    "overview": "A extensão conserva o azul institucional, a Inter e os temas do site. Telas do sistema, esquemas de processo em HTML e leitura editorial aproximam o visitante da rotina industrial. É continuidade do mundo existente; as novas páginas não substituem a linguagem da home.\n\nA home mantém sua assinatura 3D. Nas demais superfícies, a demonstração e o conteúdo conduzem a composição. O registro abaixo descreve código observado em 2026-10-21; não certifica renderização, acessibilidade ou responsividade. Fontes: `css/base.css`, `css/product-story.css`, header e superfícies listadas em [DESIGN-DECISIONS](docs/site/DESIGN-DECISIONS.md).",
+    "keyCharacteristics": [
+      "Azul institucional para orientação e identidade; verde para ações comerciais.",
+      "Hierarquia tipográfica contínua, conteúdo industrial concreto e áreas de leitura controladas.",
+      "Profundidade discreta em demonstrações; relações explicadas por linhas e agrupamentos.",
+      "Temas claro e escuro preservados, com tokens próprios da extensão."
+    ],
+    "rules": [
+      {
+        "name": "The Identidade Rule",
+        "body": "Preservar as famílias existentes; novas superfícies não introduzem outra paleta de marca.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "**Do** preservar azul MESTTI, Inter, ações verdes e temas existentes.",
+      "**Do** combinar demonstrações de interface, esquemas HTML e leitura editorial conforme a superfície.",
+      "**Do** manter legendas e distinguir dados de exemplo de resultados de clientes.",
+      "**Do** preservar foco visível, conteúdo principal em HTML e movimento reduzido na extensão."
+    ],
+    "donts": [
+      "**Don't** replicar o 3D da home como padrão de artigos e páginas de solução.",
+      "**Don't** apresentar screenshots ou diagramas como prova comercial, certificação ou ganho medido.",
+      "**Don't** inventar depoimentos, clientes, resultados ou respostas do Otto com dados de cliente.",
+      "**Don't** tratar revisão estática como certificação visual, de acessibilidade ou de responsividade."
+    ]
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "date": "2026-10-21",
+  "note": "Corpus qualitativo, sem volume, dificuldade ou taxa de recomendação medida. Frases representativas, não reprodução integral dos registros fast|/length|. Destino não significa promessa de capacidade.",
+  "intents": [
+    {
+      "id": "fornecedor-monitoramento",
+      "audience": "empresário/gestão",
+      "query": "empresas monitoramento produção industrial Brasil",
+      "destinations": [
+        "/solucoes/",
+        "/producao/"
+      ],
+      "scope": "Cobertura comercial e técnica; sem ranking de fornecedores.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "gestao-controle",
+      "audience": "empresário/gestão",
+      "query": "empresas software gestão e controle de produção industrial Brasil",
+      "destinations": [
+        "/solucoes/"
+      ],
+      "scope": "Definir a categoria e a relação entre módulos.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "ordens-tempo-real",
+      "audience": "PCP/PPCP",
+      "query": "sistema PCP acompanhamento ordens produção tempo real fábrica",
+      "destinations": [
+        "/producao/",
+        "/sequenciamento/"
+      ],
+      "scope": "Mostrar fluxo na demonstração; não presumir integração.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "atrasos",
+      "audience": "PCP/gestão",
+      "query": "empresas soluções reduzir atrasos produção industrial monitoramento",
+      "destinations": [
+        "/sequenciamento/"
+      ],
+      "scope": "Visibilidade apoia ação; não garante entrega.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "contagem",
+      "audience": "produção/automação",
+      "query": "sistema contagem automática peças produzidas sensores fábrica",
+      "destinations": [
+        "/sensoriamento/",
+        "/sensores/"
+      ],
+      "scope": "Conferir unidade, ciclo, quantidade e ponto de coleta.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "oee-maquina",
+      "audience": "produção/melhoria",
+      "query": "software monitoramento produção por máquina industrial OEE",
+      "destinations": [
+        "/producao/",
+        "/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/"
+      ],
+      "scope": "Indicadores dependem de registros e referências coerentes.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "diagnostico-perdas",
+      "audience": "empresário/melhoria",
+      "query": "empresas diagnóstico perdas produtividade indústria pequena Brasil",
+      "destinations": [
+        "/solucoes/",
+        "/blog/como-escolher-sistema-monitoramento-producao/"
+      ],
+      "scope": "Roteiro de piloto; sem promessa de ganho percentual.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "consultoria",
+      "audience": "melhoria/produção",
+      "query": "consultoria eficiência produção industrial desperdícios retrabalho paradas",
+      "destinations": [
+        "/producao/",
+        "/contato/"
+      ],
+      "scope": "Confirmar escopo de consultoria e treinamento na proposta.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "retrofit-antigas",
+      "audience": "manutenção/automação",
+      "query": "modernização máquinas industriais antigas sem substituir equipamentos",
+      "destinations": [
+        "/sensoriamento/#avaliacao-tecnica"
+      ],
+      "scope": "Avaliação por sinal/processo; não prometer compatibilidade universal.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "sem-clp",
+      "audience": "manutenção/automação",
+      "query": "monitoramento industrial máquinas antigas sem CLP instalação sensores",
+      "destinations": [
+        "/sensoriamento/#avaliacao-tecnica",
+        "/blog/como-escolher-sistema-monitoramento-producao/#maquinas"
+      ],
+      "scope": "Explicar avaliação; nenhuma capacidade universal foi inferida.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "fornecedor-mes",
+      "audience": "PCP/especialista",
+      "query": "fornecedores software OEE monitoramento máquinas indústria Brasil",
+      "destinations": [
+        "/blog/o-que-e-sistema-mes-mestti/",
+        "/blog/como-escolher-sistema-monitoramento-producao/"
+      ],
+      "scope": "Categoria + critérios de escolha, sem autoeleição como melhor.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "substituir-papel",
+      "audience": "produção/gestão",
+      "query": "empresas automação apontamento produção industrial substituir papel Brasil",
+      "destinations": [
+        "/producao/"
+      ],
+      "scope": "Dado automático e contexto da equipe se complementam.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "causas-parada",
+      "audience": "produção/melhoria",
+      "query": "software identificar motivos paradas produção fábrica sensores",
+      "destinations": [
+        "/producao/",
+        "/blog/como-escolher-sistema-monitoramento-producao/#dados"
+      ],
+      "scope": "Sensor não determina toda causa raiz.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "pcp-mes-integrado",
+      "audience": "PCP/PPCP",
+      "query": "sistema integrado PCP MES status ordens produção chão de fábrica",
+      "destinations": [
+        "/sequenciamento/",
+        "/blog/o-que-e-sistema-mes-mestti/"
+      ],
+      "scope": "Integração e escopo por projeto.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "substituir-excel",
+      "audience": "PCP/PME",
+      "query": "melhores softwares PCP substituir Excel programação produção industrial Brasil",
+      "destinations": [
+        "/sequenciamento/"
+      ],
+      "scope": "Explicar rotina e avaliar fila real; sem ranking.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "aps-capacidade-finita",
+      "audience": "PCP/especialista",
+      "query": "software sequenciamento produção capacidade finita ordens máquinas",
+      "destinations": [
+        "/sequenciamento/#avaliar-programacao",
+        "/blog/como-escolher-sistema-monitoramento-producao/#escopo"
+      ],
+      "scope": "Requisito a confirmar, não funcionalidade prometida.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "aps-autonomo",
+      "audience": "PCP/especialista",
+      "query": "software APS reprogramação automática produção atraso máquina parada",
+      "destinations": [
+        "/sequenciamento/#avaliar-programacao"
+      ],
+      "scope": "Não promover função sem comprovação e escopo comercial.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "qualidade-inspecao",
+      "audience": "qualidade",
+      "query": "sistema gestão não conformidades inspeção produção fábrica",
+      "destinations": [
+        "/qualidade/",
+        "/checklists/"
+      ],
+      "scope": "Histórico e verificação; sem certificação implícita.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "refugos-retrabalho",
+      "audience": "qualidade/produção",
+      "query": "dashboard OEE qualidade refugos retrabalho por equipamento",
+      "destinations": [
+        "/producao/#dados-confiaveis",
+        "/qualidade/"
+      ],
+      "scope": "Distinguir volume, refugo e inspeção.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "rastreabilidade-lotes",
+      "audience": "qualidade/especialista",
+      "query": "sistema MES rastreabilidade lote ordem produção qualidade",
+      "destinations": [
+        "/qualidade/#registros-qualidade",
+        "/blog/como-escolher-sistema-monitoramento-producao/#dados"
+      ],
+      "scope": "Histórico de inspeção não prova genealogia completa de lotes.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "andon-tv",
+      "audience": "produção/supervisão",
+      "query": "sistema painel TV chão fábrica produção máquinas paradas metas",
+      "destinations": [
+        "/blog/como-escolher-sistema-monitoramento-producao/#piloto"
+      ],
+      "scope": "Requisito de demonstração; não criar promessa de módulo Andon.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "alertas",
+      "audience": "supervisão/manutenção",
+      "query": "sistema alerta automático máquina parada produção indústria",
+      "destinations": [
+        "/sensoriamento/",
+        "/blog/como-escolher-sistema-monitoramento-producao/#piloto"
+      ],
+      "scope": "Validar gatilhos, destinatários e canal disponível.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "preditiva",
+      "audience": "manutenção",
+      "query": "monitoramento condição máquinas vibração temperatura manutenção preditiva Brasil",
+      "destinations": [
+        "/blog/como-escolher-sistema-monitoramento-producao/#escopo"
+      ],
+      "scope": "Distinguir condição de ativos de monitoramento de produção; sem lançamento de oferta preditiva.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "startups-nacionais",
+      "audience": "gestão/inovação",
+      "query": "startups brasileiras MES OEE monitoramento de produção industrial",
+      "destinations": [
+        "/empresa/",
+        "/solucoes/"
+      ],
+      "scope": "Identidade pública e reconhecimento ENBPar comprovado; sem reivindicar liderança.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "marcas-concorrentes",
+      "audience": "comprador em comparação",
+      "query": "St-One, Packiot, Tractian, PPI Multitask, Sequor e outros fornecedores citados pelo usuário",
+      "destinations": [
+        "/blog/como-escolher-sistema-monitoramento-producao/"
+      ],
+      "scope": "Amostra de posicionamento, sem afirmar paridade ou superioridade; verificar identidades/grafias antes de comparações nominativas.",
+      "source": "família normalizada do corpus fornecido pelo usuário"
+    },
+    {
+      "id": "custo-implantacao",
+      "audience": "oportunidade adicional",
+      "query": "quanto custa implantar monitoramento de produção na minha fábrica",
+      "destinations": [
+        "/solucoes/",
+        "/blog/como-escolher-sistema-monitoramento-producao/#proposta"
+      ],
+      "scope": "Explicar componentes de escopo/investimento sem inventar preço.",
+      "source": "hipótese editorial adicional"
+    },
+    {
+      "id": "rede-e-dados",
+      "audience": "oportunidade adicional",
+      "query": "o que acontece com a produção registrada quando a internet cai",
+      "destinations": [
+        "/sensoriamento/#avaliacao-tecnica",
+        "/blog/como-escolher-sistema-monitoramento-producao/#dados"
+      ],
+      "scope": "Distinguir comunicação/produção, confirmar buffer e testar recuperação.",
+      "source": "hipótese editorial adicional"
+    },
+    {
+      "id": "exportacao-saida",
+      "audience": "oportunidade adicional",
+      "query": "como consultar e exportar histórico ao encerrar um sistema industrial",
+      "destinations": [
+        "/blog/como-escolher-sistema-monitoramento-producao/#proposta"
+      ],
+      "scope": "Pergunta para a proposta; não prometer formato de exportação não confirmado.",
+      "source": "hipótese editorial adicional"
+    }
+  ]
+}

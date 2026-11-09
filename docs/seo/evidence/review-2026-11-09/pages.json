@@ -1,0 +1,1257 @@
+[
+  {
+    "url": "/apontamento-de-producao/",
+    "title": "Apontamento de produção automático com sensor | Mestti",
+    "titleLength": 54,
+    "descriptionLength": 149,
+    "indexable": true,
+    "imageCount": 13,
+    "headings": {
+      "h1": 1,
+      "h2": 8,
+      "h3": 3
+    }
+  },
+  {
+    "url": "/app/",
+    "title": "App Mestti no Android: a produção no celular | Mestti",
+    "titleLength": 53,
+    "descriptionLength": 131,
+    "indexable": true,
+    "imageCount": 7,
+    "headings": {
+      "h1": 1,
+      "h2": 5,
+      "h3": 4
+    }
+  },
+  {
+    "url": "/blog/capacidade-produtiva-de-uma-maquina/",
+    "title": "Como calcular a capacidade produtiva de uma máquina | Mestti",
+    "titleLength": 60,
+    "descriptionLength": 152,
+    "indexable": true,
+    "imageCount": 7,
+    "headings": {
+      "h1": 1,
+      "h2": 9
+    }
+  },
+  {
+    "url": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/",
+    "title": "Preço de venda na indústria pelo método RKW | Mestti",
+    "titleLength": 52,
+    "descriptionLength": 141,
+    "indexable": true,
+    "imageCount": 8,
+    "headings": {
+      "h1": 1,
+      "h2": 18,
+      "h3": 21
+    }
+  },
+  {
+    "url": "/blog/como-escolher-sistema-monitoramento-producao/",
+    "title": "Como escolher um sistema de monitoramento de produção | Mestti",
+    "titleLength": 62,
+    "descriptionLength": 153,
+    "indexable": true,
+    "imageCount": 8,
+    "headings": {
+      "h1": 1,
+      "h2": 10
+    }
+  },
+  {
+    "url": "/blog/como-reduzir-tempo-de-setup/",
+    "title": "Como reduzir o tempo de setup na prática | Mestti",
+    "titleLength": 49,
+    "descriptionLength": 129,
+    "indexable": true,
+    "imageCount": 8,
+    "headings": {
+      "h1": 1,
+      "h2": 10
+    }
+  },
+  {
+    "url": "/blog/contagem-automatica-de-pecas/",
+    "title": "Contagem automática de peças: como funciona | Mestti",
+    "titleLength": 52,
+    "descriptionLength": 147,
+    "indexable": true,
+    "imageCount": 7,
+    "headings": {
+      "h1": 1,
+      "h2": 9
+    }
+  },
+  {
+    "url": "/blog/custo-da-hora-de-maquina-parada/",
+    "title": "Quanto custa uma hora de máquina parada | Mestti",
+    "titleLength": 48,
+    "descriptionLength": 130,
+    "indexable": true,
+    "imageCount": 8,
+    "headings": {
+      "h1": 1,
+      "h2": 9
+    }
+  },
+  {
+    "url": "/blog/",
+    "title": "Blog da Mestti: produção, PCP, OEE e chão de fábrica | Mestti",
+    "titleLength": 61,
+    "descriptionLength": 145,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 3
+    }
+  },
+  {
+    "url": "/blog/inspecao-de-primeira-peca/",
+    "title": "Inspeção de primeira peça: como fazer e registrar | Mestti",
+    "titleLength": 58,
+    "descriptionLength": 145,
+    "indexable": true,
+    "imageCount": 8,
+    "headings": {
+      "h1": 1,
+      "h2": 9
+    }
+  },
+  {
+    "url": "/blog/microparadas/",
+    "title": "Microparadas: o que são, quanto custam e como encontrar | Mestti",
+    "titleLength": 64,
+    "descriptionLength": 136,
+    "indexable": true,
+    "imageCount": 7,
+    "headings": {
+      "h1": 1,
+      "h2": 9
+    }
+  },
+  {
+    "url": "/blog/motivos-de-parada-de-maquina/",
+    "title": "Motivos de parada de máquina: lista e registro | Mestti",
+    "titleLength": 55,
+    "descriptionLength": 146,
+    "indexable": true,
+    "imageCount": 8,
+    "headings": {
+      "h1": 1,
+      "h2": 9
+    }
+  },
+  {
+    "url": "/blog/mtbf-e-mttr/",
+    "title": "MTBF e MTTR: o que são, como calcular e para que servem | Mestti",
+    "titleLength": 64,
+    "descriptionLength": 142,
+    "indexable": true,
+    "imageCount": 7,
+    "headings": {
+      "h1": 1,
+      "h2": 9
+    }
+  },
+  {
+    "url": "/blog/nota-fiscal-de-perda-reducao-de-impostos/",
+    "title": "Nota fiscal de perda reduz impostos? Entenda quando isso pode acontecer | MESTTI",
+    "titleLength": 80,
+    "descriptionLength": 142,
+    "indexable": false,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 10,
+      "h3": 3
+    }
+  },
+  {
+    "url": "/blog/planilha-de-pcp-no-excel/",
+    "title": "Planilha de PCP no Excel: quando ela deixa de funcionar | Mestti",
+    "titleLength": 64,
+    "descriptionLength": 131,
+    "indexable": true,
+    "imageCount": 8,
+    "headings": {
+      "h1": 1,
+      "h2": 8
+    }
+  },
+  {
+    "url": "/blog/refugo-e-retrabalho-por-maquina/",
+    "title": "Como controlar refugo e retrabalho por máquina | Mestti",
+    "titleLength": 55,
+    "descriptionLength": 146,
+    "indexable": true,
+    "imageCount": 8,
+    "headings": {
+      "h1": 1,
+      "h2": 9
+    }
+  },
+  {
+    "url": "/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/",
+    "title": "Sensoriamento industrial: dados da máquina em tempo real | Mestti",
+    "titleLength": 65,
+    "descriptionLength": 158,
+    "indexable": true,
+    "imageCount": 9,
+    "headings": {
+      "h1": 1,
+      "h2": 14,
+      "h3": 4
+    }
+  },
+  {
+    "url": "/cadastro/",
+    "title": "Cadastro contratual | MESTTI",
+    "titleLength": 28,
+    "descriptionLength": 83,
+    "indexable": false,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 6
+    }
+  },
+  {
+    "url": "/casos/industria-moveleira/",
+    "title": "Caso moveleiro: +20% de disponibilidade sem nova máquina | Mestti",
+    "titleLength": 65,
+    "descriptionLength": 146,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 5
+    }
+  },
+  {
+    "url": "/checklists/",
+    "title": "Checklists digitais com foto, nome e histórico | Mestti",
+    "titleLength": 55,
+    "descriptionLength": 138,
+    "indexable": true,
+    "imageCount": 17,
+    "headings": {
+      "h1": 1,
+      "h2": 6,
+      "h3": 10
+    }
+  },
+  {
+    "url": "/cmms/",
+    "title": "CMMS em construção | MESTTI",
+    "titleLength": 27,
+    "descriptionLength": 150,
+    "indexable": false,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 1
+    }
+  },
+  {
+    "url": "/contato/",
+    "title": "Contato | Mestti",
+    "titleLength": 16,
+    "descriptionLength": 127,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 4
+    }
+  },
+  {
+    "url": "/diagnostico/",
+    "title": "1 semana grátis: veja quantas horas sua fábrica perde | Mestti",
+    "titleLength": 62,
+    "descriptionLength": 142,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 7,
+      "h3": 7
+    }
+  },
+  {
+    "url": "/empresa/",
+    "title": "Sobre a Mestti: startup industrial de Londrina (PR) | Mestti",
+    "titleLength": 60,
+    "descriptionLength": 134,
+    "indexable": true,
+    "imageCount": 12,
+    "headings": {
+      "h1": 1,
+      "h2": 8,
+      "h3": 9
+    }
+  },
+  {
+    "url": "/en/apontamento-de-producao/",
+    "title": "Automatic production reporting with sensors | Mestti",
+    "titleLength": 52,
+    "descriptionLength": 152,
+    "indexable": true,
+    "imageCount": 13,
+    "headings": {
+      "h1": 1,
+      "h2": 8,
+      "h3": 3
+    }
+  },
+  {
+    "url": "/en/app/",
+    "title": "Mestti app for Android: production on your phone | Mestti",
+    "titleLength": 57,
+    "descriptionLength": 140,
+    "indexable": true,
+    "imageCount": 7,
+    "headings": {
+      "h1": 1,
+      "h2": 5,
+      "h3": 4
+    }
+  },
+  {
+    "url": "/en/casos/industria-moveleira/",
+    "title": "Furniture case: +20% availability, no new machine | Mestti",
+    "titleLength": 58,
+    "descriptionLength": 141,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 5
+    }
+  },
+  {
+    "url": "/en/contato/",
+    "title": "Contact | Mestti",
+    "titleLength": 16,
+    "descriptionLength": 125,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 4
+    }
+  },
+  {
+    "url": "/en/diagnostico/",
+    "title": "1 free week: see how many hours your factory loses | Mestti",
+    "titleLength": 59,
+    "descriptionLength": 140,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 7,
+      "h3": 7
+    }
+  },
+  {
+    "url": "/en/empresa/",
+    "title": "About Mestti: industrial tech startup from Brazil | Mestti",
+    "titleLength": 58,
+    "descriptionLength": 137,
+    "indexable": true,
+    "imageCount": 12,
+    "headings": {
+      "h1": 1,
+      "h2": 8,
+      "h3": 9
+    }
+  },
+  {
+    "url": "/en/engenharia/",
+    "title": "Product engineering: routings and cycle times | Mestti",
+    "titleLength": 54,
+    "descriptionLength": 139,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 6,
+      "h3": 9
+    }
+  },
+  {
+    "url": "/en/glossario/",
+    "title": "Manufacturing glossary: OEE, MES, setup, minor stops | Mestti",
+    "titleLength": 61,
+    "descriptionLength": 119,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 3
+    }
+  },
+  {
+    "url": "/en/ia-na-industria/",
+    "title": "AI in manufacturing: what works on the shop floor | Mestti",
+    "titleLength": 58,
+    "descriptionLength": 145,
+    "indexable": true,
+    "imageCount": 8,
+    "headings": {
+      "h1": 1,
+      "h2": 8,
+      "h3": 4
+    }
+  },
+  {
+    "url": "/en/",
+    "title": "Mestti | Production management system with sensors and AI",
+    "titleLength": 57,
+    "descriptionLength": 148,
+    "indexable": true,
+    "imageCount": 26,
+    "headings": {
+      "h1": 1,
+      "h2": 14,
+      "h3": 10
+    }
+  },
+  {
+    "url": "/en/industria-4-0/",
+    "title": "Industry 4.0: what it is and how to apply it | Mestti",
+    "titleLength": 53,
+    "descriptionLength": 152,
+    "indexable": true,
+    "imageCount": 11,
+    "headings": {
+      "h1": 1,
+      "h2": 10,
+      "h3": 4
+    }
+  },
+  {
+    "url": "/en/maquinas-antigas/",
+    "title": "Old machines without a PLC: sensor monitoring | Mestti",
+    "titleLength": 54,
+    "descriptionLength": 147,
+    "indexable": true,
+    "imageCount": 12,
+    "headings": {
+      "h1": 1,
+      "h2": 9,
+      "h3": 6
+    }
+  },
+  {
+    "url": "/en/mes/",
+    "title": "MES system: what it is and how to implement it | Mestti",
+    "titleLength": 55,
+    "descriptionLength": 124,
+    "indexable": true,
+    "imageCount": 11,
+    "headings": {
+      "h1": 1,
+      "h2": 9,
+      "h3": 6
+    }
+  },
+  {
+    "url": "/en/mes-ou-erp/",
+    "title": "MES or ERP: the difference and when to use each | Mestti",
+    "titleLength": 56,
+    "descriptionLength": 151,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 5,
+      "h3": 3
+    }
+  },
+  {
+    "url": "/en/mom/",
+    "title": "MOM: what manufacturing operations management is | Mestti",
+    "titleLength": 57,
+    "descriptionLength": 155,
+    "indexable": true,
+    "imageCount": 10,
+    "headings": {
+      "h1": 1,
+      "h2": 7,
+      "h3": 7
+    }
+  },
+  {
+    "url": "/en/monitoramento-de-maquinas/",
+    "title": "Real-time machine monitoring: stops and OEE | Mestti",
+    "titleLength": 52,
+    "descriptionLength": 148,
+    "indexable": true,
+    "imageCount": 17,
+    "headings": {
+      "h1": 1,
+      "h2": 9,
+      "h3": 9
+    }
+  },
+  {
+    "url": "/en/oee/",
+    "title": "OEE: what it is, how to calculate it and track it live | Mestti",
+    "titleLength": 63,
+    "descriptionLength": 144,
+    "indexable": true,
+    "imageCount": 18,
+    "headings": {
+      "h1": 1,
+      "h2": 10,
+      "h3": 5
+    }
+  },
+  {
+    "url": "/en/otto/",
+    "title": "Otto: AI agent for the shop floor | Mestti",
+    "titleLength": 42,
+    "descriptionLength": 147,
+    "indexable": true,
+    "imageCount": 7,
+    "headings": {
+      "h1": 1,
+      "h2": 6,
+      "h3": 4
+    }
+  },
+  {
+    "url": "/en/pcp/",
+    "title": "Production planning and control (PCP/PPCP): what it is | Mestti",
+    "titleLength": 63,
+    "descriptionLength": 145,
+    "indexable": true,
+    "imageCount": 12,
+    "headings": {
+      "h1": 1,
+      "h2": 9,
+      "h3": 3
+    }
+  },
+  {
+    "url": "/en/producao/",
+    "title": "Production and planning: sensors, scheduling, reporting | Mestti",
+    "titleLength": 64,
+    "descriptionLength": 131,
+    "indexable": true,
+    "imageCount": 8,
+    "headings": {
+      "h1": 1,
+      "h2": 7
+    }
+  },
+  {
+    "url": "/en/qualidade/",
+    "title": "Industrial quality: checklists and photo inspections | Mestti",
+    "titleLength": 61,
+    "descriptionLength": 146,
+    "indexable": true,
+    "imageCount": 30,
+    "headings": {
+      "h1": 1,
+      "h2": 10,
+      "h3": 12
+    }
+  },
+  {
+    "url": "/en/seguranca/",
+    "title": "Proprietary technology and industrial data protection | Mestti",
+    "titleLength": 62,
+    "descriptionLength": 130,
+    "indexable": true,
+    "imageCount": 5,
+    "headings": {
+      "h1": 1,
+      "h2": 5,
+      "h3": 9
+    }
+  },
+  {
+    "url": "/en/sensores/",
+    "title": "Smart industrial sensors: technical sheet | Mestti",
+    "titleLength": 50,
+    "descriptionLength": 159,
+    "indexable": true,
+    "imageCount": 11,
+    "headings": {
+      "h1": 1,
+      "h2": 8,
+      "h3": 7
+    }
+  },
+  {
+    "url": "/en/sequenciamento/",
+    "title": "Production scheduling: each machine’s queue | Mestti",
+    "titleLength": 52,
+    "descriptionLength": 148,
+    "indexable": true,
+    "imageCount": 16,
+    "headings": {
+      "h1": 1,
+      "h2": 15,
+      "h3": 10
+    }
+  },
+  {
+    "url": "/en/smart-factory/",
+    "title": "Smart factory: what it is and how to start | Mestti",
+    "titleLength": 51,
+    "descriptionLength": 150,
+    "indexable": true,
+    "imageCount": 10,
+    "headings": {
+      "h1": 1,
+      "h2": 7,
+      "h3": 7
+    }
+  },
+  {
+    "url": "/en/solucoes/",
+    "title": "Solutions by problem: production, planning, quality | Mestti",
+    "titleLength": 60,
+    "descriptionLength": 150,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 7
+    }
+  },
+  {
+    "url": "/engenharia/",
+    "title": "Engenharia de produto: roteiros e tempos de ciclo | Mestti",
+    "titleLength": 58,
+    "descriptionLength": 138,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 6,
+      "h3": 9
+    }
+  },
+  {
+    "url": "/es/apontamento-de-producao/",
+    "title": "Registro de producción automático con sensor | Mestti",
+    "titleLength": 53,
+    "descriptionLength": 152,
+    "indexable": true,
+    "imageCount": 13,
+    "headings": {
+      "h1": 1,
+      "h2": 8,
+      "h3": 3
+    }
+  },
+  {
+    "url": "/es/app/",
+    "title": "App Mestti en Android: la producción en el celular | Mestti",
+    "titleLength": 59,
+    "descriptionLength": 148,
+    "indexable": true,
+    "imageCount": 7,
+    "headings": {
+      "h1": 1,
+      "h2": 5,
+      "h3": 4
+    }
+  },
+  {
+    "url": "/es/casos/industria-moveleira/",
+    "title": "Caso mueblero: +20% de disponibilidad sin máquina nueva | Mestti",
+    "titleLength": 64,
+    "descriptionLength": 141,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 5
+    }
+  },
+  {
+    "url": "/es/contato/",
+    "title": "Contacto | Mestti",
+    "titleLength": 17,
+    "descriptionLength": 127,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 4
+    }
+  },
+  {
+    "url": "/es/diagnostico/",
+    "title": "1 semana gratis: vea cuántas horas pierde su fábrica | Mestti",
+    "titleLength": 61,
+    "descriptionLength": 147,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 7,
+      "h3": 7
+    }
+  },
+  {
+    "url": "/es/empresa/",
+    "title": "Sobre Mestti: startup industrial de Londrina, Brasil | Mestti",
+    "titleLength": 61,
+    "descriptionLength": 136,
+    "indexable": true,
+    "imageCount": 12,
+    "headings": {
+      "h1": 1,
+      "h2": 8,
+      "h3": 9
+    }
+  },
+  {
+    "url": "/es/engenharia/",
+    "title": "Ingeniería de producto: rutas y tiempos de ciclo | Mestti",
+    "titleLength": 57,
+    "descriptionLength": 148,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 6,
+      "h3": 9
+    }
+  },
+  {
+    "url": "/es/glossario/",
+    "title": "Glosario industrial: OEE, MES, setup y microparada | Mestti",
+    "titleLength": 59,
+    "descriptionLength": 122,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 3
+    }
+  },
+  {
+    "url": "/es/ia-na-industria/",
+    "title": "IA en la industria: qué ya funciona en la planta | Mestti",
+    "titleLength": 57,
+    "descriptionLength": 147,
+    "indexable": true,
+    "imageCount": 8,
+    "headings": {
+      "h1": 1,
+      "h2": 8,
+      "h3": 4
+    }
+  },
+  {
+    "url": "/es/",
+    "title": "Mestti | Sistema de gestión de la producción con sensores e IA",
+    "titleLength": 62,
+    "descriptionLength": 154,
+    "indexable": true,
+    "imageCount": 26,
+    "headings": {
+      "h1": 1,
+      "h2": 14,
+      "h3": 10
+    }
+  },
+  {
+    "url": "/es/industria-4-0/",
+    "title": "Industria 4.0: qué es y cómo aplicarla | Mestti",
+    "titleLength": 47,
+    "descriptionLength": 149,
+    "indexable": true,
+    "imageCount": 11,
+    "headings": {
+      "h1": 1,
+      "h2": 10,
+      "h3": 4
+    }
+  },
+  {
+    "url": "/es/maquinas-antigas/",
+    "title": "Máquinas antiguas sin PLC: monitoreo con sensor | Mestti",
+    "titleLength": 56,
+    "descriptionLength": 140,
+    "indexable": true,
+    "imageCount": 12,
+    "headings": {
+      "h1": 1,
+      "h2": 9,
+      "h3": 6
+    }
+  },
+  {
+    "url": "/es/mes/",
+    "title": "Sistema MES: qué es, qué hace y cómo implantarlo | Mestti",
+    "titleLength": 57,
+    "descriptionLength": 118,
+    "indexable": true,
+    "imageCount": 11,
+    "headings": {
+      "h1": 1,
+      "h2": 9,
+      "h3": 6
+    }
+  },
+  {
+    "url": "/es/mes-ou-erp/",
+    "title": "MES o ERP: diferencia y cuándo usar cada uno | Mestti",
+    "titleLength": 53,
+    "descriptionLength": 149,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 5,
+      "h3": 3
+    }
+  },
+  {
+    "url": "/es/mom/",
+    "title": "MOM: qué es la gestión de operaciones de manufactura | Mestti",
+    "titleLength": 61,
+    "descriptionLength": 148,
+    "indexable": true,
+    "imageCount": 10,
+    "headings": {
+      "h1": 1,
+      "h2": 7,
+      "h3": 7
+    }
+  },
+  {
+    "url": "/es/monitoramento-de-maquinas/",
+    "title": "Monitoreo de máquinas en tiempo real: paradas y OEE | Mestti",
+    "titleLength": 60,
+    "descriptionLength": 136,
+    "indexable": true,
+    "imageCount": 17,
+    "headings": {
+      "h1": 1,
+      "h2": 9,
+      "h3": 9
+    }
+  },
+  {
+    "url": "/es/oee/",
+    "title": "OEE: qué es, cómo calcularlo y seguirlo en vivo | Mestti",
+    "titleLength": 56,
+    "descriptionLength": 139,
+    "indexable": true,
+    "imageCount": 18,
+    "headings": {
+      "h1": 1,
+      "h2": 10,
+      "h3": 5
+    }
+  },
+  {
+    "url": "/es/otto/",
+    "title": "Otto: agente de IA para la planta | Mestti",
+    "titleLength": 42,
+    "descriptionLength": 148,
+    "indexable": true,
+    "imageCount": 7,
+    "headings": {
+      "h1": 1,
+      "h2": 6,
+      "h3": 4
+    }
+  },
+  {
+    "url": "/es/pcp/",
+    "title": "PCP y PPCP: qué es la planificación de la producción | Mestti",
+    "titleLength": 61,
+    "descriptionLength": 143,
+    "indexable": true,
+    "imageCount": 12,
+    "headings": {
+      "h1": 1,
+      "h2": 9,
+      "h3": 3
+    }
+  },
+  {
+    "url": "/es/producao/",
+    "title": "Producción y PCP: sensores, secuenciación y registro | Mestti",
+    "titleLength": 61,
+    "descriptionLength": 143,
+    "indexable": true,
+    "imageCount": 8,
+    "headings": {
+      "h1": 1,
+      "h2": 7
+    }
+  },
+  {
+    "url": "/es/qualidade/",
+    "title": "Calidad industrial: checklists e inspecciones con foto | Mestti",
+    "titleLength": 63,
+    "descriptionLength": 157,
+    "indexable": true,
+    "imageCount": 30,
+    "headings": {
+      "h1": 1,
+      "h2": 10,
+      "h3": 12
+    }
+  },
+  {
+    "url": "/es/seguranca/",
+    "title": "Tecnología propia y protección de datos industriales | Mestti",
+    "titleLength": 61,
+    "descriptionLength": 139,
+    "indexable": true,
+    "imageCount": 5,
+    "headings": {
+      "h1": 1,
+      "h2": 5,
+      "h3": 9
+    }
+  },
+  {
+    "url": "/es/sensores/",
+    "title": "Sensores industriales inteligentes: ficha técnica | Mestti",
+    "titleLength": 58,
+    "descriptionLength": 146,
+    "indexable": true,
+    "imageCount": 11,
+    "headings": {
+      "h1": 1,
+      "h2": 8,
+      "h3": 7
+    }
+  },
+  {
+    "url": "/es/sequenciamento/",
+    "title": "Secuenciación de la producción por máquina | Mestti",
+    "titleLength": 51,
+    "descriptionLength": 153,
+    "indexable": true,
+    "imageCount": 16,
+    "headings": {
+      "h1": 1,
+      "h2": 15,
+      "h3": 10
+    }
+  },
+  {
+    "url": "/es/smart-factory/",
+    "title": "Smart factory: qué es y cómo empezar | Mestti",
+    "titleLength": 45,
+    "descriptionLength": 157,
+    "indexable": true,
+    "imageCount": 10,
+    "headings": {
+      "h1": 1,
+      "h2": 7,
+      "h3": 7
+    }
+  },
+  {
+    "url": "/es/solucoes/",
+    "title": "Soluciones por problema: producción, PCP y calidad | Mestti",
+    "titleLength": 59,
+    "descriptionLength": 143,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 7
+    }
+  },
+  {
+    "url": "/glossario/",
+    "title": "Glossário industrial: OEE, MES, setup e microparada | Mestti",
+    "titleLength": 60,
+    "descriptionLength": 125,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 3
+    }
+  },
+  {
+    "url": "/ia-na-industria/",
+    "title": "IA na indústria: o que já funciona no chão de fábrica | Mestti",
+    "titleLength": 62,
+    "descriptionLength": 144,
+    "indexable": true,
+    "imageCount": 8,
+    "headings": {
+      "h1": 1,
+      "h2": 8,
+      "h3": 4
+    }
+  },
+  {
+    "url": "/",
+    "title": "Mestti | Sistema de gestão da produção com sensores e IA",
+    "titleLength": 56,
+    "descriptionLength": 146,
+    "indexable": true,
+    "imageCount": 26,
+    "headings": {
+      "h1": 1,
+      "h2": 14,
+      "h3": 10
+    }
+  },
+  {
+    "url": "/industria-4-0/",
+    "title": "Indústria 4.0: o que é e como aplicar na fábrica | Mestti",
+    "titleLength": 57,
+    "descriptionLength": 147,
+    "indexable": true,
+    "imageCount": 11,
+    "headings": {
+      "h1": 1,
+      "h2": 10,
+      "h3": 4
+    }
+  },
+  {
+    "url": "/maquinas-antigas/",
+    "title": "Máquinas antigas sem CLP: monitoramento com sensor | Mestti",
+    "titleLength": 59,
+    "descriptionLength": 146,
+    "indexable": true,
+    "imageCount": 12,
+    "headings": {
+      "h1": 1,
+      "h2": 9,
+      "h3": 6
+    }
+  },
+  {
+    "url": "/mes/",
+    "title": "Sistema MES: o que é, o que faz e como implantar | Mestti",
+    "titleLength": 57,
+    "descriptionLength": 137,
+    "indexable": true,
+    "imageCount": 11,
+    "headings": {
+      "h1": 1,
+      "h2": 9,
+      "h3": 6
+    }
+  },
+  {
+    "url": "/mes-ou-erp/",
+    "title": "MES ou ERP: diferença e quando usar cada um | Mestti",
+    "titleLength": 52,
+    "descriptionLength": 145,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 5,
+      "h3": 3
+    }
+  },
+  {
+    "url": "/mom/",
+    "title": "MOM: o que é a gestão de operações de manufatura | Mestti",
+    "titleLength": 57,
+    "descriptionLength": 148,
+    "indexable": true,
+    "imageCount": 10,
+    "headings": {
+      "h1": 1,
+      "h2": 7,
+      "h3": 7
+    }
+  },
+  {
+    "url": "/monitoramento-de-maquinas/",
+    "title": "Monitoramento de máquinas em tempo real: paradas e OEE | Mestti",
+    "titleLength": 63,
+    "descriptionLength": 137,
+    "indexable": true,
+    "imageCount": 17,
+    "headings": {
+      "h1": 1,
+      "h2": 9,
+      "h3": 9
+    }
+  },
+  {
+    "url": "/oee/",
+    "title": "OEE: o que é, como calcular e acompanhar ao vivo | Mestti",
+    "titleLength": 57,
+    "descriptionLength": 134,
+    "indexable": true,
+    "imageCount": 18,
+    "headings": {
+      "h1": 1,
+      "h2": 10,
+      "h3": 5
+    }
+  },
+  {
+    "url": "/otto/",
+    "title": "Otto: agente de IA para o chão de fábrica | Mestti",
+    "titleLength": 50,
+    "descriptionLength": 145,
+    "indexable": true,
+    "imageCount": 7,
+    "headings": {
+      "h1": 1,
+      "h2": 6,
+      "h3": 4
+    }
+  },
+  {
+    "url": "/pass/",
+    "title": "MESTTI | Pass",
+    "titleLength": 13,
+    "descriptionLength": 94,
+    "indexable": false,
+    "imageCount": 2,
+    "headings": {
+      "h1": 1
+    }
+  },
+  {
+    "url": "/pcp/",
+    "title": "PCP e PPCP: o que é planejamento e controle da produção | Mestti",
+    "titleLength": 64,
+    "descriptionLength": 134,
+    "indexable": true,
+    "imageCount": 12,
+    "headings": {
+      "h1": 1,
+      "h2": 9,
+      "h3": 3
+    }
+  },
+  {
+    "url": "/privacidade/",
+    "title": "Política de Privacidade do aplicativo MESTTI",
+    "titleLength": 44,
+    "descriptionLength": 119,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 10
+    }
+  },
+  {
+    "url": "/producao/",
+    "title": "Produção e PCP: sensores, sequenciamento e apontamento | Mestti",
+    "titleLength": 63,
+    "descriptionLength": 149,
+    "indexable": true,
+    "imageCount": 8,
+    "headings": {
+      "h1": 1,
+      "h2": 7
+    }
+  },
+  {
+    "url": "/qualidade/",
+    "title": "Qualidade industrial: checklists e inspeções com foto | Mestti",
+    "titleLength": 62,
+    "descriptionLength": 148,
+    "indexable": true,
+    "imageCount": 30,
+    "headings": {
+      "h1": 1,
+      "h2": 10,
+      "h3": 12
+    }
+  },
+  {
+    "url": "/seguranca/",
+    "title": "Tecnologia própria e proteção de dados industriais | Mestti",
+    "titleLength": 59,
+    "descriptionLength": 136,
+    "indexable": true,
+    "imageCount": 5,
+    "headings": {
+      "h1": 1,
+      "h2": 5,
+      "h3": 9
+    }
+  },
+  {
+    "url": "/sensores/",
+    "title": "Sensores industriais inteligentes: ficha técnica | Mestti",
+    "titleLength": 57,
+    "descriptionLength": 151,
+    "indexable": true,
+    "imageCount": 11,
+    "headings": {
+      "h1": 1,
+      "h2": 8,
+      "h3": 7
+    }
+  },
+  {
+    "url": "/sequenciamento/",
+    "title": "Sequenciamento da produção: a fila de cada máquina | Mestti",
+    "titleLength": 59,
+    "descriptionLength": 150,
+    "indexable": true,
+    "imageCount": 16,
+    "headings": {
+      "h1": 1,
+      "h2": 15,
+      "h3": 10
+    }
+  },
+  {
+    "url": "/smart-factory/",
+    "title": "Smart factory: o que é e como começar | Mestti",
+    "titleLength": 46,
+    "descriptionLength": 154,
+    "indexable": true,
+    "imageCount": 10,
+    "headings": {
+      "h1": 1,
+      "h2": 7,
+      "h3": 7
+    }
+  },
+  {
+    "url": "/solucoes/",
+    "title": "Soluções por problema: produção, PCP e qualidade | Mestti",
+    "titleLength": 57,
+    "descriptionLength": 144,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 7
+    }
+  },
+  {
+    "url": "/termos/",
+    "title": "Termos de Uso e Contrato de Serviço | Mestti",
+    "titleLength": 44,
+    "descriptionLength": 129,
+    "indexable": true,
+    "imageCount": 4,
+    "headings": {
+      "h1": 1,
+      "h2": 27,
+      "h3": 3
+    }
+  }
+]

@@ -1,10 +1,9 @@
-/* Aplicar tema salvo antes do CSS pintar (evita flash). Padrão: claro. */
+/* O site tem um tema só (claro). Limpa escolha antiga de tema escuro. */
 (function () {
+    document.documentElement.removeAttribute('data-theme');
     try {
-        if (localStorage.getItem('mesttiTheme') === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
+        localStorage.removeItem('mesttiTheme');
     } catch {
-        /* padrão claro: sem data-theme */
+        /* sem storage: nada a limpar */
     }
 })();

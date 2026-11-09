@@ -85,7 +85,8 @@
     transform: scale(0.98);
 }
 
-body.is-modal-open .fab-contact {
+body.is-modal-open .fab-contact,
+body.is-menu-open .fab-contact {
     opacity: 0;
     pointer-events: none;
     animation: none;

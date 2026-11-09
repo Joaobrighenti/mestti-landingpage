@@ -1,0 +1,96 @@
+{
+  "tool": "Lighthouse",
+  "version": "13.5.0",
+  "url": "http://127.0.0.1:5502/blog/como-escolher-sistema-monitoramento-producao/",
+  "fetchTime": "2026-10-21T16:05:22.745Z",
+  "config": {
+    "formFactor": "desktop",
+    "throttlingMethod": "provided",
+    "screenEmulation": {
+      "mobile": false,
+      "width": 1350,
+      "height": 940,
+      "deviceScaleFactor": 1,
+      "disabled": false
+    },
+    "blockedUrlPatterns": [
+      "*googletagmanager*,*facebook*"
+    ]
+  },
+  "scores": {
+    "performance": 0.81,
+    "accessibility": 1,
+    "best-practices": 0.77,
+    "seo": 1
+  },
+  "metrics": {
+    "largest-contentful-paint": {
+      "value": 765.3,
+      "display": "0.8 s"
+    },
+    "cumulative-layout-shift": {
+      "value": 0.06099016853932585,
+      "display": "0.061"
+    },
+    "total-blocking-time": {
+      "value": 398.976,
+      "display": "400 ms"
+    }
+  },
+  "failedAudits": {
+    "third-party-cookies": {
+      "title": "Uses third-party cookies",
+      "details": {
+        "type": "table",
+        "headings": [
+          {
+            "key": "name",
+            "valueType": "text",
+            "label": "Name"
+          },
+          {
+            "key": "url",
+            "valueType": "url",
+            "label": "URL"
+          }
+        ],
+        "items": [
+          {
+            "name": "test_cookie",
+            "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/11486484316/?random=1792598723980&cv=11&fst=1792598723980&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6aj1v9176910331za208zd9176910331xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938469~117628654~118897920~118897930~119318177~119860443~120213116~120385423~120469145~120469153~121246026~121246034&u_w=800&u_h=600&url=http%3A%2F%2F127.0.0.1%3A5502%2Fblog%2Fcomo-escolher-sistema-monitoramento-producao%2F&rcb=2&frm=0&tiba=Como%20escolher%20um%20sistema%20de%20monitoramento%20de%20produ%C3%A7%C3%A3o&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1577218334.1792598724&uaa=x86&uab=64&uafvl=Not%2520A(Brand%3B99.0.0.0%7CChromium%3B154.0.8037.97&uamb=0&uam=&uap=macOS&uapv=10.15.7&uaw=0&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=4"
+          }
+        ]
+      }
+    },
+    "inspector-issues": {
+      "title": "Issues were logged in the `Issues` panel in Chrome Devtools",
+      "details": {
+        "type": "table",
+        "headings": [
+          {
+            "key": "issueType",
+            "valueType": "text",
+            "subItemsHeading": {
+              "key": "url",
+              "valueType": "url"
+            },
+            "label": "Issue type"
+          }
+        ],
+        "items": [
+          {
+            "issueType": "Cookie",
+            "subItems": {
+              "type": "subitems",
+              "items": [
+                {
+                  "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/11486484316/?random=1792598723980&cv=11&fst=1792598723980&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6aj1v9176910331za208zd9176910331xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938469~117628654~118897920~118897930~119318177~119860443~120213116~120385423~120469145~120469153~121246026~121246034&u_w=800&u_h=600&url=http%3A%2F%2F127.0.0.1%3A5502%2Fblog%2Fcomo-escolher-sistema-monitoramento-producao%2F&rcb=2&frm=0&tiba=Como%20escolher%20um%20sistema%20de%20monitoramento%20de%20produ%C3%A7%C3%A3o&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1577218334.1792598724&uaa=x86&uab=64&uafvl=Not%2520A(Brand%3B99.0.0.0%7CChromium%3B154.0.8037.97&uamb=0&uam=&uap=macOS&uapv=10.15.7&uaw=0&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=4"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

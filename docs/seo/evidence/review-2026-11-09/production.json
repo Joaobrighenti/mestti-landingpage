@@ -1,0 +1,90 @@
+[
+  {
+    "route": "/",
+    "ua": "Mozilla/5.0",
+    "status": 200,
+    "finalUrl": "https://mestti.com.br/",
+    "title": "MESTTI | Apontamento Inteligente em Tempo Real",
+    "robotsHeader": null,
+    "sha256": "68e38c690c29aa18658c7e4acafb63e39cd79513ea2813c35534cc3fa17b4e0e",
+    "h1": "\n                        Quanto sua fábrica produziu hoje?\n                        Se a resposta demora, o problema já começou.\n                    "
+  },
+  {
+    "route": "/oee/",
+    "ua": "Mozilla/5.0",
+    "status": 200,
+    "finalUrl": "https://mestti.com.br/oee/",
+    "title": "MESTTI | Apontamento Inteligente em Tempo Real",
+    "robotsHeader": null,
+    "sha256": "68e38c690c29aa18658c7e4acafb63e39cd79513ea2813c35534cc3fa17b4e0e",
+    "h1": "\n                        Quanto sua fábrica produziu hoje?\n                        Se a resposta demora, o problema já começou.\n                    "
+  },
+  {
+    "route": "/robots.txt",
+    "ua": "Mozilla/5.0",
+    "status": 200,
+    "finalUrl": "https://mestti.com.br/robots.txt",
+    "title": null,
+    "robotsHeader": null,
+    "body": "User-agent: *\nAllow: /\n\nSitemap: https://mestti.com.br/sitemap.xml\n"
+  },
+  {
+    "route": "/sitemap.xml",
+    "ua": "Mozilla/5.0",
+    "status": 200,
+    "finalUrl": "https://mestti.com.br/sitemap.xml",
+    "title": null,
+    "robotsHeader": null,
+    "urlCount": 21
+  },
+  {
+    "route": "/url-inexistente-review-20261109/",
+    "ua": "Mozilla/5.0",
+    "status": 200,
+    "finalUrl": "https://mestti.com.br/url-inexistente-review-20261109/",
+    "title": "MESTTI | Apontamento Inteligente em Tempo Real",
+    "robotsHeader": null,
+    "sha256": "68e38c690c29aa18658c7e4acafb63e39cd79513ea2813c35534cc3fa17b4e0e",
+    "h1": "\n                        Quanto sua fábrica produziu hoje?\n                        Se a resposta demora, o problema já começou.\n                    "
+  },
+  {
+    "route": "/",
+    "ua": "Googlebot",
+    "status": 200,
+    "finalUrl": "https://mestti.com.br/",
+    "title": "MESTTI | Apontamento Inteligente em Tempo Real",
+    "robotsHeader": null
+  },
+  {
+    "route": "/",
+    "ua": "Bingbot",
+    "status": 200,
+    "finalUrl": "https://mestti.com.br/",
+    "title": "MESTTI | Apontamento Inteligente em Tempo Real",
+    "robotsHeader": null
+  },
+  {
+    "route": "/",
+    "ua": "OAI-SearchBot",
+    "status": 200,
+    "finalUrl": "https://mestti.com.br/",
+    "title": "MESTTI | Apontamento Inteligente em Tempo Real",
+    "robotsHeader": null
+  },
+  {
+    "route": "/",
+    "ua": "Claude-SearchBot",
+    "status": 200,
+    "finalUrl": "https://mestti.com.br/",
+    "title": "MESTTI | Apontamento Inteligente em Tempo Real",
+    "robotsHeader": null
+  },
+  {
+    "route": "/",
+    "ua": "PerplexityBot",
+    "status": 200,
+    "finalUrl": "https://mestti.com.br/",
+    "title": "MESTTI | Apontamento Inteligente em Tempo Real",
+    "robotsHeader": null
+  }
+]

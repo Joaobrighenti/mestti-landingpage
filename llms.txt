@@ -1,28 +1,75 @@
-# MESTTI
+# Mestti
 
-> Soluções de automação e informatização do chão de fábrica, com apontamento de produção, sensores industriais e indicadores de OEE.
+> A Mestti é uma startup brasileira de tecnologia industrial. Sua plataforma AI-powered de gestão da produção (MES) conecta engenharia de produto, chão de fábrica e qualidade, com sensores IoT, sistema web, app e agente de IA próprios, para indústrias de todos os portes.
 
-A MESTTI combina sensores e software para acompanhar produção, paradas e indicadores em tempo real. O site também apresenta recursos de qualidade, checklists, inspeções e sequenciamento da produção. Consulte cada página para conhecer o escopo da solução e fale com a equipe para avaliar sua aplicação.
+A Mestti mede cada máquina com sensores próprios, instalados sem mexer no CLP e também em máquinas antigas: contagem de peças ou ciclos e estado rodando, parada, microparada ou setup. Mostra onde a produção perde tempo e quanto isso custa, e liga o roteiro da engenharia à programação do PCP, ao apontamento do operador no tablet e às inspeções de qualidade. O Otto, agente de IA da Mestti, consulta só os dados que o usuário pode ver, explica os desvios e propõe ações que só são aplicadas depois que uma pessoa aprova.
 
-## Páginas oficiais
+- Origem: fundada em 2025 em Londrina (PR), dentro de uma gráfica que precisava ver a produção em tempo real. Fundador: João Brighenti; cofundador: Leonardo Ernica.
+- Resultado de cliente: +20% de disponibilidade em um setor de uma indústria moveleira, ao descobrir que as máquinas começavam o turno ainda aquecendo e passar a ligá-las antes.
+- Reconhecimento: uma das cinco empresas selecionadas na 3ª Chamada Pública do Lab Procel II, programa da ENBPar executado com o SENAI Rio de Janeiro ([anúncio](https://enbpar.gov.br/projetos-selecionados-na-3a-chamada-publica-do-lab-procel-ii-iniciam-etapa-de-aceleracao/)), com projeto de mais de R$ 1 milhão.
+- Ecossistema: SENAI, Procel, ENBPar, Firjan, Fiep e Móveis Hub de Arapongas.
+- Tecnologia própria: hardware, firmware, sistema web, app Android e IA desenvolvidos pela Mestti. O registro original da máquina é imutável e os dados ficam isolados por empresa.
+- Programação inteligente: o motor monta a fila de cada máquina com heurísticas de sequenciamento (menor data de entrega, razão crítica, prioridade ponderada, agrupamento por setup e setup com urgência) e compara o atraso de cada cenário com a fila atual.
+- Fábrica em 3D: gêmeo digital com o estado de cada máquina e de cada posto.
+- Como começar: sensores prontos em até 7 dias, instalação em 1 dia e 1 semana de teste grátis em um setor, com horas perdidas, causas, custo e plano de ação no fim. No teste o sensor é emprestado; sem custo e sem fidelidade.
+- ERP: as ordens de produção podem vir do ERP da empresa, e a produção apontada volta para ele.
 
-- [MESTTI | Sensores Industriais Inteligentes](https://mestti.com.br/atuacao/): MESTTI - Sensores Industriais | Dados em Tempo Real do Chão de Fábrica
-- [Como calcular preço de venda na indústria com RKW e custo do processo | MESTTI](https://mestti.com.br/blog/como-calcular-preco-venda-industria-rkw-custo-processo/): Aprenda como calcular o preço de venda de um produto industrial usando o método RKW, considerando matéria-prima, custos fixos, custo do processo, tempo de máquina, custos variáveis e lucro desejado.
-- [Blog | MESTTI](https://mestti.com.br/blog/): Artigos sobre produção industrial, gestão de custos e chão de fábrica.
-- [O que é um sistema MES e qual valor a MESTTI agrega à indústria?](https://mestti.com.br/blog/o-que-e-sistema-mes-mestti/): Entenda o papel do MES entre a operação e a gestão, e como sensoriamento, apontamento, indicadores, programação e qualidade da MESTTI ajudam a acompanhar a fábrica.
-- [Nota fiscal de perda reduz impostos? Entenda quando isso pode acontecer | MESTTI](https://mestti.com.br/blog/nota-fiscal-de-perda-reducao-de-impostos/): Entenda o papel da nota fiscal de perda, as condições no Lucro Real e os cuidados com ICMS. Veja como organizar os registros da sua indústria.
-- [OEE: o que é, como calcular e por que acompanhar em tempo real | MESTTI](https://mestti.com.br/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/): Entenda o que é OEE (Overall Equipment Effectiveness), como calcular disponibilidade, performance e qualidade, e por que acompanhar o indicador ao vivo no chão de fábrica.
-- [Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real | MESTTI](https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/): Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.
-- [Contato | MESTTI](https://mestti.com.br/contato/): Entre em contato com a MESTTI — comercial, suporte e canais oficiais.
-- [Sobre a empresa | MESTTI](https://mestti.com.br/empresa/): Conheça a MESTTI — automação, OEE e sensores para o chão de fábrica.
-- [MESTTI | Apontamento Inteligente em Tempo Real](https://mestti.com.br/): MESTTI - Apontamento automático sem digitação | OEE e indicadores em tempo real
-- [MESTTI | Pass](https://mestti.com.br/pass/): Links MESTTI — site, teste grátis, LinkedIn e YouTube. Apontamento e monitoramento industrial.
-- [Sensoriamento Industrial e Apontamento Digital | MESTTI](https://mestti.com.br/producao/): Colete dados reais das máquinas, registre motivos de parada e acompanhe sua produção em tempo real com o sensoriamento e apontamento digital da MESTTI.
-- [Qualidade industrial | Checklists e inspeções | MESTTI](https://mestti.com.br/qualidade/): Crie checklists digitais, execute inspeções no chão de fábrica e acompanhe cada registro conectado à máquina, ao setor e à ordem de produção com o módulo de Qualidade da MESTTI.
-- [Especificações Técnicas | MESTTI](https://mestti.com.br/sensores/): Ficha técnica e especificações dos sensores industriais MESTTI.
-- [Sensoriamento Industrial | MESTTI](https://mestti.com.br/sensoriamento/): Sensores industriais conectados ao MESTTI para capturar produção, paradas e disponibilidade em tempo real — sem planilhas e sem atraso na informação.
-- [Sequenciamento e Programação da Produção | MESTTI](https://mestti.com.br/sequenciamento/): Organize sua fila de produção, visualize a capacidade das máquinas e programe com mais segurança usando dados reais da fábrica com a MESTTI.
-- [Termos de Uso e Contrato de Serviço | MESTTI](https://mestti.com.br/termos/): Termos de Uso e Contrato de Serviço da Plataforma MESTTI — condições de uso do aplicativo, responsabilidades, pagamentos e cancelamento.
+## Idiomas
+
+A home, as páginas de produto, os guias e as páginas institucionais existem em português, inglês (https://mestti.com.br/en/) e espanhol (https://mestti.com.br/es/), com hreflang. O blog é só em português.
+
+## Produto
+
+- [Início](https://mestti.com.br/): a capacidade escondida das máquinas, o caso de cliente, a fábrica 3D de demonstração e o Otto.
+- [Produção e PCP](https://mestti.com.br/producao/): carteira do PCP, sequenciamento por máquina, apontamento no tablet, sensores ao vivo, OEE e custo de cada parada.
+- [Engenharia de produto](https://mestti.com.br/engenharia/): componentes, operações, máquinas alternativas, tempo de ciclo, peças por ciclo e setup de cada produto.
+- [Qualidade](https://mestti.com.br/qualidade/): inspeções disparadas por regra, feitas no celular com foto, ligadas à máquina, à ordem e à revisão do documento; refugo e retrabalho entram no OEE.
+- [Checklists digitais](https://mestti.com.br/checklists/): checklists no celular ou tablet, com foto, nome e horário de quem fez, para indústria, hotelaria, saúde, logística e varejo.
+- [Sensores](https://mestti.com.br/sensores/): sensores industriais inteligentes para contar peças, ver máquina ligada ou parada e medir metro linear; Wi‑Fi 2,4 GHz, 5 V via USB e memória local se a internet cair.
+- [Otto, agente de IA](https://mestti.com.br/otto/): responde onde a fábrica perdeu tempo e quais pedidos podem atrasar, simula mudanças e propõe ações que só valem com aprovação.
+- [App](https://mestti.com.br/app/): app da Mestti para Android, com produção, paradas, OEE e inspeções no celular e no tablet.
+- [Tecnologia e proteção de dados](https://mestti.com.br/seguranca/): sensor, sistema e IA próprios; registro imutável; isolamento por empresa.
+- [Soluções por problema](https://mestti.com.br/solucoes/): máquina parada, apontamento manual, pedido atrasado e inspeção sem registro, cada um com o guia e o módulo certos.
+
+## Guias
+
+- [Sistema MES](https://mestti.com.br/mes/): o que é, o que faz entre o ERP e as máquinas e como funciona o MES da Mestti.
+- [MOM](https://mestti.com.br/mom/): gestão de operações de manufatura; as quatro áreas da ISA‑95 (produção, qualidade, manutenção e estoque) e a diferença para MES e ERP.
+- [Smart factory](https://mestti.com.br/smart-factory/): o que é uma fábrica inteligente, a relação com a Indústria 4.0 e o primeiro passo em 30 dias.
+- [Indústria 4.0](https://mestti.com.br/industria-4-0/): o que é, a origem do termo (Hannover, 2011), as seis tecnologias e como a Mestti aplica cada uma.
+- [IA na indústria](https://mestti.com.br/ia-na-industria/): onde a IA já ajuda no chão de fábrica e os cuidados para usá-la sobre dados reais.
+- [MES ou ERP?](https://mestti.com.br/mes-ou-erp/): o que cada sistema responde e quando a indústria precisa dos dois.
+- [PCP e PPCP](https://mestti.com.br/pcp/): planejamento, programação e controle da produção e como programar cada máquina pela capacidade real.
+- [Sequenciamento da produção](https://mestti.com.br/sequenciamento/): o que entra na conta, regras de prioridade (FIFO, EDD, SPT, setup) e as heurísticas do motor da Mestti.
+- [Apontamento de produção](https://mestti.com.br/apontamento-de-producao/): papel, tablet ou sensor, os erros comuns e o apontamento automático.
+- [Monitoramento de máquinas](https://mestti.com.br/monitoramento-de-maquinas/): estado, paradas, OEE e custo de cada máquina ao vivo e a fábrica em 3D; não é manutenção preditiva.
+- [Máquinas antigas sem CLP](https://mestti.com.br/maquinas-antigas/): os sinais que o sensor lê (pulso, fim de curso, medição linear e corrente) e a instalação em 1 dia.
+- [OEE](https://mestti.com.br/oee/): disponibilidade × performance × qualidade, calculadora e erros que distorcem o número.
+- [Glossário](https://mestti.com.br/glossario/): OEE, disponibilidade, performance, microparada, setup, MTTR, MTBF, PCP, MES, ERP e capacidade escondida.
+
+## Empresa
+
+- [Sobre a Mestti](https://mestti.com.br/empresa/): startup de Londrina (PR), fundada em 2025; fundador, Lab Procel II e parceiros.
+- [Caso de cliente: indústria moveleira](https://mestti.com.br/casos/industria-moveleira/): +20% de disponibilidade em um setor sem comprar máquina.
+- [Como começar: 1 semana grátis](https://mestti.com.br/diagnostico/): sensores em 7 dias, instalação em 1 dia e teste grátis em um setor.
+- [Contato](https://mestti.com.br/contato/): WhatsApp, e-mail e endereço.
+
+## Blog
+
+- [Blog da Mestti](https://mestti.com.br/blog/) · [feed Atom](https://mestti.com.br/blog/feed.xml)
+- [Como calcular a capacidade produtiva de uma máquina](https://mestti.com.br/blog/capacidade-produtiva-de-uma-maquina/)
+- [Preço de venda na indústria pelo método RKW](https://mestti.com.br/blog/como-calcular-preco-venda-industria-rkw-custo-processo/)
+- [Como escolher um sistema de monitoramento de produção](https://mestti.com.br/blog/como-escolher-sistema-monitoramento-producao/)
+- [Como reduzir o tempo de setup na prática](https://mestti.com.br/blog/como-reduzir-tempo-de-setup/)
+- [Contagem automática de peças: como funciona](https://mestti.com.br/blog/contagem-automatica-de-pecas/)
+- [Quanto custa uma hora de máquina parada](https://mestti.com.br/blog/custo-da-hora-de-maquina-parada/)
+- [Inspeção de primeira peça: como fazer e registrar](https://mestti.com.br/blog/inspecao-de-primeira-peca/)
+- [Microparadas: o que são, quanto custam e como encontrar](https://mestti.com.br/blog/microparadas/)
+- [Motivos de parada de máquina: lista e registro](https://mestti.com.br/blog/motivos-de-parada-de-maquina/)
+- [MTBF e MTTR: o que são, como calcular e para que servem](https://mestti.com.br/blog/mtbf-e-mttr/)
+- [Planilha de PCP no Excel: quando ela deixa de funcionar](https://mestti.com.br/blog/planilha-de-pcp-no-excel/)
+- [Como controlar refugo e retrabalho por máquina](https://mestti.com.br/blog/refugo-e-retrabalho-por-maquina/)
+- [Sensoriamento industrial: dados da máquina em tempo real](https://mestti.com.br/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/)
 
 ## Contato
 

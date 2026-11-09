@@ -1,0 +1,266 @@
+<!--@page {
+ "dict": "js/i18n/404.js",
+ "strings": {},
+ "localize": false
+} -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="/js/theme-init.js?v=2"></script>
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+    <meta name="robots" content="noindex">
+    <meta name="description" content="A página que você procurou não existe ou mudou de endereço.">
+    <title>Página não encontrada | Mestti</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/site.css?v=6">
+    <link rel="stylesheet" href="/css/v2.css?v=2">
+    <link rel="stylesheet" href="/css/v3.css?v=95">
+    <link rel="stylesheet" href="/css/v3-mobile.css?v=27">
+    <style>
+        /* 404: o número desenhado como uma planta de máquinas vista de cima. As do "404" estão paradas. */
+        .nf { padding-block: clamp(28px, 4vw, 56px) clamp(56px, 8vw, 104px); }
+        .nf-plant { position: relative; height: clamp(240px, 34vw, 400px); margin-bottom: clamp(28px, 4vw, 48px); cursor: crosshair; touch-action: manipulation; }
+        .nf-plant canvas { display: block; width: 100%; height: 100%; }
+        .nf-tip { position: absolute; z-index: 2; pointer-events: none; padding: 6px 10px; border-radius: 8px; background: var(--ink); color: var(--paper); font: 500 .78rem/1.3 var(--f-data); white-space: nowrap; transform: translate(-50%, calc(-100% - 12px)); opacity: 0; transition: opacity .15s; }
+        .nf-tip.is-on { opacity: 1; }
+        .nf-tip b { font-weight: 600; }
+        .nf-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+        .hv .nf-code { margin: 0 0 14px; font: 600 .82rem/1.3 var(--f-data); letter-spacing: .06em; color: var(--muted); overflow-wrap: anywhere; }
+        .nf-code i { display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--stop); vertical-align: 1px; animation: nf-blink 1.4s ease-in-out infinite; }
+        .is-running .nf-code i { background: var(--run); animation: none; }
+        @keyframes nf-blink { 50% { opacity: .25; } }
+        body.hv-page .nf h1 { margin: 0; max-width: 13ch; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.02; }
+        .hv .nf-lead { margin: 20px 0 0; max-width: 44ch; font-size: 1.12rem; line-height: 1.55; color: var(--ink-2); }
+        .hv .nf-count { margin: 18px 0 0; font: 500 .9rem/1.4 var(--f-data); color: var(--muted); }
+        .nf-count b { color: var(--stop); }
+        .is-running .nf-count b { color: var(--run); }
+        /* Linha do tempo da "máquina 404", no formato do monitoramento */
+        .nf-tape { display: grid; gap: 8px; margin-bottom: 28px; }
+        .nf-tape-bar { display: flex; height: 14px; border-radius: 3px; overflow: hidden; background: var(--line); }
+        .nf-tape-bar span { display: block; height: 100%; }
+        .nf-tape-bar .run { background: var(--run); }
+        .nf-tape-bar .setup { background: var(--setup); }
+        .nf-tape-bar .stop { background: var(--stop); flex: 1; transition: background .4s; }
+        .is-running .nf-tape-bar .stop { background: var(--run); }
+        .nf-tape-meta { display: flex; justify-content: space-between; gap: 12px; font: 500 .8rem/1.3 var(--f-data); color: var(--muted); }
+        .hv .nf-label { margin: 0 0 12px; font: 600 .8rem/1.2 var(--f-data); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+        /* Destinos no formato dos motivos de parada do tablet */
+        .nf-reasons { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+        .nf-reasons a { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 16px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); text-decoration: none; font: 600 1rem/1.2 var(--f-text); transition: border-color .2s, background .2s, transform .2s; }
+        .nf-reasons a::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 3px; background: var(--muted); transition: background .2s; }
+        .nf-reasons a:hover, .nf-reasons a:focus-visible { border-color: var(--ink); transform: translateY(-1px); }
+        .nf-reasons a:hover::before, .nf-reasons a:focus-visible::before, .nf-reasons a.is-picked::before { background: var(--run); }
+        .nf-reasons a.is-first { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+        .nf-reasons a.is-first::before { background: var(--signal); }
+        .nf-reasons a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+        .hv .nf-langs { margin: 22px 0 0; font-size: .92rem; color: var(--muted); }
+        .nf-langs a { color: var(--ink); }
+        @media (max-width: 900px) { .nf-grid { grid-template-columns: minmax(0, 1fr); } }
+        @media (max-width: 420px) { .nf-reasons { grid-template-columns: minmax(0, 1fr); } }
+        @media (prefers-reduced-motion: reduce) { .nf-code i { animation: none; } .nf-reasons a { transition: none; } }
+    </style>
+</head>
+
+<body class="hv-page" data-page="404">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- @header -->
+    <main id="conteudo" tabindex="-1" class="hv">
+        <section class="nf" aria-labelledby="nf-title" data-nf>
+            <div class="hv-wrap">
+                <div class="nf-plant" data-nf-plant aria-hidden="true"><canvas></canvas><div class="nf-tip" data-nf-tip></div></div>
+                <div class="nf-grid">
+                    <div>
+                        <p class="nf-code"><i></i><span data-nf-path>Erro 404</span></p>
+                        <h1 id="nf-title">Esta página parou.</h1>
+                        <p class="nf-lead">O endereço não existe ou mudou de lugar. Escolha um destino, ou clique nas máquinas paradas do 404 para fazê-las voltar a rodar.</p>
+                        <p class="nf-count" data-nf-count aria-live="polite">Máquinas paradas: <b>34</b></p>
+                    </div>
+                    <div>
+                        <div class="nf-tape" aria-hidden="true">
+                            <div class="nf-tape-bar"><span class="run" style="flex:5"></span><span class="setup" style="flex:.6"></span><span class="run" style="flex:3"></span><span class="stop"></span></div>
+                            <div class="nf-tape-meta"><span>MAQ-404</span><span data-nf-timer>Parada há 00:00</span></div>
+                        </div>
+                        <p class="nf-label" id="nf-dest">Apontar destino</p>
+                        <ul class="nf-reasons" aria-labelledby="nf-dest">
+                            <li><a class="is-first" href="/">Início</a></li>
+                            <li><a href="/producao/">Produção e PCP</a></li>
+                            <li><a href="/sensores/">Sensores</a></li>
+                            <li><a href="/otto/">Otto, agente de IA</a></li>
+                            <li><a href="/blog/">Blog</a></li>
+                            <li><a href="https://wa.me/5543991095035" target="_blank" rel="noopener">Falar no WhatsApp</a></li>
+                        </ul>
+                        <p class="nf-langs">Page not found: <a href="/en/">English</a> · Página no encontrada: <a href="/es/">Español</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- @footer -->
+
+<!-- @modal -->
+
+    <script>
+    (function () {
+        var root = document.querySelector('[data-nf]');
+        var plant = root.querySelector('[data-nf-plant]');
+        var canvas = plant.querySelector('canvas');
+        var tip = plant.querySelector('[data-nf-tip]');
+        var ctx = canvas.getContext('2d');
+        var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var pathEl = root.querySelector('[data-nf-path]');
+        try { pathEl.textContent = 'Erro 404 · ' + decodeURIComponent(location.pathname).slice(0, 60); } catch (e) { pathEl.textContent = 'Erro 404'; }
+
+        // Fonte 5×7 do "4" e do "0".
+        var GLYPH = {
+            '4': ['00010', '00110', '01010', '10010', '11111', '00010', '00010'],
+            '0': ['01110', '10001', '10011', '10101', '11001', '10001', '01110']
+        };
+        var cells = [], cols = 0, rows = 0, size = 0, gap = 0, offX = 0, offY = 0, mouse = null, stopped = 0, t0 = Date.now();
+        var COLORS = {};
+        function readColors() {
+            var cs = getComputedStyle(document.body);
+            var v = function (n, d) { return cs.getPropertyValue(n).trim() || d; };
+            COLORS = { run: v('--run', '#1f8a4c'), stop: v('--stop', '#d23a2a'), setup: v('--setup', '#e07a1f'), micro: v('--micro', '#e5a50a'), idle: v('--line', '#d9dee5') };
+        }
+        function pick() { var r = Math.random(); return r < .66 ? 'run' : r < .76 ? 'idle' : r < .86 ? 'setup' : 'micro'; }
+        function layout() {
+            var w = plant.clientWidth, h = plant.clientHeight, dpr = Math.min(2, window.devicePixelRatio || 1);
+            canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            var scale = w < 560 ? 1 : 2;                       // cada pixel da fonte vira scale×scale máquinas
+            var digitsW = (5 * 3 + 2) * scale, digitsH = 7 * scale;
+            cols = Math.max(digitsW + 4, Math.floor(w / (w < 560 ? 15 : 19)));
+            size = w / cols; gap = Math.max(2, size * .22);
+            rows = Math.max(digitsH + 2, Math.floor(h / size));
+            offX = (w - cols * size) / 2; offY = (h - rows * size) / 2;
+            var x0 = Math.floor((cols - digitsW) / 2), y0 = Math.floor((rows - digitsH) / 2);
+            var mask = {};
+            '404'.split('').forEach(function (ch, d) {
+                GLYPH[ch].forEach(function (line, y) {
+                    line.split('').forEach(function (v, x) {
+                        if (v !== '1') return;
+                        for (var a = 0; a < scale; a++) for (var b = 0; b < scale; b++)
+                            mask[(x0 + (d * 6 + x) * scale + a) + ',' + (y0 + y * scale + b)] = 1;
+                    });
+                });
+            });
+            cells = []; stopped = 0;
+            for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) {
+                var is404 = !!mask[c + ',' + r];
+                if (is404) stopped++;
+                cells.push({ c: c, r: r, is404: is404, state: is404 ? 'stop' : pick(), k: 1, id: 100 + r * cols + c, oee: 55 + Math.floor(Math.random() * 40) });
+            }
+            root.classList.remove('is-running');
+            updateCount();
+        }
+        function cellAt(px, py) {
+            var c = Math.floor((px - offX) / size), r = Math.floor((py - offY) / size);
+            if (c < 0 || r < 0 || c >= cols || r >= rows) return null;
+            return cells[r * cols + c];
+        }
+        var countEl = root.querySelector('[data-nf-count]');
+        function updateCount() {
+            if (stopped === 0) { root.classList.add('is-running'); countEl.innerHTML = 'Máquinas paradas: <b>0</b>. A MAQ-404 voltou a rodar.'; return; }
+            countEl.innerHTML = 'Máquinas paradas: <b>' + stopped + '</b>';
+        }
+        function draw(now) {
+            var w = plant.clientWidth, h = plant.clientHeight;
+            ctx.clearRect(0, 0, w, h);
+            for (var i = 0; i < cells.length; i++) {
+                var cell = cells[i];
+                var cx = offX + cell.c * size + size / 2, cy = offY + cell.r * size + size / 2;
+                var near = 0;
+                if (mouse) {
+                    var d = Math.hypot(mouse.x - cx, mouse.y - cy), R = size * 5;
+                    if (d < R) near = 1 - d / R;
+                }
+                var hot = cell.is404 && cell.state === 'stop';
+                // fundo calmo: pontos pequenos e apagados; perto do mouse, a máquina aparece com a cor do estado
+                var base = hot ? 1 : (cell.fixed ? .9 : .42);
+                var target = base + (1 - base) * near + (hot ? .12 * near : 0);
+                cell.k += (target - cell.k) * (reduced ? 1 : .18);
+                var s = (size - gap) * cell.k;
+                ctx.globalAlpha = hot ? (reduced ? 1 : .84 + .16 * Math.sin(now / 420)) : (cell.fixed ? 1 : .28 + .72 * near);
+                ctx.fillStyle = COLORS[cell.state];
+                var rr = Math.min(3, s / 4);
+                ctx.beginPath();
+                if (ctx.roundRect) ctx.roundRect(cx - s / 2, cy - s / 2, s, s, rr); else ctx.rect(cx - s / 2, cy - s / 2, s, s);
+                ctx.fill();
+            }
+            ctx.globalAlpha = 1;
+        }
+        var NAME = { run: 'Rodando', stop: 'Parada', setup: 'Setup', micro: 'Microparada', idle: 'Sem programação' };
+        function showTip(cell) {
+            if (!cell) { tip.classList.remove('is-on'); return; }
+            tip.innerHTML = cell.is404 && cell.state === 'stop' ? '<b>MAQ-404</b> · Parada · página não encontrada · clique para apontar'
+                : '<b>MAQ-' + cell.id + '</b> · ' + NAME[cell.state] + (cell.state === 'run' ? ' · OEE ' + cell.oee + '%' : '');
+            tip.style.left = Math.min(plant.clientWidth - 40, Math.max(40, offX + cell.c * size + size / 2)) + 'px';
+            tip.style.top = (offY + cell.r * size) + 'px';
+            tip.classList.add('is-on');
+        }
+        plant.addEventListener('pointermove', function (e) {
+            var r = plant.getBoundingClientRect(); mouse = { x: e.clientX - r.left, y: e.clientY - r.top };
+            showTip(cellAt(mouse.x, mouse.y));
+            if (reduced) draw(0);
+        });
+        plant.addEventListener('pointerleave', function () { mouse = null; showTip(null); if (reduced) draw(0); });
+        plant.addEventListener('click', function (e) {
+            var r = plant.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+            // aponta as máquinas paradas em volta do clique (raio de 2,5 células)
+            var R = size * 2.5, hit = 0;
+            cells.forEach(function (c) {
+                if (!c.is404 || c.state !== 'stop') return;
+                if (Math.hypot(x - (offX + c.c * size + size / 2), y - (offY + c.r * size + size / 2)) < R) { c.state = 'run'; c.fixed = true; c.k = 1.6; hit++; }
+            });
+            if (!hit) return;
+            stopped -= hit; updateCount(); showTip(cellAt(x, y));
+            if (reduced) draw(0);
+        });
+        // Flutuação natural do chão de fábrica: algumas máquinas mudam de estado
+        function flicker() {
+            for (var i = 0; i < Math.max(2, cells.length / 90); i++) {
+                var c = cells[Math.floor(Math.random() * cells.length)];
+                if (!c.is404 && !c.fixed) c.state = pick();
+            }
+        }
+        var timer = root.querySelector('[data-nf-timer]');
+        function tick() {
+            if (stopped === 0) { timer.textContent = 'Rodando'; return; }
+            var s = Math.floor((Date.now() - t0) / 1000);
+            timer.textContent = 'Parada há ' + String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+        }
+        // Apontar um destino: a linha do tempo volta a rodar antes de sair
+        root.querySelectorAll('.nf-reasons a').forEach(function (a) {
+            a.addEventListener('click', function () { a.classList.add('is-picked'); root.classList.add('is-running'); });
+        });
+        readColors(); layout();
+        var last = 0;
+        function loop(now) {
+            requestAnimationFrame(loop);
+            if (now - last > 700) { flicker(); last = now; }
+            draw(now);
+        }
+        if (reduced) draw(0); else requestAnimationFrame(loop);
+        setInterval(tick, 1000); tick();
+        var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { layout(); draw(0); }, 120); });
+        new MutationObserver(function () { readColors(); draw(0); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    })();
+    </script>
+    <script defer src="/js/i18n.js?v=35"></script>
+    <script defer src="/js/theme.js?v=3"></script>
+    <script defer src="/js/form-options.js?v=4"></script>
+    <script defer src="/js/meta-consent.js?v=10"></script>
+    <script defer src="/js/google-consent.js?v=3"></script>
+    <script defer src="/js/script.js?v=45"></script>
+    <script defer src="/js/conversational-form.js?v=18"></script>
+    <script defer src="/js/v2.js?v=44"></script>
+</body>
+
+</html>

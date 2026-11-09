@@ -1,0 +1,226 @@
+[
+  {
+    "url": "/atuacao/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/blog/como-escolher-sistema-monitoramento-producao/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/blog/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/blog/nota-fiscal-de-perda-reducao-de-impostos/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/blog/o-que-e-sistema-mes-mestti/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/checklists/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/contato/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/empresa/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/producao/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/qualidade/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/sensores/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/sensoriamento/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/sequenciamento/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/solucoes/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/termos/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/cmms/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/pass/",
+    "status": 200,
+    "location": null,
+    "type": "text/html; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/robots.txt",
+    "status": 200,
+    "location": null,
+    "type": "text/plain; charset=UTF-8",
+    "robots": null
+  },
+  {
+    "url": "/sitemap.xml",
+    "status": 200,
+    "location": null,
+    "type": "application/xml",
+    "robots": null
+  },
+  {
+    "url": "/index.md",
+    "status": 200,
+    "location": null,
+    "type": "text/markdown; charset=UTF-8",
+    "robots": "noindex"
+  },
+  {
+    "url": "/inexistente-seo-test/",
+    "status": 404,
+    "location": null,
+    "type": "text/html; charset=utf-8",
+    "robots": null
+  },
+  {
+    "url": "/api/lead",
+    "status": 404,
+    "location": null,
+    "type": "text/html; charset=utf-8",
+    "robots": null
+  },
+  {
+    "url": "/api/lead-progress",
+    "status": 404,
+    "location": null,
+    "type": "text/html; charset=utf-8",
+    "robots": null
+  },
+  {
+    "url": "/download-app",
+    "status": 200,
+    "location": null,
+    "type": "application/vnd.android.package-archive",
+    "robots": null
+  },
+  {
+    "url": "/producao?utm_source=qa",
+    "status": 301,
+    "location": "/producao/?utm_source=qa",
+    "type": "text/plain; charset=utf-8",
+    "robots": null
+  },
+  {
+    "url": "/producao/index.html?utm_source=qa",
+    "status": 301,
+    "location": "/producao/?utm_source=qa",
+    "type": "text/plain; charset=utf-8",
+    "robots": null
+  },
+  {
+    "url": "/qualidade-2/",
+    "status": 301,
+    "location": "/checklists/",
+    "type": "text/plain; charset=utf-8",
+    "robots": null
+  },
+  {
+    "url": "/barra-pass/",
+    "status": 301,
+    "location": "/pass/",
+    "type": "text/plain; charset=utf-8",
+    "robots": null
+  }
+]

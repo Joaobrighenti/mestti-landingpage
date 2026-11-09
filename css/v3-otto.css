@@ -1,0 +1,170 @@
+/* Página do Otto, no padrão do site. O roxo fica só no mascote, como no produto. */
+body.hv-page { --oc-bubble: #041121; --oc-on-bubble: #fff; --oc-btn: #041121; --oc-on-btn: #fff; }
+html[data-theme="dark"] body.hv-page { --oc-bubble: #1e293b; --oc-btn: #e2e8f0; --oc-on-btn: #0f172a; }
+
+/* ---------- Hero ---------- */
+.ot-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); gap: clamp(40px, 6vw, 96px); align-items: center; }
+.ot-mascot { width: 104px; height: 104px; margin: 0 0 12px -10px; }
+.ot-mascot svg { display: block; }
+.hv .ot-kicker { margin: 0 0 14px; font: 600 .85rem/1.2 var(--f-data); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+body.hv-page .ot-hero h1 { margin: 0; max-width: 12ch; }
+.hv .ot-lead { margin: 22px 0 0; max-width: 46ch; font-size: clamp(1.08rem, 1.4vw, 1.22rem); line-height: 1.6; color: var(--ink-2); }
+.ot-hero .hv-hero-actions { margin-top: 30px; }
+.hv .ot-shortcut { margin: 16px 0 0; font-size: .95rem; color: var(--muted); }
+.ot-shortcut kbd { display: inline-block; min-width: 1.8em; padding: 1px 6px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); font: 600 .8rem/1.4 var(--f-data); text-align: center; }
+
+/* ---------- Conversa de exemplo, com as cores do chat real ---------- */
+.oc { display: grid; grid-template-rows: auto minmax(0, 1fr) auto auto; height: 560px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); overflow: hidden; }
+.oc-head { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.hv .oc-head strong { font: 600 .98rem/1 var(--f-text); color: var(--ink); }
+.oc-ic, .oc-icons { display: flex; color: var(--muted); }
+.oc-icons { margin-left: auto; gap: 12px; }
+.oc svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.oc svg circle { fill: currentColor; stroke: none; }
+.oc-body { display: flex; flex-direction: column; justify-content: flex-end; gap: 16px; padding: 18px 18px 10px; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 28px); mask-image: linear-gradient(to bottom, transparent 0, #000 28px); }
+.oc-user { align-self: flex-end; max-width: 80%; }
+.hv .oc-user p { margin: 0; padding: 10px 14px; border-radius: 16px 16px 4px 16px; background: var(--oc-bubble); color: var(--oc-on-bubble); font-size: .97rem; line-height: 1.4; }
+.oc-user, .oc-answer { opacity: 0; transform: translateY(6px); transition: opacity .4s var(--out), transform .4s var(--out); }
+.oc-user.is-in, .oc-answer.is-in { opacity: 1; transform: none; }
+/* Etapas: como o histórico de trabalho do chat (linha fina, ✓, duração; a atual com o mascote). */
+.oc-work { display: grid; gap: 2px; }
+.oc-steps { list-style: none; margin: 0; padding: 0 0 0 10px; border-left: 1px solid var(--line); }
+.oc-steps li { display: none; grid-template-columns: 16px minmax(0, 1fr) auto; gap: 8px; align-items: center; height: 26px; font-size: .88rem; }
+.oc-steps li.is-on, .oc-steps li.is-ok { display: grid; }
+.oc-mark { width: 16px; height: 16px; }
+.is-on .oc-mark { background: url(/images/otto-mark.svg) center / contain no-repeat; transform-origin: 50% 90%; animation: oc-swim 1.1s ease-in-out infinite; }
+.is-ok .oc-mark { background: var(--muted); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat; }
+@keyframes oc-swim { 0%, 100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-2px) rotate(5deg); } }
+.oc-cur, .oc-past { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.oc-past, .is-on .oc-past, .is-ok .oc-cur { display: none; }
+.is-ok .oc-past { display: block; color: var(--ink-2); }
+.is-on .oc-cur { display: block; background: linear-gradient(90deg, var(--ink) 0%, var(--muted) 50%, var(--ink) 100%) 0 0 / 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: oc-shim 1.6s linear infinite; }
+.oc-dur { font: 500 .78rem/1 var(--f-text); font-style: normal; font-variant-numeric: tabular-nums; color: var(--muted); }
+.oc-work.is-done .oc-steps { display: none; }
+.oc-work.is-done.is-open .oc-steps { display: block; margin-top: 4px; }
+.oc-sum { display: inline-flex; align-items: center; gap: 2px; align-self: start; justify-self: start; min-height: 26px; padding: 0; border: 0; background: none; color: var(--ink-2); font: 500 .84rem/1 var(--f-text); font-variant-numeric: tabular-nums; cursor: pointer; }
+.oc-sum svg { width: 18px; height: 18px; color: var(--muted); transition: transform .25s var(--out); }
+.oc-sum[aria-expanded="true"] svg { transform: rotate(180deg); }
+.oc-sum:hover, .oc-sum:hover svg { color: var(--ink); }
+.oc-sum:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+@keyframes oc-shim { to { background-position: -200% 0; } }
+.oc-answer { display: grid; gap: 12px; font-size: .97rem; line-height: 1.5; }
+.hv .oc-answer p { margin: 0; color: var(--ink); }
+.oc-bars, .oc-rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.oc-bar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; font-size: .86rem; color: var(--ink-2); }
+.oc-bar em, .oc-row em { font: 600 .82rem/1.3 var(--f-data); font-style: normal; color: var(--ink); }
+.oc-bar i { grid-column: 1 / -1; position: relative; height: 4px; border-radius: 2px; background: var(--line); overflow: hidden; }
+.oc-bar i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: 0; background: var(--ink); transition: width .9s var(--out) .2s; }
+.oc-answer.is-in .oc-bar i::after { width: var(--w); }
+.oc-row { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: .88rem; color: var(--ink-2); }
+.oc-row::before { content: ""; flex: none; width: 6px; height: 6px; margin-top: 7px; border-radius: 50%; background: var(--micro, #e5a50a); }
+.oc-row span { flex: 1; }
+/* Cartão de proposta, como no chat real ("Confirme o plano"). */
+body.hv-page { --oc-plan-bg: #fff7ee; --oc-plan-line: #fbd9b8; --oc-plan-ink: #c2410c; }
+html[data-theme="dark"] body.hv-page { --oc-plan-bg: rgba(234, 88, 12, .1); --oc-plan-line: rgba(251, 146, 60, .35); --oc-plan-ink: #fb923c; }
+.oc-plan { display: grid; gap: 6px; padding: 12px 14px; border: 1px solid var(--oc-plan-line); border-radius: 12px; background: var(--oc-plan-bg); }
+.hv .oc-plan-label { margin: 0; font: 700 .72rem/1.2 var(--f-text); letter-spacing: .04em; text-transform: uppercase; color: var(--oc-plan-ink); }
+.hv .oc-plan-title { margin: 0; font: 600 1rem/1.3 var(--f-text); color: var(--ink); }
+.hv .oc-plan-note { margin: 0; font-size: .78rem; color: var(--muted); }
+.oc-plan-btns { display: flex; gap: 8px; margin-top: 4px; }
+.oc-approve { min-height: 34px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--oc-plan-ink); color: #fff; font: 600 .86rem/1 var(--f-text); cursor: pointer; transition: filter .2s; }
+.oc-approve > span:first-child::before { content: "✓  "; }
+.oc-approve:hover { filter: brightness(.92); }
+.oc-approve:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.oc-reject { display: inline-flex; align-items: center; min-height: 34px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-2); font: 500 .86rem/1 var(--f-text); background: var(--surface); }
+.oc-reject::before { content: "✕"; margin-right: 6px; font-size: .78rem; }
+.oc-done { display: none; }
+.is-approved .oc-approve { pointer-events: none; background: transparent; color: var(--run, #1f8a4c); padding: 0; }
+.is-approved .oc-approve > span:first-child { display: none; }
+.is-approved .oc-done { display: inline; }
+.is-approved .oc-done::before { content: "✓ "; }
+.is-approved .oc-reject { display: none; }
+.hv .oc-log { margin: -4px 0 0; font-size: .82rem; color: var(--muted); opacity: 0; transition: opacity .4s var(--out); }
+.is-approved .oc-log { opacity: 1; }
+.oc-composer { display: flex; align-items: center; gap: 10px; margin: 6px 14px 0; padding: 0 8px 0 16px; min-height: 46px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: .95rem; }
+.oc-input { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; color: var(--ink); }
+.oc-ph { color: var(--muted); }
+.oc-typed::after { content: ""; display: inline-block; width: 1px; height: 1.05em; margin-left: 1px; vertical-align: -2px; background: var(--ink); animation: oc-caret .9s steps(1) infinite; }
+@keyframes oc-caret { 50% { opacity: 0; } }
+.oc-mic { display: grid; place-items: center; width: 32px; height: 32px; }
+.hv .oc-foot { margin: 0; padding: 7px 12px 11px; font-size: .74rem; text-align: center; color: var(--muted); }
+.oc-tabs { display: flex; justify-content: center; gap: 22px; margin-top: 16px; }
+.oc-tabs button { position: relative; min-height: 40px; padding: 0; border: 0; background: none; color: var(--muted); font: 500 .95rem/1 var(--f-text); cursor: pointer; transition: color .25s; }
+.oc-tabs button::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 2px; background: var(--ink); transform: scaleX(0); transition: transform .35s var(--out); }
+.oc-tabs button:hover, .oc-tabs button[aria-selected="true"] { color: var(--ink); }
+.oc-tabs button[aria-selected="true"]::after { transform: scaleX(1); }
+.oc-tabs button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.hv .oc-note { margin: 4px 0 0; text-align: center; font-size: .8rem; color: var(--muted); }
+
+/* ---------- Seções ---------- */
+.ot-head { max-width: 760px; margin-bottom: clamp(36px, 5vw, 56px); }
+.hv .ot-head .hv-lead { margin-top: 20px; }
+.ot-head h2 { max-width: 20ch; }
+
+.ot-shots { display: grid; grid-template-columns: minmax(0, 2.3fr) minmax(0, 1fr); grid-template-rows: auto auto; gap: clamp(20px, 3vw, 36px) clamp(20px, 3vw, 40px); align-items: start; }
+.ot-shot { margin: 0; display: grid; gap: 12px; }
+.ot-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.ot-shot--main { grid-row: span 2; }
+.ot-shot--plan img, .ot-shot--key img { border: 0; }
+.hv .ot-shot figcaption { font-size: .92rem; line-height: 1.45; color: var(--ink-2); }
+.hv .ot-fine { margin: 18px 0 0; font-size: .85rem; color: var(--muted); }
+
+.ot-cap-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
+.ot-cap-list li { display: grid; gap: 8px; align-content: start; padding-top: 18px; border-top: 1px solid var(--line); transition: border-color .35s var(--out); }
+.ot-cap-n { font: 600 .82rem/1 var(--f-data); color: var(--muted); }
+.hv .ot-cap-list h3 { margin: 4px 0 0; font-size: 1.25rem; }
+.ot-cap-list p { margin: 0; color: var(--ink-2); line-height: 1.55; }
+
+.ot-track { --p: 0; position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
+.ot-track::before, .ot-track::after { content: ""; position: absolute; left: 7px; top: 7px; height: 2px; background: var(--line); }
+.ot-track::before { right: calc(100% / 6 - 7px); }
+.ot-track::after { width: calc((100% - 100% / 6) * var(--p)); background: var(--ink); transition: width .6s var(--out); }
+.ot-track li { position: relative; z-index: 1; display: grid; gap: 6px; align-content: start; }
+.ot-dot { width: 16px; height: 16px; margin-bottom: 10px; border-radius: 50%; background: var(--paper); border: 2px solid var(--line); transition: background .35s var(--out), border-color .35s; }
+.ot-track li strong { font: 600 1.05rem/1.25 var(--f-head); color: var(--ink); }
+.ot-track li span:last-child { font-size: .92rem; line-height: 1.45; color: var(--ink-2); }
+.ot-track li.is-lit .ot-dot { background: var(--ink); border-color: var(--ink); }
+.ot-track li.is-human .ot-dot { border-color: var(--ink); }
+.ot-rules { list-style: none; margin: clamp(48px, 6vw, 72px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.ot-rules li { display: flex; gap: 12px; align-items: flex-start; }
+.ot-rules svg { flex: none; width: 20px; height: 20px; margin-top: 3px; fill: none; stroke: var(--run, #1f8a4c); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.hv .ot-rules strong { display: block; font: 600 1.1rem/1.3 var(--f-head); color: var(--ink); }
+.hv .ot-rules span { display: block; margin-top: 6px; font-size: .98rem; color: var(--ink-2); line-height: 1.5; }
+
+@media (hover: hover) {
+    .ot-cap-list li:hover { border-color: var(--ink); }
+}
+@media (max-width: 1000px) {
+    .ot-hero-grid { grid-template-columns: minmax(0, 1fr); }
+    .ot-hero-demo { max-width: 560px; }
+    .ot-cap-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ot-rules { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+}
+@media (max-width: 720px) {
+    .ot-mascot { width: 88px; height: 88px; }
+    .oc { height: 540px; }
+    .ot-shots { grid-template-columns: minmax(0, 1fr); }
+    .ot-shot--main { grid-row: auto; }
+    .ot-shot--plan, .ot-shot--key { max-width: 380px; }
+    .ot-track { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+    .ot-track li { grid-template-columns: 16px minmax(0, 1fr); column-gap: 14px; }
+    .ot-track li .ot-dot { grid-row: span 2; margin: 2px 0 0; }
+    .ot-track::before { right: auto; bottom: 8px; width: 2px; height: auto; }
+    .ot-track::after { width: 2px; height: calc((100% - 16px) * var(--p)); }
+}
+@media (max-width: 480px) { .ot-cap-list { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .is-on .oc-mark, .is-on .oc-cur { animation: none; } }
+
+/* Roxo do Otto: trilha de aprovação e botões de ação desta página. */
+body[data-page="otto"] { --ot-purple: #7040ff; --ot-purple-hover: #5f30f0; }
+.ot-track::after { background: var(--ot-purple); }
+.ot-track li.is-lit .ot-dot { background: var(--ot-purple); border-color: var(--ot-purple); }
+.ot-track li.is-human .ot-dot { border-color: var(--ot-purple); }
+.ot-track li.is-human strong { color: var(--ot-purple); }
+body[data-page="otto"] .hv-btn--primary,
+body.hv-page[data-page="otto"] .lead-form .lead-submit,
+body.hv-page[data-page="otto"] .demo-submit { background: var(--ot-purple); color: #fff; }
+body[data-page="otto"] .hv-btn--primary:hover,
+body.hv-page[data-page="otto"] .lead-form .lead-submit:hover,
+body.hv-page[data-page="otto"] .demo-submit:hover { background: var(--ot-purple-hover); filter: none; }
+html[data-theme="dark"] body[data-page="otto"] .ot-track li.is-human strong { color: #a58bff; }

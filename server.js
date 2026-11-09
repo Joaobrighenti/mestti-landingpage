@@ -1,4 +1,5 @@
 import express from "express";
+import { existsSync } from "node:fs";
 import os from "os";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -41,6 +42,33 @@ const app = express();
 app.set("trust proxy", 1);
 app.use(express.json({ limit: "3mb" }));
 
+// URLs de documentos usam o mesmo formato canônico do deploy estático.
+const legacyPages = new Map([
+  ["/contato.html", "/contato/"], ["/atuacao.html", "/sensores/"],
+  ["/atuacao", "/sensores/"], ["/atuacao/", "/sensores/"], ["/sensoriamento", "/monitoramento-de-maquinas/"], ["/sensoriamento/", "/monitoramento-de-maquinas/"],
+  ["/blog/o-que-e-sistema-mes-mestti", "/mes/"], ["/blog/o-que-e-sistema-mes-mestti/", "/mes/"], ["/ppcp", "/pcp/"], ["/ppcp/", "/pcp/"],
+  ["/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica", "/oee/"], ["/blog/oee-o-que-e-e-como-usar-no-chao-de-fabrica/", "/oee/"],
+  ["/sensores/empresa", "/empresa/"], ["/sensores/empresa/", "/empresa/"],
+  ["/qualidade-2", "/checklists/"], ["/qualidade-2/", "/checklists/"],
+  ["/barra-pass", "/pass/"], ["/barra-pass/", "/pass/"],
+]);
+app.use((req, res, next) => {
+  if (!["GET", "HEAD"].includes(req.method)) return next();
+  const query = req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
+  const alias = legacyPages.get(req.path);
+  if (alias) return res.redirect(301, alias + query);
+  if (/^\/(?:[a-z0-9-]+\/)*index\.html$/.test(req.path)) {
+    const target = req.path.slice(0, -"index.html".length);
+    if (existsSync(path.join(__dirname, req.path))) return res.redirect(301, target + query);
+  }
+  if (/^\/(?:[a-z0-9-]+\/)*[a-z0-9-]+$/.test(req.path) &&
+      existsSync(path.join(__dirname, req.path, "index.html"))) {
+    return res.redirect(301, req.path + "/" + query);
+  }
+  if (req.path === "/index.md") res.set("X-Robots-Tag", "noindex");
+  next();
+});
+
 // Static assets
 app.use(express.static(__dirname, { extensions: ["html"] }));
 
@@ -52,8 +80,6 @@ function sendPage(res, relPath) {
 app.get("/", (_req, res) => sendPage(res, "index.html"));
 app.get("/contato/", (_req, res) => sendPage(res, path.join("contato", "index.html")));
 app.get("/empresa/", (_req, res) => sendPage(res, path.join("empresa", "index.html")));
-app.get("/atuacao/", (_req, res) => sendPage(res, path.join("atuacao", "index.html")));
-app.get("/sensoriamento/", (_req, res) => sendPage(res, path.join("sensoriamento", "index.html")));
 app.get("/qualidade/", (_req, res) => sendPage(res, path.join("qualidade", "index.html")));
 app.get("/checklists/", (_req, res) => sendPage(res, path.join("checklists", "index.html")));
 app.get(["/qualidade-2", "/qualidade-2/"], (_req, res) => res.redirect(301, "/checklists/"));
@@ -61,9 +87,6 @@ app.get("/producao/", (_req, res) => sendPage(res, path.join("producao", "index.
 app.get("/sensores/", (_req, res) => sendPage(res, path.join("sensores", "index.html")));
 app.get("/sequenciamento/", (_req, res) => sendPage(res, path.join("sequenciamento", "index.html")));
 app.get("/blog/", (_req, res) => sendPage(res, path.join("blog", "index.html")));
-app.get("/blog/o-que-e-sistema-mes-mestti/", (_req, res) =>
-  sendPage(res, path.join("blog", "o-que-e-sistema-mes-mestti", "index.html"))
-);
 app.get("/blog/como-calcular-preco-venda-industria-rkw-custo-processo/", (_req, res) =>
   sendPage(res, path.join("blog", "como-calcular-preco-venda-industria-rkw-custo-processo", "index.html"))
 );
@@ -431,6 +454,14 @@ app.post("/api/cadastro", async (req, res) => {
     console.error("Cadastro error:", err);
     return res.status(500).json({ ok: false, error: "cadastro_failed" });
   }
+});
+
+// Endereço que não existe: a mesma página 404 que a Vercel serve no ar, com status 404.
+app.use((req, res) => {
+  if (["GET", "HEAD"].includes(req.method) && existsSync(path.join(__dirname, "404.html"))) {
+    return res.status(404).sendFile(path.join(__dirname, "404.html"));
+  }
+  return res.status(404).json({ ok: false, error: "not_found" });
 });
 
 app.listen(PORT, HOST, () => {

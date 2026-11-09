@@ -1,0 +1,45 @@
+{
+  "note": "Site publicado anterior ao PR. User-Agent declarado nesta origem de rede não comprova acesso a partir dos IPs reais dos robôs nem indexação.",
+  "checks": [
+    {
+      "userAgent": "Mozilla/5.0",
+      "status": 200,
+      "finalUrl": "https://mestti.com.br/",
+      "bytes": 49183,
+      "hasH1": true,
+      "hasCanonical": true
+    },
+    {
+      "userAgent": "OAI-SearchBot/1.0",
+      "status": 200,
+      "finalUrl": "https://mestti.com.br/",
+      "bytes": 49183,
+      "hasH1": true,
+      "hasCanonical": true
+    },
+    {
+      "userAgent": "Claude-SearchBot/1.0",
+      "status": 200,
+      "finalUrl": "https://mestti.com.br/",
+      "bytes": 49183,
+      "hasH1": true,
+      "hasCanonical": true
+    },
+    {
+      "userAgent": "PerplexityBot/1.0",
+      "status": 200,
+      "finalUrl": "https://mestti.com.br/",
+      "bytes": 49183,
+      "hasH1": true,
+      "hasCanonical": true
+    },
+    {
+      "userAgent": "Googlebot",
+      "status": 200,
+      "finalUrl": "https://mestti.com.br/",
+      "bytes": 49183,
+      "hasH1": true,
+      "hasCanonical": true
+    }
+  ]
+}

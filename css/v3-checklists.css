@@ -1,0 +1,26 @@
+/* Formulário de demonstração da página /checklists/ no visual v3 (o formulário e o js/checklists.js são os mesmos). */
+.ck-form-host { max-width: 640px; }
+.ck-form-card { padding: clamp(20px, 3vw, 32px); border-radius: 14px; background: var(--surface); box-shadow: 0 20px 50px -30px rgba(10, 27, 46, .35); }
+.ck-progress { display: grid; gap: 8px; margin-bottom: 20px; font: 600 .8rem/1 var(--f-data); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.ck-bar { height: 6px; border-radius: 3px; background: var(--paper); overflow: hidden; }
+.ck-bar span { display: block; width: 50%; height: 100%; background: var(--signal); transition: width 240ms var(--out); }
+.ck-form[data-step="2"] .ck-bar span { width: 100%; }
+.ck-fields { display: grid; gap: 14px; }
+.ck-field { display: grid; gap: 6px; }
+.ck-field > span { font: 500 .98rem/1.35 var(--f-text); color: var(--ink); }
+.ck-field input, .ck-field select { width: 100%; min-height: 48px; padding: 0 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); font: 400 1rem/1.2 var(--f-text); }
+.ck-field input:focus, .ck-field select:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
+.ck-field.is-invalid input, .ck-field.is-invalid select { border-color: var(--stop); }
+.ck-error { margin: 0; font-size: .88rem; color: var(--stop); }
+.ck-error:empty { display: none; }
+.ck-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 20px; }
+.ck-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border: 0; border-radius: 8px; background: var(--signal); color: var(--signal-ink, #111820); font: 600 1rem/1 var(--f-text); cursor: pointer; }
+.ck-btn:hover { filter: brightness(.96); }
+.ck-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.ck-link { border: 0; background: none; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; font: 500 .98rem/1 var(--f-text); cursor: pointer; min-height: 44px; }
+.ck-privacy { margin: 14px 0 0; font-size: .85rem; line-height: 1.45; color: var(--muted); }
+.ck-privacy a { color: var(--ink); }
+.ck-success { text-align: center; padding: 12px 0; }
+.ck-success h3 { margin: 0 0 8px; font: 600 1.4rem/1.2 var(--f-head); color: var(--ink); }
+.ck-success p { margin: 0 auto; max-width: 30rem; color: var(--ink-2); }
+@media (max-width: 640px) { .ck-actions .ck-btn { width: 100%; } }

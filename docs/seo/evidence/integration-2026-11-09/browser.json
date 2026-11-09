@@ -1,0 +1,914 @@
+{
+  "date": "2026-11-09",
+  "note": "Chromium headless; terceiros de analytics, Meta e YouTube bloqueados; comparação CSS public versus fonte; sem envio de formulários.",
+  "results": [
+    {
+      "url": "/",
+      "width": 1440,
+      "title": "Mestti | Sistema de gestão da produção com sensores e IA",
+      "lang": "pt-BR",
+      "h1": [
+        "A nova geração de inteligência operacional para indústrias em crescimento"
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://mestti.com.br/#webpage",
+              "url": "https://mestti.com.br/",
+              "name": "Mestti | Sistema de gestão da produção com sensores e IA",
+              "description": "Sensores próprios medem cada máquina e mostram onde a produção para e quando cada pedido fica pronto. O Otto, agente de IA, propõe a próxima ação.",
+              "inLanguage": "pt-BR",
+              "isPartOf": {
+                "@id": "https://mestti.com.br/#website"
+              },
+              "about": {
+                "@id": "https://mestti.com.br/#organization"
+              },
+              "video": {
+                "@id": "https://mestti.com.br/#video"
+              }
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://mestti.com.br/#organization",
+              "name": "MESTTI",
+              "alternateName": "Mestti",
+              "url": "https://mestti.com.br/",
+              "telephone": "+55 43 99109-5035",
+              "legalName": "Mestti Tecnologia LTDA",
+              "taxID": "63.380.944/0001-51",
+              "logo": "https://mestti.com.br/images/MESTTI-logo-header-light.png",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+55 43 99109-5035",
+                "contactType": "sales",
+                "url": "https://mestti.com.br/contato/",
+                "availableLanguage": [
+                  "Portuguese",
+                  "English",
+                  "Spanish"
+                ]
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/mestti/",
+                "https://www.instagram.com/mesttibrasil/",
+                "https://www.youtube.com/@mesttitech"
+              ],
+              "award": "Selecionada na 3ª Chamada Pública do Lab Procel II (ENBPar e SENAI Rio de Janeiro), 2026",
+              "description": "A Mestti é uma plataforma brasileira de gestão da produção para indústrias de todos os portes que conecta engenharia de produto, chão de fábrica e qualidade, com sensores próprios, app e agentes de inteligência artificial.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Londrina",
+                "addressRegion": "PR",
+                "addressCountry": "BR"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+              },
+              "knowsAbout": [
+                "Sistema MES",
+                "OEE",
+                "PCP",
+                "Sequenciamento da produção",
+                "Apontamento de produção",
+                "Monitoramento de máquinas industriais",
+                "Sensores industriais",
+                "Controle de qualidade industrial",
+                "Indústria 4.0"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://mestti.com.br/#website",
+              "url": "https://mestti.com.br/",
+              "name": "MESTTI",
+              "inLanguage": "pt-BR",
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              }
+            },
+            {
+              "@type": "SoftwareApplication",
+              "@id": "https://mestti.com.br/#software",
+              "name": "Mestti",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web, Android",
+              "inLanguage": [
+                "pt-BR",
+                "en",
+                "es"
+              ],
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              },
+              "description": "Sistema de gestão da produção com engenharia de produto, PCP e sequenciamento, monitoramento de máquinas por sensores próprios, apontamento por tablet, qualidade e o assistente de IA Otto.",
+              "offers": {
+                "@type": "Offer",
+                "description": "1 semana de demonstração grátis, com sensores prontos em até 7 dias e instalação em 1 dia."
+              }
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://mestti.com.br/#faq",
+              "inLanguage": "pt-BR",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Quanto custa?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Depende do número de máquinas e do que você vai usar. A semana de teste é grátis e o sensor é emprestado. No fim, você recebe a proposta com os seus números. Se não quiser seguir, retiramos os sensores, sem custo e sem fidelidade."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "O que é a Mestti?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Um sistema brasileiro de gestão da produção para indústrias de todos os portes. Sensores próprios medem cada máquina, e engenharia, planejamento, fábrica e qualidade usam os mesmos dados."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Quanto tempo leva para começar?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sensores prontos em até 7 dias, instalação em 1 dia e 1 semana de teste grátis antes de decidir."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Meus operadores vão se sentir vigiados?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Não. O sensor conta peças e vê se a máquina está rodando ou parada. Ele não vigia pessoas. Quem estava na máquina informa o motivo da parada, e isso fica no nome dele."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Já tenho ERP. Preciso trocar?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Não. A Mestti se conecta ao seu ERP: as ordens vêm dele e a produção volta para ele. O ERP segue com pedidos, compras e faturamento."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Funciona em máquinas antigas?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sim. O sensor lê a contagem ou o sinal elétrico da máquina. Não precisa de CLP e não mexe no comando."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Dá para usar sem sensor?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sim. Em bancada, montagem ou máquina sem sensor, o operador aponta no tablet: inicia, pausa, finaliza e lança a quantidade. Os dados entram na mesma meta, no mesmo OEE e na mesma fila das máquinas com sensor."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "E se a internet da fábrica cair?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "O sensor guarda tudo e envia quando a conexão volta. Nada se perde."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Meus dados ficam seguros?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Os dados de cada empresa ficam isolados e o acesso é por permissão. O registro original não pode ser alterado. O Otto só faz algo depois que uma pessoa aprova."
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "VideoObject",
+              "@id": "https://mestti.com.br/#video",
+              "name": "Quanto sua fábrica produziu hoje? Sistema MES de monitoramento em tempo real",
+              "description": "Em menos de 1 minuto, a Mestti numa fábrica: cada máquina na tela, ao vivo, com o que está rodando, o que parou e por quê.",
+              "thumbnailUrl": "https://mestti.com.br/images/v2/video-mestti.webp",
+              "uploadDate": "2026-10-22T08:11:36-07:00",
+              "duration": "PT57S",
+              "embedUrl": "https://www.youtube-nocookie.com/embed/v9ebdO-P66E",
+              "contentUrl": "https://www.youtube.com/watch?v=v9ebdO-P66E",
+              "inLanguage": "pt-BR",
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              }
+            }
+          ]
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "optionalRequestsBeforeConsent": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/",
+      "width": 390,
+      "title": "Mestti | Sistema de gestão da produção com sensores e IA",
+      "lang": "pt-BR",
+      "h1": [
+        "A nova geração de inteligência operacional para indústrias em crescimento"
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://mestti.com.br/#webpage",
+              "url": "https://mestti.com.br/",
+              "name": "Mestti | Sistema de gestão da produção com sensores e IA",
+              "description": "Sensores próprios medem cada máquina e mostram onde a produção para e quando cada pedido fica pronto. O Otto, agente de IA, propõe a próxima ação.",
+              "inLanguage": "pt-BR",
+              "isPartOf": {
+                "@id": "https://mestti.com.br/#website"
+              },
+              "about": {
+                "@id": "https://mestti.com.br/#organization"
+              },
+              "video": {
+                "@id": "https://mestti.com.br/#video"
+              }
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://mestti.com.br/#organization",
+              "name": "MESTTI",
+              "alternateName": "Mestti",
+              "url": "https://mestti.com.br/",
+              "telephone": "+55 43 99109-5035",
+              "legalName": "Mestti Tecnologia LTDA",
+              "taxID": "63.380.944/0001-51",
+              "logo": "https://mestti.com.br/images/MESTTI-logo-header-light.png",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+55 43 99109-5035",
+                "contactType": "sales",
+                "url": "https://mestti.com.br/contato/",
+                "availableLanguage": [
+                  "Portuguese",
+                  "English",
+                  "Spanish"
+                ]
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/mestti/",
+                "https://www.instagram.com/mesttibrasil/",
+                "https://www.youtube.com/@mesttitech"
+              ],
+              "award": "Selecionada na 3ª Chamada Pública do Lab Procel II (ENBPar e SENAI Rio de Janeiro), 2026",
+              "description": "A Mestti é uma plataforma brasileira de gestão da produção para indústrias de todos os portes que conecta engenharia de produto, chão de fábrica e qualidade, com sensores próprios, app e agentes de inteligência artificial.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Londrina",
+                "addressRegion": "PR",
+                "addressCountry": "BR"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+              },
+              "knowsAbout": [
+                "Sistema MES",
+                "OEE",
+                "PCP",
+                "Sequenciamento da produção",
+                "Apontamento de produção",
+                "Monitoramento de máquinas industriais",
+                "Sensores industriais",
+                "Controle de qualidade industrial",
+                "Indústria 4.0"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://mestti.com.br/#website",
+              "url": "https://mestti.com.br/",
+              "name": "MESTTI",
+              "inLanguage": "pt-BR",
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              }
+            },
+            {
+              "@type": "SoftwareApplication",
+              "@id": "https://mestti.com.br/#software",
+              "name": "Mestti",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web, Android",
+              "inLanguage": [
+                "pt-BR",
+                "en",
+                "es"
+              ],
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              },
+              "description": "Sistema de gestão da produção com engenharia de produto, PCP e sequenciamento, monitoramento de máquinas por sensores próprios, apontamento por tablet, qualidade e o assistente de IA Otto.",
+              "offers": {
+                "@type": "Offer",
+                "description": "1 semana de demonstração grátis, com sensores prontos em até 7 dias e instalação em 1 dia."
+              }
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://mestti.com.br/#faq",
+              "inLanguage": "pt-BR",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Quanto custa?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Depende do número de máquinas e do que você vai usar. A semana de teste é grátis e o sensor é emprestado. No fim, você recebe a proposta com os seus números. Se não quiser seguir, retiramos os sensores, sem custo e sem fidelidade."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "O que é a Mestti?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Um sistema brasileiro de gestão da produção para indústrias de todos os portes. Sensores próprios medem cada máquina, e engenharia, planejamento, fábrica e qualidade usam os mesmos dados."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Quanto tempo leva para começar?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sensores prontos em até 7 dias, instalação em 1 dia e 1 semana de teste grátis antes de decidir."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Meus operadores vão se sentir vigiados?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Não. O sensor conta peças e vê se a máquina está rodando ou parada. Ele não vigia pessoas. Quem estava na máquina informa o motivo da parada, e isso fica no nome dele."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Já tenho ERP. Preciso trocar?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Não. A Mestti se conecta ao seu ERP: as ordens vêm dele e a produção volta para ele. O ERP segue com pedidos, compras e faturamento."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Funciona em máquinas antigas?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sim. O sensor lê a contagem ou o sinal elétrico da máquina. Não precisa de CLP e não mexe no comando."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Dá para usar sem sensor?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sim. Em bancada, montagem ou máquina sem sensor, o operador aponta no tablet: inicia, pausa, finaliza e lança a quantidade. Os dados entram na mesma meta, no mesmo OEE e na mesma fila das máquinas com sensor."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "E se a internet da fábrica cair?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "O sensor guarda tudo e envia quando a conexão volta. Nada se perde."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Meus dados ficam seguros?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Os dados de cada empresa ficam isolados e o acesso é por permissão. O registro original não pode ser alterado. O Otto só faz algo depois que uma pessoa aprova."
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "VideoObject",
+              "@id": "https://mestti.com.br/#video",
+              "name": "Quanto sua fábrica produziu hoje? Sistema MES de monitoramento em tempo real",
+              "description": "Em menos de 1 minuto, a Mestti numa fábrica: cada máquina na tela, ao vivo, com o que está rodando, o que parou e por quê.",
+              "thumbnailUrl": "https://mestti.com.br/images/v2/video-mestti.webp",
+              "uploadDate": "2026-10-22T08:11:36-07:00",
+              "duration": "PT57S",
+              "embedUrl": "https://www.youtube-nocookie.com/embed/v9ebdO-P66E",
+              "contentUrl": "https://www.youtube.com/watch?v=v9ebdO-P66E",
+              "inLanguage": "pt-BR",
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              }
+            }
+          ]
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [
+        "<a href=\"https://www.senai.portaldaindustria.com.br/\" target=\"_blank\" rel=\"noopener\" tabindex=\"-1\"><img src=\"http://127.0.0.1:5578/images/parceiros/senai.webp\" alt=\"\" width=\"441\" height=\"120\" loading=",
+        "<a href=\"https://www.gov.br/mme/pt-br/assuntos/secretarias/sntep/procel\" target=\"_blank\" rel=\"noopener\" tabindex=\"-1\"><img src=\"http://127.0.0.1:5578/images/parceiros/procel.webp\" alt=\"\" width=\"489\" h",
+        "<a href=\"https://enbpar.gov.br/\" target=\"_blank\" rel=\"noopener\" tabindex=\"-1\"><img src=\"http://127.0.0.1:5578/images/parceiros/enbpar.webp\" alt=\"\" width=\"876\" height=\"160\" loading=\"lazy\" decoding=\"asy",
+        "<a href=\"https://www.firjan.com.br/\" target=\"_blank\" rel=\"noopener\" tabindex=\"-1\"><img src=\"http://127.0.0.1:5578/images/parceiros/firjan.webp\" alt=\"\" width=\"689\" height=\"160\" loading=\"lazy\" decoding=",
+        "<a href=\"https://www.sistemafiep.org.br/\" target=\"_blank\" rel=\"noopener\" tabindex=\"-1\"><img src=\"http://127.0.0.1:5578/images/parceiros/fiep.svg\" alt=\"\" width=\"574\" height=\"85\" loading=\"lazy\" decoding",
+        "<a href=\"https://www.moveishub.com.br/\" target=\"_blank\" rel=\"noopener\" tabindex=\"-1\"><img src=\"http://127.0.0.1:5578/images/parceiros/moveis-hub.webp\" alt=\"\" width=\"739\" height=\"86\" loading=\"lazy\" dec"
+      ],
+      "optionalRequestsBeforeConsent": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/termos/",
+      "width": 1440,
+      "title": "Termos de Uso e Contrato de Serviço | Mestti",
+      "lang": "pt-BR",
+      "h1": [
+        "Termos de Uso e Contrato de Serviço"
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://mestti.com.br/termos/#webpage",
+              "url": "https://mestti.com.br/termos/",
+              "name": "Termos de Uso e Contrato de Serviço | Mestti",
+              "description": "Termos de uso e contrato de serviço da plataforma e do aplicativo Mestti: apontamento, OEE, sensores e gestão do chão de fábrica.",
+              "inLanguage": "pt-BR",
+              "isPartOf": {
+                "@id": "https://mestti.com.br/#website"
+              },
+              "breadcrumb": {
+                "@id": "https://mestti.com.br/termos/#breadcrumb"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://mestti.com.br/termos/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Início",
+                  "item": "https://mestti.com.br/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Termos de uso",
+                  "item": "https://mestti.com.br/termos/"
+                }
+              ]
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://mestti.com.br/#organization",
+              "name": "MESTTI",
+              "url": "https://mestti.com.br/"
+            }
+          ]
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "optionalRequestsBeforeConsent": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/termos/",
+      "width": 390,
+      "title": "Termos de Uso e Contrato de Serviço | Mestti",
+      "lang": "pt-BR",
+      "h1": [
+        "Termos de Uso e Contrato de Serviço"
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://mestti.com.br/termos/#webpage",
+              "url": "https://mestti.com.br/termos/",
+              "name": "Termos de Uso e Contrato de Serviço | Mestti",
+              "description": "Termos de uso e contrato de serviço da plataforma e do aplicativo Mestti: apontamento, OEE, sensores e gestão do chão de fábrica.",
+              "inLanguage": "pt-BR",
+              "isPartOf": {
+                "@id": "https://mestti.com.br/#website"
+              },
+              "breadcrumb": {
+                "@id": "https://mestti.com.br/termos/#breadcrumb"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://mestti.com.br/termos/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Início",
+                  "item": "https://mestti.com.br/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Termos de uso",
+                  "item": "https://mestti.com.br/termos/"
+                }
+              ]
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://mestti.com.br/#organization",
+              "name": "MESTTI",
+              "url": "https://mestti.com.br/"
+            }
+          ]
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "optionalRequestsBeforeConsent": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/privacidade/",
+      "width": 390,
+      "title": "Política de Privacidade do aplicativo MESTTI",
+      "lang": "pt-BR",
+      "h1": [
+        "Política de Privacidade"
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Política de Privacidade do aplicativo MESTTI",
+          "url": "https://mestti.com.br/privacidade/",
+          "inLanguage": "pt-BR"
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "optionalRequestsBeforeConsent": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/privacidade-site/",
+      "width": 390,
+      "title": "Aviso de Privacidade do Site MESTTI",
+      "lang": "pt-BR",
+      "h1": [
+        "Aviso de Privacidade do Site"
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Aviso de Privacidade do Site MESTTI",
+          "description": "Como a MESTTI trata os dados dos formulários do site.",
+          "url": "https://mestti.com.br/privacidade-site/",
+          "inLanguage": "pt-BR",
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": "MESTTI",
+            "url": "https://mestti.com.br/"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "MESTTI",
+            "url": "https://mestti.com.br/"
+          },
+          "dateModified": "2026-10-30"
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "optionalRequestsBeforeConsent": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/cookies/",
+      "width": 390,
+      "title": "Cookies no site da MESTTI",
+      "lang": "pt-BR",
+      "h1": [
+        "Cookies no site da MESTTI"
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Cookies no site da MESTTI",
+          "description": "Como o site usa cookies e como alterar suas escolhas.",
+          "url": "https://mestti.com.br/cookies/",
+          "inLanguage": "pt-BR",
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": "MESTTI",
+            "url": "https://mestti.com.br/"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "MESTTI",
+            "url": "https://mestti.com.br/"
+          },
+          "dateModified": "2026-10-30"
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "optionalRequestsBeforeConsent": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/url-inexistente-review/",
+      "width": 390,
+      "title": "Página não encontrada | Mestti",
+      "lang": "pt-BR",
+      "h1": [
+        "Esta página parou."
+      ],
+      "overflow": false,
+      "schemas": [],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "countBefore": "Máquinas paradas: 47",
+      "countAfter": "Máquinas paradas: 38",
+      "optionalRequestsBeforeConsent": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    },
+    {
+      "url": "/en/oee/",
+      "width": 390,
+      "title": "OEE: what it is, how to calculate it and track it live | Mestti",
+      "lang": "en",
+      "h1": [
+        "OEE: what it is, how to calculate it and how to track it live"
+      ],
+      "overflow": false,
+      "schemas": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://mestti.com.br/en/oee/#webpage",
+              "url": "https://mestti.com.br/en/oee/",
+              "name": "OEE: what it is, how to calculate it and track it live | Mestti",
+              "description": "OEE = availability × performance × quality. The formula, a calculator, mistakes that distort the number and how to measure it per machine, live.",
+              "inLanguage": "en",
+              "isPartOf": {
+                "@id": "https://mestti.com.br/#website"
+              },
+              "about": {
+                "@id": "https://mestti.com.br/en/oee/#oee"
+              },
+              "breadcrumb": {
+                "@id": "https://mestti.com.br/en/oee/#breadcrumb"
+              },
+              "primaryImageOfPage": "https://mestti.com.br/images/v2/monitoramento-cards.webp"
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://mestti.com.br/en/oee/#oee",
+              "name": "OEE (Overall Equipment Effectiveness)",
+              "alternateName": [
+                "Eficiência Global do Equipamento",
+                "Eficiência Geral do Equipamento"
+              ],
+              "description": "Indicador que mostra quanto do tempo planejado de uma máquina virou peça boa: disponibilidade × performance × qualidade.",
+              "inDefinedTermSet": "https://mestti.com.br/en/glossario/"
+            },
+            {
+              "@type": "Article",
+              "@id": "https://mestti.com.br/en/oee/#article",
+              "headline": "OEE: what it is, how to calculate it and how to track it live",
+              "description": "OEE = availability × performance × quality. The formula, a calculator, mistakes that distort the number and how to measure it per machine, live.",
+              "inLanguage": "en",
+              "mainEntityOfPage": {
+                "@id": "https://mestti.com.br/en/oee/#webpage"
+              },
+              "datePublished": "2026-09-22",
+              "dateModified": "2026-10-29",
+              "image": "https://mestti.com.br/images/v2/monitoramento-cards.webp",
+              "author": {
+                "@type": "Person",
+                "@id": "https://mestti.com.br/en/empresa/#joao-brighenti",
+                "name": "João Brighenti",
+                "jobTitle": "Fundador",
+                "url": "https://mestti.com.br/en/empresa/",
+                "sameAs": [
+                  "https://www.linkedin.com/in/jo%C3%A3o-gabriel-brighenti/"
+                ],
+                "worksFor": {
+                  "@id": "https://mestti.com.br/#organization"
+                }
+              },
+              "publisher": {
+                "@id": "https://mestti.com.br/#organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://mestti.com.br/en/oee/#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://mestti.com.br/en/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "OEE",
+                  "item": "https://mestti.com.br/en/oee/"
+                }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://mestti.com.br/en/oee/#faq",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What is a good OEE?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "There is no single number. 85% is often cited as a world-class reference, but OEE varies with the type of process. The most useful thing is to compare the same machine over time and find the factor where it loses the most."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What is the difference between OEE and productivity?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Productivity usually looks at how much came out. OEE compares that with what the machine could have made in the planned time and splits the loss into stopped time, pace and quality."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do micro-stops count in OEE?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Short stops reduce run time or pace, depending on how the factory classifies them. Without automatic recording, they tend to disappear from manual reports."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do I need a sensor to measure OEE?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can calculate it from manual reports, but stop times and counts become less reliable. With a sensor, the count and stopped time are recorded automatically and the operator only gives the reason."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can OEE be measured on old machines?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, in most cases. The Mestti sensor reads count pulses or the machine’s electrical signal, with no PLC and no changes to the controls."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is OEE for the whole factory or for each machine?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Both, but OEE per machine is what shows where to act. The factory average hides the machine that loses the most."
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://mestti.com.br/#organization",
+              "name": "MESTTI",
+              "url": "https://mestti.com.br/en/"
+            }
+          ]
+        }
+      ],
+      "brokenImages": [],
+      "namelessVisibleLinks": [],
+      "optionalRequestsBeforeConsent": [],
+      "errors": [],
+      "failures": [],
+      "styleDiffs": []
+    }
+  ],
+  "status": [
+    {
+      "url": "/url-inexistente-review/",
+      "status": 404,
+      "location": null,
+      "robots": null
+    },
+    {
+      "url": "/en/url-inexistente/",
+      "status": 404,
+      "location": null,
+      "robots": null
+    },
+    {
+      "url": "/privacidade/",
+      "status": 200,
+      "location": null,
+      "robots": null
+    },
+    {
+      "url": "/privacidade",
+      "status": 301,
+      "location": "/privacidade/",
+      "robots": null
+    },
+    {
+      "url": "/oee/",
+      "status": 200,
+      "location": null,
+      "robots": null
+    },
+    {
+      "url": "/index.md",
+      "status": 200,
+      "location": null,
+      "robots": "noindex"
+    },
+    {
+      "url": "/robots.txt",
+      "status": 200,
+      "location": null,
+      "robots": null
+    }
+  ],
+  "consent": [
+    {
+      "choice": "none",
+      "state": {
+        "analytics": false,
+        "marketing": false,
+        "configs": []
+      }
+    },
+    {
+      "choice": "analytics",
+      "state": {
+        "analytics": true,
+        "marketing": false,
+        "configs": [
+          "G-9K4NZHC0WT"
+        ]
+      }
+    },
+    {
+      "choice": "marketing",
+      "state": {
+        "analytics": false,
+        "marketing": true,
+        "configs": [
+          "AW-11486484316"
+        ]
+      }
+    }
+  ]
+}

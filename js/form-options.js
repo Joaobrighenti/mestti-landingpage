@@ -28,9 +28,11 @@
             { value: 'outro', labelKey: 'options.setor.outro', label: 'Outro' }
         ],
         solucao: [
+            { value: 'producao', labelKey: 'options.solucao.producao', label: 'Ordens, apontamento e OEE' },
             { value: 'sensoriamento', labelKey: 'options.solucao.sensoriamento', label: 'Sensoriamento de chão de fábrica' },
             { value: 'sequenciamento', labelKey: 'options.solucao.sequenciamento', label: 'Sequenciamento e programação' },
-            { value: 'eficiencia-energetica', labelKey: 'options.solucao.energia', label: 'Eficiência energética' },
+            { value: 'engenharia', labelKey: 'options.solucao.engenharia', label: 'Engenharia de produto e processos' },
+            { value: 'otto', labelKey: 'options.solucao.otto', label: 'Otto, assistente de IA' },
             { value: 'qualidade', labelKey: 'options.solucao.qualidade', label: 'Controle de qualidade' },
             { value: 'monitoramento', labelKey: 'options.solucao.monitoramento', label: 'Monitoramento de indicadores em tempo real' },
             { value: 'plataforma', labelKey: 'options.solucao.plataforma', label: 'Plataforma completa MESTTI' }
