@@ -1,0 +1,34 @@
+{
+  "variants": [
+    {
+      "url": "/en/",
+      "width": 390,
+      "lang": "en",
+      "startText": "Explore the factory in 3D",
+      "startVisible": true,
+      "canvas": false,
+      "overflow": false,
+      "cookieHeight": 44
+    },
+    {
+      "url": "/es/",
+      "width": 390,
+      "lang": "es",
+      "startText": "Explorar la fábrica en 3D",
+      "startVisible": true,
+      "canvas": false,
+      "overflow": false,
+      "cookieHeight": 44
+    },
+    {
+      "url": "/",
+      "width": 1440,
+      "lang": "pt-BR",
+      "startVisible": true,
+      "canvas": true,
+      "overflow": false,
+      "cookieHeight": 28.546875
+    }
+  ],
+  "errors": []
+}

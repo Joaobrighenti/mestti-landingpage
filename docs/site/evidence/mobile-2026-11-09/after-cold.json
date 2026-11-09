@@ -1,0 +1,306 @@
+{
+  "now": 12179.90000000596,
+  "measure": {
+    "lcp": 3448,
+    "longTasks": [
+      {
+        "start": 2276.5999999940395,
+        "duration": 154
+      },
+      {
+        "start": 2484.7999999821186,
+        "duration": 98
+      },
+      {
+        "start": 2649.4000000059605,
+        "duration": 209
+      },
+      {
+        "start": 2875.5,
+        "duration": 286
+      },
+      {
+        "start": 3178.7999999821186,
+        "duration": 193
+      },
+      {
+        "start": 3462.199999988079,
+        "duration": 70
+      }
+    ],
+    "cls": 0.1067774149202278
+  },
+  "resources": [
+    {
+      "url": "http://127.0.0.1:5579/js/theme-init.js?v=2",
+      "transfer": 507,
+      "start": 242.69999998807907,
+      "duration": 156.7000000178814
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap",
+      "transfer": 1559,
+      "start": 246.5,
+      "duration": 332.19999998807907
+    },
+    {
+      "url": "http://127.0.0.1:5579/css/site.css?v=7",
+      "transfer": 12031,
+      "start": 248.7999999821186,
+      "duration": 375.7000000178814
+    },
+    {
+      "url": "http://127.0.0.1:5579/css/v2.css?v=2",
+      "transfer": 6827,
+      "start": 249.7999999821186,
+      "duration": 306.2000000178814
+    },
+    {
+      "url": "http://127.0.0.1:5579/css/factory-sim.css?v=18",
+      "transfer": 5488,
+      "start": 251.40000000596046,
+      "duration": 282.59999999403954
+    },
+    {
+      "url": "http://127.0.0.1:5579/css/home-demos.css?v=3",
+      "transfer": 3863,
+      "start": 252.7999999821186,
+      "duration": 258.90000000596046
+    },
+    {
+      "url": "http://127.0.0.1:5579/css/v3.css?v=96",
+      "transfer": 16679,
+      "start": 255,
+      "duration": 429.09999999403954
+    },
+    {
+      "url": "http://127.0.0.1:5579/css/v3-mobile.css?v=27",
+      "transfer": 3769,
+      "start": 257.19999998807907,
+      "duration": 374.2000000178814
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/MESTTI-logo-header-light.png?v=1",
+      "transfer": 14518,
+      "start": 257.90000000596046,
+      "duration": 1131.199999988079
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/MESTTI-logo-header-dark.png?v=1",
+      "transfer": 8811,
+      "start": 260.09999999403954,
+      "duration": 918.5999999940395
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/v2/fabrica-3d-poster.webp",
+      "transfer": 98654,
+      "start": 262.2999999821186,
+      "duration": 2956.100000023842
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/i18n/inicio.js?v=14",
+      "transfer": 18173,
+      "start": 282.2999999821186,
+      "duration": 1391.6000000238419
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/i18n.js?v=35",
+      "transfer": 22798,
+      "start": 283.40000000596046,
+      "duration": 1601.0999999940395
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/theme.js?v=3",
+      "transfer": 832,
+      "start": 283.5,
+      "duration": 611.7999999821186
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/form-options.js?v=4",
+      "transfer": 1619,
+      "start": 284.90000000596046,
+      "duration": 841.7999999821186
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/meta-consent.js?v=11",
+      "transfer": 1922,
+      "start": 284.90000000596046,
+      "duration": 1148.7999999821186
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/google-consent.js?v=3",
+      "transfer": 924,
+      "start": 285.09999999403954,
+      "duration": 1126.5
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/meta-pixel.js?v=1",
+      "transfer": 3140,
+      "start": 286.19999998807907,
+      "duration": 1477.800000011921
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/script.js?v=45",
+      "transfer": 15246,
+      "start": 288.40000000596046,
+      "duration": 1932.5
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/wa-chat-viewport.js?v=4",
+      "transfer": 3456,
+      "start": 289.90000000596046,
+      "duration": 1526.199999988079
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/conversational-form.js?v=18",
+      "transfer": 8205,
+      "start": 291.69999998807907,
+      "duration": 1854.800000011921
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/factory-loader.js?v=1",
+      "transfer": 1266,
+      "start": 293.09999999403954,
+      "duration": 1673.300000011921
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/v2.js?v=45",
+      "transfer": 8259,
+      "start": 293.69999998807907,
+      "duration": 2017.5
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/home-demos.js?v=8",
+      "transfer": 8718,
+      "start": 295.59999999403954,
+      "duration": 2083
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/logos_clientes/branco/phoenix.webp",
+      "transfer": 6258,
+      "start": 1041.2999999821186,
+      "duration": 1359.800000011921
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/logos_clientes/branco/nicopel.webp",
+      "transfer": 9852,
+      "start": 1043.199999988079,
+      "duration": 1627.5999999940395
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/logos_clientes/branco/brighentti.webp",
+      "transfer": 9126,
+      "start": 1044.199999988079,
+      "duration": 1657.300000011921
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/logos_clientes/branco/acoforte.webp",
+      "transfer": 6408,
+      "start": 1045.199999988079,
+      "duration": 1701.4000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/v2/video-mestti.webp",
+      "transfer": 58936,
+      "start": 1045.199999988079,
+      "duration": 2826.4000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/otto-mascot.js?v=1",
+      "transfer": 9129,
+      "start": 2498.5,
+      "duration": 473.19999998807907
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/logos_clientes/branco/continental.webp",
+      "transfer": 14578,
+      "start": 2563.4000000059605,
+      "duration": 663.2999999821186
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/logos_clientes/branco/injetplast.webp",
+      "transfer": 10184,
+      "start": 2564.9000000059605,
+      "duration": 563.2999999821186
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/logos_clientes/branco/metaltech.webp",
+      "transfer": 14306,
+      "start": 2566,
+      "duration": 690.4000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/parceiros/senai.webp",
+      "transfer": 26580,
+      "start": 2568.199999988079,
+      "duration": 1251.2000000178814
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/parceiros/procel.webp",
+      "transfer": 14050,
+      "start": 2570.5999999940395,
+      "duration": 1158.5999999940395
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/parceiros/enbpar.webp",
+      "transfer": 39920,
+      "start": 2573.699999988079,
+      "duration": 1484.5999999940395
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/parceiros/firjan.webp",
+      "transfer": 35748,
+      "start": 2575.5999999940395,
+      "duration": 1460.800000011921
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/parceiros/fiep.svg",
+      "transfer": 2228,
+      "start": 2577.5999999940395,
+      "duration": 919.0999999940395
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/parceiros/moveis-hub.webp",
+      "transfer": 4360,
+      "start": 2578.9000000059605,
+      "duration": 1194.699999988079
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/Atendente-96.webp",
+      "transfer": 3122,
+      "start": 2645.199999988079,
+      "duration": 558.5999999940395
+    },
+    {
+      "url": "http://127.0.0.1:5579/favicon.svg",
+      "transfer": 499,
+      "start": 4152.199999988079,
+      "duration": 154.80000001192093
+    }
+  ],
+  "navigation": [
+    {
+      "loadEventEnd": 4088.0999999940395,
+      "domContentLoadedEventEnd": 2829.199999988079
+    }
+  ],
+  "cookie": [
+    {
+      "text": "Recusar opcionais",
+      "height": 44
+    },
+    {
+      "text": "Personalizar",
+      "height": 44
+    },
+    {
+      "text": "Aceitar opcionais",
+      "height": 44
+    }
+  ],
+  "ready": "fx",
+  "label": "after",
+  "observationMs": 12000,
+  "heavy": [],
+  "longTaskBlocking12s": 710
+}

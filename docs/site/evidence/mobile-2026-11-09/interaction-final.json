@@ -1,0 +1,392 @@
+{
+  "initial": {
+    "now": 2225.2999999821186,
+    "measure": {
+      "lcp": 944,
+      "longTasks": [
+        {
+          "start": 1122.2999999821186,
+          "duration": 89
+        },
+        {
+          "start": 1271.0999999940395,
+          "duration": 108
+        }
+      ],
+      "cls": 0
+    },
+    "startVisible": true,
+    "resources": [
+      {
+        "url": "http://127.0.0.1:5579/js/theme-init.js?v=2",
+        "transfer": 507,
+        "start": 37.39999997615814,
+        "duration": 20.5
+      },
+      {
+        "url": "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap",
+        "transfer": 1559,
+        "start": 38.19999998807907,
+        "duration": 377.19999998807907
+      },
+      {
+        "url": "http://127.0.0.1:5579/css/site.css?v=7",
+        "transfer": 12031,
+        "start": 38.5,
+        "duration": 13.099999994039536
+      },
+      {
+        "url": "http://127.0.0.1:5579/css/v2.css?v=2",
+        "transfer": 6827,
+        "start": 38.599999994039536,
+        "duration": 16.099999994039536
+      },
+      {
+        "url": "http://127.0.0.1:5579/css/factory-sim.css?v=18",
+        "transfer": 5488,
+        "start": 38.69999998807907,
+        "duration": 23.5
+      },
+      {
+        "url": "http://127.0.0.1:5579/css/home-demos.css?v=3",
+        "transfer": 3863,
+        "start": 38.89999997615814,
+        "duration": 29.100000023841858
+      },
+      {
+        "url": "http://127.0.0.1:5579/css/v3.css?v=96",
+        "transfer": 16679,
+        "start": 39.099999994039536,
+        "duration": 38.19999998807907
+      },
+      {
+        "url": "http://127.0.0.1:5579/css/v3-mobile.css?v=27",
+        "transfer": 3769,
+        "start": 39.19999998807907,
+        "duration": 39.30000001192093
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/MESTTI-logo-header-light.png?v=1",
+        "transfer": 14518,
+        "start": 39.29999998211861,
+        "duration": 47.400000005960464
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/MESTTI-logo-header-dark.png?v=1",
+        "transfer": 8811,
+        "start": 39.39999997615814,
+        "duration": 51.900000005960464
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/v2/fabrica-3d-poster.webp",
+        "transfer": 98654,
+        "start": 39.5,
+        "duration": 26.299999982118607
+      },
+      {
+        "url": "http://127.0.0.1:5579/js/i18n/inicio.js?v=14",
+        "transfer": 18173,
+        "start": 39.69999998807907,
+        "duration": 65.19999998807907
+      },
+      {
+        "url": "http://127.0.0.1:5579/js/i18n.js?v=35",
+        "transfer": 22798,
+        "start": 39.79999998211861,
+        "duration": 78.59999999403954
+      },
+      {
+        "url": "http://127.0.0.1:5579/js/theme.js?v=3",
+        "transfer": 832,
+        "start": 40,
+        "duration": 85
+      },
+      {
+        "url": "http://127.0.0.1:5579/js/form-options.js?v=4",
+        "transfer": 1619,
+        "start": 40,
+        "duration": 89.89999997615814
+      },
+      {
+        "url": "http://127.0.0.1:5579/js/meta-consent.js?v=11",
+        "transfer": 1922,
+        "start": 40.099999994039536,
+        "duration": 95
+      },
+      {
+        "url": "http://127.0.0.1:5579/js/google-consent.js?v=3",
+        "transfer": 924,
+        "start": 40.19999998807907,
+        "duration": 99.90000000596046
+      },
+      {
+        "url": "http://127.0.0.1:5579/js/meta-pixel.js?v=1",
+        "transfer": 3140,
+        "start": 40.29999998211861,
+        "duration": 104.30000001192093
+      },
+      {
+        "url": "http://127.0.0.1:5579/js/script.js?v=45",
+        "transfer": 15246,
+        "start": 40.29999998211861,
+        "duration": 113.59999999403954
+      },
+      {
+        "url": "http://127.0.0.1:5579/js/wa-chat-viewport.js?v=4",
+        "transfer": 3456,
+        "start": 40.39999997615814,
+        "duration": 121.2000000178814
+      },
+      {
+        "url": "http://127.0.0.1:5579/js/conversational-form.js?v=18",
+        "transfer": 8205,
+        "start": 40.5,
+        "duration": 128.2999999821186
+      },
+      {
+        "url": "http://127.0.0.1:5579/js/factory-loader.js?v=1",
+        "transfer": 1266,
+        "start": 40.599999994039536,
+        "duration": 134.2999999821186
+      },
+      {
+        "url": "http://127.0.0.1:5579/js/v2.js?v=45",
+        "transfer": 8259,
+        "start": 40.599999994039536,
+        "duration": 139.69999998807907
+      },
+      {
+        "url": "http://127.0.0.1:5579/js/home-demos.js?v=8",
+        "transfer": 8718,
+        "start": 40.69999998807907,
+        "duration": 151.09999999403954
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/logos_clientes/branco/phoenix.webp",
+        "transfer": 6258,
+        "start": 927.3999999761581,
+        "duration": 6.100000023841858
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/logos_clientes/branco/nicopel.webp",
+        "transfer": 9852,
+        "start": 927.5999999940395,
+        "duration": 8.5
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/logos_clientes/branco/brighentti.webp",
+        "transfer": 9126,
+        "start": 927.7999999821186,
+        "duration": 9.5
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/logos_clientes/branco/acoforte.webp",
+        "transfer": 6408,
+        "start": 927.8999999761581,
+        "duration": 10.800000011920929
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/v2/video-mestti.webp",
+        "transfer": 58936,
+        "start": 928.0999999940395,
+        "duration": 11.199999988079071
+      },
+      {
+        "url": "http://127.0.0.1:5579/js/otto-mascot.js?v=1",
+        "transfer": 9129,
+        "start": 1237.5999999940395,
+        "duration": 9.199999988079071
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/logos_clientes/branco/continental.webp",
+        "transfer": 14578,
+        "start": 1265.699999988079,
+        "duration": 6.9000000059604645
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/logos_clientes/branco/injetplast.webp",
+        "transfer": 10184,
+        "start": 1266,
+        "duration": 7.5999999940395355
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/logos_clientes/branco/metaltech.webp",
+        "transfer": 14306,
+        "start": 1266.199999988079,
+        "duration": 9.400000005960464
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/parceiros/senai.webp",
+        "transfer": 26580,
+        "start": 1266.3999999761581,
+        "duration": 11
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/parceiros/procel.webp",
+        "transfer": 14050,
+        "start": 1267,
+        "duration": 9.899999976158142
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/parceiros/enbpar.webp",
+        "transfer": 39920,
+        "start": 1267.3999999761581,
+        "duration": 10.600000023841858
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/parceiros/firjan.webp",
+        "transfer": 35748,
+        "start": 1267.7999999821186,
+        "duration": 11.599999994039536
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/parceiros/fiep.svg",
+        "transfer": 2228,
+        "start": 1268.199999988079,
+        "duration": 12.400000005960464
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/parceiros/moveis-hub.webp",
+        "transfer": 4360,
+        "start": 1268.5999999940395,
+        "duration": 13.400000005960464
+      },
+      {
+        "url": "http://127.0.0.1:5579/images/Atendente-96.webp",
+        "transfer": 3122,
+        "start": 1403.2999999821186,
+        "duration": 8.400000005960464
+      },
+      {
+        "url": "http://127.0.0.1:5579/favicon.svg",
+        "transfer": 499,
+        "start": 1493.2999999821186,
+        "duration": 3.7000000178813934
+      }
+    ],
+    "buttons": [
+      {
+        "text": "Recusar opcionais",
+        "h": 44,
+        "w": 158.3125
+      },
+      {
+        "text": "Personalizar",
+        "h": 44,
+        "w": 158.3125
+      },
+      {
+        "text": "Aceitar opcionais",
+        "h": 44,
+        "w": 324.625
+      }
+    ]
+  },
+  "accept": {
+    "banner": false,
+    "stored": "{\"analytics\":true,\"marketing\":true}"
+  },
+  "scrollBefore": 291,
+  "scrollAfter": 486,
+  "load": {
+    "now": 10675.09999999404,
+    "ready": true,
+    "error": false,
+    "duration": 5014.9000000059605
+  },
+  "afterLoad": {
+    "className": "fx fx--requested fx--explore fx--ready",
+    "text": "Arraste para girar[object Object]Voltar à página",
+    "touchAction": "none",
+    "measure": {
+      "lcp": 944,
+      "longTasks": [
+        {
+          "start": 1122.2999999821186,
+          "duration": 89
+        },
+        {
+          "start": 1271.0999999940395,
+          "duration": 108
+        },
+        {
+          "start": 6042.5,
+          "duration": 194
+        },
+        {
+          "start": 6239.699999988079,
+          "duration": 1210
+        },
+        {
+          "start": 7577.899999976158,
+          "duration": 62
+        },
+        {
+          "start": 7731,
+          "duration": 2943
+        },
+        {
+          "start": 10675.899999976158,
+          "duration": 1102
+        }
+      ],
+      "cls": 0
+    },
+    "marks": [
+      {
+        "name": "mestti-factory-interactive",
+        "start": 8645.899999976158
+      }
+    ]
+  },
+  "dragBefore": {
+    "x": 117.92018127441406,
+    "y": 572.383544921875,
+    "scroll": 291
+  },
+  "dragAfter": {
+    "x": 442.996337890625,
+    "y": 595.7232666015625,
+    "scroll": 291
+  },
+  "pinchBefore": {
+    "x": 450.5025939941406,
+    "y": 593.3156127929688,
+    "scroll": 291
+  },
+  "pinchAfter": {
+    "x": 852.9734497070312,
+    "y": 709.93115234375,
+    "scroll": 291
+  },
+  "pinBefore": {
+    "x": 551.9797973632812,
+    "y": 563.84912109375,
+    "scroll": 291
+  },
+  "pinAfter": {
+    "x": 624.923828125,
+    "y": 423.8106994628906,
+    "scroll": 291
+  },
+  "pinDragSelected": false,
+  "testedPin": {
+    "id": "inj01",
+    "x": 109.55377960205078,
+    "y": 364.32684326171875
+  },
+  "exit": {
+    "explore": false,
+    "action": "pan-y"
+  },
+  "selection": {
+    "machine": "silo2",
+    "opened": true
+  },
+  "paused": {
+    "tasksBefore": 138,
+    "tasksAfter": 138
+  },
+  "cookies": [],
+  "errors": []
+}

@@ -8160,7 +8160,17 @@ html.no-aos [data-aos] {
   border-radius: 999px;
   transition: background-color 0.15s ease, color 0.15s ease;
   white-space: nowrap;
+  touch-action: manipulation;
 }
+
+.mestti-cookie-banner__btn:focus-visible, .mestti-cookie-prefs-link:focus-visible { outline: 3px solid #024578; outline-offset: 3px; }
+.mestti-cookie-banner [data-consent="choices"] { flex-basis: 100%; }
+.mestti-cookie-banner [data-consent="choices"]:not([hidden]) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding-top: 8px; border-top: 1px solid #d4d4d8; }
+.mestti-cookie-banner [data-consent="choices"] > p, .mestti-cookie-banner [data-consent="choices"] > button { grid-column: 1 / -1; }
+.mestti-cookie-customizing .mestti-cookie-banner__actions { display: none; }
+.mestti-cookie-banner [data-consent="choices"] p { margin: 0; font-size: 13px; }
+.mestti-cookie-banner [data-consent="choices"] label { display: flex; align-items: center; gap: 10px; min-height: 44px; cursor: pointer; }
+.mestti-cookie-banner [data-category] { width: 20px; height: 20px; accent-color: #024578; }
 
 .mestti-cookie-banner__btn--primary {
   background: #024578;
@@ -8269,22 +8279,33 @@ html.mestti-cookie-open .fab-contact {
   .mestti-cookie-banner__inner {
     max-width: none;
     border-radius: 14px;
-    padding: 0.45rem 0.4rem 0.45rem 0.75rem;
-    gap: 0.25rem 0.4rem;
+    padding: 12px;
+    gap: 12px;
+    max-height: calc(100dvh - 48px - env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .mestti-cookie-banner__text {
-    font-size: 0.72rem;
+    font-size: 0.8125rem;
+    line-height: 1.45;
   }
 
+  .mestti-cookie-banner__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; width: 100%; flex-basis: 100%; }
+  .mestti-cookie-banner [data-consent="accept"] { grid-column: 1 / -1; grid-row: 1; }
+
   .mestti-cookie-banner__btn {
-    font-size: 0.72rem;
-    padding: 0.38rem 0.65rem;
+    min-height: 44px;
+    font-size: 0.8125rem;
+    padding: 10px 12px;
+    white-space: normal;
   }
 
   .mestti-cookie-prefs-link {
     left: max(0.75rem, env(safe-area-inset-left, 0px));
     right: auto;
+    min-height: 44px;
+    min-width: 60px;
   }
 
   html.mestti-cookie-open .fab-contact {

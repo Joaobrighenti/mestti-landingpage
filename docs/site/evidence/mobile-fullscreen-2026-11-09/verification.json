@@ -1,0 +1,234 @@
+{
+  "cases": [
+    {
+      "language": "pt",
+      "width": 320,
+      "bubble": false,
+      "badText": false,
+      "touchAction": "none",
+      "fullRect": {
+        "x": 268,
+        "y": 351.59375,
+        "width": 36,
+        "height": 36,
+        "top": 351.59375,
+        "right": 304,
+        "bottom": 387.59375,
+        "left": 268
+      },
+      "fullHit": true,
+      "full": {
+        "dialog": true,
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 740,
+          "top": 0,
+          "right": 320,
+          "bottom": 740,
+          "left": 0
+        },
+        "exit": {
+          "x": 146.78125,
+          "y": 13,
+          "width": 161.21875,
+          "height": 44,
+          "top": 13,
+          "right": 308,
+          "bottom": 57,
+          "left": 146.78125
+        },
+        "hit": true,
+        "focus": true,
+        "locked": true,
+        "text": "Sair da tela cheia"
+      },
+      "restored": {
+        "parent": "hv-window hv-window--app hv-window--hero3d",
+        "scroll": 598,
+        "dialog": false,
+        "placeholder": false,
+        "locked": false
+      },
+      "original": {
+        "parent": "hv-window hv-window--app hv-window--hero3d",
+        "scroll": 599
+      }
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "bubble": false,
+      "badText": false,
+      "touchAction": "none",
+      "fullRect": {
+        "x": 338,
+        "y": 404,
+        "width": 36,
+        "height": 36,
+        "top": 404,
+        "right": 374,
+        "bottom": 440,
+        "left": 338
+      },
+      "fullHit": true,
+      "full": {
+        "dialog": true,
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "top": 0,
+          "right": 390,
+          "bottom": 844,
+          "left": 0
+        },
+        "exit": {
+          "x": 231.765625,
+          "y": 13,
+          "width": 146.234375,
+          "height": 44,
+          "top": 13,
+          "right": 378,
+          "bottom": 57,
+          "left": 231.765625
+        },
+        "hit": true,
+        "focus": true,
+        "locked": true,
+        "text": "Exit full screen"
+      },
+      "rotated": {
+        "width": 844,
+        "height": 390,
+        "exit": {
+          "x": 678.828125,
+          "y": 13,
+          "width": 153.171875,
+          "height": 44,
+          "top": 13,
+          "right": 832,
+          "bottom": 57,
+          "left": 678.828125
+        },
+        "hit": true
+      },
+      "restored": {
+        "parent": "hv-window hv-window--app hv-window--hero3d",
+        "scroll": 484,
+        "dialog": false,
+        "placeholder": false,
+        "locked": false
+      },
+      "original": {
+        "parent": "hv-window hv-window--app hv-window--hero3d",
+        "scroll": 485
+      }
+    },
+    {
+      "language": "es",
+      "width": 640,
+      "bubble": false,
+      "badText": false,
+      "touchAction": "none",
+      "fullRect": {
+        "x": 588,
+        "y": 161.59375,
+        "width": 36,
+        "height": 36,
+        "top": 161.59375,
+        "right": 624,
+        "bottom": 197.59375,
+        "left": 588
+      },
+      "fullHit": true,
+      "full": {
+        "dialog": true,
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 640,
+          "height": 360,
+          "top": 0,
+          "right": 640,
+          "bottom": 360,
+          "left": 0
+        },
+        "exit": {
+          "x": 413.453125,
+          "y": 13,
+          "width": 214.546875,
+          "height": 44,
+          "top": 13,
+          "right": 628,
+          "bottom": 57,
+          "left": 413.453125
+        },
+        "hit": true,
+        "focus": true,
+        "locked": true,
+        "text": "Salir de pantalla completa"
+      },
+      "restored": {
+        "parent": "hv-window hv-window--app hv-window--hero3d",
+        "scroll": 690,
+        "dialog": false,
+        "placeholder": false,
+        "locked": false
+      },
+      "original": {
+        "parent": "hv-window hv-window--app hv-window--hero3d",
+        "scroll": 691
+      }
+    }
+  ],
+  "load": {
+    "now": 8936.700000017881,
+    "ready": true,
+    "error": false,
+    "duration": 1507.300000011921
+  },
+  "cinemaBefore": {
+    "x": 111.60130310058594,
+    "y": 862.5645751953125,
+    "scroll": 0
+  },
+  "cinemaAfter": {
+    "x": 111.22500610351562,
+    "y": 569.796875,
+    "scroll": 291
+  },
+  "dragBefore": {
+    "x": 111.22500610351562,
+    "y": 569.796875,
+    "scroll": 291
+  },
+  "dragAfter": {
+    "x": 322.9847412109375,
+    "y": 605.3204345703125,
+    "scroll": 291
+  },
+  "pinchBefore": {
+    "x": 322.9847412109375,
+    "y": 605.3204345703125,
+    "scroll": 291
+  },
+  "pinchAfter": {
+    "x": 783.3573608398438,
+    "y": 756.6727294921875,
+    "scroll": 291
+  },
+  "cancel": {
+    "full": false,
+    "dialog": false,
+    "locked": false
+  },
+  "fallback": {
+    "modal": true,
+    "restored": true
+  },
+  "renderingNote": "Software WebGL: after first usable frame, animation frames advanced in small batches to verify gestures/layout without measuring continuous playback performance.",
+  "errors": []
+}

@@ -1,0 +1,633 @@
+{
+  "now": 12218.699999988079,
+  "measure": {
+    "lcp": 3332,
+    "longTasks": [
+      {
+        "start": 2269,
+        "duration": 172
+      },
+      {
+        "start": 2498.2999999821186,
+        "duration": 81
+      },
+      {
+        "start": 2639.0999999940395,
+        "duration": 247
+      },
+      {
+        "start": 2905.4000000059605,
+        "duration": 357
+      },
+      {
+        "start": 3317,
+        "duration": 54
+      },
+      {
+        "start": 5818.699999988079,
+        "duration": 1509
+      },
+      {
+        "start": 7328.0999999940395,
+        "duration": 1519
+      },
+      {
+        "start": 8880.5,
+        "duration": 333
+      },
+      {
+        "start": 9251.299999982119,
+        "duration": 260
+      },
+      {
+        "start": 9604.799999982119,
+        "duration": 270
+      },
+      {
+        "start": 9886.59999999404,
+        "duration": 496
+      },
+      {
+        "start": 10401.40000000596,
+        "duration": 282
+      },
+      {
+        "start": 10688.90000000596,
+        "duration": 277
+      },
+      {
+        "start": 10982.299999982119,
+        "duration": 271
+      },
+      {
+        "start": 11299.5,
+        "duration": 272
+      },
+      {
+        "start": 11607.299999982119,
+        "duration": 285
+      },
+      {
+        "start": 11917.90000000596,
+        "duration": 271
+      }
+    ],
+    "cls": 0.1067774149202278
+  },
+  "resources": [
+    {
+      "url": "http://127.0.0.1:5579/js/theme-init.js?v=2",
+      "transfer": 507,
+      "start": 205,
+      "duration": 158.59999999403954
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap",
+      "transfer": 1559,
+      "start": 206.69999998807907,
+      "duration": 329.2000000178814
+    },
+    {
+      "url": "http://127.0.0.1:5579/css/site.css?v=6",
+      "transfer": 11851,
+      "start": 208.59999999403954,
+      "duration": 372
+    },
+    {
+      "url": "http://127.0.0.1:5579/css/v2.css?v=2",
+      "transfer": 6827,
+      "start": 211.2999999821186,
+      "duration": 294.10000002384186
+    },
+    {
+      "url": "http://127.0.0.1:5579/css/factory-sim.css?v=17",
+      "transfer": 5239,
+      "start": 213.2999999821186,
+      "duration": 269.40000000596046
+    },
+    {
+      "url": "http://127.0.0.1:5579/css/home-demos.css?v=3",
+      "transfer": 3863,
+      "start": 213.5,
+      "duration": 247.19999998807907
+    },
+    {
+      "url": "http://127.0.0.1:5579/css/v3.css?v=95",
+      "transfer": 16662,
+      "start": 215.2999999821186,
+      "duration": 447.5
+    },
+    {
+      "url": "http://127.0.0.1:5579/css/v3-mobile.css?v=27",
+      "transfer": 3769,
+      "start": 216.19999998807907,
+      "duration": 372.09999999403954
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/MESTTI-logo-header-light.png?v=1",
+      "transfer": 14518,
+      "start": 217.59999999403954,
+      "duration": 1225.4000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/MESTTI-logo-header-dark.png?v=1",
+      "transfer": 8811,
+      "start": 217.7999999821186,
+      "duration": 940.8000000119209
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/v2/fabrica-3d-poster.webp",
+      "transfer": 98654,
+      "start": 218.90000000596046,
+      "duration": 2888.899999976158
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/i18n/inicio.js?v=14",
+      "transfer": 18134,
+      "start": 268.2999999821186,
+      "duration": 1384.5
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/i18n.js?v=35",
+      "transfer": 22798,
+      "start": 268.5,
+      "duration": 1587
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/theme.js?v=3",
+      "transfer": 832,
+      "start": 269.7999999821186,
+      "duration": 595.9000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/form-options.js?v=4",
+      "transfer": 1619,
+      "start": 269.90000000596046,
+      "duration": 822.8999999761581
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/meta-consent.js?v=10",
+      "transfer": 1783,
+      "start": 270,
+      "duration": 1128.0999999940395
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/google-consent.js?v=3",
+      "transfer": 924,
+      "start": 270.7999999821186,
+      "duration": 1120.9000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/meta-pixel.js?v=1",
+      "transfer": 3140,
+      "start": 271,
+      "duration": 1487
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/script.js?v=45",
+      "transfer": 15246,
+      "start": 271.90000000596046,
+      "duration": 1966.199999988079
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/wa-chat-viewport.js?v=4",
+      "transfer": 3456,
+      "start": 272,
+      "duration": 1546.699999988079
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/conversational-form.js?v=18",
+      "transfer": 8205,
+      "start": 272.09999999403954,
+      "duration": 1868.5999999940395
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/v2.js?v=44",
+      "transfer": 8368,
+      "start": 272.59999999403954,
+      "duration": 1996.0999999940395
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/home-demos.js?v=8",
+      "transfer": 8718,
+      "start": 272.69999998807907,
+      "duration": 2056
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/logos_clientes/branco/phoenix.webp",
+      "transfer": 6258,
+      "start": 847.5,
+      "duration": 1465.5
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/logos_clientes/branco/nicopel.webp",
+      "transfer": 9852,
+      "start": 848.9000000059605,
+      "duration": 1786.3999999761581
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/logos_clientes/branco/brighentti.webp",
+      "transfer": 9126,
+      "start": 850.1999999880791,
+      "duration": 1875.4000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/logos_clientes/branco/acoforte.webp",
+      "transfer": 6408,
+      "start": 850.7999999821186,
+      "duration": 1851.800000011921
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/v2/video-mestti.webp",
+      "transfer": 58936,
+      "start": 851.2999999821186,
+      "duration": 2917.300000011921
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/otto-mascot.js?v=1",
+      "transfer": 9129,
+      "start": 2506.0999999940395,
+      "duration": 444.30000001192093
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/logos_clientes/branco/continental.webp",
+      "transfer": 14578,
+      "start": 2568.0999999940395,
+      "duration": 600.5
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/logos_clientes/branco/injetplast.webp",
+      "transfer": 10184,
+      "start": 2568.7999999821186,
+      "duration": 562.1000000238419
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/logos_clientes/branco/metaltech.webp",
+      "transfer": 14306,
+      "start": 2568.9000000059605,
+      "duration": 644.1999999880791
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/parceiros/senai.webp",
+      "transfer": 26580,
+      "start": 2570,
+      "duration": 1265.7999999821186
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/parceiros/procel.webp",
+      "transfer": 14050,
+      "start": 2570.7999999821186,
+      "duration": 1062.1000000238419
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/parceiros/enbpar.webp",
+      "transfer": 39920,
+      "start": 2571.5,
+      "duration": 1436.699999988079
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/parceiros/firjan.webp",
+      "transfer": 35748,
+      "start": 2571.5999999940395,
+      "duration": 1413.699999988079
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/parceiros/fiep.svg",
+      "transfer": 2228,
+      "start": 2572.699999988079,
+      "duration": 873.4000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/parceiros/moveis-hub.webp",
+      "transfer": 4360,
+      "start": 2573.5,
+      "duration": 1142.5
+    },
+    {
+      "url": "http://127.0.0.1:5579/images/Atendente-96.webp",
+      "transfer": 3122,
+      "start": 2635.5999999940395,
+      "duration": 539.6999999880791
+    },
+    {
+      "url": "http://127.0.0.1:5579/favicon.svg",
+      "transfer": 499,
+      "start": 4087.199999988079,
+      "duration": 154.2000000178814
+    },
+    {
+      "url": "http://127.0.0.1:5579/js/fabrica-sim.js?v=28",
+      "transfer": 31274,
+      "start": 4156.4000000059605,
+      "duration": 309.09999999403954
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js",
+      "transfer": 171486,
+      "start": 4491.9000000059605,
+      "duration": 1294.3999999761581
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/GLTFLoader.js",
+      "transfer": 20004,
+      "start": 4493,
+      "duration": 527.6999999880791
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/DRACOLoader.js",
+      "transfer": 3925,
+      "start": 4494.4000000059605,
+      "duration": 346.69999998807907
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/controls/OrbitControls.js",
+      "transfer": 6187,
+      "start": 4495.299999982119,
+      "duration": 375.90000000596046
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/environments/RoomEnvironment.js",
+      "transfer": 1424,
+      "start": 4496.0999999940395,
+      "duration": 240.59999999403954
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/renderers/CSS2DRenderer.js",
+      "transfer": 1579,
+      "start": 4497.5999999940395,
+      "duration": 216.90000000596046
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/utils/SkeletonUtils.js",
+      "transfer": 2375,
+      "start": 4497.799999982119,
+      "duration": 297.80000001192093
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/utils/BufferGeometryUtils.js",
+      "transfer": 6324,
+      "start": 4498.5999999940395,
+      "duration": 395.19999998807907
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/galpao-parede.glb",
+      "transfer": 55682,
+      "start": 6296.799999982119,
+      "duration": 1679.300000011921
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/galpao-parede-janela.glb",
+      "transfer": 44124,
+      "start": 6298.5999999940395,
+      "duration": 1362.300000011921
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/galpao-pilar.glb",
+      "transfer": 11399,
+      "start": 6300.5,
+      "duration": 438.90000000596046
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/galpao-pilar-hidrante.glb",
+      "transfer": 22995,
+      "start": 6302.0999999940395,
+      "duration": 774.4000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/seccionadora.glb",
+      "transfer": 80624,
+      "start": 6388.199999988079,
+      "duration": 2412.7000000178814
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/cnc-nesting.glb",
+      "transfer": 62129,
+      "start": 6390.699999988079,
+      "duration": 1922.9000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/furadeira-cnc.glb",
+      "transfer": 64621,
+      "start": 6395,
+      "duration": 2360.7999999821186
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/injetora.glb",
+      "transfer": 164591,
+      "start": 6398.0999999940395,
+      "duration": 4749.9000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/coladeira-borda.glb",
+      "transfer": 113330,
+      "start": 6401.299999982119,
+      "duration": 4372.9000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/etiquetadora.glb",
+      "transfer": 38335,
+      "start": 6403.299999982119,
+      "duration": 2787.7000000178814
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/silo.glb",
+      "transfer": 94458,
+      "start": 6405,
+      "duration": 4450.9000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/operador-mestti.glb",
+      "transfer": 230408,
+      "start": 6406.9000000059605,
+      "duration": 5381.399999976158
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/piso-epoxi.webp",
+      "transfer": 13838,
+      "start": 7327.699999988079,
+      "duration": 2043.0999999940395
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/libs/draco/gltf/draco_wasm_wrapper.js",
+      "transfer": 11984,
+      "start": 9520.5,
+      "duration": 503.2999999821186
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/libs/draco/gltf/draco_decoder.wasm",
+      "transfer": 49029,
+      "start": 9522.799999982119,
+      "duration": 1394.2000000178814
+    }
+  ],
+  "navigation": [
+    {
+      "loadEventEnd": 4032.5999999940395,
+      "domContentLoadedEventEnd": 2847.699999988079
+    }
+  ],
+  "cookie": [
+    {
+      "text": "Recusar opcionais",
+      "height": 26.75
+    },
+    {
+      "text": "Personalizar",
+      "height": 26.75
+    },
+    {
+      "text": "Aceitar opcionais",
+      "height": 26.75
+    }
+  ],
+  "ready": "fx fx--loading",
+  "label": "before",
+  "observationMs": 12000,
+  "heavy": [
+    {
+      "url": "http://127.0.0.1:5579/js/fabrica-sim.js?v=28",
+      "transfer": 31274,
+      "start": 4156.4000000059605,
+      "duration": 309.09999999403954
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js",
+      "transfer": 171486,
+      "start": 4491.9000000059605,
+      "duration": 1294.3999999761581
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/GLTFLoader.js",
+      "transfer": 20004,
+      "start": 4493,
+      "duration": 527.6999999880791
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/DRACOLoader.js",
+      "transfer": 3925,
+      "start": 4494.4000000059605,
+      "duration": 346.69999998807907
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/controls/OrbitControls.js",
+      "transfer": 6187,
+      "start": 4495.299999982119,
+      "duration": 375.90000000596046
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/environments/RoomEnvironment.js",
+      "transfer": 1424,
+      "start": 4496.0999999940395,
+      "duration": 240.59999999403954
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/renderers/CSS2DRenderer.js",
+      "transfer": 1579,
+      "start": 4497.5999999940395,
+      "duration": 216.90000000596046
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/utils/SkeletonUtils.js",
+      "transfer": 2375,
+      "start": 4497.799999982119,
+      "duration": 297.80000001192093
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/utils/BufferGeometryUtils.js",
+      "transfer": 6324,
+      "start": 4498.5999999940395,
+      "duration": 395.19999998807907
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/galpao-parede.glb",
+      "transfer": 55682,
+      "start": 6296.799999982119,
+      "duration": 1679.300000011921
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/galpao-parede-janela.glb",
+      "transfer": 44124,
+      "start": 6298.5999999940395,
+      "duration": 1362.300000011921
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/galpao-pilar.glb",
+      "transfer": 11399,
+      "start": 6300.5,
+      "duration": 438.90000000596046
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/galpao-pilar-hidrante.glb",
+      "transfer": 22995,
+      "start": 6302.0999999940395,
+      "duration": 774.4000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/seccionadora.glb",
+      "transfer": 80624,
+      "start": 6388.199999988079,
+      "duration": 2412.7000000178814
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/cnc-nesting.glb",
+      "transfer": 62129,
+      "start": 6390.699999988079,
+      "duration": 1922.9000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/furadeira-cnc.glb",
+      "transfer": 64621,
+      "start": 6395,
+      "duration": 2360.7999999821186
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/injetora.glb",
+      "transfer": 164591,
+      "start": 6398.0999999940395,
+      "duration": 4749.9000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/coladeira-borda.glb",
+      "transfer": 113330,
+      "start": 6401.299999982119,
+      "duration": 4372.9000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/etiquetadora.glb",
+      "transfer": 38335,
+      "start": 6403.299999982119,
+      "duration": 2787.7000000178814
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/silo.glb",
+      "transfer": 94458,
+      "start": 6405,
+      "duration": 4450.9000000059605
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/operador-mestti.glb",
+      "transfer": 230408,
+      "start": 6406.9000000059605,
+      "duration": 5381.399999976158
+    },
+    {
+      "url": "http://127.0.0.1:5579/glbimagens/piso-epoxi.webp",
+      "transfer": 13838,
+      "start": 7327.699999988079,
+      "duration": 2043.0999999940395
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/libs/draco/gltf/draco_wasm_wrapper.js",
+      "transfer": 11984,
+      "start": 9520.5,
+      "duration": 503.2999999821186
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/libs/draco/gltf/draco_decoder.wasm",
+      "transfer": 49029,
+      "start": 9522.799999982119,
+      "duration": 1394.2000000178814
+    }
+  ],
+  "longTaskBlocking12s": 5917.0999999940395
+}

@@ -12,6 +12,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
 import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+import { createFactoryFullscreen } from './factory-fullscreen.js?v=2';
 
 const root = document.querySelector('[data-factory]');
 
@@ -22,7 +23,7 @@ const TX = {
         now: 'Fábrica agora', running: 'Rodando', stoppedPl: 'Paradas', lost: 'Sem sinal', machines: 'Máquinas',
         inFilter: 'Máquinas no filtro', noneInFilter: 'Nenhuma máquina neste filtro.', collapse: 'Recolher painel', expand: 'Expandir painel',
         all: 'Todas', layerState: 'Estado', layerOee: 'OEE', layerGroup: 'Colorir o chão por', filterGroup: 'Filtrar a cena por estado',
-        zoomIn: 'Aproximar', zoomOut: 'Afastar', fit: 'Ver a fábrica toda', full: 'Tela cheia', fullExit: 'Sair da tela cheia', hintFull: 'Arraste para girar · role para aproximar · Esc para sair', hintFullTouch: 'Um dedo move · pinça aproxima · dois dedos giram', explore: 'Toque para explorar', exploreOn: 'Um dedo move · pinça aproxima', exploreDone: 'Concluir', hintTwo: 'Dois dedos giram e aproximam', close: 'Fechar detalhes',
+        zoomIn: 'Aproximar', zoomOut: 'Afastar', fit: 'Ver a fábrica toda', full: 'Tela cheia', fullExit: 'Sair da tela cheia', hintFull: 'Arraste para girar · role para aproximar · Esc para sair', hintFullTouch: 'Arraste para girar · pinça para aproximar', hintPageTouch: 'Arraste para o lado para girar · pinça para aproximar', close: 'Fechar detalhes',
         summary: 'Resumo', queue: 'Fila', today: 'hoje', eff: 'Eficiência', producedToday: 'Produção hoje', pieces: 'peças no dia',
         orderDone: 'Conclusão da ordem', of: 'de', pcs: 'pç', operation: 'Operação', product: 'Produto', operator: 'Operador',
         since: 'há', reason: 'Motivo', doing: 'Em apontamento', todo: 'A fazer', planned: 'Previsto', sector: 'Setor',
@@ -38,7 +39,7 @@ const TX = {
         now: 'Factory now', running: 'Running', stoppedPl: 'Stopped', lost: 'No signal', machines: 'Machines',
         inFilter: 'Machines in filter', noneInFilter: 'No machine in this filter.', collapse: 'Collapse panel', expand: 'Expand panel',
         all: 'All', layerState: 'State', layerOee: 'OEE', layerGroup: 'Color the floor by', filterGroup: 'Filter the scene by state',
-        zoomIn: 'Zoom in', zoomOut: 'Zoom out', fit: 'See the whole factory', full: 'Full screen', fullExit: 'Exit full screen', hintFull: 'Drag to rotate · scroll to zoom · Esc to exit', hintFullTouch: 'One finger moves · pinch to zoom · two fingers rotate', explore: 'Tap to explore', exploreOn: 'One finger moves · pinch to zoom', exploreDone: 'Done', hintTwo: 'Two fingers rotate and zoom', close: 'Close details',
+        zoomIn: 'Zoom in', zoomOut: 'Zoom out', fit: 'See the whole factory', full: 'Full screen', fullExit: 'Exit full screen', hintFull: 'Drag to rotate · scroll to zoom · Esc to exit', hintFullTouch: 'Drag to rotate · pinch to zoom', hintPageTouch: 'Drag sideways to rotate · pinch to zoom', close: 'Close details',
         summary: 'Summary', queue: 'Queue', today: 'today', eff: 'Efficiency', producedToday: 'Produced today', pieces: 'parts today',
         orderDone: 'Order progress', of: 'of', pcs: 'pcs', operation: 'Operation', product: 'Product', operator: 'Operator',
         since: 'for', reason: 'Reason', doing: 'In progress', todo: 'To do', planned: 'Planned', sector: 'Area',
@@ -54,7 +55,7 @@ const TX = {
         now: 'Fábrica ahora', running: 'Operando', stoppedPl: 'Paradas', lost: 'Sin señal', machines: 'Máquinas',
         inFilter: 'Máquinas en el filtro', noneInFilter: 'Ninguna máquina en este filtro.', collapse: 'Contraer panel', expand: 'Expandir panel',
         all: 'Todas', layerState: 'Estado', layerOee: 'OEE', layerGroup: 'Colorear el piso por', filterGroup: 'Filtrar la escena por estado',
-        zoomIn: 'Acercar', zoomOut: 'Alejar', fit: 'Ver toda la fábrica', full: 'Pantalla completa', fullExit: 'Salir de pantalla completa', hintFull: 'Arrastre para girar · desplace para acercar · Esc para salir', hintFullTouch: 'Un dedo mueve · pellizque para acercar · dos dedos giran', explore: 'Toque para explorar', exploreOn: 'Un dedo mueve · pellizque para acercar', exploreDone: 'Listo', hintTwo: 'Dos dedos giran y acercan', close: 'Cerrar detalles',
+        zoomIn: 'Acercar', zoomOut: 'Alejar', fit: 'Ver toda la fábrica', full: 'Pantalla completa', fullExit: 'Salir de pantalla completa', hintFull: 'Arrastre para girar · desplace para acercar · Esc para salir', hintFullTouch: 'Arrastre para girar · pellizque para acercar', hintPageTouch: 'Arrastre hacia el lado para girar · pellizque para acercar', close: 'Cerrar detalles',
         summary: 'Resumen', queue: 'Cola', today: 'hoy', eff: 'Eficiencia', producedToday: 'Producción hoy', pieces: 'piezas del día',
         orderDone: 'Avance de la orden', of: 'de', pcs: 'pz', operation: 'Operación', product: 'Producto', operator: 'Operador',
         since: 'hace', reason: 'Motivo', doing: 'En registro', todo: 'Pendiente', planned: 'Previsto', sector: 'Sector',
@@ -174,7 +175,7 @@ const glyph = (path, size = 14) => `<svg width="${size}" height="${size}" viewBo
 const sectorOf = (item) => SECTORS.find((s) => s.id === item.sector);
 
 /* ---------------------------------------------------------------- estado da vista */
-const view = { full: false, touched: false, selected: null, tab: 'summary', layer: 'state', filters: new Set(), nowOpen: false, explore: false };
+const view = { full: false, touched: false, selected: null, tab: 'summary', layer: 'state', filters: new Set(), nowOpen: false };
 
 if (root) init();
 
@@ -203,6 +204,7 @@ function init() {
     const canvas = root.querySelector('.fx-canvas');
     const labelsHost = root.querySelector('.fx-labels');
     renderHud();
+    root.querySelector('[data-fx-hud]').inert = true;
     bindHud();
 
     let scene3d = null;
@@ -210,7 +212,8 @@ function init() {
         scene3d = buildScene(canvas, labelsHost);
     } catch (error) {
         console.error(error);
-        fail();
+        // Sem WebGL recarregar não resolve: mantém a imagem estática.
+        fail({ permanent: true });
     }
     root.__fx = scene3d;
 
@@ -218,11 +221,25 @@ function init() {
     new MutationObserver(() => scene3d?.applyTheme()).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 }
 
-function fail() {
+function fail({ permanent = false } = {}) {
+    root.removeAttribute('aria-busy');
+    if (permanent) {
+        if (view.full) setFull(false);
+        root.classList.remove('fx--loading', 'fx--ready');
+        root.classList.add('fx--static');
+        return;
+    }
+    root.querySelector('[data-fx-hud]').inert = false;
     root.classList.remove('fx--loading');
     root.classList.add('fx--error');
     const status = root.querySelector('.fx-status');
     status.textContent = t('error');
+    const retry = document.createElement('button');
+    retry.type = 'button';
+    retry.className = 'fx-retry fx-surface';
+    retry.textContent = loc(L('Tentar novamente', 'Try again', 'Intentar de nuevo'));
+    retry.addEventListener('click', () => location.reload());
+    status.appendChild(retry);
 }
 
 /* ---------------------------------------------------------------- HUD */
@@ -284,13 +301,10 @@ function renderHud() {
                 </div>
                 <div class="fx-list-head"><h4>${view.filters.size ? t('inFilter') : t('machines')}</h4><span>${items.length}</span></div>
                 ${items.length === 0 ? `<p class="fx-empty">${t('noneInFilter')}</p>` : `<ul class="fx-list">${items.map(listRow).join('')}</ul>`}
-                <p class="fx-hint"><span class="fx-demo-tag">${t('demo')}</span><span>${t(coarse ? (view.full || view.explore ? 'hintFullTouch' : 'explore') : (view.full ? 'hintFull' : 'hintDrag'))}</span><a class="fx-credit" href="https://huggingface.co/datasets/nvidia/PhysicalAI-SimReady-Warehouse-01" target="_blank" rel="noopener">${t('credit')}</a></p>
+                <p class="fx-hint"><span class="fx-demo-tag">${t('demo')}</span><span>${t(coarse ? (view.full ? 'hintFullTouch' : 'hintPageTouch') : (view.full ? 'hintFull' : 'hintDrag'))}</span><a class="fx-credit" href="https://huggingface.co/datasets/nvidia/PhysicalAI-SimReady-Warehouse-01" target="_blank" rel="noopener">${t('credit')}</a></p>
             </div>
         </section>
         <div class="fx-dock-wrap">
-            ${coarse && !view.full ? (view.explore
-                ? `<div class="fx-surface fx-explore is-on"><span>${t('exploreOn')}</span><button type="button" data-fx-explore="off">${t('exploreDone')}</button></div>`
-                : `<button type="button" class="fx-surface fx-explore" data-fx-explore="on"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 11V5a2 2 0 0 1 4 0v6m0-1a2 2 0 0 1 4 0v1m0 0a2 2 0 0 1 4 0v4a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L4.6 15a2 2 0 0 1 3.2-2.4L9 14"/></svg>${t('explore')}</button>`) : ''}
             ${view.layer === 'oee' ? `<div class="fx-surface fx-legend"><b>${t('oeeLegend')}</b>${['high', 'mid', 'low'].map((b) => `<span><i style="background:${BUCKET_COLOR[b][isDark() ? 1 : 0]}"></i>${t('b_' + b)}</span>`).join('')}</div>` : ''}
             <div class="fx-surface fx-dock" role="group" aria-label="${t('filterGroup')}">
                 <button type="button" data-fx-filter="" aria-pressed="${view.filters.size === 0}">${t('all')} <span>${MACHINES.length}</span></button>
@@ -438,8 +452,6 @@ function bindHud() {
             else view.filters.add(key);
             renderHud();
             fx?.refreshLabels();
-        } else if (target.dataset.fxExplore) {
-            setExplore(target.dataset.fxExplore === 'on');
         } else if (target.hasAttribute('data-fx-full')) {
             setFull(!view.full);
         } else if (target.dataset.fxZoom) {
@@ -456,8 +468,8 @@ function bindHud() {
         box.hidden = false;
     });
     root.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && view.selected) select(null);
-        else if (event.key === 'Escape' && view.full) setFull(false);
+        if (event.key === 'Escape' && view.selected) { event.preventDefault(); select(null); }
+        else if (event.key === 'Escape' && view.full) { event.preventDefault(); setFull(false); }
         if (event.key === 'Enter' && event.target.matches('[data-fx-search]')) {
             const first = root.querySelector('[data-fx-results] [data-fx-select]');
             if (first) select(first.dataset.fxSelect);
@@ -465,42 +477,28 @@ function bindHud() {
     });
 }
 
-// Tela cheia: a nativa quando o navegador deixa; no iPhone (sem tela cheia para blocos), o quadro cobre a janela.
-let nativeFull = false;
-// Celular fora da tela cheia: o 3D começa deixando a página rolar; um toque nele liga a exploração
-// (um dedo move, pinça aproxima). "Concluir" ou sair da tela devolve a rolagem.
-function setExplore(on) {
-    if (!coarse || on === view.explore) return;
-    view.explore = on;
-    root.classList.toggle('fx--explore', on);
-    renderHud();
-    root.__fx?.setFull(view.full);
-}
-
+// No toque, usa uma camada modal acima da página; desktop tenta primeiro a API nativa.
+let fullscreen = null;
 function setFull(on) {
     if (on === view.full) return;
     view.full = on;
-    root.classList.toggle('fx--full', on);
-    document.documentElement.classList.toggle('fx-lock', on);
-    const request = root.requestFullscreen || root.webkitRequestFullscreen;
-    const exit = document.exitFullscreen || document.webkitExitFullscreen;
-    const current = () => document.fullscreenElement || document.webkitFullscreenElement;
-    if (on && request) {
-        Promise.resolve(request.call(root)).then(() => { nativeFull = true; }).catch(() => { nativeFull = false; });
-    } else if (!on && current() === root && exit) {
-        exit.call(document);
-        nativeFull = false;
-    }
     renderHud();
+    fullscreen ??= createFactoryFullscreen(root, { mobile: coarse, label: () => t('factory'), onExit: () => setFull(false) });
+    if (on) {
+        // Guarda o tamanho e a posição da página antes de retirar a cena do fluxo.
+        fullscreen.enter();
+        root.classList.add('fx--full');
+        document.documentElement.classList.add('fx-lock');
+    } else {
+        root.classList.remove('fx--full');
+        document.documentElement.classList.remove('fx-lock');
+        fullscreen.exit();
+    }
     root.__fx?.setFull(on);
     root.querySelector('[data-fx-full]')?.focus({ preventScroll: true });
+    window.dispatchEvent(new CustomEvent('mestti:factory-fullscreen', { detail: { active: on } }));
     if (on && typeof window.gtag === 'function') window.gtag('event', 'home_factory_fullscreen');
 }
-['fullscreenchange', 'webkitfullscreenchange'].forEach((type) => document.addEventListener(type, () => {
-    const current = document.fullscreenElement || document.webkitFullscreenElement;
-    // Saiu pela tecla Esc do navegador ou pelo gesto do sistema: acompanha.
-    if (!current && nativeFull && view.full) { nativeFull = false; setFull(false); }
-}));
 
 function select(id) {
     view.selected = id;
@@ -515,7 +513,7 @@ function select(id) {
 /* ---------------------------------------------------------------- cena 3D */
 function buildScene(canvas, labelsHost) {
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, coarse ? 1.5 : 1.75));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, coarse ? 1 : 1.75));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-10, 10, 10, -10, 0.1, 400);
@@ -1052,7 +1050,8 @@ function buildScene(canvas, labelsHost) {
     }
 
     // Câmera isométrica com giro limitado; roda do mouse só com Ctrl para não prender a rolagem da página.
-    const controls = new OrbitControls(camera, renderer.domElement);
+    const gestureSurface = root.querySelector('.fx-scene');
+    const controls = new OrbitControls(camera, gestureSurface);
     controls.enableZoom = false;
     controls.enableDamping = true;
     controls.dampingFactor = 0.08;
@@ -1060,24 +1059,23 @@ function buildScene(canvas, labelsHost) {
     controls.maxPolarAngle = Math.PI / 2 - 0.12;
     controls.screenSpacePanning = true;
     controls.mouseButtons = { LEFT: THREE.MOUSE.ROTATE, MIDDLE: THREE.MOUSE.PAN, RIGHT: THREE.MOUSE.PAN };
-    // Toque fora da tela cheia: um dedo continua rolando a página; dois dedos giram e aproximam a fábrica.
-    // Na tela cheia, um dedo gira e a pinça aproxima. A roda do mouse fica com o tratador próprio (Ctrl fora da tela cheia).
+    // Interação direta no celular e desktop; o primeiro gesto interrompe o passeio cinema.
+    // Fora da tela cheia o CSS (pan-y) entrega a rolagem vertical ao navegador: só o arrasto lateral gira.
     let tour = null;
     function applyControls() {
         controls.enabled = !tour;
         controls.enableZoom = coarse;
-        // Tela cheia ou exploração ligada: como num mapa, um dedo move e a pinça aproxima (dois dedos também giram).
-        controls.touches = view.full || view.explore ? { ONE: THREE.TOUCH.PAN, TWO: THREE.TOUCH.DOLLY_ROTATE } : { ONE: null, TWO: null };
+        // A legenda descreve os mesmos gestos dos controles: giro com um dedo, pinça e pan com dois.
+        controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
     }
     applyControls();
-    // O OrbitControls põe touch-action: none no canvas; devolve ao CSS (pan-y na página, none na tela cheia)
-    // para um dedo continuar rolando a página por cima da fábrica.
-    renderer.domElement.style.touchAction = '';
+    // O CSS mantém os gestos da cena; a rolagem da página continua fora dela.
+    gestureSurface.style.touchAction = '';
     const BASE_DIR = new THREE.Vector3(1, 0.86, 1.12).normalize();
     camera.position.copy(BASE_DIR.clone().multiplyScalar(80));
     camera.lookAt(0, 0, 0);
 
-    renderer.domElement.addEventListener('wheel', (event) => {
+    gestureSurface.addEventListener('wheel', (event) => {
         if (!(event.ctrlKey || event.metaKey || view.full)) return;
         event.preventDefault();
         zoomBy(event.deltaY < 0 ? 1.12 : 1 / 1.12);
@@ -1181,7 +1179,10 @@ function buildScene(canvas, labelsHost) {
     const BASE_ANGLE = Math.atan2(BASE_DIR.x, BASE_DIR.z);
     const BASE_PITCH = Math.asin(BASE_DIR.y);
     const IDLE_RESUME = 18000;
+    // Celular: depois de um tempo sem toque, congela a cena (para de renderizar) para poupar bateria.
+    const IDLE_SLEEP = coarse ? 45000 : Infinity;
     let lastInput = 0;
+    let awakeAt = 0;
     function startTour() {
         if (reduceMotion || tour || !root.clientWidth) return;
         tween = null;
@@ -1244,17 +1245,35 @@ function buildScene(canvas, labelsHost) {
     const raycaster = new THREE.Raycaster();
     const pointer = new THREE.Vector2();
     let downAt = null;
+    let downPin = null;
+    let suppressClickUntil = 0;
+    const activePointers = new Set();
     // Gesto novo cancela a animação de câmera em curso (senão ela devolve a câmera e o arrasto parece travado).
-    renderer.domElement.addEventListener('pointerdown', (event) => { downAt = [event.clientX, event.clientY]; tween = null; });
-    // Celular: um toque em qualquer ponto da cena (chão, máquina ou etiqueta) liga a exploração; os painéis não.
-    let tapAt = null;
-    root.addEventListener('pointerdown', (event) => { tapAt = [event.clientX, event.clientY]; }, { capture: true });
-    root.addEventListener('pointerup', (event) => {
-        if (!coarse || view.full || view.explore || !tapAt || event.target.closest('.fx-hud')) return;
-        if (Math.hypot(event.clientX - tapAt[0], event.clientY - tapAt[1]) <= 8) setExplore(true);
+    gestureSurface.addEventListener('pointerdown', (event) => {
+        activePointers.add(event.pointerId);
+        downAt = activePointers.size === 1 ? [event.clientX, event.clientY] : null;
+        downPin = downAt ? event.target.closest('[data-fx-pin]')?.dataset.fxPin : null;
+        tween = null;
+    });
+    gestureSurface.addEventListener('pointercancel', (event) => { activePointers.delete(event.pointerId); downAt = null; downPin = null; });
+    gestureSurface.addEventListener('pointermove', (event) => {
+        if (downAt && Math.hypot(event.clientX - downAt[0], event.clientY - downAt[1]) > 6) {
+            downAt = null; downPin = null; suppressClickUntil = performance.now() + 350;
+        }
+    });
+    gestureSurface.addEventListener('click', (event) => {
+        if (event.detail > 0 && performance.now() < suppressClickUntil) { event.preventDefault(); event.stopPropagation(); }
     }, { capture: true });
-    renderer.domElement.addEventListener('pointerup', (event) => {
-        if (!downAt || Math.hypot(event.clientX - downAt[0], event.clientY - downAt[1]) > 6) return;
+    // Toque curto seleciona; arrastar e pinçar só movimentam a câmera.
+    gestureSurface.addEventListener('pointerup', (event) => {
+        const multiTouch = activePointers.size > 1;
+        activePointers.delete(event.pointerId);
+        if (multiTouch || !downAt || Math.hypot(event.clientX - downAt[0], event.clientY - downAt[1]) > 6) {
+            downAt = null; downPin = null; suppressClickUntil = performance.now() + 350; return;
+        }
+        downAt = null;
+        suppressClickUntil = performance.now() + 350;
+        if (downPin) { select(downPin); downPin = null; return; }
         const rect = renderer.domElement.getBoundingClientRect();
         pointer.set(((event.clientX - rect.left) / rect.width) * 2 - 1, -((event.clientY - rect.top) / rect.height) * 2 + 1);
         raycaster.setFromCamera(pointer, camera);
@@ -1291,6 +1310,7 @@ function buildScene(canvas, labelsHost) {
     const loader = new GLTFLoader();
     // operador.glb vem comprimido com Draco, como no produto.
     const draco = new DRACOLoader();
+    draco.setWorkerLimit(coarse ? 2 : 4);
     draco.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/libs/draco/gltf/');
     loader.setDRACOLoader(draco);
     loadShell();
@@ -1534,36 +1554,12 @@ function buildScene(canvas, labelsHost) {
     }
     const loadModel = (url) => loader.loadAsync(url);
     const want = [...new Set([...MACHINES.map((m) => m.type), 'tank'])];
-    const ready = Promise.all([...want.map((type) => loadModel(MODELS[type].url).then((gltf) => [type, gltf])), loadModel('/glbimagens/operador-mestti.glb')]);
-    ready
-        .then((loaded) => {
-            const operador = loaded.pop();
-            const gltfs = Object.fromEntries(loaded);
-            [...MACHINES, ...STOCKS.filter((s) => s.type === 'tank')].forEach((item, index) => {
-                const spec = MODELS[item.type];
-                const gltf = gltfs[item.type];
-                const { model, holder, size, lamps } = fitModel(gltf, spec);
-                const entry = addObject(item, { group: holder, height: size.y, radius: Math.max(size.x, size.z) * 0.55 + 0.3, scaled: true, footprint: [size.x, size.z] });
-                entry.glbLamps = lamps;
-                if (!item.state) return;
-                entry.spot = [size.x / 2 * spec.spot[0], size.z / 2 + spec.spot[1]];
-                const cycle = spec.cycle && THREE.AnimationClip.findByName(gltf.animations, spec.cycle);
-                if (cycle && (item.state === 'running' || item.state === 'warning')) {
-                    const action = mixer.clipAction(cycle, model);
-                    action.play();
-                    action.time = (index * 2.3) % cycle.duration;
-                    if (item.state === 'warning') entry.stutter = action;
-                }
-                // Em setup a injetora fica com a porta aberta (troca de molde).
-                const open = spec.open && THREE.AnimationClip.findByName(gltf.animations, spec.open);
-                if (open && item.state === 'setup') {
-                    const action = mixer.clipAction(open, model);
-                    action.setLoop(THREE.LoopOnce, 1);
-                    action.clampWhenFinished = true;
-                    action.play();
-                }
-            });
-            MACHINES.forEach((m, i) => placeOperator(operador.scene, operador.animations, objects.get(m.id), (i * 0.37) % 1));
+    let sceneReady = false;
+    const loadOperators = () => loadModel('/glbimagens/operador-mestti.glb').then(async (operador) => {
+            for (const [i, m] of MACHINES.entries()) {
+                placeOperator(operador.scene, operador.animations, objects.get(m.id), (i * 0.37) % 1);
+                if (i % 3 === 2) await new Promise(resolve => setTimeout(resolve, 0));
+            }
             // Montagem: duas pessoas nas bancadas.
             [[0.2, 4.4, 'Lia'], [5.2, 7.6, 'Tomás']].forEach(([x, z, name], i) => {
                 const body = person(operador.scene);
@@ -1584,16 +1580,45 @@ function buildScene(canvas, labelsHost) {
                 { path: [[-9.4, -7.4], [-9.4, -1.6]], speed: 0.72, phase: 0.8, name: 'Jorge', role: ROLE.planning }
             ].forEach((w) => spawnWalker(operador.scene, walk, w));
             updateWalkers(0);
-            loadProps();
+    }).catch((error) => console.warn('fabrica-sim: pessoas indisponíveis', error));
+    const ready = Promise.all(want.map((type) => loadModel(MODELS[type].url).then((gltf) => [type, gltf])));
+    ready
+        .then(async (loaded) => {
+            const gltfs = Object.fromEntries(loaded);
+            for (const [index, item] of [...MACHINES, ...STOCKS.filter((s) => s.type === 'tank')].entries()) {
+                const spec = MODELS[item.type];
+                const gltf = gltfs[item.type];
+                const { model, holder, size, lamps } = fitModel(gltf, spec);
+                const entry = addObject(item, { group: holder, height: size.y, radius: Math.max(size.x, size.z) * 0.55 + 0.3, scaled: true, footprint: [size.x, size.z] });
+                entry.glbLamps = lamps;
+                if (!item.state) continue;
+                entry.spot = [size.x / 2 * spec.spot[0], size.z / 2 + spec.spot[1]];
+                const cycle = spec.cycle && THREE.AnimationClip.findByName(gltf.animations, spec.cycle);
+                if (cycle && (item.state === 'running' || item.state === 'warning')) {
+                    const action = mixer.clipAction(cycle, model);
+                    action.play();
+                    action.time = (index * 2.3) % cycle.duration;
+                    if (item.state === 'warning') entry.stutter = action;
+                }
+                // Em setup a injetora fica com a porta aberta (troca de molde).
+                const open = spec.open && THREE.AnimationClip.findByName(gltf.animations, spec.open);
+                if (open && item.state === 'setup') {
+                    const action = mixer.clipAction(open, model);
+                    action.setLoop(THREE.LoopOnce, 1);
+                    action.clampWhenFinished = true;
+                    action.play();
+                }
+                if (index % 3 === 2) await new Promise(resolve => setTimeout(resolve, 0));
+            }
             refreshLabels();
-            setTimeout(() => { if (!lastInput) startTour(); }, 3200);
+            setTimeout(() => { if (!lastInput && !view.full) startTour(); }, 3200);
         })
-        .catch((error) => console.warn('fabrica-sim: modelos GLB indisponíveis', error))
-        .finally(() => {
+        .then(() => {
             refreshLabels();
-            root.classList.remove('fx--loading');
-            root.classList.add('fx--ready');
-        });
+            sceneReady = true;
+            awakeAt = performance.now();
+        })
+        .catch((error) => { console.warn('fabrica-sim: modelos GLB indisponíveis', error); fail(); });
 
     const PRIORITY = { stopped: 4, maintenance: 3, warning: 3, setup: 2, running: 1 };
     function resolveCollisions() {
@@ -1631,22 +1656,31 @@ function buildScene(canvas, labelsHost) {
     let lastCollision = 0;
 
     let visible = true;
-    new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(root);
-    new IntersectionObserver(([e]) => { if (e.intersectionRatio < 0.35 && view.explore) setExplore(false); }, { threshold: [0, 0.35] }).observe(root);
+    new IntersectionObserver(([e]) => {
+        if (e.isIntersecting && !visible) awakeAt = performance.now();
+        visible = e.isIntersecting;
+    }).observe(root);
+    // A GPU do celular pode descartar o contexto (memória, aba em segundo plano): volta à imagem estática.
+    renderer.domElement.addEventListener('webglcontextlost', () => fail({ permanent: true }));
     const clock = new THREE.Clock();
     let pulse = 0;
     let stutterClock = 0;
     let far = false; let wasFar = null;
+    let lastFrame = 0;
+    let firstFrame = true;
     (function tick() {
         requestAnimationFrame(tick);
-        const dt = Math.min(clock.getDelta(), 0.05);
-        if (!visible || document.hidden) return;
         const now = performance.now();
+        if (coarse && now - lastFrame < 1000 / 30) return;
+        lastFrame = now;
+        const dt = Math.min(clock.getDelta(), 0.05);
+        if (!sceneReady || !visible || document.hidden) return;
+        if (!firstFrame && !view.full && now - Math.max(lastInput, awakeAt) > IDLE_SLEEP) return;
         if (tour) tourStep(dt);
         else {
             if (tween) tween(now);
             controls.update();
-            if (lastInput && !view.selected && !view.full && !view.explore && !tween && now - lastInput > IDLE_RESUME) startTour();
+            if (lastInput && !view.selected && !view.full && !tween && now - lastInput > IDLE_RESUME) startTour();
         }
         far = camera.zoom < farZoom * 1.45;
         if (far !== wasFar) { labelsHost.classList.toggle('fx-labels--far', far); wasFar = far; }
@@ -1660,6 +1694,18 @@ function buildScene(canvas, labelsHost) {
         }
         renderer.render(scene, camera);
         labels.render(scene, camera);
+        if (coarse) lastFrame = performance.now();
+        if (firstFrame) {
+            firstFrame = false;
+            root.classList.remove('fx--loading');
+            root.classList.add('fx--ready');
+            root.removeAttribute('aria-busy');
+            root.querySelector('[data-fx-hud]').inert = false;
+            performance.mark('mestti-factory-interactive');
+            const extras = () => { loadOperators(); loadProps(); };
+            if ('requestIdleCallback' in window) requestIdleCallback(extras, { timeout: 2000 });
+            else setTimeout(extras, 100);
+        }
         if (now - lastCollision > 200) { lastCollision = now; resolveCollisions(); }
     })();
 
