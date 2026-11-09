@@ -23,7 +23,7 @@ const TX = {
         now: 'Fábrica agora', running: 'Rodando', stoppedPl: 'Paradas', lost: 'Sem sinal', machines: 'Máquinas',
         inFilter: 'Máquinas no filtro', noneInFilter: 'Nenhuma máquina neste filtro.', collapse: 'Recolher painel', expand: 'Expandir painel',
         all: 'Todas', layerState: 'Estado', layerOee: 'OEE', layerGroup: 'Colorir o chão por', filterGroup: 'Filtrar a cena por estado',
-        zoomIn: 'Aproximar', zoomOut: 'Afastar', fit: 'Ver a fábrica toda', full: 'Tela cheia', fullExit: 'Sair da tela cheia', hintFull: 'Arraste para girar · role para aproximar · Esc para sair', hintFullTouch: 'Arraste para girar · pinça para aproximar', hintPageTouch: 'Arraste para o lado para girar · pinça para aproximar', close: 'Fechar detalhes',
+        zoomIn: 'Aproximar', zoomOut: 'Afastar', fit: 'Ver a fábrica toda', full: 'Tela cheia', fullExit: 'Sair da tela cheia', hintFull: 'Arraste para girar · role para aproximar · Esc para sair', hintFullTouch: 'Arraste para mover · pinça para aproximar · dois dedos giram', explore: 'Explorar a fábrica', close: 'Fechar detalhes',
         summary: 'Resumo', queue: 'Fila', today: 'hoje', eff: 'Eficiência', producedToday: 'Produção hoje', pieces: 'peças no dia',
         orderDone: 'Conclusão da ordem', of: 'de', pcs: 'pç', operation: 'Operação', product: 'Produto', operator: 'Operador',
         since: 'há', reason: 'Motivo', doing: 'Em apontamento', todo: 'A fazer', planned: 'Previsto', sector: 'Setor',
@@ -39,7 +39,7 @@ const TX = {
         now: 'Factory now', running: 'Running', stoppedPl: 'Stopped', lost: 'No signal', machines: 'Machines',
         inFilter: 'Machines in filter', noneInFilter: 'No machine in this filter.', collapse: 'Collapse panel', expand: 'Expand panel',
         all: 'All', layerState: 'State', layerOee: 'OEE', layerGroup: 'Color the floor by', filterGroup: 'Filter the scene by state',
-        zoomIn: 'Zoom in', zoomOut: 'Zoom out', fit: 'See the whole factory', full: 'Full screen', fullExit: 'Exit full screen', hintFull: 'Drag to rotate · scroll to zoom · Esc to exit', hintFullTouch: 'Drag to rotate · pinch to zoom', hintPageTouch: 'Drag sideways to rotate · pinch to zoom', close: 'Close details',
+        zoomIn: 'Zoom in', zoomOut: 'Zoom out', fit: 'See the whole factory', full: 'Full screen', fullExit: 'Exit full screen', hintFull: 'Drag to rotate · scroll to zoom · Esc to exit', hintFullTouch: 'Drag to move · pinch to zoom · two fingers rotate', explore: 'Explore the factory', close: 'Close details',
         summary: 'Summary', queue: 'Queue', today: 'today', eff: 'Efficiency', producedToday: 'Produced today', pieces: 'parts today',
         orderDone: 'Order progress', of: 'of', pcs: 'pcs', operation: 'Operation', product: 'Product', operator: 'Operator',
         since: 'for', reason: 'Reason', doing: 'In progress', todo: 'To do', planned: 'Planned', sector: 'Area',
@@ -55,7 +55,7 @@ const TX = {
         now: 'Fábrica ahora', running: 'Operando', stoppedPl: 'Paradas', lost: 'Sin señal', machines: 'Máquinas',
         inFilter: 'Máquinas en el filtro', noneInFilter: 'Ninguna máquina en este filtro.', collapse: 'Contraer panel', expand: 'Expandir panel',
         all: 'Todas', layerState: 'Estado', layerOee: 'OEE', layerGroup: 'Colorear el piso por', filterGroup: 'Filtrar la escena por estado',
-        zoomIn: 'Acercar', zoomOut: 'Alejar', fit: 'Ver toda la fábrica', full: 'Pantalla completa', fullExit: 'Salir de pantalla completa', hintFull: 'Arrastre para girar · desplace para acercar · Esc para salir', hintFullTouch: 'Arrastre para girar · pellizque para acercar', hintPageTouch: 'Arrastre hacia el lado para girar · pellizque para acercar', close: 'Cerrar detalles',
+        zoomIn: 'Acercar', zoomOut: 'Alejar', fit: 'Ver toda la fábrica', full: 'Pantalla completa', fullExit: 'Salir de pantalla completa', hintFull: 'Arrastre para girar · desplace para acercar · Esc para salir', hintFullTouch: 'Arrastre para mover · pellizque para acercar · dos dedos giran', explore: 'Explorar la fábrica', close: 'Cerrar detalles',
         summary: 'Resumen', queue: 'Cola', today: 'hoy', eff: 'Eficiencia', producedToday: 'Producción hoy', pieces: 'piezas del día',
         orderDone: 'Avance de la orden', of: 'de', pcs: 'pz', operation: 'Operación', product: 'Producto', operator: 'Operador',
         since: 'hace', reason: 'Motivo', doing: 'En registro', todo: 'Pendiente', planned: 'Previsto', sector: 'Sector',
@@ -166,6 +166,8 @@ const loc = (value) => (value && typeof value === 'object' ? value[lang()] : val
 const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const coarse = window.matchMedia('(pointer: coarse)').matches;
+// UI de celular/tablet = sem mouse. Notebook com tela de toque tem mouse/trackpad e fica com a UI de desktop.
+const mobileUI = !window.matchMedia('(any-hover: hover)').matches;
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fmt = (n) => Number(n).toLocaleString(lang() === 'en' ? 'en-US' : 'pt-BR');
 const elapsed = (min) => (min < 60 ? `${min} min` : `${Math.floor(min / 60)}h ${String(min % 60).padStart(2, '0')}min`);
@@ -271,6 +273,22 @@ function renderHud() {
     const c = counts();
     const chips = ['running', 'stopped', 'warning', 'setup', 'maintenance'].map((key) => ({ key, count: MACHINES.filter((m) => m.state === key).length })).filter((chip) => chip.count > 0);
     const items = listItems();
+    const ident = `
+        <div class="fx-top-left">
+            <div class="fx-surface fx-ident">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 20V9l6 4V9l6 4V5h4l4 15H2z"/></svg>
+                <span class="fx-ident-name">${t('factory')}</span>
+                <span class="fx-sep" aria-hidden="true"></span>
+                <span class="fx-live"><i aria-hidden="true"></i>${t('live')}</span>
+            </div>
+        </div>`;
+    // Na home a maquete só passa o modo cinema; a interação (filtros, camadas, zoom, detalhes) fica na tela cheia.
+    root.classList.toggle('fx--cinema', mobileUI && !view.full);
+    if (mobileUI && !view.full) {
+        hud.innerHTML = `${ident}
+        <button type="button" class="fx-cta" data-fx-full><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>${t('explore')}</button>`;
+        return;
+    }
     hud.innerHTML = `
         <div class="fx-top-left">
             <div class="fx-surface fx-ident">
@@ -285,6 +303,7 @@ function renderHud() {
                 <button type="button" data-fx-layer="state" aria-pressed="${view.layer === 'state'}">${t('layerState')}</button>
                 <button type="button" data-fx-layer="oee" aria-pressed="${view.layer === 'oee'}">${t('layerOee')}</button>
             </div>
+            ${mobileUI ? `<button type="button" class="fx-icon fx-exit" data-fx-exit aria-label="${t('fullExit')}" title="${t('fullExit')}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>` : ''}
         </div>
         <section class="fx-surface fx-now${view.nowOpen ? '' : ' is-collapsed'}" aria-label="${t('now')}">
             <div class="fx-now-head">
@@ -301,7 +320,7 @@ function renderHud() {
                 </div>
                 <div class="fx-list-head"><h4>${view.filters.size ? t('inFilter') : t('machines')}</h4><span>${items.length}</span></div>
                 ${items.length === 0 ? `<p class="fx-empty">${t('noneInFilter')}</p>` : `<ul class="fx-list">${items.map(listRow).join('')}</ul>`}
-                <p class="fx-hint"><span class="fx-demo-tag">${t('demo')}</span><span>${t(coarse ? (view.full ? 'hintFullTouch' : 'hintPageTouch') : (view.full ? 'hintFull' : 'hintDrag'))}</span><a class="fx-credit" href="https://huggingface.co/datasets/nvidia/PhysicalAI-SimReady-Warehouse-01" target="_blank" rel="noopener">${t('credit')}</a></p>
+                <p class="fx-hint"><span class="fx-demo-tag">${t('demo')}</span><span>${t(mobileUI ? 'hintFullTouch' : (view.full ? 'hintFull' : 'hintDrag'))}</span></p>
             </div>
         </section>
         <div class="fx-dock-wrap">
@@ -452,6 +471,8 @@ function bindHud() {
             else view.filters.add(key);
             renderHud();
             fx?.refreshLabels();
+        } else if (target.hasAttribute('data-fx-exit')) {
+            setFull(false);
         } else if (target.hasAttribute('data-fx-full')) {
             setFull(!view.full);
         } else if (target.dataset.fxZoom) {
@@ -482,6 +503,7 @@ let fullscreen = null;
 function setFull(on) {
     if (on === view.full) return;
     view.full = on;
+    if (!on) view.selected = null;
     renderHud();
     fullscreen ??= createFactoryFullscreen(root, { mobile: coarse, label: () => t('factory'), onExit: () => setFull(false) });
     if (on) {
@@ -500,8 +522,12 @@ function setFull(on) {
     if (on && typeof window.gtag === 'function') window.gtag('event', 'home_factory_fullscreen');
 }
 
+const openFull = () => setFull(true);
+
 function select(id) {
     view.selected = id;
+    // Abaixo de 1100 px o painel e o card se sobrepõem: ao escolher uma máquina, recolhe "Fábrica agora".
+    if (id && root.clientWidth < 1100) view.nowOpen = false;
     if (id && !view.touched) { view.touched = true; root.__fx?.refreshLabels(); }
     view.tab = 'summary';
     renderHud();
@@ -1062,11 +1088,13 @@ function buildScene(canvas, labelsHost) {
     // Interação direta no celular e desktop; o primeiro gesto interrompe o passeio cinema.
     // Fora da tela cheia o CSS (pan-y) entrega a rolagem vertical ao navegador: só o arrasto lateral gira.
     let tour = null;
+    // Celular fora da tela cheia: só cinema; desktop interage também na página.
+    const interactive = () => view.full || !mobileUI;
     function applyControls() {
-        controls.enabled = !tour;
+        controls.enabled = !tour && interactive();
         controls.enableZoom = coarse;
-        // A legenda descreve os mesmos gestos dos controles: giro com um dedo, pinça e pan com dois.
-        controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
+        // Como num mapa: um dedo arrasta a planta, pinça aproxima e dois dedos giram (a legenda diz o mesmo).
+        controls.touches = { ONE: THREE.TOUCH.PAN, TWO: THREE.TOUCH.DOLLY_ROTATE };
     }
     applyControls();
     // O CSS mantém os gestos da cena; a rolagem da página continua fora dela.
@@ -1105,7 +1133,8 @@ function buildScene(canvas, labelsHost) {
             left: wide && view.nowOpen ? 332 : 0,
             right: wide && view.selected ? 412 : 0,
             top: 64,
-            bottom: 84
+            // Card em folha inferior (quadro estreito): a máquina fica centrada na área acima dele.
+            bottom: !wide && view.selected ? (root.querySelector('.fx-drawer')?.offsetHeight || 0) + 24 : 84
         };
     }
 
@@ -1176,11 +1205,15 @@ function buildScene(canvas, labelsHost) {
         { at: [2.1, 0.7, -5.2], zoom: 2.5 }, { at: [-9.1, 0.7, -4.8], zoom: 2.3 }, { at: [-9.0, 0.5, 4.6], zoom: 2.4 },
         { at: [2.2, 0.5, 4.4], zoom: 2.5 }, { at: [10.9, 0.9, -1.4], zoom: 2.1 }, { at: [0, 0.6, 0], zoom: 1.05 }
     ];
+    // Cinema mais perto das máquinas; em tela estreita (celular) ainda mais e sem a vista geral.
+    const narrow = () => root.clientWidth < 720;
+    const tourStops = () => (narrow() ? TOUR.slice(0, -1) : TOUR);
+    const tourZoom = (zoom) => zoom * (narrow() ? 1.7 : 1);
     const BASE_ANGLE = Math.atan2(BASE_DIR.x, BASE_DIR.z);
     const BASE_PITCH = Math.asin(BASE_DIR.y);
     const IDLE_RESUME = 18000;
     // Celular: depois de um tempo sem toque, congela a cena (para de renderizar) para poupar bateria.
-    const IDLE_SLEEP = coarse ? 45000 : Infinity;
+    const IDLE_SLEEP = coarse ? 60000 : Infinity;
     let lastInput = 0;
     let awakeAt = 0;
     function startTour() {
@@ -1188,7 +1221,7 @@ function buildScene(canvas, labelsHost) {
         tween = null;
         controls.enabled = false;
         const dir = camera.position.clone().sub(controls.target);
-        tour = { stop: 0, time: 0, clock: 0, angle: Math.atan2(dir.x, dir.z), point: new THREE.Vector3(...TOUR[0].at), zoom: camera.zoom };
+        tour = { stop: 0, time: 0, clock: 0, angle: Math.atan2(dir.x, dir.z), point: new THREE.Vector3(...tourStops()[0].at), zoom: camera.zoom };
     }
     function stopTour() {
         lastInput = performance.now();
@@ -1197,18 +1230,21 @@ function buildScene(canvas, labelsHost) {
         applyControls();
     }
     // Em tela cheia o celular também gira com um dedo e aproxima com pinça; no computador a roda aproxima sem Ctrl.
+    // Entrar interrompe o cinema e libera os controles; sair volta direto ao cinema.
     function setFull(on) {
-        stopTour();
+        if (on || !mobileUI) stopTour();
+        else { tour = null; lastInput = 0; awakeAt = performance.now(); startTour(); }
         applyControls();
     }
     function tourStep(dt) {
-        const stop = TOUR[tour.stop];
+        const stops = tourStops();
+        const stop = stops[tour.stop % stops.length];
         tour.time += dt;
         tour.clock += dt;
-        if (tour.time > 8.5) { tour.time = 0; tour.stop = (tour.stop + 1) % TOUR.length; }
+        if (tour.time > 8.5) { tour.time = 0; tour.stop = (tour.stop + 1) % stops.length; }
         const k = 1 - Math.pow(0.02, dt);
         tour.point.lerp(new THREE.Vector3(...stop.at), k * 0.6);
-        tour.zoom += (fitZoom() * stop.zoom - tour.zoom) * k * 0.6;
+        tour.zoom += (fitZoom() * tourZoom(stop.zoom) - tour.zoom) * k * 0.6;
         // Balanço lento em volta do setor; não dá a volta inteira porque as paredes do fundo taparia a vista.
         const wanted = BASE_ANGLE + Math.sin(tour.clock * 0.11) * 0.55;
         tour.angle += (wanted - tour.angle) * k;
@@ -1222,9 +1258,9 @@ function buildScene(canvas, labelsHost) {
         camera.updateProjectionMatrix();
     }
     // Captura: o passeio para antes de os controles receberem o toque, senão o primeiro gesto se perde.
-    ['pointerdown', 'wheel', 'keydown', 'touchstart'].forEach((type) => root.addEventListener(type, stopTour, { passive: true, capture: true }));
+    ['pointerdown', 'wheel', 'keydown', 'touchstart'].forEach((type) => root.addEventListener(type, () => { if (interactive()) stopTour(); }, { passive: true, capture: true }));
     // Arrastar também conta como uso: o passeio não volta no meio de um gesto longo.
-    root.addEventListener('pointermove', (event) => { if (event.buttons || event.pointerType === 'touch') lastInput = performance.now(); }, { passive: true });
+    root.addEventListener('pointermove', (event) => { if (interactive() && (event.buttons || event.pointerType === 'touch')) lastInput = performance.now(); }, { passive: true });
 
     function zoomBy(factor) {
         const zoom = Math.max(0.3, Math.min(camera.zoom * factor, fitZoom() * 5.5));
@@ -1273,6 +1309,7 @@ function buildScene(canvas, labelsHost) {
         }
         downAt = null;
         suppressClickUntil = performance.now() + 350;
+        if (!interactive()) { downPin = null; openFull(); return; }
         if (downPin) { select(downPin); downPin = null; return; }
         const rect = renderer.domElement.getBoundingClientRect();
         pointer.set(((event.clientX - rect.left) / rect.width) * 2 - 1, -((event.clientY - rect.top) / rect.height) * 2 + 1);
@@ -1660,6 +1697,8 @@ function buildScene(canvas, labelsHost) {
         if (e.isIntersecting && !visible) awakeAt = performance.now();
         visible = e.isIntersecting;
     }).observe(root);
+    // Na home o cinema é o conteúdo: rolar ou tocar a página mantém a cena viva; parada 60 s, congela.
+    if (coarse) ['scroll', 'pointerdown'].forEach((type) => window.addEventListener(type, () => { awakeAt = performance.now(); }, { passive: true }));
     // A GPU do celular pode descartar o contexto (memória, aba em segundo plano): volta à imagem estática.
     renderer.domElement.addEventListener('webglcontextlost', () => fail({ permanent: true }));
     const clock = new THREE.Clock();

@@ -65,7 +65,7 @@ html[data-theme="dark"] .fx {
 .fx button:focus-visible, .fx input:focus-visible { outline: 2px solid var(--fx-accent); outline-offset: 1px; }
 
 .fx-scene, .fx-canvas, .fx-labels { position: absolute; inset: 0; }
-/* Na página, deslizar na vertical rola o site; arrastar para o lado gira e a pinça aproxima. */
+/* Na página o deslize vertical é sempre da rolagem; na tela cheia a cena captura todos os gestos. */
 .fx-canvas { width: 100%; height: 100%; display: block; touch-action: pan-y; }
 .fx-scene { touch-action: pan-y; }
 .fx-labels { pointer-events: none; overflow: hidden; z-index: 2; }
@@ -156,6 +156,9 @@ html[data-theme="dark"] .fpin--alert { color: #2a0805; }
 
 .fx-top-right { position: absolute; right: 16px; top: 16px; display: flex; gap: 12px; transition: right .3s cubic-bezier(.2, .7, .2, 1); }
 .fx:has(.fx-drawer) .fx-top-right { right: 412px; }
+/* X de saída da tela cheia (celular): mesmo painel do seletor Estado/OEE (a classe .fx-icon sozinha é transparente). */
+.fx .fx-exit { width: 44px; height: 44px; border-radius: 12px; background: var(--fx-panel); color: var(--fx-ink); border: 1px solid var(--fx-line); box-shadow: var(--fx-shadow); }
+.fx .fx-exit:hover { background: var(--fx-hover); }
 .fx-layer { display: flex; gap: 2px; padding: 3px; height: 44px; border-radius: 12px; background: var(--fx-alt); border: 1px solid var(--fx-line); box-shadow: var(--fx-shadow); }
 .fx-layer button { min-width: 72px; padding: 0 14px; border: 0; border-radius: 9px; background: transparent; color: var(--fx-ink2); font-weight: 500; cursor: pointer; }
 .fx-layer button[aria-pressed="true"] { background: var(--fx-panel); color: var(--fx-ink); box-shadow: 0 1px 2px rgba(0, 0, 0, .18); }
@@ -209,8 +212,6 @@ html[data-theme="dark"] .fpin--alert { color: #2a0805; }
 
 .fx-hint { flex: none; margin: 0; padding: 10px 16px 12px; border-top: 1px solid var(--fx-line); font-size: 12px; color: var(--fx-ink2); pointer-events: none; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
 .fx-hint > span:not(.fx-demo-tag) { color: var(--fx-ink3); }
-.fx-credit { width: 100%; font-size: 11px; color: var(--fx-ink3); text-decoration: none; pointer-events: auto; }
-.fx-credit:hover { color: var(--fx-ink2); text-decoration: underline; }
 .fx-demo-tag {
     font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .04em;
     text-transform: uppercase; color: var(--fx-ink3); background: var(--fx-panel); border: 1px dashed var(--fx-line); border-radius: 999px; padding: 4px 10px; pointer-events: none;
@@ -263,7 +264,7 @@ html[data-theme="dark"] .fpin--alert { color: #2a0805; }
     .fx-dock-wrap { bottom: 12px; max-width: calc(100% - 80px); left: calc(50% - 26px); }
     .fx-zoom { top: auto; bottom: 76px; right: 12px; }
     .fx-hint > .fx-demo-tag { display: none; }
-    .fx-drawer { top: auto; left: 8px; right: 8px; bottom: 8px; width: auto; height: 70%; animation-name: fx-sheet-in; }
+    .fx-drawer { top: auto; left: 8px; right: 8px; bottom: 8px; width: auto; height: auto; max-height: 50%; animation-name: fx-sheet-in; }
     @keyframes fx-sheet-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
     .fpin { font-size: 11px; padding: 4px 7px; }
     .fx-sector { font-size: 9px; }
@@ -343,10 +344,12 @@ html.fx-lock, html.fx-lock body { overflow: hidden; }
 .fx-chip-label { font-style: normal; }
 @media (max-width: 720px) {
     .fx-top-left { display: none; }
-    .fx-top-right { top: 12px; right: 12px; }
+    .fx-top-right { top: 12px; right: 12px; gap: 8px; }
     .fx-layer { height: 40px; }
     .fx-layer button { min-width: 0; padding: 0 12px; }
-    .fx-now { left: 12px; top: 12px; width: auto; max-width: calc(100% - 24px - 130px); border-radius: 12px; }
+    /* Reserva Estado/OEE (~122 px) + X (40 px) + espaços, para o painel não encostar no seletor. */
+    .fx-now { left: 12px; top: 12px; width: auto; max-width: calc(100% - 24px - 186px); border-radius: 12px; }
+    .fx .fx-exit { width: 40px; height: 40px; }
     .fx-now:not(.is-collapsed) { right: 12px; max-width: none; z-index: 2; max-height: calc(100% - 24px - 56px); }
     /* Mesma altura (40 px com a borda) e mesma fonte do seletor Estado/OEE */
     .fx-now-head { min-height: 38px; padding-left: 12px; padding-right: 2px; gap: 2px; }
@@ -364,3 +367,14 @@ html.fx-lock, html.fx-lock body { overflow: hidden; }
     .fx-legend { justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) { .fx-now-live { animation: none; } }
+
+/* Home: a maquete só passa o cinema; uma ação leva à tela cheia, onde a interação acontece.
+   `.fx .fx-cta` vence `.fx button { color/font: inherit }`. */
+.fx--cinema .fx-canvas { cursor: pointer; }
+.fx--cinema .fx-tap-hint { display: none; }
+.fx .fx-cta svg { flex: none; }
+.fx .fx-cta { position: absolute; z-index: 4; bottom: 16px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: #024578; color: #fff; box-shadow: 0 6px 20px rgba(2, 69, 120, .35); font: 600 15px/1.2 'Inter', sans-serif; letter-spacing: .01em; white-space: nowrap; cursor: pointer; touch-action: manipulation; transition: transform .2s ease, background-color .2s ease; }
+.fx .fx-cta:hover { background: #035a9c; }
+.fx .fx-cta:active { transform: translateX(-50%) scale(.97); }
+.fx .fx-cta:focus-visible { outline: 3px solid #fff; outline-offset: -6px; }
+@media (prefers-reduced-motion: reduce) { .fx .fx-cta { transition: none; } }
