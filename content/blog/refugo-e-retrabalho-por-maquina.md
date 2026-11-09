@@ -1,6 +1,6 @@
 ---
 title: Como controlar refugo e retrabalho por máquina
-description: Refugo e retrabalho custam material, tempo de máquina e prazo. Veja a diferença entre os dois, como registrar por máquina, turno e produto, os indicadores que importam e como eles entram no OEE.
+description: Refugo e retrabalho custam material, tempo de máquina e prazo. A diferença entre os dois, como registrar por máquina e turno e como entram no OEE.
 answer: Para controlar refugo e retrabalho, registre cada peça ruim no momento em que ela aparece, com a máquina, o produto, o turno e o motivo. Separe refugo (peça perdida) de retrabalho (peça corrigida), acompanhe o percentual por máquina e use o fator qualidade do OEE para ver o tamanho da perda.
 date: 2026-10-29
 topic: qualidade

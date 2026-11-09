@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.empresa.title": "Sobre a Mestti: tecnologia brasileira para a indústria produzir mais | Mestti",
-  "meta.empresa.description": "A Mestti nasceu em Londrina, dentro de uma gráfica, da necessidade de ver a produção em tempo real. Hoje desenvolve sensores, sistema e IA para indústrias de todos os portes.",
+  "meta.empresa.title": "Sobre a Mestti: startup industrial de Londrina (PR) | Mestti",
+  "meta.empresa.description": "Startup brasileira que nasceu numa gráfica em Londrina, em 2025. Desenvolve sensores, sistema e IA para indústrias de todos os portes.",
   "v2.empresa.hero.5": "Você está em",
   "v2.empresa.hero.3": "Início",
   "v2.empresa.hero.4": "Sobre",
@@ -62,8 +62,8 @@
   "v2.empresa.company.6": "Dados da empresa"
  },
  "en": {
-  "meta.empresa.title": "About Mestti: Brazilian technology to help manufacturers produce more | Mestti",
-  "meta.empresa.description": "Mestti was born in Londrina, Brazil, inside a printing company, out of the need to see production in real time. Today it builds sensors, software and AI for manufacturers of every size.",
+  "meta.empresa.title": "About Mestti: industrial tech startup from Brazil | Mestti",
+  "meta.empresa.description": "Brazilian startup born inside a printing company in Londrina in 2025. It builds sensors, software and AI for manufacturers of every size.",
   "v2.empresa.hero.5": "You are here",
   "v2.empresa.hero.3": "Home",
   "v2.empresa.hero.4": "About",
@@ -122,8 +122,8 @@
   "v2.empresa.company.6": "Company details"
  },
  "es": {
-  "meta.empresa.title": "Sobre Mestti: tecnología brasileña para que la industria produzca más | Mestti",
-  "meta.empresa.description": "Mestti nació en Londrina, Brasil, dentro de una imprenta, de la necesidad de ver la producción en tiempo real. Hoy desarrolla sensores, sistema e IA para industrias de todos los tamaños.",
+  "meta.empresa.title": "Sobre Mestti: startup industrial de Londrina, Brasil | Mestti",
+  "meta.empresa.description": "Startup brasileña que nació en una imprenta de Londrina en 2025. Desarrolla sensores, sistema e IA para industrias de todos los tamaños.",
   "v2.empresa.hero.5": "Usted está en",
   "v2.empresa.hero.3": "Inicio",
   "v2.empresa.hero.4": "Sobre",

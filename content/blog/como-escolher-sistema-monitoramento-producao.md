@@ -1,7 +1,7 @@
 ---
 title: Como escolher um sistema de monitoramento de produção industrial
-seo_title: Como escolher um sistema de monitoramento de produção industrial | Mestti
-description: Um roteiro para avaliar sistemas de monitoramento de produção com critérios verificáveis: o tipo de sistema, o que é medido, máquinas antigas, um piloto que ajuda a decidir e o que conferir na proposta.
+seo_title: Como escolher um sistema de monitoramento de produção | Mestti
+description: Critérios para avaliar um sistema de monitoramento de produção: o que ele mede, se lê máquinas antigas, como fazer o piloto e o que conferir na proposta.
 answer: Comece pela informação que falta na fábrica e pela decisão que você precisa tomar. Depois confira como cada dado é produzido (sensor, operador ou cadastro), faça um piloto numa máquina representativa com critérios combinados antes da instalação e exija na proposta escopo, responsabilidades, integrações, dados e critérios de aceite claros.
 date: 2026-10-21
 updated: 2026-10-29

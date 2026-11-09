@@ -3,7 +3,7 @@
     var d = {
  "pt": {
   "meta.mes.title": "Sistema MES: o que é, o que faz e como implantar | Mestti",
-  "meta.mes.description": "MES é o sistema que acompanha a produção enquanto ela acontece: ordens, apontamento, paradas, OEE e qualidade. Veja o que ele faz, a diferença para o ERP e como começar por um setor.",
+  "meta.mes.description": "MES é o sistema que acompanha a produção enquanto ela acontece: ordens, apontamento, paradas, OEE e qualidade, entre o ERP e as máquinas.",
   "v2.mes.2": "Você está em",
   "v2.mes.1": "Início",
   "v2.mes.3": "Sistema MES",
@@ -86,8 +86,8 @@
   "v2.mes.80": "Se não servir, retiramos o sensor e você não paga nada."
  },
  "en": {
-  "meta.mes.title": "MES system: what it is, what it does and how to implement it | Mestti",
-  "meta.mes.description": "An MES tracks production while it happens: orders, reporting, stops, OEE and quality. See what it does, how it differs from an ERP and how to start with one department.",
+  "meta.mes.title": "MES system: what it is and how to implement it | Mestti",
+  "meta.mes.description": "An MES tracks production as it happens: orders, reporting, stops, OEE and quality, sitting between the ERP and the machines.",
   "v2.mes.2": "You are here",
   "v2.mes.1": "Home",
   "v2.mes.3": "MES system",
@@ -171,7 +171,7 @@
  },
  "es": {
   "meta.mes.title": "Sistema MES: qué es, qué hace y cómo implantarlo | Mestti",
-  "meta.mes.description": "El MES acompaña la producción mientras ocurre: órdenes, registro, paradas, OEE y calidad. Vea qué hace, la diferencia con el ERP y cómo empezar por un sector.",
+  "meta.mes.description": "El MES acompaña la producción mientras ocurre: órdenes, registro, paradas, OEE y calidad, entre el ERP y las máquinas.",
   "v2.mes.2": "Usted está en",
   "v2.mes.1": "Inicio",
   "v2.mes.3": "Sistema MES",

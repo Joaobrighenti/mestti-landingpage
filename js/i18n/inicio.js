@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.inicio.title": "Mestti | Sistema de gestão da produção com sensores para indústrias",
-  "meta.inicio.description": "A Mestti mede cada máquina com sensores próprios e mostra onde a produção para, por quê e quando cada pedido fica pronto. Sensores prontos em 7 dias, instalação em 1 dia e 1 semana grátis.",
+  "meta.inicio.title": "Mestti | Sistema de gestão da produção com sensores e IA",
+  "meta.inicio.description": "Sensores próprios medem cada máquina e mostram onde a produção para e quando cada pedido fica pronto. O Otto, agente de IA, propõe a próxima ação.",
   "v2.inicio.hero.8": "A nova geração de <span class=\"hv-mark\">inteligência operacional</span> para indústrias em crescimento",
   "v2.inicio.hero.9": "Acompanhe toda sua produção em tempo real e saiba onde agir para melhorar.",
   "v2.inicio.hero.10": "Agendar uma demo",
@@ -312,8 +312,8 @@
   "v2.inicio.faq.19": "Perguntas frequentes"
  },
  "en": {
-  "meta.inicio.title": "Mestti | Production management system with sensors for manufacturers",
-  "meta.inicio.description": "Mestti measures every machine with its own sensors and shows where production stops, why, and when each order will be ready. Sensors ready in 7 days, installed in 1 day, 1 free week.",
+  "meta.inicio.title": "Mestti | Production management system with sensors and AI",
+  "meta.inicio.description": "Our own sensors measure every machine and show where production stops and when each order will be ready. Otto, the AI agent, proposes the next step.",
   "v2.inicio.hero.8": "The new generation of <span class=\"hv-mark\">operational intelligence</span> for growing manufacturers",
   "v2.inicio.hero.9": "Track your whole production in real time and know where to act to improve.",
   "v2.inicio.hero.10": "Book a demo",
@@ -622,8 +622,8 @@
   "v2.inicio.faq.19": "Frequently asked questions"
  },
  "es": {
-  "meta.inicio.title": "Mestti | Sistema de gestión de la producción con sensores para industrias",
-  "meta.inicio.description": "Mestti mide cada máquina con sensores propios y muestra dónde se detiene la producción, por qué y cuándo estará listo cada pedido. Sensores listos en 7 días, instalación en 1 día y 1 semana gratis.",
+  "meta.inicio.title": "Mestti | Sistema de gestión de la producción con sensores e IA",
+  "meta.inicio.description": "Sensores propios miden cada máquina y muestran dónde se detiene la producción y cuándo estará cada pedido. Otto, el agente de IA, propone el próximo paso.",
   "v2.inicio.hero.8": "La nueva generación de <span class=\"hv-mark\">inteligencia operacional</span> para industrias en crecimiento",
   "v2.inicio.hero.9": "Siga toda su producción en tiempo real y sepa dónde actuar para mejorar.",
   "v2.inicio.hero.10": "Agendar una demo",

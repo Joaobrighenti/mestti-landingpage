@@ -3,7 +3,7 @@
     var d = {
  "pt": {
   "meta.monitoramento-de-maquinas.title": "Monitoramento de máquinas em tempo real: paradas e OEE | Mestti",
-  "meta.monitoramento-de-maquinas.description": "Monitoramento de máquinas é ver, ao vivo, se cada máquina está rodando, parada ou em setup, quanto produziu e por que parou. Veja o que dá para acompanhar, onde ajuda primeiro e como funciona com sensores.",
+  "meta.monitoramento-de-maquinas.description": "Veja ao vivo se cada máquina está rodando, parada ou em setup, quanto produziu e por que parou. Com sensores, sem CLP, e a fábrica em 3D.",
   "v2.monitoramento-de-maquinas.2": "Você está em",
   "v2.monitoramento-de-maquinas.1": "Início",
   "v2.monitoramento-de-maquinas.3": "Monitoramento de máquinas",
@@ -85,7 +85,7 @@
  },
  "en": {
   "meta.monitoramento-de-maquinas.title": "Real-time machine monitoring: stops and OEE | Mestti",
-  "meta.monitoramento-de-maquinas.description": "Machine monitoring means seeing, live, whether each machine is running, stopped or in setup, how much it made and why it stopped. See what can be tracked, where it helps first and how it works with sensors.",
+  "meta.monitoramento-de-maquinas.description": "See live whether each machine is running, stopped or in setup, how much it produced and why it stopped. With sensors, no PLC, and the factory in 3D.",
   "v2.monitoramento-de-maquinas.2": "You are here",
   "v2.monitoramento-de-maquinas.1": "Home",
   "v2.monitoramento-de-maquinas.3": "Machine monitoring",
@@ -167,7 +167,7 @@
  },
  "es": {
   "meta.monitoramento-de-maquinas.title": "Monitoreo de máquinas en tiempo real: paradas y OEE | Mestti",
-  "meta.monitoramento-de-maquinas.description": "El monitoreo de máquinas es ver, en vivo, si cada máquina está operando, parada o en setup, cuánto produjo y por qué paró. Vea qué se puede seguir, dónde ayuda primero y cómo funciona con sensores.",
+  "meta.monitoramento-de-maquinas.description": "Vea en vivo si cada máquina está en marcha, parada o en setup, cuánto produjo y por qué paró. Con sensores, sin PLC, y la fábrica en 3D.",
   "v2.monitoramento-de-maquinas.2": "Usted está en",
   "v2.monitoramento-de-maquinas.1": "Inicio",
   "v2.monitoramento-de-maquinas.3": "Monitoreo de máquinas",

@@ -290,7 +290,7 @@ function indexPage(list, chrome, extra) {
         { '@type': 'Organization', '@id': ORG, name: 'MESTTI', url: `${ORIGIN}/` }] };
     const guides = ['mes', 'oee', 'pcp', 'sequenciamento', 'apontamento', 'monitoramento', 'maquinas-antigas', 'industria-4-0', 'ia'].map((k) => `<li><a href="${TOPICS[k][1]}">${TOPICS[k][0]}</a></li>`).join('');
     const cards = items.map((a) => `<li><a class="bp-card" href="${a.url}"><span class="bp-card-topic">${esc(TOPICS[a.topic][0])}</span><strong>${esc(a.title)}</strong><span class="bp-card-desc">${esc(a.description)}</span><span class="bp-card-meta"><time datetime="${a.date}">${dateBR(a.date)}</time>${a.minutes ? ` · ${a.minutes} min` : ''}</span></a></li>`).join('');
-    return HEAD('Blog da Mestti: produção, PCP, OEE e chão de fábrica | Mestti', 'Guias práticos para quem gerencia produção industrial: OEE, PCP, sequenciamento, apontamento, paradas, setup, qualidade e custos, escritos por quem constrói a Mestti.', url, 'website', ld) + `
+    return HEAD('Blog da Mestti: produção, PCP, OEE e chão de fábrica | Mestti', 'Guias práticos de produção industrial: OEE, PCP, sequenciamento, apontamento, paradas, setup, qualidade e custos, escritos pela equipe da Mestti.', url, 'website', ld) + `
 <body class="hv-page" data-page="blog">
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <div class="nav-overlay" id="navOverlay"></div>

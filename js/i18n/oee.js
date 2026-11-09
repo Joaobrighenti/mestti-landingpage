@@ -3,7 +3,7 @@
     var d = {
  "pt": {
   "meta.oee.title": "OEE: o que é, como calcular e acompanhar ao vivo | Mestti",
-  "meta.oee.description": "OEE é a eficiência global do equipamento: disponibilidade × performance × qualidade. Veja a fórmula, uma calculadora, os erros que distorcem o número e como medir por máquina, ao vivo.",
+  "meta.oee.description": "OEE = disponibilidade × performance × qualidade. Fórmula, calculadora, erros que distorcem o número e como medir por máquina, ao vivo.",
   "v2.oee.hero.crumbs": "Você está em",
   "v2.oee.hero.home": "Início",
   "v2.oee.hero.over": "Guia · OEE",
@@ -102,7 +102,7 @@
  },
  "en": {
   "meta.oee.title": "OEE: what it is, how to calculate it and track it live | Mestti",
-  "meta.oee.description": "OEE is overall equipment effectiveness: availability × performance × quality. See the formula, a calculator, the mistakes that distort it and how to measure it per machine, live.",
+  "meta.oee.description": "OEE = availability × performance × quality. The formula, a calculator, mistakes that distort the number and how to measure it per machine, live.",
   "v2.oee.hero.crumbs": "You are here",
   "v2.oee.hero.home": "Home",
   "v2.oee.hero.over": "Guide · OEE",
@@ -201,7 +201,7 @@
  },
  "es": {
   "meta.oee.title": "OEE: qué es, cómo calcularlo y seguirlo en vivo | Mestti",
-  "meta.oee.description": "El OEE es la eficiencia global del equipo: disponibilidad × rendimiento × calidad. Vea la fórmula, una calculadora, los errores que distorsionan el número y cómo medirlo por máquina, en vivo.",
+  "meta.oee.description": "OEE = disponibilidad × rendimiento × calidad. Fórmula, calculadora, errores que distorsionan el número y cómo medirlo por máquina, en vivo.",
   "v2.oee.hero.crumbs": "Usted está en",
   "v2.oee.hero.home": "Inicio",
   "v2.oee.hero.over": "Guía · OEE",

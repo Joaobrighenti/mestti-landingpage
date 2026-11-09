@@ -1,7 +1,7 @@
 ---
 title: Como calcular o preço de venda de um produto na indústria usando RKW e custo do processo
-seo_title: Como calcular preço de venda na indústria com RKW e custo do processo | MESTTI
-description: Aprenda como calcular o preço de venda de um produto industrial usando o método RKW, considerando matéria-prima, custos fixos, custo do processo, tempo de máquina, custos variáveis e lucro desejado.
+seo_title: Preço de venda na indústria pelo método RKW | Mestti
+description: Como calcular o preço de venda de um produto industrial pelo RKW: matéria-prima, custos fixos e variáveis, tempo de máquina e lucro desejado.
 answer: No método RKW, o preço de venda soma todos os custos do produto (matéria-prima, custos variáveis e uma parte dos custos fixos, rateada pelo tempo de máquina de cada processo) e aplica a margem de lucro desejada. O ponto crítico é conhecer o tempo real de cada processo.
 date: 2026-06-08
 updated: 2026-06-08

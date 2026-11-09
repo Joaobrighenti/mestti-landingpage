@@ -1,6 +1,6 @@
 ---
 title: Inspeção de primeira peça: como fazer e registrar
-description: A inspeção de primeira peça confirma que o processo está certo antes de produzir o lote. Veja quando fazer, o que conferir, como registrar com foto e nome, e os erros que fazem o refugo aparecer no meio do lote.
+description: A inspeção de primeira peça confirma o processo antes do lote. Quando fazer, o que conferir e como registrar com foto e nome de quem inspecionou.
 answer: A inspeção de primeira peça confere a primeira peça boa depois de um setup, de uma troca de ferramenta ou do início do turno, antes de liberar a produção do lote. Ela segue um checklist com as medidas e características da peça, e o resultado fica registrado com quem inspecionou, quando, o que mediu e, se possível, uma foto.
 date: 2026-10-29
 topic: qualidade

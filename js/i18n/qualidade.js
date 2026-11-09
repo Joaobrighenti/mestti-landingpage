@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.qualidade.title": "Qualidade industrial: checklists, inspeções com foto e não conformidades | Mestti",
-  "meta.qualidade.description": "Inspeções disparadas por regra, preenchidas no celular com foto, verificadas e ligadas à máquina e à ordem. Checklists com revisão documental e não conformidades que entram no indicador.",
+  "meta.qualidade.title": "Qualidade industrial: checklists e inspeções com foto | Mestti",
+  "meta.qualidade.description": "Inspeções disparadas por regra, feitas no celular com foto e ligadas à máquina, à ordem e à revisão do documento. Refugo e retrabalho entram no OEE.",
   "v2.qualidade.crumb.1": "Você está em",
   "v2.qualidade.crumb.2": "Início",
   "v2.qualidade.crumb.3": "Qualidade",
@@ -96,8 +96,8 @@
   "v2.qualidade.final.3": "Falar no WhatsApp"
  },
  "en": {
-  "meta.qualidade.title": "Industrial quality: checklists, photo inspections and non-conformities | Mestti",
-  "meta.qualidade.description": "Rule-triggered inspections, filled in on a phone with photos, verified and linked to the machine and the order. Checklists with document revisions and non-conformities that count in the indicators.",
+  "meta.qualidade.title": "Industrial quality: checklists and photo inspections | Mestti",
+  "meta.qualidade.description": "Rule-triggered inspections done on a phone with photos, linked to the machine, the order and the document revision. Scrap and rework count in OEE.",
   "v2.qualidade.crumb.1": "You are here",
   "v2.qualidade.crumb.2": "Home",
   "v2.qualidade.crumb.3": "Quality",
@@ -190,8 +190,8 @@
   "v2.qualidade.final.3": "Chat on WhatsApp"
  },
  "es": {
-  "meta.qualidade.title": "Calidad industrial: checklists, inspecciones con foto y no conformidades | Mestti",
-  "meta.qualidade.description": "Inspecciones disparadas por regla, completadas en el celular con foto, verificadas y vinculadas a la máquina y a la orden. Checklists con revisión documental y no conformidades que entran en el indicador.",
+  "meta.qualidade.title": "Calidad industrial: checklists e inspecciones con foto | Mestti",
+  "meta.qualidade.description": "Inspecciones disparadas por regla, hechas en el celular con foto y vinculadas a la máquina, la orden y la revisión del documento. El rechazo entra en el OEE.",
   "v2.qualidade.crumb.1": "Usted está en",
   "v2.qualidade.crumb.2": "Inicio",
   "v2.qualidade.crumb.3": "Calidad",

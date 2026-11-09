@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.glossario.title": "Glossário de produção industrial: OEE, MES, setup, microparada e mais | Mestti",
-  "meta.glossario.description": "Definições curtas e diretas dos termos de chão de fábrica: OEE, disponibilidade, performance, microparada, setup, MTTR, MTBF, PCP, MES, ERP, capacidade escondida e outros.",
+  "meta.glossario.title": "Glossário industrial: OEE, MES, setup e microparada | Mestti",
+  "meta.glossario.description": "Definições curtas de OEE, disponibilidade, performance, microparada, setup, MTTR, MTBF, PCP, MES, ERP e capacidade escondida.",
   "v2.glossario.hero.3": "Você está em",
   "v2.glossario.hero.1": "Início",
   "v2.glossario.hero.2": "Glossário",
@@ -71,8 +71,8 @@
   "v2.glossario.hero.4": "Glossário"
  },
  "en": {
-  "meta.glossario.title": "Industrial production glossary: OEE, MES, setup, micro-stops and more | Mestti",
-  "meta.glossario.description": "Short, direct definitions of shop-floor terms: OEE, availability, performance, micro-stop, setup, MTTR, MTBF, production planning, MES, ERP, hidden capacity and more.",
+  "meta.glossario.title": "Manufacturing glossary: OEE, MES, setup, minor stops | Mestti",
+  "meta.glossario.description": "Short definitions of OEE, availability, performance, minor stops, setup, MTTR, MTBF, PCP, MES, ERP and hidden capacity.",
   "v2.glossario.hero.3": "You are here",
   "v2.glossario.hero.1": "Home",
   "v2.glossario.hero.2": "Glossary",
@@ -140,8 +140,8 @@
   "v2.glossario.hero.4": "Glossary"
  },
  "es": {
-  "meta.glossario.title": "Glosario de producción industrial: OEE, MES, setup, microparada y más | Mestti",
-  "meta.glossario.description": "Definiciones cortas y directas de los términos de planta: OEE, disponibilidad, rendimiento, microparada, setup, MTTR, MTBF, PCP, MES, ERP, capacidad oculta y más.",
+  "meta.glossario.title": "Glosario industrial: OEE, MES, setup y microparada | Mestti",
+  "meta.glossario.description": "Definiciones cortas de OEE, disponibilidad, rendimiento, microparada, setup, MTTR, MTBF, PCP, MES, ERP y capacidad oculta.",
   "v2.glossario.hero.3": "Usted está en",
   "v2.glossario.hero.1": "Inicio",
   "v2.glossario.hero.2": "Glosario",

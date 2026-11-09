@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.mes-ou-erp.title": "MES ou ERP? A diferença e quando a indústria precisa de cada um | Mestti",
-  "meta.mes-ou-erp.description": "O ERP registra o que foi vendido, comprado e faturado. O MES mostra o que acontece entre a ordem e a entrega, na máquina. Veja a diferença, um comparativo e quando ter os dois.",
+  "meta.mes-ou-erp.title": "MES ou ERP: diferença e quando usar cada um | Mestti",
+  "meta.mes-ou-erp.description": "O ERP registra vendas, compras e faturamento. O MES mostra o que acontece na máquina entre a ordem e a entrega. Comparativo e quando ter os dois.",
   "v2.mes-ou-erp.hero.3": "Você está em",
   "v2.mes-ou-erp.hero.1": "Início",
   "v2.mes-ou-erp.hero.2": "MES ou ERP?",
@@ -56,8 +56,8 @@
   "v2.mes-ou-erp.faq.5": "Perguntas frequentes"
  },
  "en": {
-  "meta.mes-ou-erp.title": "MES or ERP? The difference and when a manufacturer needs each | Mestti",
-  "meta.mes-ou-erp.description": "An ERP records what was sold, bought and invoiced. An MES shows what happens between the order and delivery, at the machine. See the difference, a comparison and when to have both.",
+  "meta.mes-ou-erp.title": "MES or ERP: the difference and when to use each | Mestti",
+  "meta.mes-ou-erp.description": "An ERP records sales, purchasing and invoicing. An MES shows what happens at the machine between order and delivery. A comparison and when to use both.",
   "v2.mes-ou-erp.hero.3": "You are here",
   "v2.mes-ou-erp.hero.1": "Home",
   "v2.mes-ou-erp.hero.2": "MES or ERP?",
@@ -110,8 +110,8 @@
   "v2.mes-ou-erp.faq.5": "Frequently asked questions"
  },
  "es": {
-  "meta.mes-ou-erp.title": "¿MES o ERP? La diferencia y cuándo la industria necesita cada uno | Mestti",
-  "meta.mes-ou-erp.description": "El ERP registra lo vendido, comprado y facturado. El MES muestra lo que pasa entre la orden y la entrega, en la máquina. Vea la diferencia, una comparación y cuándo tener los dos.",
+  "meta.mes-ou-erp.title": "MES o ERP: diferencia y cuándo usar cada uno | Mestti",
+  "meta.mes-ou-erp.description": "El ERP registra ventas, compras y facturación. El MES muestra qué pasa en la máquina entre la orden y la entrega. Comparativo y cuándo tener los dos.",
   "v2.mes-ou-erp.hero.3": "Usted está en",
   "v2.mes-ou-erp.hero.1": "Inicio",
   "v2.mes-ou-erp.hero.2": "¿MES o ERP?",

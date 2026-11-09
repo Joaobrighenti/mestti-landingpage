@@ -3,7 +3,7 @@
     var d = {
  "pt": {
   "meta.seguranca.title": "Tecnologia própria e proteção de dados industriais | Mestti",
-  "meta.seguranca.description": "Do sensor à IA, a Mestti desenvolve a própria tecnologia. Veja como os dados da sua fábrica são registrados, protegidos, isolados por empresa e usados pelo Otto só com aprovação.",
+  "meta.seguranca.description": "Sensor, sistema e IA desenvolvidos pela Mestti. Registro original imutável, dados isolados por empresa e o Otto agindo só com aprovação.",
   "v2.seguranca.hero.4": "Você está em",
   "v2.seguranca.hero.2": "Início",
   "v2.seguranca.hero.3": "Tecnologia e dados",
@@ -54,7 +54,7 @@
  },
  "en": {
   "meta.seguranca.title": "Proprietary technology and industrial data protection | Mestti",
-  "meta.seguranca.description": "From sensor to AI, Mestti builds its own technology. See how your factory’s data is recorded, protected, isolated per company and used by Otto only with approval.",
+  "meta.seguranca.description": "Sensor, software and AI built by Mestti. Immutable original records, data isolated per company and Otto acting only with approval.",
   "v2.seguranca.hero.4": "You are here",
   "v2.seguranca.hero.2": "Home",
   "v2.seguranca.hero.3": "Technology and data",
@@ -105,7 +105,7 @@
  },
  "es": {
   "meta.seguranca.title": "Tecnología propia y protección de datos industriales | Mestti",
-  "meta.seguranca.description": "Del sensor a la IA, Mestti desarrolla su propia tecnología. Vea cómo los datos de su fábrica se registran, protegen, aíslan por empresa y usa Otto solo con aprobación.",
+  "meta.seguranca.description": "Sensor, sistema e IA desarrollados por Mestti. Registro original inmutable, datos aislados por empresa y Otto actuando solo con aprobación.",
   "v2.seguranca.hero.4": "Usted está en",
   "v2.seguranca.hero.2": "Inicio",
   "v2.seguranca.hero.3": "Tecnología y datos",

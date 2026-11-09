@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.otto.title": "Otto: assistente de IA para o chão de fábrica, com aprovação humana | Mestti",
-  "meta.otto.description": "Pergunte em português onde a fábrica perdeu tempo, quais pedidos correm risco e o que ficou pendente. O Otto consulta só dados autorizados, propõe ações e só executa com aprovação.",
+  "meta.otto.title": "Otto: agente de IA para o chão de fábrica | Mestti",
+  "meta.otto.description": "O Otto é o agente de IA da Mestti. Responde onde a fábrica perdeu tempo e quais pedidos podem atrasar, e propõe ações que só valem com aprovação.",
   "v2.otto.hero.1": "Otto, o agente de IA da Mestti. Clique nele.",
   "v2.otto.hero.2": "AI-powered · o agente de IA da Mestti",
   "v2.otto.hero.3": "Converse com a sua fábrica.",
@@ -126,8 +126,8 @@
   "v2.otto.final.3": "Falar no WhatsApp"
  },
  "en": {
-  "meta.otto.title": "Otto: AI assistant for the shop floor, with human approval | Mestti",
-  "meta.otto.description": "Ask in plain language where the factory lost time, which orders are at risk and what is pending. Otto only reads authorized data, proposes actions and only acts with approval.",
+  "meta.otto.title": "Otto: AI agent for the shop floor | Mestti",
+  "meta.otto.description": "Otto is Mestti’s AI agent. It answers where the factory lost time and which orders may be late, and proposes actions that only apply once approved.",
   "v2.otto.hero.1": "Otto, Mestti’s AI agent. Click it.",
   "v2.otto.hero.2": "AI-powered · Mestti’s AI agent",
   "v2.otto.hero.3": "Talk to your factory.",
@@ -250,8 +250,8 @@
   "v2.otto.final.3": "Chat on WhatsApp"
  },
  "es": {
-  "meta.otto.title": "Otto: asistente de IA para la planta, con aprobación humana | Mestti",
-  "meta.otto.description": "Pregunte en su idioma dónde perdió tiempo la fábrica, qué pedidos corren riesgo y qué quedó pendiente. Otto consulta solo datos autorizados, propone acciones y solo ejecuta con aprobación.",
+  "meta.otto.title": "Otto: agente de IA para la planta | Mestti",
+  "meta.otto.description": "Otto es el agente de IA de Mestti. Responde dónde se perdió tiempo y qué pedidos pueden atrasarse, y propone acciones que solo valen con aprobación.",
   "v2.otto.hero.1": "Otto, el agente de IA de Mestti. Haga clic en él.",
   "v2.otto.hero.2": "AI-powered · el agente de IA de Mestti",
   "v2.otto.hero.3": "Converse con su fábrica.",

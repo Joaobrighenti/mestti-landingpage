@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.caso-moveleiro.title": "Caso: +20% de disponibilidade em uma indústria moveleira sem comprar máquina | Mestti",
-  "meta.caso-moveleiro.description": "Como o sensor da Mestti mostrou que as máquinas de um setor começavam o turno ainda aquecendo, e como uma decisão simples aumentou a disponibilidade do setor em 20%.",
+  "meta.caso-moveleiro.title": "Caso moveleiro: +20% de disponibilidade sem nova máquina | Mestti",
+  "meta.caso-moveleiro.description": "O sensor da Mestti mostrou que as máquinas de um setor começavam o turno ainda aquecendo. Ligá-las antes do turno elevou a disponibilidade em 20%.",
   "v2.caso.n.k": "Case · Indústria moveleira",
   "v2.caso.n.h": "+20% de disponibilidade sem comprar nenhuma máquina.",
   "v2.caso.n.lead": "O setor perdia tempo todo dia logo no começo do turno, e isso não aparecia em nenhum relatório. A solução foi mudar o horário de ligar as máquinas.",
@@ -32,8 +32,8 @@
   "v2.caso-moveleiro.hero.4": "Caso de cliente · Indústria moveleira"
  },
  "en": {
-  "meta.caso-moveleiro.title": "Case: +20% availability at a furniture manufacturer without buying machines | Mestti",
-  "meta.caso-moveleiro.description": "How Mestti’s sensor showed that a department’s machines started each shift still warming up, and how a simple decision raised the department’s availability by 20%.",
+  "meta.caso-moveleiro.title": "Furniture case: +20% availability, no new machine | Mestti",
+  "meta.caso-moveleiro.description": "Mestti’s sensor showed that a department’s machines started the shift still warming up. Switching them on earlier raised availability by 20%.",
   "v2.caso.n.k": "Case · Furniture manufacturer",
   "v2.caso.n.h": "+20% availability without buying a single machine.",
   "v2.caso.n.lead": "The sector lost time every day right at the start of the shift, and it showed up in no report. The fix was changing when the machines were turned on.",
@@ -62,8 +62,8 @@
   "v2.caso-moveleiro.hero.4": "Customer case · Furniture manufacturer"
  },
  "es": {
-  "meta.caso-moveleiro.title": "Caso: +20% de disponibilidad en una industria del mueble sin comprar máquinas | Mestti",
-  "meta.caso-moveleiro.description": "Cómo el sensor de Mestti mostró que las máquinas de un sector empezaban el turno todavía calentándose, y cómo una decisión simple aumentó la disponibilidad del sector en un 20%.",
+  "meta.caso-moveleiro.title": "Caso mueblero: +20% de disponibilidad sin máquina nueva | Mestti",
+  "meta.caso-moveleiro.description": "El sensor de Mestti mostró que las máquinas de un sector empezaban el turno aún calentando. Encenderlas antes subió la disponibilidad un 20%.",
   "v2.caso.n.k": "Case · Industria del mueble",
   "v2.caso.n.h": "+20% de disponibilidad sin comprar ninguna máquina.",
   "v2.caso.n.lead": "El sector perdía tiempo todos los días al inicio del turno, y eso no aparecía en ningún informe. La solución fue cambiar el horario de encender las máquinas.",

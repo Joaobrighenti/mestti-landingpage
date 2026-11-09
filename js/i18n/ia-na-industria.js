@@ -3,7 +3,7 @@
     var d = {
  "pt": {
   "meta.ia-na-industria.title": "IA na indústria: o que já funciona no chão de fábrica | Mestti",
-  "meta.ia-na-industria.description": "A IA ajuda a fábrica quando trabalha sobre dados confiáveis da operação: responder onde se perdeu tempo, quais pedidos podem atrasar e preparar ações para aprovação. Veja usos reais, cuidados e o que é a memória da fábrica.",
+  "meta.ia-na-industria.description": "Onde a IA já ajuda no chão de fábrica: explicar perdas, apontar pedidos em risco e preparar ações para aprovação, sobre dados reais da produção.",
   "v2.ia-na-industria.2": "Você está em",
   "v2.ia-na-industria.1": "Início",
   "v2.ia-na-industria.3": "IA na indústria",
@@ -72,8 +72,8 @@
   "v2.ia-na-industria.66": "Se não servir, retiramos o sensor e você não paga nada."
  },
  "en": {
-  "meta.ia-na-industria.title": "AI in manufacturing: what already works on the shop floor | Mestti",
-  "meta.ia-na-industria.description": "AI helps a factory when it works on reliable operational data: answering where time was lost, which orders may be late and preparing actions for approval. See real uses, precautions and what a factory memory is.",
+  "meta.ia-na-industria.title": "AI in manufacturing: what works on the shop floor | Mestti",
+  "meta.ia-na-industria.description": "Where AI already helps on the shop floor: explaining losses, flagging orders at risk and preparing actions for approval, on real production data.",
   "v2.ia-na-industria.2": "You are here",
   "v2.ia-na-industria.1": "Home",
   "v2.ia-na-industria.3": "AI in manufacturing",
@@ -143,7 +143,7 @@
  },
  "es": {
   "meta.ia-na-industria.title": "IA en la industria: qué ya funciona en la planta | Mestti",
-  "meta.ia-na-industria.description": "La IA ayuda a la fábrica cuando trabaja sobre datos confiables de la operación: responder dónde se perdió tiempo, qué pedidos pueden atrasarse y preparar acciones para aprobación. Vea usos reales, cuidados y qué es la memoria de la fábrica.",
+  "meta.ia-na-industria.description": "Dónde la IA ya ayuda en planta: explicar pérdidas, señalar pedidos en riesgo y preparar acciones para aprobación, sobre datos reales de producción.",
   "v2.ia-na-industria.2": "Usted está en",
   "v2.ia-na-industria.1": "Inicio",
   "v2.ia-na-industria.3": "IA en la industria",

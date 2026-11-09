@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.apontamento-de-producao.title": "Apontamento de produção: do papel ao automático com sensor | Mestti",
-  "meta.apontamento-de-producao.description": "Apontamento de produção é registrar quantidade, tempo, paradas e refugo de cada máquina. Compare papel, tablet e sensor, veja os erros comuns e como apontar sem digitar a quantidade.",
+  "meta.apontamento-de-producao.title": "Apontamento de produção automático com sensor | Mestti",
+  "meta.apontamento-de-producao.description": "Apontamento de produção é registrar quantidade, tempo, paradas e refugo por máquina. Comparativo entre papel, tablet e sensor e os erros mais comuns.",
   "v2.apontamento-de-producao.2": "Você está em",
   "v2.apontamento-de-producao.1": "Início",
   "v2.apontamento-de-producao.3": "Apontamento de produção",
@@ -74,8 +74,8 @@
   "v2.apontamento-de-producao.68": "Na semana de teste, o sensor é emprestado."
  },
  "en": {
-  "meta.apontamento-de-producao.title": "Production reporting: from paper to automatic with sensors | Mestti",
-  "meta.apontamento-de-producao.description": "Production reporting means recording each machine’s quantity, time, stops and scrap. Compare paper, tablet and sensor, see common mistakes and how to report without typing quantities.",
+  "meta.apontamento-de-producao.title": "Automatic production reporting with sensors | Mestti",
+  "meta.apontamento-de-producao.description": "Production reporting means recording quantity, time, stops and scrap for each machine. Paper, tablet and sensor compared, plus the most common mistakes.",
   "v2.apontamento-de-producao.2": "You are here",
   "v2.apontamento-de-producao.1": "Home",
   "v2.apontamento-de-producao.3": "Production reporting",
@@ -146,8 +146,8 @@
   "v2.apontamento-de-producao.68": "During the trial week, the sensor is on loan."
  },
  "es": {
-  "meta.apontamento-de-producao.title": "Registro de producción: del papel al automático con sensor | Mestti",
-  "meta.apontamento-de-producao.description": "El registro de producción es anotar cantidad, tiempo, paradas y rechazos de cada máquina. Compare papel, tablet y sensor, vea los errores comunes y cómo registrar sin digitar la cantidad.",
+  "meta.apontamento-de-producao.title": "Registro de producción automático con sensor | Mestti",
+  "meta.apontamento-de-producao.description": "El registro de producción anota cantidad, tiempo, paradas y desperdicio por máquina. Comparativo entre papel, tablet y sensor y los errores más comunes.",
   "v2.apontamento-de-producao.2": "Usted está en",
   "v2.apontamento-de-producao.1": "Inicio",
   "v2.apontamento-de-producao.3": "Registro de producción",

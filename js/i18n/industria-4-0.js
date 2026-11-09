@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.industria-4-0.title": "Indústria 4.0: o que é, tecnologias e como aplicar na fábrica | Mestti",
-  "meta.industria-4-0.description": "Indústria 4.0 é usar dados conectados de máquinas, pessoas e sistemas para decidir melhor. Veja de onde vem o termo, as tecnologias, como a Mestti aplica cada uma e um primeiro passo de 30 dias.",
+  "meta.industria-4-0.title": "Indústria 4.0: o que é e como aplicar na fábrica | Mestti",
+  "meta.industria-4-0.description": "Indústria 4.0 é decidir com dados conectados de máquinas, pessoas e sistemas. Origem do termo, as seis tecnologias e como a Mestti aplica cada uma.",
   "v2.industria-4-0.2": "Você está em",
   "v2.industria-4-0.1": "Início",
   "v2.industria-4-0.3": "Indústria 4.0",
@@ -140,8 +140,8 @@
   "v2.industria-4-0.69": "Sensores prontos em até 7 dias. Instalação em 1 dia."
  },
  "en": {
-  "meta.industria-4-0.title": "Industry 4.0: what it is, its technologies and how to apply it | Mestti",
-  "meta.industria-4-0.description": "Industry 4.0 means using connected data from machines, people and systems to decide better. See where the term comes from, its technologies, how Mestti applies each one and a 30-day first step.",
+  "meta.industria-4-0.title": "Industry 4.0: what it is and how to apply it | Mestti",
+  "meta.industria-4-0.description": "Industry 4.0 means deciding with connected data from machines, people and systems. Origin of the term, the six technologies and how Mestti applies each.",
   "v2.industria-4-0.2": "You are here",
   "v2.industria-4-0.1": "Home",
   "v2.industria-4-0.3": "Industry 4.0",
@@ -278,8 +278,8 @@
   "v2.industria-4-0.69": "Sensors ready within 7 days. Installed in 1 day."
  },
  "es": {
-  "meta.industria-4-0.title": "Industria 4.0: qué es, tecnologías y cómo aplicarla en la fábrica | Mestti",
-  "meta.industria-4-0.description": "La Industria 4.0 es usar datos conectados de máquinas, personas y sistemas para decidir mejor. Vea de dónde viene el término, sus tecnologías, cómo Mestti aplica cada una y un primer paso de 30 días.",
+  "meta.industria-4-0.title": "Industria 4.0: qué es y cómo aplicarla | Mestti",
+  "meta.industria-4-0.description": "La Industria 4.0 es decidir con datos conectados de máquinas, personas y sistemas. Origen del término, las seis tecnologías y cómo las aplica Mestti.",
   "v2.industria-4-0.2": "Usted está en",
   "v2.industria-4-0.1": "Inicio",
   "v2.industria-4-0.3": "Industria 4.0",

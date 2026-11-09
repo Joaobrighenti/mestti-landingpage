@@ -452,6 +452,14 @@ app.post("/api/cadastro", async (req, res) => {
   }
 });
 
+// Endereço que não existe: a mesma página 404 que a Vercel serve no ar, com status 404.
+app.use((req, res) => {
+  if (["GET", "HEAD"].includes(req.method) && existsSync(path.join(__dirname, "404.html"))) {
+    return res.status(404).sendFile(path.join(__dirname, "404.html"));
+  }
+  return res.status(404).json({ ok: false, error: "not_found" });
+});
+
 app.listen(PORT, HOST, () => {
   console.log(`Server running at http://127.0.0.1:${PORT}/`);
   if (HOST !== "0.0.0.0") return;

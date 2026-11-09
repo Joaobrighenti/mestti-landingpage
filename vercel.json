@@ -36,6 +36,7 @@
     { "source": "/blog/index.html", "destination": "/blog/", "permanent": true },
     { "source": "/solucoes/index.html", "destination": "/solucoes/", "permanent": true },
     { "source": "/sequenciamento/index.html", "destination": "/sequenciamento/", "permanent": true },
+    { "source": "/privacidade/index.html", "destination": "/privacidade/", "permanent": true },
     { "source": "/termos/index.html", "destination": "/termos/", "permanent": true },
     { "source": "/producao/index.html", "destination": "/producao/", "permanent": true },
     { "source": "/cmms/index.html", "destination": "/cmms/", "permanent": true },
@@ -214,6 +215,7 @@
     { "source": "/cadastro/index.html", "destination": "/cadastro/", "permanent": true },
     { "source": "/solucoes", "destination": "/solucoes/", "permanent": true },
     { "source": "/sequenciamento", "destination": "/sequenciamento/", "permanent": true },
+    { "source": "/privacidade", "destination": "/privacidade/", "permanent": true },
     { "source": "/termos", "destination": "/termos/", "permanent": true },
     { "source": "/producao", "destination": "/producao/", "permanent": true },
     { "source": "/cmms", "destination": "/cmms/", "permanent": true },
@@ -331,6 +333,8 @@
     { "source": "/pass/", "destination": "/pass/index.html" },
     { "source": "/cadastro", "destination": "/cadastro/index.html" },
     { "source": "/cadastro/", "destination": "/cadastro/index.html" },
+    { "source": "/privacidade", "destination": "/privacidade/index.html" },
+    { "source": "/privacidade/", "destination": "/privacidade/index.html" },
     { "source": "/termos", "destination": "/termos/index.html" },
     { "source": "/termos/", "destination": "/termos/index.html" },
     { "source": "/barra-pass", "destination": "/pass/" },
@@ -393,5 +397,5 @@
       ]
     }
   ],
-  "git": {"deploymentEnabled": {"feat/seo-geo-aeo": false}}
+  "git": {"deploymentEnabled": {"feat/seo-geo-aeo": false, "feat/seo-geo-aeo-v2": false}}
 }

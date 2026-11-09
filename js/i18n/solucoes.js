@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.solucoes.title": "Soluções por problema: produção, PCP, qualidade e gestão | Mestti",
-  "meta.solucoes.description": "Escolha pelo problema da sua fábrica: máquinas paradas, apontamento no papel, atraso de pedidos, inspeções sem registro ou falta de visão da produção. Cada caminho leva ao guia e ao módulo certos.",
+  "meta.solucoes.title": "Soluções por problema: produção, PCP e qualidade | Mestti",
+  "meta.solucoes.description": "Escolha pelo problema: máquina parada, apontamento manual, pedido atrasado ou inspeção sem registro. Cada um leva ao guia e ao módulo da Mestti.",
   "v2.solucoes.2": "Você está em",
   "v2.solucoes.1": "Início",
   "v2.solucoes.3": "Soluções",
@@ -64,8 +64,8 @@
   "v2.solucoes.58": "Se não servir, retiramos o sensor e você não paga nada."
  },
  "en": {
-  "meta.solucoes.title": "Solutions by problem: production, planning, quality and management | Mestti",
-  "meta.solucoes.description": "Choose by your factory’s problem: stopped machines, paper reporting, late orders, unrecorded inspections or no view of production. Each path leads to the right guide and module.",
+  "meta.solucoes.title": "Solutions by problem: production, planning, quality | Mestti",
+  "meta.solucoes.description": "Choose by problem: stopped machines, manual reporting, late orders or inspections with no record. Each one leads to the right guide and Mestti module.",
   "v2.solucoes.2": "You are here",
   "v2.solucoes.1": "Home",
   "v2.solucoes.3": "Solutions",
@@ -126,8 +126,8 @@
   "v2.solucoes.58": "If it does not fit, we remove the sensor and you pay nothing."
  },
  "es": {
-  "meta.solucoes.title": "Soluciones por problema: producción, PCP, calidad y gestión | Mestti",
-  "meta.solucoes.description": "Elija por el problema de su fábrica: máquinas paradas, registro en papel, pedidos atrasados, inspecciones sin registro o falta de visión de la producción. Cada camino lleva a la guía y al módulo correctos.",
+  "meta.solucoes.title": "Soluciones por problema: producción, PCP y calidad | Mestti",
+  "meta.solucoes.description": "Elija por problema: máquina parada, registro manual, pedido atrasado o inspección sin registro. Cada uno lleva a la guía y al módulo de Mestti.",
   "v2.solucoes.2": "Usted está en",
   "v2.solucoes.1": "Inicio",
   "v2.solucoes.3": "Soluciones",

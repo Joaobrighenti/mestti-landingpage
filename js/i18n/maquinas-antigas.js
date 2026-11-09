@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.maquinas-antigas.title": "Monitorar máquinas antigas sem CLP: retrofit com sensores | Mestti",
-  "meta.maquinas-antigas.description": "Dá para monitorar a produção de máquinas antigas sem trocar o equipamento e sem CLP. Veja quais sinais o sensor lê, o que conferir antes de instalar e como é a instalação em 1 dia.",
+  "meta.maquinas-antigas.title": "Máquinas antigas sem CLP: monitoramento com sensor | Mestti",
+  "meta.maquinas-antigas.description": "Máquinas antigas podem ser monitoradas sem CLP e sem trocar o equipamento. Quais sinais o sensor lê, o que conferir antes e a instalação em 1 dia.",
   "v2.maquinas-antigas.2": "Você está em",
   "v2.maquinas-antigas.1": "Início",
   "v2.maquinas-antigas.3": "Máquinas antigas",
@@ -87,8 +87,8 @@
   "v2.maquinas-antigas.81": "Sensores prontos em até 7 dias. Instalação em 1 dia."
  },
  "en": {
-  "meta.maquinas-antigas.title": "Monitoring old machines without a PLC: retrofit with sensors | Mestti",
-  "meta.maquinas-antigas.description": "You can monitor old machines’ production without replacing the equipment or adding a PLC. See which signals the sensor reads, what to check before installing and how the 1-day installation works.",
+  "meta.maquinas-antigas.title": "Old machines without a PLC: sensor monitoring | Mestti",
+  "meta.maquinas-antigas.description": "Old machines can be monitored without a PLC and without replacing them. Which signals the sensor reads, what to check first and 1-day installation.",
   "v2.maquinas-antigas.2": "You are here",
   "v2.maquinas-antigas.1": "Home",
   "v2.maquinas-antigas.3": "Old machines",
@@ -172,8 +172,8 @@
   "v2.maquinas-antigas.81": "Sensors ready within 7 days. Installed in 1 day."
  },
  "es": {
-  "meta.maquinas-antigas.title": "Monitorear máquinas antiguas sin PLC: retrofit con sensores | Mestti",
-  "meta.maquinas-antigas.description": "Se puede monitorear la producción de máquinas antiguas sin cambiar el equipo y sin PLC. Vea qué señales lee el sensor, qué revisar antes de instalar y cómo es la instalación en 1 día.",
+  "meta.maquinas-antigas.title": "Máquinas antiguas sin PLC: monitoreo con sensor | Mestti",
+  "meta.maquinas-antigas.description": "Las máquinas antiguas se monitorean sin PLC y sin cambiar el equipo. Qué señales lee el sensor, qué revisar antes y la instalación en 1 día.",
   "v2.maquinas-antigas.2": "Usted está en",
   "v2.maquinas-antigas.1": "Inicio",
   "v2.maquinas-antigas.3": "Máquinas antiguas",

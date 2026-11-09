@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="/js/theme-init.js?v=2"></script>
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+    <meta name="robots" content="noindex">
+    <meta name="description" content="A página que você procurou não existe ou mudou de endereço.">
+    <title>Página não encontrada | Mestti</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/site.css?v=5">
+    <link rel="stylesheet" href="/css/v2.css?v=2">
+    <link rel="stylesheet" href="/css/v3.css?v=95">
+    <link rel="stylesheet" href="/css/v3-mobile.css?v=27">
+    <style>
+        /* 404: o número desenhado como uma planta de máquinas vista de cima. As do "404" estão paradas. */
+        .nf { padding-block: clamp(28px, 4vw, 56px) clamp(56px, 8vw, 104px); }
+        .nf-plant { position: relative; height: clamp(240px, 34vw, 400px); margin-bottom: clamp(28px, 4vw, 48px); cursor: crosshair; touch-action: manipulation; }
+        .nf-plant canvas { display: block; width: 100%; height: 100%; }
+        .nf-tip { position: absolute; z-index: 2; pointer-events: none; padding: 6px 10px; border-radius: 8px; background: var(--ink); color: var(--paper); font: 500 .78rem/1.3 var(--f-data); white-space: nowrap; transform: translate(-50%, calc(-100% - 12px)); opacity: 0; transition: opacity .15s; }
+        .nf-tip.is-on { opacity: 1; }
+        .nf-tip b { font-weight: 600; }
+        .nf-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+        .hv .nf-code { margin: 0 0 14px; font: 600 .82rem/1.3 var(--f-data); letter-spacing: .06em; color: var(--muted); overflow-wrap: anywhere; }
+        .nf-code i { display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--stop); vertical-align: 1px; animation: nf-blink 1.4s ease-in-out infinite; }
+        .is-running .nf-code i { background: var(--run); animation: none; }
+        @keyframes nf-blink { 50% { opacity: .25; } }
+        body.hv-page .nf h1 { margin: 0; max-width: 13ch; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.02; }
+        .hv .nf-lead { margin: 20px 0 0; max-width: 44ch; font-size: 1.12rem; line-height: 1.55; color: var(--ink-2); }
+        .hv .nf-count { margin: 18px 0 0; font: 500 .9rem/1.4 var(--f-data); color: var(--muted); }
+        .nf-count b { color: var(--stop); }
+        .is-running .nf-count b { color: var(--run); }
+        /* Linha do tempo da "máquina 404", no formato do monitoramento */
+        .nf-tape { display: grid; gap: 8px; margin-bottom: 28px; }
+        .nf-tape-bar { display: flex; height: 14px; border-radius: 3px; overflow: hidden; background: var(--line); }
+        .nf-tape-bar span { display: block; height: 100%; }
+        .nf-tape-bar .run { background: var(--run); }
+        .nf-tape-bar .setup { background: var(--setup); }
+        .nf-tape-bar .stop { background: var(--stop); flex: 1; transition: background .4s; }
+        .is-running .nf-tape-bar .stop { background: var(--run); }
+        .nf-tape-meta { display: flex; justify-content: space-between; gap: 12px; font: 500 .8rem/1.3 var(--f-data); color: var(--muted); }
+        .hv .nf-label { margin: 0 0 12px; font: 600 .8rem/1.2 var(--f-data); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+        /* Destinos no formato dos motivos de parada do tablet */
+        .nf-reasons { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+        .nf-reasons a { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 16px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); text-decoration: none; font: 600 1rem/1.2 var(--f-text); transition: border-color .2s, background .2s, transform .2s; }
+        .nf-reasons a::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 3px; background: var(--muted); transition: background .2s; }
+        .nf-reasons a:hover, .nf-reasons a:focus-visible { border-color: var(--ink); transform: translateY(-1px); }
+        .nf-reasons a:hover::before, .nf-reasons a:focus-visible::before, .nf-reasons a.is-picked::before { background: var(--run); }
+        .nf-reasons a.is-first { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+        .nf-reasons a.is-first::before { background: var(--signal); }
+        .nf-reasons a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+        .hv .nf-langs { margin: 22px 0 0; font-size: .92rem; color: var(--muted); }
+        .nf-langs a { color: var(--ink); }
+        @media (max-width: 900px) { .nf-grid { grid-template-columns: minmax(0, 1fr); } }
+        @media (max-width: 420px) { .nf-reasons { grid-template-columns: minmax(0, 1fr); } }
+        @media (prefers-reduced-motion: reduce) { .nf-code i { animation: none; } .nf-reasons a { transition: none; } }
+    </style>
+</head>
+
+<body class="hv-page" data-page="404">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <header class="header header--tractian">
+        <div class="container container--wide">
+            <div class="header-tractian-inner">
+                <a href="/" class="header-logo-link" aria-label="Mestti">
+                    <img src="/images/MESTTI-logo-header-light.png?v=1" alt="MESTTI" class="logo-img logo-img--light" width="120" height="25" decoding="async"><img src="/images/MESTTI-logo-header-dark.png?v=1" alt="" class="logo-img logo-img--dark" width="120" height="25" decoding="async" aria-hidden="true">
+                </a>
+                <nav class="header-nav" id="headerNav" aria-label="Menu principal">
+                    <div class="mobile-nav-header">
+                        <a href="/" class="header-logo-link" aria-label="Mestti">
+                            <img src="/images/MESTTI-logo-header-light.png?v=1" alt="MESTTI" class="logo-img logo-img--light" width="120" height="25" decoding="async"><img src="/images/MESTTI-logo-header-dark.png?v=1" alt="" class="logo-img logo-img--dark" width="120" height="25" decoding="async" aria-hidden="true">
+                        </a>
+                        <button type="button" class="mobile-nav-close" aria-label="Fechar menu" data-i18n-aria="a11y.closeMenu">×</button>
+                    </div>
+                    <a href="/producao/" class="nav-link" data-i18n="nav.v2.production">Produção</a>
+                    <a href="/engenharia/" class="nav-link" data-i18n="nav.v2.engineering">Engenharia</a>
+                    <a href="/qualidade/" class="nav-link" data-i18n="nav.v2.quality">Qualidade</a>
+                    <a href="/otto/" class="nav-link" data-i18n="nav.v2.otto">Otto</a>
+                    <a href="/casos/industria-moveleira/" class="nav-link" data-i18n="nav.v2.cases">Cases</a>
+                    <a href="/empresa/" class="nav-link" data-i18n="nav.about">Sobre</a>
+
+                    <div class="mobile-nav-contact">
+                        <div class="mobile-nav-section-title" data-i18n="mobile.contact">Contato</div>
+                        <a class="mobile-nav-contact-link" href="tel:+5543991095035">(43) 99109-5035</a>
+                        <a class="mobile-nav-contact-link" href="https://wa.me/5543991095035" target="_blank" rel="noopener" data-i18n="mobile.whatsapp">WhatsApp</a>
+                        <a class="mobile-nav-contact-link" href="/contato/" data-i18n="mobile.contactCenter">Central de contato</a>
+                    </div>
+                    <div class="header-nav-mobile-extras">
+                        <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
+                        <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Agendar demo</button>
+                    </div>
+                </nav>
+                <div class="header-tractian-actions">
+                    <a href="/contato/" class="header-link-contact">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                        <span data-i18n="header.contact">Contato</span>
+                    </a>
+                    <a href="https://app.mestti.com.br" target="_blank" rel="noopener" class="btn-login" data-i18n="header.login">Login</a>
+                    <button type="button" class="btn-demo btn-demo--ghost btn-open-modal" data-i18n="header.demo">Agendar demo</button>
+                </div>
+                <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu" data-i18n-aria="a11y.openMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main id="conteudo" tabindex="-1" class="hv">
+        <section class="nf" aria-labelledby="nf-title" data-nf>
+            <div class="hv-wrap">
+                <div class="nf-plant" data-nf-plant aria-hidden="true"><canvas></canvas><div class="nf-tip" data-nf-tip></div></div>
+                <div class="nf-grid">
+                    <div>
+                        <p class="nf-code"><i></i><span data-nf-path>Erro 404</span></p>
+                        <h1 id="nf-title">Esta página parou.</h1>
+                        <p class="nf-lead">O endereço não existe ou mudou de lugar. Escolha um destino, ou clique nas máquinas paradas do 404 para fazê-las voltar a rodar.</p>
+                        <p class="nf-count" data-nf-count aria-live="polite">Máquinas paradas: <b>34</b></p>
+                    </div>
+                    <div>
+                        <div class="nf-tape" aria-hidden="true">
+                            <div class="nf-tape-bar"><span class="run" style="flex:5"></span><span class="setup" style="flex:.6"></span><span class="run" style="flex:3"></span><span class="stop"></span></div>
+                            <div class="nf-tape-meta"><span>MAQ-404</span><span data-nf-timer>Parada há 00:00</span></div>
+                        </div>
+                        <p class="nf-label" id="nf-dest">Apontar destino</p>
+                        <ul class="nf-reasons" aria-labelledby="nf-dest">
+                            <li><a class="is-first" href="/">Início</a></li>
+                            <li><a href="/producao/">Produção e PCP</a></li>
+                            <li><a href="/sensores/">Sensores</a></li>
+                            <li><a href="/otto/">Otto, agente de IA</a></li>
+                            <li><a href="/blog/">Blog</a></li>
+                            <li><a href="https://wa.me/5543991095035" target="_blank" rel="noopener">Falar no WhatsApp</a></li>
+                        </ul>
+                        <p class="nf-langs">Page not found: <a href="/en/">English</a> · Página no encontrada: <a href="/es/">Español</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer footer--tractian">
+        <div class="container container--wide">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-col-title" data-i18n="footer.product">Produto</div>
+                    <ul class="footer-col-list"><li><a href="/producao/" data-i18n="footer.v2.production">Produção e PCP</a></li><li><a href="/engenharia/" data-i18n="footer.v2.engineering">Engenharia de produto</a></li><li><a href="/qualidade/" data-i18n="footer.v2.quality">Qualidade</a></li><li><a href="/otto/" data-i18n="footer.v2.otto">Otto, assistente de IA</a></li><li><a href="/app/" data-i18n="footer.v2.app">App na Play Store</a></li><li><a href="/sensores/" data-i18n="footer.v2.sensors">Sensores</a></li><li><a href="/#como-funciona" data-i18n="footer.v2.howItWorks">Como funciona</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title" data-i18n="footer.v2.company">Empresa</div>
+                    <ul class="footer-col-list"><li><a href="/empresa/" data-i18n="footer.about">Sobre nós</a></li><li><a href="/casos/industria-moveleira/" data-i18n="footer.v2.case">Cases</a></li><li><a href="/seguranca/" data-i18n="footer.v2.security">Tecnologia e dados</a></li><li><a href="/contato/" data-i18n="footer.contactUs">Entre em contato</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title" data-i18n="footer.v2.resources">Recursos</div>
+                    <ul class="footer-col-list"><li><a href="/diagnostico/" data-i18n="footer.v2.assessment">Como começar</a></li><li><a href="/glossario/" data-i18n="footer.v2.glossary">Glossário</a></li><li><a href="/mes-ou-erp/" data-i18n="footer.v2.mesErp">MES ou ERP?</a></li><li><a href="/blog/" data-i18n="footer.v2.blog">Blog</a></li><li><a href="/solucoes/" data-i18n="footer.v2.solutions">Soluções por problema</a></li><li><a href="https://app.mestti.com.br" target="_blank" rel="noopener" data-i18n="footer.app">Acesso ao sistema</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title" data-i18n="footer.v2.guides">Guias</div>
+                    <ul class="footer-col-list"><li><a href="/mes/" data-i18n="footer.v2.gMes">Sistema MES</a></li><li><a href="/oee/" data-i18n="footer.v2.oee">O que é OEE</a></li><li><a href="/pcp/" data-i18n="footer.v2.gPcp">PCP e PPCP</a></li><li><a href="/sequenciamento/" data-i18n="footer.v2.gSeq">Sequenciamento da produção</a></li><li><a href="/apontamento-de-producao/" data-i18n="footer.v2.gApt">Apontamento de produção</a></li><li><a href="/monitoramento-de-maquinas/" data-i18n="footer.v2.gMon">Monitoramento de máquinas</a></li><li><a href="/maquinas-antigas/" data-i18n="footer.v2.gOld">Máquinas antigas sem CLP</a></li><li><a href="/industria-4-0/" data-i18n="footer.v2.gI40">Indústria 4.0</a></li><li><a href="/ia-na-industria/" data-i18n="footer.v2.gIa">IA na indústria</a></li><li><a href="/smart-factory/" data-i18n="footer.v2.gSmart">Smart factory</a></li><li><a href="/mom/" data-i18n="footer.v2.gMom">MOM: gestão de operações</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title" data-i18n="footer.contact">Contato</div>
+                    <ul class="footer-col-list"><li><a href="tel:+5543991095035" data-i18n="footer.v2.phone">(43) 99109-5035</a></li><li><a href="https://wa.me/5543991095035" target="_blank" rel="noopener" data-i18n="mobile.whatsapp">WhatsApp</a></li><li><a href="/contato/" data-i18n="mobile.contactCenter">Central de contato</a></li></ul>
+                </div>
+            </div>
+            <div class="footer-tractian-bottom">
+                <div class="footer-legal-block">
+                    <p class="footer-cnpj" data-i18n="footer.cnpj">Mestti Tecnologia LTDA - 63.380.944/0001-51</p>
+                    <p class="footer-legal" data-i18n="footer.legal">© 2026 MESTTI. Todos os direitos reservados.</p>
+                    <p class="footer-legal"><a href="/termos/">Termos de uso</a></p>
+                    <nav class="footer-langs" aria-label="Idioma"><ul><li><a href="/" hreflang="pt-BR" lang="pt-BR" aria-current="true">Português</a></li><li><a href="/en/" hreflang="en" lang="en">English</a></li><li><a href="/es/" hreflang="es" lang="es">Español</a></li></ul></nav>
+                    <p class="footer-legal"><a class="footer-apk-btn" href="/download-app" download="mestti.apk" data-i18n="footer.apk">Baixar app Android</a></p>
+                </div>
+                <div class="footer-social" role="group" aria-label="Redes sociais">
+                    <a href="https://www.linkedin.com/company/mestti/" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" width="20" height="20">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg></a>
+                    <a href="https://www.instagram.com/mesttibrasil/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" width="20" height="20">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg></a>
+                    <a href="https://www.youtube.com/@mesttitech" target="_blank" rel="noopener noreferrer"
+                        aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" width="20" height="20">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="contactModal" class="modal-overlay" aria-hidden="true" inert>
+        <div class="modal-content">
+            <button type="button" class="modal-close" id="btnCloseModal" aria-label="Fechar demonstração" data-i18n-aria="a11y.closeDialog">&times;</button>
+            <div class="demo-modal-card">
+                <div class="demo-modal-head">
+                    <h2 class="demo-modal-title" data-i18n="modal.title">Agende uma demo</h2>
+                    <p class="demo-modal-lead" data-i18n="modal.lead">Deixe seu contato e marcamos a demonstração no melhor horário para você.</p>
+                </div>
+                <form class="demo-form" id="contactForm">
+                    <input type="text" id="name" name="name" data-i18n-placeholder="modal.name" placeholder="Nome completo" autocomplete="name" required>
+                    <div class="demo-form-phone">
+                        <select id="ddi" name="ddi" aria-label="DDI" required>
+                            <option value="+55" selected>+55</option>
+                            <option value="+1">+1</option>
+                            <option value="+351">+351</option>
+                            <option value="+34">+34</option>
+                        </select>
+                        <input type="tel" id="phone" name="phone" data-i18n-placeholder="modal.whatsapp" placeholder="WhatsApp com DDD" autocomplete="tel" inputmode="tel" required>
+                    </div>
+                    <input type="text" id="empresa" name="empresa" data-i18n-placeholder="modal.company" placeholder="Empresa" autocomplete="organization" required>
+                    <details class="demo-form-more">
+                        <summary data-i18n="modal.more">Quer adiantar a conversa? Opcional</summary>
+                        <div class="demo-form-more-fields">
+                            <input type="email" id="email" name="email" data-i18n-placeholder="modal.email" placeholder="E-mail profissional" autocomplete="email">
+                            <select id="cargo" name="cargo" data-mestti-options="cargo" aria-label="Cargo">
+                                <option value="" selected disabled data-i18n="modal.role">Cargo</option>
+                            </select>
+                            <select id="setor" name="setor" data-mestti-options="setor" aria-label="Setor da empresa">
+                                <option value="" selected disabled data-i18n="modal.sector">Setor da Indústria</option>
+                            </select>
+                            <select id="solucao" name="solucao" data-mestti-options="solucao" aria-label="Solução de interesse">
+                                <option value="" selected disabled data-i18n="modal.solution">Selecione a solução de maior interesse</option>
+                            </select>
+                            <textarea id="observacao" name="observacao" data-i18n-placeholder="modal.note" placeholder="Observação (opcional)" rows="3"></textarea>
+                        </div>
+                    </details>
+                    <button type="submit" class="demo-submit" data-i18n="modal.submit">Agendar demo</button>
+                    <p class="demo-form-assure" data-i18n="modal.assure">Sem custo e sem compromisso.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function () {
+        var root = document.querySelector('[data-nf]');
+        var plant = root.querySelector('[data-nf-plant]');
+        var canvas = plant.querySelector('canvas');
+        var tip = plant.querySelector('[data-nf-tip]');
+        var ctx = canvas.getContext('2d');
+        var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var pathEl = root.querySelector('[data-nf-path]');
+        try { pathEl.textContent = 'Erro 404 · ' + decodeURIComponent(location.pathname).slice(0, 60); } catch (e) { pathEl.textContent = 'Erro 404'; }
+
+        // Fonte 5×7 do "4" e do "0".
+        var GLYPH = {
+            '4': ['00010', '00110', '01010', '10010', '11111', '00010', '00010'],
+            '0': ['01110', '10001', '10011', '10101', '11001', '10001', '01110']
+        };
+        var cells = [], cols = 0, rows = 0, size = 0, gap = 0, offX = 0, offY = 0, mouse = null, stopped = 0, t0 = Date.now();
+        var COLORS = {};
+        function readColors() {
+            var cs = getComputedStyle(document.body);
+            var v = function (n, d) { return cs.getPropertyValue(n).trim() || d; };
+            COLORS = { run: v('--run', '#1f8a4c'), stop: v('--stop', '#d23a2a'), setup: v('--setup', '#e07a1f'), micro: v('--micro', '#e5a50a'), idle: v('--line', '#d9dee5') };
+        }
+        function pick() { var r = Math.random(); return r < .66 ? 'run' : r < .76 ? 'idle' : r < .86 ? 'setup' : 'micro'; }
+        function layout() {
+            var w = plant.clientWidth, h = plant.clientHeight, dpr = Math.min(2, window.devicePixelRatio || 1);
+            canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            var scale = w < 560 ? 1 : 2;                       // cada pixel da fonte vira scale×scale máquinas
+            var digitsW = (5 * 3 + 2) * scale, digitsH = 7 * scale;
+            cols = Math.max(digitsW + 4, Math.floor(w / (w < 560 ? 15 : 19)));
+            size = w / cols; gap = Math.max(2, size * .22);
+            rows = Math.max(digitsH + 2, Math.floor(h / size));
+            offX = (w - cols * size) / 2; offY = (h - rows * size) / 2;
+            var x0 = Math.floor((cols - digitsW) / 2), y0 = Math.floor((rows - digitsH) / 2);
+            var mask = {};
+            '404'.split('').forEach(function (ch, d) {
+                GLYPH[ch].forEach(function (line, y) {
+                    line.split('').forEach(function (v, x) {
+                        if (v !== '1') return;
+                        for (var a = 0; a < scale; a++) for (var b = 0; b < scale; b++)
+                            mask[(x0 + (d * 6 + x) * scale + a) + ',' + (y0 + y * scale + b)] = 1;
+                    });
+                });
+            });
+            cells = []; stopped = 0;
+            for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) {
+                var is404 = !!mask[c + ',' + r];
+                if (is404) stopped++;
+                cells.push({ c: c, r: r, is404: is404, state: is404 ? 'stop' : pick(), k: 1, id: 100 + r * cols + c, oee: 55 + Math.floor(Math.random() * 40) });
+            }
+            root.classList.remove('is-running');
+            updateCount();
+        }
+        function cellAt(px, py) {
+            var c = Math.floor((px - offX) / size), r = Math.floor((py - offY) / size);
+            if (c < 0 || r < 0 || c >= cols || r >= rows) return null;
+            return cells[r * cols + c];
+        }
+        var countEl = root.querySelector('[data-nf-count]');
+        function updateCount() {
+            if (stopped === 0) { root.classList.add('is-running'); countEl.innerHTML = 'Máquinas paradas: <b>0</b>. A MAQ-404 voltou a rodar.'; return; }
+            countEl.innerHTML = 'Máquinas paradas: <b>' + stopped + '</b>';
+        }
+        function draw(now) {
+            var w = plant.clientWidth, h = plant.clientHeight;
+            ctx.clearRect(0, 0, w, h);
+            for (var i = 0; i < cells.length; i++) {
+                var cell = cells[i];
+                var cx = offX + cell.c * size + size / 2, cy = offY + cell.r * size + size / 2;
+                var near = 0;
+                if (mouse) {
+                    var d = Math.hypot(mouse.x - cx, mouse.y - cy), R = size * 5;
+                    if (d < R) near = 1 - d / R;
+                }
+                var hot = cell.is404 && cell.state === 'stop';
+                // fundo calmo: pontos pequenos e apagados; perto do mouse, a máquina aparece com a cor do estado
+                var base = hot ? 1 : (cell.fixed ? .9 : .42);
+                var target = base + (1 - base) * near + (hot ? .12 * near : 0);
+                cell.k += (target - cell.k) * (reduced ? 1 : .18);
+                var s = (size - gap) * cell.k;
+                ctx.globalAlpha = hot ? (reduced ? 1 : .84 + .16 * Math.sin(now / 420)) : (cell.fixed ? 1 : .28 + .72 * near);
+                ctx.fillStyle = COLORS[cell.state];
+                var rr = Math.min(3, s / 4);
+                ctx.beginPath();
+                if (ctx.roundRect) ctx.roundRect(cx - s / 2, cy - s / 2, s, s, rr); else ctx.rect(cx - s / 2, cy - s / 2, s, s);
+                ctx.fill();
+            }
+            ctx.globalAlpha = 1;
+        }
+        var NAME = { run: 'Rodando', stop: 'Parada', setup: 'Setup', micro: 'Microparada', idle: 'Sem programação' };
+        function showTip(cell) {
+            if (!cell) { tip.classList.remove('is-on'); return; }
+            tip.innerHTML = cell.is404 && cell.state === 'stop' ? '<b>MAQ-404</b> · Parada · página não encontrada · clique para apontar'
+                : '<b>MAQ-' + cell.id + '</b> · ' + NAME[cell.state] + (cell.state === 'run' ? ' · OEE ' + cell.oee + '%' : '');
+            tip.style.left = Math.min(plant.clientWidth - 40, Math.max(40, offX + cell.c * size + size / 2)) + 'px';
+            tip.style.top = (offY + cell.r * size) + 'px';
+            tip.classList.add('is-on');
+        }
+        plant.addEventListener('pointermove', function (e) {
+            var r = plant.getBoundingClientRect(); mouse = { x: e.clientX - r.left, y: e.clientY - r.top };
+            showTip(cellAt(mouse.x, mouse.y));
+            if (reduced) draw(0);
+        });
+        plant.addEventListener('pointerleave', function () { mouse = null; showTip(null); if (reduced) draw(0); });
+        plant.addEventListener('click', function (e) {
+            var r = plant.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+            // aponta as máquinas paradas em volta do clique (raio de 2,5 células)
+            var R = size * 2.5, hit = 0;
+            cells.forEach(function (c) {
+                if (!c.is404 || c.state !== 'stop') return;
+                if (Math.hypot(x - (offX + c.c * size + size / 2), y - (offY + c.r * size + size / 2)) < R) { c.state = 'run'; c.fixed = true; c.k = 1.6; hit++; }
+            });
+            if (!hit) return;
+            stopped -= hit; updateCount(); showTip(cellAt(x, y));
+            if (reduced) draw(0);
+        });
+        // Flutuação natural do chão de fábrica: algumas máquinas mudam de estado
+        function flicker() {
+            for (var i = 0; i < Math.max(2, cells.length / 90); i++) {
+                var c = cells[Math.floor(Math.random() * cells.length)];
+                if (!c.is404 && !c.fixed) c.state = pick();
+            }
+        }
+        var timer = root.querySelector('[data-nf-timer]');
+        function tick() {
+            if (stopped === 0) { timer.textContent = 'Rodando'; return; }
+            var s = Math.floor((Date.now() - t0) / 1000);
+            timer.textContent = 'Parada há ' + String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+        }
+        // Apontar um destino: a linha do tempo volta a rodar antes de sair
+        root.querySelectorAll('.nf-reasons a').forEach(function (a) {
+            a.addEventListener('click', function () { a.classList.add('is-picked'); root.classList.add('is-running'); });
+        });
+        readColors(); layout();
+        var last = 0;
+        function loop(now) {
+            requestAnimationFrame(loop);
+            if (now - last > 700) { flicker(); last = now; }
+            draw(now);
+        }
+        if (reduced) draw(0); else requestAnimationFrame(loop);
+        setInterval(tick, 1000); tick();
+        var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { layout(); draw(0); }, 120); });
+        new MutationObserver(function () { readColors(); draw(0); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    })();
+    </script>
+    <script defer src="/js/i18n.js?v=35"></script>
+    <script defer src="/js/theme.js?v=3"></script>
+    <script defer src="/js/form-options.js?v=4"></script>
+    <script defer src="/js/meta-consent.js?v=7"></script>
+    <script defer src="/js/script.js?v=44"></script>
+    <script defer src="/js/conversational-form.js?v=17"></script>
+    <script defer src="/js/v2.js?v=44"></script>
+</body>
+
+</html>

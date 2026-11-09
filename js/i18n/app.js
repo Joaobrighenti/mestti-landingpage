@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.app.title": "App Mestti na Play Store: acompanhe o chão de fábrica de qualquer lugar | Mestti",
-  "meta.app.description": "A Mestti está na Play Store. Com o app no celular ou no tablet, você acompanha produção, paradas, OEE e inspeções da fábrica a qualquer hora e de qualquer lugar.",
+  "meta.app.title": "App Mestti no Android: a produção no celular | Mestti",
+  "meta.app.description": "App da Mestti na Play Store, para celular e tablet. Produção, paradas, OEE e inspeções da fábrica em tempo real, de qualquer lugar.",
   "v2.app.k": "A Mestti está na Play Store",
   "v2.app.h": "Agora você acompanha o chão de fábrica a qualquer hora e de qualquer lugar.",
   "v2.app.lead": "Baixe o app da Mestti no celular ou no tablet e veja o que está acontecendo em cada máquina, esteja onde estiver.",
@@ -42,8 +42,8 @@
   "v2.app.wa": "Falar no WhatsApp"
  },
  "en": {
-  "meta.app.title": "Mestti app on the Play Store: follow the shop floor from anywhere | Mestti",
-  "meta.app.description": "Mestti is on the Play Store. With the app on your phone or tablet, you follow production, stops, OEE and inspections at any time, from anywhere.",
+  "meta.app.title": "Mestti app for Android: production on your phone | Mestti",
+  "meta.app.description": "The Mestti app on Google Play, for phones and tablets. Production, stops, OEE and inspections from your factory in real time, from anywhere.",
   "v2.app.k": "Mestti is on the Play Store",
   "v2.app.h": "Now you can follow the shop floor at any time, from anywhere.",
   "v2.app.lead": "Get the Mestti app on your phone or tablet and see what is happening at each machine, wherever you are.",
@@ -82,8 +82,8 @@
   "v2.app.wa": "Talk on WhatsApp"
  },
  "es": {
-  "meta.app.title": "App Mestti en la Play Store: siga la planta desde cualquier lugar | Mestti",
-  "meta.app.description": "Mestti está en la Play Store. Con la app en el celular o la tableta, sigue la producción, las paradas, el OEE y las inspecciones a cualquier hora y desde cualquier lugar.",
+  "meta.app.title": "App Mestti en Android: la producción en el celular | Mestti",
+  "meta.app.description": "La app de Mestti en Google Play, para celular y tablet. Producción, paradas, OEE e inspecciones de la fábrica en tiempo real, desde cualquier lugar.",
   "v2.app.k": "Mestti está en la Play Store",
   "v2.app.h": "Ahora usted sigue la planta a cualquier hora y desde cualquier lugar.",
   "v2.app.lead": "Descargue la app de Mestti en el celular o la tableta y vea lo que pasa en cada máquina, esté donde esté.",

@@ -42,6 +42,10 @@ for (const [url, page] of pages) {
   page.ids = new Set(ids);
   if (ids.length !== page.ids.size) fail(url, 'IDs duplicados');
   const metas = tags(html, 'meta');
+  for (const image of tags(html, 'img')) {
+    // A chave exata evita confundir data-i18n-alt com alt. Vazio é válido para decoração.
+    if (!Object.hasOwn(image, 'alt')) fail(url, `imagem sem atributo alt: ${image.src || '(sem src)'}`);
+  }
   for (const key of ['og:title', 'og:description', 'og:url', 'og:image']) {
     const matches = metas.filter(a => a.property === key);
     if (matches.length !== 1 || !matches[0].content) fail(url, `metadado ${key} ausente/duplicado`);
@@ -107,6 +111,15 @@ const reachable = new Set(['/']);
 for (const url of reachable) for (const next of edges.get(url) || []) reachable.add(next);
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const listed = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
+const notFoundPath = path.join(root, '404.html');
+if (!fs.existsSync(notFoundPath)) fail('404', 'página personalizada ausente');
+else {
+  const html = fs.readFileSync(notFoundPath, 'utf8');
+  if (!tags(html, 'meta').some(a => a.name === 'robots' && /noindex/i.test(a.content))) fail('404', 'noindex ausente');
+  if (tags(html, 'main').length !== 1 || tags(html, 'h1').length !== 1) fail('404', 'verificar main/h1');
+  for (const image of tags(html, 'img')) if (!Object.hasOwn(image, 'alt')) fail('404', `imagem sem atributo alt: ${image.src || '(sem src)'}`);
+  if (listed.includes(`${origin}/404.html`)) fail('404', 'página de erro no sitemap');
+}
 if (!sitemap.includes('http://www.sitemaps.org/schemas/sitemap/0.9') || new Set(listed).size !== listed.length) fail('sitemap', 'namespace/duplicação');
 for (const [url, page] of pages) {
   if (page.indexable !== listed.includes(origin + url)) fail(url, 'indexabilidade divergente do sitemap');

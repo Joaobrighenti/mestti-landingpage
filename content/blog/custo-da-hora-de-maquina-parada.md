@@ -1,6 +1,6 @@
 ---
 title: Quanto custa uma hora de máquina parada
-description: A hora parada custa mais do que o salário do operador. Veja como calcular o valor de uma hora de máquina, um exemplo com números, o que entra na conta e por que olhar as paradas em reais muda as prioridades.
+description: Uma hora de máquina parada custa mais que o salário do operador. A conta com um exemplo em números e o que entra no valor da hora.
 answer: Uma hora de máquina parada custa, no mínimo, o que aquela hora deveria ter gerado: a margem das peças que deixaram de ser feitas, somada aos custos que continuam correndo (pessoas, energia de base, estrutura). Um jeito prático é definir o valor de uma hora de máquina e multiplicar pelas horas paradas.
 date: 2026-10-29
 topic: oee

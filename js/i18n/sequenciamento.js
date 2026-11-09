@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.sequenciamento.title": "Sequenciamento da produção: como programar a fila de cada máquina | Mestti",
-  "meta.sequenciamento.description": "Sequenciamento da produção é definir a ordem das operações em cada máquina, com capacidade, setup, prioridade e entrega. Veja o que entra na conta, regras de prioridade e como ver o atraso antes de começar.",
+  "meta.sequenciamento.title": "Sequenciamento da produção: a fila de cada máquina | Mestti",
+  "meta.sequenciamento.description": "Sequenciar é definir a ordem das operações em cada máquina pela capacidade, setup, prioridade e entrega. Regras de prioridade e heurísticas na Mestti.",
   "v2.sequenciamento.2": "Você está em",
   "v2.sequenciamento.1": "Início",
   "v2.sequenciamento.3": "Sequenciamento da produção",
@@ -161,8 +161,8 @@
   "v2.sequenciamento.84": "Sensores prontos em até 7 dias. Instalação em 1 dia."
  },
  "en": {
-  "meta.sequenciamento.title": "Production scheduling: how to plan each machine’s queue | Mestti",
-  "meta.sequenciamento.description": "Production scheduling sets the order of operations on each machine, with capacity, setup, priority and due date. See what goes into it, priority rules and how to spot delays before starting.",
+  "meta.sequenciamento.title": "Production scheduling: each machine’s queue | Mestti",
+  "meta.sequenciamento.description": "Scheduling sets the order of operations on each machine by capacity, setup, priority and due date. Priority rules and the heuristics used in Mestti.",
   "v2.sequenciamento.2": "You are here",
   "v2.sequenciamento.1": "Home",
   "v2.sequenciamento.3": "Production scheduling",
@@ -320,8 +320,8 @@
   "v2.sequenciamento.84": "Sensors ready within 7 days. Installed in 1 day."
  },
  "es": {
-  "meta.sequenciamento.title": "Secuenciación de la producción: cómo programar la cola de cada máquina | Mestti",
-  "meta.sequenciamento.description": "La secuenciación de la producción define el orden de las operaciones en cada máquina, con capacidad, setup, prioridad y entrega. Vea qué entra en el cálculo, reglas de prioridad y cómo ver el atraso antes de empezar.",
+  "meta.sequenciamento.title": "Secuenciación de la producción por máquina | Mestti",
+  "meta.sequenciamento.description": "Secuenciar es definir el orden de las operaciones en cada máquina por capacidad, setup, prioridad y entrega. Reglas de prioridad y heurísticas en Mestti.",
   "v2.sequenciamento.2": "Usted está en",
   "v2.sequenciamento.1": "Inicio",
   "v2.sequenciamento.3": "Secuenciación de la producción",

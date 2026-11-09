@@ -1,6 +1,7 @@
 ---
 title: Motivos de parada de máquina: como montar a lista e registrar no turno
-description: Uma boa lista de motivos de parada é curta, clara e separada por categoria. Veja um exemplo de lista, como registrar o motivo sem atrapalhar o operador e como transformar os motivos num ranking de perdas.
+seo_title: Motivos de parada de máquina: lista e registro | Mestti
+description: Uma lista curta de motivos de parada, separada por categoria, como registrar o motivo sem atrapalhar o operador e como montar o ranking de perdas.
 answer: Uma boa lista de motivos de parada tem poucos itens (de 10 a 20), agrupados em categorias como falta de material, setup, manutenção, qualidade e espera, com nomes que o operador entende sem pensar. O motivo deve ser registrado na hora, perto da máquina, e a soma do tempo por motivo vira o ranking de onde a fábrica perde mais.
 date: 2026-10-29
 topic: apontamento

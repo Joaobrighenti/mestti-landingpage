@@ -1,6 +1,6 @@
 ---
 title: Planilha de PCP no Excel: quando ela deixa de funcionar
-description: A planilha de PCP funciona no começo, mas passa a falhar quando a fábrica cresce. Veja os sinais de que ela chegou ao limite, o que uma boa programação precisa ter e como sair dela sem parar a fábrica.
+description: Os sinais de que a planilha de PCP chegou ao limite, o que uma programação confiável precisa ter e como migrar sem parar a fábrica.
 answer: A planilha de PCP deixa de funcionar quando a programação muda mais rápido do que alguém consegue atualizar, quando a data prometida não considera a fila real das máquinas e quando o realizado chega atrasado e digitado à mão. A saída não precisa ser tudo de uma vez; dá para começar por um setor e usar os dois juntos.
 date: 2026-10-29
 topic: pcp

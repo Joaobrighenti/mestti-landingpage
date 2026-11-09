@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.engenharia.title": "Engenharia de produto: roteiros, tempos de ciclo e metas de produção | Mestti",
-  "meta.engenharia.description": "Registre como cada produto deve ser feito, com componentes, operações, máquinas, ciclo, peças por ciclo e setup, e use isso para programar, medir e cobrar com justiça na Mestti.",
+  "meta.engenharia.title": "Engenharia de produto: roteiros e tempos de ciclo | Mestti",
+  "meta.engenharia.description": "Componentes, operações, máquinas alternativas, tempo de ciclo, peças por ciclo e setup de cada produto: a base da programação e das metas.",
   "v2.engenharia.hero.3": "Você está em",
   "v2.engenharia.hero.1": "Início",
   "v2.engenharia.hero.2": "Engenharia",
@@ -64,8 +64,8 @@
   "v2.engenharia.faq.7": "Perguntas frequentes"
  },
  "en": {
-  "meta.engenharia.title": "Product engineering: routings, cycle times and production targets | Mestti",
-  "meta.engenharia.description": "Record how each product should be made, with components, operations, machines, cycle, parts per cycle and setup, and use it to schedule, measure and hold people accountable fairly in Mestti.",
+  "meta.engenharia.title": "Product engineering: routings and cycle times | Mestti",
+  "meta.engenharia.description": "Components, operations, alternative machines, cycle time, parts per cycle and setup for each product: the basis for scheduling and targets.",
   "v2.engenharia.hero.3": "You are here",
   "v2.engenharia.hero.1": "Home",
   "v2.engenharia.hero.2": "Engineering",
@@ -126,8 +126,8 @@
   "v2.engenharia.faq.7": "Frequently asked questions"
  },
  "es": {
-  "meta.engenharia.title": "Ingeniería de producto: rutas, tiempos de ciclo y metas de producción | Mestti",
-  "meta.engenharia.description": "Registre cómo debe fabricarse cada producto, con componentes, operaciones, máquinas, ciclo, piezas por ciclo y setup, y úselo para programar, medir y exigir con justicia en Mestti.",
+  "meta.engenharia.title": "Ingeniería de producto: rutas y tiempos de ciclo | Mestti",
+  "meta.engenharia.description": "Componentes, operaciones, máquinas alternativas, tiempo de ciclo, piezas por ciclo y setup de cada producto: la base de la programación y las metas.",
   "v2.engenharia.hero.3": "Usted está en",
   "v2.engenharia.hero.1": "Inicio",
   "v2.engenharia.hero.2": "Ingeniería",

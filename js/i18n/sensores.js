@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.sensores.title": "Sensores industriais da Mestti: ficha técnica e aplicação | Mestti",
-  "meta.sensores.description": "Ficha técnica dos sensores e do coletor da Mestti: contagem de peças, máquina ligada ou desligada e metro linear, Wi‑Fi 2,4 GHz, 5 V via USB e memória local quando a internet cai.",
+  "meta.sensores.title": "Sensores industriais inteligentes: ficha técnica | Mestti",
+  "meta.sensores.description": "Sensores da Mestti para contar peças, ver máquina ligada ou parada e medir metro linear. Wi‑Fi 2,4 GHz, 5 V via USB e memória local se a internet cair.",
   "v2.sensores.4": "Produto · Sensores",
   "v2.sensores.hero.1": "Sensores industriais inteligentes",
   "v2.sensores.7": "Os sensores da Mestti leem um sinal físico da máquina (<strong>pulso de contagem</strong>, <strong>fim de curso</strong>, <strong>medição linear</strong> ou <strong>atividade elétrica</strong>) e enviam pelo Wi‑Fi para o sistema. O coletor funciona com 5 V via USB e guarda os eventos quando a internet cai.",
@@ -81,8 +81,8 @@
   "v2.sensores.77": "Se não servir, retiramos o sensor e você não paga nada."
  },
  "en": {
-  "meta.sensores.title": "Mestti industrial sensors: technical sheet and use | Mestti",
-  "meta.sensores.description": "Technical sheet of Mestti’s sensors and collector: part counting, machine on/off and linear meters, 2.4 GHz Wi‑Fi, 5 V via USB and local memory when the internet drops.",
+  "meta.sensores.title": "Smart industrial sensors: technical sheet | Mestti",
+  "meta.sensores.description": "Mestti sensors to count parts, see if a machine is running or stopped and measure linear meters. 2.4 GHz Wi‑Fi, 5 V USB and local memory if the internet drops.",
   "v2.sensores.4": "Product · Sensors",
   "v2.sensores.hero.1": "Smart industrial sensors",
   "v2.sensores.7": "Mestti sensors read a physical signal from the machine (<strong>count pulse</strong>, <strong>limit switch</strong>, <strong>linear measurement</strong> or <strong>electrical activity</strong>) and send it over Wi‑Fi to the system. The collector runs on 5 V via USB and stores events when the internet drops.",
@@ -160,8 +160,8 @@
   "v2.sensores.77": "If it does not fit, we remove the sensor and you pay nothing."
  },
  "es": {
-  "meta.sensores.title": "Sensores industriales de Mestti: ficha técnica y aplicación | Mestti",
-  "meta.sensores.description": "Ficha técnica de los sensores y del colector de Mestti: conteo de piezas, máquina encendida o apagada y metro lineal, Wi‑Fi 2,4 GHz, 5 V por USB y memoria local cuando se cae internet.",
+  "meta.sensores.title": "Sensores industriales inteligentes: ficha técnica | Mestti",
+  "meta.sensores.description": "Sensores de Mestti para contar piezas, ver si la máquina está en marcha o parada y medir metro lineal. Wi‑Fi 2,4 GHz, 5 V por USB y memoria local.",
   "v2.sensores.4": "Producto · Sensores",
   "v2.sensores.hero.1": "Sensores industriales inteligentes",
   "v2.sensores.7": "Los sensores de Mestti leen una señal física de la máquina (<strong>pulso de conteo</strong>, <strong>fin de carrera</strong>, <strong>medición lineal</strong> o <strong>actividad eléctrica</strong>) y la envían por Wi‑Fi al sistema. El colector funciona con 5 V por USB y guarda los eventos cuando se cae internet.",

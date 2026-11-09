@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.producao.title": "Produção e PCP: monitoramento de máquinas, sequenciamento e apontamento | Mestti",
-  "meta.producao.description": "Planeje pela capacidade real, acompanhe cada máquina ao vivo com sensores e saiba quanto cada parada custa. Carteira do PCP, sequenciamento, apontamento por tablet e auditoria na Mestti.",
+  "meta.producao.title": "Produção e PCP: sensores, sequenciamento e apontamento | Mestti",
+  "meta.producao.description": "Carteira do PCP, sequenciamento por máquina, apontamento no tablet e sensores ao vivo. Programe pela capacidade real e veja quanto custa cada parada.",
   "v2.producao.hero.5": "Você está em",
   "v2.producao.hero.3": "Início",
   "v2.producao.hero.4": "Produção",
@@ -69,8 +69,8 @@
   "v2.producao.faq.9": "Perguntas frequentes"
  },
  "en": {
-  "meta.producao.title": "Production and planning: machine monitoring, scheduling and shop-floor tracking | Mestti",
-  "meta.producao.description": "Plan by real capacity, follow every machine live with sensors and see what each stop costs. Planning backlog, scheduling, tablet tracking and audit trail in Mestti.",
+  "meta.producao.title": "Production and planning: sensors, scheduling, reporting | Mestti",
+  "meta.producao.description": "Planning backlog, scheduling by machine, tablet reporting and live sensors. Schedule by real capacity and see what each stop costs.",
   "v2.producao.hero.5": "You are here",
   "v2.producao.hero.3": "Home",
   "v2.producao.hero.4": "Production",
@@ -136,8 +136,8 @@
   "v2.producao.faq.9": "Frequently asked questions"
  },
  "es": {
-  "meta.producao.title": "Producción y planificación: monitoreo de máquinas, secuenciación y registro | Mestti",
-  "meta.producao.description": "Planifique según la capacidad real, siga cada máquina en vivo con sensores y sepa cuánto cuesta cada parada. Cartera de planificación, secuenciación, registro en tablet y auditoría en Mestti.",
+  "meta.producao.title": "Producción y PCP: sensores, secuenciación y registro | Mestti",
+  "meta.producao.description": "Cartera del PCP, secuenciación por máquina, registro en tablet y sensores en vivo. Programe por capacidad real y vea cuánto cuesta cada parada.",
   "v2.producao.hero.5": "Usted está en",
   "v2.producao.hero.3": "Inicio",
   "v2.producao.hero.4": "Producción",

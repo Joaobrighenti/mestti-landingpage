@@ -1,6 +1,6 @@
 ---
 title: Microparadas: o que são, quanto custam e como encontrar
-description: Microparadas são paradas curtas que quase nunca são anotadas, mas somam horas no fim do turno. Veja como identificar, quanto custam, as causas mais comuns e como medir sem depender de apontamento manual.
+description: Microparadas são paradas curtas que quase ninguém anota e somam horas no turno. Como identificar, quanto custam e as causas mais comuns.
 answer: Microparadas são paradas curtas, de segundos a poucos minutos, que o operador resolve na hora e quase nunca anota. Uma de cada vez parece pouco, mas 40 microparadas de 1 minuto num turno somam 40 minutos sem produzir. A única forma confiável de enxergá-las é medir a máquina automaticamente.
 date: 2026-10-29
 author: leonardo

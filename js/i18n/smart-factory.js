@@ -2,8 +2,8 @@
 (function () {
     var d = {
  "pt": {
-  "meta.smart-factory.title": "Smart factory: o que é uma fábrica inteligente e como começar | Mestti",
-  "meta.smart-factory.description": "Smart factory é a fábrica em que máquinas, pessoas e sistemas trocam dados em tempo real e as decisões saem desses dados. Veja o que ela tem, a relação com a Indústria 4.0 e o primeiro passo.",
+  "meta.smart-factory.title": "Smart factory: o que é e como começar | Mestti",
+  "meta.smart-factory.description": "Smart factory é a fábrica em que máquinas, pessoas e sistemas trocam dados em tempo real. O que ela tem, a relação com a Indústria 4.0 e o primeiro passo.",
   "v2.smart-factory.3": "Guia · Smart factory",
   "v2.smart-factory.4": "Smart factory: o que é uma fábrica inteligente na prática",
   "v2.smart-factory.1": "Por <a href=\"/empresa/\" rel=\"author\">João Brighenti</a>, fundador da Mestti",
@@ -71,7 +71,7 @@
  },
  "en": {
   "meta.smart-factory.title": "Smart factory: what it is and how to start | Mestti",
-  "meta.smart-factory.description": "A smart factory is a plant where machines, people and systems share data in real time and decisions come from that data. See what it has, how it relates to Industry 4.0 and the first step.",
+  "meta.smart-factory.description": "A smart factory is a plant where machines, people and systems share data in real time. What it has, how it relates to Industry 4.0 and the first step.",
   "v2.smart-factory.3": "Guide · Smart factory",
   "v2.smart-factory.4": "Smart factory: what a smart factory looks like in practice",
   "v2.smart-factory.1": "By <a href=\"/empresa/\" rel=\"author\">João Brighenti</a>, founder of Mestti",
@@ -138,8 +138,8 @@
   "v2.smart-factory.65": "If it doesn’t fit, we remove the sensor and you pay nothing."
  },
  "es": {
-  "meta.smart-factory.title": "Smart factory: qué es una fábrica inteligente y cómo empezar | Mestti",
-  "meta.smart-factory.description": "Smart factory es la fábrica donde máquinas, personas y sistemas intercambian datos en tiempo real y las decisiones salen de esos datos. Vea qué tiene, la relación con la Industria 4.0 y el primer paso.",
+  "meta.smart-factory.title": "Smart factory: qué es y cómo empezar | Mestti",
+  "meta.smart-factory.description": "Smart factory es la fábrica donde máquinas, personas y sistemas comparten datos en tiempo real. Qué tiene, su relación con la Industria 4.0 y el primer paso.",
   "v2.smart-factory.3": "Guía · Smart factory",
   "v2.smart-factory.4": "Smart factory: qué es una fábrica inteligente en la práctica",
   "v2.smart-factory.1": "Por <a href=\"/empresa/\" rel=\"author\">João Brighenti</a>, fundador de Mestti",

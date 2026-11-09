@@ -3,7 +3,7 @@
     var d = {
  "pt": {
   "meta.checklists.title": "Checklists digitais com foto, nome e histórico | Mestti",
-  "meta.checklists.description": "Transforme os checklists da sua empresa em rotinas digitais: programe, registre pelo celular com foto e acompanhe o que foi feito, o que ficou pendente e quem fez.",
+  "meta.checklists.description": "Checklists digitais no celular ou tablet, com foto, nome e horário de quem fez. Programe as verificações e acompanhe o que ficou pendente.",
   "v2.checklists.1": "Você está em",
   "v2.checklists.2": "Início",
   "v2.checklists.hero.1": "Checklists digitais",

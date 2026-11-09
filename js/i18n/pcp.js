@@ -3,7 +3,7 @@
     var d = {
  "pt": {
   "meta.pcp.title": "PCP e PPCP: o que é planejamento e controle da produção | Mestti",
-  "meta.pcp.description": "PCP é o planejamento e controle da produção; PPCP inclui a programação no nome. Veja as etapas, onde a planilha falha e como programar cada máquina com dados do chão de fábrica.",
+  "meta.pcp.description": "PCP é planejar, programar e controlar a produção. As etapas, a diferença para PPCP e como programar cada máquina pela capacidade real.",
   "v2.pcp.2": "Você está em",
   "v2.pcp.1": "Início",
   "v2.pcp.3": "PCP e PPCP",
@@ -79,7 +79,7 @@
  },
  "en": {
   "meta.pcp.title": "Production planning and control (PCP/PPCP): what it is | Mestti",
-  "meta.pcp.description": "PCP is production planning and control; PPCP adds scheduling to the name. See the steps, where spreadsheets fail and how to schedule each machine with shop-floor data.",
+  "meta.pcp.description": "PCP means planning, scheduling and controlling production. The steps, how it differs from PPCP and how to schedule each machine by real capacity.",
   "v2.pcp.2": "You are here",
   "v2.pcp.1": "Home",
   "v2.pcp.3": "PCP and PPCP",
@@ -154,8 +154,8 @@
   "v2.pcp.72": "1 week with the sensor on loan, at no cost."
  },
  "es": {
-  "meta.pcp.title": "PCP y PPCP: qué es la planificación y control de la producción | Mestti",
-  "meta.pcp.description": "PCP es la planificación y control de la producción; PPCP incluye la programación en el nombre. Vea las etapas, dónde falla la planilla y cómo programar cada máquina con datos de la planta.",
+  "meta.pcp.title": "PCP y PPCP: qué es la planificación de la producción | Mestti",
+  "meta.pcp.description": "El PCP es planificar, programar y controlar la producción. Las etapas, la diferencia con PPCP y cómo programar cada máquina por capacidad real.",
   "v2.pcp.2": "Usted está en",
   "v2.pcp.1": "Inicio",
   "v2.pcp.3": "PCP y PPCP",

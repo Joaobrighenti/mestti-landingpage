@@ -3,7 +3,7 @@
     var d = {
  "pt": {
   "meta.mom.title": "MOM: o que é a gestão de operações de manufatura | Mestti",
-  "meta.mom.description": "MOM (Manufacturing Operations Management) junta produção, qualidade, manutenção e estoque da fábrica na mesma base de dados. Veja as quatro áreas, a diferença para MES e ERP e por onde começar.",
+  "meta.mom.description": "MOM (Manufacturing Operations Management) reúne produção, qualidade, manutenção e estoque na mesma base, segundo a ISA-95. Diferença para MES e ERP.",
   "v2.mom.3": "Guia · MOM",
   "v2.mom.4": "MOM: a gestão de operações de manufatura, na prática",
   "v2.mom.1": "Por <a href=\"/empresa/\" rel=\"author\">João Brighenti</a>, fundador da Mestti",
@@ -71,7 +71,7 @@
  },
  "en": {
   "meta.mom.title": "MOM: what manufacturing operations management is | Mestti",
-  "meta.mom.description": "MOM (Manufacturing Operations Management) brings a plant’s production, quality, maintenance and inventory onto one data base. See the four areas, how it differs from MES and ERP and where to start.",
+  "meta.mom.description": "MOM (Manufacturing Operations Management) brings production, quality, maintenance and inventory onto one base, per ISA-95. How it differs from MES and ERP.",
   "v2.mom.3": "Guide · MOM",
   "v2.mom.4": "MOM: manufacturing operations management, in practice",
   "v2.mom.1": "By <a href=\"/empresa/\" rel=\"author\">João Brighenti</a>, founder of Mestti",
@@ -139,7 +139,7 @@
  },
  "es": {
   "meta.mom.title": "MOM: qué es la gestión de operaciones de manufactura | Mestti",
-  "meta.mom.description": "MOM (Manufacturing Operations Management) reúne producción, calidad, mantenimiento e inventario de la fábrica en la misma base de datos. Vea las cuatro áreas, la diferencia con MES y ERP y por dónde empezar.",
+  "meta.mom.description": "MOM (Manufacturing Operations Management) reúne producción, calidad, mantenimiento e inventario en una base, según ISA-95. Diferencia con MES y ERP.",
   "v2.mom.3": "Guía · MOM",
   "v2.mom.4": "MOM: la gestión de operaciones de manufactura, en la práctica",
   "v2.mom.1": "Por <a href=\"/empresa/\" rel=\"author\">João Brighenti</a>, fundador de Mestti",

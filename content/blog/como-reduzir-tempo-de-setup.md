@@ -1,6 +1,6 @@
 ---
 title: Como reduzir o tempo de setup na prática
-description: Setup longo consome capacidade a cada troca de produto. Veja como medir o setup de verdade, separar o que pode ser feito com a máquina rodando (SMED) e acompanhar a melhora por máquina e por turno.
+description: Como medir o setup real, separar o que dá para fazer com a máquina rodando (SMED) e acompanhar a redução por máquina e por turno.
 answer: Para reduzir o setup, primeiro meça quanto ele dura de verdade em cada troca. Depois separe o que só pode ser feito com a máquina parada do que pode ser preparado antes, com ela ainda rodando (a ideia do SMED), padronize a sequência e acompanhe o tempo de cada troca.
 date: 2026-10-29
 topic: monitoramento

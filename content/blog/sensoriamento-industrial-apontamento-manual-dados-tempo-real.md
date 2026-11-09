@@ -1,6 +1,6 @@
 ---
 title: Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real
-seo_title: Sensoriamento industrial: como sair do apontamento manual e ter dados em tempo real | MESTTI
+seo_title: Sensoriamento industrial: dados da máquina em tempo real | Mestti
 description: Entenda o que é sensoriamento industrial, por que o apontamento manual falha no turno e como sensores + painel ao vivo dão tempo de reação no chão de fábrica.
 answer: Sensoriamento industrial é instalar sensores nas máquinas para registrar sozinho a produção, as paradas e se a máquina está rodando. Ele substitui a anotação de quantidade e horário no papel; as pessoas continuam informando o motivo das paradas.
 date: 2026-09-23

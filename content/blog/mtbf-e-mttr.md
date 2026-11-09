@@ -1,6 +1,6 @@
 ---
 title: MTBF e MTTR: o que são, como calcular e para que servem
-description: MTBF é o tempo médio entre falhas; MTTR é o tempo médio para reparar. Veja as fórmulas, um exemplo calculado, como os dois se relacionam com a disponibilidade e quais dados você precisa registrar.
+description: MTBF é o tempo médio entre falhas; MTTR, o tempo médio de reparo. Fórmulas, um exemplo calculado e a relação com a disponibilidade da máquina.
 answer: MTBF (tempo médio entre falhas) é o tempo de funcionamento dividido pelo número de falhas, e mostra com que frequência a máquina quebra. MTTR (tempo médio para reparar) é o tempo total de reparo dividido pelo número de falhas, e mostra quanto demora para voltar. Para calcular os dois, você precisa do início e do fim de cada parada por falha.
 date: 2026-10-29
 author: leonardo

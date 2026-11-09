@@ -3,7 +3,7 @@
     var d = {
  "pt": {
   "meta.diagnostico.title": "1 semana grátis: veja quantas horas sua fábrica perde | Mestti",
-  "meta.diagnostico.description": "Sensores prontos em até 7 dias, instalação em 1 dia e 1 semana de demonstração grátis em um setor. Veja as horas perdidas, as causas, o custo e por onde começar.",
+  "meta.diagnostico.description": "Sensores prontos em até 7 dias, instalação em 1 dia e 1 semana de teste grátis em um setor, com horas perdidas, causas, custo e plano de ação.",
   "v2.diagnostico.hero.3": "Você está em",
   "v2.diagnostico.hero.1": "Início",
   "v2.diagnostico.hero.2": "Como começar",
@@ -68,7 +68,7 @@
  },
  "en": {
   "meta.diagnostico.title": "1 free week: see how many hours your factory loses | Mestti",
-  "meta.diagnostico.description": "Sensors ready within 7 days, installed in 1 day and a 1-week free demo in one department. See hours lost, causes, cost and where to start.",
+  "meta.diagnostico.description": "Sensors ready within 7 days, installed in 1 day and a 1-week free trial in one department, with lost hours, causes, cost and an action plan.",
   "v2.diagnostico.hero.3": "You are here",
   "v2.diagnostico.hero.1": "Home",
   "v2.diagnostico.hero.2": "How to start",
@@ -133,7 +133,7 @@
  },
  "es": {
   "meta.diagnostico.title": "1 semana gratis: vea cuántas horas pierde su fábrica | Mestti",
-  "meta.diagnostico.description": "Sensores listos en hasta 7 días, instalación en 1 día y 1 semana de demostración gratis en un sector. Vea horas perdidas, causas, costo y por dónde empezar.",
+  "meta.diagnostico.description": "Sensores listos en hasta 7 días, instalación en 1 día y 1 semana de prueba gratis en un sector, con horas perdidas, causas, costo y plan de acción.",
   "v2.diagnostico.hero.3": "Usted está en",
   "v2.diagnostico.hero.1": "Inicio",
   "v2.diagnostico.hero.2": "Cómo empezar",

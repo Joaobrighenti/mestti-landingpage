@@ -5,6 +5,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { buildCorpus, purgeCss } from "./css-purge.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -67,3 +68,23 @@ for (const name of fs.readdirSync(root)) {
 }
 
 console.log("Vercel build: static files copied to public/");
+
+// CSS no ar: só as regras que alguma página usa, minificado (os arquivos do repositório não mudam).
+const corpus = buildCorpus(root);
+let before = 0;
+let after = 0;
+const purgeDir = (dir) => {
+  for (const name of fs.readdirSync(dir)) {
+    const p = path.join(dir, name);
+    if (fs.statSync(p).isDirectory()) purgeDir(p);
+    else if (name.endsWith(".css")) {
+      const css = fs.readFileSync(p, "utf8");
+      const out = purgeCss(css, corpus);
+      before += css.length;
+      after += out.length;
+      fs.writeFileSync(p, out);
+    }
+  }
+};
+purgeDir(outDir);
+console.log(`Vercel build: CSS ${Math.round(before / 1024)} KB -> ${Math.round(after / 1024)} KB`);
