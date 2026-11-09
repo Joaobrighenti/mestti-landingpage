@@ -206,6 +206,8 @@ html[data-theme="dark"] .fpin--alert { color: #2a0805; }
 .fx-legend b { color: var(--fx-ink); }
 .fx-legend span { display: inline-flex; align-items: center; gap: 6px; }
 .fx-legend i { width: 10px; height: 10px; border-radius: 3px; }
+.fx-legend em { font-style: normal; }
+.fx-lg-short { display: none; }
 
 .fx-zoom { position: absolute; right: 16px; top: 72px; display: flex; flex-direction: column; gap: 2px; padding: 3px; transition: right .3s cubic-bezier(.2, .7, .2, 1); }
 .fx:has(.fx-drawer) .fx-zoom { right: 412px; }
@@ -364,7 +366,11 @@ html.fx-lock, html.fx-lock body { overflow: hidden; }
     .fx-dock button[data-fx-filter=""] span { display: none; }
     .fx-zoom { right: 12px; bottom: 64px; top: auto; padding: 3px; border-radius: 12px; }
     .fx-zoom .fx-icon { width: 36px; height: 36px; }
-    .fx-legend { justify-content: center; }
+    /* Legenda do OEE cabe numa linha e o zoom sobe para não cobri-la. */
+    .fx-legend { justify-content: center; gap: 12px; padding: 8px 12px; }
+    .fx-lg-long { display: none; }
+    .fx-lg-short { display: inline; }
+    .fx:has(.fx-legend) .fx-zoom { bottom: 108px; }
 }
 @media (prefers-reduced-motion: reduce) { .fx-now-live { animation: none; } }
 

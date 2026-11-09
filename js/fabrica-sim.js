@@ -174,6 +174,8 @@ const elapsed = (min) => (min < 60 ? `${min} min` : `${Math.floor(min / 60)}h ${
 const bucket = (oee) => (oee == null ? 'none' : oee >= 80 ? 'high' : oee >= 60 ? 'mid' : 'low');
 const BUCKET_COLOR = { high: ['#1F7A5C', '#4CC9A0'], mid: ['#B54708', '#F0A04B'], low: ['#B42318', '#F2796F'], none: ['#5A6876', '#8A97A4'] };
 const glyph = (path, size = 14) => `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${path}"/></svg>`;
+// Faixas de OEE compactas para o celular (mesmos valores em PT/EN/ES).
+const LEGEND_SHORT = { high: '≥ 80%', mid: '60–79%', low: '< 60%' };
 const sectorOf = (item) => SECTORS.find((s) => s.id === item.sector);
 
 /* ---------------------------------------------------------------- estado da vista */
@@ -324,7 +326,7 @@ function renderHud() {
             </div>
         </section>
         <div class="fx-dock-wrap">
-            ${view.layer === 'oee' ? `<div class="fx-surface fx-legend"><b>${t('oeeLegend')}</b>${['high', 'mid', 'low'].map((b) => `<span><i style="background:${BUCKET_COLOR[b][isDark() ? 1 : 0]}"></i>${t('b_' + b)}</span>`).join('')}</div>` : ''}
+            ${view.layer === 'oee' ? `<div class="fx-surface fx-legend"><b>${t('oeeLegend')}</b>${['high', 'mid', 'low'].map((b) => `<span><i style="background:${BUCKET_COLOR[b][isDark() ? 1 : 0]}"></i><em class="fx-lg-long">${t('b_' + b)}</em><em class="fx-lg-short" aria-hidden="true">${LEGEND_SHORT[b]}</em></span>`).join('')}</div>` : ''}
             <div class="fx-surface fx-dock" role="group" aria-label="${t('filterGroup')}">
                 <button type="button" data-fx-filter="" aria-pressed="${view.filters.size === 0}">${t('all')} <span>${MACHINES.length}</span></button>
                 ${chips.map((chip) => `<button type="button" data-fx-filter="${chip.key}" aria-pressed="${view.filters.has(chip.key)}" title="${STATES[chip.key].label[lang()]}"><i class="fx-dot st-${chip.key}" aria-hidden="true"></i><em class="fx-chip-label">${STATES[chip.key].label[lang()]}</em> <span>${chip.count}</span></button>`).join('')}
