@@ -405,5 +405,9 @@
       ]
     }
   ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(?!api(?:/|$)).*", "status": 404, "dest": "/404.html" }
+  ],
   "git": {"deploymentEnabled": {"feat/seo-geo-aeo": false, "feat/seo-geo-aeo-v2": false}}
 }
