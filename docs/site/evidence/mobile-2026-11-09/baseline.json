@@ -1,0 +1,644 @@
+{
+  "measure": {
+    "lcp": 3228,
+    "longTasks": [
+      {
+        "start": 3227.100000023842,
+        "duration": 55
+      },
+      {
+        "start": 3296.9000000059605,
+        "duration": 1136
+      },
+      {
+        "start": 4605.800000011921,
+        "duration": 159
+      },
+      {
+        "start": 4878.700000017881,
+        "duration": 389
+      },
+      {
+        "start": 5306.800000011921,
+        "duration": 56
+      },
+      {
+        "start": 5442.600000023842,
+        "duration": 103
+      },
+      {
+        "start": 5549.5,
+        "duration": 62
+      },
+      {
+        "start": 7802.200000017881,
+        "duration": 56
+      },
+      {
+        "start": 9135.100000023842,
+        "duration": 2406
+      },
+      {
+        "start": 11541.800000011921,
+        "duration": 1861
+      },
+      {
+        "start": 13459.90000000596,
+        "duration": 496
+      },
+      {
+        "start": 14015.600000023842,
+        "duration": 719
+      },
+      {
+        "start": 14841.40000000596,
+        "duration": 365
+      },
+      {
+        "start": 15294.90000000596,
+        "duration": 391
+      },
+      {
+        "start": 15781,
+        "duration": 394
+      },
+      {
+        "start": 16247.300000011921,
+        "duration": 355
+      },
+      {
+        "start": 16635.20000001788,
+        "duration": 395
+      },
+      {
+        "start": 17067.90000000596,
+        "duration": 371
+      },
+      {
+        "start": 17449.70000001788,
+        "duration": 423
+      },
+      {
+        "start": 17947.80000001192,
+        "duration": 201
+      },
+      {
+        "start": 18150.30000001192,
+        "duration": 831
+      },
+      {
+        "start": 19083.70000001788,
+        "duration": 494
+      },
+      {
+        "start": 19621.90000000596,
+        "duration": 489
+      },
+      {
+        "start": 20113.5,
+        "duration": 520
+      },
+      {
+        "start": 20652.70000001788,
+        "duration": 516
+      },
+      {
+        "start": 21185.5,
+        "duration": 324
+      },
+      {
+        "start": 21510.40000000596,
+        "duration": 3333
+      }
+    ],
+    "cls": 0.058056872037914695
+  },
+  "paint": [
+    {
+      "name": "first-paint",
+      "start": 1224
+    },
+    {
+      "name": "first-contentful-paint",
+      "start": 1224
+    }
+  ],
+  "now": 26181.70000001788,
+  "ready": "fx fx--ready",
+  "resources": [
+    {
+      "url": "https://mestti.com.br/glbimagens/operador-mestti.glb",
+      "transfer": 231248,
+      "encoded": 230948,
+      "duration": 5327.600000023842,
+      "start": 10019.5
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js",
+      "transfer": 171486,
+      "encoded": 171186,
+      "duration": 1297,
+      "start": 7788
+    },
+    {
+      "url": "https://mestti.com.br/glbimagens/injetora.glb",
+      "transfer": 166944,
+      "encoded": 166644,
+      "duration": 4772.600000023842,
+      "start": 10011.5
+    },
+    {
+      "url": "https://mestti.com.br/glbimagens/coladeira-borda.glb",
+      "transfer": 115130,
+      "encoded": 114830,
+      "duration": 4216.199999988079,
+      "start": 10013.200000017881
+    },
+    {
+      "url": "https://mestti.com.br/images/v2/fabrica-3d-poster.webp",
+      "transfer": 98654,
+      "encoded": 98354,
+      "duration": 2580.7000000178814,
+      "start": 316
+    },
+    {
+      "url": "https://mestti.com.br/glbimagens/silo.glb",
+      "transfer": 96300,
+      "encoded": 96000,
+      "duration": 3962.699999988079,
+      "start": 10018.800000011921
+    },
+    {
+      "url": "https://mestti.com.br/glbimagens/seccionadora.glb",
+      "transfer": 81187,
+      "encoded": 80887,
+      "duration": 3608.199999988079,
+      "start": 9994.200000017881
+    },
+    {
+      "url": "https://mestti.com.br/glbimagens/furadeira-cnc.glb",
+      "transfer": 65805,
+      "encoded": 65505,
+      "duration": 3165.2999999821186,
+      "start": 9999.100000023842
+    },
+    {
+      "url": "https://mestti.com.br/glbimagens/cnc-nesting.glb",
+      "transfer": 61921,
+      "encoded": 61621,
+      "duration": 3110,
+      "start": 9994.800000011921
+    },
+    {
+      "url": "https://mestti.com.br/images/v2/video-mestti.webp",
+      "transfer": 58936,
+      "encoded": 58636,
+      "duration": 1620.300000011921,
+      "start": 1651.800000011921
+    },
+    {
+      "url": "https://mestti.com.br/glbimagens/galpao-parede.glb",
+      "transfer": 56064,
+      "encoded": 55764,
+      "duration": 2715.0999999940395,
+      "start": 9849.700000017881
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/libs/draco/gltf/draco_decoder.wasm",
+      "transfer": 49029,
+      "encoded": 48729,
+      "duration": 652.7000000178814,
+      "start": 14755.5
+    },
+    {
+      "url": "https://mestti.com.br/glbimagens/galpao-parede-janela.glb",
+      "transfer": 44464,
+      "encoded": 44164,
+      "duration": 694.0999999940395,
+      "start": 9853.40000000596
+    },
+    {
+      "url": "https://mestti.com.br/images/parceiros/enbpar.webp",
+      "transfer": 39920,
+      "encoded": 39620,
+      "duration": 1003.9000000059605,
+      "start": 4750
+    },
+    {
+      "url": "https://mestti.com.br/glbimagens/etiquetadora.glb",
+      "transfer": 38795,
+      "encoded": 38495,
+      "duration": 2164.0999999940395,
+      "start": 10017.90000000596
+    },
+    {
+      "url": "https://mestti.com.br/images/parceiros/firjan.webp",
+      "transfer": 35748,
+      "encoded": 35448,
+      "duration": 970.9000000059605,
+      "start": 4753.4000000059605
+    },
+    {
+      "url": "https://mestti.com.br/js/fabrica-sim.js?v=28",
+      "transfer": 32683,
+      "encoded": 32383,
+      "duration": 340.10000002384186,
+      "start": 7380
+    },
+    {
+      "url": "https://mestti.com.br/images/parceiros/senai.webp",
+      "transfer": 26580,
+      "encoded": 26280,
+      "duration": 880.7000000178814,
+      "start": 4745.9000000059605
+    },
+    {
+      "url": "https://mestti.com.br/js/i18n.js?v=35",
+      "transfer": 23213,
+      "encoded": 22913,
+      "duration": 2267.399999976158,
+      "start": 344.60000002384186
+    },
+    {
+      "url": "https://mestti.com.br/glbimagens/galpao-pilar-hidrante.glb",
+      "transfer": 23108,
+      "encoded": 22808,
+      "duration": 1151.9000000059605,
+      "start": 9860.800000011921
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/GLTFLoader.js",
+      "transfer": 20004,
+      "encoded": 19704,
+      "duration": 537.5999999940395,
+      "start": 7789.700000017881
+    },
+    {
+      "url": "https://mestti.com.br/css/v3.css?v=95",
+      "transfer": 18791,
+      "encoded": 18491,
+      "duration": 566,
+      "start": 307.10000002384186
+    },
+    {
+      "url": "https://mestti.com.br/js/i18n/inicio.js?v=14",
+      "transfer": 18235,
+      "encoded": 17935,
+      "duration": 1901.8999999761581,
+      "start": 342.60000002384186
+    },
+    {
+      "url": "https://mestti.com.br/js/script.js?v=45",
+      "transfer": 16525,
+      "encoded": 16225,
+      "duration": 1761.300000011921,
+      "start": 348.40000000596046
+    },
+    {
+      "url": "https://mestti.com.br/images/logos_clientes/branco/continental.webp",
+      "transfer": 14578,
+      "encoded": 14278,
+      "duration": 641.4000000059605,
+      "start": 4737.5
+    },
+    {
+      "url": "https://mestti.com.br/images/MESTTI-logo-header-light.png?v=1",
+      "transfer": 14518,
+      "encoded": 14218,
+      "duration": 1858.800000011921,
+      "start": 310.40000000596046
+    },
+    {
+      "url": "https://mestti.com.br/images/logos_clientes/branco/metaltech.webp",
+      "transfer": 14306,
+      "encoded": 14006,
+      "duration": 620.2999999821186,
+      "start": 4743.600000023842
+    },
+    {
+      "url": "https://mestti.com.br/images/parceiros/procel.webp",
+      "transfer": 14050,
+      "encoded": 13750,
+      "duration": 773.8000000119209,
+      "start": 4748
+    },
+    {
+      "url": "https://mestti.com.br/glbimagens/piso-epoxi.webp",
+      "transfer": 13838,
+      "encoded": 13538,
+      "duration": 903.1000000238419,
+      "start": 11541
+    },
+    {
+      "url": "https://mestti.com.br/css/site.css?v=6",
+      "transfer": 13492,
+      "encoded": 13192,
+      "duration": 228.5,
+      "start": 299
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/libs/draco/gltf/draco_wasm_wrapper.js",
+      "transfer": 11984,
+      "encoded": 11684,
+      "duration": 319.30000001192093,
+      "start": 14751.5
+    },
+    {
+      "url": "https://mestti.com.br/glbimagens/galpao-pilar.glb",
+      "transfer": 11490,
+      "encoded": 11190,
+      "duration": 658.6999999880791,
+      "start": 9858.200000017881
+    },
+    {
+      "url": "https://mestti.com.br/images/logos_clientes/branco/injetplast.webp",
+      "transfer": 10184,
+      "encoded": 9884,
+      "duration": 511.90000000596046,
+      "start": 4740
+    },
+    {
+      "url": "https://mestti.com.br/js/otto-mascot.js?v=1",
+      "transfer": 9943,
+      "encoded": 9643,
+      "duration": 230.40000000596046,
+      "start": 4623.9000000059605
+    },
+    {
+      "url": "https://mestti.com.br/images/logos_clientes/branco/nicopel.webp",
+      "transfer": 9852,
+      "encoded": 9552,
+      "duration": 843.1999999880791,
+      "start": 1642.7000000178814
+    },
+    {
+      "url": "https://mestti.com.br/js/home-demos.js?v=8",
+      "transfer": 9225,
+      "encoded": 8925,
+      "duration": 1458.9000000059605,
+      "start": 350.30000001192093
+    },
+    {
+      "url": "https://mestti.com.br/images/logos_clientes/branco/brighentti.webp",
+      "transfer": 9126,
+      "encoded": 8826,
+      "duration": 772.5999999940395,
+      "start": 1645.1000000238419
+    },
+    {
+      "url": "https://mestti.com.br/js/v2.js?v=44",
+      "transfer": 8865,
+      "encoded": 8565,
+      "duration": 1347,
+      "start": 349.7000000178814
+    },
+    {
+      "url": "https://mestti.com.br/js/conversational-form.js?v=18",
+      "transfer": 8852,
+      "encoded": 8552,
+      "duration": 1250.2999999821186,
+      "start": 349.10000002384186
+    },
+    {
+      "url": "https://mestti.com.br/images/MESTTI-logo-header-dark.png?v=1",
+      "transfer": 8811,
+      "encoded": 8511,
+      "duration": 1422.4000000059605,
+      "start": 312.80000001192093
+    },
+    {
+      "url": "https://mestti.com.br/css/v2.css?v=2",
+      "transfer": 7495,
+      "encoded": 7195,
+      "duration": 429.7000000178814,
+      "start": 300
+    },
+    {
+      "url": "https://mestti.com.br/images/logos_clientes/branco/acoforte.webp",
+      "transfer": 6408,
+      "encoded": 6108,
+      "duration": 685.9000000059605,
+      "start": 1649.2000000178814
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/utils/BufferGeometryUtils.js",
+      "transfer": 6324,
+      "encoded": 6024,
+      "duration": 386.19999998807907,
+      "start": 7798.800000011921
+    },
+    {
+      "url": "https://mestti.com.br/images/logos_clientes/branco/phoenix.webp",
+      "transfer": 6258,
+      "encoded": 5958,
+      "duration": 680.5,
+      "start": 1638.9000000059605
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/controls/OrbitControls.js",
+      "transfer": 6187,
+      "encoded": 5887,
+      "duration": 361.7999999821186,
+      "start": 7792.200000017881
+    },
+    {
+      "url": "https://mestti.com.br/css/factory-sim.css?v=17",
+      "transfer": 5694,
+      "encoded": 5394,
+      "duration": 298.7999999821186,
+      "start": 303.7000000178814
+    },
+    {
+      "url": "https://mestti.com.br/images/parceiros/moveis-hub.webp",
+      "transfer": 4360,
+      "encoded": 4060,
+      "duration": 342.30000001192093,
+      "start": 4759.5
+    },
+    {
+      "url": "https://mestti.com.br/css/home-demos.css?v=3",
+      "transfer": 4193,
+      "encoded": 3893,
+      "duration": 401.59999999403954,
+      "start": 305.40000000596046
+    },
+    {
+      "url": "https://mestti.com.br/css/v3-mobile.css?v=27",
+      "transfer": 4084,
+      "encoded": 3784,
+      "duration": 361.19999998807907,
+      "start": 308.80000001192093
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/DRACOLoader.js",
+      "transfer": 3925,
+      "encoded": 3625,
+      "duration": 348.40000000596046,
+      "start": 7791.300000011921
+    },
+    {
+      "url": "https://mestti.com.br/js/wa-chat-viewport.js?v=4",
+      "transfer": 3759,
+      "encoded": 3459,
+      "duration": 1056.4000000059605,
+      "start": 348.40000000596046
+    },
+    {
+      "url": "https://mestti.com.br/js/meta-pixel.js?v=1",
+      "transfer": 3275,
+      "encoded": 2975,
+      "duration": 1018.6999999880791,
+      "start": 348.2000000178814
+    },
+    {
+      "url": "https://mestti.com.br/images/Atendente-96.webp",
+      "transfer": 3122,
+      "encoded": 2822,
+      "duration": 300.80000001192093,
+      "start": 4876.300000011921
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/utils/SkeletonUtils.js",
+      "transfer": 2375,
+      "encoded": 2075,
+      "duration": 303.5,
+      "start": 7798.600000023842
+    },
+    {
+      "url": "https://mestti.com.br/images/parceiros/fiep.svg",
+      "transfer": 2285,
+      "encoded": 1985,
+      "duration": 285.30000001192093,
+      "start": 4756.9000000059605
+    },
+    {
+      "url": "https://mestti.com.br/js/meta-consent.js?v=10",
+      "transfer": 1849,
+      "encoded": 1549,
+      "duration": 937.5999999940395,
+      "start": 347.2000000178814
+    },
+    {
+      "url": "https://mestti.com.br/js/form-options.js?v=4",
+      "transfer": 1695,
+      "encoded": 1395,
+      "duration": 915.4000000059605,
+      "start": 347.2000000178814
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/renderers/CSS2DRenderer.js",
+      "transfer": 1579,
+      "encoded": 1279,
+      "duration": 223,
+      "start": 7798.100000023842
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap",
+      "transfer": 1559,
+      "encoded": 1259,
+      "duration": 334.89999997615814,
+      "start": 297.60000002384186
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/environments/RoomEnvironment.js",
+      "transfer": 1424,
+      "encoded": 1124,
+      "duration": 251.5,
+      "start": 7793.5
+    },
+    {
+      "url": "https://mestti.com.br/js/google-consent.js?v=3",
+      "transfer": 949,
+      "encoded": 649,
+      "duration": 811.1999999880791,
+      "start": 347.30000001192093
+    },
+    {
+      "url": "https://mestti.com.br/js/theme.js?v=3",
+      "transfer": 840,
+      "encoded": 540,
+      "duration": 789.8000000119209,
+      "start": 346.40000000596046
+    },
+    {
+      "url": "https://mestti.com.br/js/theme-init.js?v=2",
+      "transfer": 575,
+      "encoded": 275,
+      "duration": 359.2000000178814,
+      "start": 288.90000000596046
+    },
+    {
+      "url": "https://mestti.com.br/favicon.svg",
+      "transfer": 549,
+      "encoded": 249,
+      "duration": 174.80000001192093,
+      "start": 5872.4000000059605
+    }
+  ],
+  "buttons": [
+    {
+      "text": "Recusar opcionais",
+      "rect": {
+        "x": 31.1875,
+        "y": 722.265625,
+        "w": 101.4375,
+        "h": 26.75
+      },
+      "hit": "<button type=\"button\" class=\"mestti-cookie-banner__btn mestti-cookie-banner__btn--ghost\" data-consent=\"decline\">Recusar opcionais</button>"
+    },
+    {
+      "text": "Personalizar",
+      "rect": {
+        "x": 134.71875,
+        "y": 722.265625,
+        "w": 75.484375,
+        "h": 26.75
+      },
+      "hit": "<button type=\"button\" class=\"mestti-cookie-banner__btn mestti-cookie-banner__btn--ghost\" data-consent=\"customize\">Personalizar</button>"
+    },
+    {
+      "text": "Aceitar opcionais",
+      "rect": {
+        "x": 212.296875,
+        "y": 722.265625,
+        "w": 97.203125,
+        "h": 26.75
+      },
+      "hit": "<button type=\"button\" class=\"mestti-cookie-banner__btn mestti-cookie-banner__btn--primary\" data-consent=\"accept\">Aceitar opcionais</button>"
+    },
+    {
+      "text": "Salvar escolhas",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "hit": "<div class=\"container container--wide\">\n            <div class=\"header-tractian-inner\">\n                <a href=\"/\" class=\"header-logo-link\" aria-label=\"Mestti\">\n                  "
+    }
+  ],
+  "readyAt": 24855.600000023842,
+  "errors": [],
+  "networkFailures": [
+    {
+      "requestId": "1500583.243",
+      "timestamp": 261635.127844,
+      "type": "Script",
+      "errorText": "",
+      "canceled": false,
+      "blockedReason": "inspector"
+    },
+    {
+      "requestId": "1500583.244",
+      "timestamp": 261635.129384,
+      "type": "Script",
+      "errorText": "",
+      "canceled": false,
+      "blockedReason": "inspector"
+    }
+  ],
+  "acceptTap": {
+    "banner": false,
+    "stored": "{\"analytics\":true,\"marketing\":true}"
+  }
+}

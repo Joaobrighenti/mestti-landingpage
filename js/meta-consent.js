@@ -2,12 +2,14 @@
 (function () {
   const STORAGE_KEY = 'mestti_consent_v3';
   const listeners = new Set();
+  let sessionChoice = null;
   function read() {
+    if (sessionChoice) return sessionChoice;
     try {
       const value = JSON.parse(localStorage.getItem(STORAGE_KEY));
       if (value && typeof value.analytics === 'boolean' && typeof value.marketing === 'boolean') return value;
     } catch { /* sem preferência válida */ }
-    return null;
+    return sessionChoice;
   }
   function hasMarketingConsent() { return read()?.marketing === true; }
   function hasAnalyticsConsent() { return read()?.analytics === true; }
@@ -20,10 +22,12 @@
   }
   function save(analytics, marketing) {
     const previous = read();
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ analytics, marketing })); } catch { return; }
+    sessionChoice = { analytics, marketing };
+    let persisted = false;
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(sessionChoice)); persisted = true; } catch { /* a escolha continua válida nesta página */ }
     notify();
     if (!marketing && typeof window.fbq === 'function') window.fbq('consent', 'revoke');
-    if (previous && ((previous.analytics && !analytics) || (previous.marketing && !marketing))) {
+    if (persisted && previous && ((previous.analytics && !analytics) || (previous.marketing && !marketing))) {
       window.location.reload();
       return;
     }
@@ -46,10 +50,10 @@
         <p class="mestti-cookie-banner__text">Usamos armazenamento necessário para o site. Você escolhe o uso de análise e marketing. <a href="/cookies/">Saiba mais</a>.</p>
         <div class="mestti-cookie-banner__actions">
           <button type="button" class="mestti-cookie-banner__btn mestti-cookie-banner__btn--ghost" data-consent="decline">Recusar opcionais</button>
-          <button type="button" class="mestti-cookie-banner__btn mestti-cookie-banner__btn--ghost" data-consent="customize">Personalizar</button>
+          <button type="button" class="mestti-cookie-banner__btn mestti-cookie-banner__btn--ghost" data-consent="customize" aria-expanded="false" aria-controls="mesttiCookieChoices">Personalizar</button>
           <button type="button" class="mestti-cookie-banner__btn mestti-cookie-banner__btn--primary" data-consent="accept">Aceitar opcionais</button>
         </div>
-        <div data-consent="choices" hidden>
+        <div id="mesttiCookieChoices" data-consent="choices" hidden>
           <p>Necessários: sempre ativos.</p>
           <label><input type="checkbox" data-category="analytics"> Análise</label>
           <label><input type="checkbox" data-category="marketing"> Marketing</label>
@@ -62,7 +66,12 @@
     marketing.checked = value.marketing;
     banner.querySelector('[data-consent="accept"]').addEventListener('click', acceptMarketing);
     banner.querySelector('[data-consent="decline"]').addEventListener('click', declineMarketing);
-    banner.querySelector('[data-consent="customize"]').addEventListener('click', () => { banner.querySelector('[data-consent="choices"]').hidden = false; });
+    banner.querySelector('[data-consent="customize"]').addEventListener('click', (event) => {
+      banner.classList.add('mestti-cookie-customizing');
+      banner.querySelector('[data-consent="choices"]').hidden = false;
+      event.currentTarget.setAttribute('aria-expanded', 'true');
+      analytics.focus();
+    });
     banner.querySelector('[data-consent="save"]').addEventListener('click', () => save(analytics.checked, marketing.checked));
     document.body.appendChild(banner);
   }

@@ -450,11 +450,7 @@
     function initFactory() {
         const host = document.querySelector('[data-factory]');
         if (!host) return;
-        const load = () => import('/js/fabrica-sim.js?v=28').catch((error) => console.error(error));
-        const idle = (fn) => ('requestIdleCallback' in window ? window.requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 300));
-        const start = () => idle(() => whenVisible(host, load, '300px 0px'));
-        if (document.readyState === 'complete') start();
-        else window.addEventListener('load', start, { once: true });
+        window.MesttiFactoryLoader?.mount(host);
     }
 
     // Vídeo: começa sem som quando a pessoa chega nele, pausa quando sai e liga o som num toque.

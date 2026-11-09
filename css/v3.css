@@ -458,7 +458,8 @@ body.hv-page .hv-final h2 { color: var(--signal-ink); }
     .hv-brazil-grid--solo .hv-brazil-list { grid-template-columns: minmax(0, 1fr); }
     .hv-faq-grid > div:first-child { position: static; }
     .mon-shift { display: block !important; text-align: left; font-size: .72rem; }
-    body.hv-page .mestti-cookie-banner { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+    body.hv-page .mestti-cookie-banner { bottom: max(12px, env(safe-area-inset-bottom, 0px)); }
+    html.mestti-cookie-open .hv-mobilebar { visibility: hidden; pointer-events: none; }
     .hv-demo-tabs button { padding: 0 14px; }
 }
 
