@@ -223,7 +223,11 @@
     { "source": "/blog/como-escolher-sistema-monitoramento-producao", "destination": "/blog/como-escolher-sistema-monitoramento-producao/", "permanent": true },
     { "source": "/blog/nota-fiscal-de-perda-reducao-de-impostos", "destination": "/blog/nota-fiscal-de-perda-reducao-de-impostos/", "permanent": true },
     { "source": "/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real", "destination": "/blog/sensoriamento-industrial-apontamento-manual-dados-tempo-real/", "permanent": true },
-    { "source": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo", "destination": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/", "permanent": true }
+    { "source": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo", "destination": "/blog/como-calcular-preco-venda-industria-rkw-custo-processo/", "permanent": true },
+    {"source": "/cookies", "destination": "/cookies/", "permanent": true},
+    {"source": "/cookies/index.html", "destination": "/cookies/", "permanent": true},
+    {"source": "/privacidade-site", "destination": "/privacidade-site/", "permanent": true},
+    {"source": "/privacidade-site/index.html", "destination": "/privacidade-site/", "permanent": true}
   ],
   "rewrites": [
     { "source": "/engenharia/", "destination": "/engenharia/index.html" },
@@ -344,7 +348,11 @@
     { "source": "/solucoes", "destination": "/solucoes/index.html" },
     { "source": "/solucoes/", "destination": "/solucoes/index.html" },
     { "source": "/blog/como-escolher-sistema-monitoramento-producao", "destination": "/blog/como-escolher-sistema-monitoramento-producao/index.html" },
-    { "source": "/blog/como-escolher-sistema-monitoramento-producao/", "destination": "/blog/como-escolher-sistema-monitoramento-producao/index.html" }
+    { "source": "/blog/como-escolher-sistema-monitoramento-producao/", "destination": "/blog/como-escolher-sistema-monitoramento-producao/index.html" },
+    {"source": "/privacidade-site", "destination": "/privacidade-site/index.html"},
+    {"source": "/privacidade-site/", "destination": "/privacidade-site/index.html"},
+    {"source": "/cookies", "destination": "/cookies/index.html"},
+    {"source": "/cookies/", "destination": "/cookies/index.html"}
   ],
   "headers": [
     {

@@ -16,9 +16,7 @@
 
     function track(eventName, params) {
         const detail = params || {};
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: eventName, page: '/checklists/', ...detail });
-        if (typeof window.gtag === 'function') window.gtag('event', eventName, detail);
+        if (window.MesttiConsent?.hasAnalyticsConsent?.() && typeof window.gtag === 'function') window.gtag('event', eventName, detail);
         if (window.MesttiMeta?.hasConsent?.() && typeof window.fbq === 'function') {
             window.fbq('trackCustom', eventName, detail);
         }
