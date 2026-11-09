@@ -4,36 +4,38 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 
 function fixture({ touch = true, saveData = false } = {}) {
-    const listeners = new Map();
-    const button = { hidden: true, disabled: false, addEventListener: (n, fn) => listeners.set(n, fn) };
-    const host = { dataset: {}, querySelector: () => button, classList: { add() {}, remove() {} }, setAttribute() {}, removeAttribute() {}, scrollIntoView() {} };
-    const window = { addEventListener() {} };
-    const context = { window, document: { readyState: 'complete', documentElement: { lang: 'pt-BR' } }, navigator: { connection: { saveData } }, matchMedia: q => ({ matches: q.includes('coarse') && touch }), location: { reload() {} } };
+    const listeners = new Map(); let visible; let idle; let reloads = 0;
+    const button = { hidden: true, addEventListener: (n, fn) => listeners.set(n, fn) };
+    const host = { querySelector: () => button, classList: { add() {}, remove() {} }, setAttribute() {}, removeAttribute() {} };
+    const window = { addEventListener() {}, IntersectionObserver: true, requestIdleCallback(fn) { idle = fn; } };
+    class IntersectionObserver { constructor(fn) { visible = fn; } observe() {} disconnect() {} }
+    const context = { window, IntersectionObserver, document: { readyState: 'complete', documentElement: { lang: 'pt-BR' } }, navigator: { connection: { saveData } }, matchMedia: q => ({ matches: q.includes('coarse') && touch }), location: { reload() { reloads++; } } };
     vm.runInNewContext(fs.readFileSync('js/factory-loader.js', 'utf8'), context);
-    return { mount: window.MesttiFactoryLoader.mount, button, host, tap: () => listeners.get('click')() };
+    return { mount: window.MesttiFactoryLoader.mount, button, host, visible: on => visible([{ isIntersecting: on }]), idle: () => idle(), tap: () => listeners.get('click')(), reloads: () => reloads };
 }
 
-test('toque só baixa o 3D após escolha explícita e ignora ativações repetidas', async () => {
+test('mobile inicia automaticamente quando visível e há tempo livre, sem botão nem carga duplicada', () => {
     const f = fixture(); let loads = 0;
     f.mount(f.host, () => { loads++; return Promise.resolve(); });
-    assert.equal(loads, 0);
-    assert.equal(f.button.hidden, false);
-    f.tap(); f.tap();
-    assert.equal(loads, 1);
-    assert.equal(f.host.dataset.factoryExplore, 'true');
-    assert.equal(f.button.disabled, true);
+    f.visible(false); assert.equal(loads, 0);
+    f.visible(true); assert.equal(loads, 0); assert.equal(f.button.hidden, true);
+    f.idle(); f.idle(); assert.equal(loads, 1);
 });
 
-test('economia de dados também evita download automático com mouse', () => {
-    const f = fixture({ touch: false, saveData: true }); let loads = 0;
-    f.mount(f.host, () => { loads++; return Promise.resolve(); });
-    assert.equal(loads, 0);
-    assert.equal(f.button.hidden, false);
+test('desktop carrega quando visível; economia de dados aguarda tempo livre', () => {
+    for (const saveData of [false, true]) {
+        const f = fixture({ touch: false, saveData }); let loads = 0;
+        f.mount(f.host, () => { loads++; return Promise.resolve(); });
+        f.visible(false); assert.equal(loads, 0);
+        f.visible(true); assert.equal(loads, saveData ? 0 : 1);
+        if (saveData) f.idle();
+        assert.equal(loads, 1); assert.equal(f.button.hidden, true);
+    }
 });
 
-test('desktop mantém carregamento automático sem o passo extra', () => {
-    const f = fixture({ touch: false }); let loads = 0;
-    f.mount(f.host, () => { loads++; return Promise.resolve(); });
-    assert.equal(loads, 1);
-    assert.equal(f.button.hidden, true);
+test('erro de download oferece recuperação por recarregamento', async () => {
+    const f = fixture();
+    f.mount(f.host, () => Promise.reject(Error('offline'))); f.visible(true); f.idle();
+    await Promise.resolve(); assert.equal(f.button.hidden, false);
+    f.tap(); assert.equal(f.reloads(), 1);
 });

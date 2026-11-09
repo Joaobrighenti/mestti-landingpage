@@ -65,9 +65,8 @@ html[data-theme="dark"] .fx {
 .fx button:focus-visible, .fx input:focus-visible { outline: 2px solid var(--fx-accent); outline-offset: 1px; }
 
 .fx-scene, .fx-canvas, .fx-labels { position: absolute; inset: 0; }
-.fx-canvas { width: 100%; height: 100%; display: block; touch-action: pan-y; }
-.fx-scene { touch-action: pan-y; }
-.fx.fx--explore .fx-scene, .fx.fx--full .fx-scene { touch-action: none; }
+.fx-canvas { width: 100%; height: 100%; display: block; touch-action: none; }
+.fx-scene { touch-action: none; }
 .fx-labels { pointer-events: none; overflow: hidden; z-index: 2; }
 
 .fx-status {
@@ -318,6 +317,10 @@ html[data-theme="dark"] .fx .fpin--alert { color: #1d0603; }
 .fx.fx--full .fx-canvas { touch-action: none; }
 .fx [data-fx-full][aria-pressed="true"] { background: var(--fx-accent-soft); color: var(--fx-accent); }
 html.fx-lock, html.fx-lock body { overflow: hidden; }
+.fx-fullscreen-dialog { position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; overflow: hidden; background: #f2f2f2; }
+.fx-fullscreen-dialog::backdrop { background: #f2f2f2; }
+.fx-full-exit { position: absolute; z-index: 10; top: max(12px, env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 14px; border-radius: 12px; color: var(--fx-ink); font: 600 13px/1.4 'Inter', sans-serif; cursor: pointer; }
+.fx--full .fx-top-right, .fx--full .fx-top-left, .fx--full .fx-now { top: calc(68px + env(safe-area-inset-top, 0px)); }
 
 /* Imagem da fábrica enquanto o 3D carrega */
 .fx-poster { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; object-fit: cover; pointer-events: none; transition: opacity .6s ease; }
@@ -360,12 +363,7 @@ html.fx-lock, html.fx-lock body { overflow: hidden; }
 }
 @media (prefers-reduced-motion: reduce) { .fx-now-live { animation: none; } }
 
-/* Toque para explorar (celular fora da tela cheia) */
-.fx.fx--explore .fx-canvas { touch-action: none; }
-.fx-explore { display: inline-flex; align-items: center; gap: 8px; align-self: center; max-width: 100%; min-height: 44px; padding: 0 14px; border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--fx-ink); cursor: pointer; }
-.fx-explore svg { color: var(--fx-accent); }
-.fx-explore.is-on { padding: 0 4px 0 14px; color: var(--fx-ink2); cursor: default; }
-.fx-explore.is-on > span { min-width: 0; }
-.fx-explore small { display: block; margin-top: 2px; font-size: 11px; line-height: 1.25; }
-.fx-explore.is-on button { flex-shrink: 0; }
-.fx-explore.is-on button { min-height: 44px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--fx-accent); color: var(--fx-panel); font-weight: 600; cursor: pointer; }
+/* Reserva a faixa de saída em tela cheia no celular. */
+@media (max-width: 720px) {
+    .fx.fx--full .fx-top-right, .fx.fx--full .fx-now { top: calc(68px + env(safe-area-inset-top, 0px)); }
+}

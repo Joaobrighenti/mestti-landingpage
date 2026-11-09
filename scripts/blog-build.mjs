@@ -184,7 +184,7 @@ const SCRIPTS = `    <script defer src="/js/i18n.js?v=35"></script>
     <script defer src="/js/script.js?v=45"></script>
     <script defer src="/js/wa-chat-viewport.js?v=4"></script>
     <script defer src="/js/conversational-form.js?v=18"></script>
-    <script defer src="/js/v2.js?v=45"></script>
+    <script defer src="/js/v2.js?v=46"></script>
 </body>
 
 </html>

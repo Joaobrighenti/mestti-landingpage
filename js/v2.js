@@ -516,11 +516,15 @@
             track('v2_video_start', { click: byClick });
         };
         frame.querySelector('[data-yt-play]').addEventListener('click', () => load(true));
+        window.addEventListener('mestti:factory-fullscreen', (event) => {
+            if (event.detail.active && iframe) { send('pauseVideo'); playing = false; }
+        });
         sound.addEventListener('click', () => { send('unMute'); send('playVideo'); showSound(false); track('v2_video_sound'); });
         if (reduceMotion || !('IntersectionObserver' in window)) return;
         // "Chegou no vídeo" = metade dele visível, ou ele ocupando boa parte de uma tela baixa.
         new IntersectionObserver((entries) => {
             entries.forEach((en) => {
+                if (document.documentElement.classList.contains('fx-lock')) return;
                 const seen = en.intersectionRatio >= 0.5 || en.intersectionRect.height >= window.innerHeight * 0.6;
                 if (seen && !iframe) load(false);
                 else if (seen && !playing) { send('playVideo'); playing = true; }
