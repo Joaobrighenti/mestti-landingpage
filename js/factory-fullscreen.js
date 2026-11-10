@@ -44,7 +44,7 @@ export function createFactoryFullscreen(root, { mobile = false, label, onExit })
             background = [...document.body.children].filter(e => e !== root).map(e => [e, e.inert]);
             background.forEach(([element]) => { element.inert = true; });
         }
-        root.querySelector('[data-fx-full]')?.focus({ preventScroll: true });
+        if (!mobile) root.querySelector('[data-fx-full]')?.focus({ preventScroll: true });
     }
     function enter() {
         if (active) return;
