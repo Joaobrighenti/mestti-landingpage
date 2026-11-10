@@ -166,8 +166,8 @@ const loc = (value) => (value && typeof value === 'object' ? value[lang()] : val
 const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const coarse = window.matchMedia('(pointer: coarse)').matches;
-// UI de celular/tablet = sem mouse. Notebook com tela de toque tem mouse/trackpad e fica com a UI de desktop.
-const mobileUI = !window.matchMedia('(any-hover: hover)').matches;
+// UI de celular = tela física pequena. (pointer/hover não servem: há desktops que se declaram "toque, sem mouse".)
+const mobileUI = Math.min(window.screen?.width || 9999, window.screen?.height || 9999) < 600;
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fmt = (n) => Number(n).toLocaleString(lang() === 'en' ? 'en-US' : 'pt-BR');
 const elapsed = (min) => (min < 60 ? `${min} min` : `${Math.floor(min / 60)}h ${String(min % 60).padStart(2, '0')}min`);
@@ -308,7 +308,7 @@ function renderHud() {
             ${mobileUI ? `<button type="button" class="fx-icon fx-exit" data-fx-exit aria-label="${t('fullExit')}" title="${t('fullExit')}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>` : ''}
         </div>
         <section class="fx-surface fx-now${view.nowOpen ? '' : ' is-collapsed'}" aria-label="${t('now')}">
-            <div class="fx-now-head">
+            <div class="fx-now-head" data-fx-now-head>
                 <h3>${t('now')}<i class="fx-now-live" aria-hidden="true"></i></h3>
                 <button type="button" class="fx-icon" data-fx-now aria-expanded="${view.nowOpen}" aria-label="${view.nowOpen ? t('collapse') : t('expand')}">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
@@ -448,7 +448,8 @@ function queueMarkup(item) {
 
 function bindHud() {
     root.addEventListener('click', (event) => {
-        const target = event.target.closest('button, [data-fx-pin]');
+        // O cabeçalho inteiro de "Fábrica agora" abre/fecha o painel, não só a seta.
+        const target = event.target.closest('button, [data-fx-pin], [data-fx-now-head]');
         if (!target || !root.contains(target)) return;
         const fx = root.__fx;
         if (target.dataset.fxSelect || target.dataset.fxPin) {
@@ -458,7 +459,7 @@ function bindHud() {
         } else if (target.dataset.fxTab) {
             view.tab = target.dataset.fxTab;
             renderHud();
-        } else if (target.hasAttribute('data-fx-now')) {
+        } else if (target.hasAttribute('data-fx-now') || target.hasAttribute('data-fx-now-head')) {
             view.nowOpen = !view.nowOpen;
             renderHud();
             fx?.frame(true);

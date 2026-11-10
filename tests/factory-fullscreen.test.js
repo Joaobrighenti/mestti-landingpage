@@ -59,7 +59,7 @@ test('celular: home mostra só o cinema e um CTA; tela cheia tem controles e X (
     const hud = { innerHTML: '' };
     const document = { querySelector: selector => selector === '[data-factory]' ? root : null, documentElement: { getAttribute: () => null } };
     const root = { dataset: {}, querySelector: () => hud, classList: { toggle() {} } };
-    const window = { MESTTI_LANG: 'pt', matchMedia: q => ({ matches: q.includes('coarse') }) };
+    const window = { MESTTI_LANG: 'pt', matchMedia: q => ({ matches: q.includes('coarse') }), screen: { width: 390, height: 844 } };
     const source = fs.readFileSync('js/fabrica-sim.js', 'utf8').replace(/^import .*;\n/gm, '').replace('if (root) init();', '');
     const context = vm.createContext({ document, window }); vm.runInContext(source, context);
     const texts = { pt: ['Explorar a fábrica', 'Arraste para mover · pinça para aproximar · dois dedos giram'], en: ['Explore the factory', 'Drag to move · pinch to zoom · two fingers rotate'], es: ['Explorar la fábrica', 'Arrastre para mover · pellizque para acercar · dos dedos giran'] };
@@ -83,7 +83,7 @@ test('desktop (com mouse) mantém a maquete interativa na página, sem CTA nem X
     const hud = { innerHTML: '' };
     const root = { dataset: {}, querySelector: () => hud, classList: { toggle() {} } };
     const document = { querySelector: selector => selector === '[data-factory]' ? root : null, documentElement: { getAttribute: () => null } };
-    const window = { MESTTI_LANG: 'pt', matchMedia: q => ({ matches: q.includes('hover') }) };
+    const window = { MESTTI_LANG: 'pt', matchMedia: () => ({ matches: false }), screen: { width: 1920, height: 1080 } };
     const source = fs.readFileSync('js/fabrica-sim.js', 'utf8').replace(/^import .*;\n/gm, '').replace('if (root) init();', '');
     const context = vm.createContext({ document, window }); vm.runInContext(source, context);
     vm.runInContext('renderHud()', context);
