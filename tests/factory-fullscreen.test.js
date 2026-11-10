@@ -55,31 +55,56 @@ test('entrada nativa concluída depois de sair não prende a página em tela che
     await new Promise(resolve => setImmediate(resolve)); assert.equal(exits, 1);
 });
 
-test('HUD móvel tem interação direta e saída de tela cheia em PT/EN/ES, sem balão extra', () => {
+test('celular: home mostra só o cinema e um CTA; tela cheia tem controles e X (PT/EN/ES), sem crédito', () => {
     const hud = { innerHTML: '' };
     const document = { querySelector: selector => selector === '[data-factory]' ? root : null, documentElement: { getAttribute: () => null } };
-    const root = { dataset: { factoryExplore: 'true' }, querySelector: () => hud };
-    const window = { MESTTI_LANG: 'pt', matchMedia: q => ({ matches: q.includes('coarse') }) };
+    const root = { dataset: {}, querySelector: () => hud, classList: { toggle() {} } };
+    const window = { MESTTI_LANG: 'pt', matchMedia: q => ({ matches: q.includes('coarse') }), screen: { width: 390, height: 844 } };
     const source = fs.readFileSync('js/fabrica-sim.js', 'utf8').replace(/^import .*;\n/gm, '').replace('if (root) init();', '');
     const context = vm.createContext({ document, window }); vm.runInContext(source, context);
-    const hints = { pt: ['Arraste para o lado para girar · pinça para aproximar', 'Arraste para girar · pinça para aproximar'], en: ['Drag sideways to rotate · pinch to zoom', 'Drag to rotate · pinch to zoom'], es: ['Arrastre hacia el lado para girar · pellizque para acercar', 'Arrastre para girar · pellizque para acercar'] };
-    for (const [language, [page, full]] of Object.entries(hints)) {
+    const texts = { pt: ['Explorar a fábrica', 'Arraste para mover · pinça para aproximar · dois dedos giram'], en: ['Explore the factory', 'Drag to move · pinch to zoom · two fingers rotate'], es: ['Explorar la fábrica', 'Arrastre para mover · pellizque para acercar · dos dedos giran'] };
+    for (const [language, [cta, full]] of Object.entries(texts)) {
         window.MESTTI_LANG = language; vm.runInContext('renderHud()', context);
-        // Na página a rolagem vertical é do site: a dica fala em arrastar para o lado.
-        assert.ok(hud.innerHTML.includes(page)); assert.ok(!hud.innerHTML.includes('[object Object]'));
-        assert.ok(!hud.innerHTML.includes('data-fx-explore')); assert.ok(!hud.innerHTML.includes('fx-explore'));
+        assert.match(hud.innerHTML, /class="fx-cta" data-fx-full/); assert.ok(hud.innerHTML.includes(cta));
+        for (const control of ['data-fx-filter', 'data-fx-layer', 'data-fx-zoom', 'data-fx-now', 'fx-hint']) assert.ok(!hud.innerHTML.includes(control), control);
+        assert.ok(!hud.innerHTML.includes('[object Object]')); assert.ok(!hud.innerHTML.includes('data-fx-exit'));
         vm.runInContext('view.full = true; renderHud()', context);
-        assert.ok(!hud.innerHTML.includes('data-fx-exit-full'));
+        assert.ok(!hud.innerHTML.includes('fx-cta'));
         assert.match(hud.innerHTML, /data-fx-full aria-pressed="true"/);
-        assert.ok(hud.innerHTML.includes(full));
+        // X de saída ao lado de Estado/OEE.
+        assert.match(hud.innerHTML, /data-fx-layer="oee"[\s\S]*?<\/div>\s*<button[^>]*data-fx-exit/);
+        for (const control of ['data-fx-filter', 'data-fx-layer', 'data-fx-zoom']) assert.ok(hud.innerHTML.includes(control), control);
+        assert.ok(hud.innerHTML.includes(full)); assert.ok(!hud.innerHTML.includes('SimReady'));
         vm.runInContext('view.full = false', context);
     }
 });
 
-test('fora da tela cheia o 3D deixa a rolagem vertical com a página; na tela cheia captura todos os gestos', () => {
+test('desktop (com mouse) mantém a maquete interativa na página, sem CTA nem X', () => {
+    const hud = { innerHTML: '' };
+    const root = { dataset: {}, querySelector: () => hud, classList: { toggle() {} } };
+    const document = { querySelector: selector => selector === '[data-factory]' ? root : null, documentElement: { getAttribute: () => null } };
+    const window = { MESTTI_LANG: 'pt', matchMedia: () => ({ matches: false }), screen: { width: 1920, height: 1080 } };
+    const source = fs.readFileSync('js/fabrica-sim.js', 'utf8').replace(/^import .*;\n/gm, '').replace('if (root) init();', '');
+    const context = vm.createContext({ document, window }); vm.runInContext(source, context);
+    vm.runInContext('renderHud()', context);
+    assert.ok(!hud.innerHTML.includes('fx-cta')); assert.ok(hud.innerHTML.includes('data-fx-filter')); assert.ok(hud.innerHTML.includes('Ctrl'));
+    vm.runInContext('view.full = true; renderHud()', context);
+    assert.ok(!hud.innerHTML.includes('data-fx-exit')); assert.ok(hud.innerHTML.includes('Esc'));
+});
+
+test('na página o deslize vertical rola o site; na tela cheia a cena captura todos os gestos', () => {
     const css = fs.readFileSync('css/factory-sim.css', 'utf8');
     assert.match(css, /\.fx-canvas \{[^}]*touch-action: pan-y/);
     assert.match(css, /\.fx-scene \{ touch-action: pan-y; \}/);
     assert.match(css, /\.fx\.fx--full \.fx-scene, \.fx\.fx--full \.fx-canvas \{ touch-action: none; \}/);
     assert.doesNotMatch(css.replace(/\.fx\.fx--full[^{]*\{[^}]*\}/g, ''), /\.fx-(scene|canvas)[^{]*\{[^}]*touch-action: none/);
+});
+
+test('celular: controles só na tela cheia e sair retoma o cinema; desktop interage na página', () => {
+    const src = fs.readFileSync('js/fabrica-sim.js', 'utf8');
+    assert.match(src, /controls\.enabled = !tour && interactive\(\);/);
+    assert.match(src, /const interactive = \(\) => view\.full \|\| !mobileUI;/);
+    assert.match(src, /controls\.touches = \{ ONE: THREE\.TOUCH\.PAN, TWO: THREE\.TOUCH\.DOLLY_ROTATE \};/);
+    assert.match(src, /if \(!interactive\(\)\) \{ downPin = null; openFull\(\); return; \}/);
+    assert.match(src, /else \{ tour = null; lastInput = 0; awakeAt = performance\.now\(\); startTour\(\); \}/);
 });

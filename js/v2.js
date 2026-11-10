@@ -486,6 +486,11 @@
         let listened = 0;
         let soundAt = 0;
         let soundBlocked = false;
+        // Tenta tocar com som. Se o navegador barrar (política de autoplay), toca mudo e mostra "Ligar o som".
+        // Não existe API para saber se o aparelho está no silencioso; o botão cobre o bloqueio do navegador.
+        let autoSound = true;
+        let state = -1;
+        let soundCheck = null;
         const send = (func, args = []) => iframe?.contentWindow.postMessage(JSON.stringify({ event: 'command', func, args }), playerOrigin);
         const locked = () => document.documentElement.classList.contains('fx-lock');
         const showSound = (on) => { sound.hidden = !on || soundBlocked; };
@@ -498,6 +503,14 @@
             showSound(false);
             send('mute');
             send('playVideo');
+        };
+        const playMuted = () => {
+            autoSound = false;
+            withSound = false;
+            send('mute');
+            send('playVideo');
+            showSound(true);
+            reveal();
         };
         const captions = () => {
             if (!ready) return;
@@ -512,10 +525,13 @@
             if (!ready || !wantsPlay || locked()) return;
             send(withSound ? 'unMute' : 'mute');
             send('playVideo');
+            // Alguns navegadores (iOS) só não começam, sem avisar: sem tocar em 2,5 s, cai para mudo.
+            clearTimeout(soundCheck);
+            if (withSound && !soundAt) soundCheck = setTimeout(() => { if (wantsPlay && !locked() && state !== 1) playMuted(); }, 2500);
         };
         const requestPlay = (byClick) => {
             wantsPlay = true;
-            if (byClick) withSound = true;
+            withSound = byClick || (autoSound && !soundBlocked);
             prepare();
             play();
             if (!tracked) { track('v2_video_start', { click: byClick }); tracked = true; }
@@ -527,7 +543,7 @@
         };
         const prepare = () => {
             if (iframe) return;
-            // Pré-carrega o player sem tocar fora da tela; o autoplay visível já começa mudo.
+            // Pré-carrega o player sem tocar fora da tela; o som é ligado por comando quando ele começa.
             const lang = language();
             const params = new URLSearchParams({ autoplay: '0', mute: '1', playsinline: '1', rel: '0', enablejsapi: '1', origin: location.origin, hl: lang, cc_load_policy: lang === 'pt' ? '0' : '1', cc_lang_pref: lang });
             iframe = document.createElement('iframe');
@@ -560,24 +576,21 @@
             if (data.event === 'onApiChange') captions();
             const soundRefused = soundAt && performance.now() - soundAt < 2500;
             if (data.event === 'onAutoplayBlocked' && wantsPlay && !locked()) {
-                if (soundRefused) giveUpSound();
-                else {
-                    withSound = false;
-                    send('mute');
-                    send('playVideo');
-                    showSound(true);
-                }
-                reveal();
+                clearTimeout(soundCheck);
+                if (soundRefused) { giveUpSound(); reveal(); }
+                else playMuted();
             }
             const info = data.info;
-            const state = data.event === 'onStateChange' ? info : info?.playerState;
+            const next = data.event === 'onStateChange' ? info : info?.playerState;
+            if (typeof next === 'number') state = next;
             // Pausa logo após pedir som = navegador barrou o som (iOS).
-            if (state === 2 && soundRefused && wantsPlay && !locked()) { soundAt = 0; giveUpSound(); }
-            if (state === 1) {
+            if (next === 2 && soundRefused && wantsPlay && !locked()) { soundAt = 0; giveUpSound(); }
+            if (next === 1) {
+                clearTimeout(soundCheck);
                 if (!wantsPlay || locked()) send('pauseVideo');
                 else { reveal(); showSound(typeof info?.muted === 'boolean' ? info.muted : !withSound); }
             }
-            if (state === 1 && typeof info?.muted === 'boolean') showSound(info.muted);
+            if (next === 1 && typeof info?.muted === 'boolean') showSound(info.muted);
         });
         frame.querySelector('[data-yt-play]').addEventListener('click', () => requestPlay(true));
         sound.addEventListener('click', () => { soundAt = performance.now(); requestPlay(true); showSound(false); track('v2_video_sound'); });
