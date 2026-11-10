@@ -324,9 +324,8 @@ body.hv-page .footer .footer-social a { color: #fff; }
 
 /* ---------------------------------------------------------------- barra do celular, cookie, WhatsApp */
 .hv-mobilebar { display: none; }
-body.hv-page .fab-contact { opacity: 0; pointer-events: none; transform: scale(.9); transition: opacity 240ms var(--out), transform 240ms var(--out); box-shadow: 0 6px 18px rgba(0, 0, 0, .2) !important; animation: none !important; }
-body.hv-page.hv-fab-on .fab-contact { opacity: 1; pointer-events: auto; transform: none; }
-html.mestti-cookie-open body.hv-page .fab-contact { opacity: 0; pointer-events: none; }
+/* WhatsApp no desktop visível desde o início (com o aviso de cookies aberto ele sobe; ver site.css). No celular quem cumpre esse papel é a barra inferior. */
+body.hv-page .fab-contact { box-shadow: 0 6px 18px rgba(0, 0, 0, .2) !important; animation: none !important; }
 body.hv-page .mestti-cookie-banner { left: 16px; right: auto; bottom: 16px; max-width: 380px; }
 body.hv-page .mestti-cookie-banner__inner { border-radius: var(--r-lg); box-shadow: 0 12px 32px rgba(10, 27, 46, .18); }
 
