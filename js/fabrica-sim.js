@@ -12,7 +12,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
 import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import { createFactoryFullscreen } from './factory-fullscreen.js?v=2';
+import { createFactoryFullscreen } from './factory-fullscreen.js?v=3';
 
 const root = document.querySelector('[data-factory]');
 
@@ -520,7 +520,8 @@ function setFull(on) {
         fullscreen.exit();
     }
     root.__fx?.setFull(on);
-    root.querySelector('[data-fx-full]')?.focus({ preventScroll: true });
+    // No celular não move o foco: o navegador desenharia o anel de foco num botão que ninguém escolheu.
+    if (!mobileUI) root.querySelector('[data-fx-full]')?.focus({ preventScroll: true });
     window.dispatchEvent(new CustomEvent('mestti:factory-fullscreen', { detail: { active: on } }));
     if (on && typeof window.gtag === 'function') window.gtag('event', 'home_factory_fullscreen');
 }
@@ -535,7 +536,7 @@ function select(id) {
     view.tab = 'summary';
     renderHud();
     root.__fx?.focus(id);
-    if (id) root.querySelector('.fx-drawer')?.focus({ preventScroll: true });
+    if (id && !mobileUI) root.querySelector('.fx-drawer')?.focus({ preventScroll: true });
     if (typeof window.gtag === 'function' && id) window.gtag('event', 'home_factory_select', { machine: id });
 }
 

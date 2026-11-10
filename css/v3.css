@@ -1345,6 +1345,7 @@ body.hv-page .hv-cmp h2 { margin: 0; max-width: 20ch; }
 .hv-otto-caps li { display: grid; gap: 4px; }
 .hv-otto-caps strong { font-size: 1rem; font-weight: 600; color: var(--ink); }
 .hv-otto-caps span { font-size: .94rem; line-height: 1.5; color: var(--ink-2, #4a5866); }
+.hv-otto-cap-ico { display: none; }
 @media (max-width: 480px) { .hv-otto-caps { grid-template-columns: minmax(0, 1fr); gap: 14px; } }
 
 /* Vídeo: botão embaixo do vídeo, centralizado */

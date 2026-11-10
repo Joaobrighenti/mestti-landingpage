@@ -1,6 +1,6 @@
 /* A maquete abre automaticamente quando visível, após os recursos iniciais da página. */
 (function () {
-    function mount(host, load = () => import('/js/fabrica-sim.js?v=33')) {
+    function mount(host, load = () => import('/js/fabrica-sim.js?v=34')) {
         const button = host.querySelector('[data-factory-start]');
         const deferWork = matchMedia('(pointer: coarse)').matches || navigator.connection?.saveData;
         let started = false;

@@ -218,7 +218,13 @@
     .hv-otto-copy { display: contents; }
     .hv-otto-copy > * { order: 1; }
     .hv-chat.hv-octo { order: 2; margin-top: 12px; }
-    .hv-otto-copy > .hv-actions { order: 3; }
+    /* Capacidades do Otto depois do chat: lista com ícone, título e descrição curta. */
+    .hv-otto-copy > .hv-otto-caps { order: 3; margin-top: 16px; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .hv-otto-copy > .hv-actions { order: 4; }
+    .hv-otto-caps li { grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; row-gap: 2px; align-items: start; }
+    .hv-otto-cap-ico { display: block; grid-row: span 2; box-sizing: content-box; width: 20px; height: 20px; padding: 10px; border-radius: 12px; color: var(--otto); background: rgba(107, 78, 230, .1); }
+    .hv-otto-caps strong { font-size: 1rem; line-height: 1.3; padding-top: 1px; }
+    .hv-otto-caps span { font-size: .9rem; line-height: 1.45; }
 }
 
 /* Demonstração no celular: a tela do produto fica num cartão, como num aparelho; abas maiores; arraste indicado na borda */

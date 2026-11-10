@@ -382,5 +382,10 @@ html.fx-lock, html.fx-lock body { overflow: hidden; }
 .fx .fx-cta { position: absolute; z-index: 4; bottom: 16px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: #024578; color: #fff; box-shadow: 0 6px 20px rgba(2, 69, 120, .35); font: 600 15px/1.2 'Inter', sans-serif; letter-spacing: .01em; white-space: nowrap; cursor: pointer; touch-action: manipulation; transition: transform .2s ease, background-color .2s ease; }
 .fx .fx-cta:hover { background: #035a9c; }
 .fx .fx-cta:active { transform: translateX(-50%) scale(.97); }
-.fx .fx-cta:focus-visible { outline: 3px solid #fff; outline-offset: -6px; }
 @media (prefers-reduced-motion: reduce) { .fx .fx-cta { transition: none; } }
+
+/* Foco: o anel amarelo global do site (.hv button:focus-visible) não vale na maquete.
+   Teclado no desktop vê um contorno azul discreto; em telas de toque, nenhum. */
+.fx.fx button:focus-visible { outline: 2px solid var(--fx-accent); outline-offset: 2px; box-shadow: none; }
+.fx.fx .fx-cta:focus-visible { outline: 2px solid #fff; outline-offset: -5px; box-shadow: 0 6px 20px rgba(2, 69, 120, .35); }
+@media (hover: none) { .fx.fx button:focus-visible { outline: none; } }
