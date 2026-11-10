@@ -460,9 +460,9 @@ function bindHud() {
             view.tab = target.dataset.fxTab;
             renderHud();
         } else if (target.hasAttribute('data-fx-now') || target.hasAttribute('data-fx-now-head')) {
+            // Abrir/fechar o painel não mexe na câmera: o painel só sobrepõe a cena.
             view.nowOpen = !view.nowOpen;
             renderHud();
-            fx?.frame(true);
         } else if (target.dataset.fxLayer) {
             view.layer = target.dataset.fxLayer;
             renderHud();
