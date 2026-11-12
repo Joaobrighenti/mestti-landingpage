@@ -233,6 +233,8 @@
     {"src":"^/cookies/index\\.html$","headers":{"Location":"/cookies/"},"status":308},
     {"src":"^/privacidade-site$","headers":{"Location":"/privacidade-site/"},"status":308},
     {"src":"^/privacidade-site/index\\.html$","headers":{"Location":"/privacidade-site/"},"status":308},
+    {"src":"^/manual/sensor-de-corrente$","headers":{"Location":"/manual/sensor-de-corrente/"},"status":308},
+    {"src":"^/manual/sensor-de-corrente/index\\.html$","headers":{"Location":"/manual/sensor-de-corrente/"},"status":308},
     {"handle":"filesystem"},
     {"src":"^/engenharia/$","dest":"/engenharia/index.html","check":true},
     {"src":"^/otto/$","dest":"/otto/index.html","check":true},
@@ -357,6 +359,7 @@
     {"src":"^/privacidade-site/$","dest":"/privacidade-site/index.html","check":true},
     {"src":"^/cookies$","dest":"/cookies/index.html","check":true},
     {"src":"^/cookies/$","dest":"/cookies/index.html","check":true},
+    {"src":"^/manual/sensor-de-corrente/$","dest":"/manual/sensor-de-corrente/index.html","check":true},
     {"src":"^/(?!api(?:/|$)).*$","status":404,"dest":"/404.html"}
   ],
   "git": {
