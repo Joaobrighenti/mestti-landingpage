@@ -178,39 +178,78 @@ def fita(origin=(0, 0, 0)):
     liner = liner_curl(ox - L / 2 + 0.02, oy, oz + 0.235, Wd - 0.04, L - 0.75, 1.05, 0.42)
     return [foam, liner]
 
-def sensor_box(origin=(0, 0, 0), rot_z=0.0):
-    """Caixa Mestti 90 × 60 × 35 mm com antena, USB-C à esquerda e saída de cabo à direita."""
+INK = mat('ink', (0, 0, 0))
+LOGO_PNG = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'images', 'MESTTI-logo-header-light.png')
+
+def logo(center, width):
+    """Malha plana com o formato do logotipo (um quadrado por pixel opaco do PNG, vértices
+    compartilhados para o Freestyle só desenhar a borda externa). Cor preta = tinta sólida."""
+    import bmesh
+    img = bpy.data.images.load(LOGO_PNG)
+    w, h = img.size
+    px = list(img.pixels)
+    on = [[px[(y * w + x) * 4 + 3] > 0.5 for x in range(w)] for y in range(h)]
+    k = width / w
+    cx, cy, cz = center
+    me = bpy.data.meshes.new('logo'); bm = bmesh.new(); vs = {}
+    def v(i, j):
+        if (i, j) not in vs:
+            vs[(i, j)] = bm.verts.new((cx + (i - w / 2) * k, cy, cz + (j - h / 2) * k))
+        return vs[(i, j)]
+    for y in range(h):
+        for x in range(w):
+            if on[y][x]:
+                bm.faces.new((v(x, y), v(x + 1, y), v(x + 1, y + 1), v(x, y + 1)))
+    bm.to_mesh(me); bm.free()
+    o = bpy.data.objects.new('logo', me); sc.collection.objects.link(o)
+    put(o); o.data.materials.clear(); o.data.materials.append(INK)
+    return o
+
+def sensor_box(origin=(0, 0, 0), rot_z=0.0, hl_button=False):
+    """Caixa Mestti 94 × 44 × 46 mm, impressa, sem parafusos.
+    Frente: painel rebaixado com a marca num quadro em relevo. Antena no topo, perto da ponta direita.
+    Ponta esquerda (−X): USB-C. Ponta direita (+X), vista de fora: botão de reset no alto à esquerda, luz ao lado,
+    abertura embaixo à esquerda, dois furos no meio (o cabo da pinça entra pelo de baixo)
+    e borne de parafuso à direita."""
     ox, oy, oz = origin
-    W, D, H = 9.0, 3.5, 6.0
+    W, D, H = 9.4, 4.4, 4.6
+    cz = oz + H / 2
     root = bpy.data.objects.new('sensor', None); sc.collection.objects.link(root)
     root.location = origin
     parts = []
-    body = box((W, D - 0.35, H), (ox, oy + 0.17, oz + H / 2), bev=0.45); parts.append(body)
-    lid = box((W, 0.35, H), (ox, oy - D / 2 + 0.17, oz + H / 2), bev=0.2, seg=3); parts.append(lid)
-    for sx in (-1, 1):
-        for sz in (-1, 1):
-            s = cyl(0.26, 0.08, (ox + sx * (W / 2 - 0.55), oy - D / 2 - 0.02, oz + H / 2 + sz * (H / 2 - 0.55)),
-                    rot=(math.pi / 2, 0, 0), verts=32); parts.append(s)
-            a = box((0.3, 0.03, 0.05), (s.location.x, oy - D / 2 - 0.07, s.location.z)); parts.append(a)
-            b = box((0.05, 0.03, 0.3), (s.location.x, oy - D / 2 - 0.07, s.location.z)); parts.append(b)
-    t = text('MESTTI', 1.15, (ox - 0.3, oy - D / 2 - 0.03, oz + H / 2), extrude=0.04); parts.append(t)
-    led = cyl(0.13, 0.12, (ox + W / 2 - 1.5, oy - D / 2 - 0.03, oz + H - 1.25), rot=(math.pi / 2, 0, 0), verts=24)
-    parts.append(led)
-    # antena SMA no topo à direita
-    ax = ox + W / 2 - 1.35
-    nut = cyl(0.42, 0.28, (ax, oy + 0.2, oz + H + 0.14), verts=6); parts.append(nut)
-    knurl = cyl(0.34, 0.75, (ax, oy + 0.2, oz + H + 0.65), verts=20); parts.append(knurl)
-    base = cyl(0.3, 0.9, (ax, oy + 0.2, oz + H + 1.45), verts=32, bev=0.05); parts.append(base)
-    ant = cyl(0.3, 7.4, (ax, oy + 0.2, oz + H + 5.6), verts=32, r2=0.2, bev=0.1); parts.append(ant)
-    tip = bpy.ops.mesh.primitive_uv_sphere_add(radius=0.2, location=(ax, oy + 0.2, oz + H + 9.3), segments=24, ring_count=12)
+    body = box((W, D, H), (ox, oy, cz), bev=0.28, seg=5); parts.append(body)
+    # frente: painel rebaixado
+    rec = box((W - 0.9, 0.2, H - 0.9), (ox, oy - D / 2, cz), bev=0.3, seg=4); cut(body, rec)
+    # marca no alto à direita do painel: o logotipo do site em tinta sólida
+    parts.append(logo((ox + 2.15, oy - D / 2 + 0.015, cz + 1.3), 2.9))
+    # ponta esquerda: USB-C
+    usb_o = box((0.3, 1.25, 0.8), (ox - W / 2, oy - 0.95, cz - 0.55), bev=0.08, seg=2); cut(body, usb_o)
+    usb = box((0.1, 0.95, 0.36), (ox - W / 2 + 0.12, oy - 0.95, cz - 0.55), bev=0.15, seg=4); parts.append(usb)
+    # ponta direita
+    ex = ox + W / 2
+    btn = cyl(0.22, 0.14, (ex + 0.02, oy - 0.95, cz + 1.25), rot=(0, math.pi / 2, 0), verts=32, accent=hl_button); parts.append(btn)
+    led = cyl(0.27, 0.1, (ex + 0.01, oy + 0.15, cz + 1.25), rot=(0, math.pi / 2, 0), verts=32); parts.append(led)
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=0.25, location=(ex + 0.05, oy + 0.15, cz + 1.25), segments=24, ring_count=12)
+    dome = put(bpy.context.object); dome.scale = (0.6, 1, 1); parts.append(dome)
+    opening = box((0.4, 1.05, 1.35), (ex, oy - 0.95, cz - 0.55), bev=0.06, seg=2); cut(body, opening)
+    for z in (cz + 0.25, cz - 0.85):
+        hole = cyl(0.26, 0.4, (ex, oy + 0.15, z), rot=(0, math.pi / 2, 0), verts=32); cut(body, hole)
+    term_o = box((0.4, 1.0, 1.45), (ex, oy + 1.3, cz - 0.55), bev=0.06, seg=2); cut(body, term_o)
+    term = box((0.5, 0.9, 1.3), (ex - 0.2, oy + 1.3, cz - 0.55), bev=0.05, seg=2); parts.append(term)
+    for z in (cz - 0.2, cz - 0.9):
+        sc_ = cyl(0.2, 0.06, (ex + 0.06, oy + 1.3, z), rot=(0, math.pi / 2, 0), verts=24); parts.append(sc_)
+        box((0.03, 0.3, 0.05), (ex + 0.1, oy + 1.3, z)); parts.append(bpy.context.object)
+    # antena SMA no topo, perto da ponta direita
+    ax, ay = ox + 1.9, oy + 0.3
+    nut = cyl(0.42, 0.28, (ax, ay, oz + H + 0.14), verts=6); parts.append(nut)
+    knurl = cyl(0.34, 0.75, (ax, ay, oz + H + 0.65), verts=20); parts.append(knurl)
+    base = cyl(0.3, 0.9, (ax, ay, oz + H + 1.45), verts=32, bev=0.05); parts.append(base)
+    ant = cyl(0.3, 7.4, (ax, ay, oz + H + 5.6), verts=32, r2=0.2, bev=0.1); parts.append(ant)
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=0.2, location=(ax, ay, oz + H + 9.3), segments=24, ring_count=12)
     parts.append(put(bpy.context.object))
-    # USB-C na lateral esquerda
-    usb = box((0.06, 0.95, 0.36), (ox - W / 2 - 0.02, oy, oz + 1.6), bev=0.15, seg=4); parts.append(usb)
-    # prensa-cabo à direita
-    gland = cyl(0.42, 0.45, (ox + W / 2 + 0.2, oy, oz + 1.6), rot=(0, math.pi / 2, 0), verts=32, bev=0.06); parts.append(gland)
-    parent(parts, root)
+    parent(parts + [body], root)
     root.rotation_euler.z = rot_z
-    return root, (ox + W / 2 + 0.45, oy, oz + 1.6), (ox - W / 2 - 0.05, oy, oz + 1.6)
+    return root, (ex + 0.1, oy + 0.15, cz - 0.85), (ox - W / 2, oy - 0.95, cz - 0.55)
 
 def setup(cam_loc, target, ortho=None, lens=60, hidden=True):
     r = sc.render
@@ -298,7 +337,7 @@ elif SCENE == 'clamp':
         shot(f'{f:03d}')
 elif SCENE == 'sensor':
     sensor_box((0, 0, 0))
-    setup((-14, -26, 12), (0, 0, 4.4), ortho=13.5, hidden=False); shot('000')
+    setup((-14, -26, 12), (0, 0, 4.4), ortho=14.0, hidden=False); shot('000')
 elif SCENE == 'sct':
     sct((0, 0, 0))
     tube([(0, 0, -0.4), (0.3, 0.3, -2.4), (-0.9, 0.7, -4.0), (-2.4, 0.4, -4.4)], 0.17)
@@ -316,5 +355,9 @@ elif SCENE == 'verso':
     holder = bpy.data.objects.new('tape', None); sc.collection.objects.link(holder)
     parent(tape, holder)
     holder.rotation_euler = (-math.pi / 2, 0, 0); holder.scale = (1.55, 1.55, 1.0)
-    holder.location = (0, 1.75, 3.0)
-    setup((22, 18, 9), (0, 1.0, 4.8), ortho=14.5, hidden=False); shot('000')
+    holder.location = (0, 2.25, 2.3)
+    setup((22, 18, 9), (0, 1.2, 4.0), ortho=14.5, hidden=False); shot('000')
+elif SCENE == 'ponta':
+    # ponta direita de perto: botão de reset (destaque) ao lado da luz
+    sensor_box((0, 0, 0), hl_button=True)
+    setup((24, -12, 8), (3.3, 0, 2.6), ortho=8.6, hidden=False); shot('000')

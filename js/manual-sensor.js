@@ -296,6 +296,20 @@
         });
     });
 
+    /* ---------- reset: anel enchendo em 10 s, em ciclo, enquanto visível ---------- */
+    var hold = document.querySelector('.ms-hold');
+    if (hold && 'IntersectionObserver' in window) {
+        var holdVis = false, holdT0 = 0;
+        new IntersectionObserver(function (es) { holdVis = es[0].isIntersecting; holdT0 = performance.now(); }).observe(hold);
+        (function holdTick(now) {
+            if (holdVis) {
+                var c = (now - holdT0) % 12000;              // 10 s segurando + 2 s cheio
+                hold.style.setProperty('--hp', reduce ? 1 : Math.min(1, c / 10000).toFixed(3));
+            }
+            requestAnimationFrame(holdTick);
+        })(performance.now());
+    }
+
     /* ---------- copiar o endereço ---------- */
     var copyBtn = document.querySelector('[data-copy]');
     if (copyBtn) {
