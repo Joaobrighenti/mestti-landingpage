@@ -229,7 +229,9 @@
     {"source": "/cookies", "destination": "/cookies/", "permanent": true},
     {"source": "/cookies/index.html", "destination": "/cookies/", "permanent": true},
     {"source": "/privacidade-site", "destination": "/privacidade-site/", "permanent": true},
-    {"source": "/privacidade-site/index.html", "destination": "/privacidade-site/", "permanent": true}
+    {"source": "/privacidade-site/index.html", "destination": "/privacidade-site/", "permanent": true},
+    {"source": "/manual/sensor-de-corrente", "destination": "/manual/sensor-de-corrente/", "permanent": true},
+    {"source": "/manual/sensor-de-corrente/index.html", "destination": "/manual/sensor-de-corrente/", "permanent": true}
   ],
   "rewrites": [
     {"source": "/engenharia/", "destination": "/engenharia/index.html"},
@@ -354,6 +356,7 @@
     {"source": "/privacidade-site", "destination": "/privacidade-site/index.html"},
     {"source": "/privacidade-site/", "destination": "/privacidade-site/index.html"},
     {"source": "/cookies", "destination": "/cookies/index.html"},
-    {"source": "/cookies/", "destination": "/cookies/index.html"}
+    {"source": "/cookies/", "destination": "/cookies/index.html"},
+    {"source": "/manual/sensor-de-corrente/", "destination": "/manual/sensor-de-corrente/index.html"}
   ]
 }
