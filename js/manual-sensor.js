@@ -92,6 +92,33 @@
         return run > 0 ? clamp(-r.top / run, 0, 1) : (r.top < 0 ? 1 : 0);
     }
 
+    /* ---------- pausa em cada passo: só onde o conteúdo cabe na tela ---------- */
+    // com scroll-driven animations a curva roda no CSS; o JS só decide onde há pausa
+    var cssDwell = window.CSS && CSS.supports && CSS.supports('animation-timeline: view()');
+    var dwellSteps = steps.filter(function (el) { return !el.hasAttribute('data-scrub'); });
+    function measureDwell() {
+        var room = window.innerHeight - (top ? top.offsetHeight : 0) - 48;
+        dwellSteps.forEach(function (el) {
+            el.classList.remove('is-dwell');
+            var wrap = el.querySelector('.ms-wrap');
+            var fits = !reduce && wrap.scrollHeight <= room;
+            el.classList.toggle('is-dwell', fits);
+            if (!fits) { wrap.style.removeProperty('--fo'); wrap.style.removeProperty('--dy'); }
+        });
+    }
+    measureDwell();
+    window.addEventListener('load', function () { measureDwell(); onScroll(); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { measureDwell(); onScroll(); });
+    var resizeT;
+    // no celular a barra do navegador aparece e some ao rolar e dispara resize; só a largura conta
+    var lastW = window.innerWidth;
+    window.addEventListener('resize', function () {
+        if (window.innerWidth === lastW) return;
+        lastW = window.innerWidth;
+        clearTimeout(resizeT);
+        resizeT = setTimeout(function () { measureDwell(); onScroll(); }, 150);
+    });
+
     var ticking = false;
     function frame() {
         ticking = false;
@@ -129,6 +156,25 @@
             stick.style.setProperty('--rot', (-6 + 6 * e).toFixed(2) + 'deg');
             stick.style.setProperty('--by', (6 - 6 * e).toFixed(2) + '%');
         }
+
+        // curva de velocidade: o conteúdo anda 1 − 0,45·(1 − cos 2πt) da rolagem, desacelerando até
+        // quase parar no centro e acelerando de novo. O deslocamento acumulado é D·F(t),
+        // F(t) = t − sin(2πt)/2π, que começa e termina com a mesma velocidade da página.
+        var vh = window.innerHeight;
+        if (!cssDwell) dwellSteps.forEach(function (el) {
+            if (!el.classList.contains('is-dwell')) return;
+            var r = el.getBoundingClientRect();
+            if (r.bottom < -vh || r.top > vh * 2) return;
+            var wrap = el.firstElementChild;
+            var D = el.offsetHeight - wrap.offsetHeight;
+            var L = 2 * D / .65;                  // mesma curva do CSS: 35% da velocidade no centro
+            var t = clamp((-r.top + (L - D) / 2) / L, 0, 1);
+            var off = D * (t - Math.sin(2 * Math.PI * t) / (2 * Math.PI));
+            wrap.style.setProperty('--dy', off.toFixed(1) + 'px');
+            // na saída, o passo clareia e cede lugar ao próximo
+            var out = clamp((t - .62) / .38, 0, 1);
+            wrap.style.setProperty('--fo', (1 - out * out * .7).toFixed(3));
+        });
 
         // passo atual: o último cujo topo passou de 45% da tela
         var n = 0, line = window.innerHeight * .45;

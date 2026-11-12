@@ -19,7 +19,9 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--top) + 16px); -webkit-text-size-adjust: 100%; }
+/* overflow-anchor: o conteúdo dos passos é deslocado de propósito durante a rolagem; com o anchoring
+   ligado, o Chrome "corrige" a rolagem a cada deslocamento e a página dá trancos. */
+html { overflow-anchor: none; scroll-behavior: smooth; scroll-padding-top: calc(var(--top) + 16px); -webkit-text-size-adjust: 100%; }
 body {
     margin: 0;
     background: var(--paper);
@@ -68,7 +70,7 @@ strong { font-weight: 600; }
 .ms-progress span { display: block; height: 100%; background: var(--acc); transform-origin: 0 50%; transform: scaleX(0); }
 
 /* ---------- trilho de passos (desktop largo) ---------- */
-.ms-rail { position: fixed; left: max(16px, calc((100vw - 1120px) / 2 - 144px)); top: 50%; transform: translateY(-50%); z-index: 10; display: none; }
+.ms-rail { position: fixed; left: calc((100vw - 1120px) / 2 - 176px); top: 50%; transform: translateY(-50%); z-index: 10; display: none; }
 .ms-rail ol { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 1px solid var(--line); }
 .ms-rail a {
     display: flex; gap: 10px; align-items: baseline; padding: 5px 0; font-size: 13px; color: var(--soft); text-decoration: none;
@@ -84,7 +86,8 @@ strong { font-weight: 600; }
 .ms-rail a.is-now::before { transform: none; }
 .ms-rail a.is-done { color: var(--muted); }
 .ms-rail.is-on { display: block; animation: ms-fade .4s var(--ease); }
-@media (max-width: 1379px) { .ms-rail.is-on { display: none; } }
+/* só aparece com pelo menos 72 px livres entre o trilho e o conteúdo */
+@media (max-width: 1519px) { .ms-rail.is-on { display: none; } }
 
 /* ---------- textos comuns ---------- */
 .ms-kicker { font-family: var(--mono); font-size: 13px; letter-spacing: .04em; color: var(--acc); margin-bottom: 14px; }
@@ -469,3 +472,75 @@ body[data-os="and"] .ms-phone::before { width: 12px; height: 12px; margin-left: 
     display: flex; flex-direction: column; gap: 2px;
 }
 .ad-note b { font-size: 13px; color: #111; font-weight: 600; }
+
+/* ---------- pausa em cada passo ----------
+   Quando o passo cabe na tela, a seção fica mais alta que a tela (--dwell) e o JS desloca o conteúdo
+   por uma curva: ele desacelera até quase parar no centro e volta a acelerar. Sem parada brusca. */
+.ms-step.is-dwell { padding: 0; height: calc(100svh + var(--dwell, 60svh)); }
+.ms-step.is-dwell > .ms-wrap {
+    height: 100svh; display: flex; flex-direction: column; justify-content: center;
+    padding-top: var(--top);
+    opacity: var(--fo, 1); transform: translate3d(0, var(--dy, 0px), 0); will-change: opacity, transform;
+}
+.ms-step.is-dwell > .ms-wrap.ms-step-grid { display: grid; align-content: center; }
+@media (prefers-reduced-motion: reduce) {
+    .ms-step.is-dwell { height: auto; padding: 80px 0; }
+    .ms-step.is-dwell > .ms-wrap { position: static; height: auto; opacity: 1; transform: none; }
+}
+
+/* Curva no compositor (Chrome, Edge, Safari 26+): sem atraso de um quadro em relação à rolagem.
+   Velocidade do conteúdo = 1 − 0.325·(1 − cos 2πt): mínimo de 35% no centro, nunca para.
+   Gerado por docs/manual-sensor/curva.py (D = 60svh, janela = 184.6svh). */
+@supports (animation-timeline: view()) {
+    .ms-step.is-dwell { view-timeline-name: --passo; }
+    .ms-step.is-dwell > .ms-wrap {
+        transform: none; opacity: 1;
+        animation: ms-dwell linear both;
+        animation-timeline: --passo;
+        animation-range: cover 37.69svh cover 222.31svh;
+    }
+}
+@keyframes ms-dwell {
+    0.0% { transform: translate3d(0, 0.000svh, 0); opacity: 1.000; }
+    2.5% { transform: translate3d(0, 0.006svh, 0); opacity: 1.000; }
+    5.0% { transform: translate3d(0, 0.049svh, 0); opacity: 1.000; }
+    7.5% { transform: translate3d(0, 0.165svh, 0); opacity: 1.000; }
+    10.0% { transform: translate3d(0, 0.387svh, 0); opacity: 1.000; }
+    12.5% { transform: translate3d(0, 0.748svh, 0); opacity: 1.000; }
+    15.0% { transform: translate3d(0, 1.274svh, 0); opacity: 1.000; }
+    17.5% { transform: translate3d(0, 1.992svh, 0); opacity: 1.000; }
+    20.0% { transform: translate3d(0, 2.918svh, 0); opacity: 1.000; }
+    22.5% { transform: translate3d(0, 4.068svh, 0); opacity: 1.000; }
+    25.0% { transform: translate3d(0, 5.451svh, 0); opacity: 1.000; }
+    27.5% { transform: translate3d(0, 7.068svh, 0); opacity: 1.000; }
+    30.0% { transform: translate3d(0, 8.918svh, 0); opacity: 1.000; }
+    32.5% { transform: translate3d(0, 10.992svh, 0); opacity: 1.000; }
+    35.0% { transform: translate3d(0, 13.274svh, 0); opacity: 1.000; }
+    37.5% { transform: translate3d(0, 15.748svh, 0); opacity: 1.000; }
+    40.0% { transform: translate3d(0, 18.387svh, 0); opacity: 1.000; }
+    42.5% { transform: translate3d(0, 21.165svh, 0); opacity: 1.000; }
+    45.0% { transform: translate3d(0, 24.049svh, 0); opacity: 1.000; }
+    47.5% { transform: translate3d(0, 27.006svh, 0); opacity: 1.000; }
+    50.0% { transform: translate3d(0, 30.000svh, 0); opacity: 1.000; }
+    52.5% { transform: translate3d(0, 32.994svh, 0); opacity: 1.000; }
+    55.0% { transform: translate3d(0, 35.951svh, 0); opacity: 1.000; }
+    57.5% { transform: translate3d(0, 38.835svh, 0); opacity: 1.000; }
+    60.0% { transform: translate3d(0, 41.613svh, 0); opacity: 1.000; }
+    62.5% { transform: translate3d(0, 44.252svh, 0); opacity: 1.000; }
+    65.0% { transform: translate3d(0, 46.726svh, 0); opacity: 0.996; }
+    67.5% { transform: translate3d(0, 49.008svh, 0); opacity: 0.985; }
+    70.0% { transform: translate3d(0, 51.082svh, 0); opacity: 0.969; }
+    72.5% { transform: translate3d(0, 52.932svh, 0); opacity: 0.947; }
+    75.0% { transform: translate3d(0, 54.549svh, 0); opacity: 0.918; }
+    77.5% { transform: translate3d(0, 55.932svh, 0); opacity: 0.884; }
+    80.0% { transform: translate3d(0, 57.082svh, 0); opacity: 0.843; }
+    82.5% { transform: translate3d(0, 58.008svh, 0); opacity: 0.796; }
+    85.0% { transform: translate3d(0, 58.726svh, 0); opacity: 0.744; }
+    87.5% { transform: translate3d(0, 59.252svh, 0); opacity: 0.685; }
+    90.0% { transform: translate3d(0, 59.613svh, 0); opacity: 0.620; }
+    92.5% { transform: translate3d(0, 59.835svh, 0); opacity: 0.549; }
+    95.0% { transform: translate3d(0, 59.951svh, 0); opacity: 0.472; }
+    97.5% { transform: translate3d(0, 59.994svh, 0); opacity: 0.389; }
+    100.0% { transform: translate3d(0, 60.000svh, 0); opacity: 0.300; }
+}
+@media (prefers-reduced-motion: reduce) { .ms-step.is-dwell > .ms-wrap { animation: none; } }
