@@ -147,10 +147,13 @@ function normalizePathname(pathname) {
 function scrollToHash(hash) {
     const target = document.querySelector(hash);
     if (!target) return;
-    const headerOffset = 80;
+    const headerOffset = target.closest('[data-scroll-margin]')
+        ? parseFloat(getComputedStyle(target).scrollMarginTop) || 80
+        : 80;
     const elementPosition = target.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+    window.scrollTo({ top: offsetPosition, behavior });
 }
 
 function stripHashFromAddressBar() {
