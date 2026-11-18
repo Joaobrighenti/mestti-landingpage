@@ -1,4 +1,4 @@
-<!--@page {"dict":"js/i18n/representantes.js","localize":false} -->
+<!--@page {"localize":false} -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -27,10 +27,10 @@
     <link rel="stylesheet" href="/css/v2.css?v=2">
     <link rel="stylesheet" href="/css/v3.css?v=99">
     <link rel="preload" href="/fonts/RobotoCondensed-Bold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/css/representantes.css?v=13">
+    <link rel="stylesheet" href="/css/representantes.css?v=15">
 </head>
 
-<body class="hv-page" data-page="representantes">
+<body class="hv-page" data-page="representantes" data-content-lang="pt" data-native-anchors>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <div class="nav-overlay" id="navOverlay"></div>
     <!-- @header -->
@@ -38,13 +38,13 @@
         <section class="reps-hero" aria-labelledby="reps-title">
             <div class="hv-wrap reps-hero-grid">
                 <div class="reps-intro">
-                    <h1 id="reps-title">Representantes<br>Mestti</h1>
-                    <p>A Mestti é um sistema de execução da produção (MES). Sequencia operações por máquina, contabiliza a produção com sensores próprios e mostra o tempo perdido com paradas e setups.</p>
+                    <h1 id="reps-title">Indique a Mestti a seus clientes</h1>
+                    <p>Se você presta consultoria, representa equipamentos ou desenvolve projetos com indústrias, pode indicar a Mestti e receber comissão recorrente pelos clientes vinculados à sua carteira.</p>
                     <div class="reps-actions">
                         <a class="hv-btn hv-btn--primary" href="#indicacao">Indicar uma indústria</a>
-                        <a class="reps-link" href="#quando-indicar">Ver onde faz sentido indicar</a>
+                        <a class="reps-link" href="#quando-indicar">Ver aplicações na indústria</a>
                     </div>
-                    <p class="reps-intro-partner">Você apresenta o contato. A Mestti avalia a aplicação com a fábrica. Indicações que se tornam clientes ativos da sua carteira podem gerar comissão recorrente.</p>
+                    <p class="reps-intro-partner">A Mestti é um sistema de execução da produção (MES). O PCP programa as ordens por máquina e acompanha a execução com sensores próprios e registros dos operadores. Você apresenta a fábrica e a Mestti avalia a aplicação com ela.</p>
                 </div>
                 <figure class="reps-hero-screen">
                     <a class="reps-image" href="/images/v2/sensor-maquina.webp" target="_blank" rel="noopener" aria-label="Ampliar a foto do coletor Mestti instalado">
@@ -60,18 +60,34 @@
 
         <nav class="reps-index" aria-label="Seções da área de representantes">
             <div class="hv-wrap">
-                <a href="#como-funciona">Como funciona</a>
-                <a href="#telas">Telas</a>
-                <a href="#sensores">Sensores</a>
-                <a href="#instalacao">Instalação</a>
-                <a href="#gestao-do-turno">Paradas e gargalos</a>
-                <a href="#quando-indicar">Quando indicar</a>
-                <a href="#diferenciais">Diferenciais</a>
-                <a href="#indicacao">Indicação</a>
-                <a href="#materiais">Materiais</a>
+                <a href="#quando-indicar">Aplicações</a>
+                <a href="#como-funciona">Produto</a>
+                <a href="#diferenciais">Comparação</a>
+                <a href="#indicacao">Parceria</a>
             </div>
+            <div class="reps-reading-progress" aria-hidden="true"></div>
         </nav>
-        <div class="reps-reading-progress" aria-hidden="true"></div>
+
+        <section class="hv-section reps-section" id="quando-indicar" aria-labelledby="reps-fit-title">
+            <div class="hv-wrap">
+                <h2 id="reps-fit-title">Processos industriais que a Mestti atende</h2>
+                <p class="reps-section-lead">Observe como a fábrica monta a fila de produção, registra o que saiu e confere a qualidade. Uma indicação pode começar por uma máquina, uma linha ou um posto manual.</p>
+                <div class="reps-scenarios">
+                    <article class="reps-scenario">
+                        <h3>Corte, usinagem e montagem</h3>
+                        <p>Em fábricas de móveis e de componentes metálicos, a mesma ordem pode passar por máquinas e bancadas. O PCP programa a fila de cada recurso e acompanha o avanço por operação.</p>
+                    </article>
+                    <article class="reps-scenario">
+                        <h3>Injeção, estampagem e embalagem</h3>
+                        <p>Quando há um sinal por peça ou ciclo, o coletor mede o volume. O supervisor compara o realizado com a meta e consulta as paradas registradas no turno.</p>
+                    </article>
+                    <article class="reps-scenario">
+                        <h3>Montagem em bancada e inspeção</h3>
+                        <p>Em linhas de montagem, o operador registra a execução e a quantidade no tablet. Na inspeção de primeira peça ou no controle dimensional, o checklist guarda as medidas, as fotos e a revisão usada.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
         <section class="hv-section reps-section" id="como-funciona" aria-labelledby="reps-flow-title">
             <div class="hv-wrap">
@@ -103,7 +119,7 @@
                                 <img src="/representantes/materiais/previas/sequenciamento.webp" width="1080" height="660" alt="Gantt com operações de corte, furação e montagem distribuídas nas linhas das máquinas." loading="lazy" decoding="async">
                             </a>
                             <figcaption>
-                                <strong>Sequenciamento por máquina</strong>
+                                <div class="reps-screen-note"><strong>A fila de cada máquina</strong><p>Localize a ordem 3071 no corte e depois na bancada. As barras mostram quando cada recurso está reservado para o mesmo perfil estrutural.</p></div>
                                 <a class="reps-link" href="/representantes/materiais/sequenciamento.png" download aria-label="Baixar tela de sequenciamento em PNG">Baixar PNG</a>
                             </figcaption>
                         </figure>
@@ -112,16 +128,16 @@
                                 <img src="/representantes/materiais/previas/apontamento.webp" width="1080" height="628" alt="Tela de apontamento na bancada de montagem com fila de operações e quantidade apontada por ordem." loading="lazy" decoding="async">
                             </a>
                             <figcaption>
-                                <strong>Apontamento em bancada</strong>
+                                <div class="reps-screen-note"><strong>O saldo de uma operação manual</strong><p>Na Bancada 03, o operador já registrou 173 das 197 unidades da ordem 3080. As próximas ordens continuam visíveis enquanto ele trabalha.</p></div>
                                 <a class="reps-link" href="/representantes/materiais/apontamento.png" download aria-label="Baixar tela de apontamento em PNG">Baixar PNG</a>
                             </figcaption>
                         </figure>
                         <figure data-screen-name="Monitoramento">
                             <a class="reps-image" href="/representantes/materiais/monitoramento.png" target="_blank" rel="noopener" aria-label="Ampliar a tela de monitoramento">
-                                <img src="/representantes/materiais/previas/monitoramento.webp" width="1080" height="660" alt="Painel de monitoramento com produção em metros e peças, estado de cada máquina e histórico do turno." loading="lazy" decoding="async">
+                                <img src="/representantes/materiais/previas/monitoramento.webp" width="1080" height="660" alt="Painel de monitoramento com volume produzido, estado de cada máquina e histórico do turno." loading="lazy" decoding="async">
                             </a>
                             <figcaption>
-                                <strong>Monitoramento da produção</strong>
+                                <div class="reps-screen-note"><strong>Uma parada e um setup no mesmo turno</strong><p>O Centro CNC 01 está parado. A Dobra 01 está em preparação. O gestor consegue distinguir onde investigar uma interrupção e onde acompanhar a troca.</p></div>
                                 <a class="reps-link" href="/representantes/materiais/monitoramento.png" download aria-label="Baixar tela de monitoramento em PNG">Baixar PNG</a>
                             </figcaption>
                         </figure>
@@ -130,7 +146,7 @@
                                 <img src="/representantes/materiais/previas/qualidade.webp" width="1080" height="660" alt="Quadro de inspeções com situação, setor, máquina, quantidade de amostras e revisão do checklist." loading="lazy" decoding="async">
                             </a>
                             <figcaption>
-                                <strong>Inspeções de qualidade</strong>
+                                <div class="reps-screen-note"><strong>O que ainda depende da qualidade</strong><p>Na Prensa 02 há uma liberação de primeira peça pendente e outra concluída. Cada cartão identifica a revisão do checklist e as amostras coletadas.</p></div>
                                 <a class="reps-link" href="/representantes/materiais/qualidade.png" download aria-label="Baixar tela de inspeções de qualidade em PNG">Baixar PNG</a>
                             </figcaption>
                         </figure>
@@ -154,10 +170,6 @@
                             <p>A pinça de corrente detecta atividade elétrica para acompanhar períodos de funcionamento e parada. A quantidade produzida exige uma leitura de produção ou apontamento do operador.</p>
                         </details>
                         <details name="reps-leituras">
-                            <summary>Metragem</summary>
-                            <p>Quando a fábrica mede produção em metros, o sensor registra o comprimento processado.</p>
-                        </details>
-                        <details name="reps-leituras">
                             <summary>Postos sem sensor</summary>
                             <p>Em uma bancada de montagem, o operador registra a execução e a quantidade no tablet. Esses apontamentos entram na mesma base usada pelas máquinas com sensor.</p>
                         </details>
@@ -179,27 +191,33 @@
 
         <section class="hv-section reps-section reps-install" id="instalacao" aria-labelledby="reps-install-title">
             <div class="hv-wrap">
-                <h2 id="reps-install-title">Instalação dos sensores em 1 dia</h2>
-                <p class="reps-section-lead">Com os pontos de leitura e a rede definidos, a instalação cabe em um dia. O coletor lê o sinal da máquina sem alterar seu comando. A configuração do Wi-Fi é feita pelo celular.</p>
+                <h2 id="reps-install-title">Instalação dos sensores</h2>
+                <p class="reps-section-lead">A Mestti confirma os pontos de leitura e a rede com a fábrica. Com o kit pronto e o acesso às máquinas liberado, a instalação dos pontos acordados pode ser feita em um dia. O prazo é confirmado conforme a quantidade de pontos e as condições da planta.</p>
                 <div class="reps-install-grid" data-install-guide>
+                    <nav class="reps-install-dial" aria-label="Etapas da instalação">
+                        <a href="#instalacao-kit">Montagem</a>
+                        <a href="#instalacao-wifi">Wi-Fi</a>
+                        <a href="#instalacao-vinculo">Vínculo</a>
+                    </nav>
                     <ol class="reps-install-steps">
-                        <li id="instalacao-kit" data-install-step="montagem">
+                        <li id="instalacao-kit" data-install-step="montagem" tabindex="-1">
                             <div class="reps-install-copy">
                                 <h3>Instale o kit de leitura</h3>
                                 <p>A equipe escolhe o sensor conforme o que precisa medir. No kit de corrente, a pinça faz a leitura sem cortar o condutor e sem depender do CLP.</p>
                             </div>
                             <div class="reps-install-scene" data-install-scene="montagem" aria-hidden="true">
                                 <img class="reps-install-kit" src="/images/manual/sensor-de-corrente/giro-v2/012.webp" width="720" height="720" alt="" loading="lazy" decoding="async">
+                                <p data-kit-fallback hidden>Imagem do kit indisponível.</p>
                             </div>
                         </li>
-                        <li id="instalacao-wifi" data-install-step="wifi">
+                        <li id="instalacao-wifi" data-install-step="wifi" tabindex="-1">
                             <div class="reps-install-copy">
                                 <h3>Configure o Wi-Fi pelo celular</h3>
                                 <p>Conecte o celular à rede temporária <strong>Mestti-Config</strong> do sensor e abra o portal em <code>192.168.4.1</code>. Escolha a rede de 2,4 GHz da fábrica. O sensor testa a conexão antes de salvar.</p>
                             </div>
                             <div class="reps-install-scene" data-install-scene="wifi" aria-hidden="true">
                                 <div class="reps-device">
-                                    <span class="reps-device-url">192.168.4.1</span>
+                                    <span class="reps-device-url">Ilustração · Portal do sensor</span>
                                     <strong>Conecte seu sensor</strong>
                                     <span class="reps-device-field"><small>Rede Wi-Fi</small>Produção · 2,4 GHz</span>
                                     <span class="reps-device-field"><small>Senha do Wi-Fi</small>••••••••</span>
@@ -207,7 +225,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li id="instalacao-vinculo" data-install-step="vinculo">
+                        <li id="instalacao-vinculo" data-install-step="vinculo" tabindex="-1">
                             <div class="reps-install-copy">
                                 <h3>Vincule o sensor à máquina</h3>
                                 <p>Em <strong>Cadastros › Máquinas</strong>, selecione o ID do sensor no campo IoT. Depois, confira a leitura no Monitoramento.</p>
@@ -215,7 +233,7 @@
                             </div>
                             <div class="reps-install-scene" data-install-scene="vinculo" aria-hidden="true">
                                 <div class="reps-device reps-device--app">
-                                    <span class="reps-device-url">Cadastros › Máquinas</span>
+                                    <span class="reps-device-url">Ilustração · Cadastro da máquina</span>
                                     <strong>Integração digital</strong>
                                     <span class="reps-device-field"><small>IoT</small>26.11.04.07 <span class="reps-device-status">Ativo</span></span>
                                     <span class="reps-device-action">Atualizar</span>
@@ -224,11 +242,6 @@
                         </li>
                     </ol>
                     <div class="reps-install-visual">
-                        <nav class="reps-install-dial" aria-label="Etapas da instalação">
-                            <a href="#instalacao-kit">Kit</a>
-                            <a href="#instalacao-wifi">Wi-Fi</a>
-                            <a href="#instalacao-vinculo">Vínculo</a>
-                        </nav>
                         <div class="reps-install-stage" aria-hidden="true"></div>
                         <div class="reps-install-progress" aria-hidden="true"></div>
                     </div>
@@ -262,77 +275,41 @@
             </div>
         </section>
 
-        <section class="hv-section reps-section" id="quando-indicar" aria-labelledby="reps-fit-title">
-            <div class="hv-wrap">
-                <h2 id="reps-fit-title">Indústrias que vale indicar</h2>
-                <p class="reps-section-lead">Vale indicar quando a equipe precisa saber por que as ordens atrasam, onde o turno perde tempo ou quais inspeções ainda estão pendentes.</p>
-                <div class="reps-scenarios">
-                    <article class="reps-scenario">
-                        <h3>Madeira, móveis e metalmecânica</h3>
-                        <p>Ordens passam por corte, furação, usinagem e montagem. O PCP programa a sequência e acompanha quais operações já começaram e quais ainda estão na fila.</p>
-                    </article>
-                    <article class="reps-scenario">
-                        <h3>Plásticos, estampagem e embalagem</h3>
-                        <p>A contagem permite comparar o volume com a meta. O histórico mostra quanto tempo foi perdido em paradas, como falta de material ou espera por ajuste.</p>
-                    </article>
-                    <article class="reps-scenario">
-                        <h3>Montagem em bancada e inspeção de qualidade</h3>
-                        <p>O tablet registra o avanço da montagem. Na inspeção de primeira peça ou no controle dimensional, o checklist guarda medidas, fotos e a revisão usada.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
         <section class="hv-section reps-section reps-section--surface" id="diferenciais" aria-labelledby="reps-diff-title">
             <div class="hv-wrap reps-comparison-layout">
                 <div class="reps-comparison-intro">
                     <h2 id="reps-diff-title">O que comparar com outro MES</h2>
-                    <p class="reps-section-lead">Use uma máquina e uma ordem reais na demonstração. Confira quais recursos estão no escopo e o que o fornecedor precisa instalar, importar ou integrar para começar.</p>
+                    <p class="reps-section-lead">Peça que cada fornecedor acompanhe a mesma ordem na demonstração. Confira onde a fila é calculada, como o avanço chega ao sistema e quais dados precisam passar pelo ERP.</p>
                 </div>
                 <div class="reps-comparison-grid">
                     <article>
                         <h3>Sequenciamento no próprio MES</h3>
-                        <p>O PCP monta a fila por máquina com capacidade, turnos, setup e dependências entre operações. Compare se o cálculo da fila já faz parte do MES ou se precisa de outro módulo.</p>
+                        <p>A Mestti calcula início e término das operações considerando capacidade, turnos, setup e dependências. Na comparação, confirme se esse cálculo está incluído ou requer um módulo adicional de planejamento.</p>
                     </article>
                     <article>
                         <h3>Coleta sem alterar o comando da máquina</h3>
-                        <p>Os sensores próprios leem sinais físicos em máquinas compatíveis, inclusive sem CLP. Na contagem automática, o sensor agrupa os pulsos em janelas de cerca de <strong>4 segundos</strong>. A rede e o processamento também influenciam o tempo até a tela.</p>
+                        <p>Os sensores próprios leem sinais físicos de máquinas compatíveis, inclusive sem CLP. Na avaliação técnica, a Mestti identifica o ponto de leitura e o que ele permite medir.</p>
                     </article>
                     <article>
                         <h3>Fábrica em 3D</h3>
-                        <p>O mapa mostra onde as máquinas estão e o estado de cada uma no layout da planta. A equipe localiza uma parada sem precisar procurar o equipamento numa lista.</p>
+                        <p>Abra a planta em 3D e localize uma máquina em setup. Confira se a pessoa que responde pelo turno consegue identificar o equipamento e seu estado diretamente no layout.</p>
                     </article>
                     <article>
                         <h3>Apontamento manual na mesma ordem</h3>
-                        <p>Em uma interface simples no navegador, o operador vê a fila, inicia a operação e lança a quantidade no tablet. O PCP acompanha o avanço da ordem com os registros manuais e os dos sensores.</p>
+                        <p>Peça a um operador que abra a fila no tablet e registre uma quantidade. Confira no PCP se esse lançamento aparece na operação correta, junto das etapas que têm coleta automática.</p>
                     </article>
                     <article>
                         <h3>ERP do cliente, Power BI e Excel</h3>
-                        <p>Integramos com o ERP do cliente e desenvolvemos integrações personalizadas conforme o fluxo da fábrica. A equipe pode conectar os dados disponíveis ao Power BI e exportar relatórios para Excel.</p>
+                        <p>A Mestti integra com o ERP do cliente e desenvolve integrações sob medida. Defina quais ordens entram e quais dados devem voltar ao ERP. Para análise, confira os campos disponíveis no Power BI e peça uma exportação para Excel.</p>
                     </article>
                     <article>
-                        <h3>Importação inicial em 1 dia</h3>
-                        <p>Preencha as planilhas-modelo e valide o arquivo antes de importar. Com os dados prontos, a carga inicial dos cadastros pode ser feita em 1 dia.</p>
+                        <h3>Importação dos cadastros</h3>
+                        <p>Com as planilhas-modelo preenchidas e validadas, a carga inicial pode ser feita em um dia, conforme o volume e os cadastros acordados.</p>
                     </article>
                     <article class="reps-otto">
                         <h3>Análise com o Otto</h3>
                         <p>O assistente de IA da Mestti consulta dados de produção, ordens em risco e inspeções e ajuda a simular mudanças na programação. Para executar uma alteração proposta, o sistema exige aprovação de um usuário autorizado.</p>
                     </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="hv-section reps-section reps-indication" id="indicacao" aria-labelledby="reps-referral-title">
-            <div class="hv-wrap reps-referral-grid">
-                <div>
-                    <h2 id="reps-referral-title">Tem uma indústria em mente?</h2>
-                    <p>Apresente o contato e conte o que a fábrica quer resolver. A equipe Mestti conversa com a indústria e avalia a aplicação com ela.</p>
-                    <a class="hv-btn hv-btn--primary" href="https://wa.me/5543991095035?text=Ol%C3%A1%21%20Quero%20indicar%20uma%20ind%C3%BAstria%20para%20a%20Mestti.%0A%0AEmpresa%20e%20cidade%3A%0APessoa%20de%20contato%3A%0AO%20que%20a%20f%C3%A1brica%20quer%20resolver%3A">Indicar pelo WhatsApp</a>
-                </div>
-                <div id="comissionamento" class="reps-commission">
-                    <h3>Como é paga a comissão</h3>
-                    <p>Quando a empresa indicada se torna cliente ativo vinculado à sua carteira, as mensalidades comissionáveis entram na apuração mensal. Cada faixa se aplica à parcela correspondente da carteira. O pagamento acompanha os recebimentos e as condições do contrato.</p>
-                    <p>Implantação, equipamento e serviços avulsos só entram quando há acordo formal.</p>
                 </div>
             </div>
         </section>
@@ -360,6 +337,22 @@
                 </div>
             </div>
         </section>
+
+        <section class="hv-section reps-section reps-indication" id="indicacao" aria-labelledby="reps-referral-title">
+            <div class="hv-wrap reps-referral-grid">
+                <div>
+                    <h2 id="reps-referral-title">Como registrar a indicação</h2>
+                    <p>Envie seu nome, a indústria, o contato e o motivo da indicação. Na mesma conversa, peça a confirmação de recebimento e combine o retorno. Se a empresa já estiver em negociação, confira com a Mestti a quem a oportunidade será atribuída antes de fazer a apresentação.</p>
+                    <a class="hv-btn hv-btn--primary" href="https://wa.me/5543991095035?text=Ol%C3%A1%21%20Quero%20registrar%20uma%20indica%C3%A7%C3%A3o%20para%20a%20Mestti.%0A%0AMeu%20nome%20e%20empresa%3A%0AInd%C3%BAstria%20indicada%20e%20cidade%3A%0APessoa%20de%20contato%20e%20canal%3A%0AO%20que%20a%20f%C3%A1brica%20quer%20resolver%3A%0A%0APode%20confirmar%20o%20recebimento%20e%20me%20orientar%20sobre%20o%20v%C3%ADnculo%20desta%20indica%C3%A7%C3%A3o%20e%20o%20pr%C3%B3ximo%20retorno%3F">Preparar indicação no WhatsApp</a>
+                </div>
+                <div id="comissionamento" class="reps-commission">
+                    <h3>Como é paga a comissão</h3>
+                    <p>A Mestti registra o vínculo conforme os critérios acordados com você. Quando o cliente começa a gerar mensalidades comissionáveis, elas passam a compor sua carteira. A apuração é mensal, e cada faixa se aplica à parcela correspondente da soma das mensalidades.</p>
+                    <p>Você recebe um demonstrativo com a base de cálculo, a comissão e as pendências. O pagamento acompanha os recebimentos dos clientes. Implantação, equipamentos e serviços avulsos dependem de acordo específico.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
     <!-- @footer -->
     <!-- @modal -->
@@ -368,8 +361,8 @@
     <script defer src="/js/form-options.js?v=4"></script>
     <script defer src="/js/meta-consent.js?v=11"></script>
     <script defer src="/js/google-consent.js?v=3"></script>
-    <script defer src="/js/script.js?v=47"></script>
-    <script defer src="/js/representantes.js?v=4"></script>
+    <script defer src="/js/script.js?v=48"></script>
+    <script defer src="/js/representantes.js?v=6"></script>
     <script defer src="/js/conversational-form.js?v=18"></script>
 </body>
 </html>

@@ -205,7 +205,7 @@ document.addEventListener('click', function (e) {
     }
 
     const hashLink = e.target.closest('a[href^="#"]');
-    if (hashLink) {
+    if (hashLink && !document.body.hasAttribute('data-native-anchors')) {
         const href = hashLink.getAttribute('href');
         if (!href || href === '#') return;
         const target = document.querySelector(href);
@@ -244,7 +244,7 @@ function initMesttiDeferredScroll() {
         }
     }
 
-    if (window.location.hash) {
+    if (window.location.hash && !document.body.hasAttribute('data-native-anchors')) {
         const hash = window.location.hash;
         const target = document.querySelector(hash);
         if (!target) return;

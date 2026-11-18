@@ -47,9 +47,15 @@
         let next;
         switch (event.key) {
             case 'ArrowDown':
-            case 'ArrowRight': next = (index + 1) % items.length; break;
+            case 'ArrowRight':
+                if (event.key !== (horizontalTabs.matches ? 'ArrowRight' : 'ArrowDown')) return;
+                next = (index + 1) % items.length;
+                break;
             case 'ArrowUp':
-            case 'ArrowLeft': next = (index + items.length - 1) % items.length; break;
+            case 'ArrowLeft':
+                if (event.key !== (horizontalTabs.matches ? 'ArrowLeft' : 'ArrowUp')) return;
+                next = (index + items.length - 1) % items.length;
+                break;
             case 'Home': next = 0; break;
             case 'End': next = items.length - 1; break;
             default: return;
@@ -59,20 +65,33 @@
         items[next].tab.focus();
     });
 
-    selectScreen(screens.findIndex(screen => screen.dataset.screenName === 'Monitoramento'));
+    selectScreen(Math.max(0, screens.findIndex(screen => screen.dataset.screenName === 'Monitoramento')));
     gallery.dataset.galleryReady = '';
 
     const guide = document.querySelector('[data-install-guide]');
+    const visual = guide.querySelector('.reps-install-visual');
     const stage = guide.querySelector('.reps-install-stage');
-    const dial = Array.from(guide.querySelectorAll('.reps-install-dial a'));
-    const progressBar = document.querySelector('.reps-reading-progress');
-    const chapters = Array.from(document.querySelectorAll('.reps-index a')).map(link => ({
+    const dialNav = guide.querySelector('.reps-install-dial');
+    const dial = Array.from(dialNav.querySelectorAll('a'));
+    const chapterNav = document.querySelector('.reps-index');
+    const progressBar = chapterNav.querySelector('.reps-reading-progress');
+    const chapters = Array.from(chapterNav.querySelectorAll('a')).map(link => ({
         link,
         target: document.getElementById(link.hash.slice(1))
     }));
     const steps = Array.from(guide.querySelectorAll('[data-install-step]'));
     const scenes = steps.map(step => step.querySelector('[data-install-scene]'));
     const kit = guide.querySelector('.reps-install-kit');
+    const kitFallback = guide.querySelector('[data-kit-fallback]');
+    function setKitAvailable(available) {
+        // O próximo quadro precisa carregar mesmo enquanto a imagem está oculta.
+        if (!available) kit.loading = 'eager';
+        kit.hidden = !available;
+        kitFallback.hidden = available;
+    }
+    kit.addEventListener('error', () => setKitAvailable(false));
+    kit.addEventListener('load', () => setKitAvailable(true));
+    if (kit.complete && !kit.naturalWidth) setKitAvailable(false);
     const desktopMotion = matchMedia('(min-width: 850px) and (min-height: 680px) and (prefers-reduced-motion: no-preference)');
     const originalKit = kit.getAttribute('src');
     const frames = Array.from({ length: 12 }, (_, index) => String(index * 3).padStart(3, '0'));
@@ -99,7 +118,7 @@
     function update() {
         scheduled = false;
         const height = window.innerHeight;
-        const chapterLine = height * .26;
+        const chapterLine = chapterNav.getBoundingClientRect().bottom + 24;
         const nextChapter = chapters.findLast(({ target }) => target.getBoundingClientRect().top <= chapterLine);
         const end = document.documentElement.scrollHeight - height;
         const readingProgress = end > 0 ? clamp(window.scrollY / end) : 0;
@@ -109,16 +128,14 @@
             nextChapter?.link.setAttribute('aria-current', 'location');
             chapter = nextChapter;
         }
-        if (!desktopMotion.matches) return;
         const bounds = guide.getBoundingClientRect();
         if (bounds.top > height + 280 || bounds.bottom < 0) return;
-        loadRotation();
 
-        const line = height * .48;
+        const line = desktopMotion.matches
+            ? Math.min(height * .48, chapterLine + 160)
+            : chapterLine + dialNav.offsetHeight;
         const rects = steps.map(step => step.getBoundingClientRect());
         const active = Math.max(0, rects.findLastIndex(rect => rect.top <= line));
-        const progress = clamp((line - rects[0].top) / (bounds.bottom - bounds.top));
-        guide.style.setProperty('--install-progress', progress);
 
         if (current !== active) {
             steps[current]?.removeAttribute('aria-current');
@@ -131,6 +148,10 @@
             current = active;
         }
 
+        if (!desktopMotion.matches) return;
+        loadRotation();
+        const progress = clamp((line - rects[0].top) / bounds.height);
+        guide.style.setProperty('--install-progress', progress);
         if (active === 0) {
             const rotation = clamp((line - rects[0].top) / rects[0].height);
             const url = loadedFrames.get(frames[Math.round(rotation * (frames.length - 1))]);
@@ -146,6 +167,7 @@
 
     function adaptMotion() {
         guide.toggleAttribute('data-track', desktopMotion.matches);
+        (desktopMotion.matches ? visual : guide).prepend(dialNav);
         scenes.forEach((scene, index) => {
             (desktopMotion.matches ? stage : steps[index]).append(scene);
             scene.removeAttribute('data-current');
