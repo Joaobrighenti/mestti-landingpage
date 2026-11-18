@@ -365,7 +365,10 @@ html[data-theme="dark"] .reps {
     border-bottom: 2px solid transparent;
     transition: border-color 200ms ease, background-color 200ms ease;
 }
-.reps-install-dial a:is(:hover, [aria-current]) { color: #fff; border-color: var(--signal); background: #24445f; }
+.reps-install-dial a[aria-current] { color: #fff; border-color: var(--signal); background: #24445f; }
+@media (hover: hover) {
+    .reps-install-dial a:hover { color: #fff; background: #24445f; }
+}
 .reps-install-dial a:focus-visible { outline-offset: -4px; }
 .reps-install-grid[data-track] .reps-install-stage {
     display: grid;

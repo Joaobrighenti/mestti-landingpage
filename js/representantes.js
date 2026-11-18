@@ -167,7 +167,12 @@
 
     function adaptMotion() {
         guide.toggleAttribute('data-track', desktopMotion.matches);
-        (desktopMotion.matches ? visual : guide).prepend(dialNav);
+        const dialContainer = desktopMotion.matches ? visual : guide;
+        if (dialNav.parentElement !== dialContainer) {
+            const focused = document.activeElement;
+            dialContainer.prepend(dialNav);
+            if (dial.includes(focused)) focused.focus({ preventScroll: true });
+        }
         scenes.forEach((scene, index) => {
             (desktopMotion.matches ? stage : steps[index]).append(scene);
             scene.removeAttribute('data-current');
