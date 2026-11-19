@@ -291,7 +291,7 @@ export function buildAll() {
         const page = buildPage(rel, fs.readFileSync(path.join(SITE, 'pages', rel), 'utf8'), partials);
         problems.push(...page.problems);
         files.set(rel, page.html);
-        files.set(page.dictFile, pageDictFile(page.dict));
+        if (page.dictFile) files.set(page.dictFile, pageDictFile(page.dict));
         if (page.localize) built.push({ rel, url: '/' + rel.replace(/index\.html$/, ''), dict: page.dict });
     }
     // Versões estáticas /en/ e /es/ das páginas de site/pages, com hreflang nas três.
@@ -329,7 +329,10 @@ export function buildAll() {
         const m = rel.match(/^(en|es)\/(.*)$/);
         const lang = m ? m[1] : 'pt';
         const url = '/' + (m ? m[2] : rel).replace(/index\.html$/, '');
-        files.set(rel, withLeadForm(relatedRail(html.replace(LANGS_MARK, langLinks(url, lang, localized)).replace(ARTICLES_MARK, articlesBlock(url, lang, blog.articles)), lang), url, lang));
+        const languages = url === '/representantes/'
+            ? '<p class="footer-legal">Idioma desta página · Português</p>'
+            : langLinks(url, lang, localized);
+        files.set(rel, withLeadForm(relatedRail(html.replace(LANGS_MARK, languages).replace(ARTICLES_MARK, articlesBlock(url, lang, blog.articles)), lang), url, lang));
     }
     // Sem trilha "Início / Página" visível: a home fica no logo. (O BreadcrumbList do JSON-LD continua.)
     const CRUMBS = /\s*<nav class="(?:tp-crumbs|hv-crumbs|discovery-breadcrumb)"[^>]*>[\s\S]*?<\/nav>/g;

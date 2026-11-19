@@ -147,10 +147,13 @@ function normalizePathname(pathname) {
 function scrollToHash(hash) {
     const target = document.querySelector(hash);
     if (!target) return;
-    const headerOffset = 80;
+    const headerOffset = target.closest('[data-scroll-margin]')
+        ? parseFloat(getComputedStyle(target).scrollMarginTop) || 80
+        : 80;
     const elementPosition = target.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+    window.scrollTo({ top: offsetPosition, behavior });
 }
 
 function stripHashFromAddressBar() {
@@ -202,7 +205,7 @@ document.addEventListener('click', function (e) {
     }
 
     const hashLink = e.target.closest('a[href^="#"]');
-    if (hashLink) {
+    if (hashLink && !document.body.hasAttribute('data-native-anchors')) {
         const href = hashLink.getAttribute('href');
         if (!href || href === '#') return;
         const target = document.querySelector(href);
@@ -241,7 +244,7 @@ function initMesttiDeferredScroll() {
         }
     }
 
-    if (window.location.hash) {
+    if (window.location.hash && !document.body.hasAttribute('data-native-anchors')) {
         const hash = window.location.hash;
         const target = document.querySelector(hash);
         if (!target) return;
