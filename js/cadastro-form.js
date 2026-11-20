@@ -272,6 +272,7 @@
     terms_required: 'É necessário aceitar os termos de uso.',
     invalid_email: 'E-mail inválido.',
     invalid_data: 'Revise os dados preenchidos e tente novamente.',
+    too_many_submissions: 'Muitas tentativas de envio. Aguarde antes de tentar novamente.',
     cadastro_failed: 'Não foi possível enviar. Tente novamente em instantes.',
   };
 

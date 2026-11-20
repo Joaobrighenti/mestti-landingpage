@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import { isIP } from 'node:net';
 import { Resend } from 'resend';
 import {
   normalizeCadastroPayload,
@@ -140,14 +141,27 @@ async function sendCadastroEmail(payload) {
   return error ? 'failed' : 'sent';
 }
 
-async function saveInMestti(data, submissionId) {
+function getCadastroVisitorIp(req) {
+  // Na Vercel, o endereço vem da infraestrutura. No Express, vem da conexão.
+  const rawIp = process.env.VERCEL === '1'
+    ? req.headers?.['x-vercel-forwarded-for']
+    : req.socket?.remoteAddress;
+  const ip = typeof rawIp === 'string' ? rawIp.trim() : '';
+  return isIP(ip) ? ip : null;
+}
+
+async function saveInMestti(data, submissionId, visitorIp) {
   const url = process.env.MESTTI_CONTRACT_API_URL?.trim();
   const key = process.env.CONTRACT_REGISTRATION_SITE_KEY?.trim();
   if (!url || !key) throw new Error('cadastro_integration_unconfigured');
 
   return fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${key}`,
+      ...(visitorIp ? { 'X-Mestti-Cadastro-Client-IP': visitorIp } : {}),
+    },
     body: JSON.stringify({ ...data, submissionId }),
     redirect: 'error',
     signal: AbortSignal.timeout(7000),
@@ -207,7 +221,12 @@ export default async function handler(req, res) {
     delete contractData.formId;
     delete contractData.pagePath;
     const submissionId = raw.submissionId || randomUUID();
-    const stored = await saveInMestti(contractData, submissionId);
+    const stored = await saveInMestti(contractData, submissionId, getCadastroVisitorIp(req));
+    if (stored.status === 429) {
+      const retryAfter = stored.headers.get('Retry-After');
+      if (retryAfter && /^\d+$/.test(retryAfter)) res.setHeader('Retry-After', retryAfter);
+      return res.status(429).json({ ok: false, error: 'too_many_submissions' });
+    }
     if (stored.status === 422) {
       return res.status(400).json({ ok: false, error: 'invalid_data' });
     }

@@ -25,23 +25,25 @@ const payload = {
   aceiteTermos: 'sim',
 };
 
-async function submit(t, fetchMock, body = payload) {
+async function submit(t, fetchMock, { vercel = '', ...request } = {}) {
   t.mock.method(globalThis, 'fetch', fetchMock);
   const env = {
     MESTTI_CONTRACT_API_URL: apiUrl,
     CONTRACT_REGISTRATION_SITE_KEY: 'test-site-key',
     GOOGLE_SHEETS_WEBHOOK_URL: webhook,
     RESEND_API_KEY: '',
+    VERCEL: vercel,
   };
   const original = { ...process.env };
   Object.assign(process.env, env);
   const response = {
-    setHeader() {},
+    headers: {},
+    setHeader(name, value) { this.headers[name] = value; },
     status(code) { this.code = code; return this; },
     json(data) { this.data = data; return this; },
   };
   try {
-    return await handler({ method: 'POST', body }, response);
+    return await handler({ method: 'POST', body: payload, ...request }, response);
   } finally {
     for (const key of Object.keys(env)) {
       if (original[key] === undefined) delete process.env[key];
@@ -92,4 +94,48 @@ test('repetição confirmada não duplica integrações legadas', async (t) => {
 test('HTTP 200 sem recibo do cadastro não é confirmação', async (t) => {
   const response = await submit(t, async () => Response.json({ ok: true }));
   assert.equal(response.code, 502);
+});
+
+
+test('repassa o 429 e a espera sem chamar planilha ou e-mail', async (t) => {
+  const urls = [];
+  const response = await submit(t, async (url) => {
+    urls.push(url);
+    return new Response(null, { status: 429, headers: { 'Retry-After': '240' } });
+  });
+  assert.deepEqual(urls, [apiUrl]);
+  assert.equal(response.code, 429);
+  assert.equal(response.headers['Retry-After'], '240');
+  assert.deepEqual(response.data, { ok: false, error: 'too_many_submissions' });
+});
+
+test('Express usa o IP da conexão e ignora cabeçalhos enviados pelo visitante', async (t) => {
+  let visitorIp;
+  const response = await submit(t, async (_, options) => {
+    visitorIp = options.headers['X-Mestti-Cadastro-Client-IP'];
+    return Response.json({ id: payload.submissionId });
+  }, {
+    headers: {
+      'x-vercel-forwarded-for': '198.51.100.9',
+      'x-forwarded-for': '198.51.100.10',
+      'x-mestti-cadastro-client-ip': '198.51.100.11',
+    },
+    socket: { remoteAddress: '127.0.0.1' },
+  });
+  assert.equal(response.code, 200);
+  assert.equal(visitorIp, '127.0.0.1');
+});
+
+test('na Vercel usa o cabeçalho de IP da plataforma', async (t) => {
+  let visitorIp;
+  const response = await submit(t, async (_, options) => {
+    visitorIp = options.headers['X-Mestti-Cadastro-Client-IP'];
+    return Response.json({ id: payload.submissionId });
+  }, {
+    vercel: '1',
+    headers: { 'x-vercel-forwarded-for': '2001:db8::1', 'x-mestti-cadastro-client-ip': '198.51.100.1' },
+    socket: { remoteAddress: '127.0.0.1' },
+  });
+  assert.equal(response.code, 200);
+  assert.equal(visitorIp, '2001:db8::1');
 });
