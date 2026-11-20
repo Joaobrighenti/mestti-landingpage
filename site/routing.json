@@ -55,6 +55,8 @@
     {"source": "/sensores", "destination": "/sensores/", "permanent": true},
     {"source": "/blog", "destination": "/blog/", "permanent": true},
     {"source": "/cadastro", "destination": "/cadastro/", "permanent": true},
+    {"source": "/cadastros", "destination": "/cadastro/", "permanent": true},
+    {"source": "/cadastros/", "destination": "/cadastro/", "permanent": true},
     {"source": "/mes", "destination": "/mes/", "permanent": true},
     {"source": "/mes/index.html", "destination": "/mes/", "permanent": true},
     {"source": "/pcp", "destination": "/pcp/", "permanent": true},

@@ -58,6 +58,8 @@
     {"src":"^/sensores$","headers":{"Location":"/sensores/"},"status":308},
     {"src":"^/blog$","headers":{"Location":"/blog/"},"status":308},
     {"src":"^/cadastro$","headers":{"Location":"/cadastro/"},"status":308},
+    {"src":"^/cadastros$","headers":{"Location":"/cadastro/"},"status":308},
+    {"src":"^/cadastros/$","headers":{"Location":"/cadastro/"},"status":308},
     {"src":"^/mes$","headers":{"Location":"/mes/"},"status":308},
     {"src":"^/mes/index\\.html$","headers":{"Location":"/mes/"},"status":308},
     {"src":"^/pcp$","headers":{"Location":"/pcp/"},"status":308},

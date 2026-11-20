@@ -214,7 +214,6 @@
     const financeiro = resolveFinanceiroEmail();
 
     return {
-      timestamp: new Date().toISOString(),
       formId: 'cadastro',
       pagePath: window.location.pathname || '/cadastro/',
       razaoSocial: val('razaoSocial'),
@@ -272,10 +271,13 @@
     invalid_dia: 'Selecione o dia de pagamento.',
     terms_required: 'É necessário aceitar os termos de uso.',
     invalid_email: 'E-mail inválido.',
-    sheets_sync_failed: 'Não foi possível gravar o cadastro. Tente novamente.',
+    invalid_data: 'Revise os dados preenchidos e tente novamente.',
+    too_many_submissions: 'Muitas tentativas de envio. Aguarde antes de tentar novamente.',
     cadastro_failed: 'Não foi possível enviar. Tente novamente em instantes.',
   };
 
+  let lastPayload;
+  let submissionId;
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (form.dataset.submitting === '1') return;
@@ -290,10 +292,16 @@
     }
 
     try {
+      const payload = collectPayload();
+      const serialized = JSON.stringify(payload);
+      if (serialized !== lastPayload) {
+        lastPayload = serialized;
+        submissionId = window.crypto?.randomUUID?.();
+      }
       const res = await fetch('/api/cadastro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(collectPayload()),
+        body: JSON.stringify({ ...payload, submissionId }),
       });
       const data = await res.json().catch(() => ({}));
 
@@ -309,9 +317,9 @@
       }
 
       form.reset();
-      if (data.sheets === 'skipped') {
-        console.warn('[cadastro] sheets skipped — configure GOOGLE_SHEETS_WEBHOOK_URL no .env');
-      }
+      syncFinanceiroVisibility();
+      lastPayload = undefined;
+      submissionId = undefined;
       const successMessage =
         'Recebemos seus dados. Nossa equipe vai preparar o contrato e entrar em contato.';
       if (typeof window.openMesttiPopup === 'function') {

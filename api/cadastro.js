@@ -1,13 +1,10 @@
+import { randomUUID } from 'node:crypto';
+import { isIP } from 'node:net';
 import { Resend } from 'resend';
 import {
   normalizeCadastroPayload,
   forwardCadastroToGoogleSheets,
 } from '../lib/sheets-sync.js';
-
-const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
-const LEADS_TO_EMAIL = process.env.LEADS_TO_EMAIL || '';
-const FROM_EMAIL = process.env.FROM_EMAIL || 'onboarding@resend.dev';
-const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL || '';
 
 const FORMA_PAGAMENTO = new Set(['boleto', 'pix_automatico', 'cartao_credito']);
 const DIA_PAGAMENTO = new Set(['1', '5', '10', '15', '20', '25']);
@@ -69,6 +66,9 @@ function validateCadastro(payload) {
 }
 
 async function sendCadastroEmail(payload) {
+  const RESEND_API_KEY = process.env.RESEND_API_KEY;
+  const LEADS_TO_EMAIL = process.env.LEADS_TO_EMAIL;
+  const FROM_EMAIL = process.env.FROM_EMAIL || 'onboarding@resend.dev';
   if (!RESEND_API_KEY || !LEADS_TO_EMAIL) {
     return 'skipped';
   }
@@ -130,7 +130,7 @@ async function sendCadastroEmail(payload) {
     </div>
   `;
 
-  await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: FROM_EMAIL,
     to: LEADS_TO_EMAIL,
     subject: `Novo cadastro (contrato) — ${safe(payload.razaoSocial) || 'MESTTI'}`,
@@ -138,7 +138,51 @@ async function sendCadastroEmail(payload) {
     html,
   });
 
-  return 'sent';
+  return error ? 'failed' : 'sent';
+}
+
+function getCadastroVisitorIp(req) {
+  // Na Vercel, o endereço vem da infraestrutura. No Express, vem da conexão.
+  const rawIp = process.env.VERCEL === '1'
+    ? req.headers?.['x-vercel-forwarded-for']
+    : req.socket?.remoteAddress;
+  const ip = typeof rawIp === 'string' ? rawIp.trim() : '';
+  return isIP(ip) ? ip : null;
+}
+
+async function saveInMestti(data, submissionId, visitorIp) {
+  const url = process.env.MESTTI_CONTRACT_API_URL?.trim();
+  const key = process.env.CONTRACT_REGISTRATION_SITE_KEY?.trim();
+  if (!url || !key) throw new Error('cadastro_integration_unconfigured');
+
+  return fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${key}`,
+      ...(visitorIp ? { 'X-Mestti-Cadastro-Client-IP': visitorIp } : {}),
+    },
+    body: JSON.stringify({ ...data, submissionId }),
+    redirect: 'error',
+    signal: AbortSignal.timeout(7000),
+  });
+}
+
+async function syncLegacyDestinations(payload) {
+  const sheets = forwardCadastroToGoogleSheets(
+    payload, process.env.GOOGLE_SHEETS_WEBHOOK_URL, 3000,
+  ).then((result) => result.skipped ? 'skipped' : 'synced').catch(() => 'failed');
+
+  let timeout;
+  try {
+    const email = Promise.race([
+      sendCadastroEmail(payload).catch(() => 'failed'),
+      new Promise((resolve) => { timeout = setTimeout(() => resolve('failed'), 3000); }),
+    ]);
+    return await Promise.all([sheets, email]);
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 export default async function handler(req, res) {
@@ -147,8 +191,15 @@ export default async function handler(req, res) {
     return res.status(405).json({ ok: false, error: 'method_not_allowed' });
   }
 
+  res.setHeader('Cache-Control', 'no-store');
+  let raw;
   try {
-    const raw = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : req.body || {};
+    raw = (typeof req.body === 'string' ? JSON.parse(req.body) : req.body) || {};
+  } catch {
+    return res.status(400).json({ ok: false, error: 'required_fields' });
+  }
+
+  try {
     const payload = normalizeCadastroPayload(raw);
 
     if (!payload.timestamp) {
@@ -165,23 +216,39 @@ export default async function handler(req, res) {
       return res.status(400).json({ ok: false, error });
     }
 
-    let sheetsStatus = 'skipped';
-    try {
-      const sheets = await forwardCadastroToGoogleSheets(payload, GOOGLE_SHEETS_WEBHOOK_URL);
-      sheetsStatus = sheets.skipped ? 'skipped' : 'synced';
-    } catch {
-      return res.status(502).json({ ok: false, error: 'sheets_sync_failed' });
+    const contractData = { ...payload };
+    delete contractData.timestamp;
+    delete contractData.formId;
+    delete contractData.pagePath;
+    const submissionId = raw.submissionId || randomUUID();
+    const stored = await saveInMestti(contractData, submissionId, getCadastroVisitorIp(req));
+    if (stored.status === 429) {
+      const retryAfter = stored.headers.get('Retry-After');
+      if (retryAfter && /^\d+$/.test(retryAfter)) res.setHeader('Retry-After', retryAfter);
+      return res.status(429).json({ ok: false, error: 'too_many_submissions' });
+    }
+    if (stored.status === 422) {
+      return res.status(400).json({ ok: false, error: 'invalid_data' });
+    }
+    if (stored.status !== 200 && stored.status !== 201) {
+      console.error('[cadastro] gravação recusada', { status: stored.status });
+      return res.status(502).json({ ok: false, error: 'cadastro_failed' });
     }
 
-    let emailStatus = 'skipped';
-    try {
-      emailStatus = await sendCadastroEmail(payload);
-    } catch {
-      emailStatus = 'failed';
+    const receipt = await stored.json();
+    if (receipt?.id !== String(submissionId).toLowerCase()) {
+      throw new Error('cadastro_receipt_invalid');
     }
 
-    return res.status(200).json({ ok: true, sheets: sheetsStatus, email: emailStatus });
+    // Só o primeiro envio dispara as integrações legadas.
+    if (stored.status === 200) return res.status(200).json({ ok: true });
+    const [sheets, email] = await syncLegacyDestinations(payload);
+    if (sheets === 'failed' || email === 'failed') {
+      console.warn('[cadastro] falha após gravação', { sheets, email });
+    }
+    return res.status(200).json({ ok: true });
   } catch {
-    return res.status(500).json({ ok: false, error: 'cadastro_failed' });
+    console.error('[cadastro] falha na integração com a Mestti');
+    return res.status(502).json({ ok: false, error: 'cadastro_failed' });
   }
 }
