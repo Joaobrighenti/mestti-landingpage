@@ -232,10 +232,13 @@
     {"source": "/cookies/index.html", "destination": "/cookies/", "permanent": true},
     {"source": "/privacidade-site", "destination": "/privacidade-site/", "permanent": true},
     {"source": "/privacidade-site/index.html", "destination": "/privacidade-site/", "permanent": true},
+    {"source": "/representantes", "destination": "/representantes/", "permanent": true},
+    {"source": "/representantes/index.html", "destination": "/representantes/", "permanent": true},
     {"source": "/manual/sensor-de-corrente", "destination": "/manual/sensor-de-corrente/", "permanent": true},
     {"source": "/manual/sensor-de-corrente/index.html", "destination": "/manual/sensor-de-corrente/", "permanent": true}
   ],
   "rewrites": [
+    {"source": "/representantes/", "destination": "/representantes/index.html"},
     {"source": "/engenharia/", "destination": "/engenharia/index.html"},
     {"source": "/otto/", "destination": "/otto/index.html"},
     {"source": "/casos/industria-moveleira/", "destination": "/casos/industria-moveleira/index.html"},
