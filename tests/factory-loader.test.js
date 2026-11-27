@@ -5,184 +5,126 @@ import vm from 'node:vm';
 
 const source = fs.readFileSync('js/factory-loader.js', 'utf8');
 
-function fixture({ webgl = true, reduceMotion = false, saveData = false, effectiveType = '4g', mobile = false, supportsWebm = true } = {}) {
-    const classes = new Set();
-    const attributes = new Map();
+function fixture({ renderer = 'GPU', webgl = true } = {}) {
+    const events = new Map();
     const frames = [];
-    const timers = [];
-    const movieEvents = new Map();
-    const documentEvents = new Map();
-    let onLoad, onVisibility, onClick, onIdle;
-    let reloads = 0;
-    let focused = false;
-    let probes = 0;
-    let plays = 0;
-    let paused = true;
-    const canvas = { getContext() { probes++; return webgl ? context : null; } };
-    const context = { getExtension: () => null };
-    const button = { hidden: true, addEventListener: (name, fn) => { onClick = fn; }, focus() {} };
-    const movie = {
-        dataset: { src: '/desktop.mp4', mobileSrc: '/mobile.mp4', webm: '/desktop.webm', mobileWebm: '/mobile.webm' },
-        canPlayType: () => supportsWebm ? 'probably' : '',
-        hasAttribute: name => name === 'src' && Boolean(movie.src),
-        addEventListener: (name, fn) => movieEvents.set(name, fn),
-        play() { plays++; paused = false; return Promise.resolve(); },
-        pause() { paused = true; },
-    };
+    const attributes = new Map();
+    const classes = new Set();
+    const probes = [];
+    let intersection, idle, reloads = 0;
+    const button = { hidden: true, addEventListener: (key, fn) => events.set(key, fn), focus() {} };
     const host = {
-        querySelector: selector => ({
-            '[data-factory-start]': button, '.fx-film': movie,
-            '.fx-poster': { decode: () => Promise.resolve() },
-        })[selector],
-        classList: { add: name => classes.add(name), remove: name => classes.delete(name) },
-        setAttribute: (name, value) => attributes.set(name, value),
-        removeAttribute: name => attributes.delete(name),
-        focus: () => { focused = true; },
+        querySelector: selector => selector === '[data-factory-start]' ? button : { decode: () => Promise.resolve() },
+        addEventListener: (key, fn) => events.set(key, fn),
+        removeEventListener: key => events.delete(key),
+        setAttribute: (key, value) => attributes.set(key, value),
+        removeAttribute: key => attributes.delete(key),
+        classList: { add: name => classes.add(name) },
+        focus() {},
+    };
+    const context = {
+        getExtension: name => name === 'WEBGL_debug_renderer_info' ? { UNMASKED_RENDERER_WEBGL: 1 } : null,
+        getParameter: () => renderer,
+    };
+    const canvas = {
+        getContext(type, options) {
+            assert.equal(type, 'webgl2');
+            probes.push(options.failIfMajorPerformanceCaveat);
+            return webgl ? context : null;
+        },
     };
     class IntersectionObserver {
-        constructor(callback) { onVisibility = callback; }
+        constructor(fn) { intersection = fn; }
         observe() {}
-        disconnect() { onVisibility = null; }
+        disconnect() { intersection = null; }
     }
-    const window = {
-        IntersectionObserver, requestIdleCallback: fn => { onIdle = fn; },
-        addEventListener: (name, fn) => { if (name === 'load') onLoad = fn; },
-    };
     const document = {
-        documentElement: { lang: 'pt-BR' }, readyState: 'interactive', hidden: false,
         createElement: () => canvas,
-        addEventListener: (name, fn) => documentEvents.set(name, fn),
-        removeEventListener: name => documentEvents.delete(name),
+        documentElement: { lang: 'pt-BR' },
+        addEventListener: (key, fn) => events.set(key, fn),
+        removeEventListener: key => events.delete(key),
+        hidden: false,
     };
+    const window = { IntersectionObserver, requestIdleCallback: fn => { idle = fn; } };
     vm.runInNewContext(source, {
-        window, document, IntersectionObserver,
-        matchMedia: query => ({ matches: query.includes('reduce') ? reduceMotion : mobile }),
-        navigator: { connection: { saveData, effectiveType } },
-        location: { reload() { reloads++; } },
+        window, document, IntersectionObserver, matchMedia: () => ({ matches: false }),
         requestAnimationFrame: fn => frames.push(fn),
-        setTimeout: fn => timers.push(fn),
+        location: { reload() { reloads++; } },
     });
     return {
-        button, movie, host, attributes, classes, canvas, context,
-        mount: window.MesttiFactoryLoader.mount,
-        visible: ratio => onVisibility?.([{ intersectionRatio: ratio }]),
-        hidden: hidden => { document.hidden = hidden; documentEvents.get('visibilitychange')?.(); },
-        async pageLoaded() { await onLoad?.(); },
-        frame: () => frames.shift()?.(),
-        timer: () => timers.shift()?.(),
-        idle() { const fn = onIdle; onIdle = null; fn?.(); },
-        movieEvent: name => movieEvents.get(name)?.(),
-        tap: (detail = 1) => (button.onclick ?? onClick)({ detail }),
+        mount: window.MesttiFactoryLoader.mount, host, button, probes, attributes, classes,
+        visible: visible => intersection?.([{ isIntersecting: visible }]),
+        async paint() { await new Promise(resolve => setImmediate(resolve)); frames.shift()(); frames.shift()(); },
+        async idle() { const fn = idle; idle = null; fn?.(); await Promise.resolve(); await Promise.resolve(); },
+        tap: () => (button.onclick || events.get('click'))({ detail: 0 }),
         reloads: () => reloads,
-        focused: () => focused,
-        plays: () => plays,
-        paused: () => paused,
-        probes: () => probes,
+        assertContext(suppliedCanvas, suppliedContext) {
+            assert.equal(suppliedCanvas, canvas);
+            assert.equal(suppliedContext, context);
+        },
     };
 }
 
-async function paintPage(f) {
-    await f.pageLoaded();
-    f.frame();
-    f.frame();
-    f.timer();
-}
-
-test('mostra o pôster primeiro, toca a prévia visível por tamanho e não importa WebGL', async () => {
-    for (const mobile of [false, true]) {
-        const f = fixture({ mobile });
-        let imports = 0;
-        f.mount(f.host, async () => { imports++; });
-        f.visible(1);
-        f.idle();
-        assert.equal(f.movie.src, undefined);
-        await paintPage(f);
-        f.visible(0);
-        f.idle();
-        assert.equal(f.movie.src, undefined);
-        f.visible(0.5);
-        f.idle();
-        assert.equal(f.movie.src, mobile ? '/mobile.webm' : '/desktop.webm');
-        assert.equal(f.plays(), 1);
-        assert.equal(f.probes(), 0);
-        assert.equal(imports, 0);
-        f.movieEvent('playing');
-        assert.ok(f.classes.has('fx--previewing'));
-        f.hidden(true);
-        assert.equal(f.paused(), true);
-        f.movie.ended = true;
-        f.hidden(false);
-        f.idle();
-        assert.equal(f.plays(), 1);
-    }
-});
-
-test('usa MP4 quando o navegador não aceita WebM ou o vídeo falha', async () => {
-    for (const supportsWebm of [false, true]) {
-        const f = fixture({ supportsWebm });
-        f.mount(f.host);
-        await paintPage(f);
-        f.visible(1);
-        f.idle();
-        if (supportsWebm) {
-            assert.equal(f.movie.src, '/desktop.webm');
-            f.movieEvent('error');
-            f.idle();
-        }
-        assert.equal(f.movie.src, '/desktop.mp4');
-        assert.equal(f.paused(), false);
-    }
-});
-
-test('movimento reduzido, economia de dados e rede lenta mantêm o pôster', async () => {
-    for (const options of [{ reduceMotion: true }, { saveData: true }, { effectiveType: '3g' }]) {
-        const f = fixture(options);
-        f.mount(f.host);
-        await paintPage(f);
-        f.visible(1);
-        f.idle();
-        assert.equal(f.movie.src, undefined);
-        assert.equal(f.button.hidden, false);
-    }
-});
-
-test('ao explorar, pausa a prévia e monta a cena no mesmo contexto WebGL', async () => {
+test('abre o WebGL automaticamente depois de pintar o pôster e entrar na área visível', async () => {
     const f = fixture();
     let mounts = 0;
-    f.mount(f.host, async () => ({
-        mountFactory(canvas, context) {
-            assert.equal(canvas, f.canvas);
-            assert.equal(context, f.context);
-            mounts++;
-        },
-    }));
-    f.visible(1);
-    await paintPage(f);
-    f.idle();
-    assert.equal(f.paused(), false);
-    await f.tap(0);
-    assert.equal(f.paused(), true);
-    assert.equal(f.probes(), 1);
+    f.mount(f.host, async () => ({ mountFactory(canvas, context) { f.assertContext(canvas, context); mounts++; } }));
+    await f.paint();
+    await f.idle();
+    assert.equal(mounts, 0);
+    f.visible(true);
+    await f.idle();
     assert.equal(mounts, 1);
-    assert.equal(f.focused(), true);
-    assert.equal(f.attributes.get('aria-busy'), 'true');
-});
-
-test('sem WebGL a demonstração continua na prévia sem importar a cena', async () => {
-    const f = fixture({ webgl: false });
-    f.mount(f.host, async () => assert.fail('não deve carregar'));
-    await f.tap();
-    assert.ok(f.classes.has('fx--static'));
     assert.equal(f.button.hidden, true);
+    assert.deepEqual(f.probes, [true]);
 });
 
-test('erro de download preserva a prévia e oferece recuperação por recarregamento', async () => {
+test('se rolar para fora durante a importação, espera o quadro voltar para montar', async () => {
+    const f = fixture();
+    let mounts = 0, resolve;
+    f.mount(f.host, () => new Promise(done => { resolve = done; }));
+    f.visible(true);
+    await f.paint();
+    await f.idle();
+    f.visible(false);
+    resolve({ mountFactory() { mounts++; } });
+    await f.idle();
+    assert.equal(mounts, 0);
+    f.visible(true);
+    await f.idle();
+    assert.equal(mounts, 1);
+});
+
+test('renderização por software conserva o pôster e oferece abertura manual', async () => {
+    const f = fixture({ renderer: 'Google SwiftShader' });
+    let mounts = 0;
+    f.mount(f.host, async () => ({ mountFactory() { mounts++; } }));
+    f.visible(true);
+    await f.paint();
+    await f.idle();
+    assert.equal(f.button.hidden, false);
+    assert.equal(mounts, 0);
+    await f.tap();
+    assert.equal(mounts, 1);
+    assert.deepEqual(f.probes, [true, false]);
+});
+
+test('sem WebGL mantém o pôster; erro de importação oferece recarregar', async () => {
+    const unavailable = fixture({ webgl: false });
+    unavailable.mount(unavailable.host, () => assert.fail('importação desnecessária'));
+    unavailable.visible(true);
+    await unavailable.paint();
+    await unavailable.idle();
+    await unavailable.tap();
+    assert.ok(unavailable.classes.has('fx--static'));
+
     const f = fixture();
     f.mount(f.host, async () => { throw Error('offline'); });
-    await f.tap();
+    f.visible(true);
+    await f.paint();
+    await f.idle();
     assert.equal(f.button.hidden, false);
     assert.ok(!f.attributes.has('aria-busy'));
-    assert.ok(!f.classes.has('fx--requested'));
     f.tap();
     assert.equal(f.reloads(), 1);
 });

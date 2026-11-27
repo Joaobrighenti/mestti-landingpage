@@ -68,7 +68,7 @@ html[data-theme="dark"] .fx {
 /* Na página o deslize vertical é sempre da rolagem; na tela cheia a cena captura todos os gestos. */
 .fx-canvas { width: 100%; height: 100%; display: block; touch-action: pan-y; }
 .fx-scene { touch-action: pan-y; }
-.fx-labels { pointer-events: none; overflow: hidden; z-index: 2; }
+.fx-labels { pointer-events: none; overflow: hidden; contain: layout paint; z-index: 2; }
 
 .fx-status {
     position: absolute; inset: 0; z-index: 3; display: flex; align-items: center; justify-content: center;
@@ -165,7 +165,7 @@ html[data-theme="dark"] .fpin--alert { color: #2a0805; }
 
 .fx-now { position: absolute; left: 16px; top: 72px; width: 300px; max-height: calc(100% - 88px); display: flex; flex-direction: column; overflow: hidden; border-radius: 14px; }
 .fx-now-head { display: flex; align-items: center; justify-content: space-between; padding-left: 16px; padding-right: 4px; min-height: 52px; cursor: pointer; user-select: none; }
-.fx .fx-now h3 { margin: 0; font-size: 15px; font-weight: 600; color: var(--fx-ink); font-family: inherit; }
+body.hv-page .fx .fx-now h2 { margin: 0; font-size: 15px; font-weight: 600; color: var(--fx-ink); font-family: inherit; }
 .fx-now [data-fx-now] svg { transform: rotate(180deg); transition: transform .2s; }
 .fx-now.is-collapsed [data-fx-now] svg { transform: none; }
 .fx-now.is-collapsed .fx-now-body { display: none; }
@@ -175,7 +175,7 @@ html[data-theme="dark"] .fpin--alert { color: #2a0805; }
 .fx-stats strong { font-size: 22px; font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; }
 .fx-stats small { font-size: 14px; font-weight: 400; color: var(--fx-ink3); }
 .fx-list-head { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--fx-line); padding: 12px 16px 6px; }
-.fx-list-head h4 { margin: 0; font-size: 14px; font-weight: 600; font-family: inherit; color: var(--fx-ink); }
+.fx .fx-list-head h3 { margin: 0; font-size: 14px; font-weight: 600; font-family: inherit; color: var(--fx-ink); }
 .fx-list-head span { min-width: 22px; height: 22px; padding: 0 7px; border-radius: 11px; background: var(--fx-alt); border: 1px solid var(--fx-line); font-size: 12.5px; font-weight: 600; text-align: center; line-height: 20px; }
 .fx-list { list-style: none; margin: 0; padding: 0 8px 8px; overflow: auto; }
 .fx-list button {
@@ -325,13 +325,11 @@ html.fx-lock, html.fx-lock body { overflow: hidden; }
 .fx-fullscreen-dialog::backdrop { background: #f2f2f2; }
 
 /* Imagem da fábrica enquanto o 3D carrega */
-.fx-preview { position: absolute; inset: 0; z-index: 3; pointer-events: none; transition: opacity .6s ease; }
+.fx-preview { position: absolute; inset: 0; z-index: 3; pointer-events: none; transition: opacity .18s ease; }
 .fx-preview picture { display: block; height: 100%; }
-.fx-poster, .fx-film { display: block; width: 100%; height: 100%; object-fit: cover; }
-.fx-film { position: absolute; inset: 0; opacity: 0; transition: opacity .35s ease; }
-.fx--previewing .fx-film { opacity: 1; }
+.fx-poster { display: block; width: 100%; height: 100%; object-fit: cover; }
 .fx--ready .fx-preview { opacity: 0; }
-@media (prefers-reduced-motion: reduce) { .fx-preview, .fx-film { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .fx-preview { transition: none; } }
 /* Sem WebGL: fica só a imagem da fábrica, sem erro nem controles inúteis. */
 .fx--static .fx-status, .fx--static .fx-hud, .fx--static .fx-scene, .fx--static .fx-start { display: none; }
 .fx-preview ~ .fx-status { visibility: hidden; }
@@ -340,7 +338,7 @@ html.fx-lock, html.fx-lock body { overflow: hidden; }
 .fx-start:focus-visible { outline: 3px solid var(--fx-accent); outline-offset: 4px; }
 .fx-start:disabled { cursor: wait; }
 .fx--requested .fx-status { visibility: visible; z-index: 5; inset: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); width: max-content; max-width: calc(100% - 32px); padding: 12px 20px; border-radius: 999px; background: var(--fx-panel); box-shadow: var(--fx-shadow); }
-.fx--loading .fx-hud { pointer-events: none; }
+.fx--loading .fx-hud { visibility: hidden; }
 .fx--error .fx-preview ~ .fx-status { visibility: visible; z-index: 4; }
 .fx--error .fx-status { flex-direction: column; gap: 12px; background: rgba(255, 255, 255, .94); }
 .fx-retry { min-height: 44px; padding: 10px 18px; border: 1px solid var(--fx-line); border-radius: 999px; color: var(--fx-ink); font: 600 14px/1.4 'Inter', sans-serif; cursor: pointer; pointer-events: auto; }
@@ -360,7 +358,7 @@ html.fx-lock, html.fx-lock body { overflow: hidden; }
     /* Mesma altura (40 px com a borda) e mesma fonte do seletor Estado/OEE */
     .fx-now-head { min-height: 38px; padding-left: 12px; padding-right: 2px; gap: 2px; }
     .fx-now-head .fx-icon { width: 32px; height: 32px; }
-    .fx .fx-now h3 { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; white-space: nowrap; }
+    body.hv-page .fx .fx-now h2 { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; white-space: nowrap; }
     .fx-now-live { width: 7px; height: 7px; }
     .fx-now-live { display: block; border-radius: 50%; background: var(--fx-live); animation: fpin-pulse 1.6s ease-in-out infinite; }
     .fx-dock-wrap, .fx:has(.fx-drawer) .fx-dock-wrap { left: 12px; right: 12px; bottom: 12px; transform: none; max-width: none; align-items: stretch; }
@@ -375,21 +373,11 @@ html.fx-lock, html.fx-lock body { overflow: hidden; }
     .fx-lg-long { display: none; }
     .fx-lg-short { display: inline; }
     .fx:has(.fx-legend) .fx-zoom { bottom: 108px; }
+    .fx:has(.fx-drawer) .fx-zoom { right: 12px; top: 64px; bottom: auto; }
 }
 @media (prefers-reduced-motion: reduce) { .fx-now-live { animation: none; } }
-
-/* Home: a maquete só passa o cinema; uma ação leva à tela cheia, onde a interação acontece.
-   `.fx .fx-cta` vence `.fx button { color/font: inherit }`. */
-.fx--cinema .fx-canvas { cursor: pointer; }
-.fx--cinema .fx-tap-hint { display: none; }
-.fx .fx-cta svg { flex: none; }
-.fx .fx-cta { position: absolute; z-index: 4; bottom: 16px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: #024578; color: #fff; box-shadow: 0 6px 20px rgba(2, 69, 120, .35); font: 600 15px/1.2 'Inter', sans-serif; letter-spacing: .01em; white-space: nowrap; cursor: pointer; touch-action: manipulation; transition: transform .2s ease, background-color .2s ease; }
-.fx .fx-cta:hover { background: #035a9c; }
-.fx .fx-cta:active { transform: translateX(-50%) scale(.97); }
-@media (prefers-reduced-motion: reduce) { .fx .fx-cta { transition: none; } }
 
 /* Foco: o anel amarelo global do site (.hv button:focus-visible) não vale na maquete.
    Teclado no desktop vê um contorno azul discreto; em telas de toque, nenhum. */
 .fx.fx button:focus-visible { outline: 2px solid var(--fx-accent); outline-offset: 2px; box-shadow: none; }
-.fx.fx .fx-cta:focus-visible { outline: 2px solid #fff; outline-offset: -5px; box-shadow: 0 6px 20px rgba(2, 69, 120, .35); }
 @media (hover: none) { .fx.fx button:focus-visible { outline: none; } }

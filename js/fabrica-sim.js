@@ -8,7 +8,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
 import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
@@ -274,22 +274,6 @@ function renderHud() {
     const c = counts();
     const chips = ['running', 'stopped', 'warning', 'setup', 'maintenance'].map((key) => ({ key, count: MACHINES.filter((m) => m.state === key).length })).filter((chip) => chip.count > 0);
     const items = listItems();
-    const ident = `
-        <div class="fx-top-left">
-            <div class="fx-surface fx-ident">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 20V9l6 4V9l6 4V5h4l4 15H2z"/></svg>
-                <span class="fx-ident-name">${t('factory')}</span>
-                <span class="fx-sep" aria-hidden="true"></span>
-                <span class="fx-live"><i aria-hidden="true"></i>${t('live')}</span>
-            </div>
-        </div>`;
-    // Na home a maquete só passa o modo cinema; a interação (filtros, camadas, zoom, detalhes) fica na tela cheia.
-    root.classList.toggle('fx--cinema', mobileUI && !view.full);
-    if (mobileUI && !view.full) {
-        hud.innerHTML = `${ident}
-        <button type="button" class="fx-cta" data-fx-full><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>${t('explore')}</button>`;
-        return;
-    }
     hud.innerHTML = `
         <div class="fx-top-left">
             <div class="fx-surface fx-ident">
@@ -304,11 +288,11 @@ function renderHud() {
                 <button type="button" data-fx-layer="state" aria-pressed="${view.layer === 'state'}">${t('layerState')}</button>
                 <button type="button" data-fx-layer="oee" aria-pressed="${view.layer === 'oee'}">${t('layerOee')}</button>
             </div>
-            ${mobileUI ? `<button type="button" class="fx-icon fx-exit" data-fx-exit aria-label="${t('fullExit')}" title="${t('fullExit')}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>` : ''}
+            ${mobileUI && view.full ? `<button type="button" class="fx-icon fx-exit" data-fx-exit aria-label="${t('fullExit')}" title="${t('fullExit')}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>` : ''}
         </div>
         <section class="fx-surface fx-now${view.nowOpen ? '' : ' is-collapsed'}" aria-label="${t('now')}">
             <div class="fx-now-head" data-fx-now-head>
-                <h3>${t('now')}<i class="fx-now-live" aria-hidden="true"></i></h3>
+                <h2>${t('now')}<i class="fx-now-live" aria-hidden="true"></i></h2>
                 <button type="button" class="fx-icon" data-fx-now aria-expanded="${view.nowOpen}" aria-label="${view.nowOpen ? t('collapse') : t('expand')}">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
@@ -319,9 +303,9 @@ function renderHud() {
                     <div><span>${t('stoppedPl')}</span><strong>${c.stopped}</strong></div>
                     <div><span>${t('lost')}</span><strong>${c.lost}</strong></div>
                 </div>
-                <div class="fx-list-head"><h4>${view.filters.size ? t('inFilter') : t('machines')}</h4><span>${items.length}</span></div>
+                <div class="fx-list-head"><h3>${view.filters.size ? t('inFilter') : t('machines')}</h3><span>${items.length}</span></div>
                 ${items.length === 0 ? `<p class="fx-empty">${t('noneInFilter')}</p>` : `<ul class="fx-list">${items.map(listRow).join('')}</ul>`}
-                <p class="fx-hint"><span class="fx-demo-tag">${t('demo')}</span><span>${t(mobileUI ? 'hintFullTouch' : (view.full ? 'hintFull' : 'hintDrag'))}</span></p>
+                <p class="fx-hint"><span class="fx-demo-tag">${t('demo')}</span><span>${t(mobileUI ? (view.full ? 'hintFullTouch' : 'hintTouch') : (view.full ? 'hintFull' : 'hintDrag'))}</span></p>
             </div>
         </section>
         <div class="fx-dock-wrap">
@@ -525,8 +509,6 @@ function setFull(on) {
     if (on && typeof window.gtag === 'function') window.gtag('event', 'home_factory_fullscreen');
 }
 
-const openFull = () => setFull(true);
-
 function select(id) {
     view.selected = id;
     // Abaixo de 1100 px o painel e o card se sobrepõem: ao escolher uma máquina, recolhe "Fábrica agora".
@@ -560,25 +542,19 @@ function buildScene(canvas, context, labelsHost) {
     const B = { minX: -15, maxX: 15, minZ: -9, maxZ: 9 };
 
     // Iluminação de galpão: céu fraco, sol entrando pelos janelões, luminárias que fazem poças de luz no piso
-    // e um ambiente refletivo para o metal das máquinas e o brilho do epóxi.
+    // com preenchimento difuso para deixar as máquinas e o piso legíveis.
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.08;
-    const pmrem = new THREE.PMREMGenerator(renderer);
-    const room = new RoomEnvironment();
-    scene.environment = pmrem.fromScene(room, 0.04).texture;
-    room.dispose();
-    pmrem.dispose();
-    scene.environmentIntensity = 0.42;
-    scene.add(new THREE.HemisphereLight(0xdde7f0, 0x22272d, 0.42));
+    scene.add(new THREE.HemisphereLight(0xe3edf9, 0x54616c, 0.95));
     const sun = new THREE.DirectionalLight(0xfff1de, 1.45);
     sun.position.set(-9, 20, -12);
     sun.castShadow = true;
-    sun.shadow.mapSize.setScalar(coarse ? 1024 : 2048);
+    sun.shadow.mapSize.setScalar(coarse ? 768 : 1536);
     Object.assign(sun.shadow.camera, { left: -20, right: 20, top: 20, bottom: -20, near: 1, far: 70 });
     sun.shadow.bias = -0.0005;
     sun.shadow.normalBias = 0.03;
     scene.add(sun);
-    const fill = new THREE.DirectionalLight(0xcfe0ff, 0.35);
+    const fill = new THREE.DirectionalLight(0xe2edff, 0.9);
     fill.position.set(12, 10, 14);
     scene.add(fill);
     // Luminárias de galpão: em vez de 12 luzes reais (caras por pixel), poças de luz aditivas sobre o piso,
@@ -852,10 +828,26 @@ function buildScene(canvas, context, labelsHost) {
         piece(hydrant, B.minX + c, B.minZ + c, 0);
         for (let k = 1; k <= nx; k += 1) piece(k % 2 ? column : hydrant, Math.min(B.minX + k * SEG, B.maxX - c), B.minZ + c, 0);
         for (let k = 1; k <= nz; k += 1) piece(k % 2 ? column : hydrant, B.minX + c, Math.min(B.minZ + k * SEG, B.maxZ - c), Math.PI / 2);
-        world.add(mergeStatic(shell));
+        // Reutiliza as malhas quantizadas e transforma só as instâncias de cada peça do galpão.
+        shell.updateMatrixWorld(true);
+        const batches = new Map();
+        shell.traverse((mesh) => {
+            if (!mesh.isMesh) return;
+            const key = `${mesh.geometry.uuid}:${mesh.material.uuid}:${mesh.castShadow}`;
+            if (!batches.has(key)) batches.set(key, []);
+            batches.get(key).push(mesh);
+        });
+        for (const meshes of batches.values()) {
+            const { geometry, material, castShadow, receiveShadow } = meshes[0];
+            const batch = new THREE.InstancedMesh(geometry, material, meshes.length);
+            batch.castShadow = castShadow;
+            batch.receiveShadow = receiveShadow;
+            meshes.forEach((mesh, index) => batch.setMatrixAt(index, mesh.matrixWorld));
+            world.add(batch);
+        }
         world.remove(fallbackShell);
     }
-    const loadShell = () => Promise.all(['/glbimagens/galpao-parede.glb', '/glbimagens/galpao-parede-janela.glb', '/glbimagens/galpao-pilar.glb', '/glbimagens/galpao-pilar-hidrante.glb'].map((url) => loader.loadAsync(url)))
+    const loadShell = () => Promise.all(['/glbimagens/web/galpao-parede.glb', '/glbimagens/web/galpao-parede-janela.glb', '/glbimagens/web/galpao-pilar.glb', '/glbimagens/web/galpao-pilar-hidrante.glb'].map((url) => loader.loadAsync(url)))
         .then(([wall, windowWall, column, hydrant]) => buildShell(wall, windowWall, column, hydrant))
         .catch((error) => console.warn('fabrica-sim: casca do galpão indisponível', error));
 
@@ -984,7 +976,7 @@ function buildScene(canvas, context, labelsHost) {
         if (isStock) {
             const tone = item.critical ? 'alert' : 'quiet';
             const sub = item.critical ? `<span class="fpin__sub fpin__sub--state">${t('critical')}</span>` : '';
-            return `<button type="button" class="fpin fpin--${tone} st-${item.critical ? 'stopped' : 'stock'}" data-fx-pin="${item.id}" aria-label="${item.code}, ${item.qty}">
+            return `<button type="button" class="fpin fpin--${tone} st-${item.critical ? 'stopped' : 'stock'}" data-fx-pin="${item.id}" aria-label="${item.code} ${item.qty}${item.critical ? ` ${t('critical')}` : ''}">
                 <span class="fpin__row">${glyph(STOCK_GLYPH)}<span class="fpin__code">${item.code}</span><span class="fpin__val">${item.qty}</span></span>${sub}</button><span class="fpin__leader"></span>`;
         }
         const st = STATES[item.state];
@@ -996,7 +988,8 @@ function buildScene(canvas, context, labelsHost) {
             : loud ? '' : `<span class="fpin__val"><span class="fpin__unit">OEE </span>${item.oee}%</span>`;
         const sub = loud ? `<span class="fpin__sub fpin__sub--state">${st.label[lang()]} · ${elapsed(item.minutes)}</span>` : '';
         const lead = loud ? glyph(st.glyph) : '<span class="fpin__dotmark fpin__dotmark--sm"></span>';
-        const aria = `${item.code}, ${st.label[lang()]}${loud ? `, ${elapsed(item.minutes)}` : ''}, OEE ${item.oee}%`;
+        const aria = loud ? `${item.code} ${st.label[lang()]} · ${elapsed(item.minutes)}`
+            : oeeLayer ? `${item.code} ${item.oee}%` : `${item.code} OEE ${item.oee}%`;
         const tap = !view.touched && !oeeLayer && item.id === FIRST_STOP ? `<span class="hv-tap-hint fx-tap-hint" aria-hidden="true">${t(coarse ? 'tapPinTouch' : 'tapPin')}</span>` : '';
         return `${tap}<button type="button" class="fpin fpin--${tone} st-${item.state}${st.pulse && !oeeLayer ? ' fpin--pulse' : ''}${view.selected === item.id ? ' fpin--selected' : ''}" data-fx-pin="${item.id}" aria-label="${aria}">
             <span class="fpin__row">${lead}<span class="fpin__code">${item.code}</span>${value}</span>${sub}</button><span class="fpin__leader${loud ? ` st-${item.state}` : ''}"></span>`;
@@ -1095,10 +1088,8 @@ function buildScene(canvas, context, labelsHost) {
     // Interação direta no celular e desktop; o primeiro gesto interrompe o passeio cinema.
     // Fora da tela cheia o CSS (pan-y) entrega a rolagem vertical ao navegador: só o arrasto lateral gira.
     let tour = null;
-    // Celular fora da tela cheia: só cinema; desktop interage também na página.
-    const interactive = () => view.full || !mobileUI;
     function applyControls() {
-        controls.enabled = !tour && interactive();
+        controls.enabled = !tour;
         controls.enableZoom = coarse;
         // Como num mapa: um dedo arrasta a planta, pinça aproxima e dois dedos giram (a legenda diz o mesmo).
         controls.touches = { ONE: THREE.TOUCH.PAN, TWO: THREE.TOUCH.DOLLY_ROTATE };
@@ -1267,9 +1258,9 @@ function buildScene(canvas, context, labelsHost) {
         camera.updateProjectionMatrix();
     }
     // Captura: o passeio para antes de os controles receberem o toque, senão o primeiro gesto se perde.
-    ['pointerdown', 'wheel', 'keydown', 'touchstart'].forEach((type) => root.addEventListener(type, () => { if (interactive()) stopTour(); }, { passive: true, capture: true }));
+    ['pointerdown', 'wheel', 'keydown', 'touchstart'].forEach((type) => root.addEventListener(type, () => { stopTour(); }, { passive: true, capture: true }));
     // Arrastar também conta como uso: o passeio não volta no meio de um gesto longo.
-    root.addEventListener('pointermove', (event) => { if (interactive() && (event.buttons || event.pointerType === 'touch')) lastInput = performance.now(); }, { passive: true });
+    root.addEventListener('pointermove', (event) => { if (event.buttons || event.pointerType === 'touch') lastInput = performance.now(); }, { passive: true });
 
     function zoomBy(factor) {
         const zoom = Math.max(0.3, Math.min(camera.zoom * factor, fitZoom() * 5.5));
@@ -1318,7 +1309,6 @@ function buildScene(canvas, context, labelsHost) {
         }
         downAt = null;
         suppressClickUntil = performance.now() + 350;
-        if (!interactive()) { downPin = null; openFull(); return; }
         if (downPin) { select(downPin); downPin = null; return; }
         const rect = renderer.domElement.getBoundingClientRect();
         pointer.set(((event.clientX - rect.left) / rect.width) * 2 - 1, -((event.clientY - rect.top) / rect.height) * 2 + 1);
@@ -1327,14 +1317,6 @@ function buildScene(canvas, context, labelsHost) {
         if (hit) select(hit.object.userData.itemId);
         else if (view.selected) select(null);
     });
-    renderer.domElement.addEventListener('pointermove', (event) => {
-        if (coarse || event.buttons) return;
-        const rect = renderer.domElement.getBoundingClientRect();
-        pointer.set(((event.clientX - rect.left) / rect.width) * 2 - 1, -((event.clientY - rect.top) / rect.height) * 2 + 1);
-        raycaster.setFromCamera(pointer, camera);
-        renderer.domElement.style.cursor = raycaster.intersectObjects(pickables, false).length ? 'pointer' : '';
-    });
-
     function applyTheme() {
         scene.background = new THREE.Color(palette().bg);
         refreshLabels();
@@ -1354,7 +1336,7 @@ function buildScene(canvas, context, labelsHost) {
     }
 
     const mixer = new THREE.AnimationMixer(world);
-    const loader = new GLTFLoader();
+    const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
     // operador.glb vem comprimido com Draco, como no produto.
     const draco = new DRACOLoader();
     draco.setWorkerLimit(coarse ? 2 : 4);
@@ -1561,13 +1543,13 @@ function buildScene(canvas, context, labelsHost) {
     const SCALE = 0.68;
     const LAMP = { running: 'Sinaleiro_Verde', stopped: 'Sinaleiro_Vermelho', warning: 'Sinaleiro_Ambar', setup: 'Sinaleiro_Ambar', maintenance: 'Sinaleiro_Ambar' };
     const MODELS = {
-        saw: { url: '/glbimagens/seccionadora.glb', rot: 0, cycle: 'Ciclo_Seccionadora', spot: [1.0, 0.62] },
-        nesting: { url: '/glbimagens/cnc-nesting.glb', rot: 0, cycle: 'Ciclo_CNC_Nesting', spot: [1.0, 0.35] },
-        drill: { url: '/glbimagens/furadeira-cnc.glb', rot: Math.PI / 2, cycle: 'Ciclo_Furadeira', spot: [-0.2, 0.62] },
-        edge: { url: '/glbimagens/coladeira-borda.glb', rot: Math.PI / 2, cycle: 'Ciclo_Coladeira', spot: [-0.35, 0.6] },
-        injector: { url: '/glbimagens/injetora.glb', rot: -Math.PI / 2, cycle: 'Ciclo_Injecao', open: 'Abrir_Porta', spot: [0.15, 0.62] },
-        labeler: { url: '/glbimagens/etiquetadora.glb', rot: 0, cycle: 'Ciclo_Etiquetadora', spot: [0.1, 0.62] },
-        tank: { url: '/glbimagens/silo.glb', rot: 0 }
+        saw: { url: '/glbimagens/web/seccionadora.glb', rot: 0, cycle: 'Ciclo_Seccionadora', spot: [1.0, 0.62] },
+        nesting: { url: '/glbimagens/web/cnc-nesting.glb', rot: 0, cycle: 'Ciclo_CNC_Nesting', spot: [1.0, 0.35] },
+        drill: { url: '/glbimagens/web/furadeira-cnc.glb', rot: Math.PI / 2, cycle: 'Ciclo_Furadeira', spot: [-0.2, 0.62] },
+        edge: { url: '/glbimagens/web/coladeira-borda.glb', rot: Math.PI / 2, cycle: 'Ciclo_Coladeira', spot: [-0.35, 0.6] },
+        injector: { url: '/glbimagens/web/injetora.glb', rot: -Math.PI / 2, cycle: 'Ciclo_Injecao', open: 'Abrir_Porta', spot: [0.15, 0.62] },
+        labeler: { url: '/glbimagens/web/etiquetadora.glb', rot: 0, cycle: 'Ciclo_Etiquetadora', spot: [0.1, 0.62] },
+        tank: { url: '/glbimagens/web/silo.glb', rot: 0 }
     };
     function fitModel(gltf, spec) {
         const model = gltf.scene.clone(true);
@@ -1709,6 +1691,7 @@ function buildScene(canvas, context, labelsHost) {
     let lastFrame = 0;
     let lastShadow = -Infinity;
     let firstFrame = true;
+    let lastScroll = -Infinity;
     let extrasPending = true;
     let extrasScheduled = false;
 
@@ -1727,11 +1710,11 @@ function buildScene(canvas, context, labelsHost) {
     }
 
     function scheduleExtras() {
-        if (extrasScheduled || !extrasPending) return;
+        if (extrasScheduled || !extrasPending || !view.full) return;
         extrasScheduled = true;
         const loadExtras = async () => {
             extrasScheduled = false;
-            if (!visible || document.hidden || failed) return;
+            if (!visible || document.hidden || failed || !view.full) return;
             extrasPending = false;
             const props = loadProps();
             if (coarse) await props;
@@ -1747,9 +1730,8 @@ function buildScene(canvas, context, labelsHost) {
         }).observe(root);
     }
     document.addEventListener('visibilitychange', wake);
-    if (coarse) {
-        ['scroll', 'pointerdown', 'keydown'].forEach((type) => window.addEventListener(type, wake, { passive: true }));
-    }
+    window.addEventListener('scroll', () => { lastScroll = performance.now(); wake(); }, { passive: true });
+    if (coarse) ['pointerdown', 'keydown'].forEach((type) => window.addEventListener(type, wake, { passive: true }));
     // A GPU pode descartar o contexto: volta ao pôster e encerra o loop.
     renderer.domElement.addEventListener('webglcontextlost', () => {
         failed = true;
@@ -1763,8 +1745,9 @@ function buildScene(canvas, context, labelsHost) {
             return;
         }
         syncFrame();
+        if (!view.full && now - lastScroll < 120) return;
         const cinematic = tour || (!view.full && now - lastInput > 2000);
-        if ((coarse || cinematic) && lastFrame && now - lastFrame < 1000 / 30 - 1) return;
+        if ((coarse || cinematic) && lastFrame && now - lastFrame < 1000 / (cinematic ? 24 : 30) - 1) return;
         const dt = Math.min((now - (lastFrame || now)) / 1000, 0.05);
         lastFrame = now;
         if (tour) tourStep(dt);
@@ -1783,8 +1766,8 @@ function buildScene(canvas, context, labelsHost) {
             pulse += dt;
             objects.forEach((entry) => { if (entry.ring) entry.ring.material.opacity = 0.65 + Math.sin(pulse * 3) * 0.3; });
         }
-        // Câmera e controles continuam fluidos sem redesenhar as sombras a cada quadro.
-        if (now - lastShadow >= (coarse ? 125 : 65)) {
+        // Na página, a luz fixa reutiliza o mapa de sombras. Objetos extras em tela cheia têm sombras dinâmicas.
+        if (firstFrame || (view.full && now - lastShadow >= (coarse ? 125 : 65))) {
             renderer.shadowMap.needsUpdate = true;
             lastShadow = now;
         }
