@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="/css/home-fonts.css?v=1">
     <link rel="stylesheet" href="/css/site.css?v=7">
     <link rel="stylesheet" href="/css/v2.css?v=3">
-    <link rel="stylesheet" href="/css/factory-sim.css?v=24">
-    <link rel="stylesheet" href="/css/home-demos.css?v=4">
+    <link rel="stylesheet" href="/css/factory-sim.css?v=25">
+    <link rel="stylesheet" href="/css/home-demos.css?v=5">
     <link rel="stylesheet" href="/css/v3.css?v=100">
     <link rel="stylesheet" href="/css/v3-mobile.css?v=28">
     <link rel="canonical" href="https://mestti.com.br/en/">
@@ -100,11 +100,14 @@
         <div class="hv-wrap hv-hero-screen">
                 <div class="hv-window hv-window--app hv-window--hero3d">
                     <div class="fx" data-factory role="group" aria-label="Interactive model of a factory with demo data" data-i18n-aria="v2.inicio.demo.22">
-                        <picture class="fx-preview">
-                            <source type="image/avif" media="(max-width: 480px)" srcset="/perf-assets/v1/fabrica-retrato-420.avif 420w, /perf-assets/v1/fabrica-retrato-800.avif 800w" sizes="max(480px, 100vw)">
-                            <source type="image/avif" srcset="/perf-assets/v1/fabrica-960.avif 960w, /perf-assets/v1/fabrica-1624.avif 1624w" sizes="(max-width: 1024px) 980px, (max-width: 1239px) calc(100vw - 80px), 1160px">
-                            <img class="fx-poster" src="/images/v2/fabrica-3d-poster.webp" alt="" width="1624" height="932" fetchpriority="high">
-                        </picture>
+                        <div class="fx-preview">
+                            <picture>
+                                <source type="image/avif" media="(max-width: 480px)" srcset="/perf-assets/v1/fabrica-retrato-420.avif 420w, /perf-assets/v1/fabrica-retrato-800.avif 800w" sizes="max(480px, 100vw)">
+                                <source type="image/avif" srcset="/perf-assets/v1/fabrica-960.avif 960w, /perf-assets/v1/fabrica-1624.avif 1624w" sizes="(max-width: 1024px) 980px, (max-width: 1239px) calc(100vw - 80px), 1160px">
+                                <img class="fx-poster" src="/images/v2/fabrica-3d-poster.webp" alt="" width="1624" height="932" fetchpriority="high">
+                            </picture>
+                            <video class="fx-film" data-webm="/perf-assets/v1/fabrica-previa.webm" data-mobile-webm="/perf-assets/v1/fabrica-previa-mobile.webm" data-src="/perf-assets/v1/fabrica-previa.mp4" data-mobile-src="/perf-assets/v1/fabrica-previa-mobile.mp4" muted playsinline preload="none" disablepictureinpicture aria-hidden="true"></video>
+                        </div>
                         <p class="fx-status" role="status" data-i18n="v2.inicio.demo.23">Loading the 3D factory…</p>
                         <button type="button" class="fx-start fx-surface" data-factory-start hidden data-i18n="v2.inicio.demo.start">Explore the 3D factory</button>
                     </div>
@@ -219,7 +222,7 @@
                                 </div>
                                 <div class="mc-chips"><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 15.6A9 9 0 1 0 3.6 15.6M12 13l4-5M5 18h14"/></svg>312,4</span><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4M12 14l3-3M12 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>11,5 s</span><span class="mc-chip mc-chip--total"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></svg><b-total>2.946</b></span></div>
                                 <p class="mc-op"><b>OP 2470</b><span>·</span><span data-i18n="v2.inicio.hero.14">Handle 128 mm</span></p>
-                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.15">Scrap</dt><dd>38</dd><dt data-i18n="v2.inicio.hero.16">Good</dt><dd-good>2.908</dd></div><div><dt data-i18n="v2.inicio.hero.17">Exp.</dt><dd>3.120</dd></div></dl>
+                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.15">Scrap</dt><dd>38</dd></div><div><dt data-i18n="v2.inicio.hero.16">Good</dt><dd>2.908</dd></div><div><dt data-i18n="v2.inicio.hero.17">Exp.</dt><dd>3.120</dd></div></dl>
                                 <div class="mc-tl" aria-hidden="true"><div class="mc-tl-bar"><i class="mc-seg mc-seg--run" style="left:0%;width:41%"></i><i class="mc-seg mc-seg--micro" style="left:41%;width:2.5%"></i><i class="mc-seg mc-seg--run" style="left:43.5%;width:56.5%"></i><i class="mc-tick" style="left:25%"></i><i class="mc-tick" style="left:50%"></i><i class="mc-tick" style="left:75%"></i></div><div class="mc-tl-times"-times><span>09:00</span><span>09:15</span><span>09:30</span><span>09:45</span><span>10:00</span></div></div>
                             </div>
                         </article><article class="mc mc--stop">
@@ -233,7 +236,7 @@
                                 </div>
                                 <div class="mc-chips"><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 15.6A9 9 0 1 0 3.6 15.6M12 13l4-5M5 18h14"/></svg>18,6</span><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4M12 14l3-3M12 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>3min 12s</span><span class="mc-chip mc-chip--total"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></svg><b-total>118</b></span></div>
                                 <p class="mc-op mc-op--cause" data-i18n="v2.inicio.hero.19">Material shortage</p>
-                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.20">Scrap</dt><dd>3</dd><dt data-i18n="v2.inicio.hero.21">Good</dt><dd-good>115</dd></div><div><dt data-i18n="v2.inicio.hero.22">Exp.</dt><dd>196</dd></div></dl>
+                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.20">Scrap</dt><dd>3</dd></div><div><dt data-i18n="v2.inicio.hero.21">Good</dt><dd>115</dd></div><div><dt data-i18n="v2.inicio.hero.22">Exp.</dt><dd>196</dd></div></dl>
                                 <div class="mc-tl" aria-hidden="true"><div class="mc-tl-bar"><i class="mc-seg mc-seg--run" style="left:0%;width:52%"></i><i class="mc-seg mc-seg--run" style="left:52%;width:9.5%"></i><i class="mc-seg mc-seg--stop" style="left:61.5%;width:38.5%"></i><i class="mc-tick" style="left:25%"></i><i class="mc-tick" style="left:50%"></i><i class="mc-tick" style="left:75%"></i></div><div class="mc-tl-times"-times><span>09:00</span><span>09:15</span><span>09:30</span><span>09:45</span><span>10:00</span></div></div>
                             </div>
                         </article></div></div></figure>
@@ -319,7 +322,7 @@
                                 </div>
                                 <div class="mc-chips"><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 15.6A9 9 0 1 0 3.6 15.6M12 13l4-5M5 18h14"/></svg>312,4</span><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4M12 14l3-3M12 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>11,5 s</span><span class="mc-chip mc-chip--total"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></svg><b data-mc-total>2.946</b></span></div>
                                 <p class="mc-op"><b>OP 2470</b><span>·</span><span data-i18n="v2.inicio.hero.14">Handle 128 mm</span></p>
-                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.15">Scrap</dt><dd>38</dd><dt data-i18n="v2.inicio.hero.16">Good</dt><dd data-mc-good>2.908</dd></div><div><dt data-i18n="v2.inicio.hero.17">Exp.</dt><dd>3.120</dd></div></dl>
+                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.15">Scrap</dt><dd>38</dd></div><div><dt data-i18n="v2.inicio.hero.16">Good</dt><dd data-mc-good>2.908</dd></div><div><dt data-i18n="v2.inicio.hero.17">Exp.</dt><dd>3.120</dd></div></dl>
                                 <div class="mc-tl" aria-hidden="true"><div class="mc-tl-bar"><i class="mc-seg mc-seg--run" style="left:0%;width:41%"></i><i class="mc-seg mc-seg--micro" style="left:41%;width:2.5%"></i><i class="mc-seg mc-seg--run" style="left:43.5%;width:56.5%"></i><i class="mc-tick" style="left:25%"></i><i class="mc-tick" style="left:50%"></i><i class="mc-tick" style="left:75%"></i></div><div class="mc-tl-times" data-mc-times><span>09:00</span><span>09:15</span><span>09:30</span><span>09:45</span><span>10:00</span></div></div>
                             </div>
                         </article>
@@ -334,7 +337,7 @@
                                 </div>
                                 <div class="mc-chips"><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 15.6A9 9 0 1 0 3.6 15.6M12 13l4-5M5 18h14"/></svg>18,6</span><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4M12 14l3-3M12 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>3min 12s</span><span class="mc-chip mc-chip--total"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></svg><b data-mc-total>118</b></span></div>
                                 <p class="mc-op mc-op--cause" data-i18n="v2.inicio.hero.19">Material shortage</p>
-                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.20">Scrap</dt><dd>3</dd><dt data-i18n="v2.inicio.hero.21">Good</dt><dd data-mc-good>115</dd></div><div><dt data-i18n="v2.inicio.hero.22">Exp.</dt><dd>196</dd></div></dl>
+                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.20">Scrap</dt><dd>3</dd></div><div><dt data-i18n="v2.inicio.hero.21">Good</dt><dd data-mc-good>115</dd></div><div><dt data-i18n="v2.inicio.hero.22">Exp.</dt><dd>196</dd></div></dl>
                                 <div class="mc-tl" aria-hidden="true"><div class="mc-tl-bar"><i class="mc-seg mc-seg--run" style="left:0%;width:52%"></i><i class="mc-seg mc-seg--run" style="left:52%;width:9.5%"></i><i class="mc-seg mc-seg--stop" style="left:61.5%;width:38.5%"></i><i class="mc-tick" style="left:25%"></i><i class="mc-tick" style="left:50%"></i><i class="mc-tick" style="left:75%"></i></div><div class="mc-tl-times" data-mc-times><span>09:00</span><span>09:15</span><span>09:30</span><span>09:45</span><span>10:00</span></div></div>
                             </div>
                         </article>
@@ -349,7 +352,7 @@
                                 </div>
                                 <div class="mc-chips"><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 15.6A9 9 0 1 0 3.6 15.6M12 13l4-5M5 18h14"/></svg>210,0</span><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4M12 14l3-3M12 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>17,1 s</span><span class="mc-chip mc-chip--total"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></svg><b data-mc-total>1.320</b></span></div>
                                 <p class="mc-op"><b>OP 2488</b><span>·</span><span data-i18n="v2.inicio.hero.24">Drawer organizer</span></p>
-                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.25">Scrap</dt><dd>41</dd><dt data-i18n="v2.inicio.hero.26">Good</dt><dd data-mc-good>1.279</dd></div><div><dt data-i18n="v2.inicio.hero.27">Exp.</dt><dd>1.840</dd></div></dl>
+                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.25">Scrap</dt><dd>41</dd></div><div><dt data-i18n="v2.inicio.hero.26">Good</dt><dd data-mc-good>1.279</dd></div><div><dt data-i18n="v2.inicio.hero.27">Exp.</dt><dd>1.840</dd></div></dl>
                                 <div class="mc-tl" aria-hidden="true"><div class="mc-tl-bar"><i class="mc-seg mc-seg--run" style="left:0%;width:64%"></i><i class="mc-seg mc-seg--stop" style="left:64%;width:15%"></i><i class="mc-seg mc-seg--setup" style="left:79%;width:21%"></i><i class="mc-tick" style="left:25%"></i><i class="mc-tick" style="left:50%"></i><i class="mc-tick" style="left:75%"></i></div><div class="mc-tl-times" data-mc-times><span>09:00</span><span>09:15</span><span>09:30</span><span>09:45</span><span>10:00</span></div></div>
                             </div>
                         </article>
@@ -364,7 +367,7 @@
                                 </div>
                                 <div class="mc-chips"><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 15.6A9 9 0 1 0 3.6 15.6M12 13l4-5M5 18h14"/></svg>64,8</span><span class="mc-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4M12 14l3-3M12 22a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>55,6 s</span><span class="mc-chip mc-chip--total"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></svg><b data-mc-total>486</b></span></div>
                                 <p class="mc-op"><b>OP 2479</b><span>·</span><span data-i18n="v2.inicio.hero.29">Drilled wardrobe side</span></p>
-                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.30">Scrap</dt><dd>7</dd><dt data-i18n="v2.inicio.hero.31">Good</dt><dd data-mc-good>479</dd></div><div><dt data-i18n="v2.inicio.hero.32">Exp.</dt><dd>590</dd></div></dl>
+                                <dl class="mc-foot"><div><dt data-i18n="v2.inicio.hero.30">Scrap</dt><dd>7</dd></div><div><dt data-i18n="v2.inicio.hero.31">Good</dt><dd data-mc-good>479</dd></div><div><dt data-i18n="v2.inicio.hero.32">Exp.</dt><dd>590</dd></div></dl>
                                 <div class="mc-tl" aria-hidden="true"><div class="mc-tl-bar"><i class="mc-seg mc-seg--setup" style="left:0%;width:12%"></i><i class="mc-seg mc-seg--run" style="left:12%;width:30%"></i><i class="mc-seg mc-seg--micro" style="left:42%;width:3%"></i><i class="mc-seg mc-seg--run" style="left:45%;width:55%"></i><i class="mc-tick" style="left:25%"></i><i class="mc-tick" style="left:50%"></i><i class="mc-tick" style="left:75%"></i></div><div class="mc-tl-times" data-mc-times><span>09:00</span><span>09:15</span><span>09:30</span><span>09:45</span><span>10:00</span></div></div>
                             </div>
                         </article>
@@ -652,7 +655,7 @@
     <script defer src="/js/script.js?v=46"></script>
     <script defer src="/js/wa-chat-viewport.js?v=4"></script>
     <script defer src="/js/conversational-form.js?v=18"></script>
-    <script defer src="/js/factory-loader.js?v=7"></script>
+    <script defer src="/js/factory-loader.js?v=8"></script>
     <script defer src="/js/v2.js?v=49"></script>
     <script defer src="/js/home-demos.js?v=9"></script>
 </body>
