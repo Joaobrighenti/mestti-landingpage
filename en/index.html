@@ -3,20 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <script src="/js/theme-init.js?v=2"></script>
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
     <meta name="description" content="Our own sensors measure every machine and show where production stops and when each order will be ready. Otto, the AI agent, proposes the next step.">
     <title>Mestti | Production management system with sensors and AI</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="/perf-assets/v1/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/home-fonts.css?v=1">
     <link rel="stylesheet" href="/css/site.css?v=7">
-    <link rel="stylesheet" href="/css/v2.css?v=2">
-    <link rel="stylesheet" href="/css/factory-sim.css?v=23">
-    <link rel="stylesheet" href="/css/home-demos.css?v=3">
-    <link rel="stylesheet" href="/css/v3.css?v=99">
+    <link rel="stylesheet" href="/css/v2.css?v=3">
+    <link rel="stylesheet" href="/css/factory-sim.css?v=24">
+    <link rel="stylesheet" href="/css/home-demos.css?v=4">
+    <link rel="stylesheet" href="/css/v3.css?v=100">
     <link rel="stylesheet" href="/css/v3-mobile.css?v=28">
     <link rel="canonical" href="https://mestti.com.br/en/">
     <link rel="alternate" hreflang="pt-BR" href="https://mestti.com.br/">
@@ -35,7 +33,7 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://mestti.com.br/en/#webpage","url":"https://mestti.com.br/en/","name":"Mestti | Production management system with sensors and AI","description":"Our own sensors measure every machine and show where production stops and when each order will be ready. Otto, the AI agent, proposes the next step.","inLanguage":"en","isPartOf":{"@id":"https://mestti.com.br/#website"},"about":{"@id":"https://mestti.com.br/#organization"},"video":{"@id":"https://mestti.com.br/en/#video"}},{"@type":"Organization","@id":"https://mestti.com.br/#organization","name":"MESTTI","alternateName":"Mestti","url":"https://mestti.com.br/en/","telephone":"+55 43 99109-5035","legalName":"Mestti Tecnologia LTDA","taxID":"63.380.944/0001-51","logo":"https://mestti.com.br/images/MESTTI-logo-header-light.png","contactPoint":{"@type":"ContactPoint","telephone":"+55 43 99109-5035","contactType":"sales","url":"https://mestti.com.br/en/contato/","availableLanguage":["Portuguese","English","Spanish"]},"sameAs":["https://www.linkedin.com/company/mestti/","https://www.instagram.com/mesttibrasil/","https://www.youtube.com/@mesttitech"],"award":"Selecionada na 3ª Chamada Pública do Lab Procel II (ENBPar e SENAI Rio de Janeiro), 2026","description":"A Mestti é uma plataforma brasileira de gestão da produção para indústrias de todos os portes que conecta engenharia de produto, chão de fábrica e qualidade, com sensores próprios, app e agentes de inteligência artificial.","address":{"@type":"PostalAddress","addressLocality":"Londrina","addressRegion":"PR","addressCountry":"BR"},"areaServed":{"@type":"Country","name":"Brasil"},"knowsAbout":["Sistema MES","OEE","PCP","Sequenciamento da produção","Apontamento de produção","Monitoramento de máquinas industriais","Sensores industriais","Controle de qualidade industrial","Indústria 4.0"]},{"@type":"WebSite","@id":"https://mestti.com.br/#website","url":"https://mestti.com.br/en/","name":"MESTTI","inLanguage":"en","publisher":{"@id":"https://mestti.com.br/#organization"}},{"@type":"SoftwareApplication","@id":"https://mestti.com.br/en/#software","name":"Mestti","applicationCategory":"BusinessApplication","operatingSystem":"Web, Android","inLanguage":["en","en","es"],"publisher":{"@id":"https://mestti.com.br/#organization"},"description":"Sistema de gestão da produção com engenharia de produto, PCP e sequenciamento, monitoramento de máquinas por sensores próprios, apontamento por tablet, qualidade e o assistente de IA Otto.","offers":{"@type":"Offer","description":"1 semana de demonstração grátis, com sensores prontos em até 7 dias e instalação em 1 dia."}},{"@type":"FAQPage","@id":"https://mestti.com.br/en/#faq","inLanguage":"en","mainEntity":[{"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"It depends on the number of machines and what you will use. The trial week is free and the sensor is on loan. At the end you get a proposal with your numbers. If you don’t continue, we remove the sensors, at no cost and with no commitment."}},{"@type":"Question","name":"What is Mestti?","acceptedAnswer":{"@type":"Answer","text":"A Brazilian production management system for manufacturers of every size. Its own sensors measure every machine, and engineering, planning, the shop floor and quality use the same data."}},{"@type":"Question","name":"How long does it take to get started?","acceptedAnswer":{"@type":"Answer","text":"Sensors ready within 7 days, installation in 1 day and a 1-week free trial before you decide."}},{"@type":"Question","name":"Will my operators feel watched?","acceptedAnswer":{"@type":"Answer","text":"No. The sensor counts parts and sees whether the machine is running or stopped. It doesn’t watch people. Whoever was at the machine gives the reason for the stop, under their own name."}},{"@type":"Question","name":"I already have an ERP. Do I need to replace it?","acceptedAnswer":{"@type":"Answer","text":"No. Mestti connects to your ERP: orders come from it and production goes back to it. The ERP keeps handling orders, purchasing and invoicing."}},{"@type":"Question","name":"Does it work on old machines?","acceptedAnswer":{"@type":"Answer","text":"Yes. The sensor reads the count or the machine’s electrical signal. No PLC needed and no changes to the controls."}},{"@type":"Question","name":"Does it work without a sensor?","acceptedAnswer":{"@type":"Answer","text":"Yes. On benches, assembly or machines without a sensor, the operator logs on the tablet: start, pause, finish and quantity. The data goes into the same target, OEE and queue as the machines with sensors."}},{"@type":"Question","name":"What if the factory’s internet goes down?","acceptedAnswer":{"@type":"Answer","text":"The sensor stores everything and sends it when the connection returns. Nothing is lost."}},{"@type":"Question","name":"Is my data safe?","acceptedAnswer":{"@type":"Answer","text":"Each company’s data is isolated and access is by permission. The original record cannot be changed. Otto only acts after a person approves."}}]},{"@type":"VideoObject","@id":"https://mestti.com.br/en/#video","name":"Quanto sua fábrica produziu hoje? Sistema MES de monitoramento em tempo real","description":"Em menos de 1 minuto, a Mestti numa fábrica: cada máquina na tela, ao vivo, com o que está rodando, o que parou e por quê.","thumbnailUrl":"https://mestti.com.br/images/v2/video-mestti.webp","uploadDate":"2026-10-22T08:11:36-07:00","duration":"PT57S","embedUrl":"https://www.youtube-nocookie.com/embed/v9ebdO-P66E","contentUrl":"https://www.youtube.com/watch?v=v9ebdO-P66E","inLanguage":"en","publisher":{"@id":"https://mestti.com.br/#organization"}}]}</script>
 </head>
 
-<body class="hv-page" data-page="inicio">
+<body class="hv-page has-site-header" data-page="inicio" data-static-i18n>
     <a class="skip-link" href="#conteudo">Skip to content</a>
     <div class="nav-overlay" id="navOverlay"></div>
 
@@ -57,6 +55,7 @@
                     <a href="/en/qualidade/" class="nav-link" data-i18n="nav.v2.quality">Quality</a>
                     <a href="/en/otto/" class="nav-link" data-i18n="nav.v2.otto">Otto</a>
                     <a href="/en/casos/industria-moveleira/" class="nav-link" data-i18n="nav.v2.cases">Cases</a>
+                    <a href="/blog/" class="nav-link" data-i18n="nav.blog">Blog</a>
                     <a href="/en/empresa/" class="nav-link" data-i18n="nav.about">About</a>
 
                     <div class="mobile-nav-contact">
@@ -100,10 +99,14 @@
         </div>
         <div class="hv-wrap hv-hero-screen">
                 <div class="hv-window hv-window--app hv-window--hero3d">
-                    <div class="fx" data-factory aria-label="Interactive model of a factory with demo data" data-i18n-aria="v2.inicio.demo.22">
-                        <img class="fx-poster" src="/images/v2/fabrica-3d-poster.webp" alt="" width="1624" height="932" decoding="async">
-                        <p class="fx-status" data-i18n="v2.inicio.demo.23">Loading the 3D factory…</p>
-                        <button type="button" class="fx-start fx-surface" data-factory-start hidden data-i18n="v2.inicio.demo.retry">Reload the 3D factory</button>
+                    <div class="fx" data-factory role="group" aria-label="Interactive model of a factory with demo data" data-i18n-aria="v2.inicio.demo.22">
+                        <picture class="fx-preview">
+                            <source type="image/avif" media="(max-width: 480px)" srcset="/perf-assets/v1/fabrica-retrato-420.avif 420w, /perf-assets/v1/fabrica-retrato-800.avif 800w" sizes="max(480px, 100vw)">
+                            <source type="image/avif" srcset="/perf-assets/v1/fabrica-960.avif 960w, /perf-assets/v1/fabrica-1624.avif 1624w" sizes="(max-width: 1024px) 980px, (max-width: 1239px) calc(100vw - 80px), 1160px">
+                            <img class="fx-poster" src="/images/v2/fabrica-3d-poster.webp" alt="" width="1624" height="932" fetchpriority="high">
+                        </picture>
+                        <p class="fx-status" role="status" data-i18n="v2.inicio.demo.23">Loading the 3D factory…</p>
+                        <button type="button" class="fx-start fx-surface" data-factory-start hidden data-i18n="v2.inicio.demo.start">Explore the 3D factory</button>
                     </div>
                     <p class="sr-only" data-i18n="v2.inicio.demo.34">The model shows a furniture plant with plastic injection: cutting, edging and drilling, injection, assembly, raw material and shipping. Each machine shows its state, how long it has been in it, the stop reason, the running order, the queue and its OEE.</p>
                 </div>
@@ -123,7 +126,7 @@
                 </div>
             </div>
             <figure class="hv-video-frame" data-yt="v9ebdO-P66E">
-                <img class="hv-video-poster" src="/images/v2/video-mestti.webp" alt="" width="1280" height="720" loading="lazy" decoding="async">
+                <picture><source type="image/avif" srcset="/perf-assets/v1/video-mestti-640.avif 640w, /perf-assets/v1/video-mestti-1280.avif 1280w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1239px) calc(100vw - 80px), 1160px"><img class="hv-video-poster" src="/images/v2/video-mestti.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"></picture>
                 <button type="button" class="hv-video-play" data-yt-play><span class="hv-video-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span><span data-i18n="v2.inicio.video.4">Watch the video</span></button>
                 <button type="button" class="hv-video-sound" data-yt-sound hidden><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span data-i18n="v2.inicio.video.5">Turn on sound</span></button>
                 <figcaption class="hv-sr" data-i18n="v2.inicio.video.6">Mestti video: real-time production monitoring.</figcaption>
@@ -144,9 +147,9 @@
                 <a class="hv-press-source" href="https://enbpar.gov.br/projetos-selecionados-na-3a-chamada-publica-do-lab-procel-ii-iniciam-etapa-de-aceleracao/" target="_blank" rel="noopener"><img src="/images/parceiros/enbpar.webp" alt="ENBPar" width="876" height="160" loading="lazy" decoding="async"><span data-i18n="v2.inicio.br.14">Read the news on ENBPar</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
             </div>
             <div class="hv-press-mosaic">
-                <figure class="hv-press-shot hv-press-shot--main"><img src="/images/v2/mestti-lab-procel-palco.webp" alt="João Brighenti presents Mestti at Lab Procel II" data-i18n-alt="v2.inicio.news.10" width="1400" height="933" loading="lazy" decoding="async"><figcaption data-i18n="v2.inicio.news.12">Pitch to the Lab Procel II panel</figcaption></figure>
-                <figure class="hv-press-shot "><img src="/images/v2/mestti-lab-procel-sala.webp" alt="Audience follows the Mestti presentation" data-i18n-alt="v2.inicio.news.13" width="1400" height="933" loading="lazy" decoding="async"><figcaption data-i18n="v2.inicio.news.14">Production scheduling and material picking</figcaption></figure>
-                <figure class="hv-press-shot "><img src="/images/v2/mestti-lab-procel-plateia.webp" alt="Program companies and evaluators at the presentation" data-i18n-alt="v2.inicio.news.15" width="1400" height="933" loading="lazy" decoding="async"><figcaption data-i18n="v2.inicio.news.16">Program companies and evaluators</figcaption></figure>
+                <figure class="hv-press-shot hv-press-shot--main"><picture><source type="image/avif" srcset="/perf-assets/v1/mestti-lab-procel-palco-640.avif 640w, /perf-assets/v1/mestti-lab-procel-palco-1200.avif 1200w" sizes="(max-width: 900px) calc(100vw - 40px), 550px"><img src="/images/v2/mestti-lab-procel-palco.webp" alt="João Brighenti presents Mestti at Lab Procel II" data-i18n-alt="v2.inicio.news.10" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption data-i18n="v2.inicio.news.12">Pitch to the Lab Procel II panel</figcaption></figure>
+                <figure class="hv-press-shot "><picture><source type="image/avif" srcset="/perf-assets/v1/mestti-lab-procel-sala-400.avif 400w, /perf-assets/v1/mestti-lab-procel-sala-800.avif 800w" sizes="(max-width: 900px) calc(50vw - 28px), 235px"><img src="/images/v2/mestti-lab-procel-sala.webp" alt="Audience follows the Mestti presentation" data-i18n-alt="v2.inicio.news.13" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption data-i18n="v2.inicio.news.14">Production scheduling and material picking</figcaption></figure>
+                <figure class="hv-press-shot "><picture><source type="image/avif" srcset="/perf-assets/v1/mestti-lab-procel-plateia-400.avif 400w, /perf-assets/v1/mestti-lab-procel-plateia-800.avif 800w" sizes="(max-width: 900px) calc(50vw - 28px), 235px"><img src="/images/v2/mestti-lab-procel-plateia.webp" alt="Program companies and evaluators at the presentation" data-i18n-alt="v2.inicio.news.15" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption data-i18n="v2.inicio.news.16">Program companies and evaluators</figcaption></figure>
             </div>
         </div>
     </section>
@@ -487,7 +490,7 @@
                     
                     <div class="hv-actions"><a class="hv-btn hv-btn--primary" href="https://wa.me/5543991095035" target="_blank" rel="noopener" data-cta="brasil" data-i18n="v2.inicio.br.16">Talk to the team</a><p class="hv-cta-micro" data-i18n="v2.inicio.br.17">Selected by Lab Procel, a federal innovation program.</p></div>
                 </div>
-                <div class="hv-nation-strip"><figure class="hv-nation-shot" style="--pos:60% center"><img src="/images/v2/sensor-maquina.webp" alt="Mestti sensor wired to a machine with motor and cylinders" data-i18n-alt="v2.inicio.br.19" width="1000" height="1000" loading="lazy" decoding="async"><figcaption data-i18n="v2.inicio.br.20">Installed with no PLC changes</figcaption></figure><figure class="hv-nation-shot" style="--pos:28% center"><img src="/images/v2/mestti-lab-procel-apresentacao.webp" alt="Mestti project presentation at Lab Procel II" data-i18n-alt="v2.inicio.br.21" width="1400" height="933" loading="lazy" decoding="async"><figcaption data-i18n="v2.inicio.br.22">Project selected for Lab Procel II</figcaption></figure></div>
+                <div class="hv-nation-strip"><figure class="hv-nation-shot" style="--pos:60% center"><picture><source type="image/avif" srcset="/perf-assets/v1/sensor-maquina-400.avif 400w, /perf-assets/v1/sensor-maquina-800.avif 800w" sizes="(max-width: 640px) calc(50vw - 28px), 370px"><img src="/images/v2/sensor-maquina.webp" alt="Mestti sensor wired to a machine with motor and cylinders" data-i18n-alt="v2.inicio.br.19" width="1000" height="1000" loading="lazy" decoding="async"></picture><figcaption data-i18n="v2.inicio.br.20">Installed with no PLC changes</figcaption></figure><figure class="hv-nation-shot" style="--pos:28% center"><picture><source type="image/avif" srcset="/perf-assets/v1/mestti-lab-procel-apresentacao-400.avif 400w, /perf-assets/v1/mestti-lab-procel-apresentacao-800.avif 800w" sizes="(max-width: 640px) calc(50vw - 28px), 370px"><img src="/images/v2/mestti-lab-procel-apresentacao.webp" alt="Mestti project presentation at Lab Procel II" data-i18n-alt="v2.inicio.br.21" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption data-i18n="v2.inicio.br.22">Project selected for Lab Procel II</figcaption></figure></div>
             </div>
         </div>
         <div class="hv-supporters">
@@ -640,18 +643,18 @@
     }
     </script>
     <script defer src="/js/i18n/inicio.js?v=15"></script>
-    <script defer src="/js/i18n.js?v=35"></script>
-    <script defer src="/js/theme.js?v=3"></script>
     <script defer src="/js/form-options.js?v=4"></script>
+    <script defer src="/js/i18n.js?v=36"></script>
+    <script defer src="/js/theme.js?v=3"></script>
     <script defer src="/js/meta-consent.js?v=11"></script>
     <script defer src="/js/google-consent.js?v=3"></script>
     <script defer src="/js/meta-pixel.js?v=1"></script>
-    <script defer src="/js/script.js?v=45"></script>
+    <script defer src="/js/script.js?v=46"></script>
     <script defer src="/js/wa-chat-viewport.js?v=4"></script>
     <script defer src="/js/conversational-form.js?v=18"></script>
-    <script defer src="/js/factory-loader.js?v=6"></script>
-    <script defer src="/js/v2.js?v=48"></script>
-    <script defer src="/js/home-demos.js?v=8"></script>
+    <script defer src="/js/factory-loader.js?v=7"></script>
+    <script defer src="/js/v2.js?v=49"></script>
+    <script defer src="/js/home-demos.js?v=9"></script>
 </body>
 
 </html>

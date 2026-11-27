@@ -3,47 +3,82 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 
-function fixture({ touch = true, saveData = false, webgl = true } = {}) {
-    const listeners = new Map(); let visible; let idle; let reloads = 0;
-    const button = { hidden: true, addEventListener: (n, fn) => listeners.set(n, fn) };
+function fixture({ webgl = true } = {}) {
+    const listeners = new Map();
     const classes = new Set();
-    const host = { classes, querySelector: () => button, classList: { add: c => classes.add(c), remove: c => classes.delete(c) }, setAttribute() {}, removeAttribute() {} };
-    const window = { addEventListener() {}, IntersectionObserver: true, requestIdleCallback(fn) { idle = fn; } };
-    class IntersectionObserver { constructor(fn) { visible = fn; } observe() {} disconnect() {} }
-    const context = { window, IntersectionObserver, document: { readyState: 'complete', documentElement: { lang: 'pt-BR' }, createElement: () => ({ getContext: () => (webgl ? { getExtension: () => ({ loseContext() {} }) } : null) }) }, navigator: { connection: { saveData } }, matchMedia: q => ({ matches: q.includes('coarse') && touch }), location: { reload() { reloads++; } } };
-    vm.runInNewContext(fs.readFileSync('js/factory-loader.js', 'utf8'), context);
-    return { mount: window.MesttiFactoryLoader.mount, button, host, visible: on => visible([{ isIntersecting: on }]), idle: () => idle(), tap: () => listeners.get('click')(), reloads: () => reloads };
+    const attributes = new Map();
+    let reloads = 0;
+    let probes = 0;
+    let focused = false;
+    const button = {
+        hidden: true,
+        disabled: false,
+        addEventListener: (name, fn, options) => listeners.set(name, { fn, options }),
+        focus() {},
+    };
+    const host = {
+        querySelector: () => button,
+        classList: { add: c => classes.add(c), remove: c => classes.delete(c) },
+        setAttribute: (name, value) => attributes.set(name, value),
+        removeAttribute: name => attributes.delete(name),
+        focus: () => { focused = true; },
+    };
+    const window = {};
+    const document = {
+        documentElement: { lang: 'pt-BR' },
+        createElement: () => ({
+            getContext() {
+                probes++;
+                return webgl ? { getExtension: () => ({ loseContext() {} }) } : null;
+            },
+        }),
+    };
+    vm.runInNewContext(fs.readFileSync('js/factory-loader.js', 'utf8'), {
+        window, document, location: { reload() { reloads++; } },
+    });
+    const tap = (detail = 1) => {
+        const listener = listeners.get('click');
+        if (!listener) return button.onclick?.();
+        if (listener.options.once) listeners.delete('click');
+        return listener.fn({ detail });
+    };
+    return { mount: window.MesttiFactoryLoader.mount, button, host, attributes, classes, tap, reloads: () => reloads, probes: () => probes, focused: () => focused };
 }
 
-test('mobile inicia automaticamente quando visível e há tempo livre, sem botão nem carga duplicada', () => {
-    const f = fixture(); let loads = 0;
-    f.mount(f.host, () => { loads++; return Promise.resolve(); });
-    f.visible(false); assert.equal(loads, 0);
-    f.visible(true); assert.equal(loads, 0); assert.equal(f.button.hidden, true);
-    f.idle(); f.idle(); assert.equal(loads, 1);
-});
-
-test('desktop carrega quando visível; economia de dados aguarda tempo livre', () => {
-    for (const saveData of [false, true]) {
-        const f = fixture({ touch: false, saveData }); let loads = 0;
-        f.mount(f.host, () => { loads++; return Promise.resolve(); });
-        f.visible(false); assert.equal(loads, 0);
-        f.visible(true); assert.equal(loads, saveData ? 0 : 1);
-        if (saveData) f.idle();
-        assert.equal(loads, 1); assert.equal(f.button.hidden, true);
-    }
+test('mantém a imagem e não inicializa WebGL ou importa a cena até a ativação', async () => {
+    const f = fixture();
+    let loads = 0;
+    f.mount(f.host, async () => { loads++; });
+    assert.equal(f.button.hidden, false);
+    assert.equal(f.probes(), 0);
+    assert.equal(loads, 0);
+    await f.tap(0);
+    await f.tap();
+    assert.equal(f.probes(), 1);
+    assert.equal(loads, 1);
+    assert.equal(f.button.hidden, true);
+    assert.equal(f.attributes.get('aria-busy'), 'true');
+    assert.equal(f.focused(), true);
 });
 
 test('erro de download oferece recuperação por recarregamento', async () => {
     const f = fixture();
-    f.mount(f.host, () => Promise.reject(Error('offline'))); f.visible(true); f.idle();
-    await Promise.resolve(); assert.equal(f.button.hidden, false);
-    f.tap(); assert.equal(f.reloads(), 1);
+    f.mount(f.host, async () => { throw Error('offline'); });
+    await f.tap();
+    assert.equal(f.button.hidden, false);
+    assert.equal(f.button.disabled, false);
+    assert.ok(!f.attributes.has('aria-busy'));
+    assert.ok(!f.classes.has('fx--requested'));
+    f.tap();
+    assert.equal(f.reloads(), 1);
 });
 
-test('sem WebGL não baixa a cena e mantém só a imagem estática', () => {
-    const f = fixture({ webgl: false }); let loads = 0;
-    f.mount(f.host, () => { loads++; return Promise.resolve(); });
-    f.visible(true); f.idle();
-    assert.equal(loads, 0); assert.ok(f.host.classes.has('fx--static')); assert.equal(f.button.hidden, true);
+test('sem WebGL mantém a imagem estática após ativar e não baixa a cena', async () => {
+    const f = fixture({ webgl: false });
+    let loads = 0;
+    f.mount(f.host, async () => { loads++; });
+    await f.tap();
+    assert.equal(loads, 0);
+    assert.ok(f.classes.has('fx--static'));
+    assert.equal(f.button.hidden, true);
 });

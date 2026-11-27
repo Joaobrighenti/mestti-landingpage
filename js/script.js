@@ -1060,7 +1060,7 @@ if (modalOverlay) {
             </svg>`;
         document.body.appendChild(fab);
 
-        if (window.MesttiI18n && typeof window.MesttiI18n.applyLanguage === 'function') {
+        if (!document.body.hasAttribute('data-static-i18n') && typeof window.MesttiI18n?.applyLanguage === 'function') {
             window.MesttiI18n.applyLanguage(window.MESTTI_LANG || window.MesttiI18n.getLang());
         }
     }
@@ -1107,15 +1107,12 @@ const header = document.querySelector('.header');
 if (header) {
     let lastScroll = 0;
     let ticking = false;
+    const autoHideHeader = !document.body.classList.contains('hv-page');
     const SCROLL_TOP_THRESHOLD = 24;
     const SCROLL_DELTA = 4;
 
     function getScrollTop() {
-        return Math.max(
-            window.scrollY || 0,
-            document.documentElement.scrollTop || 0,
-            document.body.scrollTop || 0
-        );
+        return Math.max(0, window.scrollY ?? document.documentElement.scrollTop ?? 0);
     }
 
     function isHeaderLockedOpen() {
@@ -1170,9 +1167,7 @@ if (header) {
                 : '';
         }
 
-        if (isHeaderLockedOpen()) {
-            header.classList.remove('header--hidden');
-        } else if (currentScroll <= SCROLL_TOP_THRESHOLD) {
+        if (!autoHideHeader || isHeaderLockedOpen() || currentScroll <= SCROLL_TOP_THRESHOLD) {
             header.classList.remove('header--hidden');
         } else if (currentScroll > lastScroll + SCROLL_DELTA) {
             header.classList.add('header--hidden');
@@ -1191,24 +1186,16 @@ if (header) {
         }
     }
 
-    syncHeaderOffset();
+    // A home atual já reserva a altura do cabeçalho em CSS.
+    if (document.body.dataset.page !== 'inicio') {
+        syncHeaderOffset();
+        window.addEventListener('resize', syncHeaderOffset, { passive: true });
+        window.addEventListener('load', syncHeaderOffset);
+    }
     updateHeaderOnScroll();
 
     window.addEventListener('scroll', onScroll, { passive: true });
     document.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', syncHeaderOffset, { passive: true });
-    window.addEventListener('load', syncHeaderOffset);
-}
-
-// ============================================
-// Lazy Loading de Imagens
-// ============================================
-
-if ('loading' in HTMLImageElement.prototype) {
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    images.forEach(img => {
-        img.src = img.src;
-    });
 }
 
 // ============================================

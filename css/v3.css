@@ -354,9 +354,6 @@ html.hv-motion .hv-hero-screen .mc--stop { animation: hv-card-in 560ms var(--out
 @keyframes hv-card-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @keyframes hv-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes hv-alarm { 0% { box-shadow: 0 0 0 0 rgba(210, 58, 42, .55); } 100% { box-shadow: 0 0 0 14px rgba(210, 58, 42, 0); } }
-html.hv-motion .hv-hero-top > * { animation: hv-card-in 600ms var(--out) both; }
-html.hv-motion .hv-hero-top > *:nth-child(2) { animation-delay: 60ms; }
-html.hv-motion .hv-hero-top > *:nth-child(3) { animation-delay: 140ms; }
 @media (prefers-reduced-motion: reduce) {
     .hero-clients-track { animation: none !important; }
     .hv-demo-panel, .hv-chat-answer, .hv-faq-list details[open] p { animation: none !important; }

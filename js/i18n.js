@@ -1145,7 +1145,7 @@
         if (metaDesc && desc && !desc.startsWith('meta.')) metaDesc.setAttribute('content', desc);
     }
 
-    function applyLanguage(lang) {
+    function applyLanguage(lang, { useStaticContent = false } = {}) {
         const fixedLanguage = document.body.dataset.contentLang;
         if (fixedLanguage) lang = fixedLanguage;
         if (!SUPPORTED.includes(lang)) lang = 'pt';
@@ -1157,25 +1157,28 @@
             window.MesttiFormOptions.populateFormSelects();
         }
 
-        document.querySelectorAll('[data-i18n]').forEach((el) => {
-            const key = el.getAttribute('data-i18n');
-            if (!key) return;
-            const value = t(lang, key);
-            if (el.hasAttribute('data-i18n-html')) el.innerHTML = value;
-            else el.textContent = value;
-        });
+        if (!useStaticContent) {
+            document.querySelectorAll('[data-i18n]').forEach((el) => {
+                const key = el.getAttribute('data-i18n');
+                if (!key) return;
+                const value = t(lang, key);
+                if (el.hasAttribute('data-i18n-html')) el.innerHTML = value;
+                else el.textContent = value;
+            });
 
-        document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
-            el.placeholder = t(lang, el.getAttribute('data-i18n-placeholder'));
-        });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+                el.placeholder = t(lang, el.getAttribute('data-i18n-placeholder'));
+            });
 
-        document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
-            el.alt = t(lang, el.getAttribute('data-i18n-alt'));
-        });
+            document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+                el.alt = t(lang, el.getAttribute('data-i18n-alt'));
+            });
 
-        document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
-            el.setAttribute('aria-label', t(lang, el.getAttribute('data-i18n-aria')));
-        });
+            document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+                el.setAttribute('aria-label', t(lang, el.getAttribute('data-i18n-aria')));
+            });
+            applyMeta(lang);
+        }
 
         document.querySelectorAll('.lang-switcher-btn').forEach((btn) => {
             const on = btn.getAttribute('data-lang') === lang;
@@ -1185,7 +1188,6 @@
         document.querySelectorAll('.lang-current-code').forEach((el) => { el.textContent = lang.toUpperCase(); });
         document.querySelectorAll('.lang-current-flag').forEach((el) => { el.textContent = LANG_FLAGS[lang]; });
 
-        applyMeta(lang);
         document.dispatchEvent(new CustomEvent('mestti:lang', { detail: lang }));
         window.MesttiConversationalForm?.applyLanguage?.(lang);
         window.MesttiLpCarousels?.refresh?.();
@@ -1269,7 +1271,8 @@
         injectLangSwitcher();
         bindLangSwitcher();
         bindLangMenus();
-        applyLanguage(PAGE_LANG || getStoredLang());
+        const useStaticContent = PAGE_LANG && document.body.hasAttribute('data-static-i18n');
+        applyLanguage(PAGE_LANG || getStoredLang(), { useStaticContent });
     }
 
     window.MesttiI18n = { t, applyLanguage, getLang: getStoredLang };

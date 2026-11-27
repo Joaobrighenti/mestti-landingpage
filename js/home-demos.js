@@ -62,9 +62,10 @@
                     c.totalN += 1; c.goodN += 1;
                     c.total.textContent = num(c.totalN);
                     c.good.textContent = num(c.goodN);
-                    c.el.classList.remove('is-bump');
-                    void c.el.offsetWidth;
-                    c.el.classList.add('is-bump');
+                    c.total.closest('.mc-chip--total')?.animate?.(
+                        [{ transform: 'scale(1)' }, { transform: 'scale(1.06)', offset: .4 }, { transform: 'scale(1)' }],
+                        { duration: 500, easing: 'ease' }
+                    );
                 }
             });
             if (Date.now() - lastStamp > 30000) { lastStamp = Date.now(); stamp(); }
@@ -189,7 +190,7 @@
                     ${state.toast ? `<p class="gx-toast" role="status">${state.toast}</p>` : ''}
                 </div>`;
             const scroller = root.querySelector('[data-gx-scroll]');
-            if (scroller) scroller.scrollLeft = state.scroll != null ? state.scroll : 0;
+            if (scroller && state.scroll) scroller.scrollLeft = state.scroll;
             state.fresh = null;
         }
 
@@ -273,10 +274,21 @@
         root.addEventListener('focusout', hideTip);
         root.addEventListener('scroll', hideTip, true);
 
-        render();
-        document.addEventListener('hv:tab', (e) => { if (e.detail === 'sequenciamento') render(); });
-        onLang(() => { const sc = root.querySelector('[data-gx-scroll]'); state.scroll = sc ? sc.scrollLeft : null; state.toast = null; render(); });
-        new MutationObserver(() => render()).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+        let mounted = false;
+        const mount = () => {
+            if (mounted) return;
+            mounted = true;
+            render();
+        };
+        if (!root.closest('[role="tabpanel"]')?.hidden) mount();
+        document.addEventListener('hv:tab', (e) => { if (e.detail === 'sequenciamento') mount(); });
+        onLang(() => {
+            if (!mounted) return;
+            const sc = root.querySelector('[data-gx-scroll]');
+            state.scroll = sc ? sc.scrollLeft : null;
+            state.toast = null;
+            render();
+        });
     }
 
     /* ------------------------------------------------------------ abas da demonstração */
@@ -288,8 +300,9 @@
         const moveInk = () => {
             const on = tabs.find((t) => t.getAttribute('aria-selected') === 'true');
             if (!on || !ink) return;
-            ink.style.width = `${on.offsetWidth}px`;
-            ink.style.transform = `translateX(${on.offsetLeft}px)`;
+            const { offsetWidth, offsetLeft } = on;
+            ink.style.width = `${offsetWidth}px`;
+            ink.style.transform = `translateX(${offsetLeft}px)`;
         };
         const select = (id, focus, user) => {
             tabs.forEach((t) => {
@@ -299,7 +312,7 @@
                 document.getElementById(t.dataset.demoTab).hidden = !on;
                 if (on && focus) t.focus();
             });
-            moveInk();
+            requestAnimationFrame(moveInk);
             document.dispatchEvent(new CustomEvent('hv:tab', { detail: id }));
             if (user) {
                 history.replaceState(null, '', `#${id}`);
@@ -381,10 +394,15 @@
         const foldCtas = [...document.querySelectorAll('.hv [data-cta]')].filter((el) => !el.closest('[data-mobilebar]') && el.classList.contains('hv-btn--primary'));
         const visible = new Set();
         let heroGone = false; let finalOn = false; let typing = false;
+        let frame = 0;
         const sync = () => {
-            if (bar) bar.classList.toggle('is-on', heroGone && !finalOn && visible.size === 0 && !typing && !document.body.classList.contains('is-modal-open'));
-            const scrolled = window.scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight);
-            document.body.classList.toggle('hv-fab-on', scrolled > 0.35);
+            if (frame) return;
+            frame = requestAnimationFrame(() => {
+                frame = 0;
+                const scrolled = window.scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight);
+                if (bar) bar.classList.toggle('is-on', heroGone && !finalOn && visible.size === 0 && !typing && !document.body.classList.contains('is-modal-open'));
+                document.body.classList.toggle('hv-fab-on', scrolled > 0.35);
+            });
         };
         if ('IntersectionObserver' in window) {
             if (heroCta) new IntersectionObserver(([en]) => { heroGone = !en.isIntersecting && en.boundingClientRect.top < 0; sync(); }).observe(heroCta);
@@ -403,7 +421,7 @@
         sync();
     }
 
-    const start = () => { initMonitor(); initGantt(); initTabs(); initReveal(); initCounts(); initBars(); };
+    const start = () => { initMonitor(); initTabs(); initGantt(); initReveal(); initCounts(); initBars(); };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
     else start();
 }());
