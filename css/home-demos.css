@@ -103,6 +103,7 @@ html[data-theme="dark"] .mc-op b { color: #fff; }
 .mc-op--cause { font-weight: 600; }
 .mc-foot { margin: 0; display: flex; justify-content: space-between; gap: 6px; padding-top: 5px; border-top: 1px solid var(--mon-line); font-size: 0.7rem; color: var(--mon-ink-2); }
 .mc-foot div { display: flex; gap: 3px; white-space: nowrap; }
+.mc-foot div:last-child { margin-inline-start: auto; }
 .mc-foot dt::after { content: ':'; }
 .mc-foot dd { margin: 0 4px 0 0; font-weight: 600; color: var(--mon-ink); font-variant-numeric: tabular-nums; }
 .mc-tl { padding-top: 6px; border-top: 1px solid var(--mon-line); }

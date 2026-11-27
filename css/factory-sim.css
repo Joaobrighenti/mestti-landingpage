@@ -325,11 +325,14 @@ html.fx-lock, html.fx-lock body { overflow: hidden; }
 .fx-fullscreen-dialog::backdrop { background: #f2f2f2; }
 
 /* Imagem da fábrica enquanto o 3D carrega */
-.fx-preview { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
-.fx-poster { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; transition: opacity .6s ease; }
-.fx--ready .fx-poster { opacity: 0; }
+.fx-preview { position: absolute; inset: 0; z-index: 3; pointer-events: none; transition: opacity .6s ease; }
+.fx-preview picture { display: block; height: 100%; }
+.fx-poster, .fx-film { display: block; width: 100%; height: 100%; object-fit: cover; }
+.fx-film { position: absolute; inset: 0; opacity: 0; transition: opacity .35s ease; }
+.fx--previewing .fx-film { opacity: 1; }
+.fx--ready .fx-preview { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .fx-preview, .fx-film { transition: none; } }
 /* Sem WebGL: fica só a imagem da fábrica, sem erro nem controles inúteis. */
-.fx--static .fx-poster { opacity: 1; }
 .fx--static .fx-status, .fx--static .fx-hud, .fx--static .fx-scene, .fx--static .fx-start { display: none; }
 .fx-preview ~ .fx-status { visibility: hidden; }
 .fx-start { position: absolute; z-index: 6; top: 16px; left: 16px; min-height: 48px; width: max-content; max-width: calc(100% - 32px); padding: 12px 20px; border: 1px solid var(--fx-line); border-radius: 999px; background: var(--fx-panel); color: var(--fx-ink); box-shadow: var(--fx-shadow); font: 600 14px/1.4 'Inter', sans-serif; cursor: pointer; touch-action: manipulation; }

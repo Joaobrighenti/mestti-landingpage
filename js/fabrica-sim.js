@@ -181,16 +181,12 @@ const sectorOf = (item) => SECTORS.find((s) => s.id === item.sector);
 /* ---------------------------------------------------------------- estado da vista */
 const view = { full: false, touched: false, selected: null, tab: 'summary', layer: 'state', filters: new Set(), nowOpen: false };
 
-if (root) init();
-
-function init() {
-    // O módulo pode chegar antes de a aba abrir (pré-carga ao apontar para ela). Sem tamanho, a câmera
-    // calcularia zoom infinito: espera o quadro ganhar largura e altura para montar a cena.
+export function mountFactory(canvas, context) {
     if (!root.clientWidth || !root.clientHeight) {
         const wait = new ResizeObserver(() => {
             if (!root.clientWidth || !root.clientHeight) return;
             wait.disconnect();
-            init();
+            mountFactory(canvas, context);
         });
         wait.observe(root);
         return;
@@ -198,14 +194,17 @@ function init() {
     // "Fábrica agora" começa aberto no desktop e recolhido no celular/tablet, para não cobrir a cena.
     view.nowOpen = root.clientWidth >= 1100;
     root.classList.add('fx--loading');
-    // A imagem estática da fábrica fica por cima até a cena 3D estar pronta, e some suavemente.
-    const poster = root.querySelector('.fx-preview');
+    root.setAttribute('aria-busy', 'true');
+    // Mantém a prévia visível até o primeiro quadro interativo.
+    const preview = root.querySelector('.fx-preview');
     root.innerHTML = `
-        <div class="fx-scene"><canvas class="fx-canvas" aria-hidden="true"></canvas><div class="fx-labels"></div></div>
+        <div class="fx-scene"><div class="fx-labels"></div></div>
         <p class="fx-status" role="status">${t('loading')}</p>
         <div class="fx-hud" data-fx-hud></div>`;
-    if (poster) root.prepend(poster);
-    const canvas = root.querySelector('.fx-canvas');
+    if (preview) root.prepend(preview);
+    canvas.className = 'fx-canvas';
+    canvas.setAttribute('aria-hidden', 'true');
+    root.querySelector('.fx-scene').prepend(canvas);
     const labelsHost = root.querySelector('.fx-labels');
     renderHud();
     root.querySelector('[data-fx-hud]').inert = true;
@@ -213,7 +212,7 @@ function init() {
 
     let scene3d = null;
     try {
-        scene3d = buildScene(canvas, labelsHost);
+        scene3d = buildScene(canvas, context, labelsHost);
     } catch (error) {
         console.error(error);
         // Sem WebGL recarregar não resolve: mantém a imagem estática.
@@ -541,15 +540,16 @@ function select(id) {
 }
 
 /* ---------------------------------------------------------------- cena 3D */
-function buildScene(canvas, labelsHost) {
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, coarse ? 1 : 1.75));
+function buildScene(canvas, context, labelsHost) {
+    const renderer = new THREE.WebGLRenderer({ canvas, context });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, coarse ? 1 : 1.5));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-10, 10, 10, -10, 0.1, 400);
     const labels = new CSS2DRenderer({ element: labelsHost });
 
     renderer.shadowMap.enabled = true;
+    renderer.shadowMap.autoUpdate = false;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     // Planta compacta: coordenadas do layout em escala de metros parecida com a do produto.
@@ -564,7 +564,10 @@ function buildScene(canvas, labelsHost) {
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.08;
     const pmrem = new THREE.PMREMGenerator(renderer);
-    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    const room = new RoomEnvironment();
+    scene.environment = pmrem.fromScene(room, 0.04).texture;
+    room.dispose();
+    pmrem.dispose();
     scene.environmentIntensity = 0.42;
     scene.add(new THREE.HemisphereLight(0xdde7f0, 0x22272d, 0.42));
     const sun = new THREE.DirectionalLight(0xfff1de, 1.45);
@@ -1357,7 +1360,6 @@ function buildScene(canvas, labelsHost) {
     draco.setWorkerLimit(coarse ? 2 : 4);
     draco.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/libs/draco/gltf/');
     loader.setDRACOLoader(draco);
-    loadShell();
 
     resize();
     applyTheme();
@@ -1475,7 +1477,7 @@ function buildScene(canvas, labelsHost) {
     const PROP = 0.68;
     function loadProps() {
         const names = ['porta-pallet', 'pallet-caixas-a', 'pallet-caixas-b', 'paleteira', 'cavalete-piso'];
-        Promise.all(names.map((n) => loader.loadAsync(`/glbimagens/${n}.glb`))).then((list) => {
+        return Promise.all(names.map((n) => loader.loadAsync(`/glbimagens/${n}.glb`))).then((list) => {
             const g = Object.fromEntries(names.map((n, i) => [n, list[i]]));
             const loose = new THREE.Group();
             const matCache = new Map();
@@ -1625,6 +1627,7 @@ function buildScene(canvas, labelsHost) {
             ].forEach((w) => spawnWalker(operador.scene, walk, w));
             updateWalkers(0);
     }).catch((error) => console.warn('fabrica-sim: pessoas indisponíveis', error));
+    const shellReady = loadShell();
     const ready = Promise.all(want.map((type) => loadModel(MODELS[type].url).then((gltf) => [type, gltf])));
     ready
         .then(async (loaded) => {
@@ -1655,10 +1658,8 @@ function buildScene(canvas, labelsHost) {
                 if (index % 3 === 2) await new Promise(resolve => setTimeout(resolve, 0));
             }
             refreshLabels();
-            setTimeout(() => { if (!lastInput && !view.full) startTour(); }, 3200);
-        })
-        .then(() => {
-            refreshLabels();
+            await shellReady;
+            await renderer.compileAsync(scene, camera);
             sceneReady = true;
             wake();
         })
@@ -1706,7 +1707,10 @@ function buildScene(canvas, labelsHost) {
     let stutterClock = 0;
     let wasFar = null;
     let lastFrame = 0;
+    let lastShadow = -Infinity;
     let firstFrame = true;
+    let extrasPending = true;
+    let extrasScheduled = false;
 
     function syncFrame() {
         if (sceneReady && visible && !document.hidden && !failed) {
@@ -1720,6 +1724,21 @@ function buildScene(canvas, labelsHost) {
     function wake() {
         awakeAt = performance.now();
         syncFrame();
+    }
+
+    function scheduleExtras() {
+        if (extrasScheduled || !extrasPending) return;
+        extrasScheduled = true;
+        const loadExtras = async () => {
+            extrasScheduled = false;
+            if (!visible || document.hidden || failed) return;
+            extrasPending = false;
+            const props = loadProps();
+            if (coarse) await props;
+            loadOperators();
+        };
+        if (window.requestIdleCallback) window.requestIdleCallback(loadExtras);
+        else setTimeout(loadExtras, 150);
     }
     if ('IntersectionObserver' in window) {
         new IntersectionObserver(([entry]) => {
@@ -1744,7 +1763,8 @@ function buildScene(canvas, labelsHost) {
             return;
         }
         syncFrame();
-        if (coarse && lastFrame && now - lastFrame < 1000 / 30 - 1) return;
+        const cinematic = tour || (!view.full && now - lastInput > 2000);
+        if ((coarse || cinematic) && lastFrame && now - lastFrame < 1000 / 30 - 1) return;
         const dt = Math.min((now - (lastFrame || now)) / 1000, 0.05);
         lastFrame = now;
         if (tour) tourStep(dt);
@@ -1763,6 +1783,11 @@ function buildScene(canvas, labelsHost) {
             pulse += dt;
             objects.forEach((entry) => { if (entry.ring) entry.ring.material.opacity = 0.65 + Math.sin(pulse * 3) * 0.3; });
         }
+        // Câmera e controles continuam fluidos sem redesenhar as sombras a cada quadro.
+        if (now - lastShadow >= (coarse ? 125 : 65)) {
+            renderer.shadowMap.needsUpdate = true;
+            lastShadow = now;
+        }
         renderer.render(scene, camera);
         labels.render(scene, camera);
         if (firstFrame) {
@@ -1772,10 +1797,9 @@ function buildScene(canvas, labelsHost) {
             root.removeAttribute('aria-busy');
             root.querySelector('[data-fx-hud]').inert = false;
             performance.mark('mestti-factory-interactive');
-            const extras = () => { loadOperators(); loadProps(); };
-            if ('requestIdleCallback' in window) requestIdleCallback(extras, { timeout: 2000 });
-            else setTimeout(extras, 100);
+            setTimeout(() => { if (!failed && !lastInput && !view.full) startTour(); }, 1600);
         }
+        scheduleExtras();
         if (now - lastCollision > 200) { lastCollision = now; resolveCollisions(); }
     }
 
