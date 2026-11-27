@@ -1,6 +1,6 @@
 /* Monta a maquete quando ela entra na tela, assim que a primeira imagem puder pintar. */
 (function () {
-    function mount(host, load = () => import('/js/fabrica-sim.js?v=38')) {
+    function mount(host, load = () => import('/js/fabrica-sim.js?v=39')) {
         const button = host.querySelector('[data-factory-start]');
         if (!button) return;
 

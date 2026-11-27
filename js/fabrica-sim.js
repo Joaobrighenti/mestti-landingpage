@@ -990,7 +990,11 @@ function buildScene(canvas, context, labelsHost) {
         const lead = loud ? glyph(st.glyph) : '<span class="fpin__dotmark fpin__dotmark--sm"></span>';
         const aria = loud ? `${item.code} ${st.label[lang()]} · ${elapsed(item.minutes)}`
             : oeeLayer ? `${item.code} ${item.oee}%` : `${item.code} OEE ${item.oee}%`;
-        const tap = !view.touched && !oeeLayer && item.id === FIRST_STOP ? `<span class="hv-tap-hint fx-tap-hint" aria-hidden="true">${t(coarse ? 'tapPinTouch' : 'tapPin')}</span>` : '';
+        let tap = '';
+        if (!view.touched && !oeeLayer && item.id === FIRST_STOP) {
+            const hint = t(coarse ? 'tapPinTouch' : 'tapPin');
+            tap = `<button type="button" class="hv-tap-hint fx-tap-hint" data-fx-pin="${item.id}" aria-label="${hint} · ${item.code}">${hint}</button>`;
+        }
         return `${tap}<button type="button" class="fpin fpin--${tone} st-${item.state}${st.pulse && !oeeLayer ? ' fpin--pulse' : ''}${view.selected === item.id ? ' fpin--selected' : ''}" data-fx-pin="${item.id}" aria-label="${aria}">
             <span class="fpin__row">${lead}<span class="fpin__code">${item.code}</span>${value}</span>${sub}</button><span class="fpin__leader${loud ? ` st-${item.state}` : ''}"></span>`;
     }
