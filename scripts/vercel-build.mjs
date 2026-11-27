@@ -4,7 +4,7 @@
  */
 import fs from "fs";
 import path from "path";
-import { transform } from "esbuild";
+import { build, transform } from "esbuild";
 import { fileURLToPath } from "url";
 import { buildCorpus, purgeCss } from "./css-purge.mjs";
 
@@ -92,10 +92,19 @@ console.log(`Vercel build: CSS ${Math.round(before / 1024)} KB -> ${Math.round(a
 
 // Minifica JS sem juntar os scripts clássicos: ordem, URLs e nomes globais continuam iguais.
 const scripts = fs.readdirSync(path.join(outDir, "js"), { recursive: true })
-  .filter((name) => name.endsWith(".js"));
+  .filter((name) => name.endsWith(".js") && name !== "fabrica-sim.js");
 await Promise.all(scripts.map(async (name) => {
   const file = path.join(outDir, "js", name);
   const source = await fs.promises.readFile(file, "utf8");
   const { code } = await transform(source, { minify: true, sourcefile: name });
   await fs.promises.writeFile(file, code);
 }));
+
+// A cena é importada sob demanda, em um único arquivo servido pelo próprio site.
+await build({
+  entryPoints: [path.join(root, "js", "fabrica-sim.js")],
+  outfile: path.join(outDir, "js", "fabrica-sim.js"),
+  bundle: true,
+  format: "esm",
+  minify: true,
+});
