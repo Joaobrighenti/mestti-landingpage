@@ -1,47 +1,48 @@
-/* A maquete abre automaticamente quando visível, após os recursos iniciais da página. */
+/* O pôster aparece primeiro. A cena só é criada quando a pessoa escolhe explorar. */
 (function () {
-    function mount(host, load = () => import('/js/fabrica-sim.js?v=34')) {
+    function mount(host, load = () => import('/js/fabrica-sim.js?v=35')) {
         const button = host.querySelector('[data-factory-start]');
-        const deferWork = matchMedia('(pointer: coarse)').matches || navigator.connection?.saveData;
-        let started = false;
-        const start = () => {
-            if (started) return;
-            started = true;
-            // Sem WebGL não baixa nada: a imagem da fábrica já é o conteúdo.
-            if (!hasWebGL()) { host.classList.add('fx--static'); return; }
+        if (!button) return;
+        button.hidden = false;
+        button.addEventListener('click', async (event) => {
+            if (button.disabled) return;
+            button.disabled = true;
+            if (!hasWebGL()) {
+                host.classList.add('fx--static');
+                button.hidden = true;
+                return;
+            }
+
             host.classList.add('fx--requested');
             host.setAttribute('aria-busy', 'true');
-            load().catch(() => {
+            if (event.detail === 0) {
+                host.tabIndex = -1;
+                host.focus({ preventScroll: true });
+            }
+            button.hidden = true;
+            try {
+                await load();
+            } catch {
                 host.removeAttribute('aria-busy');
                 host.classList.remove('fx--requested');
-                if (button) { button.hidden = false; button.disabled = false; button.textContent = ({ en: 'Reload the 3D factory', es: 'Recargar la fábrica 3D' })[document.documentElement.lang] || 'Recarregar fábrica 3D'; }
-                // Um import que falhou pode permanecer no cache do navegador; recarregar permite recuperá-lo.
-                button?.addEventListener('click', () => location.reload(), { once: true });
-            });
-        };
-        const schedule = () => {
-            if (deferWork && window.requestIdleCallback) window.requestIdleCallback(start, { timeout: 2000 });
-            else start();
-        };
-        const whenVisible = () => {
-            if (!('IntersectionObserver' in window)) return schedule();
-            const observer = new IntersectionObserver(([entry]) => {
-                if (!entry.isIntersecting) return;
-                observer.disconnect();
-                schedule();
-            }, { rootMargin: '150px 0px' });
-            observer.observe(host);
-        };
-        if (document.readyState === 'complete') whenVisible();
-        else window.addEventListener('load', whenVisible, { once: true });
+                button.disabled = false;
+                button.hidden = false;
+                const lang = document.documentElement.lang;
+                button.textContent = ({ en: 'Reload the 3D factory', es: 'Recargar la fábrica 3D' })[lang] || 'Recarregar fábrica 3D';
+                // Um import que falhou pode permanecer no cache do navegador.
+                button.onclick = () => location.reload();
+                button.focus({ preventScroll: true });
+            }
+        }, { once: true });
     }
+
     function hasWebGL() {
         try {
-            const canvas = document.createElement('canvas');
-            const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+            const gl = document.createElement('canvas').getContext('webgl2');
             gl?.getExtension('WEBGL_lose_context')?.loseContext();
             return !!gl;
         } catch { return false; }
     }
+
     window.MesttiFactoryLoader = { mount };
 })();

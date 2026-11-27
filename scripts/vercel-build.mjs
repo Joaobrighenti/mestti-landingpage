@@ -4,6 +4,7 @@
  */
 import fs from "fs";
 import path from "path";
+import { transform } from "esbuild";
 import { fileURLToPath } from "url";
 import { buildCorpus, purgeCss } from "./css-purge.mjs";
 
@@ -88,3 +89,13 @@ const purgeDir = (dir) => {
 };
 purgeDir(outDir);
 console.log(`Vercel build: CSS ${Math.round(before / 1024)} KB -> ${Math.round(after / 1024)} KB`);
+
+// Minifica JS sem juntar os scripts clássicos: ordem, URLs e nomes globais continuam iguais.
+const scripts = fs.readdirSync(path.join(outDir, "js"), { recursive: true })
+  .filter((name) => name.endsWith(".js"));
+await Promise.all(scripts.map(async (name) => {
+  const file = path.join(outDir, "js", name);
+  const source = await fs.promises.readFile(file, "utf8");
+  const { code } = await transform(source, { minify: true, sourcefile: name });
+  await fs.promises.writeFile(file, code);
+}));

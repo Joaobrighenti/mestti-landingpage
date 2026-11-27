@@ -145,12 +145,12 @@
     function initOttoMascot() {
         const svgs = document.querySelectorAll('[data-otto-live]');
         if (!svgs.length) return;
-        import('/js/otto-mascot.js?v=1').then(({ mountOtto }) => {
-            svgs.forEach((svg) => {
+        svgs.forEach((svg) => whenVisible(svg, () => {
+            import('/js/otto-mascot.js?v=2').then(({ mountOtto }) => {
                 const poke = svg.parentElement.querySelector('.hv-otto-poke');
                 mountOtto(svg, { size: Number(svg.dataset.size) || 160, onPoke: () => { if (poke) poke.hidden = true; track('v2_otto_poke'); } });
-            });
-        }).catch((error) => console.error(error));
+            }).catch((error) => console.error(error));
+        }, '200px 0px'));
     }
 
     // Justificar paradas: o sensor já sabe quando e quanto; o operador escolhe o motivo.
@@ -456,7 +456,14 @@
     // Vídeo: começa sem som quando a pessoa chega nele, pausa quando sai e liga o som num toque.
     // Clientes e apoiadores no celular: uma faixa que corre devagar. A cópia é só visual (aria-hidden).
     function initClientsMarquee() {
-        document.querySelectorAll('.hv-clients-logos, .hv-supporters .hv-partners').forEach(marquee);
+        const mobile = matchMedia('(max-width: 640px)');
+        const sync = () => {
+            if (mobile.matches && !reduceMotion) {
+                document.querySelectorAll('.hv-clients-logos, .hv-supporters .hv-partners').forEach(marquee);
+            }
+        };
+        mobile.addEventListener('change', sync);
+        sync();
     }
     function marquee(list) {
         if (list.dataset.marquee) return;
@@ -598,27 +605,8 @@
             if (event.detail.active) { wantsPlay = false; send('pauseVideo'); }
         });
         document.addEventListener('mestti:lang', captions);
-        if (!('IntersectionObserver' in window)) return;
-        const saveData = navigator.connection?.saveData;
-        // Longe da seção só abre as conexões (barato); perto dela cria o player, sem iniciar o vídeo.
-        const warm = new IntersectionObserver(([entry]) => {
-            if (!entry.isIntersecting) return;
-            warm.disconnect();
-            [playerOrigin].forEach((href) => {
-                const link = document.createElement('link');
-                link.rel = 'preconnect';
-                link.href = href;
-                document.head.appendChild(link);
-            });
-        }, { rootMargin: '1200px 0px' });
-        if (!saveData) warm.observe(frame);
-        const preload = new IntersectionObserver(([entry]) => {
-            if (!entry.isIntersecting || locked()) return;
-            prepare();
-            preload.disconnect();
-        }, { rootMargin: saveData ? '0px' : '350px 0px' });
-        preload.observe(frame);
-        if (reduceMotion) return;
+        if (reduceMotion || navigator.connection?.saveData || !('IntersectionObserver' in window)) return;
+        // Só cria o player quando o vídeo vai tocar na área visível ou a pessoa pede para reproduzir.
         new IntersectionObserver((entries) => {
             entries.forEach((en) => {
                 if (locked()) return;

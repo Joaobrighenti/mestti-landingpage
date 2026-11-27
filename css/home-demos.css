@@ -51,8 +51,9 @@ html[data-theme="dark"] body.hv-page {
 .mon-crumb em { font-style: normal; opacity: 0.5; }
 .mon-crumb strong { color: #fff; font-weight: 600; }
 .mon-live { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 0.76rem; font-weight: 600; color: #7ee0be; }
-.mon-live i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 0 currentColor; animation: mon-live 2s ease-out infinite; }
-@keyframes mon-live { 0% { box-shadow: 0 0 0 0 rgba(126, 224, 190, 0.6); } 100% { box-shadow: 0 0 0 8px rgba(126, 224, 190, 0); } }
+.mon-live i { position: relative; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.mon-live i::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: currentColor; animation: mon-live 2s ease-out infinite; }
+@keyframes mon-live { from { opacity: .6; } to { opacity: 0; transform: scale(3.3); } }
 .mon-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px 0; flex-wrap: wrap; }
 .mon-chips { display: flex; gap: 6px; flex-wrap: wrap; }
 .mon-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 9px; border-radius: 999px; border: 1px solid var(--mon-line); background: var(--mon-paper); font-size: 0.74rem; font-weight: 500; }
@@ -111,8 +112,6 @@ html[data-theme="dark"] .mc-op b { color: #fff; }
 .mc-tick { position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(0, 0, 0, 0.12); }
 .mc-tl-times { display: flex; justify-content: space-between; padding: 2px 2px 0; font-size: 0.58rem; color: var(--mon-ink-2); font-variant-numeric: tabular-nums; }
 .mc-tl-times span:first-child, .mc-tl-times span:last-child { font-size: 0.64rem; font-weight: 600; }
-.mc.is-bump .mc-chip--total { animation: mc-bump 0.5s ease; }
-@keyframes mc-bump { 40% { filter: brightness(1.35); transform: scale(1.06); } }
 
 /* ---------------------------------------------------------------- o que faz: um dia de produção */
 .hv-day { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; position: relative; }
@@ -242,7 +241,7 @@ html[data-theme="dark"] .gx-program { color: #08203f; }
     .gx-label span { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .mon-live i, .mc.is-bump .mc-chip--total, .gx-block.is-new { animation: none !important; }
+    .mon-live i::after, .gx-block.is-new { animation: none !important; }
 }
 
 /* Dica de toque no primeiro "Programar", no mesmo padrão das paradas */

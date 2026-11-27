@@ -15,5 +15,8 @@
     "dotenv": "^16.6.1",
     "express": "^4.21.2",
     "resend": "^4.7.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.0"
   }
 }

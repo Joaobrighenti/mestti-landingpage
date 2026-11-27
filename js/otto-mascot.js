@@ -161,7 +161,7 @@ export function mountOtto(svg, { size = 160, color = MASCOT_PURPLE, onPoke } = {
         if (onPoke) onPoke();
     };
     const DT = 1 / 120;
-    const step = () => {
+    const step = (lp) => {
         st.time += DT;
         st.v.x += ((home.x - st.p.x) * 60 - st.v.x * 7) * DT;
         st.v.y += ((home.y - st.p.y) * 60 - st.v.y * 7) * DT;
@@ -208,7 +208,6 @@ export function mountOtto(svg, { size = 160, color = MASCOT_PURPLE, onPoke } = {
                 if (d < minD) { const push = ((minD - d) / d) * 0.5; a1[i].x -= dx * push; a1[i].y -= dy * push; b1[i].x += dx * push; b1[i].y += dy * push; }
             }
         }
-        const lp = localPtr();
         let target = [0, 0];
         if (lp && !st.hover) {
             const [lx, ly] = apply(inv(st.A), lp.x - st.p.x, lp.y - st.p.y);
@@ -268,23 +267,43 @@ export function mountOtto(svg, { size = 160, color = MASCOT_PURPLE, onPoke } = {
             el.setAttribute('r', (b.r * (0.6 + 0.4 * (1 - k))).toFixed(2));
             el.setAttribute('opacity', String(Math.min(1, k * 2) * 0.55));
         });
-        st.hover = inside(localPtr());
-        svg.style.cursor = st.hover ? 'pointer' : 'default';
     };
     window.addEventListener('pointermove', (ev) => { st.ptr = { x: ev.clientX, y: ev.clientY }; }, { passive: true });
     window.addEventListener('pointerout', (ev) => { if (!ev.relatedTarget) st.ptr = null; });
     svg.addEventListener('pointerdown', (ev) => { st.ptr = { x: ev.clientX, y: ev.clientY }; if (inside(localPtr())) poke(); });
     svg.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); poke(); } });
-    let visible = true;
-    if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(svg);
-    let last = performance.now(); let acc = 0;
-    const loop = (now) => {
-        requestAnimationFrame(loop);
-        if (!visible || document.hidden) { last = now; return; }
-        acc += Math.min(0.05, (now - last) / 1000); last = now;
-        while (acc >= DT) { step(); acc -= DT; }
+    let visible = !('IntersectionObserver' in window);
+    let frame = 0;
+    let last = 0;
+    let acc = 0;
+    const interval = 1000 / 30;
+    function sync() {
+        if (visible && !document.hidden) {
+            if (!frame) frame = requestAnimationFrame(loop);
+        } else {
+            cancelAnimationFrame(frame);
+            frame = 0;
+            last = 0;
+        }
+    }
+    function loop(now) {
+        frame = 0;
+        sync();
+        if (last && now - last < interval - 1) return;
+        const pointer = localPtr();
+        const hover = inside(pointer);
+        if (hover !== st.hover) svg.style.cursor = hover ? 'pointer' : 'default';
+        st.hover = hover;
+        acc += Math.min(0.05, (now - (last || now)) / 1000);
+        last = now;
+        while (acc >= DT) { step(pointer); acc -= DT; }
         render();
-    };
-    requestAnimationFrame(loop);
+    }
+    render();
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); }).observe(svg);
+    }
+    document.addEventListener('visibilitychange', sync);
+    sync();
     return { poke };
 }

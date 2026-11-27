@@ -1852,7 +1852,7 @@ html[data-theme="dark"] body.hv-page {
 }
 .hv-tap-hint::after { content: ''; position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%); border: 6px solid transparent; border-bottom: 0; border-top-color: var(--hv-ink); }
 .hv-tap-hint[hidden] { display: none; }
-@keyframes hv-hint-bob { 0%, 100% { margin-top: 0; } 50% { margin-top: -5px; } }
+@keyframes hv-hint-bob { 50% { translate: 0 -5px; } }
 .hv-timeline--xl { margin-top: 54px; }
 .hv-console-side .hv-demo-tag { margin-top: 16px; }
 

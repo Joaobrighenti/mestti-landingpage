@@ -199,7 +199,7 @@ function init() {
     view.nowOpen = root.clientWidth >= 1100;
     root.classList.add('fx--loading');
     // A imagem estática da fábrica fica por cima até a cena 3D estar pronta, e some suavemente.
-    const poster = root.querySelector('.fx-poster');
+    const poster = root.querySelector('.fx-preview');
     root.innerHTML = `
         <div class="fx-scene"><canvas class="fx-canvas" aria-hidden="true"></canvas><div class="fx-labels"></div></div>
         <p class="fx-status" role="status">${t('loading')}</p>
@@ -1131,8 +1131,10 @@ function buildScene(canvas, labelsHost) {
         };
     }
 
+    let width = 0;
+    let height = 0;
     function insets() {
-        const wide = root.clientWidth >= 1100;
+        const wide = width >= 1100;
         return {
             left: wide && view.nowOpen ? 332 : 0,
             right: wide && view.selected ? 412 : 0,
@@ -1144,10 +1146,10 @@ function buildScene(canvas, labelsHost) {
 
     // Zoom que enquadra o chão inteiro na área livre (fora dos painéis).
     function fitZoom() {
-        if (!root.clientWidth || !root.clientHeight) return camera.zoom || 1;
+        if (!width || !height) return camera.zoom || 1;
         const pad = insets();
-        const w = Math.max(200, root.clientWidth - pad.left - pad.right);
-        const h = Math.max(200, root.clientHeight - pad.top - pad.bottom);
+        const w = Math.max(200, width - pad.left - pad.right);
+        const h = Math.max(200, height - pad.top - pad.bottom);
         camera.updateMatrixWorld();
         const inv = camera.matrixWorldInverse;
         let minX = Infinity; let maxX = -Infinity; let minY = Infinity; let maxY = -Infinity;
@@ -1159,15 +1161,15 @@ function buildScene(canvas, labelsHost) {
         });
         const frustumW = camera.right - camera.left;
         const frustumH = camera.top - camera.bottom;
-        const zx = (frustumW * (w / root.clientWidth)) / (maxX - minX);
-        const zy = (frustumH * (h / root.clientHeight)) / (maxY - minY);
+        const zx = (frustumW * (w / width)) / (maxX - minX);
+        const zy = (frustumH * (h / height)) / (maxY - minY);
         return Math.min(zx, zy) * 0.96;
     }
 
     // Desloca o alvo para o objeto ficar no centro da área livre (mesma ideia de computeViewInsets).
     function offsetTarget(point, zoom) {
         const pad = insets();
-        const unitsPerPx = (camera.right - camera.left) / zoom / Math.max(1, root.clientWidth);
+        const unitsPerPx = (camera.right - camera.left) / zoom / Math.max(1, width);
         const dx = ((pad.left - pad.right) / 2) * unitsPerPx;
         const dy = ((pad.top - pad.bottom) / 2) * unitsPerPx;
         const right = new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, 0);
@@ -1193,7 +1195,7 @@ function buildScene(canvas, labelsHost) {
     let showingAll = false;
     function home(animate) {
         showingAll = false;
-        const zoom = fitZoom() * (root.clientWidth < 700 ? 2.8 : 2.25);
+        const zoom = fitZoom() * (width < 700 ? 2.8 : 2.25);
         const target = offsetTarget(HOME.clone(), zoom);
         if (animate) animateTo(target, zoom);
         else {
@@ -1210,7 +1212,7 @@ function buildScene(canvas, labelsHost) {
         { at: [2.2, 0.5, 4.4], zoom: 2.5 }, { at: [10.9, 0.9, -1.4], zoom: 2.1 }, { at: [0, 0.6, 0], zoom: 1.05 }
     ];
     // Cinema mais perto das máquinas; em tela estreita (celular) ainda mais e sem a vista geral.
-    const narrow = () => root.clientWidth < 720;
+    const narrow = () => width < 720;
     const tourStops = () => (narrow() ? TOUR.slice(0, -1) : TOUR);
     const tourZoom = (zoom) => zoom * (narrow() ? 1.7 : 1);
     const BASE_ANGLE = Math.atan2(BASE_DIR.x, BASE_DIR.z);
@@ -1221,7 +1223,7 @@ function buildScene(canvas, labelsHost) {
     let lastInput = 0;
     let awakeAt = 0;
     function startTour() {
-        if (reduceMotion || tour || !root.clientWidth) return;
+        if (reduceMotion || tour || !width) return;
         tween = null;
         controls.enabled = false;
         const dir = camera.position.clone().sub(controls.target);
@@ -1337,14 +1339,15 @@ function buildScene(canvas, labelsHost) {
     }
 
     function resize() {
-        const w = root.clientWidth; const h = root.clientHeight;
-        if (!w || !h) return;
-        const aspect = w / h;
+        width = root.clientWidth;
+        height = root.clientHeight;
+        if (!width || !height) return;
+        const aspect = width / height;
         const S = 12;
         camera.left = -S * aspect; camera.right = S * aspect; camera.top = S; camera.bottom = -S;
         camera.updateProjectionMatrix();
-        renderer.setSize(w, h, false);
-        labels.setSize(w, h);
+        renderer.setSize(width, height, false);
+        labels.setSize(width, height);
     }
 
     const mixer = new THREE.AnimationMixer(world);
@@ -1657,7 +1660,7 @@ function buildScene(canvas, labelsHost) {
         .then(() => {
             refreshLabels();
             sceneReady = true;
-            awakeAt = performance.now();
+            wake();
         })
         .catch((error) => { console.warn('fabrica-sim: modelos GLB indisponíveis', error); fail(); });
 
@@ -1678,6 +1681,7 @@ function buildScene(canvas, labelsHost) {
             const prio = view.selected === item.id ? 9 : item.critical ? 4 : PRIORITY[item.state] || 1;
             pins.push({ el, prio, box: [cx - w / 2 - 3, bottom - h - 3, cx + w / 2 + 3, bottom + 3] });
         });
+        const names = [...labelsHost.querySelectorAll('.fx-name')].map((el) => [el, el.getBoundingClientRect()]);
         pins.sort((a, b) => b.prio - a.prio);
         const kept = [];
         // Etiqueta que sairia cortada na borda do quadro vira só o ponto, como na colisão.
@@ -1688,44 +1692,68 @@ function buildScene(canvas, labelsHost) {
             pin.el.classList.toggle('fcard-anchor--dot', hit);
             if (!hit) kept.push(pin.box);
         });
-        root.querySelectorAll('.fx-name').forEach((el) => {
-            const r = el.getBoundingClientRect();
+        names.forEach(([el, r]) => {
             const out = r.left - host.left < 4 || r.right - host.left > W - 4 || r.top - host.top < 4 || r.bottom - host.top > H - 4;
             el.classList.toggle('fx-name--out', out);
         });
     }
     let lastCollision = 0;
 
-    let visible = true;
-    new IntersectionObserver(([e]) => {
-        if (e.isIntersecting && !visible) awakeAt = performance.now();
-        visible = e.isIntersecting;
-    }).observe(root);
-    // Na home o cinema é o conteúdo: rolar ou tocar a página mantém a cena viva; parada 60 s, congela.
-    if (coarse) ['scroll', 'pointerdown'].forEach((type) => window.addEventListener(type, () => { awakeAt = performance.now(); }, { passive: true }));
-    // A GPU do celular pode descartar o contexto (memória, aba em segundo plano): volta à imagem estática.
-    renderer.domElement.addEventListener('webglcontextlost', () => fail({ permanent: true }));
-    const clock = new THREE.Clock();
+    let visible = !('IntersectionObserver' in window);
+    let frameId = 0;
+    let failed = false;
     let pulse = 0;
     let stutterClock = 0;
-    let far = false; let wasFar = null;
+    let wasFar = null;
     let lastFrame = 0;
     let firstFrame = true;
-    (function tick() {
-        requestAnimationFrame(tick);
-        const now = performance.now();
-        if (coarse && now - lastFrame < 1000 / 30) return;
+
+    function syncFrame() {
+        if (sceneReady && visible && !document.hidden && !failed) {
+            if (!frameId) frameId = requestAnimationFrame(tick);
+        } else {
+            cancelAnimationFrame(frameId);
+            frameId = 0;
+            lastFrame = 0;
+        }
+    }
+    function wake() {
+        awakeAt = performance.now();
+        syncFrame();
+    }
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(([entry]) => {
+            visible = entry.isIntersecting;
+            wake();
+        }).observe(root);
+    }
+    document.addEventListener('visibilitychange', wake);
+    if (coarse) {
+        ['scroll', 'pointerdown', 'keydown'].forEach((type) => window.addEventListener(type, wake, { passive: true }));
+    }
+    // A GPU pode descartar o contexto: volta ao pôster e encerra o loop.
+    renderer.domElement.addEventListener('webglcontextlost', () => {
+        failed = true;
+        syncFrame();
+        fail({ permanent: true });
+    });
+    function tick(now) {
+        frameId = 0;
+        if (!firstFrame && !view.full && now - Math.max(lastInput, awakeAt) > IDLE_SLEEP) {
+            lastFrame = 0;
+            return;
+        }
+        syncFrame();
+        if (coarse && lastFrame && now - lastFrame < 1000 / 30 - 1) return;
+        const dt = Math.min((now - (lastFrame || now)) / 1000, 0.05);
         lastFrame = now;
-        const dt = Math.min(clock.getDelta(), 0.05);
-        if (!sceneReady || !visible || document.hidden) return;
-        if (!firstFrame && !view.full && now - Math.max(lastInput, awakeAt) > IDLE_SLEEP) return;
         if (tour) tourStep(dt);
         else {
             if (tween) tween(now);
             controls.update();
             if (lastInput && !view.selected && !view.full && !tween && now - lastInput > IDLE_RESUME) startTour();
         }
-        far = camera.zoom < farZoom * 1.45;
+        const far = camera.zoom < farZoom * 1.45;
         if (far !== wasFar) { labelsHost.classList.toggle('fx-labels--far', far); wasFar = far; }
         if (!reduceMotion) {
             stutterClock += dt;
@@ -1737,7 +1765,6 @@ function buildScene(canvas, labelsHost) {
         }
         renderer.render(scene, camera);
         labels.render(scene, camera);
-        if (coarse) lastFrame = performance.now();
         if (firstFrame) {
             firstFrame = false;
             root.classList.remove('fx--loading');
@@ -1750,7 +1777,7 @@ function buildScene(canvas, labelsHost) {
             else setTimeout(extras, 100);
         }
         if (now - lastCollision > 200) { lastCollision = now; resolveCollisions(); }
-    })();
+    }
 
     return { refreshLabels, applyTheme, frame, zoomBy, focus, setFull };
 }
