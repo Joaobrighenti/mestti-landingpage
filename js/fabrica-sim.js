@@ -1235,6 +1235,8 @@ function buildScene(canvas, context, labelsHost) {
         if (on || !mobileUI) stopTour();
         else { tour = null; lastInput = 0; awakeAt = performance.now(); startTour(); }
         applyControls();
+        walkers.forEach(({ body }) => setPersonShadow(body, on));
+        renderer.shadowMap.needsUpdate = true;
     }
     function tourStep(dt) {
         const stops = tourStops();
@@ -1367,12 +1369,11 @@ function buildScene(canvas, context, labelsHost) {
     const ACTIVITY = { running: 'Operando', warning: 'Operando', stopped: 'Aguardando', setup: 'Manutencao', maintenance: 'Manutencao' };
     function person(template) {
         const body = SkeletonUtils.clone(template);
-        body.updateWorldMatrix(true, true);
-        const box3 = new THREE.Box3().setFromObject(body);
-        body.scale.multiplyScalar(1.2 / Math.max(0.01, box3.max.y - box3.min.y));
-        body.traverse((child) => { if (child.isMesh) { child.castShadow = true; child.frustumCulled = false; } });
         world.add(body);
         return body;
+    }
+    function setPersonShadow(body, castShadow) {
+        body.traverse((child) => { if (child.isMesh) child.castShadow = castShadow; });
     }
     function play(body, clips, name, seed) {
         const clip = THREE.AnimationClip.findByName(clips, name) || THREE.AnimationClip.findByName(clips, 'Parado');
@@ -1508,6 +1509,7 @@ function buildScene(canvas, context, labelsHost) {
     const walkers = [];
     function spawnWalker(template, walk, { path, speed, phase, name, role }) {
         const body = person(template);
+        setPersonShadow(body, view.full);
         const action = mixer.clipAction(walk, body);
         action.play();
         action.timeScale = speed / STRIDE;
@@ -1583,31 +1585,40 @@ function buildScene(canvas, context, labelsHost) {
     const loadModel = (url) => loader.loadAsync(url);
     const want = [...new Set([...MACHINES.map((m) => m.type), 'tank'])];
     let sceneReady = false;
-    const loadOperators = () => loadModel('/glbimagens/operador-mestti.glb').then(async (operador) => {
-            for (const [i, m] of MACHINES.entries()) {
-                placeOperator(operador.scene, operador.animations, objects.get(m.id), (i * 0.37) % 1);
-                if (i % 3 === 2) await new Promise(resolve => setTimeout(resolve, 0));
-            }
-            // Montagem: duas pessoas nas bancadas.
-            [[0.2, 4.4, 'Lia'], [5.2, 7.6, 'Tomás']].forEach(([x, z, name], i) => {
-                const body = person(operador.scene);
-                body.position.set(x * K, 0, z * K + 0.62);
-                body.rotation.y = Math.PI;
-                play(body, operador.animations, 'Operando', 0.3 + i * 0.4);
-                nameTag(body, name);
-            });
-            const walk = walkClip(operador.scene, operador.animations);
-            const ROLE = {
-                quality: L('Qualidade', 'Quality', 'Calidad'), logistics: L('Logística', 'Logistics', 'Logística'),
-                maintenance: L('Manutenção', 'Maintenance', 'Mantenimiento'), planning: L('PCP', 'Planning', 'Planificación')
-            };
-            [
-                { path: [[-12.8, 0.72], [7.4, 0.72]], speed: 0.82, phase: 0.15, name: 'Ana', role: ROLE.quality },
-                { path: [[7.8, -7.2], [7.8, -0.6], [13.4, -0.6]], speed: 0.9, phase: 0.6, name: 'Lucas', role: ROLE.logistics },
-                { path: [[-3.85, -7.3], [-3.85, 7.3]], speed: 0.78, phase: 0.35, name: 'Bia', role: ROLE.maintenance },
-                { path: [[-9.4, -7.4], [-9.4, -1.6]], speed: 0.72, phase: 0.8, name: 'Jorge', role: ROLE.planning }
-            ].forEach((w) => spawnWalker(operador.scene, walk, w));
-            updateWalkers(0);
+    const loadOperators = () => loadModel('/glbimagens/web/operador-mestti.glb').then(async ({ scene: template, animations }) => {
+        const bounds = new THREE.Box3().setFromObject(template);
+        template.scale.multiplyScalar(1.2 / Math.max(0.01, bounds.max.y - bounds.min.y));
+        template.traverse((child) => {
+            if (!child.isSkinnedMesh) return;
+            child.boundingSphere = child.boundingBox.getBoundingSphere(new THREE.Sphere());
+            child.boundingSphere.radius *= 1.4;
+        });
+        setPersonShadow(template, true);
+        for (const [i, m] of MACHINES.entries()) {
+            placeOperator(template, animations, objects.get(m.id), (i * 0.37) % 1);
+            if (i % 3 === 2) await new Promise(resolve => setTimeout(resolve, 0));
+        }
+        // Montagem: duas pessoas nas bancadas.
+        [[0.2, 4.4, 'Lia'], [5.2, 7.6, 'Tomás']].forEach(([x, z, name], i) => {
+            const body = person(template);
+            body.position.set(x * K, 0, z * K + 0.62);
+            body.rotation.y = Math.PI;
+            play(body, animations, 'Operando', 0.3 + i * 0.4);
+            nameTag(body, name);
+        });
+        const walk = walkClip(template, animations);
+        const ROLE = {
+            quality: L('Qualidade', 'Quality', 'Calidad'), logistics: L('Logística', 'Logistics', 'Logística'),
+            maintenance: L('Manutenção', 'Maintenance', 'Mantenimiento'), planning: L('PCP', 'Planning', 'Planificación')
+        };
+        [
+            { path: [[-12.8, 0.72], [7.4, 0.72]], speed: 0.82, phase: 0.15, name: 'Ana', role: ROLE.quality },
+            { path: [[7.8, -7.2], [7.8, -0.6], [13.4, -0.6]], speed: 0.9, phase: 0.6, name: 'Lucas', role: ROLE.logistics },
+            { path: [[-3.85, -7.3], [-3.85, 7.3]], speed: 0.78, phase: 0.35, name: 'Bia', role: ROLE.maintenance },
+            { path: [[-9.4, -7.4], [-9.4, -1.6]], speed: 0.72, phase: 0.8, name: 'Jorge', role: ROLE.planning }
+        ].forEach((w) => spawnWalker(template, walk, w));
+        updateWalkers(0);
+        renderer.shadowMap.needsUpdate = true;
     }).catch((error) => console.warn('fabrica-sim: pessoas indisponíveis', error));
     const shellReady = loadShell();
     const ready = Promise.all(want.map((type) => loadModel(MODELS[type].url).then((gltf) => [type, gltf])));
@@ -1692,7 +1703,8 @@ function buildScene(canvas, context, labelsHost) {
     let lastShadow = -Infinity;
     let firstFrame = true;
     let lastScroll = -Infinity;
-    let extrasPending = true;
+    let operatorsPending = true;
+    let propsPending = true;
     let extrasScheduled = false;
 
     function syncFrame() {
@@ -1710,17 +1722,20 @@ function buildScene(canvas, context, labelsHost) {
     }
 
     function scheduleExtras() {
-        if (extrasScheduled || !extrasPending || !view.full) return;
+        if (extrasScheduled || (!operatorsPending && !(view.full && propsPending))) return;
         extrasScheduled = true;
-        const loadExtras = async () => {
+        const loadExtras = () => {
             extrasScheduled = false;
-            if (!visible || document.hidden || failed || !view.full) return;
-            extrasPending = false;
-            const props = loadProps();
-            if (coarse) await props;
-            loadOperators();
+            if (!visible || document.hidden || failed || (!view.full && performance.now() - lastScroll < 120)) return;
+            if (operatorsPending) {
+                operatorsPending = false;
+                loadOperators();
+            } else if (view.full && propsPending) {
+                propsPending = false;
+                loadProps();
+            }
         };
-        if (window.requestIdleCallback) window.requestIdleCallback(loadExtras);
+        if (window.requestIdleCallback) window.requestIdleCallback(loadExtras, { timeout: 500 });
         else setTimeout(loadExtras, 150);
     }
     if ('IntersectionObserver' in window) {
